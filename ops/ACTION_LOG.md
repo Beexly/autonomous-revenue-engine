@@ -2,6 +2,19 @@
 
 Schema per ADVERSARIAL.md section 5: Asset ID, attacks, critical findings, decision, changes required.
 
+## LOG-017 — 2026-08-24T21:26Z — System
+Live surfaces locked: X @SignaL_OriginHQ, Gmail signal.origin.hq@gmail.com, YT/IG/TT accounts created (exact secondary handles to confirm). Premium deferred. PROFILE_SPECS, PASS_QUEUE, EXPERIMENT_NICHE (qi-check), LIVE_SURFACES committed.
+Decision: Continue operator cycle; owner applies bios only.
+
+## LOG-016 — System — Niche locked
+Free-core micro-tool: Viewport Hold / Qualified Impression Checker (qi-check). Not packages. SO-008 remains hold until public face exists.
+
+## LOG-015 — System — Pass queue drafted
+SO-001, SO-004, SO-007 candidate post bodies written. SO-002/SO-005 rewrite drafts written for re-score.
+
+## LOG-014 — System — Profile specs
+Bios and avatar/banner direction for X/IG/TT/YT. Owner applies; operator does not control accounts.
+
 ## LOG-013 — 2026-08-24T19:11Z — System
 Operator handoff activated. Grok owns all internal seats.
 Attacks: system-level review, over-optimization trap, single-point dependency.
