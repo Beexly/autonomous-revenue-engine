@@ -1,26 +1,24 @@
 # GARRETT'S PENDING WORK
 
-**Updated:** 2026-08-24
+**Updated:** 2026-08-24 night
 
-## Do now — identity (v2)
+## Do now (one sitting, ~8 min)
 
-1. Download from the Identity tab (or the files in chat). Ignore the old rings.
-2. Set **avatar.png** (CRT close-up) on X, Instagram, TikTok, YouTube, Gmail.
-3. Set **header-x.png** as the X profile header.
-4. Set **header-youtube.jpg** as YouTube channel art.
-5. Paste bios from PROFILE_SPECS.md if not already applied.
+1. Open the **Identity** tab. Download the pack.
+2. Set **avatar.png** (CRT face) on X, Instagram, TikTok, YouTube, Gmail.
+3. Set **header-x.png** as the X header.
+4. Set **header-youtube.jpg** as YouTube art.
+5. Ignore the old rings if they are still on any account.
 
-Do not generate a second mark. The CRT is locked.
+That is the only human work tonight.
 
-## Do when ready
+## Do in the morning, not tonight
 
-1. **Post once** on @SignaL_OriginHQ only after a Pass draft is accepted
-2. Optional: share Notion page with integration
-3. Optional later: Vercel deploy `apps/qi-check`
+Walk **Launch** (four beats). If the copy still holds after sleep, post it once to @SignaL_OriginHQ. If it feels like cosplay, do not post.
 
 ## Do not
-- Post until the quality bar is met
-- Buy API credits yet
-- Enable x402 mainnet yet
-- Use the old ring mark
-- Invent a new logo
+- Open gadget-market-intelligence-dashboard (dropper)
+- Generate a second mark
+- Buy API credits
+- Enable x402 mainnet
+- Post before the morning read
