@@ -2,16 +2,24 @@
 
 **Updated:** 2026-08-24
 
+## Do now — identity
+
+1. Download the brand pack from the Identity page (or the files in chat).
+2. Set **avatar.png** on X, Instagram, TikTok, YouTube, and Gmail.
+3. Set **header-x.jpg** as the X profile header.
+4. Set **header-youtube.jpg** as YouTube channel art.
+5. Paste bios from PROFILE_SPECS.md if not already applied.
+
+Do not generate a second mark. The rings are locked.
+
 ## Do when ready
 
-1. **Grok 4.6 Build** — paste prompt from `ops/GROK_BUILD_REVIEW_PROMPT.md` → bring final text back here / to chat  
-2. **Post once** on @SignaL_OriginHQ only after that final is accepted  
-3. Optional: share Notion page with integration  
-4. Optional later: Vercel deploy `apps/qi-check` (free `/api/score` needs no keys)
+1. **Post once** on @SignaL_OriginHQ only after a Pass draft is accepted  
+2. Optional: share Notion page with integration  
+3. Optional later: Vercel deploy `apps/qi-check` (free `/api/score` needs no keys)
 
 ## Do not
-- Post pre-Build text if you want the Build pass first  
+- Post until the quality bar is met  
 - Buy API credits yet  
 - Enable x402 mainnet yet  
-
-Operator already shipped: score engine, EIP-3009 helpers, Sepolia checklist, drafts A/B.
+- Invent a new logo
