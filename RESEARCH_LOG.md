@@ -6,6 +6,19 @@
 
 ---
 
+## Entry: Operator Handoff Activated (2026-08-24)
+
+### What happened
+- Internal control surface built (read-only): Handoff, Status, Candidates, Action log, Doctrine.
+- First content batch of 8 candidates scored and adversarially reviewed: 3 Pass, 3 Rewrite, 2 Kill. Zero published.
+- Standing order written to HANDOFF.md. Grok owns all internal seats.
+- Daily revenue score job remains deferred (see prior entry). Daily *operator* loop that executes HANDOFF.md is allowed.
+
+### Decision
+Handoff is ACTIVE. Do not wait for another build pass. Execute the next-cycle queue in HANDOFF.md. Owner is required only for accounts / Premium / optional Ads / domain / budget.
+
+---
+
 ## Entry: Reporter / Timeline / Nova Context (2026-08-24)
 
 ### Findings
@@ -73,6 +86,7 @@ Reason: Avoid doubling work and burning usage tokens on premature cadence. Smart
 4. Only then schedule the recurring daily score check as a Learning-seat routine.
 
 Status: **Deferred until process lock.** Noted here so it is not forgotten and not executed early.
+A daily *operator* loop that executes HANDOFF.md is a different job and is allowed.
 
 ---
 
@@ -80,9 +94,10 @@ Status: **Deferred until process lock.** Noted here so it is not forgotten and n
 
 Every major decision, research pass, and architectural addition is committed to this repository with clear markdown sources of truth:
 
-- STRATEGY.md, ORIGINALITY.md, ADVERSARIAL.md, OPERATING.md
+- HANDOFF.md, STRATEGY.md, ORIGINALITY.md, ADVERSARIAL.md, OPERATING.md
 - PLATFORM.md, TIERED_FORKS.md, ALGORITHMS.md, ORGANIZATION.md
 - LEVERAGE.md, CONTEXT_AND_SCORING.md, RESEARCH_LOG.md (this file)
+- ops/FIRST_BATCH.md, ops/ACTION_LOG.md, ops/STRATEGY.md
 
 Notion control page remains the live status surface. Repo remains the durable, inspectable code and documentation surface for full project presentation and audit at any time.
 
