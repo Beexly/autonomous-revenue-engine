@@ -1,5 +1,8 @@
 # Action log — adversarial and system reviews
 
+## LOG-019 — 2026-08-24T23:30Z — Identity
+Locked Signal Origin visual mark: cream origin rings (outer + inner offset up-left) on warm ink. Generated from existing OG brand, not a second identity. Avatar 800×800, X header 1500×500, YouTube 2560×1440. Identity page shipped in qi-check for download. Owner applies across X / IG / TikTok / YouTube / Gmail. No second mark.
+
 ## LOG-018 — 2026-08-24T22:08Z — System / Quality
 Owner rejection: first Pass queue cringe, AI-sounding, not world-class. Applied 110% standard.
 Decision: SO-001/004/007 Pass labels **revoked → Kill**. Queue empty. QUALITY_BAR.md + PERSPECTIVE_20K.md locked. Notion automate and GitHub Actions status deprioritized until content bar met. Owner posting held.
