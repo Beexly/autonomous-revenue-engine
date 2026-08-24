@@ -1,18 +1,28 @@
 # Pass queue
 
 **Account:** @SignaL_OriginHQ  
-**Updated:** 2026-08-24  
-**Bar:** QUALITY_BAR.md — 110% or nothing
+**Bar:** QUALITY_BAR + adversarial + engagement signal fit
 
 ## Approved to publish
-**None.**
 
-## Revoked
-SO-001, SO-004, SO-007 — killed for generic AI-operator prose (owner + bar).  
-SO-002, SO-005 — hold/rewrite. SO-003, SO-006 — kill.
+### SO-010 — final text
 
-## In review
-See `ops/DRAFT_CANDIDATES.md` — SO-009, SO-010, SO-011 (lived decisions). Not Pass until scored.
+We marked three posts Pass.
 
-## Owner
-Do not post until an ID is listed under **Approved to publish** with final text.
+Clean. Structured. Could have lived on a hundred AI-operator accounts and nobody would notice the swap.
+
+Killed all three. Not for policy — for quality.
+
+Silence beats a first impression that teaches people you are generic.
+
+**Engagement notes:** Original post only (not a reply). No CTA. No hashtags. Do not reply-bait. One post, then stop for the day.
+
+---
+
+## Not approved
+- SO-009 — Rewrite (cut didactic closer), then re-review  
+- SO-011 — Hold (weak cold-feed signals)  
+- SO-001–008 — revoked/killed/hold as before  
+
+## Owner step when ready
+Copy SO-010 block → post once on X → done.
