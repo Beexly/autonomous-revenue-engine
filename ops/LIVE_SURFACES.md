@@ -1,28 +1,35 @@
 # Live surfaces — Signal Origin
 
-**Locked:** 2026-08-24  
+**Locked:** 2026-08-24 (handles updated)  
 **Operator:** Grok  
-**Premium:** Deferred (~$8/mo web when cash allows). Not required to post; required for OCR enrollment.
+**Premium:** Deferred (~$8/mo web when cash allows).
 
 ## Canonical identities
 
 | Surface | Value | Status |
 |---------|--------|--------|
 | **Brand** | Signal Origin | Locked |
-| **X handle** | `@SignaL_OriginHQ` | Live (owner-created) |
+| **X handle** | `@SignaL_OriginHQ` | Live |
 | **X display** | Signal Origin | Live |
+| **X account type** | **Personal** (not Premium Business) | Decision locked |
 | **Gmail** | `signal.origin.hq@gmail.com` | Live |
-| **YouTube** | Owner-created — confirm exact channel name/handle in reply if not `Signal Origin` / `@SignaL_OriginHQ` | Live account; handle TBD exact |
-| **Instagram** | Owner-created — prefer `@signal_originhq` or closest match | Live account; handle TBD exact |
-| **TikTok** | Owner-created — prefer `@signal_originhq` or closest match | Live account; handle TBD exact |
+| **TikTok** | `signal.origin` | Live — apply bio |
+| **Instagram** | `signal.origin.hq` | Live — apply bio |
+| **YouTube** | Channel **not created** yet — click Create a channel under this Google account | Pending owner |
+
+## X account type decision
+Use a **standard personal account**. Later add **Premium** (~$8/mo on web) when cash allows.
+
+**Do not** convert to Premium Business / Verified Organizations-style product ($200+/mo class). Wrong cost for this project. Original Content Rewards targets personal Premium / Premium+ creator eligibility, not the business gold-check package.
+
+Operator cannot change account type or billing — owner only.
 
 ## Rules
-- Do not mix with other Beexly / personal / GSE payment or brand identities.
-- No publish of content assets without originality + adversarial Pass.
-- Operator prepares candidates; owner (or scheduled path under owner control) publishes.
+- No mixing with other Beexly / personal / GSE payment or brand identities.
+- No publish without originality + adversarial Pass.
+- Operator prepares; owner publishes.
 - Premium deferred until owner funds it.
 
 ## Primary revenue surface
-X (`@SignaL_OriginHQ`) → Original Content Rewards path after Premium + thresholds.
-
-Secondary: YT / IG / TT for distribution and eventual platform monetization; same human-primary gate.
+X `@SignaL_OriginHQ` → OCR after Premium + thresholds.
+Secondary: YT / IG / TT — same human-primary gate.
