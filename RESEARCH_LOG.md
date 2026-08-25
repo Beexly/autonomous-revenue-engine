@@ -2,7 +2,25 @@
 
 **Purpose**: Complete, presentable record of every major investigation, decision, and integration. No steps skipped. Enables full project overview and inspection at any time.
 
-**Last updated**: 2026-08-24
+**Last updated**: 2026-08-25
+
+---
+
+## Entry: HANDOFF Cycle Execution — SO-002 / SO-005 / Measurement Lock (2026-08-25)
+
+### What happened
+- SO-002 rewritten with full Premium/verified impression proxy template; originality 47/60 (min 7); adversarial Pass. See ops/SO002_REWRITE.md.
+- SO-005 rewritten with before/after Burrows Delta table from internal draft pair (sample-a/b reference); originality 48/60 (min 7); adversarial Pass. See ops/SO005_REWRITE.md.
+- SO-008 remains Hold (not public copy until niche has named public face).
+- First free-core micro-tool niche confirmed: Viewport Hold / Qualified Impression Checker (`qi-check`). Experiment spec already in ops/EXPERIMENT_NICHE.md. No purchase, no payment flow invented.
+- Profile asset specs already locked (ops/PROFILE_SPECS.md); no new public assets generated.
+- Domain shortlist research logged (ops/DOMAIN_SHORTLIST.md). No purchase.
+- Measurement template for Premium/verified impression proxies written and committed (ops/MEASUREMENT_TEMPLATE.md). Schema defines pre-account proxies + intake path + unlock conditions for any future daily revenue score job.
+
+### Decision
+- Pass count for first batch now 5 (internal queue only). Publish path remains disabled.
+- Daily revenue score **job** still deferred until the new schema is used consistently for ≥7 days, log intake is stable, and Learning has at least one synthesis pass.
+- Operator continues candidate pipeline under existing gates (originality 42/60 floor 5, adversarial Pass, qi-check Hold ≥ 9.2 where applicable).
 
 ---
 
@@ -85,8 +103,7 @@ Reason: Avoid doubling work and burning usage tokens on premature cadence. Smart
 3. Ensure revenue evidence sources (when accounts exist) have a clean intake path.
 4. Only then schedule the recurring daily score check as a Learning-seat routine.
 
-Status: **Deferred until process lock.** Noted here so it is not forgotten and not executed early.
-A daily *operator* loop that executes HANDOFF.md is a different job and is allowed.
+Status: **Deferred until process lock.** Measurement schema now exists (ops/MEASUREMENT_TEMPLATE.md, 2026-08-25). Unlock still requires consistent use ≥7 days + Learning synthesis. A daily *operator* loop that executes HANDOFF.md is a different job and is allowed.
 
 ---
 
@@ -97,7 +114,7 @@ Every major decision, research pass, and architectural addition is committed to 
 - HANDOFF.md, STRATEGY.md, ORIGINALITY.md, ADVERSARIAL.md, OPERATING.md
 - PLATFORM.md, TIERED_FORKS.md, ALGORITHMS.md, ORGANIZATION.md
 - LEVERAGE.md, CONTEXT_AND_SCORING.md, RESEARCH_LOG.md (this file)
-- ops/FIRST_BATCH.md, ops/ACTION_LOG.md, ops/STRATEGY.md
+- ops/FIRST_BATCH.md, ops/ACTION_LOG.md, ops/STRATEGY.md, ops/MEASUREMENT_TEMPLATE.md, ops/DOMAIN_SHORTLIST.md
 
 Notion control page remains the live status surface. Repo remains the durable, inspectable code and documentation surface for full project presentation and audit at any time.
 
