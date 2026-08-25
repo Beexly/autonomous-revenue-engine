@@ -1,0 +1,16 @@
+{
+  "name": "voice-delta",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Classic Burrows' Delta voice check. Lower delta = closer match. Does not rewrite. Does not publish.",
+  "type": "module",
+  "bin": {
+    "voice-delta": "./cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

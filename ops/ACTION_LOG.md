@@ -1,5 +1,8 @@
 # Action log
 
+## LOG-027 — 2026-08-24T23:20 CDT — voice-delta factory #2
+Factory #2: original JS Burrows' Delta at apps/voice-delta (not a fork). Scores candidate vs Pass-style reference corpus. Does not rewrite, does not publish. Complements qi-check; Hold 9.2 unchanged.
+
 ## LOG-026 — 2026-08-24T22:58 CDT — qi-check UI
 Origin Master took control of Beexly/autonomous-revenue-engine after owner rejected the $19 PDF pack. Cloud Agents unavailable on plan. Shipped apps/qi-check public UI (paste → POST /api/score → Hold/Soft/Hard + fix list). Scoring unchanged (lib/score.js, Hold 9.2). No publish, no Stripe, no sports. Next loop after this builds: Vercel free deploy (owner), then clone the free-core motion on the next niche.
 
