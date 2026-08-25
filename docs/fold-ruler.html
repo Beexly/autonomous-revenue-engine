@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>fold-ruler — 160-char first screen</title>
+  <meta name="description" content="Count chars and words against a 160-character first-screen band. Does not rewrite. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .inband { color:var(--ok); } .short { color:var(--rule); } .past { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .meter { height:8px; background:var(--band); margin:.8rem 0 1rem; position:relative; }
+    .meter > span { display:block; height:100%; background:var(--ink); max-width:100%; }
+    .meter .tick { position:absolute; right:0; top:-3px; bottom:-3px; width:2px; background:var(--rule); }
+    .preview { font:14px/1.45 ui-monospace,monospace; background:#fffdf6; border:1px solid var(--ink); padding:.7rem .75rem; white-space:pre-wrap; word-break:break-word; }
+    .preview .in { background:#e7f0d8; }
+    .preview .over { background:#f3d4c8; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · fold length</p>
+  <h1>fold-ruler</h1>
+  <p class="lede">Paste a draft. This counts characters and words against a 160-character first-screen band (the OCR “≥50% visible” unit). It does not score Hold, rewrite, or publish.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="First line is the decision."></textarea>
+    <button type="submit">Measure</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var BAND = 160;
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function words(s) {
+    var t = String(s || "").trim();
+    return t ? t.split(/\s+/).length : 0;
+  }
+  function measure(raw) {
+    var t = String(raw || "").replace(/\r\n/g, "\n");
+    var chars = t.length;
+    var band = t.slice(0, BAND);
+    var overflow = t.slice(BAND);
+    var status = "EMPTY";
+    if (chars === 0) status = "EMPTY";
+    else if (chars < 40) status = "SHORT";
+    else if (chars <= BAND) status = "IN-BAND";
+    else status = "PAST-FOLD";
+    return {
+      chars: chars,
+      words: words(t),
+      bandChars: band.length,
+      overflowChars: overflow.length,
+      bandWords: words(band),
+      overflowWords: words(overflow),
+      band: band,
+      overflow: overflow,
+      status: status,
+      fill: Math.min(100, (chars / BAND) * 100)
+    };
+  }
+
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var out = document.getElementById("out");
+
+  function render() {
+    var data = measure(input.value);
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='short'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "IN-BAND" ? "inband" : data.status === "SHORT" ? "short" : "past";
+    var rows =
+      "<tr><td class='k'>chars</td><td class='v'>" + data.chars + "</td></tr>" +
+      "<tr><td class='k'>words</td><td class='v'>" + data.words + "</td></tr>" +
+      "<tr><td class='k'>in 160-char band</td><td class='v'>" + data.bandChars + " chars / " + data.bandWords + " words</td></tr>" +
+      "<tr><td class='k'>past fold</td><td class='v'>" + data.overflowChars + " chars / " + data.overflowWords + " words</td></tr>";
+    var preview = "<span class='in'>" + esc(data.band) + "</span>";
+    if (data.overflow) preview += "<span class='over'>" + esc(data.overflow) + "</span>";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<div class='meter' title='160-char band'><span style='width:" + data.fill.toFixed(1) + "%'></span><i class='tick'></i></div>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='preview'>" + preview + "</p>" +
+      "<p class='note'>Green = first 160 characters. Clay = overflow past the first-screen band. This is a ruler, not qi-check.</p>";
+    out.hidden = false;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    render();
+  });
+  input.addEventListener("input", function () {
+    if (!out.hidden) render();
+  });
+})();
+</script>
+</body>
+</html>
