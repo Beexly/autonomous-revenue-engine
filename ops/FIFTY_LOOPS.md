@@ -23,7 +23,7 @@ New `docs/` pages in this cycle are **not** live until merged to `main`.
 | 4 | bait-hook detector | First-line-only bait score (CLEAN / SOFT BAIT / HARD BAIT) | `docs/bait-hook.html` (this PR); open the file | SHIPPED | Narrower than qi-check; shareable hook for people who only want line one |
 | 5 | swap-test checklist | Interchangeability score for a paste (ANCHORED / SWAPPABLE / GENERIC) | `docs/swap-test.html` (this PR); open the file | SHIPPED | QUALITY_BAR as a public checklist; later a batch “would this survive a brand swap?” report |
 | 6 | Static tools hub | Index of the three HTML tools | `docs/index.html` (this PR) | SHIPPED | One entry point when Pages is on; no extra domain |
-| 7 | Fold-length ruler | Paste → char/word count vs 160-char first-screen band | New `docs/fold-ruler.html` | NEXT | Teaches the 50%-visible unit that OCR actually pays |
+| 7 | Fold-length ruler | Paste → char/word count vs 160-char first-screen band | `docs/fold-ruler.html`; open the file | SHIPPED | Teaches the 50%-visible unit that OCR actually pays |
 | 8 | Burstiness sparkline | Sentence-length CV drawn as a tiny bar chart | New `docs/burstiness.html` | NEXT | Makes “flat model cadence” visible; upsell to voice-delta |
 | 9 | Staccato-fragment killer | Flags one-word / two-word period lines | New `docs/staccato.html` | NEXT | Directly implements the SO-012 fail; operators will bookmark it |
 | 10 | Specificity counter | Counts numbers, $, proper-noun-ish tokens, decision verbs | New `docs/specificity.html` | NEXT | Free “is this a lecture or a log?” meter; paid: corpus baselines |
@@ -74,9 +74,10 @@ Shipped in-repo now:
 - `docs/bait-hook.html`
 - `docs/swap-test.html`
 - `docs/index.html` (hub; no longer a silent redirect-only page)
+- `docs/fold-ruler.html`
 - this board
 
-Not started as files yet: 7–38, 46–50 (NEXT).  
+Not started as files yet: 8–38, 46–50 (NEXT).  
 Not started because owner must click: 43, 44.  
 Not posted/uploaded: 39–42, 45.
 
