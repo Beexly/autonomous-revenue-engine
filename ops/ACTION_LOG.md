@@ -1,12 +1,11 @@
 # Action log
 
-## LOG-024 — 2026-08-24T19:22 CDT — Hold floor 9.2
-Owner rejected 8.3 as publishable. qi-check Hold now requires composite ≥ 9.2 (plus first-screen density ≥ 8, bait ≥ 9). Soft floor 7.0. SO-010 revoked from PASS_QUEUE. SO-012 candidate drafted (lead with kill). QUALITY_BAR + GARRETT_PENDING updated. No publish until a draft clears 9.2 + adversarial.
+## LOG-025 — 2026-08-24T19:26 CDT — SO-013 density + voice fix
+SO-012 scored 7.9 (density 7, voiceFit 6). Fail: one-word cadence (“Clean structure.” / “Not policy. Quality.”). SO-013 rewritten — kill in sentence one, full sentences only, ~55 words. Hold floor remains 9.2. Build UI still labels sub-9.2 as Hold until threshold is synced; treat repo floor as law. Owner opening Grok 4.6 Build for higher-intelligence gate work.
 
-## LOG-023 — 2026-08-24T19:20 CDT — Status sync + free route lock
-OpenRouter key received; Build sandbox only. Route: Laguna-S → Laguna-XS → ox-alpha. Random pool banned. LFM rejected (empty content). Notion + GARRETT_PENDING refreshed.
-
-## LOG-022 — Night close — phosphor CRT + OpenWebGAL pointer
-## LOG-021 — gadget dropper HARD BAN; voiceFit + cite + llms.txt
+## LOG-024 — Hold floor 9.2 locked
+## LOG-023 — Free route lock (Laguna-S → Laguna-XS → ox-alpha)
+## LOG-022 — Night close phosphor CRT
+## LOG-021 — gadget dropper HARD BAN
 ## LOG-020 — CRT photographic identity
 ## LOG-018 — Pass queue revoked

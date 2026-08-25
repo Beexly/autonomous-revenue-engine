@@ -7,42 +7,40 @@
 
 **None.**
 
-SO-010 scored 8.3 on the live gate → Soft rewrite under the 9.2 floor. Revoked from publish.
+Nothing clears 9.2 yet. Do not post.
 
 ---
 
 ## Soft rewrite / internal
 
-### SO-010 — revoked publish (was 8.3 Hold under old floor)
+### SO-013 — active candidate (re-score in Build)
 
 ```
-We marked three posts Pass.
+We killed three posts that had already cleared our own Pass gate.
 
-A hundred AI-operator accounts could have posted them. The swap would not have shown.
+Each one was clean and structured enough that a hundred AI-operator accounts could have run the same lines. The swap would not have shown.
 
-Killed all three.
+We chose silence over a first impression that teaches people we are generic.
 ```
 
-**Why it fails 9.2:** Kill lands on line three. First-screen density soft. Burstiness flat. Composite cannot clear Hold floor.
+**Why this version:**
+- Kill + number in sentence one (density)
+- Full sentences only — no “Clean structure.” / “Not policy. Quality.” staccato (voiceFit)
+- Lived cost: chose silence after an internal Pass
+- ~55 words (X band that actually holds)
 
-### SO-012 — candidate (rewrite; re-score before any publish)
+**Gate:** Paste into qi-check. Require composite ≥ 9.2 + recommendation Hold + adversarial Pass. Only then move to Approved.
 
-```
-Killed three posts that had already cleared our own Pass gate.
+### SO-012 — failed (7.9)
+Density 7, voiceFit 6 (one-word cadence). Soft rewrite. Superseded by SO-013.
 
-Clean structure. Same shape a hundred AI-operator accounts already run — the swap would not have shown.
-
-Not policy. Quality. Silence over teaching the timeline we are generic.
-```
-
-**Next:** Run through qi-check. Require Hold ≥ 9.2 + adversarial Pass. Owner posts only if both clear.
+### SO-010 — failed (8.3)
+Kill buried on line three. Soft rewrite under 9.2 floor.
 
 ---
 
 ## Not approved
-- SO-009 — Rewrite
-- SO-011 — Hold (weak cold-feed signals)
-- SO-001–008 — revoked/killed as before
+- SO-009, SO-011, SO-001–008 — as before
 
 ## Owner step when ready
-Only after a draft shows **Hold ≥ 9.2** in qi-check and sits in this file under **Approved to publish** → paste once on X → stop for the day.
+Draft shows **Hold ≥ 9.2** → listed under **Approved to publish** here → paste once on X → stop for the day.
