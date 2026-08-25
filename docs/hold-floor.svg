@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="20" role="img" aria-label="Hold floor 9.2">
+  <title>Hold ≥ 9.2</title>
+  <rect width="168" height="20" fill="#1a1208"/>
+  <rect x="78" width="90" height="20" fill="#2d5a27"/>
+  <text x="8" y="14" fill="#f4ecd8" font-family="ui-monospace,monospace" font-size="11">Hold floor</text>
+  <text x="88" y="14" fill="#f4ecd8" font-family="ui-monospace,monospace" font-size="11">≥ 9.2</text>
+</svg>

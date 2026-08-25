@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>kill-highlight — instant-kill overlay</title>
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); }
+    textarea { width:100%; box-sizing:border-box; min-height:8rem; padding:.7rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .verdict { font-size:1.35rem; font-weight:700; margin-top:1.2rem; }
+    .live { color:var(--ok); } .kill { color:var(--bad); }
+    .mark { background:#f3d4c8; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · QUALITY_BAR</p>
+  <h1>kill-highlight</h1>
+  <p class="lede">Regex overlay of instant-kill tells: delve, as an AI, 10x, leverage, yarn emoji, CTA pile, empty contrast. Does not rewrite or publish.</p>
+  <form id="f"><textarea id="draft"></textarea><button type="submit">Highlight</button></form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var RE = /\b(delve|as an AI|10x|leverage|unlock(?:s|ed|ing)?|game-changer|let'?s dive in|in today'?s fast-paced|🧵|👇|link in bio|follow for more)\b|it'?s not [^.!?]{0,40}[.!?]\s*it'?s\b/gi;
+  function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  var out = document.getElementById("out");
+  function render() {
+    var t = document.getElementById("draft").value;
+    if (!t.trim()) { out.hidden = false; out.innerHTML = "<p class='kill'>empty_text</p>"; return; }
+    var hits = t.match(RE) || [];
+    var status = hits.length ? ("KILL x" + hits.length) : "CLEAR";
+    var marked = esc(t).replace(RE, function (m) { return "<span class='mark'>" + m + "</span>"; });
+    out.innerHTML = "<p class='verdict " + (hits.length ? "kill" : "live") + "'>" + status + "</p><p>" + marked + "</p><p class='note'>Clay is a kill tell. This is a highlighter, not qi-check.</p>";
+    out.hidden = false;
+  }
+  document.getElementById("f").addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  document.getElementById("draft").addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>
