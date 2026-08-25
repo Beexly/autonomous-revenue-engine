@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>claim-verb — first line stake</title>
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); }
+    textarea { width:100%; box-sizing:border-box; min-height:8rem; padding:.7rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .verdict { font-size:1.35rem; font-weight:700; margin-top:1.2rem; }
+    .stake { color:var(--ok); } .none { color:var(--bad); }
+    .line { font:14px/1.45 ui-monospace,monospace; background:#fffdf6; border:1px solid var(--ink); padding:.7rem; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · first line</p>
+  <h1>claim-verb</h1>
+  <p class="lede">Scores whether line one has a decision verb (killed, paid, refused, shipped, merged, cut). Complements bait-hook. Does not rewrite or publish.</p>
+  <form id="f"><textarea id="draft" placeholder="Killed the PDF SKU. Then the rest of the log."></textarea><button type="submit">Score</button></form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var RE = /\b(killed|paid|refused|shipped|merged|closed|cut|held|broke|fixed|rotated|deleted|unlisted|posted)\b/i;
+  function firstLine(t) {
+    var s = String(t || "").replace(/\r\n/g, "\n");
+    var i = s.search(/\n/);
+    return (i < 0 ? s : s.slice(0, i)).trim();
+  }
+  function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+  var out = document.getElementById("out");
+  function render() {
+    var line = firstLine(document.getElementById("draft").value);
+    if (!line) { out.hidden = false; out.innerHTML = "<p class='none'>empty_text</p>"; return; }
+    var m = line.match(RE);
+    var status = m ? "STAKE" : "NO STAKE";
+    out.innerHTML = "<p class='verdict " + (m ? "stake" : "none") + "'>" + status + (m ? " (“" + m[0] + "”)" : "") + "</p><p class='line'>" + esc(line) + "</p><p class='note'>Line one only. This is not bait-hook and not qi-check.</p>";
+    out.hidden = false;
+  }
+  document.getElementById("f").addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  document.getElementById("draft").addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ads-signal — Pixel + CAPI event_id</title>
+  <meta name="description" content="Build a shared event_id and hashed PII for Pixel + CAPI. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    input, select, textarea { width:100%; box-sizing:border-box; padding:.55rem .7rem; border:1px solid var(--ink); background:#fffdf6; font:15px/1.4 ui-monospace,monospace; }
+    button { margin-top:.9rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    pre { white-space:pre-wrap; word-break:break-word; background:#fffdf6; border:1px solid var(--ink); padding:.7rem; font:12px/1.4 ui-monospace,monospace; }
+    .ok { color:var(--ok); font-weight:700; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · ads signal</p>
+  <h1>ads-signal</h1>
+  <p class="lede">Pixel and CAPI must share one event_id. Hash PII here, copy both payloads into Events Manager. This page does not send, does not spend, does not store.</p>
+  <form id="f">
+    <label for="ename">Event</label>
+    <select id="ename">
+      <option>PageView</option>
+      <option>ViewContent</option>
+      <option>Lead</option>
+      <option>CompleteRegistration</option>
+    </select>
+    <label for="email">Email (hashed locally)</label>
+    <input id="email" type="email" autocomplete="off" placeholder="optional">
+    <label for="phone">Phone (hashed locally)</label>
+    <input id="phone" type="tel" autocomplete="off" placeholder="optional">
+    <label for="ext">External id (hashed locally)</label>
+    <input id="ext" autocomplete="off" placeholder="optional">
+    <button type="submit">Build payloads</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function uuid() {
+    var a = new Uint8Array(16);
+    crypto.getRandomValues(a);
+    a[6] = (a[6] & 0x0f) | 0x40;
+    a[8] = (a[8] & 0x3f) | 0x80;
+    var h = Array.from(a, function (b) { return b.toString(16).padStart(2, "0"); }).join("");
+    return "so_" + h;
+  }
+  function sha256(s) {
+    return crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)).then(function (buf) {
+      return Array.from(new Uint8Array(buf), function (b) { return b.toString(16).padStart(2, "0"); }).join("");
+    });
+  }
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var eid = uuid();
+    var name = document.getElementById("ename").value;
+    var email = (document.getElementById("email").value || "").trim().toLowerCase();
+    var phone = (document.getElementById("phone").value || "").replace(/\D/g, "");
+    var ext = (document.getElementById("ext").value || "").trim().toLowerCase();
+    var jobs = [];
+    if (email) jobs.push(sha256(email).then(function (h) { return ["em", h]; }));
+    if (phone) jobs.push(sha256(phone).then(function (h) { return ["ph", h]; }));
+    if (ext) jobs.push(sha256(ext).then(function (h) { return ["external_id", h]; }));
+    Promise.all(jobs).then(function (pairs) {
+      var user = {};
+      pairs.forEach(function (p) { user[p[0]] = [p[1]]; });
+      var capi = {
+        event_name: name,
+        event_time: Math.floor(Date.now() / 1000),
+        event_id: eid,
+        action_source: "website",
+        user_data: user
+      };
+      var pixel = "fbq('track', '" + name + "', {}, { eventID: '" + eid + "' });";
+      document.getElementById("out").hidden = false;
+      document.getElementById("out").innerHTML =
+        "<p class='ok'>DRY RUN — nothing sent</p>" +
+        "<label>event_id</label><pre>" + esc(eid) + "</pre>" +
+        "<label>Pixel (browser)</label><pre>" + esc(pixel) + "</pre>" +
+        "<label>CAPI body</label><pre>" + esc(JSON.stringify(capi, null, 2)) + "</pre>" +
+        "<p class='note'>Paste into Events Manager test. Attribution assumed 7d click + 1d view. Do not commit emails. Do not claim EMQ until Events Manager shows it.</p>";
+    });
+  });
+})();
+</script>
+</body>
+</html>
