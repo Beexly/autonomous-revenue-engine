@@ -4,7 +4,13 @@ import unittest
 from conformal_lite.adaptive_cp import AdaptiveConformal
 from conformal_lite.core import make
 from conformal_lite.cqr import ConformalQR, quantile_residual
-from conformal_lite.evalue import EValueConformal, posthoc_alpha, soft_rank_e
+from conformal_lite.evalue import (
+    EValueConformal,
+    conformal_p,
+    mean_ratio_e,
+    posthoc_alpha,
+    soft_rank_e,
+)
 from conformal_lite.quantiles import conformal_quantile
 from conformal_lite.saocp import SAOCP
 
@@ -47,12 +53,28 @@ class TestCQR(unittest.TestCase):
 
 
 class TestEValue(unittest.TestCase):
-    def test_soft_rank_bounds(self):
+    def test_mean_ratio_is_valid_e_variable(self):
+        # Exact exchangeability check: leave-one-out mean of e over the
+        # pool must be exactly 1 (E[e] = 1 under the null).
+        pool = [1.0, 2.0, 3.0, 4.0]
+        es = []
+        for i, s in enumerate(pool):
+            cal = pool[:i] + pool[i + 1:]
+            es.append(mean_ratio_e(s, cal))
+        self.assertAlmostEqual(sum(es) / len(es), 1.0, places=12)
+
+    def test_monotone_and_posthoc(self):
         cal = [1.0, 2.0, 3.0, 4.0]
         e_small = soft_rank_e(0.5, cal)
         e_big = soft_rank_e(10.0, cal)
-        self.assertLessEqual(e_small, e_big)
+        self.assertLess(e_small, e_big)
+        self.assertGreater(e_big, 1.0)
         self.assertAlmostEqual(posthoc_alpha(e_big), 1.0 / e_big)
+
+    def test_conformal_p_superuniform_support(self):
+        cal = [1.0, 2.0, 3.0]
+        self.assertAlmostEqual(conformal_p(10.0, cal), 0.25)
+        self.assertAlmostEqual(conformal_p(0.0, cal), 1.0)
 
     def test_stream(self):
         m = EValueConformal(alpha=0.1)

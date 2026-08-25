@@ -30,10 +30,12 @@ class AdaptiveConformal:
 
     def update(self, y_true: float, y_pred: float) -> None:
         score = float(self.score_fn(y_true, y_pred))
-        self.calibration_scores.append(score)
-        self.n += 1
+        # prequential: judge the new point against the interval implied by
+        # scores seen BEFORE it, then add it to calibration
         q = conformal_quantile(self.calibration_scores, self.alpha_t)
         err = 1.0 if score > q else 0.0
+        self.calibration_scores.append(score)
+        self.n += 1
         self.alpha_t = float(
             np.clip(
                 self.alpha_t + self.gamma * (self.target_alpha - err),

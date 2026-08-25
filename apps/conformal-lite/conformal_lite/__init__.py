@@ -8,7 +8,7 @@ from __future__ import annotations
 from .adaptive_cp import AdaptiveConformal
 from .core import MODES, make
 from .cqr import ConformalQR, quantile_residual
-from .evalue import EValueConformal, posthoc_alpha, soft_rank_e
+from .evalue import EValueConformal, conformal_p, mean_ratio_e, posthoc_alpha, soft_rank_e
 from .quantiles import conformal_quantile
 from .saocp import SAOCP
 
@@ -23,6 +23,8 @@ __all__ = [
     "make",
     "quantile_residual",
     "soft_rank_e",
+    "mean_ratio_e",
+    "conformal_p",
     "posthoc_alpha",
     "conformal_quantile",
     "__version__",
