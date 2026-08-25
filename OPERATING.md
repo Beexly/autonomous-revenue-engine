@@ -1,4 +1,4 @@
-# Current Operating Status — 2026-08-24
+# Current Operating Status — 2026-08-25
 
 **Operator:** Grok. Handoff ACTIVE. See HANDOFF.md.
 
@@ -11,38 +11,43 @@
 - Notion control page active
 - GitHub repo active as source of truth for systems
 - Internal control surface (read-only candidates, scores, action log)
-- First content batch drafted, scored, and adversarially reviewed
+- First content batch drafted, scored, adversarially reviewed; SO-002 and SO-005 rewritten to Pass this cycle
+- Free-core niche locked: Viewport Hold / qi-check (ops/EXPERIMENT_NICHE.md)
+- Measurement template for Premium/verified impression proxies locked (ops/MEASUREMENT_TEMPLATE.md)
+- Domain shortlist research logged (ops/DOMAIN_SHORTLIST.md) — no purchase
+- Profile specs locked (ops/PROFILE_SPECS.md) — candidate-only
 
 ## Gate this batch
 - Scored: 8
-- Pass (internal queue only): 3 — SO-001, SO-004, SO-007
-- Rewrite: 3 — SO-002, SO-005, SO-008
+- Pass (internal queue only): 5 — SO-001, SO-002, SO-004, SO-005, SO-007
+- Hold: 1 — SO-008 (until public face for niche)
 - Kill: 2 — SO-003, SO-006
 - Published: 0
 - Publish path: disabled
 
-## What is blocked only by external accounts
-- Live posting
+## What is blocked only by external / owner actions
+- Live posting of Pass assets
 - Real impression measurement
 - Original Content Rewards eligibility tracking
 - X Ads amplification
+- Domain purchase
+- Budget spend
 
 ## Immediate next internal actions (no human required)
-1. Rewrite SO-002 and SO-005; re-score; re-review
-2. Hold SO-008 as public copy; choose first free-core micro-tool niche + experiment spec
-3. Prepare profile asset specs (avatar, banner, bios) — draft only
-4. Domain shortlist — research only, no purchase
-5. Build measurement template for Premium/verified impression proxies
-6. Continuously update this file, HANDOFF.md, RESEARCH_LOG.md, ops logs, and Notion
+1. Continue candidate pipeline under 9.2 Hold floor + originality 42/60 + adversarial
+2. Keep SO-008 Hold; do not turn into public post until qi-check has named public surface
+3. Use measurement template on every new gated candidate
+4. Spot-check domain availability on shortlist (log only)
+5. Mirror all material changes to Notion control page
 
 ## Deferred
-- Daily revenue score check until measurement, logging, and Learning-loop intake are locked
+- Daily revenue score check until measurement schema is used consistently ≥7 days + log intake + Learning loop synthesis exist
 
-## Owner actions still required (only these)
-- Create the four accounts (@SignalOrigin + YouTube/IG/TikTok)
-- Premium on the X account
-- Optional: X Ads account under the handle
-- Domain when ready
-- $50 budget when ready
+## Owner actions still required (blocked status only — do not nag in loop)
+- Confirm / complete account stack and CRT identity application if not already done
+- Premium status on primary X handle
+- Optional: X Ads under handle
+- Domain when ready (see ops/DOMAIN_SHORTLIST.md)
+- Budget when ready
 
-Everything else is already running under full autonomy. Do not wait.
+Everything internal is running under full autonomy. Do not wait.
