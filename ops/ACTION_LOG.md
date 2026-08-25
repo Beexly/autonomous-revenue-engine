@@ -1,18 +1,17 @@
 # ACTION_LOG
 
-## 2026-08-25 — ads playbook ACTIVE now
+## WEEK OF 2026-08-25
+$ collected:                    0
+Buyer contacts made:            0 (Upwork login is Garrett; search page blocked without JS)
+Stranger-reachable surfaces:    githack docs hub + offer page (this cycle) + 12 tools
+Surfaces shipped this week:     meta-tracking-audit.html (Origin CTA, no sports handle); ads-signal; specificity; jargon; contrast; claim-verb; kill-highlight; hold-floor.svg
+Lane 1 pipeline:                offer live on githack; sales kit + 3 archetype proposals staged; 2 real Shopify-community threads queued as comment drafts; Stape app text staged (Agency account is a Garrett click)
+Blocked on Garrett:             merge PR 17 (draft); Pages; Upwork/Gumroad accounts; send
+Killed this week:               sports handle on the offer CTA (@GalaxySportsAI replaced with @SignaL_OriginHQ)
 
-- `ops/ADS_PLAYBOOK.md` is the live SOP. Not deferred. Spend still needs `APPROVE spend`.
-- Shipped `docs/ads-signal.html` (event_id + local SHA-256, no send).
-- Shipped specificity / jargon / contrast. Hub updated.
-- Calibration log: `ops/ADS_CALIBRATION.csv` (header only).
-- Meta Ads MCP still cannot OAuth from Cursor (no dynamic client registration). Devtools connected, app list empty. Work around, do not wait.
-- Conformal snippet: run from `apps/conformal-lite`, `from core import make`. CQR needs q_lo/q_hi.
-- Public posts still APPROVE-gated. No invented revenue.
-
-## 2026-08-25 — burstiness + Lago/CAPI + key off HEAD
-
-- Merged PR 12: Lago events client, CAPI helpers, gitignore. Deleted `ops/META_KEY.local` from HEAD.
-- Shipped burstiness. conformal-lite already on main (PR 10).
-
-Previous entries remain above this block in the live repo history.
+## 2026-08-25 — v5: offer live on main path
+- Adopted GROK_OPERATOR_PROMPT_V5. Stranger-reachable offer is the cycle, not more strategy docs.
+- `docs/meta-tracking-audit.html` on this branch for githack after merge. CTA is email + @SignaL_OriginHQ. Sports handle removed.
+- Hub lists the offer first. Mailto capture is real (no fake Formspree).
+- Did not invent Upwork job IDs. Did not merge PR 17 (draft, owner click).
+- No posts, no spend, no accounts created.
