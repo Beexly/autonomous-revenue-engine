@@ -1,0 +1,16 @@
+{
+  "name": "subject-fold",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Email subject fold/hold: specific decision/cost vs newsletter bait. Does not rewrite. Does not publish.",
+  "type": "module",
+  "bin": {
+    "subject-fold": "./cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
