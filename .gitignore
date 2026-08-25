@@ -1,0 +1,7 @@
+.env
+*.local
+ops/META_KEY.local
+meter_events.jsonl
+__pycache__/
+*.pyc
+.venv/
