@@ -78,16 +78,31 @@ of these hold:
 
 Businesses running Meta ads pay real money for exactly what ops/META_ANALYTICS_LEVERAGE.md
 already documents: Pixel+CAPI deduplication, EMQ ≥ 6, attribution-gap analysis.
-Freelance/agency rates for server-side tracking setups run roughly $300–$1,500
-per one-off setup/audit and $200–$1,000/mo retainers for measurement upkeep;
-Upwork/Fiverr listings and agency subcontracting are full of this work. It is
-unsexy, in-demand, and Garrett already holds the knowledge — the repo docs prove it.
+Market research (Aug 2026) confirms the market and sharpens the shape:
 
-Operator deliverables (no approval needed): offer one-pager, audit checklist
-productized from the existing docs, Upwork/Fiverr listing drafts, 10-prospect
-outreach drafts. Human gate (minutes): approve and send under his own name.
-The voice gate does NOT apply to service outreach — a DM offering to fix
-someone's conversion tracking is not public content and needs no 9.2 score.
+- **Buyer:** Shopify/WooCommerce stores spending **≥$5k/month on Meta ads**
+  (below ~$2k/mo ad spend, server-side tracking ROI doesn't pencil — local
+  businesses are the WRONG target). Shopify forums are full of the exact
+  dedup pain ("Purchase Event missing some Deduplication Parameters").
+- **Offer shape that wins:** fixed-price **$150–$400 tracking diagnostic**
+  (Events Manager review, dedup check, EMQ score, prioritized fix list) that
+  converts into a **$500–$1,500 fix/implementation**. Productized specialists
+  (e.g. TrackingFixes, $645 flat + $48/mo) beat both the $10 Fiverr floor and
+  $2–5k agency quotes. Sell measured EMQ lift, not "CAPI setup" —
+  generic setup is commoditized from below ($10–25 gigs) and automated from
+  above ($145–950/mo Shopify apps like Analyzify/Elevar).
+- **First-client channels:** live Upwork fix-jobs (fastest deal flow — posted
+  continuously), Stape's free partner program (up to 40% lifetime commission
+  + public directory listing = inbound), Shopify community dedup threads.
+- **Realistic timeline:** first $100–$500 ticket in 2–6 weeks; $2–5k/month
+  run-rate in 3–6 months of consistent effort.
+
+Operator deliverables (no approval needed): offer one-pager, the diagnostic
+checklist productized from the existing docs, Upwork proposal templates,
+Stape partner application draft, 10-prospect outreach drafts. Human gate
+(minutes): approve and send under his own name. The voice gate does NOT
+apply to service outreach — a DM offering to fix someone's conversion
+tracking is not public content and needs no 9.2 score.
 
 ### Lane 2 — Contract/freelance income (Python, data, tracking, automation)
 **First dollar: 1–4 weeks. Probability: highest overall. Not the dream — the bridge.**
@@ -111,18 +126,30 @@ conformal prediction with honest caveats") → GitHub Sponsors + Polar.sh link
 intervals/alerts, metered via the existing Lago hook). "Higher coverage" is
 not a paid tier — α is a free parameter of the open code; the wedge must be
 hosting, streaming, and integration, not the math.
-Expected money is small for months (Sponsors for a new small project is
-typically $0–low hundreds/mo). Its real yield is inbound credibility for
+Expected money is small for months — honestly: Sponsors for a no-audience new
+project realistically pays **$0–$25/mo** (the ~$100M lifetime program total
+across 70k+ maintainers skews heavily to established names). If selling a
+paid artifact, use Gumroad (same-day checkout; verify ID immediately so the
+payout minimum drops $100→$10) and start Polar's ~2-week account review in
+parallel. x402/CDP micropayments are confirmed dead as an earnings channel
+in 2026 (~$28–42k/day settlement across the ENTIRE protocol) — the eip3009.js
+dead code stays dead. This lane's real yield is inbound credibility for
 Lanes 1–2.
 
 ### Lane 4 — Platform payouts (X OCR, YT/TikTok/IG)
 **First dollar: 90+ days, small. Treat as distribution, never as income.**
 
-X OCR needs 500 verified followers + 500K verified impressions/90d from an
-account with zero posts, pays ~$8–12/M verified impressions, and explicitly
-disqualifies automated content — which caps how "autonomous" this lane can
-ever be. YouTube/TikTok thresholds are rising. Post because it feeds Lanes
-1–3, not for the payout.
+Verified numbers (Aug 2026): X revenue sharing needs Premium + 500 verified
+followers + **5M impressions in 90 days** from an account with zero posts,
+pays ~$8–12/M verified (Premium-viewer) impressions, and disqualifies
+automated content — which permanently caps how "autonomous" this lane can be.
+YouTube Shorts pays ~$0.03–0.08 RPM and doubles its thresholds Feb 1, 2027.
+TikTok Creator Rewards is the only program with both a reachable gate (10k
+followers + 100k views/30d) and real RPM ($0.40–1.00 per 1k qualified views)
+— if short-form gets made, make it TikTok-first ≥60s and cross-post.
+Expected 90-day payout revenue for a <5k-follower account across ALL four
+platforms combined: **$0–$100.** Post because it feeds Lanes 1–3, not for
+the payout.
 
 ### Lane 5 — Fork-and-brand farming
 **Not a lane.** See §2. Forks are raw material for Lanes 1 and 3 only, under

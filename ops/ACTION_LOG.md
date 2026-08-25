@@ -21,6 +21,19 @@
   the PR, greenlight the Lane-1 CAPI/EMQ audit service.
 - No posts, no spend, no accounts, no payment rails touched. All APPROVE gates
   respected.
+- Market research folded in (see REVENUE_REALITY.md): CAPI/EMQ service market
+  confirmed real ($150–400 diagnostic → $500–1,500 fix; target Shopify/Woo
+  stores ≥$5k/mo Meta spend; Upwork + Stape partner directory for first
+  clients; 2–6 weeks to first ticket). Platform payouts confirmed near-zero
+  at small scale ($0–100/90d across all four platforms; X needs 5M
+  impressions/90d). Sponsors realistically $0–25/mo for a new project. x402
+  protocol-wide volume ~$30–40k/day — not an earnings channel.
+- PR #17 opened (draft). Known red checks, none from this branch's changes:
+  `label`/`greeting` are main's leftover template workflows (deleted on
+  merge), Vercel fails deploying the repo root on every push (owner config),
+  SonarCloud findings unreadable anonymously (owner: see GARRETT_PENDING).
+  New real CI awaits the PR's "Approve and run workflows" click; suite
+  verified locally 12/12 + 5×JS green.
 
 ## 2026-08-25 — burstiness + Lago/CAPI + key off HEAD
 
