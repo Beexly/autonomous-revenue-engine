@@ -1,8 +1,5 @@
 # Action log
 
-## LOG-030b — 2026-08-25T09:05 CDT — fold-ruler
-FIFTY_LOOPS #7: `docs/fold-ruler.html` paste → char/word count vs 160-char first-screen band. Does not rewrite, does not publish. No Stripe. Not a qi-check clone.
-
 ## LOG-030 — 2026-08-25 ~09:10 CDT — HANDOFF cycle execution (Grok operator)
 1. SO-002 rewritten with Premium/verified impression proxy template → originality 47/60 (min 7) → adversarial Pass. File: ops/SO002_REWRITE.md.
 2. SO-005 rewritten with before/after Burrows Delta table from internal draft pair → originality 48/60 (min 7) → adversarial Pass. File: ops/SO005_REWRITE.md.
