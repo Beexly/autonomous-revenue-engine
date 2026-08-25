@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>shop-pay — thank-you Pixel miss</title>
+  <meta name="description" content="Shop Pay often skips thank-you page scripts. Check whether Purchase is actually covered. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    .item { display:flex; gap:.55rem; align-items:flex-start; margin:.4rem 0; font:15px/1.4 Georgia,serif; letter-spacing:0; text-transform:none; font-weight:400; }
+    .item input { margin-top:.2rem; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; margin:.6rem 0; }
+    td { padding:.28rem 0; border-bottom:1px solid #e0d6c0; }
+    td.v { text-align:right; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · Shop Pay</p>
+  <h1>shop-pay</h1>
+  <p class="lede">Shop Pay / accelerated checkout often never loads storefront thank-you scripts, so a Pixel Purchase there is a miss. Coverage has to be a checkout pixel or CAPI from the order webhook. Tick what you have. Does not send or spend.</p>
+  <form id="f">
+    <label>Checkout reality</label>
+    <label class="item"><input type="checkbox" id="shoppay" checked> Shop Pay (or Shop app / accelerated checkout) is on</label>
+    <label class="item"><input type="checkbox" id="thank"> Pixel lives in thank-you additional scripts / theme</label>
+    <label class="item"><input type="checkbox" id="ext"> Checkout extensibility / customer events pixel on checkout</label>
+    <label class="item"><input type="checkbox" id="app"> Official Facebook &amp; Instagram app Purchase</label>
+    <label class="item"><input type="checkbox" id="capi"> CAPI Purchase from order create webhook / Stape / app</label>
+    <label class="item"><input type="checkbox" id="eid"> Shared event_id between whatever still fires</label>
+    <button type="submit">Score miss</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function yn(b, good) {
+    var cls = (good ? b : !b) ? "ok" : "bad";
+    return "<span class='" + cls + "'>" + (b ? "yes" : "no") + "</span>";
+  }
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var shoppay = document.getElementById("shoppay").checked;
+    var thank = document.getElementById("thank").checked;
+    var ext = document.getElementById("ext").checked;
+    var app = document.getElementById("app").checked;
+    var capi = document.getElementById("capi").checked;
+    var eid = document.getElementById("eid").checked;
+    var thankDead = shoppay && thank && !ext && !app && !capi;
+    var pixelLives = ext || app;
+    var status = "UNSET";
+    if (thankDead) status = "THANK-YOU MISS";
+    else if (shoppay && thank && !pixelLives && capi) status = "COVERED BY CAPI";
+    else if (shoppay && !pixelLives && !capi) status = "DARK ON SHOP PAY";
+    else if (pixelLives && capi && eid) status = "BOTH + DEDUPE";
+    else if (pixelLives && capi) status = "BOTH, NO DEDUPE";
+    else if (pixelLives) status = "CHECKOUT PIXEL ONLY";
+    else if (capi) status = "COVERED BY CAPI";
+    else status = "NO PURCHASE PATH";
+    var cls = (status === "THANK-YOU MISS" || status === "DARK ON SHOP PAY" || status === "NO PURCHASE PATH" || status === "BOTH, NO DEDUPE") ? "bad" : "ok";
+    document.getElementById("out").hidden = false;
+    document.getElementById("out").innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + status + "</p>" +
+      "<table><tbody>" +
+      "<tr><td>Shop Pay on</td><td class='v'>" + yn(shoppay, false) + "</td></tr>" +
+      "<tr><td>thank-you script Pixel</td><td class='v'>" + yn(thank, !shoppay) + "</td></tr>" +
+      "<tr><td>checkout / customer-events pixel</td><td class='v'>" + yn(ext, true) + "</td></tr>" +
+      "<tr><td>official app Purchase</td><td class='v'>" + yn(app, true) + "</td></tr>" +
+      "<tr><td>CAPI from order webhook</td><td class='v'>" + yn(capi, true) + "</td></tr>" +
+      "<tr><td>shared event_id</td><td class='v'>" + yn(eid, true) + "</td></tr>" +
+      "</tbody></table>" +
+      "<p class='note'>THANK-YOU MISS means your only Pixel is on a page Shop Pay never shows. Move Purchase to checkout extensibility or CAPI from orders/create. Not pixel-source (this is one checkout path). Not count-gap. No spend.</p>";
+  });
+})();
+</script>
+</body>
+</html>

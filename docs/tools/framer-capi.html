@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>framer-capi — Framer Pixel + CAPI sheet</title>
+  <meta name="description" content="What Framer can fire in the browser vs what still needs a server CAPI. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    .item { display:flex; gap:.55rem; align-items:flex-start; margin:.4rem 0; font:15px/1.4 Georgia,serif; letter-spacing:0; text-transform:none; font-weight:400; }
+    .item input { margin-top:.2rem; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; margin:.6rem 0; }
+    th, td { padding:.28rem .2rem; border-bottom:1px solid #e0d6c0; text-align:left; }
+    td.v { text-align:right; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · Framer</p>
+  <h1>framer-capi</h1>
+  <p class="lede">Framer will run a Pixel via custom code. It will not send CAPI by itself. Tick what you actually installed. This is a coverage sheet, not a publisher. It does not send or spend.</p>
+  <form id="f">
+    <label>Browser (Framer custom code)</label>
+    <label class="item"><input type="checkbox" id="base"> Pixel base (<code>fbq('init')</code>) in sitewide custom code</label>
+    <label class="item"><input type="checkbox" id="pv"> PageView on every page</label>
+    <label class="item"><input type="checkbox" id="lead"> Lead / Contact on form success (same page, not a redirect)</label>
+    <label class="item"><input type="checkbox" id="eid"> eventID minted in the form success handler</label>
+    <label>Server (not Framer)</label>
+    <label class="item"><input type="checkbox" id="stape"> Stape / sGTM CAPI</label>
+    <label class="item"><input type="checkbox" id="hook"> Form webhook → CAPI (Make, Zapier, your API)</label>
+    <label class="item"><input type="checkbox" id="pass"> Webhook receives the same event_id the Pixel used</label>
+    <button type="submit">Sheet</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function cell(ok) { return ok ? "<span class='ok'>yes</span>" : "<span class='bad'>no</span>"; }
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var base = document.getElementById("base").checked;
+    var pv = document.getElementById("pv").checked;
+    var lead = document.getElementById("lead").checked;
+    var eid = document.getElementById("eid").checked;
+    var stape = document.getElementById("stape").checked;
+    var hook = document.getElementById("hook").checked;
+    var pass = document.getElementById("pass").checked;
+    var pixel = base && (pv || lead);
+    var capi = stape || hook;
+    var status = "EMPTY";
+    if (!pixel && !capi) status = "EMPTY";
+    else if (pixel && !capi) status = "PIXEL-ONLY";
+    else if (!pixel && capi) status = "CAPI-ONLY";
+    else if (pixel && capi && eid && pass) status = "BOTH + DEDUPE";
+    else status = "BOTH, NO DEDUPE";
+    var cls = (status === "BOTH + DEDUPE" || status === "PIXEL-ONLY") ? "ok" : "bad";
+    if (status === "PIXEL-ONLY") cls = "ok";
+    document.getElementById("out").hidden = false;
+    document.getElementById("out").innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + status + "</p>" +
+      "<table><thead><tr><th>event</th><th>Framer Pixel</th><th>CAPI</th></tr></thead><tbody>" +
+      "<tr><td>PageView</td><td class='v'>" + cell(base && pv) + "</td><td class='v'>" + cell(stape) + "</td></tr>" +
+      "<tr><td>Lead / Contact</td><td class='v'>" + cell(lead) + "</td><td class='v'>" + cell(hook || stape) + "</td></tr>" +
+      "<tr><td>shared event_id</td><td class='v'>" + cell(eid) + "</td><td class='v'>" + cell(pass) + "</td></tr>" +
+      "</tbody></table>" +
+      "<p class='note'>PIXEL-ONLY is the default Framer install and it is honest — CAPI needs Stape or a form webhook outside Framer. Fire Lead in the success handler, not on a redirect page the user never hits. Not stape-capi (no JSON paste). No spend.</p>";
+  });
+})();
+</script>
+</body>
+</html>

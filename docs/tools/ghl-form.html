@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ghl-form — GoHighLevel Lead event_id</title>
+  <meta name="description" content="Check whether a GHL form Pixel and CAPI Lead share one event_id. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    .item { display:flex; gap:.55rem; align-items:flex-start; margin:.4rem 0; font:15px/1.4 Georgia,serif; letter-spacing:0; text-transform:none; font-weight:400; }
+    .item input { margin-top:.2rem; }
+    textarea, input { width:100%; box-sizing:border-box; padding:.55rem .7rem; border:1px solid var(--ink); background:#fffdf6; font:13px/1.4 ui-monospace,monospace; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; }
+    td { padding:.28rem 0; border-bottom:1px solid #e0d6c0; }
+    td.v { text-align:right; word-break:break-all; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · GoHighLevel</p>
+  <h1>ghl-form</h1>
+  <p class="lede">GHL forms often fire a Pixel Lead on the thank-you page <b>and</b> a second Lead from the native Facebook integration or Zapier CAPI, with no shared <code>event_id</code>. Tick what you run, paste both sides if you have them. This page does not send or spend.</p>
+  <form id="f">
+    <label>Sources that fire Lead</label>
+    <label class="item"><input type="checkbox" id="pxform"> Pixel in the GHL form / funnel page</label>
+    <label class="item"><input type="checkbox" id="pxthank"> Pixel on the thank-you page (fbq Lead)</label>
+    <label class="item"><input type="checkbox" id="native"> GHL native Facebook / conversions integration</label>
+    <label class="item"><input type="checkbox" id="zap"> Zapier / Make / webhook CAPI Lead</label>
+    <label class="item"><input type="checkbox" id="eid"> One event_id minted in the form, copied to Pixel + CAPI</label>
+    <label for="px">Pixel snippet (optional)</label>
+    <textarea id="px" rows="4" placeholder="fbq('track', 'Lead', {}, { eventID: 'ghl_…' });"></textarea>
+    <label for="capi">CAPI JSON (optional)</label>
+    <textarea id="capi" rows="5" placeholder='{"event_name":"Lead","event_id":"ghl_…"}'></textarea>
+    <button type="submit">Check</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function grabId(text) {
+    var t = String(text || "");
+    var m = t.match(/eventID['"]?\s*[:=]\s*['"]([^'"]+)['"]/i) || t.match(/event_id['"]?\s*[:=]\s*['"]([^'"]+)['"]/i);
+    return m ? m[1] : "";
+  }
+  function grabName(text) {
+    var t = String(text || "");
+    var m = t.match(/fbq\s*\(\s*['"]track(?:Custom)?['"]\s*,\s*['"]([^'"]+)['"]/i) || t.match(/event_name['"]?\s*[:=]\s*['"]([^'"]+)['"]/i);
+    return m ? m[1] : "";
+  }
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var pxform = document.getElementById("pxform").checked;
+    var pxthank = document.getElementById("pxthank").checked;
+    var native = document.getElementById("native").checked;
+    var zap = document.getElementById("zap").checked;
+    var eidClaim = document.getElementById("eid").checked;
+    var pxId = grabId(document.getElementById("px").value);
+    var capiId = grabId(document.getElementById("capi").value);
+    var pxName = grabName(document.getElementById("px").value);
+    var capiName = grabName(document.getElementById("capi").value);
+    var browser = (pxform ? 1 : 0) + (pxthank ? 1 : 0);
+    var server = (native ? 1 : 0) + (zap ? 1 : 0);
+    var paired = pxId && capiId && pxId === capiId;
+    var status = "UNSET";
+    if (browser + server === 0) status = "UNSET";
+    else if (browser >= 2 && !eidClaim && !paired) status = "GHL DOUBLE PIXEL";
+    else if (browser >= 1 && server >= 1 && !eidClaim && !paired) status = "GHL DOUBLE LEAD";
+    else if (paired || (eidClaim && browser + server >= 1)) status = "PAIRED";
+    else if (browser && !server) status = "PIXEL-ONLY";
+    else status = "CAPI-ONLY";
+    var cls = (status === "PAIRED" || status === "PIXEL-ONLY" || status === "CAPI-ONLY") && status !== "GHL DOUBLE LEAD" && status !== "GHL DOUBLE PIXEL" ? "ok" : "bad";
+    if (status === "PIXEL-ONLY" || status === "CAPI-ONLY") cls = "ok";
+    if (status.indexOf("DOUBLE") !== -1 || status === "UNSET") cls = "bad";
+    document.getElementById("out").hidden = false;
+    document.getElementById("out").innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + status + "</p>" +
+      "<table><tbody>" +
+      "<tr><td>browser Lead sources</td><td class='v'>" + browser + "</td></tr>" +
+      "<tr><td>server Lead sources</td><td class='v'>" + server + "</td></tr>" +
+      "<tr><td>Pixel eventID</td><td class='v'>" + (pxId ? esc(pxId) : "not parsed") + "</td></tr>" +
+      "<tr><td>CAPI event_id</td><td class='v'>" + (capiId ? esc(capiId) : "not parsed") + "</td></tr>" +
+      "<tr><td>names</td><td class='v'>" + esc((pxName || "—") + " / " + (capiName || "—")) + "</td></tr>" +
+      "</tbody></table>" +
+      "<p class='note'>GHL DOUBLE LEAD is the usual leak: native Facebook integration + thank-you fbq, two Leads, no event_id. Mint the id in the form (hidden field), pass it to fbq eventID and to the webhook/CAPI body. Not id-pair (GHL-specific sources). No Graph call, no spend.</p>";
+  });
+})();
+</script>
+</body>
+</html>
