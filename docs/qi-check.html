@@ -70,7 +70,7 @@ const BAIT_PATTERNS = [
   /\blike if you agree\b/i,
   /\bcomment (yes|below|if)\b/i,
   /\b(share|retweet) this\b/i,
-  /\bthread\s*🧥/i,
+  /\bthread\s*\u{1F9F5}/iu,
   /\b\d+\s+(ways|tips|habits|mistakes)\b/i,
   /\bnot financial advice\b/i,
   /\bgrowth hack\b/i,
@@ -187,9 +187,9 @@ function scoreDraft(text, { platform = "x" } = {}) {
   const flags = ocrFlags(t);
   const fixes = [];
   if (scores.firstScreenDensity < 8)
-    fixes.push("Put the concrete decision in the first line — not the third.");
+    fixes.push("Put the concrete decision in the first line \u2014 not the third.");
   if (scores.foldStructure < 7)
-    fixes.push("Open short; mechanism in line 2–3; no buried lede.");
+    fixes.push("Open short; mechanism in line 2\u20133; no buried lede.");
   if (scores.baitAvoidance < 9)
     fixes.push("Strip engagement-farm CTAs and listicle bait phrasing.");
   if (scores.lengthFitness < 7)
@@ -197,7 +197,7 @@ function scoreDraft(text, { platform = "x" } = {}) {
   if (scores.burstiness < 7)
     fixes.push("Vary sentence length; avoid flat model cadence.");
   if (!flags.originalAnglePresent)
-    fixes.push("Add a specific decision, cost, or failure — not a category lecture.");
+    fixes.push("Add a specific decision, cost, or failure \u2014 not a category lecture.");
   if (total < HOLD_FLOOR)
     fixes.push("Composite " + total + " is below Hold floor " + HOLD_FLOOR + ". Rewrite or kill.");
 
@@ -236,7 +236,7 @@ function scoreDraft(text, { platform = "x" } = {}) {
     err.hidden = true;
     out.hidden = true;
     go.disabled = true;
-    go.textContent = "Scoring…";
+    go.textContent = "Scoring\u2026";
     try {
       const data = scoreDraft(draft.value, { platform: "x" });
       if (data.error) {
@@ -266,7 +266,7 @@ function scoreDraft(text, { platform = "x" } = {}) {
       ? "<ol>" + data.fixes.map(function (f) { return "<li>" + escapeHtml(f) + "</li>"; }).join("") + "</ol>"
       : "<p>No fix list. Hold stands.</p>";
     out.innerHTML =
-      "<p class='rec'>" + escapeHtml(data.recommendation) + " · " + data.total + "</p>" +
+      "<p class='rec'>" + escapeHtml(data.recommendation) + " \u00b7 " + data.total + "</p>" +
       "<p class='muted' style='margin-top:0'>Hold floor " + (data.floors && data.floors.hold) +
       ". Soft floor " + (data.floors && data.floors.soft) + ".</p>" +
       "<table><tbody>" + rows + "</tbody></table>" +
