@@ -25,7 +25,12 @@ corrected-my-own-math angle only works if you stay corrigible in the thread.
 
 ## 2. Stape partner application (their partner form; adapt fields)
 
-> Independent Meta tracking specialist (Houston, TX) focused on Pixel+CAPI deduplication repair and EMQ improvement for Shopify/WooCommerce stores. I run a fixed-price diagnostic ($250) and implementation ($500–1,500) with before/after evidence — dedup verification, per-event EMQ, and Meta-vs-backend reconciliation. I publish my measurement tooling open source (github.com/Beexly/autonomous-revenue-engine) including CAPI event_id/hashing helpers. I'd route all server-side GTM hosting through Stape and am glad to be listed for inbound referrals. Contact: [email] / x.com/@GalaxySportsAI.
+**Honest gate (do not apply until true):** Stape Partner needs a Stape
+Agency account plus either 5 paid Stape products or a $50 referral. Meta
+CAPI Gateway commission is 10% at L1 ("up to 40%" is L2). Account creation
+is a Garrett click. This text is send-ready after that gate.
+
+> Independent Meta tracking specialist (Houston, TX) focused on Pixel+CAPI deduplication repair and EMQ improvement for Shopify/WooCommerce stores. I run a fixed-price diagnostic ($250) and implementation ($500–1,500) with before/after evidence — dedup verification, per-event EMQ, and Meta-vs-backend reconciliation. I publish my measurement tooling open source (github.com/Beexly/autonomous-revenue-engine) including CAPI event_id/hashing helpers. I'd route all server-side GTM hosting through Stape and am glad to be listed for inbound referrals. Contact: Baxley.Garrett@gmail.com / x.com/SignaL_OriginHQ.
 
 ## 3. X pinned post (candidate — your voice pass required)
 
@@ -33,14 +38,14 @@ corrected-my-own-math angle only works if you stay corrigible in the thread.
 >
 > Pixel + CAPI without a shared event_id = double-counting. Your CPA looks great; your bank account disagrees.
 >
-> Free 15-point audit checklist (the real one, not a teaser): [Pages URL]
+> Free 15-point audit checklist (the real one, not a teaser): https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/meta-tracking-audit.html
 >
 > I fix these for stores. DM "audit."
 
 ## 4. Post candidates (structural drafts — rewrite in your voice, one/day max)
 
 1. "Ran the 7-day reconciliation on a store this week: Meta said 142 purchases, the backend said 104. That 36% gap isn't ad performance. It's one missing event_id." → checklist link
-2. "EMQ of 5.4 usually isn't a data problem. Someone hashed ' Name@Gmail.com ' without lowercasing it first. SHA-256 doesn't forgive whitespace." 
+2. "EMQ of 5.4 usually isn't a data problem. Someone hashed ' Name@Gmail.com ' without lowercasing it first. SHA-256 doesn't forgive whitespace."
 3. "My first e-value implementation was mathematically invalid — expectation 4.4 when the theory demands ≤ 1. Caught it in audit, fixed it, tests now prove it. This is why 'AI-generated stats library' should scare you unless the guarantees are tested." → repo link
 4. "Your consent banner may have killed your Pixel while your CAPI keeps firing. Congratulations: your dedup logic now lies to you in one direction on EU traffic only."
 5. "Unbounded prediction interval ≠ bug. With 10 calibration points you cannot promise 95% coverage. A library that gives you a tidy narrow interval there is lying politely."
