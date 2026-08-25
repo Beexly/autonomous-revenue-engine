@@ -1,6 +1,6 @@
 # THE MONEY LIST — operator-owned while Garrett sleeps
 
-**Updated:** 2026-08-25 13:41 CT. CRT/cover branding: already done. Do not re-ask.
+**Updated:** 2026-08-25 14:10 CT. CRT/cover branding: already done. Do not re-ask.
 Public GitHub front door is Project Flower. Do not merge this PR onto main until that stays true.
 
 ## Live (stranger can buy / see)
@@ -14,36 +14,37 @@ Public GitHub front door is Project Flower. Do not merge this PR onto main until
 
 Sports handle is off Origin surfaces. Do not put it back.
 
-## Upwork (in flight 13:41 CT)
+## Upwork (blocked on operator computer 14:10 CT)
 
-Logged in on operator computer as the Gmail. It was a **client** account. Creating a **freelancer** profile on the same login.
-Title Garrett wants: **Applied AI engineer (measurement, agents, systems)** — not Pixel-only.
-Do not buy Connects or membership. Do not invent job history.
+Freelancer **account** exists on the same Gmail (Switch accounts → Garrett Baxley / Freelancer).
+Operator computer is **Cloudflare 1020** after the account-switch redirect loop. Do not keep hitting it from that computer. No Connects bought. No proposal sent. Title **not saved** (wizard never opened).
 
-## Send queue (Closer paste-ready; Master submits after freelancer profile exists)
+**Garrett applies from his phone or laptop.** Switch to Freelancer. Title if asked: Applied AI engineer (measurement, agents, systems). Do not buy extra Connects unless the free allotment is zero and he types APPROVE spend.
 
-Hit first (1h old, US-only, they asked Pixel+CAPI):
+## Send queue (paste-ready)
+
+Hit first:
 https://www.upwork.com/freelance-jobs/apply/Framer-Website-Developer-for-Final-Edits-Integrations-Meta-Pixel-Setup_~022092295580341310820/
 Bid box: $250 fixed diagnostic. No Framer rebuild. No hourly.
 
-KEEP (Purchase overcount, Austin client):
+KEEP:
 https://www.upwork.com/freelance-jobs/apply/Facebook-Pixel-Tracking-Issue_~022090157247832197619/
 Bid box: $250 diagnostic. Do not bid $300 as the whole fix. No GA4.
 
-Partial (CAPI/Stape slice only):
+Partial:
 https://www.upwork.com/freelance-jobs/apply/GTM-Google-Analytics-Expert-Ongoing-Tracking-Analytics-Support_~022091967546699073210/
 Bid box: $250 diagnostic week one. Do not bid the 3–6 mo retainer.
+
+Full pastes: operator box `/workspace/origin-drafts/upwork/2026-08-25-three-bids.md` and Origin Closer messages in this chat.
 
 ## Drop / do not send
 
 - ~022092067870440998586 private listing. Verification FAIL.
 - ~022090315405033909040 ads-recovery hourly. FLAG. Do not bait-and-switch a 1–3 month media-buy role.
 
-Full pastes live on the operator box: `/workspace/origin-drafts/upwork/2026-08-25-three-bids.md`
+## Still Garrett
 
-## Still Garrett when he wakes (if operator could not submit)
-
-1. Finish Upwork freelancer onboarding if ID-verify blocks.
+1. Apply the three KEEP/partial jobs from phone (operator box is 1020).
 2. Catalog gig $150/$250/$750 if not live.
 3. Warm note kit §3 to 20 people from the phone.
 4. Do **not** merge PR 17 while Flower is the public front.
@@ -57,3 +58,4 @@ Full pastes live on the operator box: `/workspace/origin-drafts/upwork/2026-08-2
 - Bleed sports/GSE into Origin
 - Re-ask branding, Gumroad account, or CRT covers
 - Dump this file onto public main
+- Retry Upwork from the blocked operator computer until the 1020 clears
