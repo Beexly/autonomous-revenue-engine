@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>swap-check — Interchangeability gate</title>
+  <meta name="description" content="Score a draft for interchangeability. Does not rewrite. Does not publish.">
+  <style>
+    html, body { margin: 0; background: #0e0e0e; color: #e8e4d9; font-family: ui-sans-serif, system-ui, sans-serif; }
+    main { max-width: 640px; margin: 40px auto; padding: 0 16px; }
+    h1 { font-size: 22px; letter-spacing: -0.03em; margin-bottom: 6px; }
+    p.lede { color: #b7b2a6; margin-top: 0; }
+    textarea, input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      background: #161616;
+      color: #e8e4d9;
+      border: 1px solid #3a3a36;
+      padding: 12px;
+      font: 15px/1.45 ui-sans-serif, system-ui, sans-serif;
+    }
+    label { display: block; margin-top: 12px; color: #b7b2a6; font-size: 13px; }
+    button {
+      margin-top: 12px;
+      padding: 10px 16px;
+      background: #e8e4d9;
+      color: #111;
+      border: 0;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    button:disabled { opacity: 0.6; cursor: default; }
+    .err { color: #d46a6a; }
+    section { margin-top: 28px; }
+    .rec { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    td { padding: 4px 0; }
+    td.k { color: #b7b2a6; }
+    td.v { text-align: right; }
+    ol { padding-left: 18px; }
+    li { margin: 6px 0; }
+    .muted { color: #b7b2a6; }
+    pre {
+      background: #161616;
+      border: 1px solid #3a3a36;
+      padding: 12px;
+      overflow: auto;
+      font: 12px/1.4 ui-monospace, monospace;
+    }
+    footer { margin: 48px 0 24px; color: #b7b2a6; font-size: 13px; }
+    a { color: #e8e4d9; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>swap-check</h1>
+    <p class="lede">
+      Paste a draft. This scores interchangeability — whether it could be swapped onto any AI-growth brand and still work.
+      Lower is the goal. It does not rewrite. It does not publish.
+      Scoring runs in this page — no server required.
+    </p>
+    <form id="form">
+      <textarea id="draft" rows="10" placeholder="We killed three Pass posts."></textarea>
+      <label for="brands">Optional other brand names (comma-separated)</label>
+      <input id="brands" type="text" value="GrowthOS, PromptForge, OperatorKit">
+      <button type="submit" id="go">Score</button>
+    </form>
+    <p id="error" class="err" hidden></p>
+    <section id="result" hidden></section>
+    <footer>
+      Back to <a href="qi-check.html">qi-check</a>. Different tool; this page does not score first-screen Hold.
+    </footer>
+  </main>
+  <script>
+/**
+ * Inlined from apps/swap-check/lib/swap.js.
+ * Pure JS — no Node APIs. Keep in sync with lib/swap.js.
+ * Heuristics: pronoun-free slogans; generic operator jargon without
+ * a specific number/decision/failure verb; BrandX swap still parses;
+ * missing lived constraint (no digits, proper nouns, kill/refuse/pay verbs).
+ */
+const DEFAULT_BRANDS = ["GrowthOS", "PromptForge", "OperatorKit"];
+const JARGON = ["leverage","unlock","10x","agentic","playbook","scale","growth","personal brand"];
+const FAILURE_VERBS = ["killed","paid","refused","shipped","deferred","cut","kill","pay","refuse","ship","defer"];
+const FIRST_PERSON_RE = /\b(i|we|me|us|my|our|mine|ours|i'm|we're|i've|we've|i'd|we'd)\b/gi;
+const FAILURE_RE = new RegExp("\\b(" + FAILURE_VERBS.join("|") + ")\\b", "i");
+const NUMBER_WORDS_RE = /\b(one|two|three|four|five|six|seven|eight|nine|ten|dozen|hundred|thousand)\b/i;
+
+function clamp(n) { return Math.max(0, Math.min(10, Math.round(n * 10) / 10)); }
+function sentences(text) {
+  return String(text).split(/(?<=[.!?])\s+/).map(function (s) { return s.trim(); }).filter(Boolean);
+}
+function hasLivedDigit(text) {
+  const stripped = String(text).replace(/\b\d+x\b/gi, "");
+  return /\d/.test(stripped) || NUMBER_WORDS_RE.test(stripped);
+}
+function hasFailureVerb(text) { return FAILURE_RE.test(String(text)); }
+function ignoreSet(brands) {
+  const s = new Set(["brandx"]);
+  for (const b of brands || []) s.add(String(b).toLowerCase());
+  return s;
+}
+function hasProperNoun(text, brands) {
+  const ignore = ignoreSet(brands);
+  const words = String(text).split(/\s+/);
+  for (let i = 0; i < words.length; i++) {
+    const raw = words[i].replace(/[^A-Za-z]/g, "");
+    if (!raw || raw.length < 2) continue;
+    if (i === 0) continue;
+    if (ignore.has(raw.toLowerCase())) continue;
+    if (/^[A-Z][a-zA-Z]+$/.test(raw)) return true;
+  }
+  return false;
+}
+function jargonHits(text) {
+  const lower = String(text).toLowerCase();
+  return JARGON.filter(function (j) { return lower.includes(j); });
+}
+function hasLivedConstraint(text, brands) {
+  return hasLivedDigit(text) || hasFailureVerb(text) || hasProperNoun(text, brands);
+}
+function isPronounFreeSlogan(sentence) {
+  const words = sentence.trim().split(/\s+/).filter(Boolean);
+  if (words.length < 2 || words.length > 10) return false;
+  FIRST_PERSON_RE.lastIndex = 0;
+  if (FIRST_PERSON_RE.test(sentence)) return false;
+  if (hasFailureVerb(sentence)) return false;
+  if (hasLivedDigit(sentence) && jargonHits(sentence).length === 0) return false;
+  return true;
+}
+function swapFirstPerson(text) { return String(text).replace(FIRST_PERSON_RE, "BrandX"); }
+function survivesBrandXSwap(text, brands) {
+  return !hasLivedConstraint(swapFirstPerson(text), brands);
+}
+function scoreSwap(text, opts) {
+  opts = opts || {};
+  const brands = opts.brands && opts.brands.length ? opts.brands : DEFAULT_BRANDS;
+  const t = text == null ? "" : String(text);
+  const trimmed = t.trim();
+  if (!trimmed) {
+    return { score: 10, hits: ["empty"], recommendation: "interchangeable", notes: ["empty draft is fully interchangeable"] };
+  }
+  const hits = [];
+  const notes = [];
+  let score = 0;
+  const slogans = sentences(trimmed).filter(isPronounFreeSlogan);
+  if (slogans.length) {
+    score += Math.min(3, slogans.length * 1.5);
+    hits.push("pronoun-free slogan");
+    notes.push(slogans.length + " pronoun-free brandable slogan(s)");
+  }
+  const jargon = jargonHits(trimmed);
+  const lived = hasLivedConstraint(trimmed, brands);
+  if (jargon.length && !lived) {
+    score += Math.min(3, jargon.length);
+    hits.push("generic operator jargon");
+    notes.push("jargon without lived constraint: " + jargon.join(", "));
+  } else if (jargon.length) {
+    notes.push("jargon present but anchored by a lived constraint");
+  }
+  if (survivesBrandXSwap(trimmed, brands)) {
+    score += 2;
+    hits.push("survives BrandX swap");
+    notes.push("sentences still parse after swapping first-person specifics for BrandX");
+  } else {
+    notes.push("the swap would not have shown — draft depends on a specific constraint");
+  }
+  if (!lived) {
+    score += 3;
+    hits.push("missing lived constraint");
+    notes.push("no digits, proper nouns, or kill/refuse/pay verbs");
+  } else {
+    notes.push("lived constraint present (digit, proper noun, or decision verb)");
+    score = Math.max(0, score - 3);
+  }
+  if (lived && hasFailureVerb(trimmed) && (hasLivedDigit(trimmed) || hasProperNoun(trimmed, brands))) {
+    score = Math.min(score, 2);
+  }
+  score = clamp(score);
+  let recommendation = "specific";
+  if (score >= 7) recommendation = "interchangeable";
+  else if (score >= 4) recommendation = "swap-risk";
+  notes.push("brands tested: " + brands.join(", "));
+  return { score: score, hits: hits, recommendation: recommendation, notes: notes };
+}
+
+(function () {
+  const form = document.getElementById("form");
+  const draft = document.getElementById("draft");
+  const brandsInput = document.getElementById("brands");
+  const go = document.getElementById("go");
+  const err = document.getElementById("error");
+  const out = document.getElementById("result");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    err.hidden = true;
+    out.hidden = true;
+    go.disabled = true;
+    go.textContent = "Scoring\u2026";
+    try {
+      const brands = String(brandsInput.value || "")
+        .split(",")
+        .map(function (s) { return s.trim(); })
+        .filter(Boolean);
+      const data = scoreSwap(draft.value, { brands: brands });
+      render(data);
+    } catch (ex) {
+      err.textContent = String(ex.message || ex);
+      err.hidden = false;
+    } finally {
+      go.disabled = false;
+      go.textContent = "Score";
+    }
+  });
+
+  function render(data) {
+    const rec = escapeHtml(data.recommendation) + " \u00b7 " + data.score;
+    const hitList = Array.isArray(data.hits) && data.hits.length
+      ? "<ol>" + data.hits.map(function (h) { return "<li>" + escapeHtml(h) + "</li>"; }).join("") + "</ol>"
+      : "<p class='muted'>No hits.</p>";
+    const notes = Array.isArray(data.notes) && data.notes.length
+      ? "<ol>" + data.notes.map(function (n) { return "<li>" + escapeHtml(n) + "</li>"; }).join("") + "</ol>"
+      : "";
+    out.innerHTML =
+      "<p class='rec'>" + rec + "</p>" +
+      "<p class='muted' style='margin-top:0'>0 = specific / non-substitutable. 10 = interchangeable.</p>" +
+      "<p class='muted'>Hits</p>" + hitList +
+      "<p class='muted'>Notes</p>" + notes +
+      "<p class='muted'>JSON</p><pre>" + escapeHtml(JSON.stringify(data, null, 2)) + "</pre>";
+    out.hidden = false;
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+})();
+  </script>
+</body>
+</html>
