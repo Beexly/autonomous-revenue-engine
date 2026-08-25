@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>viewport-mock — 50% Premium timeline</title>
+  <meta name="description" content="Mock of what a Premium Home Timeline actually sees (≥50% visible). Does not rewrite. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .carries { color:var(--ok); } .thin { color:var(--rule); } .buried { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .phone { max-width:22rem; margin:1rem 0; border:1px solid var(--ink); background:#fffdf6; }
+    .head { display:flex; gap:.55rem; align-items:center; padding:.7rem .75rem .35rem; font:700 12px/1.2 system-ui,sans-serif; }
+    .av { width:1.7rem; height:1.7rem; border-radius:50%; background:var(--ink); flex:0 0 auto; }
+    .handle { color:var(--mute); font:12px/1.2 ui-monospace,monospace; font-weight:400; }
+    .body { position:relative; padding:0 .75rem 1.6rem; min-height:10.5rem; font:15px/1.4 Georgia, serif; white-space:pre-wrap; word-break:break-word; }
+    .mask { position:absolute; left:0; right:0; bottom:0; height:50%; background:rgba(26,18,8,.78); color:var(--paper); display:flex; align-items:flex-end; padding:.45rem .7rem; font:700 10px/1.2 ui-monospace,monospace; letter-spacing:.1em; text-transform:uppercase; pointer-events:none; }
+    .seen { font:14px/1.45 ui-monospace,monospace; background:#e7f0d8; border:1px solid var(--ink); padding:.7rem .75rem; white-space:pre-wrap; word-break:break-word; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · 50% visible</p>
+  <h1>viewport-mock</h1>
+  <p class="lede">Paste a draft. The dim half is what a Premium Home Timeline does not count. OCR pays unique Premium impressions where ≥50% of the post is visible. This does not score Hold, rewrite, or publish.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="Shipped the 9.2 floor after the 8.3 queue died.\nThe rest of the thread is optional."></textarea>
+    <button type="submit">Mock</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var VERBS = /\b(killed|paid|refused|shipped|closed|cut|fired|merged|stopped|blocked|raised|deleted|rewrote|failed|lost|won|sold)\b/i;
+  var STAKE = /\d|\$|[0-9]+\.[0-9]/;
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function carries(chunk) {
+    var t = String(chunk || "").trim();
+    if (!t) return false;
+    return VERBS.test(t) || STAKE.test(t);
+  }
+  function measure(raw) {
+    var t = String(raw || "").replace(/\r\n/g, "\n");
+    var chars = t.length;
+    if (!chars) return { status: "EMPTY" };
+    var mid = Math.ceil(chars / 2);
+    var visible = t.slice(0, mid);
+    var hidden = t.slice(mid);
+    var visOk = carries(visible);
+    var hidOk = carries(hidden);
+    var status = "THIN";
+    if (visOk) status = "CARRIES";
+    else if (hidOk) status = "BURIED";
+    return {
+      status: status,
+      chars: chars,
+      visChars: visible.length,
+      hidChars: hidden.length,
+      visible: visible,
+      full: t
+    };
+  }
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var out = document.getElementById("out");
+  function render() {
+    var data = measure(input.value);
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='thin'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "CARRIES" ? "carries" : data.status === "THIN" ? "thin" : "buried";
+    var rows =
+      "<tr><td class='k'>chars</td><td class='v'>" + data.chars + "</td></tr>" +
+      "<tr><td class='k'>visible half</td><td class='v'>" + data.visChars + "</td></tr>" +
+      "<tr><td class='k'>dim half</td><td class='v'>" + data.hidChars + "</td></tr>";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<div class='phone'><div class='head'><i class='av'></i><div>signal origin<br><span class='handle'>@local · now</span></div></div>" +
+      "<div class='body'>" + esc(data.full) + "<div class='mask'>not ≥50% visible — OCR does not count this half</div></div></div>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='seen'>" + esc(data.visible) + "</p>" +
+      "<p class='note'>Green box = first 50% of characters, the unit OCR actually meters. CARRIES = that half has a number or a decision verb. BURIED = the stake is only in the dim half. Not a fold-ruler (no 160-char band). Not qi-check.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  input.addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>function-words — I/we/you/the/and</title>
+  <meta name="description" content="Bars of I, we, you, the, and rates per 100 tokens. Does not rewrite. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .person { color:var(--ok); } .article { color:var(--bad); } .mixed { color:var(--rule); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; vertical-align:middle; }
+    td.k { color:var(--mute); width:3.2rem; }
+    td.v { text-align:right; font-family:ui-monospace,monospace; width:4.2rem; }
+    .bar { height:8px; background:var(--band); }
+    .bar > span { display:block; height:100%; background:var(--ink); max-width:100%; }
+    .bar.hot > span { background:var(--rule); }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · function words</p>
+  <h1>function-words</h1>
+  <p class="lede">Paste a draft. Bars are I / we / you / the / and per 100 tokens. High the+and with low person pronouns is the flat-model tell. This does not run Delta, rewrite, or publish.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="I cut the 8.3 queue. You still owe the 9.2 floor."></textarea>
+    <button type="submit">Count</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var KEYS = ["i", "we", "you", "the", "and"];
+  function tokens(raw) {
+    var t = String(raw || "").toLowerCase().replace(/[^a-z0-9'\s]/g, " ");
+    return t.trim() ? t.trim().split(/\s+/).filter(Boolean) : [];
+  }
+  function measure(raw) {
+    var toks = tokens(raw);
+    var n = toks.length;
+    if (!n) return { status: "EMPTY" };
+    var counts = { i:0, we:0, you:0, the:0, and:0 };
+    for (var i = 0; i < n; i++) {
+      var w = toks[i];
+      if (w === "i" || w === "i'm" || w === "i’m") counts.i++;
+      else if (w === "we" || w === "we're" || w === "we’re") counts.we++;
+      else if (w === "you" || w === "you're" || w === "you’re") counts.you++;
+      else if (w === "the") counts.the++;
+      else if (w === "and") counts.and++;
+    }
+    var rates = {};
+    for (var k = 0; k < KEYS.length; k++) {
+      var key = KEYS[k];
+      rates[key] = (counts[key] / n) * 100;
+    }
+    var person = counts.i + counts.we + counts.you;
+    var article = counts.the + counts.and;
+    var status = "MIXED";
+    if (person === 0 && article >= 3) status = "ARTICLE-HEAVY";
+    else if (person > 0 && article > person * 3 && rates.the + rates.and >= 12) status = "ARTICLE-HEAVY";
+    else if (person >= 2 && person >= article) status = "PERSON-HEAVY";
+    return { status: status, n: n, counts: counts, rates: rates, person: person, article: article };
+  }
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var out = document.getElementById("out");
+  function render() {
+    var data = measure(input.value);
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='mixed'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "PERSON-HEAVY" ? "person" : data.status === "ARTICLE-HEAVY" ? "article" : "mixed";
+    var max = 20;
+    var rows = KEYS.map(function (key) {
+      var r = data.rates[key];
+      var hot = (key === "the" || key === "and") && r >= 8;
+      var w = Math.min(100, (r / max) * 100);
+      return "<tr><td class='k'>" + key + "</td><td><div class='bar" + (hot ? " hot" : "") + "'><span style='width:" + w.toFixed(1) + "%'></span></div></td><td class='v'>" + r.toFixed(1) + " /100</td></tr>";
+    }).join("");
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<table><tbody>" +
+      "<tr><td class='k'>tokens</td><td></td><td class='v'>" + data.n + "</td></tr>" +
+      "<tr><td class='k'>person</td><td></td><td class='v'>" + data.person + "</td></tr>" +
+      "<tr><td class='k'>the+and</td><td></td><td class='v'>" + data.article + "</td></tr>" +
+      rows + "</tbody></table>" +
+      "<p class='note'>Scale is per 100 tokens, bar capped at 20/100. Clay bars = the/and ≥8 per 100. ARTICLE-HEAVY is the lecture cadence; PERSON-HEAVY is a speaker under pressure. Not voice-delta (no corpus, no σ).</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  input.addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>
