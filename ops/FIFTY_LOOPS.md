@@ -4,8 +4,13 @@
 **Repo:** `Beexly/autonomous-revenue-engine`  
 **Rule:** Candidates and files only. No fake revenue. No invented live URLs. No sports. No paid ads. No X API spend. No domains. No newsletters. No prompt packs. No Stripe secrets. Do not npm publish, do not post HN/IH/dev.to, do not marketplace-publish, do not merge this board’s PR without owner.
 
-**Known live URL:** [qi-check.html on raw.githack](https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/qi-check.html)  
-New `docs/` pages in this cycle are **not** live until merged to `main`.
+**Known live URLs (raw.githack, `main`):**
+- [hub](https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/index.html)
+- [qi-check](https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/qi-check.html)
+- [fold-ruler](https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/fold-ruler.html)
+- [burstiness](https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/burstiness.html) (this PR, live after merge)
+
+**Infra on main (not $1/day loops):** `apps/conformal-lite` (aci/saocp/cqr/evalue), Lago client + CAPI helpers (no keys, no spend). `ops/META_KEY.local` deleted from HEAD; rotate the leaked token.
 
 **Status key**
 - `SHIPPED` — files exist in the repo (or the already-shipped UI/CLI).
@@ -20,11 +25,11 @@ New `docs/` pages in this cycle are **not** live until merged to `main`.
 | 1 | qi-check UI | Next.js paste → Hold/Soft/Hard + fix list (`apps/qi-check`) | GitHub app; `npm run dev` locally; Vercel later is owner-only | SHIPPED | Free OCR-fitness checker is the named public face; paid wedge is history/batch/API later |
 | 2 | qi-check static page | Self-contained `docs/qi-check.html` (inlined score.js) | GitHub file; live on raw.githack for `main` | SHIPPED | Same tool without a host bill; inbound from operators who will not clone |
 | 3 | voice-delta CLI | Original JS Burrows’ Delta vs Pass-style corpus (`apps/voice-delta`) | `node cli.js` in the repo; no keys | SHIPPED | Voice-check is the paid-adjacent gate; CLI users become API/history customers later |
-| 4 | bait-hook detector | First-line-only bait score (CLEAN / SOFT BAIT / HARD BAIT) | `docs/bait-hook.html` (this PR); open the file | SHIPPED | Narrower than qi-check; shareable hook for people who only want line one |
-| 5 | swap-test checklist | Interchangeability score for a paste (ANCHORED / SWAPPABLE / GENERIC) | `docs/swap-test.html` (this PR); open the file | SHIPPED | QUALITY_BAR as a public checklist; later a batch “would this survive a brand swap?” report |
-| 6 | Static tools hub | Index of the three HTML tools | `docs/index.html` (this PR) | SHIPPED | One entry point when Pages is on; no extra domain |
-| 7 | Fold-length ruler | Paste → char/word count vs 160-char first-screen band | New `docs/fold-ruler.html` | NEXT | Teaches the 50%-visible unit that OCR actually pays |
-| 8 | Burstiness sparkline | Sentence-length CV drawn as a tiny bar chart | New `docs/burstiness.html` | NEXT | Makes “flat model cadence” visible; upsell to voice-delta |
+| 4 | bait-hook detector | First-line-only bait score (CLEAN / SOFT BAIT / HARD BAIT) | `docs/bait-hook.html`; open the file | SHIPPED | Narrower than qi-check; shareable hook for people who only want line one |
+| 5 | swap-test checklist | Interchangeability score for a paste (ANCHORED / SWAPPABLE / GENERIC) | `docs/swap-test.html`; open the file | SHIPPED | QUALITY_BAR as a public checklist; later a batch “would this survive a brand swap?” report |
+| 6 | Static tools hub | Index of the HTML tools | `docs/index.html` | SHIPPED | One entry point when Pages is on; no extra domain |
+| 7 | Fold-length ruler | Paste → char/word count vs 160-char first-screen band | `docs/fold-ruler.html` live on githack | SHIPPED | Teaches the 50%-visible unit that OCR actually pays |
+| 8 | Burstiness sparkline | Sentence-length CV drawn as a tiny bar chart | `docs/burstiness.html` | SHIPPED | Makes “flat model cadence” visible; upsell to voice-delta |
 | 9 | Staccato-fragment killer | Flags one-word / two-word period lines | New `docs/staccato.html` | NEXT | Directly implements the SO-012 fail; operators will bookmark it |
 | 10 | Specificity counter | Counts numbers, $, proper-noun-ish tokens, decision verbs | New `docs/specificity.html` | NEXT | Free “is this a lecture or a log?” meter; paid: corpus baselines |
 | 11 | Jargon densitometer | Hits on leverage / 10x / unlock / viral / build-in-public | New `docs/jargon.html` | NEXT | Same audience as swap-test; affiliate later on editing tools, not ads |
@@ -70,13 +75,12 @@ New `docs/` pages in this cycle are **not** live until merged to `main`.
 
 ## This cycle (file-only, started)
 
-Shipped in-repo now:
-- `docs/bait-hook.html`
-- `docs/swap-test.html`
-- `docs/index.html` (hub; no longer a silent redirect-only page)
-- this board
+Shipped on `main`:
+- `docs/qi-check.html`, `docs/bait-hook.html`, `docs/swap-test.html`, `docs/swap-check.html`, `docs/fold-ruler.html`, `docs/burstiness.html`, `docs/index.html`
+- `apps/qi-check`, `apps/voice-delta`, `apps/swap-check`, `apps/hn-bait`, `apps/subject-fold`, `apps/conformal-lite`
+- Lago stub + CAPI helpers (env-gated, no spend)
 
-Not started as files yet: 7–38, 46–50 (NEXT).  
+Not started as files yet: 9–38, 46–50 (NEXT).  
 Not started because owner must click: 43, 44.  
 Not posted/uploaded: 39–42, 45.
 
