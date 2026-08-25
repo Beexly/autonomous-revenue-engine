@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>staccato — fragment killer</title>
+  <meta name="description" content="Flags one-word and two-word period lines. Does not rewrite. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .clean { color:var(--ok); } .soft { color:var(--rule); } .hard { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .hit { font:14px/1.5 ui-monospace,monospace; background:#fffdf6; border:1px solid var(--ink); padding:.7rem .75rem; white-space:pre-wrap; }
+    .hit .one { background:#f3d4c8; }
+    .hit .two { background:#f3e4c8; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · cadence</p>
+  <h1>staccato</h1>
+  <p class="lede">Paste a draft. This flags one-word and two-word sentences (the SO-012 fragment fail). It does not score Hold, rewrite, or publish.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="Shipped.\nThen the next sentence actually carries the claim."></textarea>
+    <button type="submit">Scan</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function sentences(raw) {
+    var t = String(raw || "").replace(/\r\n/g, "\n").trim();
+    if (!t) return [];
+    var parts = t.split(/(?<=[.!?])(?:\s+|\n+|$)/).map(function (s) { return s.trim(); }).filter(Boolean);
+    if (!parts.length) parts = [t];
+    return parts;
+  }
+  function words(s) {
+    var t = String(s || "").replace(/[.!?,;:"'\u2014\u2013()]/g, " ").trim();
+    return t ? t.split(/\s+/).filter(Boolean) : [];
+  }
+  function measure(raw) {
+    var sents = sentences(raw);
+    var hits = [];
+    for (var i = 0; i < sents.length; i++) {
+      var w = words(sents[i]);
+      if (w.length === 1) hits.push({ i: i, n: 1, text: sents[i] });
+      else if (w.length === 2) hits.push({ i: i, n: 2, text: sents[i] });
+    }
+    var ones = hits.filter(function (h) { return h.n === 1; }).length;
+    var twos = hits.filter(function (h) { return h.n === 2; }).length;
+    var status = "EMPTY";
+    if (!sents.length) status = "EMPTY";
+    else if (ones >= 2 || (ones + twos) >= 3) status = "HARD STACCATO";
+    else if (ones + twos > 0) status = "SOFT STACCATO";
+    else status = "CLEAN";
+    return { sents: sents, hits: hits, ones: ones, twos: twos, status: status };
+  }
+
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var out = document.getElementById("out");
+
+  function render() {
+    var data = measure(input.value);
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='soft'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "CLEAN" ? "clean" : data.status === "SOFT STACCATO" ? "soft" : "hard";
+    var marked = data.sents.map(function (s, i) {
+      var hit = null;
+      for (var h = 0; h < data.hits.length; h++) if (data.hits[h].i === i) hit = data.hits[h];
+      if (!hit) return esc(s);
+      return "<span class='" + (hit.n === 1 ? "one" : "two") + "'>" + esc(s) + "</span>";
+    }).join(" ");
+    var rows =
+      "<tr><td class='k'>sentences</td><td class='v'>" + data.sents.length + "</td></tr>" +
+      "<tr><td class='k'>one-word</td><td class='v'>" + data.ones + "</td></tr>" +
+      "<tr><td class='k'>two-word</td><td class='v'>" + data.twos + "</td></tr>";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='hit'>" + marked + "</p>" +
+      "<p class='note'>Clay = one-word. Gold = two-word. HARD is 2+ one-word lines or 3+ fragments. This is a fragment ruler, not qi-check.</p>";
+    out.hidden = false;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    render();
+  });
+  input.addEventListener("input", function () {
+    if (!out.hidden) render();
+  });
+})();
+</script>
+</body>
+</html>
