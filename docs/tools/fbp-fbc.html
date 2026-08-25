@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>fbp-fbc — cookie checker for CAPI</title>
+  <meta name="description" content="Decode _fbp and _fbc and show what CAPI user_data should send. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    input { width:100%; box-sizing:border-box; padding:.55rem .7rem; border:1px solid var(--ink); background:#fffdf6; font:13px/1.4 ui-monospace,monospace; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; }
+    td { padding:.28rem 0; border-bottom:1px solid #e0d6c0; vertical-align:top; }
+    td.v { text-align:right; word-break:break-all; }
+    pre { white-space:pre-wrap; word-break:break-word; background:#fffdf6; border:1px solid var(--ink); padding:.7rem; font:12px/1.4 ui-monospace,monospace; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · click cookies</p>
+  <h1>fbp-fbc</h1>
+  <p class="lede">Paste <code>_fbp</code> and <code>_fbc</code> (or a landing URL with <code>fbclid</code>). This decodes them for CAPI <code>user_data</code>. It does not set cookies, does not send, does not spend.</p>
+  <form id="f">
+    <label for="fbp">_fbp</label>
+    <input id="fbp" autocomplete="off" placeholder="fb.1.1710000000000.1234567890">
+    <label for="fbc">_fbc</label>
+    <input id="fbc" autocomplete="off" placeholder="fb.1.1710000000000.AbCdEf">
+    <label for="url">Landing URL (optional, for fbclid)</label>
+    <input id="url" autocomplete="off" placeholder="https://example.com/?fbclid=AbCdEf">
+    <button type="submit">Check</button>
+    <button type="button" id="ex">Load example</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function parseCookie(raw, kind) {
+    var s = String(raw || "").trim();
+    if (!s) return null;
+    var parts = s.split(".");
+    if (parts[0] !== "fb" || parts.length < 4) return { raw: s, ok: false, err: kind + " must look like fb.1.{time}.{id}" };
+    var t = Number(parts[2]);
+    if (!isFinite(t)) return { raw: s, ok: false, err: "creation time is not a number" };
+    if (t > 1e12) t = Math.floor(t / 1000);
+    else if (t > 1e10) t = Math.floor(t / 1000);
+    var id = parts.slice(3).join(".");
+    var ageH = (Date.now() / 1000 - t) / 3600;
+    return { raw: s, ok: true, version: parts[1], created: t, id: id, ageH: ageH, err: "" };
+  }
+  function fbclidFromUrl(u) {
+    try {
+      var href = String(u || "").trim();
+      if (!href) return "";
+      if (href.indexOf("http") !== 0) href = "https://x.invalid/?" + href.replace(/^\?/, "");
+      var q = new URL(href).searchParams.get("fbclid");
+      return q || "";
+    } catch (e) { return ""; }
+  }
+  function ageLabel(h) {
+    if (!isFinite(h)) return "—";
+    if (h < 0) return "future (clock skew)";
+    if (h < 1) return Math.round(h * 60) + " min";
+    if (h < 48) return h.toFixed(1) + " h";
+    return (h / 24).toFixed(1) + " d";
+  }
+  document.getElementById("ex").addEventListener("click", function () {
+    var t = Date.now();
+    document.getElementById("fbp").value = "fb.1." + t + ".9876543210";
+    document.getElementById("fbc").value = "fb.1." + t + ".IwAR0exampleclid";
+    document.getElementById("url").value = "https://example.com/products/boot?fbclid=IwAR0exampleclid";
+  });
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var fbp = parseCookie(document.getElementById("fbp").value, "_fbp");
+    var fbcIn = document.getElementById("fbc").value.trim();
+    var clid = fbclidFromUrl(document.getElementById("url").value);
+    var fbc = parseCookie(fbcIn, "_fbc");
+    var built = "";
+    if (!fbc && clid) {
+      built = "fb.1." + Date.now() + "." + clid;
+      fbc = parseCookie(built, "_fbc");
+    }
+    var rows = [];
+    function add(k, ok, v) { rows.push([k, ok, v]); }
+    if (!fbp) add("_fbp", false, "missing — CAPI website events should still forward it when the browser had one");
+    else if (!fbp.ok) add("_fbp", false, fbp.err);
+    else add("_fbp", true, "v" + fbp.version + " · created " + fbp.created + " · age " + ageLabel(fbp.ageH));
+    if (!fbc) add("_fbc", true, clid ? "could not build" : "none — ok unless this visit came from an ad click");
+    else if (!fbc.ok) add("_fbc", false, fbc.err);
+    else add("_fbc", true, "v" + fbc.version + " · fbclid " + fbc.id + " · age " + ageLabel(fbc.ageH));
+    if (clid && fbc && fbc.ok && fbc.id !== clid) add("fbclid vs _fbc", false, "URL clid " + clid + " ≠ cookie " + fbc.id);
+    else if (clid) add("fbclid", true, clid);
+    var stale = (fbp && fbp.ok && fbp.ageH > 90 * 24) || (fbc && fbc.ok && fbc.ageH > 90 * 24);
+    var status = "FORWARD";
+    if ((fbp && fbp.ok === false) || (fbc && fbc.ok === false)) status = "MALFORMED";
+    else if (!fbp) status = "NO FBP";
+    else if (clid && !fbc) status = "CLICK WITHOUT FBC";
+    else if (stale) status = "STALE";
+    var cls = status === "FORWARD" ? "ok" : "bad";
+    var user = {};
+    if (fbp && fbp.ok) user.fbp = fbp.raw;
+    if (fbc && fbc.ok) user.fbc = fbc.raw;
+    var html = rows.map(function (r) {
+      return "<tr><td>" + esc(r[0]) + "</td><td class='v " + (r[1] ? "ok" : "bad") + "'>" + esc(r[2]) + "</td></tr>";
+    }).join("");
+    document.getElementById("out").hidden = false;
+    document.getElementById("out").innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + status + "</p>" +
+      "<table><tbody>" + html + "</tbody></table>" +
+      "<label>CAPI user_data to forward</label><pre>" + esc(JSON.stringify(user, null, 2)) + "</pre>" +
+      "<p class='note'>_fbp is fb.{subdomainIndex}.{created}.{random}. _fbc is fb.{subdomainIndex}.{created}.{fbclid}. Stape must read the browser cookies and copy them onto the server event. This is not id-pair (no event_id) and not ads-signal (no hashing). No Graph call.</p>";
+  });
+})();
+</script>
+</body>
+</html>

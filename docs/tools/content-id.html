@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>content-id — Pixel vs Shopify catalog IDs</title>
+  <meta name="description" content="Reconcile Pixel content_ids against Shopify product/variant IDs. Local only. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; --warn:#8a5a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:40rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    textarea { width:100%; box-sizing:border-box; padding:.55rem .7rem; border:1px solid var(--ink); background:#fffdf6; font:13px/1.4 ui-monospace,monospace; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; } .warn { color:var(--warn); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; margin-top:.6rem; }
+    th, td { padding:.3rem .25rem; border-bottom:1px solid #e0d6c0; text-align:left; }
+    td.v { text-align:right; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · catalog IDs</p>
+  <h1>content-id</h1>
+  <p class="lede">Dynamic ads and Purchase content need the same ID space as the catalog. Paste Pixel <code>content_ids</code> next to Shopify product/variant IDs. This page compares. It does not call Meta or Shopify.</p>
+  <form id="f">
+    <label for="sheet">Rows: pixel_content_id, shopify_id — CSV / TSV</label>
+    <textarea id="sheet" rows="10" placeholder="sku-BOOT-9, gid://shopify/ProductVariant/123\n123, 123"></textarea>
+    <button type="submit">Compare</button>
+    <button type="button" id="ex">Load example</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function tail(s) {
+    var t = String(s || "").trim();
+    var g = t.match(/gid:\/\/shopify\/\w+\/(\d+)/i);
+    if (g) return { space: "gid", id: g[1], raw: t };
+    if (/^\d+$/.test(t)) return { space: "numeric", id: t, raw: t };
+    var sku = t.replace(/^sku[-_:]/i, "");
+    return { space: "sku", id: sku.toLowerCase(), raw: t };
+  }
+  function parse(text) {
+    var rows = [];
+    text.split(/\n+/).forEach(function (line) {
+      line = line.trim();
+      if (!line || line.charAt(0) === "#") return;
+      var parts = line.split(/[,;\t]+/).map(function (x) { return x.trim(); }).filter(Boolean);
+      if (parts.length < 2) return;
+      rows.push({ pixel: tail(parts[0]), shop: tail(parts[1]) });
+    });
+    return rows;
+  }
+  function score(row) {
+    if (row.pixel.id === row.shop.id) {
+      if (row.pixel.space === row.shop.space) return { ok: true, label: "exact" };
+      return { ok: true, label: "same id, mixed space (" + row.pixel.space + " vs " + row.shop.space + ")" };
+    }
+    return { ok: false, label: "mismatch" };
+  }
+  document.getElementById("ex").addEventListener("click", function () {
+    document.getElementById("sheet").value =
+      "1234567890, gid://shopify/ProductVariant/1234567890\n" +
+      "gid://shopify/Product/111, 111\n" +
+      "sku-BOOT-9, BOOT-9\n" +
+      "BOOT-9, gid://shopify/ProductVariant/555\n" +
+      "987, 987\n";
+  });
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var rows = parse(document.getElementById("sheet").value);
+    var box = document.getElementById("out");
+    box.hidden = false;
+    if (!rows.length) {
+      box.innerHTML = "<p class='bad'>Need at least one row with two IDs.</p>";
+      return;
+    }
+    var miss = 0, mixed = 0;
+    var tr = rows.map(function (r) {
+      var s = score(r);
+      if (!s.ok) miss++;
+      else if (s.label.indexOf("mixed") !== -1) mixed++;
+      var cls = s.ok ? (s.label.indexOf("mixed") !== -1 ? "warn" : "ok") : "bad";
+      return "<tr><td>" + esc(r.pixel.raw) + "</td><td>" + esc(r.shop.raw) + "</td><td class='v " + cls + "'>" + esc(s.label) + "</td></tr>";
+    }).join("");
+    var status = miss ? "MISMATCH" : (mixed ? "MIXED SPACE" : "ALIGNED");
+    var cls = status === "ALIGNED" ? "ok" : "bad";
+    box.innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + status + " · " + (rows.length - miss) + "/" + rows.length + " match</p>" +
+      "<table><thead><tr><th>pixel content_id</th><th>shopify</th><th></th></tr></thead><tbody>" + tr + "</tbody></table>" +
+      "<p class='note'>Catalog and Purchase must share one ID space (usually Shopify variant id, not SKU, not product gid). MIXED SPACE still matches the number but DPA can miss. This is not count-gap (not order counts). No API calls.</p>";
+  });
+})();
+</script>
+</body>
+</html>

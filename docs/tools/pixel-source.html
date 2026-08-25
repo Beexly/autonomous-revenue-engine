@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pixel-source — theme vs app vs GTM</title>
+  <meta name="description" content="Inventory Pixel sources: theme, official app, GTM, Stape. Flags multi-fire. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    .item { display:flex; gap:.55rem; align-items:flex-start; margin:.4rem 0; font:15px/1.4 Georgia,serif; letter-spacing:0; text-transform:none; font-weight:400; }
+    .item input { margin-top:.2rem; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; margin:.6rem 0; }
+    th, td { padding:.28rem .2rem; border-bottom:1px solid #e0d6c0; text-align:left; }
+    td.v { text-align:right; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · pixel inventory</p>
+  <h1>pixel-source</h1>
+  <p class="lede">Tick every place that can fire the Pixel or CAPI on a Shopify store. Two browser sources on Purchase without a shared event_id double-count. This page does not send or spend.</p>
+  <form id="f">
+    <label>Browser Pixel sources</label>
+    <label class="item"><input type="checkbox" id="theme"> theme.liquid / checkout additional scripts (<code>fbq</code>)</label>
+    <label class="item"><input type="checkbox" id="app"> Official Facebook &amp; Instagram Shopify app</label>
+    <label class="item"><input type="checkbox" id="gtm"> GTM web container</label>
+    <label class="item"><input type="checkbox" id="ext"> Checkout extensibility / custom pixel (customer events)</label>
+    <label>Server sources</label>
+    <label class="item"><input type="checkbox" id="stape"> Stape / sGTM CAPI</label>
+    <label class="item"><input type="checkbox" id="appcapi"> Official app CAPI / Meta channel</label>
+    <label class="item"><input type="checkbox" id="hook"> Custom Shopify webhook → CAPI</label>
+    <label>Shared event_id across the sources you ticked</label>
+    <label class="item"><input type="checkbox" id="eid"> One event_id generated once per action, copied to every fire</label>
+    <button type="submit">Inventory</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var theme = document.getElementById("theme").checked;
+    var app = document.getElementById("app").checked;
+    var gtm = document.getElementById("gtm").checked;
+    var ext = document.getElementById("ext").checked;
+    var stape = document.getElementById("stape").checked;
+    var appcapi = document.getElementById("appcapi").checked;
+    var hook = document.getElementById("hook").checked;
+    var eid = document.getElementById("eid").checked;
+    var browser = [theme, app, gtm, ext].filter(Boolean).length;
+    var server = [stape, appcapi, hook].filter(Boolean).length;
+    var names = [];
+    if (theme) names.push("theme.liquid");
+    if (app) names.push("official app Pixel");
+    if (gtm) names.push("GTM web");
+    if (ext) names.push("checkout extensibility");
+    if (stape) names.push("Stape/sGTM");
+    if (appcapi) names.push("official app CAPI");
+    if (hook) names.push("custom webhook CAPI");
+    var status = "NONE";
+    if (browser === 0 && server === 0) status = "NONE";
+    else if (browser >= 2 && !eid) status = "MULTI-FIRE";
+    else if (browser >= 1 && server >= 1 && !eid) status = "BOTH, NO DEDUPE";
+    else if (browser === 0 && server >= 1) status = "SERVER-ONLY";
+    else if (browser === 1 && server === 0) status = "PIXEL-ONLY";
+    else status = "SINGLE PATH";
+    var cls = (status === "MULTI-FIRE" || status === "BOTH, NO DEDUPE" || status === "NONE") ? "bad" : "ok";
+    function yn(b) { return b ? "on" : "off"; }
+    document.getElementById("out").hidden = false;
+    document.getElementById("out").innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + status + "</p>" +
+      "<table><tbody>" +
+      "<tr><td>browser sources</td><td class='v'>" + browser + "</td></tr>" +
+      "<tr><td>server sources</td><td class='v'>" + server + "</td></tr>" +
+      "<tr><td>shared event_id</td><td class='v " + (eid ? "ok" : "bad") + "'>" + (eid ? "yes" : "no") + "</td></tr>" +
+      "<tr><td>theme.liquid</td><td class='v'>" + yn(theme) + "</td></tr>" +
+      "<tr><td>official app Pixel</td><td class='v'>" + yn(app) + "</td></tr>" +
+      "<tr><td>GTM web</td><td class='v'>" + yn(gtm) + "</td></tr>" +
+      "<tr><td>checkout extensibility</td><td class='v'>" + yn(ext) + "</td></tr>" +
+      "<tr><td>Stape / sGTM</td><td class='v'>" + yn(stape) + "</td></tr>" +
+      "<tr><td>official app CAPI</td><td class='v'>" + yn(appcapi) + "</td></tr>" +
+      "<tr><td>custom webhook</td><td class='v'>" + yn(hook) + "</td></tr>" +
+      "</tbody></table>" +
+      "<p class='note'>Live set: " + (names.length ? names.join(", ") : "none") + ". MULTI-FIRE is theme + official app, or GTM + app, both calling fbq Purchase. Kill extras or stamp one event_id. Not id-pair (no payload paste). Not consent-capi. No spend.</p>";
+  });
+})();
+</script>
+</body>
+</html>
