@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>count-gap — Meta vs Shopify purchase counts</title>
+  <meta name="description" content="Reconcile Meta-reported Purchases against Shopify (or any backend) order counts. Local only. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; --warn:#8a5a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:40rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    textarea { width:100%; box-sizing:border-box; padding:.55rem .7rem; border:1px solid var(--ink); background:#fffdf6; font:13px/1.4 ui-monospace,monospace; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .ok { color:var(--ok); font-weight:700; }
+    .bad { color:var(--bad); font-weight:700; }
+    .warn { color:var(--warn); font-weight:700; }
+    .note { font-size:.85rem; color:var(--mute); }
+    .band { font-size:1.2rem; font-weight:700; margin:.4rem 0; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; margin-top:.6rem; }
+    th, td { padding:.3rem .25rem; border-bottom:1px solid #e0d6c0; text-align:right; }
+    th:first-child, td:first-child { text-align:left; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · measurement</p>
+  <h1>count-gap</h1>
+  <p class="lede">Paste daily Meta Purchases next to Shopify (or backend) orders. This page computes the gap. It does not call Meta, Shopify, or any pixel. Attribution assumed 7-day click + 1-day view unless you say otherwise.</p>
+  <form id="f">
+    <label for="sheet">Rows: date, meta, shopify — CSV, TSV, or spaces</label>
+    <textarea id="sheet" rows="10" placeholder="2026-08-18, 41, 38\n2026-08-19, 55, 52\n2026-08-20, 90, 61"></textarea>
+    <button type="submit">Reconcile</button>
+    <button type="button" id="ex">Load example</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function pct(n) {
+    if (!isFinite(n)) return "\u2014";
+    var s = (n * 100).toFixed(1);
+    return (n > 0 ? "+" : "") + s + "%";
+  }
+  function parse(text) {
+    var rows = [];
+    text.split(/\n+/).forEach(function (line, i) {
+      line = line.trim();
+      if (!line || line.charAt(0) === "#") return;
+      line = line.replace(/^[^\dA-Za-z\-]+/, "");
+      var parts = line.split(/[,;\t ]+/).filter(Boolean);
+      if (parts.length < 2) return;
+      var date, meta, shop;
+      if (parts.length >= 3 && /[A-Za-z\-]/.test(parts[0])) {
+        date = parts[0];
+        meta = Number(parts[1].replace(/[^0-9.\-]/g, ""));
+        shop = Number(parts[2].replace(/[^0-9.\-]/g, ""));
+      } else {
+        date = "row " + (rows.length + 1);
+        meta = Number(parts[0].replace(/[^0-9.\-]/g, ""));
+        shop = Number(parts[1].replace(/[^0-9.\-]/g, ""));
+      }
+      if (!isFinite(meta) || !isFinite(shop)) return;
+      rows.push({ date: date, meta: meta, shop: shop, i: i });
+    });
+    return rows;
+  }
+  function verdict(gap) {
+    var abs = Math.abs(gap);
+    if (!isFinite(gap)) return { cls: "bad", text: "Cannot score \u2014 Shopify total is 0." };
+    if (abs <= 0.15) return { cls: "ok", text: "Within ~15%. Normal consent / attribution noise." };
+    if (gap > 0.30) return { cls: "bad", text: "Meta \u226530% high. Classic double-count: Pixel + CAPI without a shared event_id, or nightly CAPI of Pixel-already-sent events." };
+    if (gap < -0.30) return { cls: "bad", text: "Meta \u226530% low. Missing events, consent drop, Test Events only, or window mismatch vs order date." };
+    if (gap > 0) return { cls: "warn", text: "Meta 15\u201330% high. Check dedup on Both events before you retune bids." };
+    return { cls: "warn", text: "Meta 15\u201330% low. Check coverage after the consent banner and rejected events in Diagnostics." };
+  }
+  document.getElementById("ex").addEventListener("click", function () {
+    document.getElementById("sheet").value =
+      "2026-08-18, 41, 38\n" +
+      "2026-08-19, 55, 52\n" +
+      "2026-08-20, 90, 61\n" +
+      "2026-08-21, 44, 47\n" +
+      "2026-08-22, 38, 36\n" +
+      "2026-08-23, 72, 40\n" +
+      "2026-08-24, 49, 45\n";
+  });
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var rows = parse(document.getElementById("sheet").value);
+    var box = document.getElementById("out");
+    box.hidden = false;
+    if (!rows.length) {
+      box.innerHTML = "<p class='bad'>Need at least one row with two numbers.</p>";
+      return;
+    }
+    var m = rows.reduce(function (a, r) { return a + r.meta; }, 0);
+    var s = rows.reduce(function (a, r) { return a + r.shop; }, 0);
+    var gap = s === 0 ? Infinity : (m - s) / s;
+    var v = verdict(gap);
+    var last7 = rows.slice(-7);
+    var m7 = last7.reduce(function (a, r) { return a + r.meta; }, 0);
+    var s7 = last7.reduce(function (a, r) { return a + r.shop; }, 0);
+    var gap7 = s7 === 0 ? Infinity : (m7 - s7) / s7;
+    var tr = rows.map(function (r) {
+      var g = r.shop === 0 ? Infinity : (r.meta - r.shop) / r.shop;
+      var cls = Math.abs(g) > 0.30 ? "bad" : Math.abs(g) > 0.15 ? "warn" : "";
+      return "<tr><td>" + esc(r.date) + "</td><td>" + r.meta + "</td><td>" + r.shop + "</td><td class='" + cls + "'>" + pct(g) + "</td></tr>";
+    }).join("");
+    box.innerHTML =
+      "<p class='ok'>DRY RUN \u2014 nothing sent</p>" +
+      "<p class='band " + v.cls + "'>Gap " + pct(gap) + " \u00b7 Meta " + m + " vs Shopify " + s + "</p>" +
+      "<p>" + esc(v.text) + "</p>" +
+      (rows.length >= 2 ? "<p class='note'>Last " + last7.length + " row" + (last7.length === 1 ? "" : "s") + ": " + pct(gap7) + " (Meta " + m7 + " / Shopify " + s7 + ").</p>" : "") +
+      "<table><thead><tr><th>date</th><th>meta</th><th>shopify</th><th>gap</th></tr></thead><tbody>" + tr + "</tbody></table>" +
+      "<p class='note'>~5\u201315% is normal. 30%+ Meta-high usually means double-counting. Compare the same clock (order created vs attributed). This page does not spend.</p>";
+  });
+})();
+</script>
+</body>
+</html>
