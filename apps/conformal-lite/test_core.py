@@ -42,7 +42,7 @@ class TestCQR(unittest.TestCase):
         self.assertEqual(quantile_residual(3.0, -1.0, 1.0), 2.0)
         m = ConformalQR()
         for i in range(20):
-            m.update(float(i), float(i) - 0.5, float(i) + 0.5)
+            m.update(float(i), float(i), q_lo=float(i) - 0.5, q_hi=float(i) + 0.5)
         lo, hi = m.expand(-1.0, 1.0)
         self.assertLessEqual(lo, -1.0)
         self.assertGreaterEqual(hi, 1.0)

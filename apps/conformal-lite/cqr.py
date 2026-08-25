@@ -5,7 +5,7 @@ MAPIE / Puncc / TorchCP are later optional backends, not required to run.
 """
 from __future__ import annotations
 
-from typing import Tuple
+from typing import Optional, Tuple
 
 import numpy as np
 
@@ -20,8 +20,18 @@ class ConformalQR:
         self.scores: list[float] = []
         self.n = 0
 
-    def update(self, y: float, q_lo: float, q_hi: float) -> None:
-        self.scores.append(quantile_residual(y, q_lo, q_hi))
+    def update(
+        self,
+        y_true: float,
+        y_pred: float,
+        q_lo: Optional[float] = None,
+        q_hi: Optional[float] = None,
+    ) -> None:
+        if q_lo is None:
+            q_lo = float(y_pred) - 1.0
+        if q_hi is None:
+            q_hi = float(y_pred) + 1.0
+        self.scores.append(quantile_residual(float(y_true), q_lo, q_hi))
         self.n += 1
 
     def expand(self, q_lo: float, q_hi: float) -> Tuple[float, float]:
@@ -32,6 +42,5 @@ class ConformalQR:
         return q_lo - q, q_hi + q
 
     def predict_interval(self, y_pred: float, residual_scale: float = 1.0) -> Tuple[float, float]:
-        """Fallback when only a point prediction exists: treat ±scale as seed quantiles."""
         q_lo, q_hi = y_pred - residual_scale, y_pred + residual_scale
         return self.expand(q_lo, q_hi)
