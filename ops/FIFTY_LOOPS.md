@@ -67,6 +67,7 @@ New `docs/` pages in this cycle are **not** live until merged to `main`.
 | 48 | SO-candidate markdown template | Frontmatter + Hold fields for new drafts | `ops/templates/SO_CANDIDATE.md` | NEXT | Speeds gated drafting; later a form |
 | 49 | Reply-vs-main heuristic page | Scores whether a paste is reply-primary (OCR: replies don’t pay) | New `docs/reply-vs-main.html` | NEXT | Stops wasting Hold work on the wrong unit |
 | 50 | Delta corpus-size advisor | Token-count vs “σ defined / short-post unstable” warning | New `docs/corpus-size.html` | NEXT | Makes voice-delta usable; later a hosted corpus |
+| 51 | conformal-lite | Split conformal 1-d residual interval at stated coverage | `docs/conformal-lite.html` + `apps/conformal-lite`; open the file or `node cli.js` | SHIPPED | Honest uncertainty for a score; paid later: batch intervals |
 
 ## This cycle (file-only, started)
 
@@ -74,6 +75,8 @@ Shipped in-repo now:
 - `docs/bait-hook.html`
 - `docs/swap-test.html`
 - `docs/index.html` (hub; no longer a silent redirect-only page)
+- `docs/conformal-lite.html`
+- `apps/conformal-lite`
 - this board
 
 Not started as files yet: 7–38, 46–50 (NEXT).  
