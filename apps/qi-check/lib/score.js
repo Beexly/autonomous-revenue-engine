@@ -1,8 +1,11 @@
 /**
- * qi-check v0.1 — deterministic, no model calls.
- * Scores draft text for first-screen hold / OCR-aligned structure.
+ * qi-check — deterministic gate.
+ * Hold floor is 9.2. 8.x is Soft rewrite. Never publish below Hold.
  * Does NOT rewrite, does NOT claim AI-detection bypass.
  */
+
+export const HOLD_FLOOR = 9.2;
+export const SOFT_FLOOR = 7.0;
 
 const BAIT_PATTERNS = [
   /\bhot take\b/i,
@@ -37,7 +40,9 @@ function scoreFirstScreenDensity(text) {
   const buried = /^(so|well|today|in this|let me|i('ve| have) been)\b/i.test(head.trim());
   let s = hasClaim ? 7 : 4;
   if (buried) s -= 2;
-  if (head.includes("?") && head.length < 80) s -= 1; // pure hook question
+  if (head.includes("?") && head.length < 80) s -= 1;
+  // Concrete decision in the open line
+  if (/\b(killed|refused|paid|shipped|deferred)\b/i.test(head.split(/[.!?]/)[0] || "")) s += 1.5;
   return clamp(s);
 }
 
@@ -49,13 +54,13 @@ function scoreFoldStructure(text) {
   let s = shortOpen ? 7 : 4;
   if (hasBody) s += 1;
   if (lines[0] === lines[0].toUpperCase() && lines[0].length > 20) s -= 2;
+  if (lines.length >= 3) s += 0.5;
   return clamp(s);
 }
 
 function scoreBait(text) {
   let hits = 0;
   for (const re of BAIT_PATTERNS) if (re.test(text)) hits++;
-  // 0 hits = 10, each hit -2
   return clamp(10 - hits * 2);
 }
 
@@ -76,10 +81,10 @@ function scoreBurstiness(text) {
   const variance =
     lens.reduce((a, b) => a + (b - mean) ** 2, 0) / lens.length;
   const cv = mean === 0 ? 0 : Math.sqrt(variance) / mean;
-  // very flat cadence (cv < 0.25) soft penalty
   if (cv < 0.2) return 4;
   if (cv < 0.35) return 6;
-  return 8;
+  if (cv < 0.55) return 8;
+  return 9;
 }
 
 function ocrFlags(text) {
@@ -88,7 +93,7 @@ function ocrFlags(text) {
     originalAnglePresent:
       /\b(we|i)\b/i.test(text) &&
       /\b(killed|paid|refused|built|failed|shipped)\b/i.test(text),
-    replyPrimaryOnly: false, // caller may override if posting as reply
+    replyPrimaryOnly: false,
     substancePastFirstScreen: text.trim().length > head.trim().length + 20,
   };
 }
@@ -125,31 +130,40 @@ export function scoreDraft(text, { platform = "x" } = {}) {
 
   const flags = ocrFlags(t);
   const fixes = [];
-  if (scores.firstScreenDensity < 6)
-    fixes.push("Put the concrete claim in the first 160 characters.");
-  if (scores.foldStructure < 6)
-    fixes.push("Open with a short line; add mechanism in line 2–3.");
-  if (scores.baitAvoidance < 8)
+  if (scores.firstScreenDensity < 8)
+    fixes.push("Put the concrete decision in the first line — not the third.");
+  if (scores.foldStructure < 7)
+    fixes.push("Open short; mechanism in line 2–3; no buried lede.");
+  if (scores.baitAvoidance < 9)
     fixes.push("Strip engagement-farm CTAs and listicle bait phrasing.");
-  if (scores.lengthFitness < 6)
-    fixes.push("Tighten length; prefer one complete thought over sprawl.");
-  if (scores.burstiness < 6)
+  if (scores.lengthFitness < 7)
+    fixes.push("Tighten length; one complete thought over sprawl.");
+  if (scores.burstiness < 7)
     fixes.push("Vary sentence length; avoid flat model cadence.");
   if (!flags.originalAnglePresent)
     fixes.push("Add a specific decision, cost, or failure — not a category lecture.");
+  if (total < HOLD_FLOOR)
+    fixes.push(`Composite ${total} is below Hold floor ${HOLD_FLOOR}. Rewrite or kill.`);
 
   let recommendation = "Hold";
-  if (total < 5.5 || scores.baitAvoidance < 6) recommendation = "Hard rewrite";
-  else if (total < 7.5 || fixes.length >= 2) recommendation = "Soft rewrite";
+  if (total < SOFT_FLOOR || scores.baitAvoidance < 6) recommendation = "Hard rewrite";
+  else if (
+    total < HOLD_FLOOR ||
+    scores.firstScreenDensity < 8 ||
+    scores.baitAvoidance < 9 ||
+    fixes.length >= 3
+  )
+    recommendation = "Soft rewrite";
 
   return {
     platform,
     scores,
     total,
+    floors: { hold: HOLD_FLOOR, soft: SOFT_FLOOR },
     flags,
     fixes,
     recommendation,
     firstScreenPreview: firstScreen(t),
-    version: "0.1.0",
+    version: "0.2.0",
   };
 }
