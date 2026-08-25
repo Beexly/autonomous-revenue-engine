@@ -1,5 +1,8 @@
 # Action log
 
+## LOG-030 — 2026-08-25T09:05 CDT — fold-ruler
+FIFTY_LOOPS #7: `docs/fold-ruler.html` paste → char/word count vs 160-char first-screen band. Does not rewrite, does not publish. No Stripe. Not a qi-check clone.
+
 ## LOG-029 — 2026-08-25 ~04:52 CDT — factory pack: swap-check, hn-bait, subject-fold. One PR, no merge. Static docs/swap-check.html. Not qi-check, not voice-delta. No publish.
 
 ## LOG-028 — 2026-08-25T04:55 CDT — fifty loops board + two static tools
