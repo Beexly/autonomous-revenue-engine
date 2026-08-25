@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { scoreDraft } from "../lib/score.js";
 
 export default function Page() {
   const [text, setText] = useState("");
@@ -8,20 +9,15 @@ export default function Page() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
-  async function onScore(e) {
+  function onScore(e) {
     e.preventDefault();
     setBusy(true);
     setError("");
     setResult(null);
     try {
-      const res = await fetch("/api/score", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, platform: "x" }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "score_failed");
+      const data = scoreDraft(text, { platform: "x" });
+      if (data.error) {
+        setError(data.error);
       } else {
         setResult(data);
       }
@@ -38,6 +34,7 @@ export default function Page() {
       <p style={{ color: "#b7b2a6", marginTop: 0 }}>
         Paste your draft. This scores first-screen density, bait, and Hold fitness.
         It does not write the post. It does not publish.
+        Scoring runs in the browser — no server required.
       </p>
       <form onSubmit={onScore}>
         <textarea
