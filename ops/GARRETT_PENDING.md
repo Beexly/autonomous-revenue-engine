@@ -7,8 +7,10 @@ clicks. Templates: [LANE1_SALES_KIT.md](./LANE1_SALES_KIT.md). Plan:
 
 ## Tonight (~45 min total)
 
-1. **Upwork** (15 min) — create/complete profile with the kit's §1 text, then
-   bid on 3 live jobs matching templates A/B/C. *Fastest path to $100–500.*
+1. **Upwork** (20 min) — create/complete profile with the kit's §1 text,
+   **publish the Project Catalog gig (kit §2b — passive inbound at
+   $150/$250/$750)**, then bid on 3 live jobs matching templates A/B/C.
+   *Fastest path to $100–500.*
 2. **Gumroad** (20 min) — create account, **verify ID immediately** (payout
    minimum drops $100→$10), then list BOTH products: (a) open
    `products/meta-tracking-audit-workbook.html` in a browser → Print → Save

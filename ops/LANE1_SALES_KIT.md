@@ -32,6 +32,31 @@ I publish my measurement tooling as open source: github.com/Beexly/autonomous-re
 
 **Bidding rules:** only jobs posted <24h ago; ≤4 sentences before the price; always end with one scoping question; never bid below $100; 3–5 bids/day beats 20 generic ones.
 
+## 2b. Upwork Project Catalog gig (passive inbound — publish alongside bidding)
+
+Verified 2026-08-25: buyers searching Upwork for this fix see fixed-price
+catalog gigs, and the top competitors all sell "setup via GTM" — none lead
+with evidence. That's the open lane.
+
+**Gig title:** Fix Meta Pixel + CAPI double-counting and raise Event Match Quality — with before/after proof
+
+**Three tiers:**
+- **Basic — $150 (2 days): Dedup & EMQ Check.** Event inventory, Pixel/CAPI
+  deduplication verification (event_id coverage), EMQ score per server event
+  with missing parameters named, top-3 fix list.
+- **Standard — $250 (3 days): Full 15-Point Diagnostic.** Everything in
+  Basic + action_source/consent-path/Diagnostics review + 7-day
+  Meta-vs-backend reconciliation + prioritized full fix list with effort
+  estimates. Written report.
+- **Premium — $750 (7 days): Diagnostic + Dedup Fix.** Standard + I fix the
+  event_id dedup and hashed-parameter normalization, verified live with
+  test events, with before/after EMQ and reconciliation evidence.
+
+**Gig description:**
+> Meta says 142 purchases; your store says 104. That gap isn't ad performance — it's usually Pixel + CAPI firing without a shared event_id, and Meta bills you on the inflated number. I diagnose exactly what's broken (deduplication, Event Match Quality, delivery health, attribution gaps) and prove every finding in YOUR Events Manager and backend numbers — no take-my-word-for-it. Shopify & WooCommerce. Fixed prices, no upsell treadmill, evidence report included at every tier.
+
+**FAQ answers to prefill:** "Do you need site code access?" — Not for Basic/Standard (Events Manager read access only); Premium needs whoever owns your site or app settings. "GTM or native?" — Both; I work with whatever stack you have.
+
 ## 3. Warm-network note (text/DM/email to ~20 people)
 
 > Hey [name] — quick one. I've gone independent doing Meta ads tracking repair: fixing the Pixel/CAPI double-counting and match-quality problems that quietly inflate ad costs for stores spending $5k+/mo. Fixed prices, proof included. If you know anyone running Shopify/Woo ads whose numbers never quite add up, I'd appreciate the intro. Either way — hope you're doing well.
