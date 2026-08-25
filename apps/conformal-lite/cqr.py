@@ -1,0 +1,37 @@
+"""Conformalized quantile residuals (CQR-style).
+
+Preferred for heteroscedastic continuous targets. Free core uses numpy only.
+MAPIE / Puncc / TorchCP are later optional backends, not required to run.
+"""
+from __future__ import annotations
+
+from typing import Tuple
+
+import numpy as np
+
+
+def quantile_residual(y: float, q_lo: float, q_hi: float) -> float:
+    return float(max(q_lo - y, y - q_hi))
+
+
+class ConformalQR:
+    def __init__(self, alpha: float = 0.1):
+        self.alpha = alpha
+        self.scores: list[float] = []
+        self.n = 0
+
+    def update(self, y: float, q_lo: float, q_hi: float) -> None:
+        self.scores.append(quantile_residual(y, q_lo, q_hi))
+        self.n += 1
+
+    def expand(self, q_lo: float, q_hi: float) -> Tuple[float, float]:
+        if self.n < 10:
+            pad = 0.5 * max(q_hi - q_lo, 1.0)
+            return q_lo - pad, q_hi + pad
+        q = float(np.quantile(self.scores, 1 - self.alpha, method="higher"))
+        return q_lo - q, q_hi + q
+
+    def predict_interval(self, y_pred: float, residual_scale: float = 1.0) -> Tuple[float, float]:
+        """Fallback when only a point prediction exists: treat ±scale as seed quantiles."""
+        q_lo, q_hi = y_pred - residual_scale, y_pred + residual_scale
+        return self.expand(q_lo, q_hi)
