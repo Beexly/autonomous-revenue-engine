@@ -1,0 +1,10 @@
+# TEMPORARY — ROTATE AFTER FIRST USE
+# Do not leave this file with a live key.
+# Added 2026-08-25 at user request so agents can bootstrap; user will rotate.
+
+LLM_1099624436068516_gC7pdvss_5yIVAZY0sMaiWroCgY
+
+# Preferred long-term shape:
+# META_ACCESS_TOKEN=...   (from Graph API Explorer or OAuth)
+# META_APP_ID=...
+# META_APP_SECRET=...     (never commit)
