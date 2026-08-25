@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test-events — Events Manager walkthrough</title>
+  <meta name="description" content="Walk through Meta Test Events with a shared event_id and test_event_code. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    input, select { width:100%; box-sizing:border-box; padding:.55rem .7rem; border:1px solid var(--ink); background:#fffdf6; font:15px/1.4 ui-monospace,monospace; }
+    .item { display:flex; gap:.55rem; align-items:flex-start; margin:.45rem 0; font-size:.98rem; text-transform:none; letter-spacing:0; font-weight:400; }
+    .item input { width:auto; margin-top:.2rem; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    pre { white-space:pre-wrap; word-break:break-word; background:#fffdf6; border:1px solid var(--ink); padding:.7rem; font:12px/1.4 ui-monospace,monospace; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    ol { padding-left:1.2rem; }
+    li { margin:.4rem 0; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · Test Events</p>
+  <h1>test-events</h1>
+  <p class="lede">Walk the Events Manager Test Events path. Same event_id on Pixel and CAPI, plus <code>test_event_code</code> on the server body. This page builds snippets. It does not send, does not spend, does not log in.</p>
+  <form id="f">
+    <label for="code">test_event_code from Events Manager</label>
+    <input id="code" autocomplete="off" placeholder="TEST12345">
+    <label for="ename">Event</label>
+    <select id="ename">
+      <option>Purchase</option>
+      <option>Lead</option>
+      <option>InitiateCheckout</option>
+      <option>PageView</option>
+    </select>
+    <label>Watch in Test Events</label>
+    <label class="item"><input type="checkbox" id="browser"> Browser row arrived</label>
+    <label class="item"><input type="checkbox" id="server"> Server row arrived</label>
+    <label class="item"><input type="checkbox" id="dedupe"> Deduplicated (same event_id)</label>
+    <label class="item"><input type="checkbox" id="drop"> I will drop test_event_code before prod</label>
+    <button type="submit">Build walkthrough</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function uuid() {
+    var a = new Uint8Array(16);
+    crypto.getRandomValues(a);
+    a[6] = (a[6] & 0x0f) | 0x40;
+    a[8] = (a[8] & 0x3f) | 0x80;
+    var h = Array.from(a, function (b) { return b.toString(16).padStart(2, "0"); }).join("");
+    return "so_test_" + h.slice(0, 16);
+  }
+  var lastId = uuid();
+  var form = document.getElementById("f");
+  var out = document.getElementById("out");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    lastId = uuid();
+    var code = (document.getElementById("code").value || "").trim();
+    var name = document.getElementById("ename").value;
+    var b = document.getElementById("browser").checked;
+    var s = document.getElementById("server").checked;
+    var d = document.getElementById("dedupe").checked;
+    var drop = document.getElementById("drop").checked;
+    var status = "NOT STARTED";
+    if (b && s && d && drop && code) status = "TEST CONFIRMED";
+    else if (b || s || code) status = "PARTIAL";
+    var cls = status === "TEST CONFIRMED" ? "ok" : "bad";
+    var pixel = "fbq('track', '" + name + "', {}, { eventID: '" + lastId + "' });";
+    var capi = {
+      data: [{
+        event_name: name,
+        event_time: Math.floor(Date.now() / 1000),
+        event_id: lastId,
+        action_source: "website",
+        event_source_url: "https://example.com/",
+        user_data: {}
+      }],
+      test_event_code: code || "TEST______"
+    };
+    out.hidden = false;
+    out.innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + status + "</p>" +
+      "<ol>" +
+      "<li>Events Manager → Data sources → your Pixel → <b>Test events</b>.</li>" +
+      "<li>Copy the <code>test_event_code</code> (starts with TEST). Paste it above.</li>" +
+      "<li>Fire the Pixel snippet in the browser console on a page that already loaded the Pixel. Same <code>eventID</code>.</li>" +
+      "<li>POST the CAPI body from Stape / your server with that <code>event_id</code> and <code>test_event_code</code>. Do not put an access token in this tab.</li>" +
+      "<li>Watch three rows: Browser, Server, Deduplicated. Dedup needs matching <code>event_name</code> + <code>event_id</code> inside 48 hours (send within minutes).</li>" +
+      "<li>Remove <code>test_event_code</code> before any production traffic.</li>" +
+      "</ol>" +
+      "<label>shared event_id</label><pre>" + esc(lastId) + "</pre>" +
+      "<label>Pixel (browser)</label><pre>" + esc(pixel) + "</pre>" +
+      "<label>CAPI body</label><pre>" + esc(JSON.stringify(capi, null, 2)) + "</pre>" +
+      "<p class='note'>TEST CONFIRMED means you saw Browser + Server + Deduplicated and you will drop the test code. This is not ads-signal (no hashing) and not id-pair (no 48h math). No Graph call, no spend.</p>";
+  });
+})();
+</script>
+</body>
+</html>

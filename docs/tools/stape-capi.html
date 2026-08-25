@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>stape-capi — Stape / CAPI payload checker</title>
+  <meta name="description" content="Paste a Stape or sGTM CAPI JSON body. Local checks only. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:11rem; padding:.55rem .7rem; border:1px solid var(--ink); background:#fffdf6; font:12px/1.4 ui-monospace,monospace; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; }
+    td { padding:.28rem 0; border-bottom:1px solid #e0d6c0; vertical-align:top; }
+    td.v { text-align:right; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · Stape / sGTM</p>
+  <h1>stape-capi</h1>
+  <p class="lede">Paste the JSON body Stape or sGTM would POST to <code>/events</code>. This checks event_id, action_source, hashed PII, and fbp/fbc. It does not send, does not call Graph, does not spend.</p>
+  <form id="f">
+    <label for="json">CAPI JSON</label>
+    <textarea id="json" placeholder='{"data":[{"event_name":"Purchase","event_time":1710000000,"event_id":"so_1","action_source":"website","user_data":{"em":["64hex"],"fbp":"fb.1.1710000000.1"}}]}'></textarea>
+    <button type="submit">Check</button>
+    <button type="button" id="ex">Load example</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function first(v) {
+    if (Array.isArray(v)) return v[0];
+    return v;
+  }
+  function hex64(s) { return /^[a-f0-9]{64}$/i.test(String(s || "")); }
+  function looksPlainEmail(s) { return /@/.test(String(s || "")); }
+  function looksPlainPhone(s) { return /^\+?[0-9\s().-]{7,}$/.test(String(s || "")) && !hex64(s); }
+  function unwrap(obj) {
+    if (!obj || typeof obj !== "object") return null;
+    if (Array.isArray(obj.data) && obj.data.length) return { event: obj.data[0], test: obj.test_event_code, wrap: true };
+    if (obj.event_name || obj.user_data) return { event: obj, test: obj.test_event_code, wrap: false };
+    if (Array.isArray(obj) && obj[0]) return { event: obj[0], test: null, wrap: false };
+    return { event: obj, test: obj.test_event_code, wrap: false };
+  }
+  function check(raw) {
+    var parsed;
+    try { parsed = JSON.parse(raw); }
+    catch (err) { return { status: "BROKEN", rows: [["json", "parse failed: " + err.message, false]], secret: false, event: null }; }
+    var blob = JSON.stringify(parsed);
+    var secret = /access_token|EAAB|sk_live|stape[_-]?api/i.test(blob);
+    var u = unwrap(parsed);
+    var ev = u.event || {};
+    var ud = ev.user_data || ev.userData || {};
+    var em = first(ud.em);
+    var ph = first(ud.ph);
+    var now = Math.floor(Date.now() / 1000);
+    var t = Number(ev.event_time);
+    var rows = [];
+    function add(k, ok, detail) { rows.push([k, detail, ok]); }
+    add("data[] wrap", u.wrap, u.wrap ? "Graph/Stape shape" : "single event object");
+    add("event_name", !!ev.event_name, ev.event_name || "missing");
+    add("event_id", !!ev.event_id, ev.event_id ? String(ev.event_id) : "missing — Pixel cannot dedupe");
+    add("action_source", !!ev.action_source, ev.action_source || "missing");
+    var timeOk = Number.isFinite(t) && t > 1000000000 && Math.abs(now - t) < 7 * 24 * 3600;
+    add("event_time", timeOk, Number.isFinite(t) ? String(t) : "missing unix seconds");
+    add("event_source_url", ev.action_source !== "website" || !!ev.event_source_url, ev.event_source_url || "needed when action_source=website");
+    var emOk = hex64(em);
+    add("em hashed", emOk, em ? (looksPlainEmail(em) ? "PLAINTEXT email — hash SHA-256 after lowercase+trim" : (emOk ? "64-hex" : "not 64-hex")) : "missing");
+    var phOk = !ph || hex64(ph);
+    add("ph hashed", !ph || hex64(ph), ph ? (looksPlainPhone(ph) ? "PLAINTEXT phone — digits then SHA-256" : (hex64(ph) ? "64-hex" : "not 64-hex")) : "optional");
+    add("fbp", !!ud.fbp, ud.fbp ? String(ud.fbp) : "missing — forward _fbp from the browser");
+    add("fbc", true, ud.fbc ? String(ud.fbc) : "optional unless a click id exists");
+    add("client_ip_address", !!ud.client_ip_address, ud.client_ip_address ? "present" : "missing on website events");
+    add("client_user_agent", !!ud.client_user_agent, ud.client_user_agent ? "present" : "missing on website events");
+    add("test_event_code", true, u.test ? String(u.test) + " — drop before prod" : "none (ok for prod)");
+    add("no secrets in body", !secret, secret ? "token-like string found — strip before sharing" : "none spotted");
+    var hardFail = !ev.event_name || !ev.event_id || !ev.action_source || looksPlainEmail(em) || looksPlainPhone(ph) || secret;
+    var weak = !emOk || !ud.fbp || !timeOk;
+    var status = hardFail ? "BROKEN" : (weak ? "WEAK" : "STAPE-READY");
+    return { status: status, rows: rows, secret: secret, event: ev };
+  }
+  var form = document.getElementById("f");
+  var out = document.getElementById("out");
+  document.getElementById("ex").addEventListener("click", function () {
+    document.getElementById("json").value = JSON.stringify({
+      data: [{
+        event_name: "Purchase",
+        event_time: Math.floor(Date.now() / 1000),
+        event_id: "stape_so_example",
+        action_source: "website",
+        event_source_url: "https://example.com/checkout/thank-you",
+        user_data: {
+          em: ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+          fbp: "fb.1.1710000000.123456",
+          client_ip_address: "203.0.113.9",
+          client_user_agent: "Mozilla/5.0"
+        },
+        custom_data: { currency: "USD", value: 84 }
+      }]
+    }, null, 2);
+  });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var data = check(document.getElementById("json").value.trim());
+    var cls = data.status === "STAPE-READY" ? "ok" : "bad";
+    var rows = data.rows.map(function (r) {
+      return "<tr><td>" + esc(r[0]) + "</td><td class='v " + (r[2] ? "ok" : "bad") + "'>" + esc(r[1]) + "</td></tr>";
+    }).join("");
+    out.hidden = false;
+    out.innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='note'>Stape / sGTM must forward the same event_id the Pixel used. Plaintext em/ph is a fail. This is not emq-cover (presence list) and not ads-signal (builder). No Graph call.</p>";
+  });
+})();
+</script>
+</body>
+</html>

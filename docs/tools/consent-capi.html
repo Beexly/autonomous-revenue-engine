@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>consent-capi — consent mode vs CAPI coverage</title>
+  <meta name="description" content="See what still fires when consent is denied: Pixel, CAPI, both, or dark. Does not send. Does not spend. Not legal advice.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    .item { display:flex; gap:.55rem; align-items:flex-start; margin:.45rem 0; font:15px/1.4 Georgia,serif; letter-spacing:0; text-transform:none; font-weight:400; }
+    .item input { margin-top:.2rem; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    table { width:100%; border-collapse:collapse; font:13px/1.35 ui-monospace,monospace; margin:.6rem 0; }
+    th, td { padding:.28rem .2rem; border-bottom:1px solid #e0d6c0; text-align:left; }
+    th { font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); }
+    td.v { text-align:right; }
+    .ok { color:var(--ok); font-weight:700; } .bad { color:var(--bad); font-weight:700; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:.4rem 0; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · consent coverage</p>
+  <h1>consent-capi</h1>
+  <p class="lede">When a banner denies ads storage, the Pixel goes dark. CAPI still covers the purchase if the <b>server</b> already has the event (Shopify webhook, Stape server) and a shared event_id. This is coverage, not legal advice. It does not send or spend.</p>
+  <form id="f">
+    <label>Consent flags</label>
+    <label class="item"><input type="checkbox" id="ad" checked> Google <code>ad_storage</code> granted</label>
+    <label class="item"><input type="checkbox" id="an" checked> Google <code>analytics_storage</code> granted</label>
+    <label class="item"><input type="checkbox" id="meta" checked> Meta / CMP ads granted</label>
+    <label>Server path (independent of the browser)</label>
+    <label class="item"><input type="checkbox" id="hook"> Shopify / checkout webhook fires Purchase on the server</label>
+    <label class="item"><input type="checkbox" id="eid"> Server payload has the same event_id the Pixel would have used</label>
+    <label class="item"><input type="checkbox" id="pii"> Server has hashed em/ph from first-party checkout (not scraped from a blocked Pixel)</label>
+    <button type="submit">Score coverage</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var form = document.getElementById("f");
+  var out = document.getElementById("out");
+  function yn(b) { return b ? "fires" : "blocked"; }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var ad = document.getElementById("ad").checked;
+    var an = document.getElementById("an").checked;
+    var meta = document.getElementById("meta").checked;
+    var hook = document.getElementById("hook").checked;
+    var eid = document.getElementById("eid").checked;
+    var pii = document.getElementById("pii").checked;
+    var pixel = ad && meta;
+    var capi = hook && pii;
+    var dedupe = pixel && capi && eid;
+    var status = "DARK";
+    if (pixel && capi) status = dedupe ? "BOTH + DEDUPE" : "BOTH, NO DEDUPE";
+    else if (capi) status = "CAPI-COVERED";
+    else if (pixel) status = "PIXEL-ONLY";
+    var cls = status === "DARK" || status === "PIXEL-ONLY" || status === "BOTH, NO DEDUPE" ? "bad" : "ok";
+    out.hidden = false;
+    out.innerHTML =
+      "<p class='ok'>DRY RUN — nothing sent</p>" +
+      "<p class='verdict " + cls + "'>" + status + "</p>" +
+      "<table><thead><tr><th>channel</th><th>this visitor</th></tr></thead><tbody>" +
+      "<tr><td>Pixel (browser)</td><td class='v " + (pixel ? "ok" : "bad") + "'>" + yn(pixel) + "</td></tr>" +
+      "<tr><td>CAPI (server)</td><td class='v " + (capi ? "ok" : "bad") + "'>" + yn(capi) + "</td></tr>" +
+      "<tr><td>Dedup event_id</td><td class='v " + (dedupe ? "ok" : "bad") + "'>" + (dedupe ? "yes" : "no") + "</td></tr>" +
+      "<tr><td>analytics_storage</td><td class='v'>" + (an ? "granted" : "denied") + "</td></tr>" +
+      "</tbody></table>" +
+      "<p class='note'>CAPI-COVERED is the point of server-side: denied-consent visitors still count if checkout hits Shopify/Stape with hashed PII you already had. PIXEL-ONLY means a banner kill silently drops purchases. DARK means neither channel. Not legal advice — lawful basis still required. Not emq-cover. Not ads-signal. No spend.</p>";
+  });
+})();
+</script>
+</body>
+</html>
