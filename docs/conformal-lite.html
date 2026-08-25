@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>conformal-lite — split conformal interval</title>
+  <meta name="description" content="1-d split conformal interval from calibration residuals and one new score. Finite-sample coverage only under exchangeability.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:0.7rem 0 .35rem; }
+    input, textarea { width:100%; box-sizing:border-box; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    textarea { min-height:5.5rem; resize:vertical; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.25rem; font-weight:700; }
+    .ok { color:var(--ok); } .bad { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .note { font-size:.85rem; color:var(--mute); }
+    .warn { color:var(--rule); font-size:.9rem; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · conformal free core</p>
+  <h1>conformal-lite</h1>
+  <p class="lede">Paste calibration residuals and one new score. This returns a split-conformal prediction interval at a stated coverage. It does not rewrite or publish. No Python, no MAPIE, no Stripe.</p>
+  <form id="f">
+    <label for="res">Calibration residuals (comma or newline)</label>
+    <textarea id="res" placeholder="0.2, 0.4, 0.1, 0.8, 0.3"></textarea>
+    <label for="score">New score</label>
+    <input id="score" type="text" inputmode="decimal" placeholder="1.1">
+    <label for="cov">Coverage target</label>
+    <input id="cov" type="text" value="0.9">
+    <button type="submit">Interval</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function splitConformal(residuals, score, coverage) {
+    if (!residuals.length) return { error: "empty_calibration", coverage: coverage };
+    if (!(coverage > 0 && coverage < 1)) return { error: "coverage_out_of_range", coverage: coverage };
+    var s = Number(score);
+    if (!isFinite(s)) return { error: "bad_score", coverage: coverage };
+    var r = residuals.map(function (x) { return Math.abs(x); }).sort(function (a, b) { return a - b; });
+    var n = r.length;
+    var k = Math.ceil((n + 1) * coverage);
+    if (k > n) {
+      return { n: n, coverage: coverage, k: k, q: Infinity, score: s, lo: -Infinity, hi: Infinity, infinite: true };
+    }
+    var q = r[k - 1];
+    return { n: n, coverage: coverage, k: k, q: q, score: s, lo: s - q, hi: s + q, infinite: false };
+  }
+  function parseRes(raw) {
+    return String(raw || "").split(/[,\s]+/).filter(Boolean).map(Number).filter(function (x) { return isFinite(x); });
+  }
+  function fmt(x) {
+    if (x === Infinity) return "∞";
+    if (x === -Infinity) return "-∞";
+    return String(Math.round(x * 10000) / 10000);
+  }
+  var form = document.getElementById("f");
+  var out = document.getElementById("out");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var data = splitConformal(
+      parseRes(document.getElementById("res").value),
+      document.getElementById("score").value,
+      Number(document.getElementById("cov").value)
+    );
+    out.hidden = false;
+    if (data.error) {
+      out.innerHTML = "<p class='bad'>" + data.error + "</p>";
+      return;
+    }
+    var rows =
+      "<tr><td class='k'>n (calibration)</td><td class='v'>" + data.n + "</td></tr>" +
+      "<tr><td class='k'>coverage</td><td class='v'>" + data.coverage + "</td></tr>" +
+      "<tr><td class='k'>k</td><td class='v'>" + data.k + "</td></tr>" +
+      "<tr><td class='k'>q</td><td class='v'>" + fmt(data.q) + "</td></tr>" +
+      "<tr><td class='k'>score</td><td class='v'>" + fmt(data.score) + "</td></tr>" +
+      "<tr><td class='k'>interval</td><td class='v'>[" + fmt(data.lo) + ", " + fmt(data.hi) + "]</td></tr>";
+    var head = data.infinite ? "INFINITE INTERVAL" : "INTERVAL";
+    var cls = data.infinite ? "bad" : "ok";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + head + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='warn'>Finite-sample coverage holds only if exchangeability holds. If the new score is from a different regime, this is not a guarantee.</p>" +
+      "<p class='note'>Not qi-check. Does not rewrite. Does not publish.</p>";
+  });
+})();
+</script>
+</body>
+</html>
