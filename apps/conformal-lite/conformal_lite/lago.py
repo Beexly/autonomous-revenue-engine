@@ -16,7 +16,7 @@ from urllib import error, request
 
 
 def _jsonl(row: dict) -> None:
-    path = Path(__file__).with_name("meter_events.jsonl")
+    path = Path(os.environ.get("ORIGIN_METER_PATH", "meter_events.jsonl"))
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(row) + "\n")
 

@@ -6,14 +6,41 @@ Does not rewrite copy. Does not publish. Does not meter paid usage unless `ORIGI
 
 **Honesty:** finite-sample coverage needs an exchangeability (or stated adaptive) assumption. X engagement and other non-stationary streams should use `saocp` or `evalue`, not plain split residual conformal. Sports/DFS is not a product of this package.
 
+## Install
+
+```
+pip install "conformal-lite @ git+https://github.com/Beexly/autonomous-revenue-engine@main#subdirectory=apps/conformal-lite"
+```
+
+Or from a checkout: `cd apps/conformal-lite && pip install .`
+
 ## Run
 
 ```
-cd apps/conformal-lite
-pip install -r requirements.txt
-python -m conformal_lite --mode aci
-python -m unittest test_core.py
+conformal-lite --mode aci            # also: saocp | cqr | evalue
+python -m conformal_lite --mode saocp --alpha 0.05 --steps 500
 ```
+
+```python
+from conformal_lite import make
+
+model = make("saocp", alpha=0.1)
+for y_true, y_pred in stream:
+    lo, hi = model.predict_interval(y_pred)
+    model.update(y_true, y_pred)
+```
+
+## Test
+
+```
+cd apps/conformal-lite
+python -m unittest discover -s tests
+```
+
+Interval calibration uses the finite-sample conformal quantile
+(the ⌈(n+1)(1−α)⌉-th smallest score). When the calibration set is too small
+for the requested coverage, intervals are honestly unbounded rather than
+silently under-covering.
 
 ## Modes
 

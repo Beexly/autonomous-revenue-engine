@@ -5,6 +5,8 @@ from typing import Callable, Optional, Tuple
 
 import numpy as np
 
+from .quantiles import conformal_quantile
+
 
 class AdaptiveConformal:
     """Online ACI. Tracks a time-varying miscoverage level alpha_t."""
@@ -30,7 +32,7 @@ class AdaptiveConformal:
         score = float(self.score_fn(y_true, y_pred))
         self.calibration_scores.append(score)
         self.n += 1
-        q = np.quantile(self.calibration_scores, 1 - self.alpha_t, method="higher")
+        q = conformal_quantile(self.calibration_scores, self.alpha_t)
         err = 1.0 if score > q else 0.0
         self.alpha_t = float(
             np.clip(
@@ -46,11 +48,11 @@ class AdaptiveConformal:
         if self.n < 10:
             width = 2.0 * residual_scale
             return y_pred - width, y_pred + width
-        q = np.quantile(self.calibration_scores, 1 - self.alpha_t, method="higher")
+        q = conformal_quantile(self.calibration_scores, self.alpha_t)
         width = float(q) * residual_scale
         return y_pred - width, y_pred + width
 
     def predict_set_size_hint(self) -> float:
         if self.n < 5:
             return float("inf")
-        return float(np.quantile(self.calibration_scores, 1 - self.alpha_t, method="higher"))
+        return conformal_quantile(self.calibration_scores, self.alpha_t)

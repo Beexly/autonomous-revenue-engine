@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from typing import Optional, Tuple
 
-import numpy as np
+from .quantiles import conformal_quantile
 
 
 def quantile_residual(y: float, q_lo: float, q_hi: float) -> float:
@@ -38,7 +38,7 @@ class ConformalQR:
         if self.n < 10:
             pad = 0.5 * max(q_hi - q_lo, 1.0)
             return q_lo - pad, q_hi + pad
-        q = float(np.quantile(self.scores, 1 - self.alpha, method="higher"))
+        q = conformal_quantile(self.scores, self.alpha)
         return q_lo - q, q_hi + q
 
     def predict_interval(self, y_pred: float, residual_scale: float = 1.0) -> Tuple[float, float]:

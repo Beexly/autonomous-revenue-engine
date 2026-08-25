@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conformal-lite"
+version = "0.1.0"
+description = "Free-core adaptive conformal prediction: ACI, SAOCP-style expert mix, CQR, and e-value modes. Numpy-only, honest coverage caveats."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Garrett Baxley" }]
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.22"]
+keywords = ["conformal-prediction", "uncertainty", "prediction-intervals", "calibration", "e-values"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/Beexly/autonomous-revenue-engine/tree/main/apps/conformal-lite"
+Repository = "https://github.com/Beexly/autonomous-revenue-engine"
+
+[project.scripts]
+conformal-lite = "conformal_lite.__main__:main"
+
+[tool.setuptools]
+packages = ["conformal_lite"]

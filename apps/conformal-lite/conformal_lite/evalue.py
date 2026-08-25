@@ -6,7 +6,7 @@ keeping a Markov/Ville-style bound. See Gauthier et al. on e-values for CP.
 """
 from __future__ import annotations
 
-import numpy as np
+from .quantiles import conformal_quantile
 
 
 def soft_rank_e(score: float, calibration: list[float]) -> float:
@@ -42,7 +42,7 @@ class EValueConformal:
         if self.n < 10:
             w = 2.0 * residual_scale
             return y_pred - w, y_pred + w
-        q = float(np.quantile(self.calibration_scores, 1 - self.alpha, method="higher"))
+        q = conformal_quantile(self.calibration_scores, self.alpha)
         return y_pred - q, y_pred + q
 
     def e_for(self, y_true: float, y_pred: float) -> float:

@@ -5,3 +5,10 @@ meter_events.jsonl
 __pycache__/
 *.pyc
 .venv/
+
+# Python build artifacts
+__pycache__/
+*.egg-info/
+build/
+dist/
+meter_events.jsonl
