@@ -1,0 +1,16 @@
+{
+  "name": "conformal-lite",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Split conformal 1-d residual interval. Coverage is finite-sample only under exchangeability. Does not rewrite. Does not publish.",
+  "type": "module",
+  "bin": {
+    "conformal-lite": "./cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
