@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ocr-eligible — public OCR checklist</title>
+  <meta name="description" content="Static checklist of public X Original Content Rewards rules. No API. Does not apply for you.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    .item { display:flex; gap:.6rem; align-items:flex-start; margin:.55rem 0; font-size:.98rem; }
+    .item input { margin-top:.2rem; }
+    .nums { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin:1rem 0 .4rem; }
+    input[type=number] { width:100%; box-sizing:border-box; padding:.55rem .5rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .paper { color:var(--ok); } .gaps { color:var(--rule); } .no { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · OCR public rules</p>
+  <h1>ocr-eligible</h1>
+  <p class="lede">Self-check against public Original Content Rewards rules (X Help, 2026). Qualified impressions are unique Premium Home Timeline views where ≥50% of the post is visible. This page does not call X, apply, or spend.</p>
+  <form id="f">
+    <label class="item"><input type="checkbox" id="premium"> Active Premium / Premium+ / Premium Business</label>
+    <label class="item"><input type="checkbox" id="age"> 18+ in an eligible country, good standing</label>
+    <label class="item"><input type="checkbox" id="acct"> Personal or business account (not political / gov org)</label>
+    <label class="item"><input type="checkbox" id="orig"> Actively posting original content (not an aggregator)</label>
+    <label class="item"><input type="checkbox" id="apply"> Willing to apply — admission is not automatic</label>
+    <div class="nums">
+      <div>
+        <label for="followers">Verified followers</label>
+        <input id="followers" type="number" min="0" step="1" placeholder="500">
+      </div>
+      <div>
+        <label for="impr">Verified HT impressions, 90d (replies off)</label>
+        <input id="impr" type="number" min="0" step="1" placeholder="500000">
+      </div>
+    </div>
+    <button type="submit">Check</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function num(el) {
+    var v = parseInt(el.value, 10);
+    return isNaN(v) ? 0 : v;
+  }
+  function measure() {
+    var flags = {
+      premium: document.getElementById("premium").checked,
+      age: document.getElementById("age").checked,
+      acct: document.getElementById("acct").checked,
+      orig: document.getElementById("orig").checked,
+      apply: document.getElementById("apply").checked
+    };
+    var followers = num(document.getElementById("followers"));
+    var impr = num(document.getElementById("impr"));
+    var followOk = followers >= 500;
+    var imprOk = impr >= 500000;
+    var hard = [flags.premium, flags.age, flags.acct, flags.orig, followOk, imprOk];
+    var miss = 0;
+    for (var i = 0; i < hard.length; i++) if (!hard[i]) miss++;
+    var status = "NOT ELIGIBLE";
+    if (miss === 0 && flags.apply) status = "ELIGIBLE ON PAPER";
+    else if (miss === 0) status = "GAPS";
+    else if (miss <= 2) status = "GAPS";
+    return { status: status, miss: miss, followers: followers, impr: impr, followOk: followOk, imprOk: imprOk, apply: flags.apply };
+  }
+  var form = document.getElementById("f");
+  var out = document.getElementById("out");
+  function render() {
+    var data = measure();
+    var cls = data.status === "ELIGIBLE ON PAPER" ? "paper" : data.status === "GAPS" ? "gaps" : "no";
+    var rows =
+      "<tr><td class='k'>verified followers</td><td class='v'>" + data.followers + (data.followOk ? " · ≥500" : " · need 500") + "</td></tr>" +
+      "<tr><td class='k'>verified HT 90d</td><td class='v'>" + data.impr + (data.imprOk ? " · ≥500k" : " · need 500k") + "</td></tr>" +
+      "<tr><td class='k'>hard misses</td><td class='v'>" + data.miss + "</td></tr>" +
+      "<tr><td class='k'>application</td><td class='v'>" + (data.apply ? "noted" : "still required") + "</td></tr>";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='note'>Public rules only. Replies do not count toward the 500k bar. Qualified impressions still need ≥50% visible on Premium Home Timeline. This page does not apply, log in, or spend.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  form.addEventListener("change", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>

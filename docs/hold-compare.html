@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hold-compare — two pastes, local</title>
+  <meta name="description" content="Side-by-side first-screen compare. Local only. Not qi-check. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:42rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    .cols { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .win { color:var(--ok); } .tie { color:var(--rule); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    th, td { padding:.22rem .3rem; border-bottom:1px dotted #d8ccb4; }
+    th { text-align:left; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); }
+    td.v { text-align:right; font-family:ui-monospace,monospace; }
+    td.best { background:#e7f0d8; }
+    .note { font-size:.85rem; color:var(--mute); }
+    @media (max-width:640px) { .cols { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · pair compare</p>
+  <h1>hold-compare</h1>
+  <p class="lede">Paste before and after. Local first-screen proxies only. This is not qi-check (no 9.2 composite) and it does not publish.</p>
+  <form id="f">
+    <div class="cols">
+      <div>
+        <label for="a">A · before</label>
+        <textarea id="a" placeholder="A: the draft you already had."></textarea>
+      </div>
+      <div>
+        <label for="b">B · after</label>
+        <textarea id="b" placeholder="B: the rewrite."></textarea>
+      </div>
+    </div>
+    <button type="submit">Compare</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var VERBS = /\b(killed|paid|refused|shipped|closed|cut|fired|merged|stopped|blocked|raised|deleted|rewrote|failed|lost|won|sold)\b/i;
+  var BAIT = /\b(you won'?t believe|thread below|follow for|like and|link in bio|what did i miss)\b/i;
+  function score(raw) {
+    var t = String(raw || "").replace(/\r\n/g, "\n");
+    var chars = t.length;
+    var band = t.slice(0, 160);
+    var words = t.trim() ? t.trim().split(/\s+/).length : 0;
+    var nums = (t.match(/\d/g) || []).length > 0;
+    var verb = VERBS.test(band);
+    var bait = BAIT.test(t);
+    var n = 0;
+    if (verb) n += 3;
+    if (nums) n += 3;
+    if (chars >= 40 && chars <= 280) n += 2;
+    if (!bait) n += 2;
+    if (chars === 0) n = 0;
+    return { chars: chars, words: words, band: band.length, verb: verb, nums: nums, bait: bait, screen: n };
+  }
+  var form = document.getElementById("f");
+  var aEl = document.getElementById("a");
+  var bEl = document.getElementById("b");
+  var out = document.getElementById("out");
+  function cell(v, best) { return "<td class='v" + (best ? " best" : "") + "'>" + v + "</td>"; }
+  function yn(b) { return b ? "yes" : "no"; }
+  function render() {
+    var A = score(aEl.value);
+    var B = score(bEl.value);
+    if (!A.chars && !B.chars) {
+      out.hidden = false;
+      out.innerHTML = "<p class='tie'>empty_text</p>";
+      return;
+    }
+    var status = "TIE";
+    if (B.screen > A.screen) status = "B WINS";
+    else if (A.screen > B.screen) status = "A WINS";
+    var cls = status === "TIE" ? "tie" : "win";
+    function row(label, av, bv, aBest, bBest) {
+      return "<tr><th>" + label + "</th>" + cell(av, aBest) + cell(bv, bBest) + "</tr>";
+    }
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + status + "</p>" +
+      "<table><thead><tr><th></th><th>A</th><th>B</th></tr></thead><tbody>" +
+      row("screen /10", A.screen, B.screen, A.screen > B.screen, B.screen > A.screen) +
+      row("chars", A.chars, B.chars, false, false) +
+      row("words", A.words, B.words, false, false) +
+      row("first 160", A.band, B.band, false, false) +
+      row("claim verb in band", yn(A.verb), yn(B.verb), A.verb && !B.verb, B.verb && !A.verb) +
+      row("number somewhere", yn(A.nums), yn(B.nums), A.nums && !B.nums, B.nums && !A.nums) +
+      row("bait phrase", yn(A.bait), yn(B.bait), !A.bait && B.bait, !B.bait && A.bait) +
+      "</tbody></table>" +
+      "<p class='note'>screen /10 is a local proxy (verb in first 160, a number, 40–280 chars, no bait). Hold remains qi-check ≥ 9.2. This page does not score Hold and does not publish.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  aEl.addEventListener("input", function () { if (!out.hidden) render(); });
+  bEl.addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>

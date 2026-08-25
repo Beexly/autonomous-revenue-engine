@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>thread-beats — local 1/n sheet</title>
+  <meta name="description" content="Local 1/n beat sheet. Does not post. Does not rewrite.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    .row { display:flex; gap:.7rem; align-items:end; margin-top:.75rem; }
+    input[type=number] { width:4.5rem; padding:.55rem .5rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    button { background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .ready { color:var(--ok); } .thin { color:var(--rule); } .past { color:var(--bad); }
+    .beat { border:1px solid var(--ink); background:#fffdf6; padding:.65rem .75rem; margin:.55rem 0; }
+    .beat .n { font:700 11px/1 ui-monospace,monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--rule); }
+    .beat .t { white-space:pre-wrap; margin:.35rem 0 0; }
+    .beat .c { font:12px/1 ui-monospace,monospace; color:var(--mute); margin-top:.35rem; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · thread structure</p>
+  <h1>thread-beats</h1>
+  <p class="lede">Paste a draft. This cuts it into a local 1/n beat sheet. It does not post, schedule, or rewrite.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="Beat 1 is the decision.\nBeat 2 is the cost.\nBeat 3 is the refuse."></textarea>
+    <div class="row">
+      <div>
+        <label for="n">Beats</label>
+        <input id="n" type="number" min="2" max="12" value="5">
+      </div>
+      <button type="submit">Plan</button>
+    </div>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function sentences(raw) {
+    var t = String(raw || "").replace(/\r\n/g, "\n").trim();
+    if (!t) return [];
+    var parts = t.split(/(?<=[.!?])(?:\s+|\n+|$)/).map(function (s) { return s.trim(); }).filter(Boolean);
+    if (parts.length < 2) {
+      parts = t.split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    }
+    if (!parts.length) parts = [t];
+    return parts;
+  }
+  function chunk(parts, n) {
+    var out = [];
+    var i, j;
+    if (parts.length >= n) {
+      var size = Math.ceil(parts.length / n);
+      for (i = 0; i < n; i++) {
+        var slice = parts.slice(i * size, (i + 1) * size);
+        out.push(slice.join(" "));
+      }
+      return out.filter(Boolean);
+    }
+    var joined = parts.join(" ").split(/\s+/).filter(Boolean);
+    var per = Math.max(1, Math.ceil(joined.length / n));
+    for (i = 0; i < n; i++) {
+      var words = joined.slice(i * per, (i + 1) * per);
+      if (words.length) out.push(words.join(" "));
+    }
+    return out;
+  }
+  function measure(raw, n) {
+    n = Math.max(2, Math.min(12, parseInt(n, 10) || 5));
+    var parts = sentences(raw);
+    if (!parts.length) return { status: "EMPTY" };
+    var beats = chunk(parts, n);
+    var thin = 0, past = 0;
+    for (var i = 0; i < beats.length; i++) {
+      var c = beats[i].length;
+      if (c < 40) thin++;
+      if (c > 280) past++;
+    }
+    var status = "PLAN READY";
+    if (past) status = "PAST-FOLD";
+    else if (thin >= 2) status = "TOO THIN";
+    return { status: status, n: beats.length, beats: beats, thin: thin, past: past };
+  }
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var nEl = document.getElementById("n");
+  var out = document.getElementById("out");
+  function render() {
+    var data = measure(input.value, nEl.value);
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='thin'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "PLAN READY" ? "ready" : data.status === "TOO THIN" ? "thin" : "past";
+    var cards = data.beats.map(function (b, i) {
+      var label = (i + 1) + "/" + data.n;
+      var flag = b.length > 280 ? " · past 280" : b.length < 40 ? " · thin" : "";
+      return "<div class='beat'><div class='n'>" + label + "</div><p class='t'>" + esc(b) + "</p><p class='c'>" + b.length + " chars" + flag + "</p></div>";
+    }).join("");
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      cards +
+      "<p class='note'>Local sheet only. Does not post. PAST-FOLD = a beat over 280 chars. TOO THIN = two or more beats under 40. Not qi-check.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  input.addEventListener("input", function () { if (!out.hidden) render(); });
+  nEl.addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>
