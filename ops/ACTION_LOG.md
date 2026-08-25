@@ -1,18 +1,18 @@
 # ACTION_LOG
 
+## 2026-08-25 — ads playbook ACTIVE now
+
+- `ops/ADS_PLAYBOOK.md` is the live SOP. Not deferred. Spend still needs `APPROVE spend`.
+- Shipped `docs/ads-signal.html` (event_id + local SHA-256, no send).
+- Shipped specificity / jargon / contrast. Hub updated.
+- Calibration log: `ops/ADS_CALIBRATION.csv` (header only).
+- Meta Ads MCP still cannot OAuth from Cursor (no dynamic client registration). Devtools connected, app list empty. Work around, do not wait.
+- Conformal snippet: run from `apps/conformal-lite`, `from core import make`. CQR needs q_lo/q_hi.
+- Public posts still APPROVE-gated. No invented revenue.
+
 ## 2026-08-25 — burstiness + Lago/CAPI + key off HEAD
 
-- Merged PR 12: Lago events client (`apps/conformal-lite/lago.py`), CAPI `event_id` + hashed-PII helpers (`capi.py`), root `.gitignore` for `*.local` / `.env`.
-- Deleted `ops/META_KEY.local` from HEAD. Token remains in git history — rotate it. Do not re-commit secrets.
-- Shipped `docs/burstiness.html` (sentence-length CV sparkline). Hub lists swap-check + burstiness.
-- Board: fold-ruler and burstiness marked SHIPPED. conformal-lite already on main (PR 10).
-- No ads spend. No Lago Cloud. Public posts still APPROVE-gated.
-
-## 2026-08-25 — Signal Origin conformal stack alignment
-
-- Added master prompt v4 (`ops/SIGNAL_ORIGIN_MASTER_PROMPT.md`)
-- Added follow-on prompt for SAOCP + CQR + e-value (`ops/FOLLOWON_SAOCP_CQR_EVALUE.md`)
-- Added minimal AdaptiveConformal free core + soft-rank e-value helper (`apps/adaptive-cp/adaptive_cp.py`)
-- Next for Grok Bot: implement SAOCP backend, integrate CQR, extend e-value wrapper, then Lago metering path.
+- Merged PR 12: Lago events client, CAPI helpers, gitignore. Deleted `ops/META_KEY.local` from HEAD.
+- Shipped burstiness. conformal-lite already on main (PR 10).
 
 Previous entries remain above this block in the live repo history.
