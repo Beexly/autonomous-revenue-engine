@@ -1,5 +1,27 @@
 # ACTION_LOG
 
+## 2026-08-25 — Claude operator pass: audit, hard fixes, revenue reality
+
+- Full-repo audit (4 auditors) + market research sweep. Headline: real code,
+  real discipline, $0 because nothing is published or for sale and every
+  buyer-facing motion is human-gated shut. Full synthesis: `ops/REVENUE_REALITY.md`.
+- **Fixed invalid e-value math** in conformal-lite: the soft-rank construction
+  was the reciprocal of a p-value (E[e]≈4.4 under the null — not an e-variable).
+  Replaced with the mean-ratio e-variable (E[e]=1 exactly; product is a test
+  martingale). The honesty-surface non-negotiable now actually holds.
+- conformal-lite is now a real package: `pip install` works, `conformal-lite`
+  CLI, finite-sample conformal quantile (unbounded when n too small instead of
+  silent under-coverage), prequential ACI update, honest SAOCP/CQR labels,
+  12/12 tests green. Dropped the duplicate `apps/adaptive-cp`.
+- Added MIT LICENSE (repo was all-rights-reserved — the "free cores" were not
+  legally reusable). Deleted 7 boilerplate template workflows (two failed every
+  push); added one real CI (Python suite + node --test × 5 JS apps).
+- Rewrote `ops/GARRETT_PENDING.md` revenue-first. Top human actions: rotate the
+  leaked Meta token (still in public git history), enable GitHub Pages, merge
+  the PR, greenlight the Lane-1 CAPI/EMQ audit service.
+- No posts, no spend, no accounts, no payment rails touched. All APPROVE gates
+  respected.
+
 ## 2026-08-25 — burstiness + Lago/CAPI + key off HEAD
 
 - Merged PR 12: Lago events client (`apps/conformal-lite/lago.py`), CAPI `event_id` + hashed-PII helpers (`capi.py`), root `.gitignore` for `*.local` / `.env`.

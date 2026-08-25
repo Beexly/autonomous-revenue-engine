@@ -1,63 +1,43 @@
 # GARRETT'S PENDING WORK
 
-**Updated:** 2026-08-24 19:26 CDT  
-**Repo:** Beexly/autonomous-revenue-engine  
-**Rule:** Minimum human steps. Everything else is operator-owned.
+**Updated:** 2026-08-25 (Claude operator pass)
+**Rule:** Minimum human steps, ranked by revenue impact. Full reasoning: [REVENUE_REALITY.md](./REVENUE_REALITY.md)
 
 ---
 
-## Do now
+## Do now (~30 min total)
 
-1. **Apply CRT identity** (Identity tab / brand pack)
-   - Avatar → X, Instagram, TikTok, YouTube, Gmail
-   - X header + YouTube banner
-   - Kill any old ring mark
+1. **Rotate the leaked Meta token** — app ID 1099624436068516. The key
+   committed in `ops/META_KEY.local` is still recoverable from public git
+   history (`git show 0a38eed:ops/META_KEY.local`). Rotate/revoke in the Meta
+   developer console, then note "rotated" in ACTION_LOG. *10 min.*
+2. **Enable GitHub Pages** — repo Settings → Pages → Deploy from branch →
+   `main` / `docs`. Turns the 8 finished tools into a real public URL.
+   *1 click.*
+3. **Review + merge the open PR** from `claude/signal-origin-handoff-vzl6b0`
+   (MIT LICENSE, installable conformal-lite, fixed e-value math, real CI).
+4. **Read REVENUE_REALITY.md §4 Lane 1** and say GO if you want the CAPI/EMQ
+   audit service drafted for launch — the operator then produces the offer
+   page, checklist, listings, and outreach drafts for your approval.
 
-2. **Do not post.** Hold floor is **9.2**. SO-012 was 7.9 (Soft rewrite). Paste SO-013 into qi-check after Build threshold sync; only publish if it shows Hold ≥ 9.2 and is listed under Approved in [PASS_QUEUE.md](./PASS_QUEUE.md).
+## Soon (when asked / when convenient)
 
-3. **Optional — Grok 4.6 Build prompt** (if you open Build to sync the gate):
-
-```
-Signal Origin qi-check gate sync.
-
-1. Hold recommendation requires composite >= 9.2 AND firstScreenDensity >= 8 AND baitAvoidance >= 9. Soft rewrite for 7.0–9.19. Hard rewrite below 7.0 or bait < 6. The UI currently labels 7.9 as Hold — that is wrong.
-2. VoiceFit must hard-penalize one-word / two-word staccato lines ("Clean structure." "Not policy. Quality."). Fragments like that are Soft rewrite maximum.
-3. Score this draft and report full breakdown + recommendation:
-
-We killed three posts that had already cleared our own Pass gate.
-
-Each one was clean and structured enough that a hundred AI-operator accounts could have run the same lines. The swap would not have shown.
-
-We chose silence over a first impression that teaches people we are generic.
-
-4. If composite < 9.2, propose one Soft rewrite that keeps human-primary authorship (no new facts, no CTA, no hashtags) and re-score. Do not mark Hold until the floor is cleared.
-5. Commit threshold constants to the score module so 8.x can never display as Hold again.
-```
-
----
+- PyPI account + one `twine upload` (operator prepares the package + command).
+- Enable GitHub Sponsors on the Beexly account.
+- First posts: after the gate recalibration in REVENUE_REALITY.md §5 —
+  technical/service surfaces are honesty-gated, not 9.2-voice-gated.
 
 ## Done (do not redo)
 
-- [x] Create X / IG / TikTok / YouTube / Gmail
-- [x] X Premium paid (personal, not Business)
-- [x] X bio applied
-- [x] OpenRouter key + Laguna-S / ox-alpha route
-- [x] Hold floor **9.2** locked in repo (2026-08-24)
-
----
-
-## Later
-
-| Item | When |
-|------|------|
-| Domain + ~$50 | After first real Hold post |
-| X API paid credits | Only when poster scaffold is ready |
-| Notion operator grant | Optional |
-| Stripe / x402 mainnet | Not now |
+- [x] X / IG / TikTok / YouTube / Gmail accounts created
+- [x] X Premium paid (personal)
+- [x] Hold floor 9.2 locked for brand-voice posts (scope narrowed — see REVENUE_REALITY.md §5)
+- [x] MIT LICENSE, installable conformal-lite, valid e-value, real CI (this branch)
 
 ## Do not
-- Post anything under 9.2 Hold
-- Open gadget-market-intelligence-dashboard
-- Generate a second brand mark
-- Buy paid LLM credits
-- Use `@Signal_origin` (wrong handle)
+
+- Commit secrets (`.gitignore` now blocks `*.local` / `.env`, but the old key
+  still needs rotation)
+- Spend on ads, domains, or paid credits before Lane 1 or 2 produces revenue
+- Start a new strategy document; the standing set is REVENUE_REALITY.md +
+  master prompt + review checklist
