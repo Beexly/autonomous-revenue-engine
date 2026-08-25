@@ -1,28 +1,33 @@
-# Autonomous Revenue Engine (ARE)
+# Signal Origin
 
-Fully autonomous AI-operated revenue generation project.
+Measurement tools and honest statistics for ads tracking and content
+quality — built in public, in this repo.
 
-**Mission:** Generate real revenue with near-zero human input, using 2026-native AI agent patterns. No basic prompt packs. No generic wrappers. Focus on vertical multi-agent systems, specialized workflow kits, and high-fidelity digital products that solve narrow, high-pain professional problems.
+**Status board:** [ops/REVENUE_REALITY.md](ops/REVENUE_REALITY.md) (plan) ·
+[ops/GARRETT_PENDING.md](ops/GARRETT_PENDING.md) (owner queue) ·
+[ops/ACTION_LOG.md](ops/ACTION_LOG.md) (log)
 
-**Operator:** Grok. Standing order: [HANDOFF.md](HANDOFF.md) (ACTIVE).
+## What's here
 
-**Status Dashboard:** [Notion Control Page](https://app.notion.com/p/3c60c5a3de9781f9ab2edc419ad454bc)
-
-**Current Phase:** Foundation + First Product. First candidate batch gated. Zero published.
+| Thing | Where | State |
+|---|---|---|
+| **conformal-lite** — numpy-only adaptive conformal prediction (ACI, expert-mix, CQR, e-values with valid finite-sample guarantees). `pip install`-able, CI-tested. | [`apps/conformal-lite/`](apps/conformal-lite/) | Working, 12 tests green |
+| **Meta Tracking Audit** — fixed-price Pixel+CAPI dedup & EMQ service + free 15-point DIY checklist | [`docs/meta-tracking-audit.html`](docs/meta-tracking-audit.html) | Live when Pages is enabled |
+| **Products** — audit workbook, ads tracking & reconciliation spreadsheet | [`products/`](products/) | Ready to list |
+| **Content-quality micro-tools** — qi-check, swap-check, voice-delta (Burrows' Delta), hn-bait, subject-fold, burstiness, staccato, fold-ruler | [`apps/`](apps/) + [`docs/`](docs/) | Working, tested |
+| **CAPI/Lago helpers** — event_id dedup, hashed-PII normalization, usage-event emitter | [`apps/conformal-lite/conformal_lite/`](apps/conformal-lite/conformal_lite/) | Working, env-gated |
 
 ## Principles
-- Maximum autonomy
-- Human authorship primary; AI production only
-- Non-mainstream / frontier 2026 approaches
-- Create once → sell repeatedly
-- No AI packages / prompt products (see ops/STRATEGY.md)
-- Leverage free tiers (Vercel, free model APIs, GitHub, Notion, etc.)
-- Revenue is the only scoreboard
 
-## Structure
-- `/products` — Sellable digital assets
-- `/agents` — Agent definitions, orchestration patterns, evals
-- `/experiments` — Tests and learnings
-- `/ops` — Status, domain research, first-batch log
+- Honest numbers only: every public statistical claim carries a verifiable
+  guarantee (conformal interval, valid e-value, or raw evidence). No fake
+  revenue, no invented metrics, ever.
+- Human-primary voice: AI drafts, the human authors and sends.
+- Free cores are genuinely useful; paid tiers are convenience and
+  done-for-you, not crippled features.
 
-Updates driven autonomously.
+MIT licensed (see [LICENSE](LICENSE)) except `products/`, which are paid
+artifacts (personal/internal business use; no resale).
+
+Operator: AI-driven under [ops/GROK_OPERATOR_PROMPT_V5.md](ops/GROK_OPERATOR_PROMPT_V5.md);
+owner and author: Garrett Baxley ([@GalaxySportsAI](https://x.com/GalaxySportsAI)).

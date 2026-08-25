@@ -9,10 +9,12 @@ clicks. Templates: [LANE1_SALES_KIT.md](./LANE1_SALES_KIT.md). Plan:
 
 1. **Upwork** (15 min) — create/complete profile with the kit's §1 text, then
    bid on 3 live jobs matching templates A/B/C. *Fastest path to $100–500.*
-2. **Gumroad** (15 min) — create account, **verify ID immediately** (payout
-   minimum drops $100→$10), open `products/meta-tracking-audit-workbook.html`
-   in a browser → Print → Save as PDF → upload with the kit's §4 listing at
-   $19 launch price. *First item on sale.*
+2. **Gumroad** (20 min) — create account, **verify ID immediately** (payout
+   minimum drops $100→$10), then list BOTH products: (a) open
+   `products/meta-tracking-audit-workbook.html` in a browser → Print → Save
+   as PDF → upload with kit §4 listing at $19 launch; (b) upload
+   `products/meta-ads-tracking-template.xlsx` as-is with kit §4b listing at
+   $12. Cross-link them as a $29 bundle. *Two items on sale.*
 3. **Warm note** (10 min) — send kit §3 to 20 people from your phone.
 4. **Merge PR #17, click "Approve and run workflows", enable GitHub Pages**
    (Settings → Pages → main /docs) (5 min) — offer page + checklist go live

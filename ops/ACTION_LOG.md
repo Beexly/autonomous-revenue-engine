@@ -1,5 +1,26 @@
 # ACTION_LOG
 
+## 2026-08-25 — second product, PyPI prepped, README truth pass, launch kit
+
+- Product #2 shipped: `products/meta-ads-tracking-template.xlsx` (UTM
+  builder, weekly Meta-vs-backend reconciliation with automatic CHECK
+  DEDUP/CHECK DELIVERY flags, EMQ tracker, campaign log with true-CPA gap).
+  194 formulas, classic functions only, verified structurally; note:
+  LibreOffice unavailable in the build sandbox so cached values are absent —
+  Excel/Google Sheets recalculate on open (verified formula logic by hand on
+  the example rows).
+- PyPI release fully prepped: name `conformal-lite` confirmed available,
+  wheel + sdist built, wheel verified in a clean venv (install, CLI, imports).
+  Owner steps documented in apps/conformal-lite/README.md — account + one
+  `twine upload`.
+- Root README rewritten to match reality (portfolio-grade front door; no
+  claimed-but-nonexistent directories).
+- `ops/LAUNCH_CONTENT_KIT.md`: Show HN draft (uses the corrected-e-value
+  story honestly), Stape partner application, pinned-post + 10 post
+  candidates (voice-gated), reply-first cadence, Reddit comment policy.
+- Sales kit §4b: Gumroad listing for product #2 + bundle move. Money list
+  updated to list both products in one sitting.
+
 ## 2026-08-25 — Claude operator pass: audit, hard fixes, revenue reality
 
 - Full-repo audit (4 auditors) + market research sweep. Headline: real code,

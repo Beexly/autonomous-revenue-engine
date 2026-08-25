@@ -44,6 +44,14 @@ I publish my measurement tooling as open source: github.com/Beexly/autonomous-re
 > A 90-minute, fill-in-the-blanks audit of your Meta ads tracking. 15 checks across four parts: deduplication (are you double-counting purchases?), Event Match Quality (which parameters you're missing and why normalization matters), delivery health (rejected events, consent-path behavior), and a fix-priority matrix with a before/after evidence record. Written for store owners and marketers — no code needed to run the checks; every fix is flagged for whoever owns your site. If Meta's numbers and your backend's numbers disagree, this finds why.
 **Also:** enable "ratings", add the checklist page URL as your "free preview" link.
 
+## 4b. Gumroad listing #2 (products/meta-ads-tracking-template.xlsx — upload as-is)
+
+**Title:** Meta Ads Tracking & Reconciliation Tracker (Excel/Google Sheets)
+**Price:** $12 (or bundle with the workbook at $29 total)
+**Description:**
+> The spreadsheet that catches tracking rot before it burns your budget. Four working tools: a UTM builder that assembles tagged URLs for you; a weekly Meta-vs-backend reconciliation that automatically flags likely double-counting ("CHECK DEDUP") or missing events ("CHECK DELIVERY"); an Event Match Quality tracker that counts your missing customer parameters per event; and a campaign log that computes your TRUE cost-per-acquisition from backend conversions next to the CPA Meta shows you. Yellow cells are yours, formulas do the rest, worked example row included. Works in Excel and Google Sheets.
+**Bundle move:** on each product's page, cross-link the other ("pairs with…"). Bundles lift average order value with zero extra work.
+
 ## 5. Job applications (parallel lane — this is also revenue)
 
 Portfolio paragraph for applications/LinkedIn:

@@ -49,4 +49,20 @@ silently under-covering.
 - `cqr` — conformalized quantile residuals (preferred for heteroscedastic scores). MAPIE/Puncc/TorchCP are optional later backends, not required here.
 - `evalue` — soft-rank e-variable for post-hoc α / anytime-valid checks
 
-Paid wedge (later, Lago): higher coverage, streaming API, bulk. Not wired.
+Paid wedge (later, Lago): hosted calibration-as-a-service (send predictions +
+outcomes, get always-valid intervals/alerts back), metered. Not wired.
+
+## Release to PyPI (owner, one time)
+
+The name `conformal-lite` is unclaimed on PyPI (checked 2026-08-25) and the
+wheel is verified (clean-venv install, CLI + imports pass).
+
+```
+pip install build twine
+cd apps/conformal-lite && python -m build
+twine upload dist/*        # prompts for your PyPI API token
+```
+
+Create the account + token at pypi.org → Account settings → API tokens.
+After upload, `pip install conformal-lite` works for everyone; bump
+`version` in pyproject.toml for future releases.
