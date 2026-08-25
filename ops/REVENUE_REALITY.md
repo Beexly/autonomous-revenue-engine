@@ -155,6 +155,76 @@ the payout.
 **Not a lane.** See §2. Forks are raw material for Lanes 1 and 3 only, under
 the license rules above.
 
+### Lane 6 — Rented distribution: marketplaces & the many-small-items engine
+**First dollar: days-to-weeks per item. The honest version of "10,000 items × $0.50."**
+
+The insight that makes this lane real: Lanes 1–4 all require *building*
+distribution from zero — the project's #1 structural weakness. Marketplaces
+*rent* distribution: buyers are already there searching. The engine motion is
+produce → list → measure sell-through → double down on what sells → kill the
+rest.
+
+The honest math first: long-tail item revenue is power-law, not uniform.
+10,000 items do not make $0.50 each — a handful make most of the money and
+the median item makes $0. Marketplaces in 2026 are also actively raising
+bars against AI-flood content (Etsy AI policies, stock-site submission caps,
+app-store review). So the engine that works is NOT spray-10,000; it is:
+**ship 10–20 quality items in niches where we hold real edge, measure weekly
+sell-through, iterate the winners into families, kill the rest.** Volume
+comes from iterating winners, not from spraying.
+
+Ranked by (our edge × marketplace demand × effort):
+1. **Productized-knowledge ladder off Lane 1** (live now): free checklist page
+   (`docs/meta-tracking-audit.html`) → **$19–39 packaged workbook on Gumroad**
+   (same content, polished PDF + fillable evidence templates + walkthrough)
+   → $250 diagnostic → $500–1,500 done-for-you. Every tier funnels to the
+   next. This is the first real "item" and it exists today.
+2. **Template families** (Notion / Canva creator program / spreadsheet
+   templates on Gumroad-Etsy): ad-tracking trackers, UTM planners,
+   measurement dashboards — knowledge we already hold, near-zero marginal
+   cost per variant, real marketplace search demand. $5–29 price points.
+3. **A tiny Shopify app** (later, after Lane 1 revenue): "CAPI Dedup Monitor"
+   — continuously verifies event_id parity + EMQ and alerts. Recurring $5–15/mo
+   per store, sold where the exact buyer already shops. Higher effort, real
+   moat from Lane 1 casework. Requires app review; not a week-one move.
+4. **Stock/asset marketplaces**: only where AI-assisted work is allowed with
+   disclosure, only in niches with demonstrated search volume. Lowest edge,
+   strictest floors — probe with 5 items max before investing further.
+Dead ends (verified): VS Code / Chrome extensions have no native payment
+rails; GPT-store-style listings pay ~nothing; x402 covered above.
+
+Rule: every item ships with honest descriptions, no fake reviews/social
+proof ever, and each marketplace listing is a Garrett-approval (it's a
+public surface with his name on the account).
+
+## 4b. Social growth mechanics (what "blow up" actually takes)
+
+Nobody can promise virality — anyone who does is selling something. What
+compounds reach for a small account is mechanical and boring:
+
+- **X (primary).** The Phoenix weights the repo already holds say it: replies
+  are worth 5–20× and copy-link shares ~20×. The proven small-account motion
+  is **reply-first**: 20–40 genuinely value-dense replies/day to large
+  accounts in the niche (ads/measurement/analytics), inside the first hour
+  of their posts, from Garrett's account. Original posts 3–5×/week (voice
+  gate applies). Grok may draft reply candidates; Garrett edits and sends —
+  X's Original Content Rewards disqualifies automated content, so
+  human-primary here is not just brand law, it is eligibility law.
+- **Content pillars tied to lanes** so every impression has a job:
+  (1) build-in-public with real numbers — the honesty brand is the
+  differentiator; (2) Meta tracking failure autopsies → feeds Lane 1;
+  (3) calibration/uncertainty explainers → feeds Lane 3.
+- **Short-form: TikTok-first** (only reachable payout gate + discovery-based
+  distribution where small accounts genuinely can pop), ≥60s, cross-post to
+  Shorts/Reels. Hook in the first 1.5s, one idea per video.
+- **Every profile carries the funnel**: link → audit page + Gumroad + email
+  capture. A viral post with no capture is a wasted lottery win.
+- **Realistic bar:** 90 days of daily reps to reach 1–5k engaged followers
+  is a *good* outcome; payouts stay ~$0 (§Lane 4) — the reach's value is
+  funnel traffic. Forecast reach with conformal intervals before any public
+  growth claim (CONFORMAL_FOR_PLATFORM_METRICS.md); never claim numbers we
+  can't show.
+
 ## 5. Operating loop (replaces gate-first loop)
 
 Weekly: 1 buyer-facing ship (Lane 1/3), 1 outreach batch prepared (Lane 1/2),

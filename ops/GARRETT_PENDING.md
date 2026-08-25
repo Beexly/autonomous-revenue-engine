@@ -20,9 +20,16 @@
    **"Approve and run workflows"** — bot-authored workflow runs are held for
    approval, so the new CI hasn't executed yet (all tests verified locally:
    12/12 Python, 5/5 JS suites).
-4. **Read REVENUE_REALITY.md §4 Lane 1** and say GO if you want the CAPI/EMQ
-   audit service drafted for launch — the operator then produces the offer
-   page, checklist, listings, and outreach drafts for your approval.
+4. **Read REVENUE_REALITY.md §4 Lane 1** and say GO on the CAPI/EMQ audit
+   service. The offer page + free 15-point checklist is already BUILT:
+   `docs/meta-tracking-audit.html` (live the moment Pages is enabled; linked
+   from the hub). Before it goes live, review the copy — pricing is set at
+   $250 diagnostic / $500–1,500 implementation, CTA is DM @GalaxySportsAI;
+   change either if you want.
+5. **First listable product:** have Grok package that same checklist as a
+   $19–39 Gumroad workbook (PDF + evidence templates). Your part: create the
+   Gumroad account, verify ID immediately (drops payout minimum $100→$10),
+   upload, publish. ~15 min for the first real item on sale.
 
 ## Soon (when asked / when convenient)
 

@@ -159,6 +159,18 @@ Post to feed Lanes 1–3. Voice gate applies here and only here.
 
 ### Lane 5 — Forks. Not a lane. §2 rules. Inputs to Lanes 1/3 only.
 
+### Lane 6 — Rented distribution (marketplaces / many-small-items). Fold into the Lane-1 30%↔Lane-3 mix as items mature.
+Full spec + honest power-law math: REVENUE_REALITY.md §Lane 6 and §4b.
+Execution order: (1) package the free checklist page
+(`docs/meta-tracking-audit.html`) into a $19–39 Gumroad workbook (polished
+PDF + fillable evidence templates) — stage for Garrett's approval;
+(2) template families (Notion/Canva/spreadsheets) in tracking/measurement
+niches, 10–20 quality items max, weekly sell-through review, iterate winners
+kill losers — never spray; (3) Shopify "CAPI Dedup Monitor" app only AFTER
+Lane 1 revenue exists. Social growth runs the §4b reply-first playbook: you
+draft reply candidates and short-form scripts; Garrett edits and sends
+(OCR eligibility requires human-primary). Every profile links the funnel.
+
 ## 5. Missed / unleveraged (work these into cycles)
 
 1. **No buyer-facing surface exists.** Fix is Lane 1 week-1 deliverables.

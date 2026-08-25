@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta Tracking Audit — Pixel + CAPI dedup &amp; EMQ, fixed</title>
+<meta name="description" content="Fixed-price Meta Pixel + Conversions API audit: deduplication verification, Event Match Quality scoring, attribution-gap analysis. Free DIY checklist below.">
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a;background:#fff}
+  h1{font-size:1.6rem;margin-bottom:.2rem}
+  h2{font-size:1.2rem;margin-top:2rem;border-bottom:1px solid #ddd;padding-bottom:.2rem}
+  .muted{color:#666;font-size:.92rem}
+  .tier{border:1px solid #ccc;border-radius:8px;padding:1rem;margin:.8rem 0}
+  .tier b{font-size:1.05rem}
+  .price{float:right;font-weight:700}
+  .cta{display:inline-block;border:2px solid #1a1a1a;border-radius:6px;padding:.5rem 1rem;margin:.6rem 0;text-decoration:none;color:#1a1a1a;font-weight:600}
+  ol li,ul li{margin:.35rem 0}
+  code{background:#f4f4f4;padding:.1rem .3rem;border-radius:3px;font-size:.9em}
+  .fine{font-size:.85rem;color:#666;margin-top:2.5rem;border-top:1px solid #eee;padding-top:.8rem}
+</style>
+</head>
+<body>
+<h1>Your Meta ads are being billed on broken data.</h1>
+<p class="muted">Pixel + Conversions API double-counting, low Event Match Quality, and attribution gaps quietly inflate your cost-per-result. If you spend $5k+/month on Meta, a tracking defect is usually a four-figure annual leak.</p>
+
+<h2>Done-for-you</h2>
+<div class="tier"><span class="price">$250 flat</span><b>Meta Tracking Diagnostic</b> — 3 business days<br>
+Events Manager deep review · Pixel/CAPI deduplication verification (shared <code>event_id</code> coverage per event) · EMQ score per event with the exact parameters missing · <code>action_source</code> and server-event correctness · Meta-vs-backend count reconciliation · prioritized fix list with effort estimates. You get a written report with before-state evidence.</div>
+<div class="tier"><span class="price">$500–$1,500</span><b>Implementation</b> — scoped from the diagnostic<br>
+Dedup fix (event_id parity across browser + server) · server-side event setup or repair · hashed-PII normalization for EMQ lift · test-event verification · after-state evidence: EMQ before/after and count reconciliation vs your backend. Fixed quote before work starts.</div>
+<p><a class="cta" href="https://x.com/GalaxySportsAI" rel="noopener">DM @GalaxySportsAI to book</a></p>
+<p class="muted">Evidence-first: every claim in the report is verifiable in your own Events Manager and backend numbers. No retainers required.</p>
+
+<h2>DIY: the free 15-point checklist</h2>
+<p class="muted">This is the real checklist, not a teaser. If you work through it yourself and get stuck, that's what the diagnostic is for.</p>
+<ol>
+  <li><b>Inventory events.</b> Events Manager → Data sources → your Pixel. List every event arriving via Browser, Server, or Both. Anything business-critical (Purchase, Lead, InitiateCheckout) should be <b>Both</b>.</li>
+  <li><b>Check dedup status.</b> For each "Both" event, open it and look for "deduplicated" statistics. Meta dedupes when browser and server send the same <code>event_name</code> + <code>event_id</code>. No shared <code>event_id</code> → you are double-counting.</li>
+  <li><b>Verify event_id generation.</b> The SAME unique id must be produced once per user action and passed to BOTH the Pixel call and the CAPI payload. Two independent random ids = no dedup. (Shopify native + a custom CAPI app is the classic double-count setup.)</li>
+  <li><b>Confirm the dedup window.</b> Server event must arrive within 48h of the browser event; in practice send within minutes. Batched nightly CAPI uploads of events the Pixel already sent will double-count.</li>
+  <li><b>Score EMQ per event.</b> Events Manager shows Event Match Quality (1–10) for server events. Under 6 is leaving performance on the table; 8+ is the goal for Purchase/Lead.</li>
+  <li><b>Fix EMQ inputs.</b> EMQ rises with matched customer parameters: email (<code>em</code>) and phone (<code>ph</code>) as SHA-256 of lowercase/trimmed values, <code>external_id</code>, <code>fbp</code>/<code>fbc</code> cookies forwarded from the browser, client IP + user agent on website events. Check which are absent per event — that's your fix list.</li>
+  <li><b>Normalize before hashing.</b> Lowercase, trim, strip formatting BEFORE SHA-256 (phone in E.164 digits). Hashing "&nbsp;Name@Gmail.com" and "name@gmail.com" produce different hashes — silent match-rate killers.</li>
+  <li><b>Check action_source.</b> Server events must carry the true source (<code>website</code>, <code>physical_store</code>, etc.). Wrong action_source risks rejection and skews attribution.</li>
+  <li><b>Forward fbp/fbc.</b> Your server events should include the <code>_fbp</code> cookie and, when a click id exists, <code>fbc</code>. Missing fbc on paid-click conversions is one of the most common attribution leaks.</li>
+  <li><b>Use Test Events before trusting anything.</b> Events Manager → Test events + <code>test_event_code</code> on server payloads. Trigger a real test purchase; watch browser + server rows arrive and dedupe live.</li>
+  <li><b>Reconcile against your backend.</b> Pick 7 days. Compare Meta-reported Purchases vs your store's actual orders. Within ~5–15% is normal (attribution modeling); 30%+ high = double-counting; large undercount = events not firing or being rejected.</li>
+  <li><b>Check event coverage after consent banners.</b> Test as an EU/consent-declined visitor: does your CAPI still send server events you're allowed to send? Consent tools silently killing the Pixel while CAPI keeps firing (or vice versa) breaks dedup assumptions.</li>
+  <li><b>Look for rejected/filtered events.</b> Events Manager → Diagnostics tab. Address every active issue; rejected events never make it into optimization.</li>
+  <li><b>Verify domain + aggregated setup.</b> Domain verified in Business Manager; web events configured. Unverified domains degrade delivery of your conversions.</li>
+  <li><b>Re-check after every theme/app/checkout change.</b> Tracking breaks silently on redesigns and app installs. Calendar a monthly 10-minute pass of items 2, 5, 11, 13.</li>
+</ol>
+
+<h2>Why listen to us</h2>
+<p>We publish our measurement tooling as open source (<a href="https://github.com/Beexly/autonomous-revenue-engine">github.com/Beexly/autonomous-revenue-engine</a>) — including CAPI dedup/hashing helpers and a calibration library with honest statistical guarantees. Same discipline in the reports: numbers you can verify, nothing you can't.</p>
+
+<p class="fine">Signal Origin · Houston, TX · <a href="https://x.com/GalaxySportsAI" rel="noopener">@GalaxySportsAI</a> · Independent service; not affiliated with or endorsed by Meta Platforms, Inc.</p>
+</body>
+</html>
