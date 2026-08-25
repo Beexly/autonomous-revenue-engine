@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>id-pair — Pixel vs CAPI event_id sanity</title>
+  <meta name="description" content="Paste a browser Pixel payload and a CAPI payload. Check shared event_id, event_name, and the 48h dedup window. Does not send. Does not spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8a2a12; --warn:#8a5a12; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:40rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    textarea { width:100%; box-sizing:border-box; padding:.55rem .7rem; border:1px solid var(--ink); background:#fffdf6; font:12px/1.4 ui-monospace,monospace; }
+    button { margin:.7rem .5rem 0 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .ok { color:var(--ok); font-weight:700; }
+    .bad { color:var(--bad); font-weight:700; }
+    .warn { color:var(--warn); font-weight:700; }
+    .note { font-size:.85rem; color:var(--mute); }
+    ul { padding-left:1.15rem; }
+    li { margin:.35rem 0; }
+    code { font:12px/1.3 ui-monospace,monospace; }
+    .pair { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
+    @media (max-width:640px) { .pair { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · ads signal</p>
+  <h1>id-pair</h1>
+  <p class="lede">Meta dedupes when browser and server share the same <code>event_name</code> + <code>event_id</code> and the server row lands within 48 hours. Paste both sides. This page compares; it does not send.</p>
+  <form id="f">
+    <div class="pair">
+      <div>
+        <label for="px">Pixel / browser</label>
+        <textarea id="px" rows="10" placeholder="fbq('track', 'Purchase', {}, { eventID: 'so_\u2026' });"></textarea>
+      </div>
+      <div>
+        <label for="capi">CAPI / server</label>
+        <textarea id="capi" rows="10" placeholder='{"event_name":"Purchase","event_id":"so_\u2026","event_time":1710000000,"action_source":"website"}'></textarea>
+      </div>
+    </div>
+    <button type="submit">Check pair</button>
+    <button type="button" id="ex">Load example</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function grab(obj, keys) {
+    if (!obj || typeof obj !== "object") return "";
+    for (var i = 0; i < keys.length; i++) {
+      if (obj[keys[i]] != null && String(obj[keys[i]]).length) return String(obj[keys[i]]);
+    }
+    return "";
+  }
+  function fromFbq(text) {
+    var name = "", id = "", time = "";
+    var m = text.match(/fbq\s*\(\s*['"]track(?:Custom)?['"]\s*,\s*['"]([^'"]+)['"]/i);
+    if (m) name = m[1];
+    var idm = text.match(/eventID['"]?\s*[:=]\s*['"]([^'"]+)['"]/i)
+      || text.match(/event_id['"]?\s*[:=]\s*['"]([^'"]+)['"]/i);
+    if (idm) id = idm[1];
+    var tm = text.match(/event[_]?time['"]?\s*[:=]\s*['"]?(\d+)/i);
+    if (tm) time = tm[1];
+    return { event_name: name, event_id: id, event_time: time, action_source: "" };
+  }
+  function fromJson(text) {
+    var o = JSON.parse(text);
+    if (Array.isArray(o)) o = o[0] || {};
+    if (o.data && Array.isArray(o.data)) o = o.data[0] || o;
+    var ev = o.event || o;
+    return {
+      event_name: grab(ev, ["event_name", "eventName", "name", "ev"]),
+      event_id: grab(ev, ["event_id", "eventId", "eventID", "id"]),
+      event_time: grab(ev, ["event_time", "eventTime", "timestamp"]),
+      action_source: grab(ev, ["action_source", "actionSource"])
+    };
+  }
+  function parseSide(text) {
+    text = (text || "").trim();
+    if (!text) return { event_name: "", event_id: "", event_time: "", action_source: "" };
+    try { return fromJson(text); } catch (e) { return fromFbq(text); }
+  }
+  function toUnix(v) {
+    if (v == null || v === "") return null;
+    var n = Number(v);
+    if (!isFinite(n)) {
+      var d = Date.parse(v);
+      return isFinite(d) ? Math.floor(d / 1000) : null;
+    }
+    if (n > 1e12) return Math.floor(n / 1000);
+    if (n > 1e10) return Math.floor(n / 1000);
+    return Math.floor(n);
+  }
+  document.getElementById("ex").addEventListener("click", function () {
+    var t = Math.floor(Date.now() / 1000);
+    document.getElementById("px").value = "fbq('track', 'Purchase', {value: 48, currency: 'USD'}, { eventID: 'so_pair_demo_7f3a' });\n// browser time \u2248 " + t;
+    document.getElementById("capi").value = JSON.stringify({
+      event_name: "Purchase",
+      event_id: "so_pair_demo_7f3a",
+      event_time: t + 42,
+      action_source: "website",
+      user_data: { fbp: "fb.1." + t + ".1" }
+    }, null, 2);
+  });
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var a = parseSide(document.getElementById("px").value);
+    var b = parseSide(document.getElementById("capi").value);
+    var items = [];
+    function row(ok, warn, msg) {
+      items.push("<li class='" + (ok ? "ok" : warn ? "warn" : "bad") + "'>" + msg + "</li>");
+    }
+    if (!a.event_id && !b.event_id) row(false, false, "No event_id on either side. Meta cannot dedupe.");
+    else if (!a.event_id) row(false, false, "Pixel missing eventID / event_id.");
+    else if (!b.event_id) row(false, false, "CAPI missing event_id.");
+    else if (a.event_id === b.event_id) row(true, false, "event_id match: <code>" + esc(a.event_id) + "</code>");
+    else row(false, false, "event_id mismatch: Pixel <code>" + esc(a.event_id) + "</code> vs CAPI <code>" + esc(b.event_id) + "</code>");
+
+    var na = (a.event_name || "").toLowerCase();
+    var nb = (b.event_name || "").toLowerCase();
+    if (!na && !nb) row(false, true, "event_name missing on both sides \u2014 paste fbq('track', Name) or JSON event_name.");
+    else if (!na) row(false, true, "Pixel event name not parsed.");
+    else if (!nb) row(false, true, "CAPI event_name missing.");
+    else if (na === nb) row(true, false, "event_name match: <code>" + esc(a.event_name) + "</code>");
+    else row(false, false, "event_name mismatch: <code>" + esc(a.event_name) + "</code> vs <code>" + esc(b.event_name) + "</code>");
+
+    if (!b.action_source) row(false, true, "CAPI action_source missing. Website events should send <code>website</code>.");
+    else row(true, false, "action_source: <code>" + esc(b.action_source) + "</code>");
+
+    var ta = toUnix(a.event_time);
+    var tb = toUnix(b.event_time);
+    if (ta == null && tb == null) row(false, true, "No event_time parsed. Window check skipped. Server must arrive within 48h of the browser event.");
+    else if (ta == null || tb == null) {
+      var one = ta != null ? ta : tb;
+      row(false, true, "Only one timestamp (" + one + "). Need both to score the 48h window.");
+    } else {
+      var dt = Math.abs(tb - ta);
+      var hours = (dt / 3600).toFixed(2);
+      if (dt <= 48 * 3600) {
+        var clsOk = dt <= 900;
+        row(clsOk, !clsOk, "\u0394t " + hours + "h (" + dt + "s). Inside 48h" + (dt <= 900 ? " and within 15 minutes \u2014 good." : ". Prefer minutes, not a nightly batch of Pixel-already-sent events."));
+      } else {
+        row(false, false, "\u0394t " + hours + "h. Outside the 48h dedup window \u2014 both rows can count.");
+      }
+    }
+    if (b.event_id && /^(1|test|event|purchase)$/i.test(b.event_id)) {
+      row(false, false, "event_id looks reused or generic. Generate once per user action.");
+    }
+    var fails = items.filter(function (x) { return x.indexOf("class='bad'") !== -1; }).length;
+    var head = fails === 0
+      ? "<p class='ok'>Pair looks dedup-able \u2014 still confirm in Test Events.</p>"
+      : "<p class='bad'>" + fails + " hard fail" + (fails === 1 ? "" : "s") + ". This pair will double-count or drop.</p>";
+    document.getElementById("out").hidden = false;
+    document.getElementById("out").innerHTML =
+      "<p class='ok'>DRY RUN \u2014 nothing sent</p>" + head + "<ul>" + items.join("") + "</ul>" +
+      "<p class='note'>Dedup key is event_name + event_id. This page does not call the Graph API and does not spend.</p>";
+  });
+})();
+</script>
+</body>
+</html>
