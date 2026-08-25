@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>emoji-strip — yarn and bait glyphs</title>
+  <meta name="description" content="Strips thread/bait emoji and reports the residue. Does not rewrite. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .clean { color:var(--ok); } .soft { color:var(--rule); } .hard { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .box { font:14px/1.45 ui-monospace,monospace; background:#fffdf6; border:1px solid var(--ink); padding:.7rem .75rem; white-space:pre-wrap; word-break:break-word; }
+    .cap { font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); margin:0 0 .3rem; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · glyph strip</p>
+  <h1>emoji-strip</h1>
+  <p class="lede">Paste a draft. This removes 🧵🔥👇➡️🔗 and other emoji. Hashtags and follow-lines stay (cta-strip handles those). It does not rewrite or publish.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="Shipped the 9.2 floor. 🧵👇"></textarea>
+    <button type="submit">Strip</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var GLYPH = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}🧵🔥👇➡️🔗]/gu;
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function words(s) {
+    var t = String(s || "").trim();
+    return t ? t.split(/\s+/).filter(Boolean).length : 0;
+  }
+  function measure(raw) {
+    var t = String(raw || "").replace(/\r\n/g, "\n");
+    if (!t.trim()) return { status: "EMPTY" };
+    var hits = t.match(GLYPH) || [];
+    var bait = (t.match(/[🧵🔥👇➡️🔗]/g) || []).length;
+    var residue = t.replace(GLYPH, " ").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
+    var status = "CLEAN";
+    if (hits.length >= 3 || bait >= 2) status = "GLYPH-HEAVY";
+    else if (hits.length > 0) status = "GLYPH";
+    return { status: status, glyphs: hits.length, bait: bait, before: words(t), after: words(residue), residue: residue };
+  }
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var out = document.getElementById("out");
+  function render() {
+    var data = measure(input.value);
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='soft'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "CLEAN" ? "clean" : data.status === "GLYPH" ? "soft" : "hard";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<table><tbody>" +
+      "<tr><td class='k'>glyphs</td><td class='v'>" + data.glyphs + "</td></tr>" +
+      "<tr><td class='k'>thread bait</td><td class='v'>" + data.bait + "</td></tr>" +
+      "<tr><td class='k'>words before</td><td class='v'>" + data.before + "</td></tr>" +
+      "<tr><td class='k'>words after</td><td class='v'>" + data.after + "</td></tr>" +
+      "</tbody></table>" +
+      "<p class='cap'>residue</p><div class='box'>" + esc(data.residue || "(nothing left)") + "</div>" +
+      "<p class='note'>GLYPH-HEAVY is 3+ emoji or 2+ of 🧵🔥👇➡️🔗. Hashtags stay on purpose. Use cta-strip if you want those gone too. Does not post.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  input.addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>

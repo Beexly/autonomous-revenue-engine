@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dup-opener — shared first lines</title>
+  <meta name="description" content="Paste a candidate plus three refs. Flags shared first lines. Does not rewrite. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:.7rem 0 .35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:5.2rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    #cand { min-height:7rem; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .fresh { color:var(--ok); } .near { color:var(--rule); } .dup { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; vertical-align:top; }
+    td.k { color:var(--mute); width:4.2rem; } td.v { font-family:ui-monospace,monospace; font-size:.85rem; }
+    .line { font:14px/1.45 ui-monospace,monospace; background:#fffdf6; border:1px solid var(--ink); padding:.7rem .75rem; white-space:pre-wrap; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · opener overlap</p>
+  <h1>dup-opener</h1>
+  <p class="lede">Paste a candidate and up to three already-shipped refs. This flags a shared first line. It does not rewrite or publish.</p>
+  <form id="f">
+    <label for="cand">Candidate</label>
+    <textarea id="cand" placeholder="First line is the decision."></textarea>
+    <label for="r1">Ref 1</label>
+    <textarea id="r1" placeholder="A post you already ran."></textarea>
+    <label for="r2">Ref 2</label>
+    <textarea id="r2"></textarea>
+    <label for="r3">Ref 3</label>
+    <textarea id="r3"></textarea>
+    <button type="submit">Check</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function firstLine(raw) {
+    var t = String(raw || "").replace(/\r\n/g, "\n").trim();
+    if (!t) return "";
+    var line = t.split(/\n/)[0].trim();
+    var cut = line.split(/(?<=[.!?])\s/)[0];
+    return (cut || line).trim();
+  }
+  function norm(s) {
+    return String(s || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+  }
+  function tokens(s) {
+    var t = norm(s);
+    return t ? t.split(" ").filter(function (w) { return w.length > 2; }) : [];
+  }
+  function overlap(a, b) {
+    var A = tokens(a), B = tokens(b);
+    if (!A.length || !B.length) return 0;
+    var set = {};
+    for (var i = 0; i < B.length; i++) set[B[i]] = true;
+    var hit = 0;
+    for (var j = 0; j < A.length; j++) if (set[A[j]]) hit++;
+    return hit / Math.max(A.length, 1);
+  }
+  function measure(cand, refs) {
+    var open = firstLine(cand);
+    if (!open) return { status: "EMPTY" };
+    var nOpen = norm(open);
+    var rows = [];
+    var exact = 0, near = 0;
+    for (var i = 0; i < refs.length; i++) {
+      var fl = firstLine(refs[i]);
+      if (!fl) continue;
+      var o = overlap(open, fl);
+      var same = nOpen === norm(fl);
+      if (same) exact++;
+      else if (o >= 0.6) near++;
+      rows.push({ i: i + 1, line: fl, overlap: o, exact: same });
+    }
+    var status = "FRESH";
+    if (exact) status = "DUP OPENER";
+    else if (near) status = "NEAR OPENER";
+    else if (!rows.length) status = "NO REFS";
+    return { status: status, open: open, rows: rows, exact: exact, near: near };
+  }
+  var form = document.getElementById("f");
+  var out = document.getElementById("out");
+  function render() {
+    var data = measure(
+      document.getElementById("cand").value,
+      [
+        document.getElementById("r1").value,
+        document.getElementById("r2").value,
+        document.getElementById("r3").value
+      ]
+    );
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='near'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "FRESH" || data.status === "NO REFS" ? "fresh" : data.status === "NEAR OPENER" ? "near" : "dup";
+    var rows = data.rows.map(function (r) {
+      var mark = r.exact ? "exact" : (r.overlap >= 0.6 ? "near" : "ok");
+      return "<tr><td class='k'>ref " + r.i + "</td><td class='v'>" + mark + " · " + Math.round(r.overlap * 100) + "% · " + esc(r.line) + "</td></tr>";
+    }).join("");
+    if (!rows) rows = "<tr><td class='k'>refs</td><td class='v'>none pasted</td></tr>";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<p class='line'>" + esc(data.open) + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='note'>DUP is an exact first-line match after punctuation strip. NEAR is ≥60% shared content words. Local only — no corpus, no publish.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+})();
+</script>
+</body>
+</html>
