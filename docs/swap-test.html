@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>swap-test — interchangeability checklist</title>
+  <meta name="description" content="Score a paste for whether any AI-growth brand could run the same lines. Does not rewrite.">
+  <style>
+    :root { --bg:#f2f3f0; --ink:#142018; --line:#c5cdc4; --ok:#1f6b3a; --no:#9b2c2c; --mid:#8a5a12; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; }
+    main { max-width:40rem; margin:2.2rem auto; padding:0 1rem 2rem; }
+    h1 { font-size:1.28rem; margin:.2rem 0 .35rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--ok); }
+    .lede { color:#4d5a52; margin:0 0 1rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:9rem; padding:.75rem; border:1px solid var(--line); background:#fff; font:inherit; }
+    button { margin-top:.7rem; background:var(--ink); color:#f2f3f0; border:0; padding:.6rem 1rem; font-weight:650; cursor:pointer; }
+    #out { margin-top:1.2rem; }
+    .verdict { font-size:1.3rem; font-weight:700; margin:0 0 .35rem; }
+    .anchored { color:var(--ok); } .swappable { color:var(--mid); } .generic { color:var(--no); }
+    ol { list-style:none; padding:0; margin:.6rem 0 0; }
+    li { display:flex; gap:.7rem; align-items:flex-start; padding:.45rem 0; border-bottom:1px solid var(--line); }
+    .pill { flex:0 0 3.4rem; font:700 11px/1.6 ui-monospace,monospace; text-align:center; }
+    .pass { background:#d7eadc; color:var(--ok); } .fail { background:#f4d6d6; color:var(--no); }
+    .muted { color:#4d5a52; font-size:.86rem; }
+    .score { font-family:ui-monospace,monospace; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · interchangeability</p>
+  <h1>swap-test checklist</h1>
+  <p class="lede">Paste a draft. Each row asks: if you swapped this onto a random AI-growth account, would it still “work”? High swap-risk fails the quality bar. Does not rewrite. Does not publish.</p>
+  <form id="f">
+    <textarea id="draft" rows="8" placeholder="Paste the candidate. Named cost, refusal, or number should survive a brand swap."></textarea>
+    <button type="submit">Run swap-test</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var JARGON = /\b(leverage|10x|unlock|game-?changer|ecosystem|build in public|personal brand|viral|growth hack|let that sink in)\b/i;
+  var STAKE = /\b(killed|paid|refused|built|measured|failed|shipped|cut|deferred|chose silence)\b/i;
+  var CONTRAST = /\bit'?s not\b[^.\n]{2,48}\.\s*it'?s\b/i;
+  var MANIFESTO = /\b(the future of|in a world where|at the end of the day|here'?s the thing)\b/i;
+  var LECTURE = /^(here is how|let me explain|operators should|most people don'?t)\b/im;
+
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function sentences(t) {
+    return t.split(/(?<=[.!?])\s+/).map(function (s) { return s.trim(); }).filter(Boolean);
+  }
+  function staccato(t) {
+    return t.split(/\n+/).some(function (l) {
+      var w = l.trim().replace(/[.!?]/g, "").split(/\s+/).filter(Boolean);
+      return w.length > 0 && w.length <= 2 && /\.$/.test(l.trim());
+    });
+  }
+  function residue(t) {
+    var stripped = t.replace(/\b(signal origin|qi-check|voice-delta|hold floor|burrows)\b/ig, "BRAND");
+    return STAKE.test(stripped) || /\d/.test(stripped) || /\$[0-9]/.test(stripped);
+  }
+
+  function scorePaste(raw) {
+    var t = String(raw || "").trim();
+    if (!t) return { error: "empty_text" };
+    var checks = [];
+    function row(id, ok, why) { checks.push({ id: id, pass: !!ok, why: why }); }
+    row("stake", STAKE.test(t), "A real decision/cost verb is present (killed, refused, paid, shipped…).");
+    row("number", /\d/.test(t), "A number, floor, or count survives a brand swap.");
+    row("first-person", /\b(I|we)\b/.test(t) && STAKE.test(t), "First person plus a decision — not a brand-deck 'we'.");
+    row("jargon", !JARGON.test(t), "No interchangeable operator clichés (leverage, 10x, unlock, viral).");
+    row("contrast", !CONTRAST.test(t), "No empty 'It's not X. It's Y.' cadence.");
+    row("manifesto", !MANIFESTO.test(t), "No sermon opener/closer.");
+    row("staccato", !staccato(t), "No one-word / two-word fragment lines.");
+    row("lecture", !LECTURE.test(t), "Does not open as a category lecture.");
+    row("residue", residue(t), "After swapping the brand name, a specific stake still remains.");
+    var ss = sentences(t);
+    var lens = ss.map(function (s) { return s.split(/\s+/).length; });
+    var mean = lens.length ? lens.reduce(function (a, b) { return a + b; }, 0) / lens.length : 0;
+    var cv = 0;
+    if (lens.length > 1 && mean) {
+      var v = lens.reduce(function (a, b) { return a + Math.pow(b - mean, 2); }, 0) / lens.length;
+      cv = Math.sqrt(v) / mean;
+    }
+    row("cadence", ss.length < 2 || cv >= 0.28, "Sentence length is not flat model cadence.");
+    var passed = checks.filter(function (c) { return c.pass; }).length;
+    var score = Math.round((passed / checks.length) * 10 * 10) / 10;
+    var verdict = score >= 8 ? "ANCHORED" : score >= 5 ? "SWAPPABLE" : "GENERIC";
+    return { score: score, passed: passed, total: checks.length, verdict: verdict, checks: checks };
+  }
+
+  var form = document.getElementById("f");
+  var draft = document.getElementById("draft");
+  var out = document.getElementById("out");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var data = scorePaste(draft.value);
+    if (data.error) { out.hidden = false; out.innerHTML = "<p class='generic'>empty_text</p>"; return; }
+    var cls = data.verdict === "ANCHORED" ? "anchored" : data.verdict === "SWAPPABLE" ? "swappable" : "generic";
+    var items = data.checks.map(function (c) {
+      return "<li><span class='pill " + (c.pass ? "pass" : "fail") + "'>" + (c.pass ? "PASS" : "FAIL") +
+        "</span><span>" + esc(c.id) + " — " + esc(c.why) + "</span></li>";
+    }).join("");
+    out.innerHTML = "<p class='verdict " + cls + "'>" + data.verdict + "</p>" +
+      "<p class='score'>" + data.passed + " / " + data.total + " checks · " + data.score + " / 10 non-substitutable</p>" +
+      "<ol>" + items + "</ol>" +
+      "<p class='muted'>QUALITY_BAR: anything a random growth account could run is a fail. Not a Hold-floor clone.</p>";
+    out.hidden = false;
+  });
+})();
+</script>
+</body>
+</html>

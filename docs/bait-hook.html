@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bait-hook — first line only</title>
+  <meta name="description" content="Score one opening line for engagement-bait. Does not rewrite. Does not score the rest of the draft.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    input[type=text] { width:100%; box-sizing:border-box; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .clean { color:var(--ok); } .soft { color:var(--rule); } .hard { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    ul { padding-left:1.15rem; margin:.45rem 0 0; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · first line only</p>
+  <h1>bait-hook detector</h1>
+  <p class="lede">Paste a single opening line. This scores hook-as-bait, not viewport Hold and not the rest of the draft. It does not rewrite or publish.</p>
+  <form id="f">
+    <label for="line">First line</label>
+    <input id="line" type="text" maxlength="280" autocomplete="off" placeholder="The first sentence is the whole argument.">
+    <button type="submit">Detect</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var OPENERS = [/^(unpopular opinion|hot take|hear me out|let'?s be honest|am i the only one|wait for it|okay but|so basically)\b/i];
+  var COLON = [/^(the (real |actual )?reason|here'?s why|nobody (talks|tells)|what they don'?t|this (one trick|changed everything))\b/i];
+  var LECTURE = [/^(you (need to|should|must)|stop (doing|saying)|if you'?re not|operators who)\b/i];
+  var LIST = [/^\d+\s+(ways|tips|habits|mistakes|signs|reasons|hacks)\b/i];
+  var THREAD = [/^(a )?thread\b/i, /\u{1F9F5}/u];
+  var CTA = [/\b(like if|rt this|retweet|comment if|follow for|drop a)\b/i];
+  var HYPE = [/\b(insane|crazy|wild|mind-blowing|game-changing|secret)\b/i];
+  var STAKE = [/\b(killed|paid|refused|built|measured|failed|shipped|cut|deferred|chose)\b/i];
+
+  function hits(res, s) {
+    var n = 0;
+    for (var i = 0; i < res.length; i++) if (res[i].test(s)) n++;
+    return n;
+  }
+  function letters(s) { return s.replace(/[^A-Za-z]/g, ""); }
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function scoreLine(raw) {
+    var s = String(raw || "").replace(/\s+/g, " ").trim();
+    if (!s) return { error: "empty_line" };
+    var flags = [];
+    var risk = 0;
+    if (hits(OPENERS, s)) { risk += 3; flags.push("Stock opener (hot take / hear me out / let's be honest)."); }
+    if (hits(COLON, s)) { risk += 3; flags.push("Clickbait colon / 'here's why' frame."); }
+    if (hits(LECTURE, s)) { risk += 2; flags.push("Second-person lecture in line one."); }
+    if (hits(LIST, s)) { risk += 3; flags.push("Listicle count in the first line."); }
+    if (hits(THREAD, s)) { risk += 2; flags.push("Thread announcement instead of a claim."); }
+    if (hits(CTA, s)) { risk += 4; flags.push("Engagement CTA in the opening line."); }
+    if (hits(HYPE, s)) { risk += 2; flags.push("Vague intensifier (insane/crazy/secret)."); }
+    if (/\?$/.test(s) && s.length < 56 && !/\d/.test(s)) { risk += 2; flags.push("Short empty question with no stake."); }
+    if (/:$/.test(s) && s.length < 70) { risk += 1; flags.push("Title-colon with no sentence."); }
+    var L = letters(s);
+    if (L.length > 12 && L === L.toUpperCase()) { risk += 3; flags.push("ALL CAPS opener."); }
+    if (/[\u{1F525}\u{1F4AF}\u{1F447}]/u.test(s)) { risk += 2; flags.push("Bait emoji in the first line."); }
+    var concrete = hits(STAKE, s) + (/\d/.test(s) ? 1 : 0);
+    if (concrete === 0 && s.length > 18) { risk += 2; flags.push("No decision verb and no number."); }
+    else if (concrete >= 2) { risk = Math.max(0, risk - 2); flags.push("Credit: concrete verb + number present."); }
+    if (risk > 10) risk = 10;
+    var verdict = risk <= 2 ? "CLEAN" : risk <= 5 ? "SOFT BAIT" : "HARD BAIT";
+    return { line: s, risk: risk, verdict: verdict, flags: flags, chars: s.length };
+  }
+
+  var form = document.getElementById("f");
+  var input = document.getElementById("line");
+  var out = document.getElementById("out");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var data = scoreLine(input.value);
+    if (data.error) { out.hidden = false; out.innerHTML = "<p class='hard'>empty_line</p>"; return; }
+    var cls = data.verdict === "CLEAN" ? "clean" : data.verdict === "SOFT BAIT" ? "soft" : "hard";
+    var rows = "<tr><td class='k'>risk</td><td class='v'>" + data.risk + " / 10</td></tr>" +
+      "<tr><td class='k'>chars</td><td class='v'>" + data.chars + "</td></tr>";
+    var lis = data.flags.length ? data.flags.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") : "<li>No bait flags.</li>";
+    out.innerHTML = "<p class='verdict " + cls + "'>" + data.verdict + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<ul>" + lis + "</ul>" +
+      "<p class='note'>Not qi-check. Hold floor 9.2 still lives there. This page only judges line one.</p>";
+    out.hidden = false;
+  });
+})();
+</script>
+</body>
+</html>
