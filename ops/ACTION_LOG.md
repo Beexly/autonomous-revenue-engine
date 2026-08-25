@@ -1,5 +1,7 @@
 # Action log
 
+## LOG-029 — 2026-08-25 ~04:52 CDT — factory pack: swap-check, hn-bait, subject-fold. One PR, no merge. Static docs/swap-check.html. Not qi-check, not voice-delta. No publish.
+
 ## LOG-028 — 2026-08-25T04:55 CDT — fifty loops board + two static tools
 Living board: `ops/FIFTY_LOOPS.md` (50 free-core $1+/day loops, no fake revenue, no invented URLs). File-only ships this cycle: `docs/bait-hook.html` (first-line bait detector, not a qi-check clone) and `docs/swap-test.html` (interchangeability checklist). `docs/index.html` is a three-tool hub. No Stripe, no Pages click, no npm publish, no HN/IH/dev.to post. Branch `ops/fifty-loops`. Do not merge.
 
