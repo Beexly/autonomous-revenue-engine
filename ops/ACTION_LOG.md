@@ -1,5 +1,15 @@
 # Action log
 
+## LOG-030 — 2026-08-25 ~09:10 CDT — HANDOFF cycle execution (Grok operator)
+1. SO-002 rewritten with Premium/verified impression proxy template → originality 47/60 (min 7) → adversarial Pass. File: ops/SO002_REWRITE.md.
+2. SO-005 rewritten with before/after Burrows Delta table from internal draft pair → originality 48/60 (min 7) → adversarial Pass. File: ops/SO005_REWRITE.md.
+3. SO-008 held as public copy. First free-core niche confirmed: Viewport Hold / qi-check (ops/EXPERIMENT_NICHE.md already locked). No purchase, no payment flow.
+4. Profile asset specs already locked (ops/PROFILE_SPECS.md) — CRT phosphor + radio-room; candidate-only, no new generation.
+5. Domain shortlist research logged (ops/DOMAIN_SHORTLIST.md). No purchase.
+6. Measurement template for Premium/verified impression proxies written (ops/MEASUREMENT_TEMPLATE.md). Daily revenue score job remains deferred until schema use + log intake + Learning loop lock.
+7. OPERATING.md, FIRST_BATCH.md, RESEARCH_LOG.md, Notion control page updated.
+Published: 0. Publish path: disabled. No accounts created by operator. No money moved.
+
 ## LOG-029 — 2026-08-25 ~04:52 CDT — factory pack: swap-check, hn-bait, subject-fold. One PR, no merge. Static docs/swap-check.html. Not qi-check, not voice-delta. No publish.
 
 ## LOG-028 — 2026-08-25T04:55 CDT — fifty loops board + two static tools
