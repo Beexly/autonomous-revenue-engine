@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Meta Tracking Audit Workbook</title>
+<style>
+  body{font-family:Georgia,serif;max-width:700px;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#111}
+  h1{font-size:1.7rem;margin-bottom:0}
+  h2{font-size:1.25rem;margin-top:1.8rem;border-bottom:2px solid #111;padding-bottom:.15rem}
+  .sub{color:#555;font-style:italic;margin-top:.2rem}
+  table{border-collapse:collapse;width:100%;margin:.7rem 0;font-size:.92rem}
+  th,td{border:1px solid #999;padding:.35rem .5rem;text-align:left;vertical-align:top}
+  th{background:#f0f0f0}
+  .fill{background:#fafae8;min-width:6rem}
+  .step{margin:.9rem 0;padding-left:.6rem;border-left:3px solid #ccc}
+  .step b{display:block}
+  code{font-family:Menlo,Consolas,monospace;background:#f4f4f4;padding:.05rem .3rem;font-size:.9em}
+  .note{font-size:.88rem;color:#444;background:#f7f7f7;padding:.5rem .7rem;border-radius:4px}
+  @media print{.pagebreak{page-break-before:always}}
+</style>
+</head>
+<body>
+<h1>The Meta Tracking Audit Workbook</h1>
+<p class="sub">Find and fix the Pixel + CAPI defects inflating your cost-per-result — with evidence you can verify in your own Events Manager. For stores running Meta ads. ~90 minutes start to finish.</p>
+
+<p class="note">How to use: work top to bottom. Every check has a <b>Pass / Fail / N-A</b> cell and an evidence cell — fill them in. At the end you'll have a prioritized fix list and a before-state record so you can prove improvement after fixes. Nothing here requires code access to start; items marked 🔧 need your developer or app settings to fix.</p>
+
+<h2>Part 1 — Inventory &amp; deduplication (the double-counting check)</h2>
+<div class="step"><b>1.1 Event inventory.</b> Events Manager → Data sources → your Pixel → Overview. For each business-critical event (Purchase, Lead, InitiateCheckout, AddToCart), record how it arrives.</div>
+<table><tr><th>Event</th><th>Browser</th><th>Server</th><th>Both?</th><th>Notes</th></tr>
+<tr><td>Purchase</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>Lead</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>InitiateCheckout</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>AddToCart</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr></table>
+<div class="step"><b>1.2 Dedup verification.</b> Open each "Both" event → look for deduplication stats. Meta dedupes only on matching <code>event_name</code> + <code>event_id</code>. If dedup shows 0% or is absent while both channels fire, you are double-counting — every reported Purchase may be two. 🔧 Fix: one <code>event_id</code> generated per user action, passed to BOTH the Pixel call and the CAPI payload. <i>Classic failure: platform-native Pixel (e.g. Shopify) + a separate CAPI app, each inventing its own ids.</i></div>
+<div class="step"><b>1.3 Timing.</b> Server events must land within the dedup window (48h; in practice, minutes). Nightly batch CAPI uploads of events the Pixel already sent = double-count. Record your server-event latency: ______</div>
+<div class="step"><b>1.4 Seven-day reconciliation.</b> Pick the last full 7 days.</div>
+<table><tr><th></th><th>Meta reported</th><th>Backend actual</th><th>Δ %</th></tr>
+<tr><td>Purchases</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>Revenue</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr></table>
+<p class="note">Read: within ±5–15% = normal attribution modeling. Meta 30%+ HIGH = double-counting (go to 1.2). Meta far LOW = events not firing or rejected (Part 3).</p>
+
+<h2 class="pagebreak">Part 2 — Event Match Quality (the performance check)</h2>
+<div class="step"><b>2.1 Score every server event.</b> Events Manager shows EMQ (1–10) per server event. Under 6 = you're paying for worse optimization than you could have. Target 8+ on Purchase/Lead.</div>
+<table><tr><th>Event</th><th>EMQ now</th><th>em</th><th>ph</th><th>external_id</th><th>fbp</th><th>fbc</th><th>IP+UA</th></tr>
+<tr><td>Purchase</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>Lead</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr></table>
+<div class="step"><b>2.2 The parameters that move EMQ</b> (mark ✓ present / ✗ absent above): email <code>em</code> and phone <code>ph</code> as SHA-256 of <b>normalized</b> values (lowercase, trimmed; phone as digits/E.164) — hashing <code>" Name@Gmail.com"</code> vs <code>"name@gmail.com"</code> silently kills matching; <code>external_id</code> (hashed customer id); <code>fbp</code> cookie forwarded server-side; <code>fbc</code> whenever a click id exists — missing fbc on paid-click conversions is the most common attribution leak; client IP + user agent on website events. 🔧 Every ✗ on Purchase is a fix-list line.</div>
+<div class="step"><b>2.3 action_source truthfulness.</b> Server events must carry the real source (<code>website</code>, <code>physical_store</code>…). Wrong values risk rejection and skew attribution. Record what yours send: ______</div>
+
+<h2>Part 3 — Delivery health</h2>
+<div class="step"><b>3.1 Diagnostics tab.</b> Events Manager → Diagnostics. List every active issue below; rejected/filtered events never reach optimization.</div>
+<table><tr><th>Issue</th><th>Affected event</th><th>Severity</th><th>Owner</th></tr>
+<tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr></table>
+<div class="step"><b>3.2 Live test.</b> Events Manager → Test events; put the <code>test_event_code</code> on server payloads. Trigger one real test conversion. Watch: browser row arrives ☐ &nbsp; server row arrives ☐ &nbsp; they deduplicate ☐.</div>
+<div class="step"><b>3.3 Consent path.</b> Repeat 3.2 as a consent-declined EU visitor. Does your setup behave as intended (and legally) on both channels? Consent tools silently killing one channel breaks the dedup assumptions from Part 1. Result: ______</div>
+<div class="step"><b>3.4 Domain.</b> Business Manager → domain verified ☐ &nbsp; web events configured ☐.</div>
+
+<h2>Part 4 — Fix priority matrix</h2>
+<p>Transfer every ✗ and Fail. Order by (revenue impact × ease). Do the top three first, then re-run Parts 1.4 and 2.1 after 7 days and record the after-state next to your before-state — that delta is your proof it worked.</p>
+<table><tr><th>#</th><th>Defect</th><th>Impact (H/M/L)</th><th>Ease (H/M/L)</th><th>Owner</th><th>Done</th></tr>
+<tr><td>1</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>2</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>3</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>4</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td>5</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr></table>
+<div class="step"><b>Maintenance:</b> re-run 1.2, 2.1, 1.4, and 3.1 after every theme change, app install, or checkout migration, and monthly regardless — tracking breaks silently.</div>
+
+<p class="note">Stuck, or want this done for you with before/after evidence? Fixed-price diagnostic and implementation: <b>x.com/@GalaxySportsAI</b> (DM "audit"). — Signal Origin, Houston TX. Independent publication; not affiliated with or endorsed by Meta Platforms, Inc. © 2026 Garrett Baxley. Personal/company internal use permitted; resale or redistribution not permitted.</p>
+</body>
+</html>
