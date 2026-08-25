@@ -12,85 +12,57 @@ Core idea:
 Key variants already in `apps/conformal-lite`:
 - **ACI** (Adaptive Conformal Inference): online update of α_t so long-run coverage tracks target under distribution shift.
 - **SAOCP**: strongly adaptive mix of ACI experts at different learning rates (regime tracking).
-- **CQR**: conformalized quantile regression — preferred when residuals are heteroscedastic (different noise levels).
+- **CQR**: conformalized quantile residuals — preferred when residuals are heteroscedastic (different noise levels).
 - **E-value / soft-rank**: anytime-valid, post-hoc α selection while preserving validity bounds.
 
 For non-stationary streams (X engagement, virality, CPM/RPM over time) prefer ACI / SAOCP / e-value over plain split conformal.
 
 ## 2. How to implement CP for these metrics
 
-Platform metrics that benefit from conformal intervals/sets:
-
-| Metric family | Score idea | Recommended mode | Use |
-|---------------|------------|------------------|-----|
-| Views / impressions / reach | residual = |log(pred) - log(actual)| or absolute | ACI or SAOCP | Forecast range for next post / day |
-| CTR / engagement rate | absolute or pinball residual | CQR | Heteroscedastic by creative/niche |
-| RPM / revenue per 1k | residual on log-RPM or absolute $ | CQR + e-value | Honest revenue forecast with coverage |
-| Conversion / free-core signup | residual or classification score | ACI / e-value | Gate claims of "this post will convert X±" |
-| Frequency / fatigue | residual on frequency trajectory | SAOCP | Detect regime shift before CPA explodes |
-
-Implementation pattern (already supported by conformal-lite):
+Run from the package directory. Hyphenated folder is not an importable package named `conformal_lite`.
 
 ```python
-from conformal_lite.core import make
+# cd apps/conformal-lite
+from core import make
 
-# Example: online RPM forecast intervals
 cp = make("cqr", alpha=0.1)  # or "saocp" / "aci" / "evalue"
 
-# After each observed day / post:
-cp.update(y_true=actual_rpm, y_pred=model_rpm)  # or quantile preds for CQR
+# CQR: pass real quantile edges. If q_lo/q_hi are omitted, the core uses a dummy +/-1 band.
+cp.update(y_true=actual_rpm, y_pred=model_rpm, q_lo=q_lo, q_hi=q_hi)
 
-# For new prediction:
 lo, hi = cp.predict_interval(y_pred=next_rpm_point_estimate)
-# Claim: with ~90% coverage, true RPM lands in [lo, hi]
+# Claim only after n>=10 updates: with ~90% coverage, true RPM lands in [lo, hi]
 ```
 
-For classification-style (will this creative beat median CTR?):
-use set-valued prediction or e-value tests against a null.
+Honesty rule: always state the coverage level and the exchangeability/adaptive assumption. X and short-form streams are non-exchangeable so prefer adaptive modes. Cold start uses a fat interval.
 
-Honesty rule: always state the coverage level and the exchangeability/adaptive assumption. X and short-form streams are non-exchangeable → prefer adaptive modes.
+Sports/DFS is not a product of this package. Do not use these RPM tables in public copy. They are directional, not Origin-measured.
 
 ## 3. Specific RPM benchmarks by platform (2026, directional)
 
-All figures are creator-reported / analyst ranges. Not guarantees. US-heavy audiences sit at the high end; global averages lower. Platform rules and thresholds change.
+All figures are creator-reported / analyst ranges. Not guarantees. Not Origin Studio numbers. Do not paste into ads, Show HN, or X.
 
 ### YouTube
-- **Long-form RPM (median across niches):** ~$2–$10; Education/Science ~$10+, Kids ~$0.30
-- **Shorts RPM:** typically $0.02–$0.20 (most $0.04–$0.12); 3–14% of long-form RPM in same niche
-- Finance / AI / tech Shorts can reach $0.15–$0.45 in strong cases
-- 1M Shorts views ≈ $20–$150 typical; US finance higher
+- Long-form RPM (median across niches): about $2–$10; Education/Science ~$10+, Kids ~$0.30
+- Shorts RPM: typically $0.02–$0.20 (most $0.04–$0.12); 3–14% of long-form RPM in same niche
+- 1M Shorts views typical band $20–$150. US-heavy finance can print higher. Do not cite $150–$300 as typical.
 - Thresholds rising Feb 2027 (8k watch hours or 20M Shorts views)
 
 ### TikTok (Creator Rewards)
-- Official range: ~$0.40–$1.00 per 1,000 qualified views
-- Effective for many: $0.50–$2.00 depending on engagement, length (>60s), geo
+- Official range: about $0.40–$1.00 per 1,000 qualified views
 - Eligibility: 10k followers, 100k views/30d, original >1 min, limited countries
 - Shop affiliate / GMV and brand deals often dominate pure Rewards RPM
 
 ### Instagram
-- Organic Reels payout for most creators: **~$0** (no general per-view program)
-- Brand / sponsored Reels: rate-card by follower tier (micro $500–$5k typical range, highly variable)
-- Facebook Reels (in-stream): creator-reported ~$0.30–$5 RPM by niche (finance higher); many reports $0.02–$0.20 for pure Reels share
+- Organic Reels payout for most creators: about $0
+- Brand / sponsored Reels: rate-card by follower tier, highly variable
 
 ### X (Twitter)
-- Not a clean per-view RPM. Pays on **verified / Premium impressions** (Home timeline)
-- Typical: ~$8–$12 per 1M verified impressions (~$0.008–$0.012 per 1k)
-- Finance/crypto/tech can be substantially higher; US video higher still
-- Eligibility and program terms have been changing (impression thresholds)
+- Not a clean per-view RPM. Pays on verified / Premium impressions (Home timeline).
+- Origin primary unit is Phoenix: copy-link ~20x, reply 5–20x, like 0.5. Do not optimize X for RPM tables.
 
-### Practical comparison (rough order of magnitude per 1M views/impressions)
-1. YouTube long-form (good niche) — highest
-2. TikTok Creator Rewards (qualified, eligible) — competitive short-form
-3. Facebook Reels / in-stream — mid
-4. YouTube Shorts — low per view, high volume possible
-5. Instagram organic — ~0; value is distribution + brand deals
-6. X — depends on verified share of audience
+## 4. How Signal Origin uses this NOW
 
-## 4. How Signal Origin should use this
-
-- Free cores (conformal-lite, fold-ruler, qi-check) are the product. Platform RPM is secondary income or distribution fuel.
-- Use CP intervals on RPM / engagement forecasts before making public claims or scaling paid.
-- Prefer TikTok Rewards + Shop and YouTube long-form for direct platform revenue; treat IG and X primarily as attention + brand surfaces.
-- Always calibrate platform-reported revenue against backend (Stripe, server events).
-
-Update benchmarks when Studio / Ads Manager numbers for our own accounts become available.
+- Free cores are the product. Platform RPM is secondary.
+- Ads playbook (`ops/ADS_PLAYBOOK.md`) is ACTIVE. Pixel + CAPI + event_id now. Spend still `APPROVE spend`.
+- Calibrate platform-reported numbers against backend in `ops/ADS_CALIBRATION.csv`. Empty stays empty.

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>specificity — log vs lecture</title>
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    .verdict { font-size:1.35rem; font-weight:700; margin-top:1.2rem; }
+    .log { color:var(--ok); } .lecture { color:var(--bad); } .thin { color:var(--rule); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · stake</p>
+  <h1>specificity</h1>
+  <p class="lede">Counts numbers, dollar amounts, proper-noun-ish tokens, and decision verbs. A log has stake. A lecture does not. Does not rewrite or publish.</p>
+  <form id="f"><textarea id="draft" placeholder="Killed SO-012. Hold 8.3 Soft. Shipped fold-ruler."></textarea><button type="submit">Count</button></form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var VERBS = /\b(killed|paid|refused|shipped|merged|closed|cut|held|broke|fixed|rotated|deleted|posted|unlisted)\b/gi;
+  function measure(raw) {
+    var t = String(raw || "");
+    var nums = t.match(/\b\d+(?:\.\d+)?\b/g) || [];
+    var dollars = t.match(/\$\d/g) || [];
+    var names = t.match(/\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b/g) || [];
+    var verbs = t.match(VERBS) || [];
+    var score = nums.length + dollars.length * 2 + Math.min(names.length, 8) + verbs.length * 2;
+    var status = t.trim() ? (score >= 6 ? "LOG" : score >= 3 ? "THIN" : "LECTURE") : "EMPTY";
+    return { nums: nums.length, dollars: dollars.length, names: names.length, verbs: verbs.length, score: score, status: status };
+  }
+  var out = document.getElementById("out");
+  function render() {
+    var d = measure(document.getElementById("draft").value);
+    if (d.status === "EMPTY") { out.hidden = false; out.innerHTML = "<p class='thin'>empty_text</p>"; return; }
+    var cls = d.status === "LOG" ? "log" : d.status === "THIN" ? "thin" : "lecture";
+    out.innerHTML = "<p class='verdict " + cls + "'>" + d.status + "</p><table><tbody>" +
+      "<tr><td class='k'>numbers</td><td class='v'>" + d.nums + "</td></tr>" +
+      "<tr><td class='k'>dollar marks</td><td class='v'>" + d.dollars + "</td></tr>" +
+      "<tr><td class='k'>proper-noun-ish</td><td class='v'>" + d.names + "</td></tr>" +
+      "<tr><td class='k'>decision verbs</td><td class='v'>" + d.verbs + "</td></tr>" +
+      "<tr><td class='k'>score</td><td class='v'>" + d.score + "</td></tr></tbody></table>" +
+      "<p class='note'>LOG is score 6+. THIN is 3–5. LECTURE is below that. This is a stake ruler, not qi-check.</p>";
+    out.hidden = false;
+  }
+  document.getElementById("f").addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  document.getElementById("draft").addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>
