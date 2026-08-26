@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  python-conformal-lite:
+    name: Python (conformal-lite)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install conformal-lite
+        run: pip install ./apps/conformal-lite
+      - name: Run tests
+        run: python -m unittest discover -s apps/conformal-lite/tests
+
+  node-apps:
+    name: Node (${{ matrix.app }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app:
+          - hn-bait
+          - qi-check
+          - subject-fold
+          - swap-check
+          - voice-delta
+    defaults:
+      run:
+        working-directory: apps/${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run tests
+        run: npm test --silent
