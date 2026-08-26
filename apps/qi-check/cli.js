@@ -6,8 +6,16 @@
  *
  * Exit codes:
  *   0 — recommendation clears the Hold floor ("Hold")
- *   1 — below Hold (Soft rewrite / Hard rewrite / empty draft)
- *   2 — usage error (bad flag, unreadable file, no input)
+ *   1 — below Hold (Soft rewrite / Hard rewrite, including an empty draft)
+ *   2 — usage error (bad flag, unreadable file)
+ *
+ * Exit 0 is a real path through this CLI, but reaching it depends entirely
+ * on lib/score.js's scoring, not on anything here. As of this writing
+ * scoreDraft's five dimensions cap at 8.5/8.5/10/9/9, a weighted maximum of
+ * exactly 9.00 against HOLD_FLOOR 9.2 — so no draft can currently reach
+ * "Hold" and this CLI can only ever exit 1 or 2. That is score.js's ceiling
+ * to fix, not something to work around here; nothing in this file assumes
+ * exit 0 is reachable today.
  */
 import { readFileSync } from "node:fs";
 import { scoreDraft } from "./lib/score.js";
@@ -31,8 +39,14 @@ function parseArgs(argv) {
     const a = argv[i];
     if (a === "--json") out.json = true;
     else if (a === "--platform") {
-      out.platform = argv[++i];
-      if (out.platform == null) usage();
+      const next = argv[i + 1];
+      // A missing value, or one that looks like another flag, is a usage
+      // error - not a signal to silently swallow the next flag as the
+      // platform name (e.g. `--platform --json` previously set platform to
+      // the literal string "--json" and dropped --json with no warning).
+      if (next == null || next.startsWith("-")) usage();
+      out.platform = next;
+      i++;
     } else if (a === "--help" || a === "-h") usage();
     else if (a.startsWith("-")) usage();
     else if (out.file == null) out.file = a;
