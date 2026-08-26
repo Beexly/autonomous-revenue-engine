@@ -5,6 +5,8 @@ from typing import Callable, Optional, Tuple
 
 import numpy as np
 
+from .quantiles import conformal_quantile, scale_width
+
 
 class AdaptiveConformal:
     """Online ACI. Tracks a time-varying miscoverage level alpha_t."""
@@ -32,7 +34,9 @@ class AdaptiveConformal:
         # it, then append. Computing the quantile with this point already
         # folded in would bias err toward 0, especially at small n.
         if self.calibration_scores:
-            q = np.quantile(self.calibration_scores, 1 - self.alpha_t, method="higher")
+            q = conformal_quantile(self.calibration_scores, self.alpha_t)
+            # q is inf while calibration is too small to certify alpha_t; no
+            # score can exceed it, so we record no miss rather than inventing one.
             err = 1.0 if score > q else 0.0
         else:
             err = 0.0
@@ -49,14 +53,12 @@ class AdaptiveConformal:
     def predict_interval(
         self, y_pred: float, residual_scale: float = 1.0
     ) -> Tuple[float, float]:
-        if self.n < 10:
-            width = 2.0 * residual_scale
-            return y_pred - width, y_pred + width
-        q = np.quantile(self.calibration_scores, 1 - self.alpha_t, method="higher")
-        width = float(q) * residual_scale
+        # No magic small-n width: conformal_quantile returns inf exactly when
+        # calibration cannot certify alpha_t, and an unbounded interval is the
+        # honest output. A hardcoded 2.0 * scale would be a fabricated guarantee.
+        q = conformal_quantile(self.calibration_scores, self.alpha_t)
+        width = scale_width(q, residual_scale)
         return y_pred - width, y_pred + width
 
     def predict_set_size_hint(self) -> float:
-        if self.n < 5:
-            return float("inf")
-        return float(np.quantile(self.calibration_scores, 1 - self.alpha_t, method="higher"))
+        return conformal_quantile(self.calibration_scores, self.alpha_t)

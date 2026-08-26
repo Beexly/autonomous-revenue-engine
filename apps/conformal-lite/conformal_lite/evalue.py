@@ -20,6 +20,8 @@ from __future__ import annotations
 
 import numpy as np
 
+from .quantiles import conformal_quantile, scale_width
+
 
 def conformal_p(score: float, calibration: list[float]) -> float:
     n = len(calibration)
@@ -57,10 +59,7 @@ class EValueConformal:
         self.n += 1
 
     def predict_interval(self, y_pred: float, residual_scale: float = 1.0):
-        if self.n < 10:
-            w = 2.0 * residual_scale
-            return y_pred - w, y_pred + w
-        q = float(np.quantile(self.calibration_scores, 1 - self.alpha, method="higher"))
+        q = scale_width(conformal_quantile(self.calibration_scores, self.alpha), residual_scale)
         return y_pred - q, y_pred + q
 
     def e_for(self, y_true: float, y_pred: float) -> float:

@@ -9,6 +9,8 @@ from typing import Optional, Tuple
 
 import numpy as np
 
+from .quantiles import conformal_quantile
+
 
 def quantile_residual(y: float, q_lo: float, q_hi: float) -> float:
     return float(max(q_lo - y, y - q_hi))
@@ -35,10 +37,9 @@ class ConformalQR:
         self.n += 1
 
     def expand(self, q_lo: float, q_hi: float) -> Tuple[float, float]:
-        if self.n < 10:
-            pad = 0.5 * max(q_hi - q_lo, 1.0)
-            return q_lo - pad, q_hi + pad
-        q = float(np.quantile(self.scores, 1 - self.alpha, method="higher"))
+        # inf while calibration is too small for alpha: the band is unbounded
+        # rather than padded by an invented constant.
+        q = conformal_quantile(self.scores, self.alpha)
         return q_lo - q, q_hi + q
 
     def predict_interval(self, y_pred: float, residual_scale: float = 1.0) -> Tuple[float, float]:
