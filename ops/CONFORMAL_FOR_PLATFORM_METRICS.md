@@ -19,11 +19,10 @@ For non-stationary streams (X engagement, virality, CPM/RPM over time) prefer AC
 
 ## 2. How to implement CP for these metrics
 
-Run from the package directory. Hyphenated folder is not an importable package named `conformal_lite`.
+`apps/conformal-lite` is a pip-installable package (`pip install ./apps/conformal-lite`); its import name is `conformal_lite`.
 
 ```python
-# cd apps/conformal-lite
-from core import make
+from conformal_lite import make
 
 cp = make("cqr", alpha=0.1)  # or "saocp" / "aci" / "evalue"
 

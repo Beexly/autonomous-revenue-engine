@@ -13,7 +13,7 @@ Use this every time you touch the free core, master prompt, or public surfaces.
 - [ ] Coverage honesty statement present in README (exchangeability / adaptive assumption)
 - [ ] Sports/DFS stays out of this package
 - [ ] No rewrite of public copy, no auto-publish, no paid metering unless `ORIGIN_METER=1` (local JSONL stub only)
-- [ ] Unit tests pass (`python -m unittest test_core.py`)
+- [ ] Unit tests pass (`cd apps/conformal-lite && pip install -q . && python -m unittest discover -s tests`)
 
 ## 2. Signal Origin Master Prompt (`ops/SIGNAL_ORIGIN_MASTER_PROMPT.md`)
 
