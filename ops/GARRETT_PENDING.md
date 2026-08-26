@@ -19,26 +19,9 @@
    - X header + YouTube banner
    - Kill any old ring mark
 
-2. **Do not post.** Hold floor is **9.2**. SO-012 was 7.9 (Soft rewrite). Paste SO-013 into qi-check after Build threshold sync; only publish if it shows Hold ≥ 9.2 and is listed under Approved in [PASS_QUEUE.md](./PASS_QUEUE.md).
+2. **Do not post without your own review.** Hold floor is **9.2**, unchanged. Paste any candidate into qi-check yourself before pasting to X; only publish if it shows Hold ≥ 9.2 and is listed under Approved in [PASS_QUEUE.md](./PASS_QUEUE.md).
 
-3. **Optional — Grok 4.6 Build prompt** (if you open Build to sync the gate):
-
-```
-Signal Origin qi-check gate sync.
-
-1. Hold recommendation requires composite >= 9.2 AND firstScreenDensity >= 8 AND baitAvoidance >= 9. Soft rewrite for 7.0–9.19. Hard rewrite below 7.0 or bait < 6. The UI currently labels 7.9 as Hold — that is wrong.
-2. VoiceFit must hard-penalize one-word / two-word staccato lines ("Clean structure." "Not policy. Quality."). Fragments like that are Soft rewrite maximum.
-3. Score this draft and report full breakdown + recommendation:
-
-We killed three posts that had already cleared our own Pass gate.
-
-Each one was clean and structured enough that a hundred AI-operator accounts could have run the same lines. The swap would not have shown.
-
-We chose silence over a first impression that teaches people we are generic.
-
-4. If composite < 9.2, propose one Soft rewrite that keeps human-primary authorship (no new facts, no CTA, no hashtags) and re-score. Do not mark Hold until the floor is cleared.
-5. Commit threshold constants to the score module so 8.x can never display as Hold again.
-```
+3. ~~Optional — Grok 4.6 Build prompt (sync the gate)~~ — **done directly in code, 2026-08-26.** This item asked an external tool to make sure "8.x can never display as Hold again." That was backwards: the actual bug was that the scorer's ceiling (9.0) sat *below* its own 9.2 Hold floor, so *nothing* — not even a perfect draft — could ever reach Hold. Fixed in `apps/qi-check/lib/score.js` (real paths to 10 on `firstScreenDensity`/`foldStructure`, a hard staccato-fragment cap replacing the never-implemented "VoiceFit" idea above). Proven by `apps/qi-check/lib/score.test.js`: a named excellent draft now reaches Hold, a named mediocre one and a staccato-heavy one do not, and all three hand-synced copies of the scorer (`lib/score.js`, `public/hold.html`, `docs/qi-check.html`) are asserted identical. Nothing was lowered to make this pass.
 
 ---
 
