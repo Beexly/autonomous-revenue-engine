@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forecast — Doug's sales workspace</title>
+  <meta name="description" content="A forecast built only from deals you actually closed: your own win rate with the raw counts, a resampled range for the cycle, and a plain refusal when you have too few closed deals for the number to mean anything. Runs offline in your browser; nothing is uploaded.">
+  <style>
+    :root { color-scheme: dark; }
+    html, body { margin: 0; background: #0e0e0e; color: #e8e4d9; font-family: ui-sans-serif, system-ui, sans-serif; }
+    body { font-size: 15px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+    main { max-width: 900px; margin: 40px auto; padding: 0 16px; }
+    [hidden] { display: none !important; }
+    h1 { font-size: 22px; letter-spacing: -0.03em; margin: 0 0 6px; }
+    h2 { font-size: 16px; letter-spacing: -0.02em; margin: 0 0 6px; }
+    h3 { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #b7b2a6; font-weight: 650; margin: 0 0 8px; }
+    p { margin: 0 0 10px; }
+    p.lede { color: #b7b2a6; margin-top: 0; }
+    a { color: #e8e4d9; }
+    .muted { color: #b7b2a6; }
+    .small { font-size: 12.5px; }
+    .err { color: #d46a6a; }
+    .good { color: #7fb069; }
+    .warn { color: #d4a24a; }
+    .nowrap { white-space: nowrap; }
+    .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+    }
+    :focus-visible { outline: 2px solid #e8e4d9; outline-offset: 1px; }
+
+    /* ---- nav (markup comes from WS.nav) ---- */
+    .nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 22px; font-size: 13px; }
+    .nav-item { color: #b7b2a6; text-decoration: none; padding-bottom: 3px; border-bottom: 2px solid transparent; }
+    .nav-item:hover { color: #e8e4d9; }
+    .nav-item.active { color: #e8e4d9; border-bottom-color: #e8e4d9; }
+
+    /* ---- controls ---- */
+    button {
+      background: #e8e4d9; color: #111; border: 0; font-weight: 650;
+      padding: 10px 16px; cursor: pointer; font-family: inherit; font-size: 14px;
+    }
+    button:disabled { opacity: 0.6; cursor: default; }
+    button.ghost { background: transparent; color: #e8e4d9; border: 1px solid #3a3a36; }
+    button.ghost:hover { border-color: #b7b2a6; }
+    button.danger { background: #d46a6a; color: #14100f; }
+    a.btnlink {
+      display: inline-block; background: #e8e4d9; color: #111; border: 0; font-weight: 650;
+      padding: 10px 16px; cursor: pointer; font-size: 14px; text-decoration: none;
+    }
+    input, select {
+      background: #161616; color: #e8e4d9; border: 1px solid #3a3a36; padding: 8px 9px;
+      font: inherit; font-size: 14px; box-sizing: border-box; border-radius: 0; max-width: 100%;
+    }
+    .fld { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .fld label {
+      font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+      color: #b7b2a6; font-weight: 650;
+    }
+    .fld input, .fld select { width: 100%; }
+    .fieldrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; }
+    .row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+
+    /* ---- messages ---- */
+    .warnbox { border: 1px solid #d46a6a; border-left-width: 5px; background: rgba(212, 106, 106, 0.10); color: #e8e4d9; padding: 10px 12px; font-size: 13.5px; }
+    .flashbox { border: 1px solid #3a3a36; border-left: 5px solid #b7b2a6; background: #161616; padding: 10px 12px; font-size: 13.5px; }
+    .empty { border: 1px solid #3a3a36; background: #161616; padding: 16px; margin: 18px 0; }
+    .empty p { color: #b7b2a6; font-size: 14px; }
+
+    /* ---- sections ---- */
+    section.block { margin: 30px 0 0; }
+    section.block > h2 { margin-bottom: 2px; }
+    .subhead { color: #b7b2a6; font-size: 13px; margin: 0 0 12px; }
+
+    /* ---- the headline card ---- */
+    .card { border: 1px solid #3a3a36; background: #161616; padding: 16px 18px; }
+    .card.refuse { border-color: #d4a24a; border-left-width: 5px; }
+    .card.stop { border-color: #d46a6a; border-left-width: 5px; }
+    .card.range { border-left: 5px solid #7fb069; }
+    .card h2 { margin-bottom: 8px; }
+    .card.refuse h2 { color: #d4a24a; }
+    .card.stop h2 { color: #d46a6a; }
+    .bignum {
+      font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15;
+      font-variant-numeric: tabular-nums; margin: 4px 0 6px;
+    }
+    .bignum .dash { color: #b7b2a6; font-weight: 400; padding: 0 2px; }
+    .cardnote { font-size: 13px; color: #b7b2a6; margin: 0 0 8px; }
+    .cardnote:last-child { margin-bottom: 0; }
+    .cardnote b { color: #e8e4d9; font-weight: 650; }
+
+    /* ---- the range bar ---- */
+    .bar { margin: 14px 0 6px; }
+    .bar-track { position: relative; height: 16px; background: #0e0e0e; border: 1px solid #3a3a36; }
+    .bar-fill { position: absolute; top: 0; bottom: 0; background: rgba(127, 176, 105, 0.34); border-left: 1px solid #7fb069; border-right: 1px solid #7fb069; }
+    .bar-mid { position: absolute; top: -3px; bottom: -3px; width: 2px; background: #e8e4d9; }
+    .bar-scale { display: flex; justify-content: space-between; font-size: 11.5px; color: #b7b2a6; margin-top: 4px; }
+
+    /* ---- tables ---- */
+    .tablewrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    caption { text-align: left; font-size: 12.5px; color: #b7b2a6; padding: 0 0 8px; }
+    th {
+      text-align: left; font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase;
+      color: #b7b2a6; font-weight: 650; padding: 6px 8px; border-bottom: 1px solid #3a3a36; white-space: nowrap;
+    }
+    th.r, td.r { text-align: right; }
+    td { padding: 8px; border-bottom: 1px solid #232320; vertical-align: top; font-size: 14px; overflow-wrap: anywhere; }
+    tr.thin td { color: #b7b2a6; }
+    td.name { font-weight: 650; }
+    tr.flag-hot td { background: rgba(212, 106, 106, 0.09); }
+    tr.flag-warm td { background: rgba(212, 162, 74, 0.08); }
+
+    /* ---- funnel ---- */
+    .fbar { height: 10px; background: rgba(232, 228, 217, 0.24); min-width: 2px; }
+    td.fcell { width: 34%; vertical-align: middle; }
+
+    /* ---- small labelled stats ---- */
+    .kpis { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0 0 12px; font-size: 13px; color: #b7b2a6; }
+    .kpis b { color: #e8e4d9; font-weight: 650; }
+
+    /* ---- refusal / reason blocks ---- */
+    .reason { border-left: 3px solid #3a3a36; padding: 2px 0 2px 12px; margin: 12px 0; font-size: 13px; color: #b7b2a6; }
+    .reason b { color: #e8e4d9; font-weight: 650; }
+    .reason.amber { border-left-color: #d4a24a; }
+    .dash-val { color: #b7b2a6; }
+
+    ul.plain { margin: 6px 0 10px; padding-left: 18px; font-size: 13px; color: #b7b2a6; }
+    ul.plain li { margin: 4px 0; }
+
+    /* ---- data / privacy ---- */
+    .data { margin-top: 34px; border-top: 1px solid #3a3a36; padding-top: 16px; }
+    .privacy-note { font-size: 12.5px; color: #b7b2a6; border-top: 1px solid #3a3a36; margin-top: 26px; padding-top: 14px; }
+    .confirm { border: 1px solid #d46a6a; border-left-width: 5px; background: rgba(212, 106, 106, 0.10); padding: 12px; margin-top: 12px; font-size: 13.5px; }
+
+    /* ---- phone ---- */
+    @media (max-width: 760px) {
+      main { margin: 24px auto; }
+      .fieldrow { grid-template-columns: 1fr; }
+      .bignum { font-size: 25px; }
+      table.stack, table.stack tbody, table.stack tr, table.stack td { display: block; width: 100%; }
+      table.stack thead { display: none; }
+      table.stack tr { border: 1px solid #3a3a36; padding: 10px 12px; margin: 0 0 10px; }
+      table.stack tr.flag-hot { border-color: #d46a6a; border-left-width: 5px; }
+      table.stack tr.flag-warm { border-color: #d4a24a; border-left-width: 5px; }
+      table.stack td { border-bottom: 0; padding: 4px 0; text-align: left; }
+      table.stack tr.flag-hot td, table.stack tr.flag-warm td { background: transparent; }
+      table.stack td[data-label]::before {
+        content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.07em;
+        text-transform: uppercase; color: #b7b2a6; font-weight: 650; margin-bottom: 2px;
+      }
+      td.fcell { width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="nav"></div>
+
+    <h1>Forecast</h1>
+    <p class="lede">
+      Every number in the forecast comes from deals you closed yourself. Nothing here is scored by a
+      built-in &ldquo;likely to close&rdquo; percentage. The one fixed table on the page is the
+      CRM comparison figure under &ldquo;How this range is made&rdquo;, and it is labelled there as
+      the author&rsquo;s guess rather than your record. Where your own record is too thin to
+      support a number, the page says so and prints the reason instead.
+    </p>
+
+    <noscript>
+      <p class="err">This page needs JavaScript. It runs entirely in your browser — there is no server to talk to.</p>
+    </noscript>
+
+    <p id="storageWarn" class="warnbox" hidden></p>
+    <p id="flash" class="flashbox" role="status" aria-live="polite" hidden></p>
+
+    <section id="empty" class="empty" hidden>
+      <h2>Nothing to forecast yet</h2>
+      <p>
+        This page reads the deal book on the Pipeline page. It needs two things from it: deals you
+        have open now, and deals you have already closed — won or lost. Losses matter as much as wins;
+        a forecast built only from wins reads your pipeline as certain.
+      </p>
+      <p>
+        Add your deals on the Pipeline page, and mark each one won or lost as it settles. Come back
+        here once you have some closed history and this page will tell you what it can support.
+      </p>
+      <div class="row-actions">
+        <a class="btnlink" href="pipeline.html">Go to the Pipeline</a>
+        <button type="button" id="emptyImport" class="ghost">Import a backup</button>
+      </div>
+    </section>
+
+    <div id="headline"></div>
+
+    <section id="methodBlock" class="block" hidden>
+      <h2>How this range is made</h2>
+      <div id="method"></div>
+    </section>
+
+    <section id="rateBlock" class="block" hidden>
+      <h2>Your win rate, with the counts</h2>
+      <p class="subhead">A rate with a small denominator is mostly noise. The counts are shown next to every rate so you can see how much is behind it.</p>
+      <div id="rate"></div>
+    </section>
+
+    <section id="coverBlock" class="block" hidden>
+      <h2>Pipeline coverage</h2>
+      <div id="cover"></div>
+    </section>
+
+    <section id="funnelBlock" class="block" hidden>
+      <h2>Stage funnel</h2>
+      <div id="funnel"></div>
+    </section>
+
+    <section id="ageBlock" class="block" hidden>
+      <h2>Aging</h2>
+      <div id="age"></div>
+    </section>
+
+    <section id="settingsBlock" class="block">
+      <h2>Quota and cycle</h2>
+      <p class="subhead">These three settings are shared with the rest of the workspace. The cycle length is the window this page forecasts over.</p>
+      <form id="settingsForm">
+        <div class="fieldrow">
+          <div class="fld">
+            <label for="quota">Quota for one cycle</label>
+            <input id="quota" name="quota" type="text" inputmode="decimal" autocomplete="off" placeholder="leave empty if you have none">
+          </div>
+          <div class="fld">
+            <label for="cycleDays">Cycle length (days)</label>
+            <input id="cycleDays" name="cycleDays" type="number" min="1" max="3650" step="1" inputmode="numeric" autocomplete="off">
+          </div>
+          <div class="fld">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency"></select>
+          </div>
+        </div>
+        <div class="row-actions">
+          <button type="submit">Save settings</button>
+          <span id="settingsMsg" class="small muted" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+
+    <section id="dataSection" class="data">
+      <h3>Your data</h3>
+      <p class="small muted">
+        Export writes a .json backup to your downloads. Import reads one back — you choose whether to
+        merge it with what is already here or replace everything.
+      </p>
+      <div class="row-actions">
+        <button type="button" id="exportBtn">Export backup</button>
+        <button type="button" id="importBtn" class="ghost">Import backup</button>
+      </div>
+      <input id="importFile" type="file" accept="application/json,.json" class="sr-only" tabindex="-1" aria-hidden="true">
+      <div id="importChoice"></div>
+    </section>
+
+    <div id="privacy"></div>
+  </main>
+  <script>
+/* ------------------------------------------------------------------
+   Doug's sales workspace - shared data layer.
+
+   Embedded verbatim in every page. No dependencies, no module syntax,
+   no side effects on load: this block only defines the global `WS`.
+   It touches localStorage / the DOM only when you call it.
+
+   PRIVACY: every byte of Doug's client data lives in this browser's
+   localStorage under WS.KEY. Nothing is uploaded, there is no
+   telemetry, and no client data may ever be written into the repo.
+   Backups go out through WS.exportJSON() as a file Doug saves
+   somewhere private - never committed.
+
+   Conventions:
+     - dates on records are ISO "yyyy-mm-dd" (activity `at` is a full
+       ISO datetime). "" always means UNSET.
+     - WS.daysBetween() returns NaN for unparseable input; every WS
+       predicate guards for that, and WS.migrate() guarantees stored
+       dates are parseable, so pages that use migrated state are safe.
+   ------------------------------------------------------------------ */
+var WS = (function () {
+  'use strict';
+
+  var KEY = 'doug.workspace.v1';
+  var VERSION = 1;
+
+  var STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation', 'Won', 'Lost'];
+  var OPEN_STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation'];
+  var CLOSED_STAGES = ['Won', 'Lost'];
+  var KINDS = ['call', 'email', 'meeting', 'note'];
+
+  var STALE_DAYS = 14;
+  var DEFAULT_CYCLE_DAYS = 30;
+  var DEFAULT_CURRENCY = 'USD';
+
+  /* Rough, editable odds per stage - used by the forecast page for a
+     weighted number. Deliberately conservative. */
+  var STAGE_PROBABILITY = {
+    'Lead': 0.05,
+    'Contacted': 0.15,
+    'Meeting': 0.30,
+    'Proposal': 0.50,
+    'Negotiation': 0.70,
+    'Won': 1,
+    'Lost': 0
+  };
+
+  var NAV_ITEMS = [
+    ['index.html', 'Today'],
+    ['pipeline.html', 'Pipeline'],
+    ['forecast.html', 'Forecast'],
+    ['prep.html', 'Call prep'],
+    ['objections.html', 'Objections']
+  ];
+
+  var CURRENCY_SYMBOLS = {
+    USD: '$', CAD: 'CA$', AUD: 'A$', NZD: 'NZ$', EUR: '€', GBP: '£',
+    JPY: '¥', CNY: '¥', INR: '₹', CHF: 'CHF ', SEK: 'kr ',
+    NOK: 'kr ', DKK: 'kr ', ZAR: 'R', BRL: 'R$', MXN: 'MX$', SGD: 'S$', HKD: 'HK$'
+  };
+
+  /* ---------------- tiny helpers ---------------- */
+
+  function isObj(v) { return !!v && typeof v === 'object' && !isArr(v); }
+  function isArr(v) { return Object.prototype.toString.call(v) === '[object Array]'; }
+
+  function text(v) {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string') return v.trim();
+    if (typeof v === 'number') return isFinite(v) ? String(v) : '';
+    if (typeof v === 'boolean') return v ? 'true' : '';
+    if (isArr(v)) return v.map(text).filter(Boolean).join(', ');
+    return '';
+  }
+
+  function toNum(v, dflt) {
+    if (typeof v === 'number') return isFinite(v) ? v : dflt;
+    if (typeof v === 'string') {
+      var cleaned = v.replace(/[^0-9.\-]/g, '');
+      if (cleaned && cleaned !== '-' && cleaned !== '.') {
+        var n = parseFloat(cleaned);
+        if (isFinite(n)) return n;
+      }
+    }
+    return dflt;
+  }
+
+  /* first non-empty value among several possible (legacy) key names */
+  function pick(o, names) {
+    for (var i = 0; i < names.length; i++) {
+      var v = o[names[i]];
+      if (v !== undefined && v !== null && v !== '') return v;
+    }
+    return '';
+  }
+
+  var _uidCounter = 0;
+  function uid() {
+    try {
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.randomUUID === 'function') {
+        return crypto.randomUUID();
+      }
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.getRandomValues === 'function') {
+        var b = new Uint8Array(16);
+        crypto.getRandomValues(b);
+        b[6] = (b[6] & 0x0f) | 0x40;
+        b[8] = (b[8] & 0x3f) | 0x80;
+        var hex = '';
+        for (var i = 0; i < 16; i++) {
+          hex += (b[i] + 0x100).toString(16).slice(1);
+          if (i === 3 || i === 5 || i === 7 || i === 9) hex += '-';
+        }
+        return hex;
+      }
+    } catch (e) { /* fall through */ }
+    /* crypto.getRandomValues has shipped in every browser since IE11, so
+       this only runs in an environment lacking it entirely. A counter
+       plus timestamp gives a guaranteed-unique id within this session
+       without reaching for Math.random() - which is unnecessary here
+       (this only makes a local lookup key, never anything security-
+       sensitive) but is flagged as a security-sensitive pattern by
+       static analysis regardless of how it is used. */
+    _uidCounter += 1;
+    return 'id-' + Date.now().toString(36) + '-' + _uidCounter.toString(36);
+  }
+
+  /* ---------------- escaping (every page renders user text) ------ */
+
+  var ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  var ESC_ATTR = {
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    '`': '&#96;', '=': '&#61;', '/': '&#47;'
+  };
+
+  function esc(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"']/g, function (c) { return ESC[c]; });
+  }
+
+  function escAttr(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"'`=\/]/g, function (c) { return ESC_ATTR[c]; });
+  }
+
+  /* ---------------- dates ---------------- */
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function toISODate(d) {
+    if (!(d instanceof Date) || isNaN(d.getTime())) return '';
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+
+  /* Accepts a Date, a timestamp, "yyyy-mm-dd" (read as LOCAL midnight so
+     the day never shifts) or any ISO datetime. Returns Date or null. */
+  function parseDate(s) {
+    if (s instanceof Date) return isNaN(s.getTime()) ? null : s;
+    if (typeof s === 'number' && isFinite(s)) {
+      var dn = new Date(s);
+      return isNaN(dn.getTime()) ? null : dn;
+    }
+    if (typeof s !== 'string') return null;
+    var v = s.trim();
+    if (!v) return null;
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(v);
+    if (m) {
+      var y = +m[1], mo = +m[2], da = +m[3];
+      if (mo < 1 || mo > 12 || da < 1 || da > 31) return null;
+      var d = new Date(y, mo - 1, da, 0, 0, 0, 0);
+      if (isNaN(d.getTime()) || d.getMonth() !== mo - 1) return null;
+      return d;
+    }
+    var slash = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(v);
+    if (slash) {
+      var d2 = new Date(+slash[3], +slash[1] - 1, +slash[2], 0, 0, 0, 0);
+      return isNaN(d2.getTime()) ? null : d2;
+    }
+    var d3 = new Date(v);
+    return isNaN(d3.getTime()) ? null : d3;
+  }
+
+  function today() { return toISODate(new Date()); }
+  function now() { return new Date().toISOString(); }
+
+  /* whole days from a to b; positive when b is later. NaN if unparseable. */
+  function daysBetween(a, b) {
+    var da = parseDate(a), db = parseDate(b);
+    if (!da || !db) return NaN;
+    var ua = Date.UTC(da.getFullYear(), da.getMonth(), da.getDate());
+    var ub = Date.UTC(db.getFullYear(), db.getMonth(), db.getDate());
+    return Math.round((ub - ua) / 86400000);
+  }
+
+  function addDays(dateish, n) {
+    var d = parseDate(dateish);
+    if (!d) return '';
+    var out = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    out.setDate(out.getDate() + (toNum(n, 0) | 0));
+    return toISODate(out);
+  }
+
+  function laterISO(a, b) {
+    if (!a) return b || '';
+    if (!b) return a || '';
+    return a > b ? a : b; /* ISO dates sort lexicographically */
+  }
+
+  function fmtDate(v, opts) {
+    var d = parseDate(v);
+    if (!d) return '';
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.DateTimeFormat === 'function') {
+        var o = isObj(opts) ? opts : { month: 'short', day: 'numeric' };
+        return new Intl.DateTimeFormat(undefined, o).format(d);
+      }
+    } catch (e) { /* fall through */ }
+    return toISODate(d);
+  }
+
+  /* ---------------- money ---------------- */
+
+  function normCurrency(c) {
+    var v = text(c).toUpperCase();
+    return /^[A-Z]{3}$/.test(v) ? v : DEFAULT_CURRENCY;
+  }
+
+  function group3(n) {
+    var s = String(Math.round(Math.abs(n)));
+    var out = '', c = 0;
+    for (var i = s.length - 1; i >= 0; i--) {
+      out = s.charAt(i) + out;
+      c++;
+      if (c % 3 === 0 && i > 0) out = ',' + out;
+    }
+    return out;
+  }
+
+  function trim1(x) {
+    var s = (Math.round(x * 10) / 10).toFixed(1);
+    return s.replace(/\.0$/, '');
+  }
+
+  function manualMoney(v, cur) {
+    var sym = CURRENCY_SYMBOLS[cur] || (cur + ' ');
+    var sign = v < 0 ? '-' : '';
+    var abs = Math.abs(v);
+    var body;
+    if (abs >= 1e9) body = trim1(abs / 1e9) + 'B';
+    else if (abs >= 1e6) body = trim1(abs / 1e6) + 'M';
+    else if (abs >= 1e4) body = trim1(abs / 1e3) + 'K';
+    else body = group3(abs);
+    return sign + sym + body;
+  }
+
+  /* Compact human money: $8,500 / $12.5K / $1.2M */
+  function money(n, currency) {
+    var cur = normCurrency(currency);
+    var v = toNum(n, 0);
+    if (!isFinite(v)) v = 0;
+    var abs = Math.abs(v);
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.NumberFormat === 'function') {
+        var base = { style: 'currency', currency: cur, maximumFractionDigits: 0 };
+        if (abs >= 1e4) { base.notation = 'compact'; base.maximumFractionDigits = 1; }
+        try {
+          var narrow = { style: 'currency', currency: cur, currencyDisplay: 'narrowSymbol',
+            maximumFractionDigits: base.maximumFractionDigits, notation: base.notation };
+          return new Intl.NumberFormat(undefined, narrow).format(v);
+        } catch (e1) { /* narrowSymbol / compact unsupported */ }
+        try {
+          return new Intl.NumberFormat(undefined, base).format(v);
+        } catch (e2) { /* fall through */ }
+        try {
+          return new Intl.NumberFormat(undefined,
+            { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(v);
+        } catch (e3) { /* fall through */ }
+      }
+    } catch (e) { /* fall through */ }
+    return manualMoney(v, cur);
+  }
+
+  /* ---------------- shape / migration ---------------- */
+
+  function emptyState() {
+    return {
+      version: VERSION,
+      settings: { quota: null, cycleDays: DEFAULT_CYCLE_DAYS, currency: DEFAULT_CURRENCY },
+      deals: [],
+      activities: [],
+      objections: []
+    };
+  }
+
+  function uniqueId(v, seen) {
+    var id = text(v);
+    if (!id || seen['#' + id]) id = uid();
+    seen['#' + id] = true;
+    return id;
+  }
+
+  function coerceDate(v, dflt) {
+    var d = parseDate(v);
+    return d ? toISODate(d) : dflt;
+  }
+
+  function coerceDateTime(v, dflt) {
+    var d = parseDate(v);
+    if (!d) return dflt;
+    try { return d.toISOString(); } catch (e) { return dflt; }
+  }
+
+  function coerceStage(v, dflt) {
+    var s = text(v).toLowerCase();
+    if (!s) return dflt;
+    for (var i = 0; i < STAGES.length; i++) {
+      if (STAGES[i].toLowerCase() === s) return STAGES[i];
+    }
+    if (s.indexOf('won') !== -1 || s === 'closed-won' || s === 'closed won') return 'Won';
+    if (s.indexOf('lost') !== -1 || s === 'closed-lost' || s === 'closed lost') return 'Lost';
+    if (s.indexOf('propos') !== -1 || s.indexOf('quote') !== -1) return 'Proposal';
+    if (s.indexOf('negoti') !== -1) return 'Negotiation';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1) return 'Meeting';
+    if (s.indexOf('contact') !== -1) return 'Contacted';
+    if (s.indexOf('lead') !== -1 || s.indexOf('new') !== -1) return 'Lead';
+    return dflt;
+  }
+
+  function coerceOutcome(v) {
+    var s = text(v).toLowerCase();
+    if (!s) return '';
+    if (s.indexOf('won') !== -1 || s === 'w' || s === 'win') return 'won';
+    if (s.indexOf('lost') !== -1 || s === 'l' || s === 'lose' || s === 'loss') return 'lost';
+    return '';
+  }
+
+  function coerceKind(v) {
+    var s = text(v).toLowerCase();
+    for (var i = 0; i < KINDS.length; i++) if (KINDS[i] === s) return KINDS[i];
+    if (s.indexOf('phone') !== -1 || s.indexOf('dial') !== -1 || s.indexOf('voicemail') !== -1) return 'call';
+    if (s.indexOf('mail') !== -1) return 'email';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1 || s.indexOf('visit') !== -1) return 'meeting';
+    return 'note';
+  }
+
+  function coerceTags(v) {
+    var out = [], i;
+    if (isArr(v)) {
+      for (i = 0; i < v.length; i++) {
+        var t = text(v[i]).toLowerCase();
+        if (t && out.indexOf(t) === -1) out.push(t);
+      }
+      return out;
+    }
+    var s = text(v);
+    if (!s) return out;
+    var parts = s.split(/[,;|]/);
+    for (i = 0; i < parts.length; i++) {
+      var p = parts[i].trim().toLowerCase();
+      if (p && out.indexOf(p) === -1) out.push(p);
+    }
+    return out;
+  }
+
+  function migrateSettings(raw) {
+    var s = isObj(raw) ? raw : {};
+    var quota = null;
+    if (s.quota !== null && s.quota !== undefined && s.quota !== '') {
+      var q = toNum(s.quota, NaN);
+      if (isFinite(q) && q >= 0) quota = Math.round(q * 100) / 100;
+    }
+    var cycle = Math.round(toNum(pick(s, ['cycleDays', 'cycle_days', 'cycle']), DEFAULT_CYCLE_DAYS));
+    if (!isFinite(cycle) || cycle < 1) cycle = DEFAULT_CYCLE_DAYS;
+    if (cycle > 3650) cycle = 3650;
+    return { quota: quota, cycleDays: cycle, currency: normCurrency(s.currency) };
+  }
+
+  function migrateDeal(raw, seen, todayISO) {
+    var d = isObj(raw) ? raw : {};
+    var opened = coerceDate(pick(d, ['opened', 'openedAt', 'created', 'createdAt', 'date']), '') || todayISO;
+    var outcome = coerceOutcome(d.outcome);
+    var stage = coerceStage(d.stage, '');
+
+    if (!stage) stage = outcome === 'won' ? 'Won' : (outcome === 'lost' ? 'Lost' : 'Lead');
+    if (!outcome && stage === 'Won') outcome = 'won';
+    if (!outcome && stage === 'Lost') outcome = 'lost';
+    if (outcome === 'won') stage = 'Won';
+    if (outcome === 'lost') stage = 'Lost';
+
+    var closedAt = coerceDate(pick(d, ['closedAt', 'closed_at', 'closed']), '');
+    if (outcome && !closedAt) closedAt = laterISO(opened, todayISO);
+    if (!outcome) closedAt = '';
+
+    var value = toNum(pick(d, ['value', 'amount', 'dealValue', 'size']), 0);
+    if (!isFinite(value) || value < 0) value = 0;
+
+    return {
+      id: uniqueId(d.id, seen),
+      company: text(pick(d, ['company', 'account', 'org', 'name'])),
+      contact: text(pick(d, ['contact', 'person', 'contactName'])),
+      role: text(pick(d, ['role', 'title', 'jobTitle'])),
+      email: text(d.email),
+      phone: text(d.phone),
+      value: Math.round(value * 100) / 100,
+      stage: stage,
+      opened: opened,
+      nextAction: text(pick(d, ['nextAction', 'next_action', 'nextStep', 'next'])),
+      nextDate: coerceDate(pick(d, ['nextDate', 'next_date', 'dueDate', 'due']), ''),
+      source: text(d.source),
+      notes: typeof d.notes === 'string' ? d.notes.replace(/\s+$/, '') : text(d.notes),
+      closedAt: closedAt,
+      outcome: outcome
+    };
+  }
+
+  function migrateActivity(raw, seen, nowISO) {
+    var a = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(a.id, seen),
+      dealId: text(pick(a, ['dealId', 'deal_id', 'deal'])),
+      at: coerceDateTime(pick(a, ['at', 'date', 'when', 'ts']), nowISO),
+      kind: coerceKind(a.kind || a.type),
+      note: typeof a.note === 'string' ? a.note.replace(/\s+$/, '') : text(pick(a, ['note', 'text', 'body']))
+    };
+  }
+
+  function migrateObjection(raw, seen) {
+    var o = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(o.id, seen),
+      trigger: text(pick(o, ['trigger', 'objection', 'says', 'title'])),
+      response: typeof o.response === 'string'
+        ? o.response.replace(/\s+$/, '')
+        : text(pick(o, ['response', 'reply', 'answer'])),
+      tags: coerceTags(o.tags)
+    };
+  }
+
+  /* Tolerates a missing / old / partially corrupt shape and always
+     returns a complete, correctly typed v1 state. Never mutates input. */
+  function migrate(state) {
+    var src;
+    if (isArr(state)) src = { deals: state };            /* very old: bare deal list */
+    else if (isObj(state)) src = state;
+    else src = {};
+
+    var todayISO = today();
+    var nowISO = now();
+    var seenD = {}, seenA = {}, seenO = {};
+    var out = emptyState();
+    var i;
+
+    out.settings = migrateSettings(src.settings);
+
+    var deals = isArr(src.deals) ? src.deals : (isArr(src.pipeline) ? src.pipeline : []);
+    for (i = 0; i < deals.length; i++) {
+      if (!isObj(deals[i])) continue;
+      out.deals.push(migrateDeal(deals[i], seenD, todayISO));
+    }
+
+    var acts = isArr(src.activities) ? src.activities : (isArr(src.log) ? src.log : []);
+    for (i = 0; i < acts.length; i++) {
+      if (!isObj(acts[i])) continue;
+      out.activities.push(migrateActivity(acts[i], seenA, nowISO));
+    }
+
+    var objs = isArr(src.objections) ? src.objections : [];
+    for (i = 0; i < objs.length; i++) {
+      if (!isObj(objs[i])) continue;
+      var o = migrateObjection(objs[i], seenO);
+      if (!o.trigger && !o.response) continue;
+      out.objections.push(o);
+    }
+
+    out.version = VERSION;
+    return out;
+  }
+
+  /* ---------------- storage ---------------- */
+
+  function load() {
+    var raw = null;
+    try {
+      if (typeof localStorage !== 'undefined' && localStorage) raw = localStorage.getItem(KEY);
+    } catch (e) { raw = null; }                 /* private window / site data blocked */
+    if (!raw || typeof raw !== 'string') return emptyState();
+    var parsed = null;
+    try { parsed = JSON.parse(raw); } catch (e) { return emptyState(); }
+    try { return migrate(parsed); } catch (e) { return emptyState(); }
+  }
+
+  /* true on success; false means the caller should warn Doug loudly
+     (quota exceeded, blocked storage) instead of losing the edit. */
+  function save(state) {
+    try {
+      var clean = migrate(state);
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.setItem(KEY, JSON.stringify(clean));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function clearAll() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.removeItem(KEY);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /* ---------------- derived state ---------------- */
+
+  function isOpen(deal) {
+    return isObj(deal) && text(deal.outcome) === '';
+  }
+
+  function activitiesFor(state, dealId) {
+    var s = isObj(state) ? state : {};
+    var list = isArr(s.activities) ? s.activities : [];
+    var id = text(dealId);
+    var out = [];
+    for (var i = 0; i < list.length; i++) {
+      if (isObj(list[i]) && text(list[i].dealId) === id) out.push(list[i]);
+    }
+    out.sort(function (a, b) {
+      var ta = text(a.at), tb = text(b.at);
+      return ta < tb ? 1 : (ta > tb ? -1 : 0);          /* newest first */
+    });
+    return out;
+  }
+
+  /* ISO date of the most recent activity on this deal, else deal.opened */
+  function lastTouch(state, deal) {
+    var d = isObj(deal) ? deal : {};
+    var acts = activitiesFor(state, d.id);
+    var best = '';
+    for (var i = 0; i < acts.length; i++) {
+      var iso = coerceDate(acts[i].at, '');
+      if (iso) best = laterISO(best, iso);
+    }
+    return best || text(d.opened);
+  }
+
+  function isStale(state, deal) {
+    if (!isOpen(deal)) return false;
+    var anchor = laterISO(lastTouch(state, deal), text(deal.opened));
+    if (!anchor) return false;
+    var days = daysBetween(anchor, today());
+    return isFinite(days) && days > STALE_DAYS;
+  }
+
+  function isOverdue(deal) {
+    if (!isOpen(deal)) return false;
+    var nd = text(deal.nextDate);
+    if (!nd) return false;
+    var days = daysBetween(nd, today());
+    return isFinite(days) && days > 0;
+  }
+
+  function isAdrift(deal) {
+    if (!isOpen(deal)) return false;
+    return text(deal.nextAction) === '' || text(deal.nextDate) === '';
+  }
+
+  function flags(state, deal) {
+    var open = isOpen(deal);
+    var anchor = open ? laterISO(lastTouch(state, deal), text(deal && deal.opened)) : '';
+    var since = anchor ? daysBetween(anchor, today()) : NaN;
+    return {
+      open: open,
+      stale: isStale(state, deal),
+      overdue: isOverdue(deal),
+      adrift: isAdrift(deal),
+      daysSinceTouch: isFinite(since) ? since : null,
+      lastTouch: anchor
+    };
+  }
+
+  function stageIndex(stage) {
+    var s = coerceStage(stage, '');
+    var i = STAGES.indexOf(s);
+    return i === -1 ? 0 : i;
+  }
+
+  function stageProbability(stage) {
+    var s = coerceStage(stage, 'Lead');
+    var p = STAGE_PROBABILITY[s];
+    return typeof p === 'number' ? p : 0;
+  }
+
+  function byId(list, id) {
+    var arr = isArr(list) ? list : [];
+    var want = text(id);
+    for (var i = 0; i < arr.length; i++) {
+      if (isObj(arr[i]) && text(arr[i].id) === want) return arr[i];
+    }
+    return null;
+  }
+
+  /* blank records with sane defaults, ready to be filled by a form */
+  function newDeal(partial) {
+    var base = {
+      id: uid(), company: '', contact: '', role: '', email: '', phone: '',
+      value: 0, stage: 'Lead', opened: today(), nextAction: '', nextDate: '',
+      source: '', notes: '', closedAt: '', outcome: ''
+    };
+    if (isObj(partial)) {
+      for (var k in base) {
+        if (Object.prototype.hasOwnProperty.call(partial, k) && partial[k] !== undefined) {
+          base[k] = partial[k];
+        }
+      }
+    }
+    var seen = {};
+    return migrateDeal(base, seen, today());
+  }
+
+  function newActivity(dealId, kind, note) {
+    return {
+      id: uid(),
+      dealId: text(dealId),
+      at: now(),
+      kind: coerceKind(kind),
+      note: typeof note === 'string' ? note.replace(/\s+$/, '') : text(note)
+    };
+  }
+
+  function newObjection(trigger, response, tags) {
+    return { id: uid(), trigger: text(trigger), response: text(response), tags: coerceTags(tags) };
+  }
+
+  /* ---------------- export / import (Doug owns his data) --------- */
+
+  function exportFilename() { return 'doug-workspace-' + today() + '.json'; }
+
+  function exportJSON(state) {
+    try {
+      var data = JSON.stringify(migrate(state), null, 2);
+      if (typeof document === 'undefined' || !document || !document.body) return false;
+      if (typeof Blob === 'undefined') return false;
+      var api = (typeof URL !== 'undefined' && URL && URL.createObjectURL) ? URL
+        : ((typeof webkitURL !== 'undefined' && webkitURL && webkitURL.createObjectURL) ? webkitURL : null);
+      if (!api) return false;
+      var blob = new Blob([data], { type: 'application/json' });
+      var url = api.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = exportFilename();
+      a.rel = 'noopener';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        try { if (a.parentNode) a.parentNode.removeChild(a); } catch (e) {}
+        try { api.revokeObjectURL(url); } catch (e) {}
+      }, 5000);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function looksLikeWorkspace(o) {
+    if (isArr(o)) return true;
+    if (!isObj(o)) return false;
+    return isArr(o.deals) || isArr(o.activities) || isArr(o.objections) ||
+      isObj(o.settings) || o.version === 1 || isArr(o.pipeline);
+  }
+
+  /* cb(err, state) - never saves on its own; the page decides whether to
+     replace or merge, then calls WS.save(). */
+  function importJSON(file, cb) {
+    var done = typeof cb === 'function' ? cb : function () {};
+    if (!file) { done(new Error('No file chosen.')); return; }
+    if (typeof FileReader === 'undefined') { done(new Error('This browser cannot read files.')); return; }
+    if (typeof file.size === 'number' && file.size > 25 * 1024 * 1024) {
+      done(new Error('That file is too big to be a workspace backup.'));
+      return;
+    }
+    var reader;
+    try { reader = new FileReader(); } catch (e) { done(new Error('This browser cannot read files.')); return; }
+    reader.onerror = function () { done(new Error('Could not read that file.')); };
+    reader.onabort = function () { done(new Error('Reading that file was cancelled.')); };
+    reader.onload = function () {
+      var parsed;
+      try {
+        parsed = JSON.parse(String(reader.result));
+      } catch (e) {
+        done(new Error('That file is not valid JSON.'));
+        return;
+      }
+      if (!looksLikeWorkspace(parsed)) {
+        done(new Error('That JSON file does not look like a workspace backup.'));
+        return;
+      }
+      var state;
+      try { state = migrate(parsed); } catch (e) { done(new Error('That backup could not be read.')); return; }
+      done(null, state);
+    };
+    try { reader.readAsText(file); } catch (e) { done(new Error('Could not read that file.')); }
+  }
+
+  /* union by id; records from `incoming` win on conflict */
+  function merge(base, incoming) {
+    var a = migrate(base), b = migrate(incoming);
+    var out = emptyState();
+    out.settings = b.settings;
+    ['deals', 'activities', 'objections'].forEach(function (key) {
+      var index = {}, order = [], i, r;
+      for (i = 0; i < a[key].length; i++) {
+        r = a[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < b[key].length; i++) {
+        r = b[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < order.length; i++) out[key].push(index['#' + order[i]]);
+    });
+    return out;
+  }
+
+  /* ---------------- starter objection library ---------------- */
+
+  function seedObjections() {
+    var seeds = [
+      {
+        trigger: "It's too expensive / it's not in the budget.",
+        response: "Fair - let's make sure we're comparing the same thing. Is it more than you expected, or more than you have available this year? If it's the number itself, I'll walk through what's driving it and what we can take out. If it's the budget cycle, tell me who owns that budget and when it resets, and we'll size something that fits now and grows later.",
+        tags: ['price', 'budget']
+      },
+      {
+        trigger: "Now isn't a good time - check back next quarter.",
+        response: "Happy to. So I'm not just chasing you: what has to be true next quarter for this to move? If the honest answer is that it isn't a priority, say so and I'll stop pushing. If it's real timing, let's book fifteen minutes for the first week of that quarter now, and I'll send one useful thing a month in between rather than a check-in email.",
+        tags: ['timing', 'stall']
+      },
+      {
+        trigger: "We already use another vendor and we're happy with them.",
+        response: "Good - switching for its own sake is a bad idea, and I'm not going to ask you to. I'd rather understand where they're strong so I know when we're not a fit. Out of curiosity, if you could change one thing about how it works today, what would it be? If nothing comes to mind, we're done. If something does, that's the conversation worth having when your renewal comes up - when is that?",
+        tags: ['incumbent', 'competitor']
+      },
+      {
+        trigger: "I'd have to run this by my boss / it goes to a committee.",
+        response: "Of course - I'd expect that. Two things would help: what usually sinks a proposal like this internally, and who else has to be comfortable with it? I'd rather arm you with the numbers and the answers to their hard questions than have you carry it alone. And if it's useful, I'm glad to join that conversation for ten minutes so the technical questions don't bounce back and forth.",
+        tags: ['authority', 'decision-maker']
+      },
+      {
+        trigger: "We're fine as we are - this isn't a problem for us.",
+        response: "Then you should keep your money. Let me ask one question and I'll get out of your way: how are you handling it today, and what does it cost you when it goes wrong? If the answer is 'it doesn't really', you're genuinely fine and I'll note that. Most people I talk to have quietly absorbed the cost and stopped counting it - if that's the case, it's worth putting a number on it once.",
+        tags: ['need', 'status-quo']
+      },
+      {
+        trigger: "Just send me some information and I'll take a look.",
+        response: "I can, but generic material wastes your time. Give me two minutes on what you're actually trying to fix and I'll send the one page that's relevant instead of a brochure. And so it doesn't sit in your inbox: when should I follow up - and is a short call or a written summary easier for you?",
+        tags: ['brush-off', 'stall']
+      }
+    ];
+    var out = [];
+    for (var i = 0; i < seeds.length; i++) {
+      out.push({ id: uid(), trigger: seeds[i].trigger, response: seeds[i].response, tags: seeds[i].tags.slice() });
+    }
+    return out;
+  }
+
+  /* seeds the starter library only when there is nothing there;
+     returns true if the state was changed (caller should save). */
+  function ensureSeeded(state) {
+    if (!isObj(state)) return false;
+    if (!isArr(state.objections)) state.objections = [];
+    if (state.objections.length) return false;
+    state.objections = seedObjections();
+    return true;
+  }
+
+  /* ---------------- shared chrome ---------------- */
+
+  function normPage(current) {
+    var c = text(current).toLowerCase();
+    c = c.split('?')[0].split('#')[0];
+    c = c.substring(c.lastIndexOf('/') + 1);
+    if (!c || c === 'index' || c === 'today' || c === 'home') return 'index.html';
+    var aliases = {
+      'pipeline': 'pipeline.html', 'deals': 'pipeline.html',
+      'forecast': 'forecast.html',
+      'prep': 'prep.html', 'call prep': 'prep.html', 'call-prep': 'prep.html',
+      'objections': 'objections.html'
+    };
+    if (aliases[c]) return aliases[c];
+    return c;
+  }
+
+  /* Tiny markup; pages own the CSS for .nav / .nav-item / .active */
+  function nav(current) {
+    var cur = normPage(current);
+    var html = '<nav class="nav" aria-label="Workspace sections">';
+    for (var i = 0; i < NAV_ITEMS.length; i++) {
+      var href = NAV_ITEMS[i][0], label = NAV_ITEMS[i][1];
+      var on = href === cur;
+      html += '<a class="nav-item' + (on ? ' active' : '') + '" href="' + escAttr(href) + '"' +
+        (on ? ' aria-current="page"' : '') + '>' + esc(label) + '</a>';
+    }
+    return html + '</nav>';
+  }
+
+  /* The privacy note every page must show near the bottom. */
+  function privacyNote() {
+    return '<p class="privacy-note">Everything you enter here stays in this browser, on this device. ' +
+      'Nothing is uploaded, there is no tracking, and no client details ever leave your machine. ' +
+      'Use Export to keep a backup - save that .json somewhere private and never commit it to the repo.</p>';
+  }
+
+  /* ---------------- public surface ---------------- */
+
+  return {
+    KEY: KEY,
+    VERSION: VERSION,
+    STAGES: STAGES,
+    OPEN_STAGES: OPEN_STAGES,
+    CLOSED_STAGES: CLOSED_STAGES,
+    KINDS: KINDS,
+    STALE_DAYS: STALE_DAYS,
+    DEFAULT_CYCLE_DAYS: DEFAULT_CYCLE_DAYS,
+    STAGE_PROBABILITY: STAGE_PROBABILITY,
+    NAV_ITEMS: NAV_ITEMS,
+
+    load: load,
+    save: save,
+    clearAll: clearAll,
+    migrate: migrate,
+    emptyState: emptyState,
+
+    uid: uid,
+    esc: esc,
+    escAttr: escAttr,
+    money: money,
+    fmtDate: fmtDate,
+    today: today,
+    now: now,
+    parseDate: parseDate,
+    toISODate: toISODate,
+    daysBetween: daysBetween,
+    addDays: addDays,
+    laterISO: laterISO,
+
+    isOpen: isOpen,
+    isStale: isStale,
+    isOverdue: isOverdue,
+    isAdrift: isAdrift,
+    flags: flags,
+    lastTouch: lastTouch,
+    activitiesFor: activitiesFor,
+    byId: byId,
+    stageIndex: stageIndex,
+    stageProbability: stageProbability,
+
+    newDeal: newDeal,
+    newActivity: newActivity,
+    newObjection: newObjection,
+
+    exportJSON: exportJSON,
+    exportFilename: exportFilename,
+    importJSON: importJSON,
+    merge: merge,
+
+    seedObjections: seedObjections,
+    ensureSeeded: ensureSeeded,
+
+    nav: nav,
+    privacyNote: privacyNote
+  };
+})();
+
+/* ------------------------------------------------------------------
+   Forecast page.
+
+   The honest analogue of apps/conformal-lite, in plain browser JS.
+
+   The rule this page borrows from conformal_lite/quantiles.py: with n
+   calibration points you cannot speak about a tail finer than 1/(n+1).
+   conformal_quantile() takes the ceil((n+1)(1-alpha))-th smallest score
+   and returns inf - an unbounded interval - when that rank does not
+   exist, rather than substituting a finite guess. Here the same rank
+   test decides whether a range is printed at all: below the threshold
+   the page refuses and says how many more closed deals are needed.
+
+   SAFETY: every value Doug typed reaches the document as a text node
+   (textContent) or through setAttribute. No user string is ever
+   concatenated into innerHTML on this page; the only innerHTML writes
+   are WS.nav() and WS.privacyNote(), which the shared core builds with
+   WS.esc()/WS.escAttr() itself.
+   ------------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  /* ---------------- stated constants ---------------- */
+
+  var TAIL = 0.10;            /* each tail of the reported band -> middle 80% */
+  var MIN_SEGMENT = 5;        /* below this a split is reported as counts, not a rate */
+  var BASE_REPLICATES = 2000; /* resampled cycles */
+
+  /* Smallest calibration size that can resolve a tail of `tail`, using the
+     conformal rank test: ceil((n + 1) * (1 - tail)) <= n. For tail = 0.10
+     this is 9. Computed rather than hard-coded so the page can state the
+     rule and the number it produces without them drifting apart. */
+  function minClosedFor(tail) {
+    for (var n = 1; n <= 1000; n++) {
+      if (Math.ceil((n + 1) * (1 - tail)) <= n) return n;
+    }
+    return 1000;
+  }
+  var MIN_CLOSED = minClosedFor(TAIL);
+
+  var CURRENCIES = ['USD', 'CAD', 'AUD', 'NZD', 'EUR', 'GBP', 'JPY', 'CNY', 'INR',
+    'CHF', 'SEK', 'NOK', 'DKK', 'ZAR', 'BRL', 'MXN', 'SGD', 'HKD'];
+
+  /* ---------------- tiny DOM helpers ---------------- */
+
+  function $(id) { return document.getElementById(id); }
+
+  function el(tag, cls, txt) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (txt !== undefined && txt !== null && txt !== '') n.textContent = String(txt);
+    return n;
+  }
+
+  function add(parent) {
+    for (var i = 1; i < arguments.length; i++) {
+      var c = arguments[i];
+      if (c === null || c === undefined || c === false) continue;
+      parent.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    }
+    return parent;
+  }
+
+  function clear(node) {
+    if (!node) return node;
+    while (node.firstChild) node.removeChild(node.firstChild);
+    return node;
+  }
+
+  function strong(txt) { return el('b', '', txt); }
+
+  /* a <td>; label drives the stacked phone layout */
+  function td(txt, cls, label) {
+    var n = el('td', cls || '', txt);
+    if (label) n.setAttribute('data-label', label);
+    return n;
+  }
+
+  function th(txt, cls) {
+    var n = el('th', cls || '', txt);
+    n.setAttribute('scope', 'col');
+    return n;
+  }
+
+  /* ---------------- numbers ---------------- */
+
+  function numAsc(a, b) { return a - b; }
+
+  function toFiniteNum(v) {
+    var x = typeof v === 'number' ? v : parseFloat(v);
+    return isFinite(x) ? x : 0;
+  }
+
+  function median(list) {
+    if (!list || !list.length) return NaN;
+    var v = list.slice().sort(numAsc);
+    var mid = v.length >> 1;
+    return v.length % 2 ? v[mid] : (v[mid - 1] + v[mid]) / 2;
+  }
+
+  /* order statistic at quantile q of an already-sorted array */
+  function quantileOf(sorted, q) {
+    var n = sorted.length;
+    if (!n) return NaN;
+    var idx = Math.ceil(q * n) - 1;
+    if (idx < 0) idx = 0;
+    if (idx > n - 1) idx = n - 1;
+    return sorted[idx];
+  }
+
+  function pct(x, digits) {
+    if (!isFinite(x)) return '';
+    var d = digits || 0;
+    return (Math.round(x * 100 * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d) + '%';
+  }
+
+  /* A share that a surrounding sentence asserts is real. pct() rounds, and a
+     rounded share can contradict the sentence it sits in: 2 cycles out of 2000
+     is not "0%" when the sentence says it happened, and 1999 out of 2000 is not
+     "100%" when the sentence says the rest did something else. */
+  function shareText(x) {
+    if (!isFinite(x)) return '';
+    if (x > 0 && x < 0.005) return 'fewer than 1%';
+    if (x < 1 && x >= 0.995) return 'more than 99%';
+    return pct(x);
+  }
+
+  function ratioText(x) {
+    if (!isFinite(x)) return '';
+    if (x >= 100) return String(Math.round(x)) + 'x';
+    return (Math.round(x * 10) / 10).toFixed(1).replace(/\.0$/, '') + 'x';
+  }
+
+  function days(n) {
+    if (!isFinite(n)) return '';
+    return String(Math.round(n)) + (Math.round(n) === 1 ? ' day' : ' days');
+  }
+
+  function plural(n, one, many) { return n === 1 ? one : many; }
+
+  function countOf(n, one, many) { return String(n) + ' ' + plural(n, one, many); }
+
+  /* ---------------- deterministic randomness ----------------
+     Seeded from the data itself, so the same deals always produce the same
+     range. A forecast that moves every time you reload is not a forecast. */
+
+  function hashStr(s) {
+    var h = 2166136261 >>> 0;
+    for (var i = 0; i < s.length; i++) {
+      h ^= s.charCodeAt(i);
+      h = Math.imul(h, 16777619) >>> 0;
+    }
+    return h >>> 0;
+  }
+
+  function mulberry32(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /* ---------------- reading the workspace ---------------- */
+
+  var state = null;
+  var storageOK = true;
+
+  function settings() {
+    return (state && state.settings) ? state.settings : { quota: null, cycleDays: 30, currency: 'USD' };
+  }
+  function cur() { return settings().currency; }
+  function money(v) { return WS.money(v, cur()); }
+
+  /* dealId -> { meeting: bool, count: n } from the activity log, in one pass */
+  function activityIndex(st) {
+    var map = Object.create(null);
+    var list = (st && st.activities) ? st.activities : [];
+    for (var i = 0; i < list.length; i++) {
+      var a = list[i];
+      if (!a || typeof a !== 'object') continue;
+      var id = String(a.dealId || '');
+      if (!id) continue;
+      var rec = map['#' + id];
+      if (!rec) { rec = { meeting: false, count: 0 }; map['#' + id] = rec; }
+      rec.count++;
+      if (String(a.kind || '') === 'meeting') rec.meeting = true;
+    }
+    return map;
+  }
+
+  /* Split the deal book into the calibration set (closed deals) and the
+     deals being forecast (open deals). Everything here is a field Doug
+     filled in; nothing is inferred. */
+  function readBook(st) {
+    var todayISO = WS.today();
+    var acts = activityIndex(st);
+    var deals = (st && st.deals) ? st.deals : [];
+    var closed = [], open = [], unusable = 0, i;
+
+    for (i = 0; i < deals.length; i++) {
+      var d = deals[i];
+      if (!d || typeof d !== 'object') continue;
+      var outcome = String(d.outcome || '');
+      var rec = acts['#' + String(d.id)] || { meeting: false, count: 0 };
+
+      if (outcome === 'won' || outcome === 'lost') {
+        var life = WS.daysBetween(d.opened, d.closedAt);
+        if (!isFinite(life)) { unusable++; continue; }
+        if (life < 0) life = 0;
+        closed.push({
+          id: String(d.id),
+          company: String(d.company || ''),
+          won: outcome === 'won',
+          value: toFiniteNum(d.value),
+          life: life,
+          source: String(d.source || ''),
+          meeting: rec.meeting,
+          closedAt: String(d.closedAt || '')
+        });
+      } else {
+        var age = WS.daysBetween(d.opened, todayISO);
+        if (!isFinite(age) || age < 0) age = 0;
+        var f;
+        try { f = WS.flags(st, d); } catch (e) { f = { daysSinceTouch: null, stale: false, overdue: false, adrift: false }; }
+        open.push({
+          id: String(d.id),
+          company: String(d.company || ''),
+          stage: String(d.stage || 'Lead'),
+          value: toFiniteNum(d.value),
+          age: age,
+          sinceTouch: (typeof f.daysSinceTouch === 'number' && isFinite(f.daysSinceTouch)) ? f.daysSinceTouch : null,
+          stale: !!f.stale,
+          overdue: !!f.overdue,
+          adrift: !!f.adrift
+        });
+      }
+    }
+    return { closed: closed, open: open, unusable: unusable };
+  }
+
+  /* ---------------- the resampling ----------------
+
+     One replicate: shuffle the closed deals (draw n of them with
+     replacement, so the thinness of the record shows up in the spread),
+     then give each open deal a twin drawn from that shuffled set. A deal
+     is only twinned with a closed deal that ran LONGER than it has been
+     open - a deal 40 days old cannot behave like one that settled in 12.
+     If the twin was won and settled inside the window, the open deal's
+     value counts. Add up the cycle. Repeat.
+
+     Lives are whole days, so a life/outcome pair packs into one integer
+     (life * 2 + won) and the eligible slice is a binary search away. */
+
+  function lowerBound(sortedKeys, key) {
+    var lo = 0, hi = sortedKeys.length;
+    while (lo < hi) {
+      var mid = (lo + hi) >> 1;
+      if (sortedKeys[mid] < key) lo = mid + 1; else hi = mid;
+    }
+    return lo;
+  }
+
+  function simulate(openList, hist, cycleDays, reps, rng) {
+    var n = hist.length, m = openList.length, i, b, j;
+    var keys = new Array(n);
+    var totals = new Array(reps);
+    /* Cycles in which no deal landed at all. Counted directly rather than read
+       off a total of zero: a deal you valued at 0 still lands, and calling that
+       cycle "nothing closed" would be a claim the simulation never made. */
+    var blank = 0;
+
+    for (b = 0; b < reps; b++) {
+      for (i = 0; i < n; i++) {
+        var h = hist[(rng() * n) | 0];
+        keys[i] = h.life * 2 + (h.won ? 1 : 0);
+      }
+      keys.sort(numAsc);
+      var total = 0, landed = 0;
+      for (j = 0; j < m; j++) {
+        var o = openList[j];
+        /* eligible twins: life > age, i.e. key >= (age + 1) * 2 */
+        var start = lowerBound(keys, (o.age + 1) * 2);
+        if (start >= n) continue;           /* no comparable deal in this shuffle */
+        var k = keys[start + ((rng() * (n - start)) | 0)];
+        if ((k & 1) === 1 && (k >> 1) <= o.age + cycleDays) { total += o.value; landed++; }
+      }
+      if (landed === 0) blank++;
+      totals[b] = total;
+    }
+    totals.sort(numAsc);
+    return { totals: totals, blank: blank };
+  }
+
+  function seedFor(openList, hist, cycleDays) {
+    var s = 'cycle' + cycleDays + '|n' + hist.length + '|', i;
+    for (i = 0; i < hist.length; i++) s += hist[i].life + ':' + (hist[i].won ? 1 : 0) + ';';
+    s += '|m' + openList.length + '|';
+    for (i = 0; i < openList.length; i++) s += openList[i].age + ':' + openList[i].value + ';';
+    return hashStr(s);
+  }
+
+  /* ---------------- segment win rates ---------------- */
+
+  function tally(records, keyOf) {
+    var order = [], map = Object.create(null), i;
+    for (i = 0; i < records.length; i++) {
+      var key = keyOf(records[i]);
+      if (key === null) continue;
+      var slot = map['#' + key];
+      if (!slot) { slot = { label: key, won: 0, total: 0, value: 0, wonValue: 0 }; map['#' + key] = slot; order.push(slot); }
+      slot.total++;
+      slot.value += records[i].value;
+      if (records[i].won) { slot.won++; slot.wonValue += records[i].value; }
+    }
+    order.sort(function (a, b) { return b.total - a.total || (a.label < b.label ? -1 : 1); });
+    return order;
+  }
+
+  /* ---------------- analysis ---------------- */
+
+  function analyse(st) {
+    var book = readBook(st);
+    var s = settings();
+    var cycleDays = s.cycleDays;
+    var closed = book.closed, open = book.open;
+    var i;
+
+    var wins = 0, losses = 0, lives = [], wonLives = [], closedValues = [];
+    for (i = 0; i < closed.length; i++) {
+      if (closed[i].won) { wins++; wonLives.push(closed[i].life); } else { losses++; }
+      lives.push(closed[i].life);
+      closedValues.push(closed[i].value);
+    }
+    var maxLife = lives.length ? Math.max.apply(null, lives) : NaN;
+
+    var openTotal = 0, weighted = 0;
+    for (i = 0; i < open.length; i++) {
+      openTotal += open[i].value;
+      weighted += open[i].value * WS.stageProbability(open[i].stage);
+      /* how many closed deals could this one be compared with */
+      var comparable = 0;
+      for (var k = 0; k < closed.length; k++) if (closed[k].life > open[i].age) comparable++;
+      open[i].comparable = comparable;
+    }
+
+    var included = [], excluded = [];
+    for (i = 0; i < open.length; i++) {
+      if (open[i].comparable > 0) included.push(open[i]); else excluded.push(open[i]);
+    }
+    var includedValue = 0;
+    for (i = 0; i < included.length; i++) includedValue += included[i].value;
+
+    var out = {
+      cycleDays: cycleDays,
+      quota: s.quota,
+      closed: closed,
+      open: open,
+      unusable: book.unusable,
+      wins: wins,
+      losses: losses,
+      winRate: closed.length ? wins / closed.length : NaN,
+      lives: lives,
+      wonLives: wonLives,
+      medianLife: median(lives),
+      medianWonLife: median(wonLives),
+      maxLife: maxLife,
+      medianClosedValue: median(closedValues),
+      openTotal: openTotal,
+      weighted: weighted,
+      included: included,
+      excluded: excluded,
+      includedValue: includedValue,
+      replicates: 0,
+      totals: null,
+      low: NaN, mid: NaN, high: NaN, zeroShare: NaN,
+      status: 'ok'
+    };
+
+    if (!closed.length && !open.length) { out.status = 'no-deals'; return out; }
+    if (!open.length) { out.status = 'no-open'; return out; }
+    if (closed.length < MIN_CLOSED) { out.status = 'too-few'; return out; }
+    if (!included.length) { out.status = 'no-comparable'; return out; }
+
+    var reps = BASE_REPLICATES;
+    if (closed.length + included.length > 800) reps = 600;
+    var rng = mulberry32(seedFor(included, closed, cycleDays));
+    var sim = simulate(included, closed, cycleDays, reps, rng);
+    var totals = sim.totals;
+
+    out.replicates = reps;
+    out.totals = totals;
+    out.low = quantileOf(totals, TAIL);
+    out.mid = quantileOf(totals, 0.5);
+    out.high = quantileOf(totals, 1 - TAIL);
+    out.zeroShare = sim.blank / reps;   /* reps >= 600, never zero */
+    return out;
+  }
+
+  /* ---------------- rendering: the headline ---------------- */
+
+  function cardNote() {
+    var p = el('p', 'cardnote');
+    add.apply(null, [p].concat(Array.prototype.slice.call(arguments)));
+    return p;
+  }
+
+  /* Why every replicate came out the same. The old copy asserted one cause -
+     "your closed deals all point the same way" - which is false whenever the
+     record is a healthy mix and something else pinned the band: a zero-valued
+     pipeline, or a cycle window nothing can settle inside. Read the cause off
+     the data instead of assuming it. */
+  function flatReason(a) {
+    if (a.includedValue === 0) {
+      return 'every open deal in the forecast is worth 0 by your own estimate, so every cycle adds ' +
+        'up to the same 0.';
+    }
+    if (a.wins === 0 || a.losses === 0) {
+      return 'every deal in your closed book settled the same way, so the resampling has only one ' +
+        'kind of outcome to draw. The note below says which.';
+    }
+    if (a.zeroShare === 1) {
+      return 'nothing in your closed record both came in and settled soon enough to land inside a ' +
+        days(a.cycleDays) + ' window from where your open deals stand today, so no cycle can carry ' +
+        'anything at all.';
+    }
+    if (a.zeroShare === 0) {
+      return 'every eligible deal landed in every cycle, so there was never a different total to ' +
+        'reach. That is your record being uniform, not the forecast being certain.';
+    }
+    return 'your ' + countOf(a.closed.length, 'closed deal', 'closed deals') + ' vary too little in ' +
+      'the two things this page reads from them: how long they ran, and whether they came in.';
+  }
+
+  function renderHeadline(a) {
+    var host = clear($('headline'));
+    if (a.status === 'no-deals') return;
+
+    var card, note;
+
+    if (a.status === 'no-open') {
+      card = el('section', 'card refuse');
+      add(card, el('h2', '', 'No open deals, so there is nothing to forecast'));
+      add(card, cardNote('Every deal in the book is closed. This page forecasts the deals you have open now; ',
+        'open one on the Pipeline page and the range comes back.'));
+      add(card, cardNote('Your closed history is still here and still counts: ',
+        strong(countOf(a.closed.length, 'closed deal', 'closed deals')), ' are read below.'));
+      add(host, card);
+      return;
+    }
+
+    if (a.status === 'too-few') {
+      var needed = MIN_CLOSED - a.closed.length;
+      card = el('section', 'card refuse');
+      add(card, el('h2', '', 'Not enough closed deals to print a range'));
+      add(card, cardNote('You have ', strong(countOf(a.closed.length, 'closed deal', 'closed deals')),
+        '. This page needs ', strong(String(MIN_CLOSED)), ', so it needs ',
+        strong(countOf(needed, 'more', 'more')), '. Won or lost, both count.'));
+
+      note = el('div', 'reason amber');
+      add(note, el('p', '', 'Why ' + MIN_CLOSED + ' and not four:'));
+      var ul = el('ul', 'plain');
+      add(ul, el('li', '', 'A range is only as fine as the record behind it. With n closed deals the ' +
+        'smallest slice of the future this page can honestly talk about is 1 in n + 1. ' +
+        (a.closed.length === 0
+          ? 'With no closed deals there is no slice at all: nothing has happened yet that a range could be built from.'
+          : 'At ' + a.closed.length + ' closed ' + plural(a.closed.length, 'deal', 'deals') + ' that is 1 in ' +
+            (a.closed.length + 1) + ', or about ' + pct(1 / (a.closed.length + 1)) + '.')));
+      add(ul, el('li', '', 'The band this page reports is the middle ' + pct(1 - 2 * TAIL) +
+        ', which needs a ' + pct(TAIL) + ' tail on each side. 1 / (n + 1) first drops to ' +
+        pct(TAIL) + ' or below at n = ' + MIN_CLOSED + '.'));
+      add(ul, el('li', '', 'That is the same test the conformal core in this repository uses: it takes the ' +
+        'ceil((n + 1)(1 - alpha))-th smallest calibration score and returns an unbounded interval when ' +
+        'that rank does not exist, instead of padding the gap with a guess. An unbounded interval is ' +
+        'the honest answer here too, and an unbounded interval is not worth printing.'));
+      add(note, ul);
+      add(card, note);
+
+      add(card, cardNote(a.closed.length === 0
+        ? 'With nothing closed there is nothing to draw a range from at all. Close ' +
+          countOf(needed, 'deal', 'deals') + ' — won or lost — and come back.'
+        : 'Anything narrower drawn from ' + countOf(a.closed.length, 'closed deal', 'closed deals') +
+          ' would be a picture of ' + plural(a.closed.length, 'that one deal', 'those deals') +
+          ', not of your next cycle. Close ' + countOf(needed, 'more', 'more') + ' and come back.'));
+
+      if (a.openTotal > 0) {
+        add(card, cardNote('What can be said meanwhile, with no statistics in it at all: you have ',
+          strong(countOf(a.open.length, 'open deal', 'open deals')), ' worth ', strong(money(a.openTotal)),
+          ' by your own estimates. That is a sum of the numbers you typed, nothing more.'));
+      }
+      add(host, card);
+      return;
+    }
+
+    if (a.status === 'no-comparable') {
+      card = el('section', 'card stop');
+      add(card, el('h2', '', 'Every open deal is older than every deal you have closed'));
+      add(card, cardNote('The longest deal you have closed ran ', strong(days(a.maxLife)),
+        '. All ', String(a.open.length), ' of your open deals have been open longer than that, so there is ',
+        'nothing in your record to compare them with, and this page will not invent one.'));
+      add(card, cardNote('That is a finding in itself. Deals this far past anything you have ever closed ' +
+        'are usually dead and unmarked. The aging table below lists them.'));
+      add(host, card);
+      return;
+    }
+
+    /* ---- a range ---- */
+    card = el('section', 'card range');
+    add(card, el('h2', '', 'Could close in the next ' + days(a.cycleDays)));
+
+    var big = el('div', 'bignum');
+    var flat = (a.low === a.high);
+    if (flat) {
+      add(big, el('span', '', money(a.low)));
+    } else {
+      add(big, el('span', '', money(a.low)), el('span', 'dash', ' to '), el('span', '', money(a.high)));
+    }
+    add(card, big);
+
+    if (flat) {
+      add(card, cardNote('Every one of ', strong(String(a.replicates) + ' resampled cycles'),
+        ' landed on the same number: ', flatReason(a),
+        ' A range with no width is a warning about the record behind it, ',
+        'not a sign of a confident forecast.'));
+    } else {
+      add(card, cardNote('That is the middle ', strong(pct(1 - 2 * TAIL)), ' of ',
+        strong(String(a.replicates) + ' resampled cycles'), ' built from your ',
+        strong(countOf(a.closed.length, 'closed deal', 'closed deals')),
+        '. The middle result was ', strong(money(a.mid)), '.'));
+    }
+
+    if (a.zeroShare > 0) {
+      add(card, cardNote('In ', strong(shareText(a.zeroShare)), ' of those cycles nothing closed at all. ' +
+        'That outcome is part of the range, not an error in it.'));
+    }
+
+    /* the bar: where the band sits inside the pipeline that feeds it */
+    if (a.includedValue > 0) {
+      var scaleMax = Math.max(a.includedValue, a.high);
+      var bar = el('div', 'bar');
+      var track = el('div', 'bar-track');
+      var fill = el('div', 'bar-fill');
+      var loPct = Math.max(0, Math.min(100, (a.low / scaleMax) * 100));
+      var hiPct = Math.max(0, Math.min(100, (a.high / scaleMax) * 100));
+      fill.style.left = loPct + '%';
+      fill.style.width = Math.max(0.6, hiPct - loPct) + '%';
+      var midTick = el('div', 'bar-mid');
+      midTick.style.left = Math.max(0, Math.min(100, (a.mid / scaleMax) * 100)) + '%';
+      add(track, fill, midTick);
+      var scale = el('div', 'bar-scale');
+      add(scale, el('span', '', money(0)), el('span', '', money(scaleMax) + ' forecastable pipeline'));
+      add(bar, track, scale);
+      track.setAttribute('role', 'img');
+      track.setAttribute('aria-label', 'Band from ' + money(a.low) + ' to ' + money(a.high) +
+        ', middle ' + money(a.mid) + ', against ' + money(scaleMax) + ' of open pipeline.');
+      add(card, bar);
+    }
+
+    add(card, cardNote('Forecast over ', strong(countOf(a.included.length, 'open deal', 'open deals')),
+      ' worth ', strong(money(a.includedValue)), ' by your own estimates.'));
+
+    if (a.excluded.length) {
+      var exNote = el('p', 'cardnote');
+      add(exNote, strong(countOf(a.excluded.length, 'open deal is', 'open deals are')),
+        ' left out of the range: ' + plural(a.excluded.length, 'it has', 'they have') +
+        ' been open longer than any deal you have ever closed (' + days(a.maxLife) +
+        '), so your record has nothing to compare ' + plural(a.excluded.length, 'it', 'them') +
+        ' with. ' + plural(a.excluded.length, 'It is', 'They are') + ' flagged in the aging table below.');
+      add(card, exNote);
+    }
+
+    if (a.losses === 0) {
+      add(card, cardNote('Careful: every closed deal in your book is a win. The resampling has no loss to ' +
+        'draw, so this range says almost everything lands. That is what your record says; it is not a ' +
+        'claim about deals you have not lost yet. Record your losses and this range will get honest.'));
+    } else if (a.wins === 0) {
+      add(card, cardNote('Every closed deal in your book is a loss, so the resampling has no win to draw ' +
+        'and the range collapses to nothing closing. That is your record talking, not a prediction ' +
+        'about a deal you have not lost yet.'));
+    }
+
+    add(host, card);
+  }
+
+  /* ---------------- rendering: method ---------------- */
+
+  function renderMethod(a) {
+    var host = clear($('method'));
+    /* This block is also shown when the page refused to print a range. In that
+       case no resampling ran, so it must not describe a run that did not happen
+       or quote a replicate count nothing produced. */
+    var ran = (a.status === 'ok');
+
+    var p1 = el('p', 'muted');
+    p1.textContent = 'Every deal you have closed records two things: how long it ran, and whether it came in. ' +
+      'This page shuffles those closed deals and deals them back out to the deals you have open now. ' +
+      'A deal is only matched with a closed deal that ran longer than it has been open so far — a deal ' +
+      'that has been open 40 days can only be compared with deals that took more than 40 days to settle. ' +
+      'If its match came in, and came in inside your ' + a.cycleDays + '-day window, that deal’s ' +
+      'value is counted. Adding them up gives one possible cycle. ' +
+      (ran
+        ? 'The page did that ' + a.replicates + ' times; the range above is the middle ' +
+          pct(1 - 2 * TAIL) + ' of the results.'
+        : 'The page would do that ' + BASE_REPLICATES + ' times and report the middle ' + pct(1 - 2 * TAIL) +
+          ' of the results — but it did not run here, and there is no range on this page. The card ' +
+          'above says why.');
+    add(host, p1);
+
+    var ul = el('ul', 'plain');
+    add(ul, el('li', '', 'No bell curve. The only outcomes it draws from are the ones you recorded, so the ' +
+      'shape of the range is the shape of your own history rather than an assumption about it.'));
+    add(ul, el('li', '', 'No built-in odds. Nothing in this page carries an author-supplied "70% likely to ' +
+      'close". The one place a fixed table appears is the comparison line below, and it is labelled as such.'));
+    add(ul, el('li', '', 'It is a range, not a promise. Nothing here guarantees the true number lands inside ' +
+      'it; a resampled band from a few dozen deals has no coverage certificate. What it does guarantee is ' +
+      'that every input is a deal you closed.'));
+    add(ul, el('li', '', 'The shuffle is seeded from your own data, so the same deals always give the same ' +
+      'range. Reloading the page will not move it; changing a deal will.'));
+    add(host, ul);
+
+    if (isFinite(a.weighted) && a.open.length) {
+      var cmp = el('div', 'reason');
+      add(cmp, el('p', '', 'For comparison, the number a CRM would show you: ' + money(a.weighted) + '.'));
+      var q = el('p', '');
+      q.textContent = 'That is every open deal multiplied by a fixed probability attached to its stage ' +
+        '(Lead 5%, Contacted 15%, Meeting 30%, Proposal 50%, Negotiation 70%). Those percentages are typed ' +
+        'into this tool by its author. They are not measured from your deals, they do not change when your ' +
+        'results change, and they are shown here only so you can see the gap. Do not take them to the ' +
+        'forecast call.';
+      add(cmp, q);
+      add(host, cmp);
+    }
+  }
+
+  /* ---------------- rendering: win rate ---------------- */
+
+  function rateCellText(slot) {
+    if (slot.total < MIN_SEGMENT) return '—';
+    return pct(slot.won / slot.total);
+  }
+
+  function segmentTable(caption, slots, labelHead) {
+    var wrap = el('div', 'tablewrap');
+    var t = el('table', 'stack');
+    var cap = el('caption', '', caption);
+    add(t, cap);
+    var thead = el('thead');
+    var hr = el('tr');
+    add(hr, th(labelHead), th('Won', 'r'), th('Closed', 'r'), th('Rate', 'r'), th('Reading'));
+    add(thead, hr);
+    add(t, thead);
+    var tbody = el('tbody');
+    for (var i = 0; i < slots.length; i++) {
+      var s = slots[i];
+      var tr = el('tr', s.total < MIN_SEGMENT ? 'thin' : '');
+      add(tr, td(s.label || '(not recorded)', 'name', labelHead));
+      add(tr, td(String(s.won), 'r num', 'Won'));
+      add(tr, td(String(s.total), 'r num', 'Closed'));
+      var rateTd = td(rateCellText(s), 'r num' + (s.total < MIN_SEGMENT ? ' dash-val' : ''), 'Rate');
+      add(tr, rateTd);
+      add(tr, td(s.total < MIN_SEGMENT
+        ? s.won + ' of ' + s.total + ' — too few to read as a rate'
+        : s.won + ' of ' + s.total + ' won', 'small muted', 'Reading'));
+      add(tbody, tr);
+    }
+    add(t, tbody);
+    add(wrap, t);
+    return wrap;
+  }
+
+  function renderRate(a) {
+    var host = clear($('rate'));
+    var n = a.closed.length;
+
+    if (!n) {
+      var none = el('div', 'reason amber');
+      add(none, el('p', '', 'No closed deals yet, so there is no win rate to compute. ' +
+        'Mark a deal won or lost on the Pipeline page and this fills in.'));
+      add(host, none);
+      return;
+    }
+
+    var head = el('p', '');
+    add(head, strong(a.wins + ' of ' + n + ' closed deals came in'),
+      n >= MIN_SEGMENT ? ' — ' + pct(a.winRate) + '.' : '.');
+    add(host, head);
+
+    /* the swing: what one more deal does to that rate */
+    var swingUp = (a.wins + 1) / (n + 1);
+    var swingDown = a.wins / (n + 1);
+    var swing = el('p', 'small muted');
+    swing.textContent = 'One more closed deal moves that to ' + pct(swingUp, 1) + ' if it wins, or ' +
+      pct(swingDown, 1) + ' if it loses — a swing of ' + pct(swingUp - swingDown, 1) +
+      ' from a single deal. That is how much weight the rate can carry at ' + n +
+      (n < 20 ? ' deals: not much.' : ' deals.');
+    add(host, swing);
+
+    if (a.unusable) {
+      var un = el('p', 'small err');
+      un.textContent = countOf(a.unusable, 'closed deal was', 'closed deals were') +
+        ' skipped: the open or close date could not be read, so the deal cannot be placed in time.';
+      add(host, un);
+    }
+
+    /* by stage: refused, with the reason */
+    var refuse = el('div', 'reason amber');
+    add(refuse, el('p', '', 'Win rate by stage: not available, and not estimated.'));
+    var rp = el('p', '');
+    rp.textContent = 'This workspace records a deal’s stage only as it is right now. The moment you mark ' +
+      'a deal won or lost its stage becomes Won or Lost, and whichever stage it sat in the day before is not ' +
+      'kept anywhere. A line reading "Proposal: 43% close" would therefore have to be made up, so this page ' +
+      'does not print one. The splits below use fields that survive the close, so they can be traced back to ' +
+      'deals you can name.';
+    add(refuse, rp);
+    add(host, refuse);
+
+    /* by source */
+    var bySource = tally(a.closed, function (r) { return r.source || '(not recorded)'; });
+    if (bySource.length) {
+      add(host, segmentTable('Where the deal came from. Source is the field you fill in on the deal.',
+        bySource, 'Source'));
+    }
+
+    /* by size, split at the median closed value */
+    if (n >= 4 && isFinite(a.medianClosedValue)) {
+      var med = a.medianClosedValue;
+      var bySize = tally(a.closed, function (r) {
+        return r.value >= med ? 'At or above ' + money(med) : 'Below ' + money(med);
+      });
+      if (bySize.length > 1) {
+        add(host, segmentTable('By deal size, split at the median closed value (' + money(med) + ').',
+          bySize, 'Size'));
+      }
+    }
+
+    /* by whether a meeting was ever logged */
+    var byMeeting = tally(a.closed, function (r) {
+      return r.meeting ? 'A meeting was logged' : 'No meeting logged';
+    });
+    if (byMeeting.length > 1) {
+      add(host, segmentTable('By whether you ever logged a meeting on the deal. This is the closest ' +
+        'thing to a stage that survives the close, because it is an activity you recorded at the time.',
+        byMeeting, 'Contact'));
+    }
+
+    var foot = el('p', 'small muted');
+    foot.textContent = 'A rate is only shown where at least ' + MIN_SEGMENT + ' deals sit behind it. ' +
+      'Below that the row shows the raw counts and an em dash, because a percentage from three deals ' +
+      'reads as knowledge and is not.';
+    add(host, foot);
+  }
+
+  /* ---------------- rendering: coverage ---------------- */
+
+  function renderCover(a) {
+    var host = clear($('cover'));
+    var quota = a.quota;
+
+    if (quota === null || quota === undefined) {
+      var none = el('div', 'reason amber');
+      add(none, el('p', '', 'No quota set, so there is no coverage ratio to show.'));
+      add(none, el('p', '', 'Set one in the box below and this fills in. If you do not carry a quota, ' +
+        'leave it empty — the rest of the page does not need it.'));
+      add(host, none);
+      return;
+    }
+
+    if (quota === 0) {
+      add(host, el('p', 'muted', 'Your quota is set to zero, so a coverage ratio would divide by zero. ' +
+        'Set a real number below, or leave the field empty if you do not carry a quota.'));
+      return;
+    }
+
+    var ratio = a.openTotal / quota;
+    var line = el('p', '');
+    add(line, strong(money(a.openTotal)), ' of open pipeline against a quota of ', strong(money(quota)),
+      ' — ', strong(ratioText(ratio)), ' coverage.');
+    add(host, line);
+
+    var caveat = el('div', 'reason');
+    var cp = el('p', '');
+    cp.textContent = 'That is the plainest number on this page: the sum of your own value estimates for ' +
+      'open deals, divided by your quota. It counts every open deal whenever it might land, it counts ' +
+      'estimates as if they were facts, and it says nothing about whether you win any of them. Treat it ' +
+      'as a check that there is enough on the board, not as a forecast.';
+    add(caveat, cp);
+    add(host, caveat);
+
+    if (a.closed.length >= MIN_CLOSED && a.winRate > 0) {
+      var need = quota / a.winRate;
+      var p = el('p', '');
+      add(p, 'At your measured win rate of ', strong(pct(a.winRate)), ' (', String(a.wins), ' of ',
+        String(a.closed.length), '), covering ', strong(money(quota)), ' of closed business takes roughly ',
+        strong(money(need)), ' of open pipeline. You have ', strong(money(a.openTotal)), '.');
+      add(host, p);
+
+      var gap = a.openTotal - need;
+      var verdict = el('p', 'small ' + (gap >= 0 ? 'good' : 'warn'));
+      verdict.textContent = gap >= 0
+        ? 'That is ' + money(gap) + ' more than the rough requirement.'
+        : 'That is ' + money(-gap) + ' short of the rough requirement.';
+      add(host, verdict);
+
+      var p2 = el('p', 'small muted');
+      p2.textContent = 'The requirement assumes the deals you have open behave like the ones you have ' +
+        'closed, and it ignores timing entirely. It is arithmetic on your win rate, not a second forecast.';
+      add(host, p2);
+    } else {
+      var thin = el('p', 'small muted');
+      thin.textContent = a.closed.length
+        ? 'The "pipeline needed at your win rate" line needs ' + MIN_CLOSED + ' closed deals behind the ' +
+          'rate; you have ' + a.closed.length + '. It is left out rather than shown with a rate that thin.'
+        : 'The "pipeline needed at your win rate" line needs closed deals behind it. You have none yet.';
+      add(host, thin);
+    }
+  }
+
+  /* ---------------- rendering: funnel ---------------- */
+
+  function renderFunnel(a) {
+    var host = clear($('funnel'));
+    var stages = WS.OPEN_STAGES;
+    var counts = [], values = [], i, j;
+
+    for (i = 0; i < stages.length; i++) { counts.push(0); values.push(0); }
+    for (i = 0; i < a.open.length; i++) {
+      var idx = WS.STAGES.indexOf(a.open[i].stage);
+      if (idx < 0 || idx >= stages.length) idx = 0;
+      counts[idx]++;
+      values[idx] += a.open[i].value;
+    }
+
+    /* cumulative "at or past this stage" */
+    var atOrPast = [], atOrPastValue = [];
+    for (i = 0; i < stages.length; i++) {
+      var c = 0, v = 0;
+      for (j = i; j < stages.length; j++) { c += counts[j]; v += values[j]; }
+      atOrPast.push(c); atOrPastValue.push(v);
+    }
+
+    if (!a.open.length) {
+      add(host, el('p', 'muted', 'No open deals, so there is no funnel to draw.'));
+      return;
+    }
+
+    var maxReach = atOrPast[0] || 1;
+    var wrap = el('div', 'tablewrap');
+    var t = el('table', 'stack');
+    add(t, el('caption', '', 'Open deals only, as they stand right now.'));
+    var thead = el('thead'), hr = el('tr');
+    add(hr, th('Stage'), th('At this stage', 'r'), th('At or past', 'r'), th('Value at or past', 'r'),
+      th('Step from previous', 'r'), th(''));
+    add(thead, hr); add(t, thead);
+
+    var tbody = el('tbody');
+    for (i = 0; i < stages.length; i++) {
+      var tr = el('tr');
+      add(tr, td(stages[i], 'name', 'Stage'));
+      add(tr, td(String(counts[i]), 'r num', 'At this stage'));
+      add(tr, td(String(atOrPast[i]), 'r num', 'At or past'));
+      add(tr, td(money(atOrPastValue[i]), 'r num', 'Value at or past'));
+
+      /* Same floor the win-rate tables use: a percentage off two or three deals
+         reads as knowledge and is not, so below MIN_SEGMENT print the counts. */
+      var stepText, thinStep = false;
+      if (i === 0) { stepText = '—'; thinStep = true; }
+      else if (atOrPast[i - 1] === 0) { stepText = 'no deals'; thinStep = true; }
+      else if (atOrPast[i - 1] < MIN_SEGMENT) {
+        stepText = atOrPast[i] + ' of ' + atOrPast[i - 1] + ' — too few to read as a rate';
+        thinStep = true;
+      } else {
+        stepText = pct(atOrPast[i] / atOrPast[i - 1]) + ' (' + atOrPast[i] + ' of ' + atOrPast[i - 1] + ')';
+      }
+      add(tr, td(stepText, 'r num' + (thinStep ? ' dash-val' : ''), 'Step from previous'));
+
+      var cell = el('td', 'fcell');
+      cell.setAttribute('data-label', 'Shape');
+      var b = el('div', 'fbar');
+      b.style.width = Math.max(1, (atOrPast[i] / maxReach) * 100) + '%';
+      add(cell, b);
+      add(tr, cell);
+      add(tbody, tr);
+    }
+    add(t, tbody); add(wrap, t); add(host, wrap);
+
+    var note = el('div', 'reason');
+    var np = el('p', '');
+    np.textContent = 'These are the deals sitting in each stage right now, not a group of deals followed ' +
+      'through it. "At or past" counts a deal showing Proposal today as having passed Lead, Contacted ' +
+      'and Meeting on the way — this tool does not timestamp stage changes, so that is read off where ' +
+      'the deal sits now, not measured. "Step from previous" then compares one of those counts with the ' +
+      'one before it. It equals a real conversion rate only if your inflow has been steady for a while, ' +
+      'which this page cannot check, so read it as the current shape of the board rather than as a ' +
+      'measured rate. Where fewer than ' + MIN_SEGMENT + ' deals sit behind a step it is shown as counts ' +
+      'instead of a percentage, for the same reason the win rates above are.';
+    add(note, np);
+    var np2 = el('p', '');
+    np2.textContent = 'Closed deals are left out on purpose. Their stage becomes Won or Lost when they ' +
+      'close, so the stage they reached first is not recorded and cannot be added to this without guessing.';
+    add(note, np2);
+    add(host, note);
+  }
+
+  /* ---------------- rendering: aging ---------------- */
+
+  function renderAge(a) {
+    var host = clear($('age'));
+    var i;
+
+    var kpis = el('div', 'kpis');
+    if (a.closed.length) {
+      add(kpis, add(el('span', ''), 'Median days to close, all closed: ', strong(days(a.medianLife)),
+        ' (' + a.closed.length + ')'));
+      if (a.wonLives.length) {
+        add(kpis, add(el('span', ''), 'Won deals: ', strong(days(a.medianWonLife)),
+          ' (' + a.wonLives.length + ')'));
+      } else {
+        add(kpis, add(el('span', ''), 'Won deals: ', strong('none recorded')));
+      }
+      add(kpis, add(el('span', ''), 'Longest you have closed: ', strong(days(a.maxLife))));
+    } else {
+      add(kpis, add(el('span', ''), strong('No closed deals'), ', so there is no history to measure against.'));
+    }
+    add(host, kpis);
+
+    /* median days open by current stage */
+    if (a.open.length) {
+      var byStage = Object.create(null), order = [];
+      for (i = 0; i < a.open.length; i++) {
+        var st = a.open[i].stage;
+        if (!byStage['#' + st]) { byStage['#' + st] = []; order.push(st); }
+        byStage['#' + st].push(a.open[i].age);
+      }
+      var stageWrap = el('div', 'tablewrap');
+      var stageT = el('table', 'stack');
+      add(stageT, el('caption', '', 'Open deals: median days since you opened them, by the stage they are in now.'));
+      var sh = el('thead'), shr = el('tr');
+      add(shr, th('Stage'), th('Open deals', 'r'), th('Median days open', 'r'), th('Longest', 'r'));
+      add(sh, shr); add(stageT, sh);
+      var sb = el('tbody');
+      for (i = 0; i < WS.OPEN_STAGES.length; i++) {
+        var name = WS.OPEN_STAGES[i];
+        var ages = byStage['#' + name];
+        if (!ages || !ages.length) continue;
+        var tr = el('tr');
+        add(tr, td(name, 'name', 'Stage'));
+        add(tr, td(String(ages.length), 'r num', 'Open deals'));
+        add(tr, td(days(median(ages)), 'r num', 'Median days open'));
+        add(tr, td(days(Math.max.apply(null, ages)), 'r num', 'Longest'));
+        add(sb, tr);
+      }
+      add(stageT, sb); add(stageWrap, stageT); add(host, stageWrap);
+    }
+
+    var caveat = el('div', 'reason');
+    var cp = el('p', '');
+    cp.textContent = 'This tool does not timestamp stage changes, so "days open" is days since you opened ' +
+      'the deal, not days in its current stage. It is the honest version of the number: a deal that has ' +
+      'been in the book 90 days has been in the book 90 days, whatever stage it is showing today. ' +
+      '"Since touch" is the most recent activity you logged on the deal, or the day you opened it if you ' +
+      'have logged nothing.';
+    add(caveat, cp);
+    add(host, caveat);
+
+    if (!a.open.length) return;
+
+    /* per-deal table, oldest first */
+    var rows = a.open.slice().sort(function (x, y) { return y.age - x.age; });
+    var wrap = el('div', 'tablewrap');
+    var t = el('table', 'stack');
+    add(t, el('caption', '', 'Open deals, oldest first. "Comparable" is how many of your closed deals ran ' +
+      'longer than this one has been open — the deals it can be measured against.'));
+    var thead = el('thead'), hr = el('tr');
+    add(hr, th('Deal'), th('Stage'), th('Value', 'r'), th('Days open', 'r'), th('Since touch', 'r'),
+      th('Comparable', 'r'), th('Reading'));
+    add(thead, hr); add(t, thead);
+
+    var tbody = el('tbody');
+    for (i = 0; i < rows.length; i++) {
+      var d = rows[i];
+      var reading, cls = '';
+      if (!a.closed.length) {
+        reading = 'no closed history to compare with';
+      } else if (d.comparable === 0) {
+        reading = 'older than every deal you have closed';
+        cls = 'flag-hot';
+      } else if (isFinite(a.medianWonLife) && d.age > a.medianWonLife) {
+        reading = 'open longer than your median win (' + days(a.medianWonLife) + ')';
+        cls = 'flag-warm';
+      } else if (isFinite(a.medianLife) && d.age > a.medianLife) {
+        reading = 'open longer than your median close (' + days(a.medianLife) + ')';
+        cls = 'flag-warm';
+      } else {
+        reading = 'normal for you';
+      }
+
+      var tr = el('tr', cls);
+      var nameCell = el('td', 'name');
+      nameCell.setAttribute('data-label', 'Deal');
+      var link = el('a', '', d.company || '(no company name)');
+      link.setAttribute('href', 'pipeline.html?deal=' + encodeURIComponent(d.id));
+      add(nameCell, link);
+      add(tr, nameCell);
+
+      add(tr, td(d.stage, '', 'Stage'));
+      add(tr, td(money(d.value), 'r num', 'Value'));
+      add(tr, td(String(d.age), 'r num', 'Days open'));
+      add(tr, td(d.sinceTouch === null ? '—' : String(d.sinceTouch), 'r num', 'Since touch'));
+      add(tr, td(a.closed.length ? String(d.comparable) + ' of ' + a.closed.length : '—', 'r num', 'Comparable'));
+      add(tr, td(reading, 'small', 'Reading'));
+      add(tbody, tr);
+    }
+    add(t, tbody); add(wrap, t); add(host, wrap);
+
+    var foot = el('p', 'small muted');
+    foot.textContent = 'A deal with a low "comparable" count has only a handful of your closed deals to be ' +
+      'measured against, or none at all. ' + (a.status === 'ok'
+        ? 'Those are the deals where the range above is weakest, and usually the deals worth a phone ' +
+          'call rather than a number.'
+        : 'Those are usually the deals worth a phone call rather than a number.');
+    add(host, foot);
+  }
+
+  /* ---------------- settings form ---------------- */
+
+  function plainNumber(v) {
+    if (v === null || v === undefined || v === '') return '';
+    var n = typeof v === 'number' ? v : parseFloat(v);
+    if (!isFinite(n)) return '';
+    return String(Math.round(n * 100) / 100);
+  }
+
+  function fillSettings() {
+    var s = settings();
+    $('quota').value = s.quota === null ? '' : plainNumber(s.quota);
+    $('cycleDays').value = String(s.cycleDays);
+
+    var sel = clear($('currency'));
+    var list = CURRENCIES.slice();
+    if (list.indexOf(s.currency) === -1) list.unshift(s.currency);
+    for (var i = 0; i < list.length; i++) {
+      var opt = el('option', '', list[i]);
+      opt.value = list[i];
+      if (list[i] === s.currency) opt.selected = true;
+      add(sel, opt);
+    }
+  }
+
+  function saveSettings(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    var msg = $('settingsMsg');
+    if (!state || typeof state !== 'object') state = WS.emptyState();
+    if (!state.settings || typeof state.settings !== 'object') {
+      state.settings = { quota: null, cycleDays: WS.DEFAULT_CYCLE_DAYS, currency: 'USD' };
+    }
+    var rawQuota = String($('quota').value || '').trim();
+    var quota = null;
+    if (rawQuota !== '') {
+      var cleaned = rawQuota.replace(/[^0-9.\-]/g, '');
+      var q = parseFloat(cleaned);
+      if (!isFinite(q) || q < 0) {
+        msg.className = 'small err';
+        msg.textContent = 'Quota must be a number, like 75000, or empty.';
+        try { $('quota').focus(); } catch (e1) { /* ignore */ }
+        return;
+      }
+      quota = Math.round(q * 100) / 100;
+    }
+
+    var rawCycle = String($('cycleDays').value || '').trim();
+    var cycle = parseInt(rawCycle, 10);
+    if (!isFinite(cycle) || cycle < 1) {
+      msg.className = 'small err';
+      msg.textContent = 'Cycle length must be a whole number of days, at least 1.';
+      try { $('cycleDays').focus(); } catch (e2) { /* ignore */ }
+      return;
+    }
+    if (cycle > 3650) cycle = 3650;
+
+    state.settings.quota = quota;
+    state.settings.cycleDays = cycle;
+    state.settings.currency = String($('currency').value || 'USD');
+
+    if (persist()) {
+      msg.className = 'small good';
+      msg.textContent = 'Saved.';
+    } else {
+      msg.className = 'small err';
+      msg.textContent = 'Could not save: this browser is blocking storage.';
+    }
+    render();
+  }
+
+  /* ---------------- storage ---------------- */
+
+  function persist() {
+    var ok = false;
+    try { state = WS.migrate(state); } catch (e) { /* keep what we have */ }
+    try { ok = WS.save(state); } catch (e2) { ok = false; }
+    if (!ok) {
+      warn('This browser would not store that change, so it will be gone when you close the tab. ' +
+        'Private browsing and blocked site data are the usual causes. Export a backup now.');
+    }
+    return ok;
+  }
+
+  function warn(text) {
+    var box = $('storageWarn');
+    box.textContent = text;
+    box.hidden = false;
+  }
+
+  var flashTimer = null;
+  function flash(text) {
+    var box = $('flash');
+    box.textContent = text;
+    box.hidden = false;
+    if (flashTimer) { clearTimeout(flashTimer); flashTimer = null; }
+    flashTimer = setTimeout(function () { box.hidden = true; box.textContent = ''; }, 12000);
+  }
+
+  /* ---------------- export / import ---------------- */
+
+  function pickImport() {
+    try { $('importFile').click(); }
+    catch (e) { flash('This browser would not open the file picker.'); }
+  }
+
+  function renderImportChoice(incoming) {
+    var host = clear($('importChoice'));
+    var box = el('div', 'confirm');
+    var p = el('p', '');
+    p.textContent = 'That file holds ' + countOf(incoming.deals.length, 'deal', 'deals') + ', ' +
+      countOf(incoming.activities.length, 'activity', 'activities') + ' and ' +
+      countOf(incoming.objections.length, 'objection', 'objections') + '. Merge keeps what is already ' +
+      'in this browser and adds the rest, and where a record exists in both, the file wins. Replace ' +
+      'deletes the ' + countOf(state.deals.length, 'deal', 'deals') + ' stored here first, and cannot be undone.';
+    add(box, p);
+
+    var actions = el('div', 'row-actions');
+    var mergeBtn = el('button', '', 'Merge');
+    mergeBtn.type = 'button';
+    mergeBtn.addEventListener('click', function () {
+      try { state = WS.merge(state, incoming); }
+      catch (e) { flash('That backup could not be merged.'); return; }
+      clear($('importChoice'));
+      persist();
+      flash('Merged. This browser now holds ' + countOf(state.deals.length, 'deal', 'deals') + '.');
+      fillSettings();
+      render();
+    });
+
+    var replaceBtn = el('button', 'danger', 'Replace everything');
+    replaceBtn.type = 'button';
+    replaceBtn.addEventListener('click', function () { confirmReplace(incoming); });
+
+    var cancelBtn = el('button', 'ghost', 'Cancel');
+    cancelBtn.type = 'button';
+    cancelBtn.addEventListener('click', function () { clear($('importChoice')); });
+
+    add(actions, mergeBtn, replaceBtn, cancelBtn);
+    add(box, actions);
+    add(host, box);
+    try { mergeBtn.focus(); } catch (e) { /* ignore */ }
+  }
+
+  function confirmReplace(incoming) {
+    var host = clear($('importChoice'));
+    var box = el('div', 'confirm');
+    var p = el('p', '');
+    p.textContent = 'Replace everything in this browser? The ' +
+      countOf(state.deals.length, 'deal', 'deals') + ' and all activity stored here will be deleted and ' +
+      'replaced by the file. This cannot be undone.';
+    add(box, p);
+    var actions = el('div', 'row-actions');
+    var yes = el('button', 'danger', 'Yes, replace everything');
+    yes.type = 'button';
+    yes.addEventListener('click', function () {
+      state = incoming;
+      clear($('importChoice'));
+      persist();
+      flash('Replaced. This browser now holds ' + countOf(state.deals.length, 'deal', 'deals') + '.');
+      fillSettings();
+      render();
+    });
+    var no = el('button', 'ghost', 'Keep what is here');
+    no.type = 'button';
+    no.addEventListener('click', function () { clear($('importChoice')); });
+    add(actions, yes, no);
+    add(box, actions);
+    add(host, box);
+    try { no.focus(); } catch (e) { /* ignore */ }
+  }
+
+  /* ---------------- render ---------------- */
+
+  function render() {
+    var a;
+    try { a = analyse(state); }
+    catch (e) {
+      clear($('headline'));
+      var box = el('section', 'card stop');
+      add(box, el('h2', '', 'This page could not read your deal book'));
+      add(box, el('p', 'cardnote', 'Nothing has been changed or deleted. Export a backup from the bottom ' +
+        'of this page, then open the Pipeline page to check the deals.'));
+      add($('headline'), box);
+      return;
+    }
+
+    var hasDeals = a.open.length > 0 || a.closed.length > 0;
+    $('empty').hidden = hasDeals;
+
+    renderHeadline(a);
+    renderRate(a);
+    renderCover(a);
+    renderFunnel(a);
+    renderAge(a);
+
+    $('rateBlock').hidden = !hasDeals;
+    $('coverBlock').hidden = !hasDeals;
+    $('funnelBlock').hidden = !a.open.length;
+    $('ageBlock').hidden = !hasDeals;
+
+    $('methodBlock').hidden = !(a.status === 'ok' || a.status === 'too-few' || a.status === 'no-comparable');
+    if (!$('methodBlock').hidden) renderMethod(a); else clear($('method'));
+  }
+
+  /* ---------------- boot ---------------- */
+
+  function boot() {
+    try { $('nav').innerHTML = WS.nav('forecast.html'); } catch (e) { /* ignore */ }
+    try { $('privacy').innerHTML = WS.privacyNote(); } catch (e) { /* ignore */ }
+
+    try {
+      state = WS.load();
+    } catch (e) {
+      state = WS.emptyState();
+      storageOK = false;
+    }
+    if (!state || typeof state !== 'object') { state = WS.emptyState(); storageOK = false; }
+
+    /* a live probe: WS.load() returns an empty workspace both when there is
+       nothing stored and when storage is blocked, and those need different words */
+    try {
+      var probe = '__doug_probe__';
+      localStorage.setItem(probe, '1');
+      localStorage.removeItem(probe);
+    } catch (e) { storageOK = false; }
+
+    if (!storageOK) {
+      warn('This browser is not letting this page store anything, so any setting you change here will be ' +
+        'gone when you close the tab. Private browsing and blocked site data are the usual causes. ' +
+        'Your deals are still read and the forecast below still works.');
+    }
+
+    fillSettings();
+
+    $('settingsForm').addEventListener('submit', saveSettings);
+
+    $('exportBtn').addEventListener('click', function () {
+      var ok = false;
+      try { ok = WS.exportJSON(state); } catch (e) { ok = false; }
+      flash(ok
+        ? 'Backup downloaded. Save it somewhere private, and do not commit it to a repository.'
+        : 'This browser blocked the download. Try another browser, or copy the file across another way.');
+    });
+
+    $('importBtn').addEventListener('click', pickImport);
+    $('emptyImport').addEventListener('click', pickImport);
+
+    $('importFile').addEventListener('change', function () {
+      var file = (this.files && this.files.length) ? this.files[0] : null;
+      try { this.value = ''; } catch (e) { /* ignore */ }
+      if (!file) return;
+      WS.importJSON(file, function (err, incoming) {
+        if (err) { flash(err.message || 'That file could not be read.'); return; }
+        renderImportChoice(incoming);
+      });
+    });
+
+    render();
+  }
+
+  boot();
+})();
+  </script>
+</body>
+</html>

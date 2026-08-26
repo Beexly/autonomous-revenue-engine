@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Today — Doug's sales workspace</title>
+  <meta name="description" content="One ranked list of what to work on right now: overdue follow-ups, deals with no next step, stale deals, and today's scheduled actions. All data stays in this browser.">
+  <style>
+    html, body {
+      margin: 0;
+      background: #0e0e0e;
+      color: #e8e4d9;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    body { font-size: 15px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+    main { max-width: 640px; margin: 40px auto; padding: 0 16px; }
+
+    h1 { font-size: 22px; letter-spacing: -0.03em; margin: 0 0 6px; }
+    p.lede { color: #b7b2a6; margin-top: 0; }
+    h2 {
+      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #b7b2a6; font-weight: 650; margin: 34px 0 6px;
+    }
+    h3 { font-size: 15px; margin: 0; font-weight: 650; }
+    p { margin: 0 0 10px; }
+    a { color: #e8e4d9; }
+    .muted { color: #b7b2a6; }
+    .section-note { color: #b7b2a6; font-size: 13px; margin: 0 0 12px; }
+
+    /* ---- nav (markup comes from WS.nav) ---- */
+    .nav {
+      display: flex; flex-wrap: wrap;
+      border-bottom: 1px solid #3a3a36; margin: 0 0 24px;
+    }
+    .nav-item {
+      padding: 8px 12px 7px 0; margin-right: 14px; margin-bottom: -1px;
+      color: #b7b2a6; text-decoration: none; font-size: 14px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-item:hover, .nav-item:focus { color: #e8e4d9; }
+    .nav-item.active { color: #e8e4d9; font-weight: 650; border-bottom-color: #e8e4d9; }
+
+    /* ---- forms ---- */
+    label { display: block; font-size: 12px; letter-spacing: 0.04em; color: #b7b2a6; margin-bottom: 4px; }
+    input, select, textarea {
+      width: 100%; box-sizing: border-box;
+      background: #161616; color: #e8e4d9; border: 1px solid #3a3a36;
+      padding: 9px 10px;
+      font: 15px/1.4 ui-sans-serif, system-ui, sans-serif;
+    }
+    input:focus, select:focus, textarea:focus, button:focus, summary:focus, a:focus {
+      outline: 2px solid #b7b2a6; outline-offset: 1px;
+    }
+    .field { margin-bottom: 12px; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+    @media (max-width: 460px) { .fields { grid-template-columns: 1fr; } }
+    .hint { font-size: 12px; color: #b7b2a6; margin: -6px 0 12px; }
+
+    button {
+      background: #e8e4d9; color: #111; border: 0;
+      font-weight: 650; padding: 10px 16px; cursor: pointer;
+      font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px;
+    }
+    button:disabled { opacity: 0.55; cursor: default; }
+    .btn-quiet {
+      background: transparent; color: #e8e4d9; border: 1px solid #3a3a36; font-weight: 650;
+    }
+    .btn-quiet:hover { border-color: #b7b2a6; }
+    .btn-small { padding: 6px 10px; font-size: 13px; }
+    .linkbtn {
+      display: inline-block; padding: 6px 10px; font-size: 13px; font-weight: 650;
+      border: 1px solid #3a3a36; color: #e8e4d9; text-decoration: none;
+    }
+    .linkbtn:hover { border-color: #b7b2a6; }
+
+    /* ---- status / banners ---- */
+    .status { border: 1px solid #3a3a36; background: #161616; padding: 10px 12px; font-size: 14px; }
+    .status-ok { border-left: 3px solid #7fb069; }
+    .status-err { border-left: 3px solid #d46a6a; color: #d46a6a; }
+    .banner {
+      border: 1px solid #d46a6a; color: #d46a6a; background: #161616;
+      padding: 10px 12px; font-size: 14px;
+    }
+
+    /* ---- week strip ---- */
+    .strip { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cell {
+      box-sizing: border-box; flex: 1 1 100px; min-width: 0;
+      background: #161616; border: 1px solid #3a3a36; padding: 10px 12px;
+    }
+    .cell .k { font-size: 12px; color: #b7b2a6; display: block; }
+    .cell .v { font-size: 19px; font-weight: 650; display: block; margin-top: 2px; }
+    .cell .sub { font-size: 12px; color: #b7b2a6; display: block; }
+    .v-danger { color: #d46a6a; }
+    .v-warn { color: #d4a24a; }
+    .v-win { color: #7fb069; }
+
+    .quota { margin-top: 14px; }
+    .quota .line { font-size: 14px; margin-bottom: 6px; }
+    .quota .section-note { margin-top: 8px; }
+    .bar { height: 8px; background: #0e0e0e; border: 1px solid #3a3a36; }
+    .bar > span { display: block; height: 100%; background: #7fb069; }
+
+    /* ---- work list ---- */
+    .group { margin-top: 22px; }
+    .group:first-child { margin-top: 0; }
+    .group-h {
+      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+      font-weight: 650; margin: 0 0 4px;
+    }
+    .group-h.g-overdue { color: #d46a6a; }
+    .group-h.g-adrift { color: #d46a6a; }
+    .group-h.g-stale { color: #d4a24a; }
+    .group-h.g-today { color: #b7b2a6; }
+    .group-note { font-size: 12px; color: #b7b2a6; margin: 0 0 10px; }
+    ul.rows { list-style: none; margin: 0; padding: 0; }
+
+    .row {
+      background: #161616; border: 1px solid #3a3a36; border-left-width: 3px;
+      padding: 12px; margin-bottom: 10px;
+    }
+    .row.b-overdue { border-left-color: #d46a6a; }
+    .row.b-adrift { border-left-color: #d46a6a; }
+    .row.b-stale { border-left-color: #d4a24a; }
+    .row.b-today { border-left-color: #b7b2a6; }
+
+    .row-head { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+    .row-head .who { flex: 1 1 auto; min-width: 0; }
+    .rank { color: #b7b2a6; font-size: 12px; margin-right: 6px; }
+    .company { font-weight: 650; overflow-wrap: anywhere; }
+    .contact { display: block; font-size: 13px; color: #b7b2a6; overflow-wrap: anywhere; }
+    .row-meta { font-size: 13px; color: #b7b2a6; white-space: nowrap; }
+
+    .badges { margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+    .badge {
+      display: inline-block; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase;
+      font-weight: 650; padding: 2px 6px; border: 1px solid #3a3a36; color: #b7b2a6;
+    }
+    .badge.danger { color: #d46a6a; border-color: #d46a6a; }
+    .badge.warn { color: #d4a24a; border-color: #d4a24a; }
+    .why { font-size: 13px; color: #b7b2a6; margin: 8px 0 0; }
+    .next { font-size: 14px; margin: 6px 0 0; overflow-wrap: anywhere; }
+    .next .k { color: #b7b2a6; }
+    .next.unset { color: #d46a6a; }
+    .actions { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+    details.nextstep { margin-top: 10px; border-top: 1px solid #3a3a36; padding-top: 8px; }
+    details.nextstep > summary {
+      cursor: pointer; font-size: 13px; color: #b7b2a6; list-style: none;
+    }
+    details.nextstep > summary::-webkit-details-marker { display: none; }
+    details.nextstep > summary::before { content: "+ "; }
+    details.nextstep[open] > summary::before { content: "\2212\00a0"; }
+    details.nextstep > summary:hover { color: #e8e4d9; }
+    .nextstep-form { margin-top: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: -4px 0 12px; }
+
+    /* ---- panels ---- */
+    .panel { border: 1px solid #3a3a36; background: #161616; padding: 14px; }
+    .panel h3 { margin-bottom: 6px; }
+    .panel p:last-child { margin-bottom: 0; }
+
+    details.settings { border: 1px solid #3a3a36; background: #161616; padding: 10px 12px; margin-top: 14px; }
+    details.settings > summary { cursor: pointer; font-size: 13px; color: #b7b2a6; }
+    details.settings > summary:hover { color: #e8e4d9; }
+    .settings-body { margin-top: 12px; }
+
+    .backup-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    input[type="file"] { border: 1px dashed #3a3a36; padding: 8px; font-size: 13px; }
+
+    .privacy-note {
+      color: #b7b2a6; font-size: 13px; line-height: 1.5;
+      border-top: 1px solid #3a3a36; padding-top: 14px; margin-top: 34px;
+    }
+    footer { color: #b7b2a6; font-size: 12px; margin: 10px 0 40px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div id="nav-slot"></div>
+
+  <h1>Today</h1>
+  <p class="lede">
+    One question: what should you work on right now? This page ranks your open deals &mdash;
+    missed follow-ups first, then deals with no next step, then deals nobody has touched
+    in a fortnight, then what is scheduled for today.
+  </p>
+
+  <noscript>
+    <p class="banner">
+      This page needs JavaScript. It runs entirely in your browser and sends nothing anywhere,
+      but with scripting turned off it cannot read your saved deals.
+    </p>
+  </noscript>
+
+  <p id="storage-warning" class="banner" hidden></p>
+  <p id="status" class="status" role="status" aria-live="polite" hidden></p>
+
+  <section id="strip-section" aria-labelledby="strip-h" hidden>
+    <h2 id="strip-h">Where you stand</h2>
+    <p class="section-note" id="strip-note"></p>
+    <div class="strip" id="strip"></div>
+    <div class="quota" id="quota"></div>
+  </section>
+
+  <details class="settings" id="settings">
+    <summary>Cycle and quota</summary>
+    <div class="settings-body">
+      <form id="settings-form">
+        <div class="fields">
+          <div class="field">
+            <label for="set-quota">Quota for one cycle (blank for none)</label>
+            <input type="text" id="set-quota" name="quota" inputmode="decimal" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="set-cycle">Cycle length in days</label>
+            <input type="number" id="set-cycle" name="cycle" min="1" max="3650" step="1" autocomplete="off">
+          </div>
+        </div>
+        <div class="field">
+          <label for="set-currency">Currency code</label>
+          <input type="text" id="set-currency" name="currency" maxlength="3" autocomplete="off" spellcheck="false">
+        </div>
+        <p class="hint">
+          Quota progress is shown as what has actually closed against the number, and nothing else.
+          No pace, no projection, no run rate.
+        </p>
+        <button type="submit">Save settings</button>
+      </form>
+    </div>
+  </details>
+
+  <section id="worklist-section" aria-labelledby="work-h">
+    <h2 id="work-h">Work list</h2>
+    <p class="section-note" id="work-note"></p>
+    <div id="worklist"></div>
+    <p id="worklist-more"></p>
+  </section>
+
+  <section aria-labelledby="add-h">
+    <h2 id="add-h">Add a deal</h2>
+    <p class="section-note">
+      Enough to stop it being forgotten. Everything else can be filled in later on the pipeline page.
+      New deals start at the Lead stage.
+    </p>
+    <form id="add-form">
+      <div class="field">
+        <label for="add-company">Company (required)</label>
+        <input type="text" id="add-company" name="company" required autocomplete="organization">
+      </div>
+      <div class="fields">
+        <div class="field">
+          <label for="add-contact">Contact</label>
+          <input type="text" id="add-contact" name="contact" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="add-value">Expected value</label>
+          <input type="text" id="add-value" name="value" inputmode="decimal" autocomplete="off">
+        </div>
+      </div>
+      <div class="fields">
+        <div class="field">
+          <label for="add-action">Next action (optional)</label>
+          <input type="text" id="add-action" name="nextAction" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="add-date">Do it on (optional)</label>
+          <input type="date" id="add-date" name="nextDate" autocomplete="off">
+        </div>
+      </div>
+      <p class="hint">
+        A deal with no next action and no date will sit at the top of this list until you give it one.
+        That is deliberate.
+      </p>
+      <button type="submit">Add deal</button>
+    </form>
+  </section>
+
+  <section aria-labelledby="backup-h">
+    <h2 id="backup-h">Backup</h2>
+    <p class="section-note">
+      Your data lives in this browser only. Clearing site data, a new laptop, or a different browser
+      means starting empty. Export a .json now and again, and keep it somewhere private.
+    </p>
+    <div class="backup-row">
+      <button type="button" id="export-btn">Export backup</button>
+      <label class="sr-only" for="import-file">Restore from a backup file</label>
+      <input type="file" id="import-file" accept="application/json,.json">
+    </div>
+    <div class="panel" id="import-choice" style="margin-top:12px" hidden>
+      <h3>Backup read</h3>
+      <p id="import-summary"></p>
+      <div class="actions">
+        <button type="button" id="import-replace">Replace everything</button>
+        <button type="button" class="btn-quiet" id="import-merge">Merge into what is here</button>
+        <button type="button" class="btn-quiet" id="import-cancel">Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="privacy"></div>
+
+  <footer>Works offline. Open it from a file, a plane, anywhere.</footer>
+</main>
+<script>
+/* ------------------------------------------------------------------
+   Doug's sales workspace - shared data layer.
+
+   Embedded verbatim in every page. No dependencies, no module syntax,
+   no side effects on load: this block only defines the global `WS`.
+   It touches localStorage / the DOM only when you call it.
+
+   PRIVACY: every byte of Doug's client data lives in this browser's
+   localStorage under WS.KEY. Nothing is uploaded, there is no
+   telemetry, and no client data may ever be written into the repo.
+   Backups go out through WS.exportJSON() as a file Doug saves
+   somewhere private - never committed.
+
+   Conventions:
+     - dates on records are ISO "yyyy-mm-dd" (activity `at` is a full
+       ISO datetime). "" always means UNSET.
+     - WS.daysBetween() returns NaN for unparseable input; every WS
+       predicate guards for that, and WS.migrate() guarantees stored
+       dates are parseable, so pages that use migrated state are safe.
+   ------------------------------------------------------------------ */
+var WS = (function () {
+  'use strict';
+
+  var KEY = 'doug.workspace.v1';
+  var VERSION = 1;
+
+  var STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation', 'Won', 'Lost'];
+  var OPEN_STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation'];
+  var CLOSED_STAGES = ['Won', 'Lost'];
+  var KINDS = ['call', 'email', 'meeting', 'note'];
+
+  var STALE_DAYS = 14;
+  var DEFAULT_CYCLE_DAYS = 30;
+  var DEFAULT_CURRENCY = 'USD';
+
+  /* Rough, editable odds per stage - used by the forecast page for a
+     weighted number. Deliberately conservative. */
+  var STAGE_PROBABILITY = {
+    'Lead': 0.05,
+    'Contacted': 0.15,
+    'Meeting': 0.30,
+    'Proposal': 0.50,
+    'Negotiation': 0.70,
+    'Won': 1,
+    'Lost': 0
+  };
+
+  var NAV_ITEMS = [
+    ['index.html', 'Today'],
+    ['pipeline.html', 'Pipeline'],
+    ['forecast.html', 'Forecast'],
+    ['prep.html', 'Call prep'],
+    ['objections.html', 'Objections']
+  ];
+
+  var CURRENCY_SYMBOLS = {
+    USD: '$', CAD: 'CA$', AUD: 'A$', NZD: 'NZ$', EUR: '€', GBP: '£',
+    JPY: '¥', CNY: '¥', INR: '₹', CHF: 'CHF ', SEK: 'kr ',
+    NOK: 'kr ', DKK: 'kr ', ZAR: 'R', BRL: 'R$', MXN: 'MX$', SGD: 'S$', HKD: 'HK$'
+  };
+
+  /* ---------------- tiny helpers ---------------- */
+
+  function isObj(v) { return !!v && typeof v === 'object' && !isArr(v); }
+  function isArr(v) { return Object.prototype.toString.call(v) === '[object Array]'; }
+
+  function text(v) {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string') return v.trim();
+    if (typeof v === 'number') return isFinite(v) ? String(v) : '';
+    if (typeof v === 'boolean') return v ? 'true' : '';
+    if (isArr(v)) return v.map(text).filter(Boolean).join(', ');
+    return '';
+  }
+
+  function toNum(v, dflt) {
+    if (typeof v === 'number') return isFinite(v) ? v : dflt;
+    if (typeof v === 'string') {
+      var cleaned = v.replace(/[^0-9.\-]/g, '');
+      if (cleaned && cleaned !== '-' && cleaned !== '.') {
+        var n = parseFloat(cleaned);
+        if (isFinite(n)) return n;
+      }
+    }
+    return dflt;
+  }
+
+  /* first non-empty value among several possible (legacy) key names */
+  function pick(o, names) {
+    for (var i = 0; i < names.length; i++) {
+      var v = o[names[i]];
+      if (v !== undefined && v !== null && v !== '') return v;
+    }
+    return '';
+  }
+
+  var _uidCounter = 0;
+  function uid() {
+    try {
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.randomUUID === 'function') {
+        return crypto.randomUUID();
+      }
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.getRandomValues === 'function') {
+        var b = new Uint8Array(16);
+        crypto.getRandomValues(b);
+        b[6] = (b[6] & 0x0f) | 0x40;
+        b[8] = (b[8] & 0x3f) | 0x80;
+        var hex = '';
+        for (var i = 0; i < 16; i++) {
+          hex += (b[i] + 0x100).toString(16).slice(1);
+          if (i === 3 || i === 5 || i === 7 || i === 9) hex += '-';
+        }
+        return hex;
+      }
+    } catch (e) { /* fall through */ }
+    /* crypto.getRandomValues has shipped in every browser since IE11, so
+       this only runs in an environment lacking it entirely. A counter
+       plus timestamp gives a guaranteed-unique id within this session
+       without reaching for Math.random() - which is unnecessary here
+       (this only makes a local lookup key, never anything security-
+       sensitive) but is flagged as a security-sensitive pattern by
+       static analysis regardless of how it is used. */
+    _uidCounter += 1;
+    return 'id-' + Date.now().toString(36) + '-' + _uidCounter.toString(36);
+  }
+
+  /* ---------------- escaping (every page renders user text) ------ */
+
+  var ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  var ESC_ATTR = {
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    '`': '&#96;', '=': '&#61;', '/': '&#47;'
+  };
+
+  function esc(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"']/g, function (c) { return ESC[c]; });
+  }
+
+  function escAttr(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"'`=\/]/g, function (c) { return ESC_ATTR[c]; });
+  }
+
+  /* ---------------- dates ---------------- */
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function toISODate(d) {
+    if (!(d instanceof Date) || isNaN(d.getTime())) return '';
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+
+  /* Accepts a Date, a timestamp, "yyyy-mm-dd" (read as LOCAL midnight so
+     the day never shifts) or any ISO datetime. Returns Date or null. */
+  function parseDate(s) {
+    if (s instanceof Date) return isNaN(s.getTime()) ? null : s;
+    if (typeof s === 'number' && isFinite(s)) {
+      var dn = new Date(s);
+      return isNaN(dn.getTime()) ? null : dn;
+    }
+    if (typeof s !== 'string') return null;
+    var v = s.trim();
+    if (!v) return null;
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(v);
+    if (m) {
+      var y = +m[1], mo = +m[2], da = +m[3];
+      if (mo < 1 || mo > 12 || da < 1 || da > 31) return null;
+      var d = new Date(y, mo - 1, da, 0, 0, 0, 0);
+      if (isNaN(d.getTime()) || d.getMonth() !== mo - 1) return null;
+      return d;
+    }
+    var slash = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(v);
+    if (slash) {
+      var d2 = new Date(+slash[3], +slash[1] - 1, +slash[2], 0, 0, 0, 0);
+      return isNaN(d2.getTime()) ? null : d2;
+    }
+    var d3 = new Date(v);
+    return isNaN(d3.getTime()) ? null : d3;
+  }
+
+  function today() { return toISODate(new Date()); }
+  function now() { return new Date().toISOString(); }
+
+  /* whole days from a to b; positive when b is later. NaN if unparseable. */
+  function daysBetween(a, b) {
+    var da = parseDate(a), db = parseDate(b);
+    if (!da || !db) return NaN;
+    var ua = Date.UTC(da.getFullYear(), da.getMonth(), da.getDate());
+    var ub = Date.UTC(db.getFullYear(), db.getMonth(), db.getDate());
+    return Math.round((ub - ua) / 86400000);
+  }
+
+  function addDays(dateish, n) {
+    var d = parseDate(dateish);
+    if (!d) return '';
+    var out = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    out.setDate(out.getDate() + (toNum(n, 0) | 0));
+    return toISODate(out);
+  }
+
+  function laterISO(a, b) {
+    if (!a) return b || '';
+    if (!b) return a || '';
+    return a > b ? a : b; /* ISO dates sort lexicographically */
+  }
+
+  function fmtDate(v, opts) {
+    var d = parseDate(v);
+    if (!d) return '';
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.DateTimeFormat === 'function') {
+        var o = isObj(opts) ? opts : { month: 'short', day: 'numeric' };
+        return new Intl.DateTimeFormat(undefined, o).format(d);
+      }
+    } catch (e) { /* fall through */ }
+    return toISODate(d);
+  }
+
+  /* ---------------- money ---------------- */
+
+  function normCurrency(c) {
+    var v = text(c).toUpperCase();
+    return /^[A-Z]{3}$/.test(v) ? v : DEFAULT_CURRENCY;
+  }
+
+  function group3(n) {
+    var s = String(Math.round(Math.abs(n)));
+    var out = '', c = 0;
+    for (var i = s.length - 1; i >= 0; i--) {
+      out = s.charAt(i) + out;
+      c++;
+      if (c % 3 === 0 && i > 0) out = ',' + out;
+    }
+    return out;
+  }
+
+  function trim1(x) {
+    var s = (Math.round(x * 10) / 10).toFixed(1);
+    return s.replace(/\.0$/, '');
+  }
+
+  function manualMoney(v, cur) {
+    var sym = CURRENCY_SYMBOLS[cur] || (cur + ' ');
+    var sign = v < 0 ? '-' : '';
+    var abs = Math.abs(v);
+    var body;
+    if (abs >= 1e9) body = trim1(abs / 1e9) + 'B';
+    else if (abs >= 1e6) body = trim1(abs / 1e6) + 'M';
+    else if (abs >= 1e4) body = trim1(abs / 1e3) + 'K';
+    else body = group3(abs);
+    return sign + sym + body;
+  }
+
+  /* Compact human money: $8,500 / $12.5K / $1.2M */
+  function money(n, currency) {
+    var cur = normCurrency(currency);
+    var v = toNum(n, 0);
+    if (!isFinite(v)) v = 0;
+    var abs = Math.abs(v);
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.NumberFormat === 'function') {
+        var base = { style: 'currency', currency: cur, maximumFractionDigits: 0 };
+        if (abs >= 1e4) { base.notation = 'compact'; base.maximumFractionDigits = 1; }
+        try {
+          var narrow = { style: 'currency', currency: cur, currencyDisplay: 'narrowSymbol',
+            maximumFractionDigits: base.maximumFractionDigits, notation: base.notation };
+          return new Intl.NumberFormat(undefined, narrow).format(v);
+        } catch (e1) { /* narrowSymbol / compact unsupported */ }
+        try {
+          return new Intl.NumberFormat(undefined, base).format(v);
+        } catch (e2) { /* fall through */ }
+        try {
+          return new Intl.NumberFormat(undefined,
+            { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(v);
+        } catch (e3) { /* fall through */ }
+      }
+    } catch (e) { /* fall through */ }
+    return manualMoney(v, cur);
+  }
+
+  /* ---------------- shape / migration ---------------- */
+
+  function emptyState() {
+    return {
+      version: VERSION,
+      settings: { quota: null, cycleDays: DEFAULT_CYCLE_DAYS, currency: DEFAULT_CURRENCY },
+      deals: [],
+      activities: [],
+      objections: []
+    };
+  }
+
+  function uniqueId(v, seen) {
+    var id = text(v);
+    if (!id || seen['#' + id]) id = uid();
+    seen['#' + id] = true;
+    return id;
+  }
+
+  function coerceDate(v, dflt) {
+    var d = parseDate(v);
+    return d ? toISODate(d) : dflt;
+  }
+
+  function coerceDateTime(v, dflt) {
+    var d = parseDate(v);
+    if (!d) return dflt;
+    try { return d.toISOString(); } catch (e) { return dflt; }
+  }
+
+  function coerceStage(v, dflt) {
+    var s = text(v).toLowerCase();
+    if (!s) return dflt;
+    for (var i = 0; i < STAGES.length; i++) {
+      if (STAGES[i].toLowerCase() === s) return STAGES[i];
+    }
+    if (s.indexOf('won') !== -1 || s === 'closed-won' || s === 'closed won') return 'Won';
+    if (s.indexOf('lost') !== -1 || s === 'closed-lost' || s === 'closed lost') return 'Lost';
+    if (s.indexOf('propos') !== -1 || s.indexOf('quote') !== -1) return 'Proposal';
+    if (s.indexOf('negoti') !== -1) return 'Negotiation';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1) return 'Meeting';
+    if (s.indexOf('contact') !== -1) return 'Contacted';
+    if (s.indexOf('lead') !== -1 || s.indexOf('new') !== -1) return 'Lead';
+    return dflt;
+  }
+
+  function coerceOutcome(v) {
+    var s = text(v).toLowerCase();
+    if (!s) return '';
+    if (s.indexOf('won') !== -1 || s === 'w' || s === 'win') return 'won';
+    if (s.indexOf('lost') !== -1 || s === 'l' || s === 'lose' || s === 'loss') return 'lost';
+    return '';
+  }
+
+  function coerceKind(v) {
+    var s = text(v).toLowerCase();
+    for (var i = 0; i < KINDS.length; i++) if (KINDS[i] === s) return KINDS[i];
+    if (s.indexOf('phone') !== -1 || s.indexOf('dial') !== -1 || s.indexOf('voicemail') !== -1) return 'call';
+    if (s.indexOf('mail') !== -1) return 'email';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1 || s.indexOf('visit') !== -1) return 'meeting';
+    return 'note';
+  }
+
+  function coerceTags(v) {
+    var out = [], i;
+    if (isArr(v)) {
+      for (i = 0; i < v.length; i++) {
+        var t = text(v[i]).toLowerCase();
+        if (t && out.indexOf(t) === -1) out.push(t);
+      }
+      return out;
+    }
+    var s = text(v);
+    if (!s) return out;
+    var parts = s.split(/[,;|]/);
+    for (i = 0; i < parts.length; i++) {
+      var p = parts[i].trim().toLowerCase();
+      if (p && out.indexOf(p) === -1) out.push(p);
+    }
+    return out;
+  }
+
+  function migrateSettings(raw) {
+    var s = isObj(raw) ? raw : {};
+    var quota = null;
+    if (s.quota !== null && s.quota !== undefined && s.quota !== '') {
+      var q = toNum(s.quota, NaN);
+      if (isFinite(q) && q >= 0) quota = Math.round(q * 100) / 100;
+    }
+    var cycle = Math.round(toNum(pick(s, ['cycleDays', 'cycle_days', 'cycle']), DEFAULT_CYCLE_DAYS));
+    if (!isFinite(cycle) || cycle < 1) cycle = DEFAULT_CYCLE_DAYS;
+    if (cycle > 3650) cycle = 3650;
+    return { quota: quota, cycleDays: cycle, currency: normCurrency(s.currency) };
+  }
+
+  function migrateDeal(raw, seen, todayISO) {
+    var d = isObj(raw) ? raw : {};
+    var opened = coerceDate(pick(d, ['opened', 'openedAt', 'created', 'createdAt', 'date']), '') || todayISO;
+    var outcome = coerceOutcome(d.outcome);
+    var stage = coerceStage(d.stage, '');
+
+    if (!stage) stage = outcome === 'won' ? 'Won' : (outcome === 'lost' ? 'Lost' : 'Lead');
+    if (!outcome && stage === 'Won') outcome = 'won';
+    if (!outcome && stage === 'Lost') outcome = 'lost';
+    if (outcome === 'won') stage = 'Won';
+    if (outcome === 'lost') stage = 'Lost';
+
+    var closedAt = coerceDate(pick(d, ['closedAt', 'closed_at', 'closed']), '');
+    if (outcome && !closedAt) closedAt = laterISO(opened, todayISO);
+    if (!outcome) closedAt = '';
+
+    var value = toNum(pick(d, ['value', 'amount', 'dealValue', 'size']), 0);
+    if (!isFinite(value) || value < 0) value = 0;
+
+    return {
+      id: uniqueId(d.id, seen),
+      company: text(pick(d, ['company', 'account', 'org', 'name'])),
+      contact: text(pick(d, ['contact', 'person', 'contactName'])),
+      role: text(pick(d, ['role', 'title', 'jobTitle'])),
+      email: text(d.email),
+      phone: text(d.phone),
+      value: Math.round(value * 100) / 100,
+      stage: stage,
+      opened: opened,
+      nextAction: text(pick(d, ['nextAction', 'next_action', 'nextStep', 'next'])),
+      nextDate: coerceDate(pick(d, ['nextDate', 'next_date', 'dueDate', 'due']), ''),
+      source: text(d.source),
+      notes: typeof d.notes === 'string' ? d.notes.replace(/\s+$/, '') : text(d.notes),
+      closedAt: closedAt,
+      outcome: outcome
+    };
+  }
+
+  function migrateActivity(raw, seen, nowISO) {
+    var a = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(a.id, seen),
+      dealId: text(pick(a, ['dealId', 'deal_id', 'deal'])),
+      at: coerceDateTime(pick(a, ['at', 'date', 'when', 'ts']), nowISO),
+      kind: coerceKind(a.kind || a.type),
+      note: typeof a.note === 'string' ? a.note.replace(/\s+$/, '') : text(pick(a, ['note', 'text', 'body']))
+    };
+  }
+
+  function migrateObjection(raw, seen) {
+    var o = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(o.id, seen),
+      trigger: text(pick(o, ['trigger', 'objection', 'says', 'title'])),
+      response: typeof o.response === 'string'
+        ? o.response.replace(/\s+$/, '')
+        : text(pick(o, ['response', 'reply', 'answer'])),
+      tags: coerceTags(o.tags)
+    };
+  }
+
+  /* Tolerates a missing / old / partially corrupt shape and always
+     returns a complete, correctly typed v1 state. Never mutates input. */
+  function migrate(state) {
+    var src;
+    if (isArr(state)) src = { deals: state };            /* very old: bare deal list */
+    else if (isObj(state)) src = state;
+    else src = {};
+
+    var todayISO = today();
+    var nowISO = now();
+    var seenD = {}, seenA = {}, seenO = {};
+    var out = emptyState();
+    var i;
+
+    out.settings = migrateSettings(src.settings);
+
+    var deals = isArr(src.deals) ? src.deals : (isArr(src.pipeline) ? src.pipeline : []);
+    for (i = 0; i < deals.length; i++) {
+      if (!isObj(deals[i])) continue;
+      out.deals.push(migrateDeal(deals[i], seenD, todayISO));
+    }
+
+    var acts = isArr(src.activities) ? src.activities : (isArr(src.log) ? src.log : []);
+    for (i = 0; i < acts.length; i++) {
+      if (!isObj(acts[i])) continue;
+      out.activities.push(migrateActivity(acts[i], seenA, nowISO));
+    }
+
+    var objs = isArr(src.objections) ? src.objections : [];
+    for (i = 0; i < objs.length; i++) {
+      if (!isObj(objs[i])) continue;
+      var o = migrateObjection(objs[i], seenO);
+      if (!o.trigger && !o.response) continue;
+      out.objections.push(o);
+    }
+
+    out.version = VERSION;
+    return out;
+  }
+
+  /* ---------------- storage ---------------- */
+
+  function load() {
+    var raw = null;
+    try {
+      if (typeof localStorage !== 'undefined' && localStorage) raw = localStorage.getItem(KEY);
+    } catch (e) { raw = null; }                 /* private window / site data blocked */
+    if (!raw || typeof raw !== 'string') return emptyState();
+    var parsed = null;
+    try { parsed = JSON.parse(raw); } catch (e) { return emptyState(); }
+    try { return migrate(parsed); } catch (e) { return emptyState(); }
+  }
+
+  /* true on success; false means the caller should warn Doug loudly
+     (quota exceeded, blocked storage) instead of losing the edit. */
+  function save(state) {
+    try {
+      var clean = migrate(state);
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.setItem(KEY, JSON.stringify(clean));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function clearAll() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.removeItem(KEY);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /* ---------------- derived state ---------------- */
+
+  function isOpen(deal) {
+    return isObj(deal) && text(deal.outcome) === '';
+  }
+
+  function activitiesFor(state, dealId) {
+    var s = isObj(state) ? state : {};
+    var list = isArr(s.activities) ? s.activities : [];
+    var id = text(dealId);
+    var out = [];
+    for (var i = 0; i < list.length; i++) {
+      if (isObj(list[i]) && text(list[i].dealId) === id) out.push(list[i]);
+    }
+    out.sort(function (a, b) {
+      var ta = text(a.at), tb = text(b.at);
+      return ta < tb ? 1 : (ta > tb ? -1 : 0);          /* newest first */
+    });
+    return out;
+  }
+
+  /* ISO date of the most recent activity on this deal, else deal.opened */
+  function lastTouch(state, deal) {
+    var d = isObj(deal) ? deal : {};
+    var acts = activitiesFor(state, d.id);
+    var best = '';
+    for (var i = 0; i < acts.length; i++) {
+      var iso = coerceDate(acts[i].at, '');
+      if (iso) best = laterISO(best, iso);
+    }
+    return best || text(d.opened);
+  }
+
+  function isStale(state, deal) {
+    if (!isOpen(deal)) return false;
+    var anchor = laterISO(lastTouch(state, deal), text(deal.opened));
+    if (!anchor) return false;
+    var days = daysBetween(anchor, today());
+    return isFinite(days) && days > STALE_DAYS;
+  }
+
+  function isOverdue(deal) {
+    if (!isOpen(deal)) return false;
+    var nd = text(deal.nextDate);
+    if (!nd) return false;
+    var days = daysBetween(nd, today());
+    return isFinite(days) && days > 0;
+  }
+
+  function isAdrift(deal) {
+    if (!isOpen(deal)) return false;
+    return text(deal.nextAction) === '' || text(deal.nextDate) === '';
+  }
+
+  function flags(state, deal) {
+    var open = isOpen(deal);
+    var anchor = open ? laterISO(lastTouch(state, deal), text(deal && deal.opened)) : '';
+    var since = anchor ? daysBetween(anchor, today()) : NaN;
+    return {
+      open: open,
+      stale: isStale(state, deal),
+      overdue: isOverdue(deal),
+      adrift: isAdrift(deal),
+      daysSinceTouch: isFinite(since) ? since : null,
+      lastTouch: anchor
+    };
+  }
+
+  function stageIndex(stage) {
+    var s = coerceStage(stage, '');
+    var i = STAGES.indexOf(s);
+    return i === -1 ? 0 : i;
+  }
+
+  function stageProbability(stage) {
+    var s = coerceStage(stage, 'Lead');
+    var p = STAGE_PROBABILITY[s];
+    return typeof p === 'number' ? p : 0;
+  }
+
+  function byId(list, id) {
+    var arr = isArr(list) ? list : [];
+    var want = text(id);
+    for (var i = 0; i < arr.length; i++) {
+      if (isObj(arr[i]) && text(arr[i].id) === want) return arr[i];
+    }
+    return null;
+  }
+
+  /* blank records with sane defaults, ready to be filled by a form */
+  function newDeal(partial) {
+    var base = {
+      id: uid(), company: '', contact: '', role: '', email: '', phone: '',
+      value: 0, stage: 'Lead', opened: today(), nextAction: '', nextDate: '',
+      source: '', notes: '', closedAt: '', outcome: ''
+    };
+    if (isObj(partial)) {
+      for (var k in base) {
+        if (Object.prototype.hasOwnProperty.call(partial, k) && partial[k] !== undefined) {
+          base[k] = partial[k];
+        }
+      }
+    }
+    var seen = {};
+    return migrateDeal(base, seen, today());
+  }
+
+  function newActivity(dealId, kind, note) {
+    return {
+      id: uid(),
+      dealId: text(dealId),
+      at: now(),
+      kind: coerceKind(kind),
+      note: typeof note === 'string' ? note.replace(/\s+$/, '') : text(note)
+    };
+  }
+
+  function newObjection(trigger, response, tags) {
+    return { id: uid(), trigger: text(trigger), response: text(response), tags: coerceTags(tags) };
+  }
+
+  /* ---------------- export / import (Doug owns his data) --------- */
+
+  function exportFilename() { return 'doug-workspace-' + today() + '.json'; }
+
+  function exportJSON(state) {
+    try {
+      var data = JSON.stringify(migrate(state), null, 2);
+      if (typeof document === 'undefined' || !document || !document.body) return false;
+      if (typeof Blob === 'undefined') return false;
+      var api = (typeof URL !== 'undefined' && URL && URL.createObjectURL) ? URL
+        : ((typeof webkitURL !== 'undefined' && webkitURL && webkitURL.createObjectURL) ? webkitURL : null);
+      if (!api) return false;
+      var blob = new Blob([data], { type: 'application/json' });
+      var url = api.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = exportFilename();
+      a.rel = 'noopener';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        try { if (a.parentNode) a.parentNode.removeChild(a); } catch (e) {}
+        try { api.revokeObjectURL(url); } catch (e) {}
+      }, 5000);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function looksLikeWorkspace(o) {
+    if (isArr(o)) return true;
+    if (!isObj(o)) return false;
+    return isArr(o.deals) || isArr(o.activities) || isArr(o.objections) ||
+      isObj(o.settings) || o.version === 1 || isArr(o.pipeline);
+  }
+
+  /* cb(err, state) - never saves on its own; the page decides whether to
+     replace or merge, then calls WS.save(). */
+  function importJSON(file, cb) {
+    var done = typeof cb === 'function' ? cb : function () {};
+    if (!file) { done(new Error('No file chosen.')); return; }
+    if (typeof FileReader === 'undefined') { done(new Error('This browser cannot read files.')); return; }
+    if (typeof file.size === 'number' && file.size > 25 * 1024 * 1024) {
+      done(new Error('That file is too big to be a workspace backup.'));
+      return;
+    }
+    var reader;
+    try { reader = new FileReader(); } catch (e) { done(new Error('This browser cannot read files.')); return; }
+    reader.onerror = function () { done(new Error('Could not read that file.')); };
+    reader.onabort = function () { done(new Error('Reading that file was cancelled.')); };
+    reader.onload = function () {
+      var parsed;
+      try {
+        parsed = JSON.parse(String(reader.result));
+      } catch (e) {
+        done(new Error('That file is not valid JSON.'));
+        return;
+      }
+      if (!looksLikeWorkspace(parsed)) {
+        done(new Error('That JSON file does not look like a workspace backup.'));
+        return;
+      }
+      var state;
+      try { state = migrate(parsed); } catch (e) { done(new Error('That backup could not be read.')); return; }
+      done(null, state);
+    };
+    try { reader.readAsText(file); } catch (e) { done(new Error('Could not read that file.')); }
+  }
+
+  /* union by id; records from `incoming` win on conflict */
+  function merge(base, incoming) {
+    var a = migrate(base), b = migrate(incoming);
+    var out = emptyState();
+    out.settings = b.settings;
+    ['deals', 'activities', 'objections'].forEach(function (key) {
+      var index = {}, order = [], i, r;
+      for (i = 0; i < a[key].length; i++) {
+        r = a[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < b[key].length; i++) {
+        r = b[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < order.length; i++) out[key].push(index['#' + order[i]]);
+    });
+    return out;
+  }
+
+  /* ---------------- starter objection library ---------------- */
+
+  function seedObjections() {
+    var seeds = [
+      {
+        trigger: "It's too expensive / it's not in the budget.",
+        response: "Fair - let's make sure we're comparing the same thing. Is it more than you expected, or more than you have available this year? If it's the number itself, I'll walk through what's driving it and what we can take out. If it's the budget cycle, tell me who owns that budget and when it resets, and we'll size something that fits now and grows later.",
+        tags: ['price', 'budget']
+      },
+      {
+        trigger: "Now isn't a good time - check back next quarter.",
+        response: "Happy to. So I'm not just chasing you: what has to be true next quarter for this to move? If the honest answer is that it isn't a priority, say so and I'll stop pushing. If it's real timing, let's book fifteen minutes for the first week of that quarter now, and I'll send one useful thing a month in between rather than a check-in email.",
+        tags: ['timing', 'stall']
+      },
+      {
+        trigger: "We already use another vendor and we're happy with them.",
+        response: "Good - switching for its own sake is a bad idea, and I'm not going to ask you to. I'd rather understand where they're strong so I know when we're not a fit. Out of curiosity, if you could change one thing about how it works today, what would it be? If nothing comes to mind, we're done. If something does, that's the conversation worth having when your renewal comes up - when is that?",
+        tags: ['incumbent', 'competitor']
+      },
+      {
+        trigger: "I'd have to run this by my boss / it goes to a committee.",
+        response: "Of course - I'd expect that. Two things would help: what usually sinks a proposal like this internally, and who else has to be comfortable with it? I'd rather arm you with the numbers and the answers to their hard questions than have you carry it alone. And if it's useful, I'm glad to join that conversation for ten minutes so the technical questions don't bounce back and forth.",
+        tags: ['authority', 'decision-maker']
+      },
+      {
+        trigger: "We're fine as we are - this isn't a problem for us.",
+        response: "Then you should keep your money. Let me ask one question and I'll get out of your way: how are you handling it today, and what does it cost you when it goes wrong? If the answer is 'it doesn't really', you're genuinely fine and I'll note that. Most people I talk to have quietly absorbed the cost and stopped counting it - if that's the case, it's worth putting a number on it once.",
+        tags: ['need', 'status-quo']
+      },
+      {
+        trigger: "Just send me some information and I'll take a look.",
+        response: "I can, but generic material wastes your time. Give me two minutes on what you're actually trying to fix and I'll send the one page that's relevant instead of a brochure. And so it doesn't sit in your inbox: when should I follow up - and is a short call or a written summary easier for you?",
+        tags: ['brush-off', 'stall']
+      }
+    ];
+    var out = [];
+    for (var i = 0; i < seeds.length; i++) {
+      out.push({ id: uid(), trigger: seeds[i].trigger, response: seeds[i].response, tags: seeds[i].tags.slice() });
+    }
+    return out;
+  }
+
+  /* seeds the starter library only when there is nothing there;
+     returns true if the state was changed (caller should save). */
+  function ensureSeeded(state) {
+    if (!isObj(state)) return false;
+    if (!isArr(state.objections)) state.objections = [];
+    if (state.objections.length) return false;
+    state.objections = seedObjections();
+    return true;
+  }
+
+  /* ---------------- shared chrome ---------------- */
+
+  function normPage(current) {
+    var c = text(current).toLowerCase();
+    c = c.split('?')[0].split('#')[0];
+    c = c.substring(c.lastIndexOf('/') + 1);
+    if (!c || c === 'index' || c === 'today' || c === 'home') return 'index.html';
+    var aliases = {
+      'pipeline': 'pipeline.html', 'deals': 'pipeline.html',
+      'forecast': 'forecast.html',
+      'prep': 'prep.html', 'call prep': 'prep.html', 'call-prep': 'prep.html',
+      'objections': 'objections.html'
+    };
+    if (aliases[c]) return aliases[c];
+    return c;
+  }
+
+  /* Tiny markup; pages own the CSS for .nav / .nav-item / .active */
+  function nav(current) {
+    var cur = normPage(current);
+    var html = '<nav class="nav" aria-label="Workspace sections">';
+    for (var i = 0; i < NAV_ITEMS.length; i++) {
+      var href = NAV_ITEMS[i][0], label = NAV_ITEMS[i][1];
+      var on = href === cur;
+      html += '<a class="nav-item' + (on ? ' active' : '') + '" href="' + escAttr(href) + '"' +
+        (on ? ' aria-current="page"' : '') + '>' + esc(label) + '</a>';
+    }
+    return html + '</nav>';
+  }
+
+  /* The privacy note every page must show near the bottom. */
+  function privacyNote() {
+    return '<p class="privacy-note">Everything you enter here stays in this browser, on this device. ' +
+      'Nothing is uploaded, there is no tracking, and no client details ever leave your machine. ' +
+      'Use Export to keep a backup - save that .json somewhere private and never commit it to the repo.</p>';
+  }
+
+  /* ---------------- public surface ---------------- */
+
+  return {
+    KEY: KEY,
+    VERSION: VERSION,
+    STAGES: STAGES,
+    OPEN_STAGES: OPEN_STAGES,
+    CLOSED_STAGES: CLOSED_STAGES,
+    KINDS: KINDS,
+    STALE_DAYS: STALE_DAYS,
+    DEFAULT_CYCLE_DAYS: DEFAULT_CYCLE_DAYS,
+    STAGE_PROBABILITY: STAGE_PROBABILITY,
+    NAV_ITEMS: NAV_ITEMS,
+
+    load: load,
+    save: save,
+    clearAll: clearAll,
+    migrate: migrate,
+    emptyState: emptyState,
+
+    uid: uid,
+    esc: esc,
+    escAttr: escAttr,
+    money: money,
+    fmtDate: fmtDate,
+    today: today,
+    now: now,
+    parseDate: parseDate,
+    toISODate: toISODate,
+    daysBetween: daysBetween,
+    addDays: addDays,
+    laterISO: laterISO,
+
+    isOpen: isOpen,
+    isStale: isStale,
+    isOverdue: isOverdue,
+    isAdrift: isAdrift,
+    flags: flags,
+    lastTouch: lastTouch,
+    activitiesFor: activitiesFor,
+    byId: byId,
+    stageIndex: stageIndex,
+    stageProbability: stageProbability,
+
+    newDeal: newDeal,
+    newActivity: newActivity,
+    newObjection: newObjection,
+
+    exportJSON: exportJSON,
+    exportFilename: exportFilename,
+    importJSON: importJSON,
+    merge: merge,
+
+    seedObjections: seedObjections,
+    ensureSeeded: ensureSeeded,
+
+    nav: nav,
+    privacyNote: privacyNote
+  };
+})();
+
+/* ------------------------------------------------------------------
+   Today - the entry point of the workspace.
+
+   Answers one question: what should you do right now? Everything on
+   this page is derived from what is already in localStorage; nothing
+   is invented, estimated, or projected.
+
+   All user text reaches the DOM through textContent or WS.esc().
+   ------------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  var DEFAULT_LIMIT = 20;
+
+  var state = WS.emptyState();
+  var pendingImport = null;   /* a read backup, waiting for replace / merge */
+  var openId = '';            /* deal id whose "set next step" panel is open */
+  var focusPending = false;   /* move focus into that panel after the render */
+  var listLimit = DEFAULT_LIMIT;
+
+  var BUCKETS = {
+    overdue: {
+      title: 'Overdue',
+      note: 'The date you set for the next step has already passed.'
+    },
+    adrift: {
+      title: 'No next step',
+      note: 'Open, but nothing is scheduled to happen. Deals die here more often than they are lost on price.'
+    },
+    stale: {
+      title: 'Stale',
+      note: 'Nothing logged against these in more than ' + WS.STALE_DAYS + ' days.'
+    },
+    today: {
+      title: 'Due today',
+      note: 'Scheduled for today.'
+    }
+  };
+  var BUCKET_ORDER = ['overdue', 'adrift', 'stale', 'today'];
+
+  /* ---------------- tiny DOM helpers ---------------- */
+
+  function $(id) { return document.getElementById(id); }
+
+  function el(tag, cls, txt) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (txt !== undefined && txt !== null && txt !== '') n.textContent = String(txt);
+    return n;
+  }
+
+  function clear(node) {
+    if (!node) return;
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  function num(v) {
+    var n = typeof v === 'number' ? v : parseFloat(v);
+    return isFinite(n) ? n : 0;
+  }
+
+  function str(v) { return v === null || v === undefined ? '' : String(v); }
+
+  function plural(n, one, many) { return n === 1 ? one : many; }
+
+  /* Never let a missing company leave a nameless row. */
+  function dealName(d) {
+    return str(d && d.company).trim() || str(d && d.contact).trim() || 'Untitled deal';
+  }
+
+  function money(v) {
+    return WS.money(num(v), state.settings && state.settings.currency);
+  }
+
+  function ask(question) {
+    try { return !!window.confirm(question); } catch (e) { return false; }
+  }
+
+  /* ---------------- storage ---------------- */
+
+  /* WS.load() cannot tell "empty" from "blocked", so probe once and say
+     so plainly rather than letting Doug type into a page that forgets. */
+  function storageWorks() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      var k = 'doug.workspace.probe';
+      localStorage.setItem(k, '1');
+      localStorage.removeItem(k);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function loadState() {
+    var s = null;
+    try { s = WS.load(); } catch (e) { s = null; }
+    if (!s || typeof s !== 'object') s = WS.emptyState();
+    if (!s.settings || typeof s.settings !== 'object') s.settings = WS.emptyState().settings;
+    if (Object.prototype.toString.call(s.deals) !== '[object Array]') s.deals = [];
+    if (Object.prototype.toString.call(s.activities) !== '[object Array]') s.activities = [];
+    if (Object.prototype.toString.call(s.objections) !== '[object Array]') s.objections = [];
+    state = s;
+  }
+
+  /* Normalise in memory first so the page shows exactly what was stored,
+     then save. A failed save is loud - it is not allowed to look like a
+     success. */
+  function commit(okMsg) {
+    try { state = WS.migrate(state); } catch (e) { /* keep the in-memory copy */ }
+    var ok = false;
+    try { ok = WS.save(state); } catch (e) { ok = false; }
+    if (ok) {
+      if (okMsg) setStatus(okMsg, 'ok');
+    } else {
+      setStatus('Could not save to this browser. The change is on screen but has NOT been stored. ' +
+        'Check private browsing or site-data settings, and export a backup before you close this tab.', 'err');
+    }
+    render();
+    return ok;
+  }
+
+  function setStatus(msg, kind) {
+    var n = $('status');
+    if (!n) return;
+    if (!msg) {
+      n.textContent = '';
+      n.className = 'status';
+      n.hidden = true;
+      return;
+    }
+    n.textContent = String(msg);
+    n.className = 'status' + (kind === 'err' ? ' status-err' : (kind === 'ok' ? ' status-ok' : ''));
+    n.hidden = false;
+  }
+
+  /* ---------------- the ranked work list ---------------- */
+
+  function buildItems() {
+    var todayISO = WS.today();
+    var deals = state.deals || [];
+    var out = [];
+    var i;
+
+    for (i = 0; i < deals.length; i++) {
+      var d = deals[i];
+      if (!WS.isOpen(d)) continue;
+      var f = WS.flags(state, d);
+      var bucket = '';
+      if (f.overdue) bucket = 'overdue';
+      else if (f.adrift) bucket = 'adrift';
+      else if (f.stale) bucket = 'stale';
+      else if (str(d.nextDate) && str(d.nextDate) === todayISO) bucket = 'today';
+      if (!bucket) continue;
+      var late = 0;
+      if (bucket === 'overdue') {
+        var n = WS.daysBetween(d.nextDate, todayISO);
+        late = isFinite(n) ? n : 0;
+      }
+      out.push({ deal: d, flags: f, bucket: bucket, late: late });
+    }
+
+    out.sort(function (a, b) {
+      var ra = BUCKET_ORDER.indexOf(a.bucket), rb = BUCKET_ORDER.indexOf(b.bucket);
+      if (ra !== rb) return ra - rb;
+      if (a.bucket === 'overdue' && a.late !== b.late) return b.late - a.late;
+      if (a.bucket === 'stale') {
+        var sa = a.flags.daysSinceTouch === null ? -1 : a.flags.daysSinceTouch;
+        var sb = b.flags.daysSinceTouch === null ? -1 : b.flags.daysSinceTouch;
+        if (sa !== sb) return sb - sa;
+      }
+      var va = num(a.deal.value), vb = num(b.deal.value);
+      if (va !== vb) return vb - va;
+      var na = dealName(a.deal).toLowerCase(), nb = dealName(b.deal).toLowerCase();
+      return na < nb ? -1 : (na > nb ? 1 : 0);
+    });
+
+    return out;
+  }
+
+  function reasonText(item) {
+    var d = item.deal;
+    if (item.bucket === 'overdue') {
+      var when = WS.fmtDate(d.nextDate);
+      return 'The next step was due ' + (when || str(d.nextDate)) + ', ' +
+        item.late + ' ' + plural(item.late, 'day', 'days') + ' ago.';
+    }
+    if (item.bucket === 'adrift') {
+      var noAction = str(d.nextAction).trim() === '';
+      var noDate = str(d.nextDate).trim() === '';
+      if (noAction && noDate) return 'No next action and no date. Nothing is scheduled to happen on this deal.';
+      if (noAction) return 'There is a date but no next action written down.';
+      return 'There is a next action but no date to do it on.';
+    }
+    if (item.bucket === 'stale') {
+      var days = item.flags.daysSinceTouch;
+      if (days === null) return 'No contact logged, and no usable date to measure from.';
+      return 'Nothing logged for ' + days + ' ' + plural(days, 'day', 'days') + '.';
+    }
+    return 'Scheduled for today.';
+  }
+
+  function kindLabel(kind) {
+    if (kind === 'call') return 'Call';
+    if (kind === 'email') return 'Email';
+    if (kind === 'meeting') return 'Meeting';
+    return 'Note';
+  }
+
+  /* ---------------- actions on a row ---------------- */
+
+  function logTouch(dealId, kind) {
+    var d = WS.byId(state.deals, dealId);
+    if (!d) { setStatus('That deal is no longer here. The page has been refreshed.', 'err'); render(); return; }
+
+    state.activities.push(WS.newActivity(d.id, kind, ''));
+
+    /* A touch settles anything that was due on or before today. The next
+       action text is kept so the follow-up form starts pre-filled. */
+    var cleared = false;
+    var nd = str(d.nextDate).trim();
+    if (nd) {
+      var diff = WS.daysBetween(nd, WS.today());
+      if (isFinite(diff) && diff >= 0) { d.nextDate = ''; cleared = true; }
+    }
+
+    var msg = kindLabel(kind) + ' logged for ' + dealName(d) + '.';
+    if (cleared) {
+      msg += ' The date it was due has been cleared.';
+    }
+    if (str(d.nextAction).trim() && str(d.nextDate).trim()) {
+      openId = '';
+      focusPending = false;
+      msg += ' Next step stays: ' + d.nextAction + ' on ' + (WS.fmtDate(d.nextDate) || d.nextDate) + '.';
+    } else {
+      openId = d.id;
+      focusPending = true;
+      msg += ' Set the next step below, otherwise this deal has nothing scheduled.';
+    }
+    commit(msg);
+  }
+
+  function saveNextStep(dealId, action, dateValue) {
+    var d = WS.byId(state.deals, dealId);
+    if (!d) { setStatus('That deal is no longer here. The page has been refreshed.', 'err'); render(); return false; }
+
+    var act = str(action).trim();
+    if (!act) { setStatus('Write the next action first. One line is enough.', 'err'); return false; }
+
+    var raw = str(dateValue).trim();
+    if (!raw) { setStatus('Pick a date. Without one the deal stays at the top of this list.', 'err'); return false; }
+    var parsed = WS.parseDate(raw);
+    if (!parsed) { setStatus('That date could not be read. Use the date picker, or type yyyy-mm-dd.', 'err'); return false; }
+
+    d.nextAction = act;
+    d.nextDate = WS.toISODate(parsed);
+    openId = '';
+    focusPending = false;
+    commit('Next step set for ' + dealName(d) + ': ' + act + ' on ' + (WS.fmtDate(d.nextDate) || d.nextDate) + '.');
+    return true;
+  }
+
+  /* ---------------- rendering: one row ---------------- */
+
+  var focusTarget = null;   /* set during render, used once at the end */
+
+  function renderRow(item, rank) {
+    var d = item.deal;
+    var f = item.flags;
+    var li = el('li', 'row b-' + item.bucket);
+
+    var head = el('div', 'row-head');
+    var who = el('div', 'who');
+    var line = el('div');
+    line.appendChild(el('span', 'rank', rank + '.'));
+    line.appendChild(el('span', 'company', dealName(d)));
+    who.appendChild(line);
+
+    var person = str(d.contact).trim();
+    var role = str(d.role).trim();
+    var personLine = person && role ? person + ', ' + role : (person || role);
+    if (personLine) who.appendChild(el('span', 'contact', personLine));
+    head.appendChild(who);
+
+    var metaBits = [];
+    if (num(d.value) > 0) metaBits.push(money(d.value));
+    if (str(d.stage).trim()) metaBits.push(str(d.stage).trim());
+    if (metaBits.length) head.appendChild(el('div', 'row-meta', metaBits.join('  ·  ')));
+    li.appendChild(head);
+
+    /* primary badge plus anything else true about this deal */
+    var badges = el('div', 'badges');
+    var tone = item.bucket === 'stale' ? 'warn' : (item.bucket === 'today' ? '' : 'danger');
+    badges.appendChild(el('span', 'badge' + (tone ? ' ' + tone : ''), BUCKETS[item.bucket].title));
+    if (item.bucket !== 'adrift' && f.adrift) {
+      badges.appendChild(el('span', 'badge danger', 'No next step'));
+    }
+    if (item.bucket !== 'stale' && f.stale && f.daysSinceTouch !== null) {
+      badges.appendChild(el('span', 'badge warn', 'Quiet ' + f.daysSinceTouch + ' days'));
+    }
+    if (item.bucket !== 'today' && str(d.nextDate) === WS.today()) {
+      badges.appendChild(el('span', 'badge', 'Due today'));
+    }
+    li.appendChild(badges);
+
+    li.appendChild(el('p', 'why', reasonText(item)));
+
+    var action = str(d.nextAction).trim();
+    if (action) {
+      var np = el('p', 'next');
+      np.appendChild(el('span', 'k', 'Next: '));
+      np.appendChild(document.createTextNode(action));
+      if (str(d.nextDate).trim()) {
+        np.appendChild(el('span', 'k', '  ·  ' + (WS.fmtDate(d.nextDate) || d.nextDate)));
+      }
+      li.appendChild(np);
+    } else {
+      li.appendChild(el('p', 'next unset', 'No next action written down.'));
+    }
+
+    /* one-click logging */
+    var actions = el('div', 'actions');
+    ['call', 'email', 'meeting'].forEach(function (kind) {
+      var b = el('button', 'btn-quiet btn-small', 'Log ' + kind);
+      b.type = 'button';
+      b.addEventListener('click', function () { logTouch(d.id, kind); });
+      actions.appendChild(b);
+    });
+    var link = el('a', 'linkbtn', 'Open deal');
+    link.href = 'pipeline.html?deal=' + encodeURIComponent(str(d.id));
+    actions.appendChild(link);
+    var prep = el('a', 'linkbtn', 'Call prep');
+    prep.href = 'prep.html?deal=' + encodeURIComponent(str(d.id));
+    actions.appendChild(prep);
+    li.appendChild(actions);
+
+    /* inline next-step form */
+    var det = document.createElement('details');
+    det.className = 'nextstep';
+    if (openId === d.id) det.open = true;
+    det.appendChild(el('summary', null, 'Set next step'));
+    det.addEventListener('toggle', function () {
+      if (det.open) openId = d.id;
+      else if (openId === d.id) openId = '';
+    });
+
+    var form = document.createElement('form');
+    form.className = 'nextstep-form';
+
+    var actId = 'next-action-' + rank;
+    var dateId = 'next-date-' + rank;
+
+    var fa = el('div', 'field');
+    var la = el('label', null, 'Next action');
+    la.setAttribute('for', actId);
+    var ia = document.createElement('input');
+    ia.type = 'text';
+    ia.id = actId;
+    ia.name = 'nextAction';
+    ia.autocomplete = 'off';
+    ia.value = action;
+    fa.appendChild(la);
+    fa.appendChild(ia);
+    form.appendChild(fa);
+
+    var fd = el('div', 'field');
+    var ld = el('label', null, 'Do it on');
+    ld.setAttribute('for', dateId);
+    var idt = document.createElement('input');
+    idt.type = 'date';
+    idt.id = dateId;
+    idt.name = 'nextDate';
+    idt.value = str(d.nextDate);
+    fd.appendChild(ld);
+    fd.appendChild(idt);
+    form.appendChild(fd);
+
+    var chips = el('div', 'chips');
+    [['Tomorrow', 1], ['In 3 days', 3], ['Next week', 7]].forEach(function (pair) {
+      var c = el('button', 'btn-quiet btn-small', pair[0]);
+      c.type = 'button';
+      c.addEventListener('click', function () {
+        idt.value = WS.addDays(WS.today(), pair[1]);
+        ia.focus();
+      });
+      chips.appendChild(c);
+    });
+    form.appendChild(chips);
+
+    var save = el('button', 'btn-small', 'Save next step');
+    save.type = 'submit';
+    form.appendChild(save);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      saveNextStep(d.id, ia.value, idt.value);
+    });
+
+    det.appendChild(form);
+    li.appendChild(det);
+
+    if (focusPending && openId === d.id) focusTarget = ia;
+
+    return li;
+  }
+
+  /* ---------------- rendering: work list ---------------- */
+
+  function renderEmptyWorkspace(host) {
+    var p = el('div', 'panel');
+    p.appendChild(el('h3', null, 'No deals yet.'));
+    p.appendChild(el('p', null,
+      'There is nothing to rank until at least one deal exists. Once there is, this list shows, ' +
+      'in order: follow-ups whose date has passed, deals with no next step, deals nothing has been ' +
+      'logged against in ' + WS.STALE_DAYS + ' days, and whatever is scheduled for today.'));
+    var p2 = el('p');
+    var a = el('a', null, 'Open the pipeline to add your first deal');
+    a.href = 'pipeline.html';
+    p2.appendChild(a);
+    p2.appendChild(document.createTextNode(' with the full details, or use the short form below to ' +
+      'capture one in a few seconds.'));
+    p.appendChild(p2);
+    host.appendChild(p);
+  }
+
+  function nextScheduled() {
+    var deals = state.deals || [];
+    var todayISO = WS.today();
+    var best = null;
+    for (var i = 0; i < deals.length; i++) {
+      var d = deals[i];
+      if (!WS.isOpen(d)) continue;
+      var nd = str(d.nextDate).trim();
+      if (!nd || nd <= todayISO) continue;
+      if (!best || nd < str(best.nextDate)) best = d;
+    }
+    return best;
+  }
+
+  function renderNothingDue(host) {
+    var p = el('div', 'panel');
+    p.appendChild(el('h3', null, 'Nothing needs attention right now.'));
+    p.appendChild(el('p', null,
+      'Every open deal has a next action with a date in the future, and all of them have been ' +
+      'touched in the last ' + WS.STALE_DAYS + ' days.'));
+    var soon = nextScheduled();
+    if (soon) {
+      var line = el('p', 'muted');
+      line.textContent = 'Next one up: ' + dealName(soon) + ' on ' +
+        (WS.fmtDate(soon.nextDate) || soon.nextDate) +
+        (str(soon.nextAction).trim() ? ' — ' + soon.nextAction : '') + '.';
+      p.appendChild(line);
+    }
+    host.appendChild(p);
+  }
+
+  function renderWorkList() {
+    var host = $('worklist');
+    var more = $('worklist-more');
+    var note = $('work-note');
+    clear(host);
+    clear(more);
+    if (!host) return;
+
+    if (!(state.deals || []).length) {
+      if (note) { note.textContent = 'Nothing to rank yet.'; note.hidden = false; }
+      renderEmptyWorkspace(host);
+      return;
+    }
+
+    var items = buildItems();
+    if (!items.length) {
+      if (note) { note.hidden = true; note.textContent = ''; }
+      renderNothingDue(host);
+      return;
+    }
+
+    if (note) {
+      note.textContent = items.length + ' ' + plural(items.length, 'deal', 'deals') +
+        ' need something, most urgent first. Logging a touch settles anything due today or earlier.';
+      note.hidden = false;
+    }
+
+    var shown = items.length > listLimit ? items.slice(0, listLimit) : items;
+    var currentBucket = '';
+    var groupList = null;
+
+    for (var i = 0; i < shown.length; i++) {
+      var item = shown[i];
+      if (item.bucket !== currentBucket) {
+        currentBucket = item.bucket;
+        var count = 0;
+        for (var j = 0; j < items.length; j++) if (items[j].bucket === currentBucket) count++;
+        var section = el('div', 'group');
+        section.appendChild(el('h3', 'group-h g-' + currentBucket,
+          BUCKETS[currentBucket].title + ' (' + count + ')'));
+        section.appendChild(el('p', 'group-note', BUCKETS[currentBucket].note));
+        groupList = el('ul', 'rows');
+        section.appendChild(groupList);
+        host.appendChild(section);
+      }
+      groupList.appendChild(renderRow(item, i + 1));
+    }
+
+    if (!more) return;
+    if (items.length > shown.length) {
+      var hidden = items.length - shown.length;
+      var btn = el('button', 'btn-quiet btn-small',
+        'Show the remaining ' + hidden + ' ' + plural(hidden, 'deal', 'deals'));
+      btn.type = 'button';
+      btn.addEventListener('click', function () { listLimit = Infinity; render(); });
+      more.appendChild(btn);
+    } else if (listLimit === Infinity && items.length > DEFAULT_LIMIT) {
+      var less = el('button', 'btn-quiet btn-small', 'Show only the top ' + DEFAULT_LIMIT);
+      less.type = 'button';
+      less.addEventListener('click', function () { listLimit = DEFAULT_LIMIT; render(); });
+      more.appendChild(less);
+    }
+  }
+
+  /* ---------------- rendering: the strip ---------------- */
+
+  function totals() {
+    var deals = state.deals || [];
+    var cycle = num(state.settings.cycleDays) || WS.DEFAULT_CYCLE_DAYS;
+    var todayISO = WS.today();
+    var t = {
+      openCount: 0, openValue: 0,
+      overdue: 0, adrift: 0, stale: 0,
+      wonCount: 0, wonValue: 0,
+      cycle: cycle
+    };
+    for (var i = 0; i < deals.length; i++) {
+      var d = deals[i];
+      if (WS.isOpen(d)) {
+        t.openCount++;
+        t.openValue += num(d.value);
+        var f = WS.flags(state, d);
+        if (f.overdue) t.overdue++;
+        if (f.adrift) t.adrift++;
+        if (f.stale) t.stale++;
+      } else if (str(d.outcome) === 'won') {
+        var age = WS.daysBetween(d.closedAt, todayISO);
+        if (isFinite(age) && age >= 0 && age < cycle) {
+          t.wonCount++;
+          t.wonValue += num(d.value);
+        }
+      }
+    }
+    return t;
+  }
+
+  function cell(host, key, value, tone, sub) {
+    var c = el('div', 'cell');
+    c.appendChild(el('span', 'k', key));
+    c.appendChild(el('span', 'v' + (tone ? ' ' + tone : ''), value));
+    if (sub) c.appendChild(el('span', 'sub', sub));
+    host.appendChild(c);
+  }
+
+  function renderStrip() {
+    var section = $('strip-section');
+    var strip = $('strip');
+    var note = $('strip-note');
+    var quotaHost = $('quota');
+    if (!section || !strip) return;
+
+    if (!(state.deals || []).length) {
+      section.hidden = true;
+      clear(strip);
+      clear(quotaHost);
+      return;
+    }
+    section.hidden = false;
+    clear(strip);
+    clear(quotaHost);
+
+    var t = totals();
+    if (note) {
+      note.textContent = 'Counted from what you have entered, nothing else. Cycle length: ' +
+        t.cycle + ' ' + plural(t.cycle, 'day', 'days') + '.';
+    }
+
+    cell(strip, 'Open pipeline', money(t.openValue), '',
+      t.openCount + ' open ' + plural(t.openCount, 'deal', 'deals'));
+    cell(strip, 'Overdue', String(t.overdue), t.overdue > 0 ? 'v-danger' : '');
+    cell(strip, 'No next step', String(t.adrift), t.adrift > 0 ? 'v-danger' : '');
+    cell(strip, 'Stale', String(t.stale), t.stale > 0 ? 'v-warn' : '',
+      'over ' + WS.STALE_DAYS + ' days quiet');
+    cell(strip, 'Won, last ' + t.cycle + ' days', money(t.wonValue),
+      t.wonCount > 0 ? 'v-win' : '',
+      t.wonCount + ' ' + plural(t.wonCount, 'deal', 'deals'));
+
+    renderQuota(quotaHost, t);
+  }
+
+  function renderQuota(host, t) {
+    if (!host) return;
+    var quota = state.settings ? state.settings.quota : null;
+
+    if (quota === null || quota === undefined) {
+      host.appendChild(el('p', 'muted line',
+        'No quota set. Add one under "Cycle and quota" below to see closed-won measured against it.'));
+      return;
+    }
+    if (num(quota) <= 0) {
+      host.appendChild(el('p', 'muted line',
+        'Quota is set to ' + money(quota) + ', so there is nothing to measure against.'));
+      return;
+    }
+
+    var pct = Math.round((t.wonValue / num(quota)) * 100);
+    var line = el('p', 'line');
+    line.textContent = money(t.wonValue) + ' won against a ' + money(quota) + ' quota — ' +
+      pct + '% of it, from ' + t.wonCount + ' ' + plural(t.wonCount, 'deal', 'deals') +
+      ' marked won in the last ' + t.cycle + ' ' + plural(t.cycle, 'day', 'days') + '.';
+    host.appendChild(line);
+
+    var bar = el('div', 'bar');
+    var fill = el('span');
+    fill.style.width = Math.max(0, Math.min(100, pct)) + '%';
+    bar.appendChild(fill);
+    host.appendChild(bar);
+
+    host.appendChild(el('p', 'section-note',
+      'That is money already closed. It is not a pace, a run rate, or a projection.'));
+  }
+
+  /* ---------------- rendering: settings form ---------------- */
+
+  function syncSettingsForm(force) {
+    var form = $('settings-form');
+    var q = $('set-quota'), c = $('set-cycle'), cur = $('set-currency');
+    if (!form || !q || !c || !cur) return;
+    /* never overwrite what Doug is currently typing */
+    if (!force && form.contains(document.activeElement)) return;
+    var quota = state.settings ? state.settings.quota : null;
+    q.value = (quota === null || quota === undefined) ? '' : String(quota);
+    c.value = String(num(state.settings.cycleDays) || WS.DEFAULT_CYCLE_DAYS);
+    cur.value = str(state.settings.currency) || 'USD';
+  }
+
+  /* ---------------- render ---------------- */
+
+  function render() {
+    focusTarget = null;
+    renderStrip();
+    renderWorkList();
+    syncSettingsForm();
+    if (focusTarget) {
+      focusPending = false;
+      try { focusTarget.focus(); } catch (e) { /* focus is a nicety */ }
+    }
+  }
+
+  /* ---------------- import / export ---------------- */
+
+  function showImportChoice() {
+    var box = $('import-choice');
+    var summary = $('import-summary');
+    if (!box || !summary || !pendingImport) return;
+    var d = pendingImport.deals.length;
+    var a = pendingImport.activities.length;
+    var o = pendingImport.objections.length;
+    summary.textContent = 'That file holds ' +
+      d + ' ' + plural(d, 'deal', 'deals') + ', ' +
+      a + ' ' + plural(a, 'logged activity', 'logged activities') + ' and ' +
+      o + ' ' + plural(o, 'objection', 'objections') + '. ' +
+      'This browser currently holds ' + (state.deals || []).length + ' ' +
+      plural((state.deals || []).length, 'deal', 'deals') + '. Nothing has changed yet.';
+    box.hidden = false;
+  }
+
+  function hideImportChoice() {
+    var box = $('import-choice');
+    if (box) box.hidden = true;
+    pendingImport = null;
+    var input = $('import-file');
+    if (input) { try { input.value = ''; } catch (e) { /* older browsers */ } }
+  }
+
+  function wireBackup() {
+    var exportBtn = $('export-btn');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', function () {
+        var ok = false;
+        try { ok = WS.exportJSON(state); } catch (e) { ok = false; }
+        if (ok) {
+          setStatus('Backup saved as ' + WS.exportFilename() +
+            '. Keep it somewhere private, and do not commit it anywhere.', 'ok');
+        } else {
+          setStatus('This browser blocked the download. Try another browser, or check that downloads ' +
+            'are allowed for local files.', 'err');
+        }
+      });
+    }
+
+    var file = $('import-file');
+    if (file) {
+      file.addEventListener('change', function () {
+        var chosen = file.files && file.files[0];
+        if (!chosen) return;
+        setStatus('Reading that file.', '');
+        WS.importJSON(chosen, function (err, imported) {
+          if (err) {
+            pendingImport = null;
+            var box = $('import-choice');
+            if (box) box.hidden = true;
+            setStatus(err.message || 'That file could not be read.', 'err');
+            try { file.value = ''; } catch (e) { /* older browsers */ }
+            return;
+          }
+          pendingImport = imported;
+          setStatus('Backup read. Choose replace or merge below. Nothing has changed yet.', '');
+          showImportChoice();
+        });
+      });
+    }
+
+    var replace = $('import-replace');
+    if (replace) {
+      replace.addEventListener('click', function () {
+        if (!pendingImport) return;
+        if (!ask('Replace everything in this browser with the backup?\n\nThe ' +
+          (state.deals || []).length + ' deal(s), activities and objections stored here now will be gone. ' +
+          'This cannot be undone.')) return;
+        state = pendingImport;
+        hideImportChoice();
+        listLimit = DEFAULT_LIMIT;
+        openId = '';
+        commit('Backup restored. This browser now holds ' + (state.deals || []).length + ' deal(s).');
+      });
+    }
+
+    var mergeBtn = $('import-merge');
+    if (mergeBtn) {
+      mergeBtn.addEventListener('click', function () {
+        if (!pendingImport) return;
+        if (!ask('Merge the backup into what is already here?\n\nRecords that share an id will be ' +
+          'overwritten by the backup, and its settings will replace yours. This cannot be undone.')) return;
+        var merged;
+        try { merged = WS.merge(state, pendingImport); } catch (e) { merged = null; }
+        if (!merged) { setStatus('That backup could not be merged.', 'err'); return; }
+        state = merged;
+        hideImportChoice();
+        listLimit = DEFAULT_LIMIT;
+        openId = '';
+        commit('Backup merged. This browser now holds ' + (state.deals || []).length + ' deal(s).');
+      });
+    }
+
+    var cancel = $('import-cancel');
+    if (cancel) {
+      cancel.addEventListener('click', function () {
+        hideImportChoice();
+        setStatus('Import cancelled. Nothing was changed.', '');
+      });
+    }
+  }
+
+  /* ---------------- forms ---------------- */
+
+  function wireAddForm() {
+    var form = $('add-form');
+    if (!form) return;
+    var fCompany = $('add-company');
+    var fContact = $('add-contact');
+    var fValue = $('add-value');
+    var fAction = $('add-action');
+    var fDate = $('add-date');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var company = str(fCompany && fCompany.value).trim();
+      var contact = str(fContact && fContact.value).trim();
+      var value = str(fValue && fValue.value).trim();
+      var action = str(fAction && fAction.value).trim();
+      var when = str(fDate && fDate.value).trim();
+
+      if (!company && !contact) {
+        setStatus('Give the deal at least a company name.', 'err');
+        if (fCompany) { try { fCompany.focus(); } catch (err) { /* ignore */ } }
+        return;
+      }
+
+      var deal = WS.newDeal({
+        company: company,
+        contact: contact,
+        value: value,
+        stage: 'Lead',
+        opened: WS.today(),
+        nextAction: action,
+        nextDate: when
+      });
+      state.deals.push(deal);
+
+      var msg = 'Added ' + dealName(deal) +
+        (num(deal.value) > 0 ? ' at ' + money(deal.value) : '') + ', stage Lead.';
+      if (deal.nextAction && deal.nextDate) {
+        msg += ' Next step: ' + deal.nextAction + ' on ' + (WS.fmtDate(deal.nextDate) || deal.nextDate) + '.';
+      } else {
+        msg += ' It has no next step, so it will sit near the top of the work list until it gets one.';
+        openId = deal.id;
+      }
+
+      form.reset();
+      commit(msg);
+      if (fCompany) { try { fCompany.focus(); } catch (err) { /* ignore */ } }
+    });
+  }
+
+  function wireSettingsForm() {
+    var form = $('settings-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var quotaEl = $('set-quota'), cycleEl = $('set-cycle'), curEl = $('set-currency');
+      var q = str(quotaEl && quotaEl.value).trim();
+      state.settings.quota = q === '' ? null : q;
+      state.settings.cycleDays = str(cycleEl && cycleEl.value).trim() || WS.DEFAULT_CYCLE_DAYS;
+      state.settings.currency = str(curEl && curEl.value).trim() || 'USD';
+      commit('Settings saved.');
+      /* commit() renders, but focus is still inside this form, so force the
+         fields to show the values that were actually stored. */
+      syncSettingsForm(true);
+    });
+  }
+
+  /* ---------------- start ---------------- */
+
+  function start() {
+    var navSlot = $('nav-slot');
+    if (navSlot) navSlot.innerHTML = WS.nav('index.html');       /* no user data */
+    var privacy = $('privacy');
+    if (privacy) privacy.innerHTML = WS.privacyNote();           /* no user data */
+
+    if (!storageWorks()) {
+      var warn = $('storage-warning');
+      if (warn) {
+        warn.textContent = 'This browser is not letting the page store anything ' +
+          '(private window, or site data is blocked). You can still use the page, but everything ' +
+          'you enter will be gone when you close the tab. Export a backup before you do.';
+        warn.hidden = false;
+      }
+    }
+
+    loadState();
+    wireAddForm();
+    wireSettingsForm();
+    wireBackup();
+    render();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>
