@@ -28,10 +28,16 @@ class AdaptiveConformal:
 
     def update(self, y_true: float, y_pred: float) -> None:
         score = float(self.score_fn(y_true, y_pred))
+        # Prequential: judge the new point against calibration seen BEFORE
+        # it, then append. Computing the quantile with this point already
+        # folded in would bias err toward 0, especially at small n.
+        if self.calibration_scores:
+            q = np.quantile(self.calibration_scores, 1 - self.alpha_t, method="higher")
+            err = 1.0 if score > q else 0.0
+        else:
+            err = 0.0
         self.calibration_scores.append(score)
         self.n += 1
-        q = np.quantile(self.calibration_scores, 1 - self.alpha_t, method="higher")
-        err = 1.0 if score > q else 0.0
         self.alpha_t = float(
             np.clip(
                 self.alpha_t + self.gamma * (self.target_alpha - err),

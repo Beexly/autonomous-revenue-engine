@@ -10,7 +10,7 @@ from typing import Tuple
 
 import numpy as np
 
-from adaptive_cp import AdaptiveConformal
+from .adaptive_cp import AdaptiveConformal
 
 
 class SAOCP:

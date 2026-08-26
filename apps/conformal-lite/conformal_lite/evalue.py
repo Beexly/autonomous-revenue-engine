@@ -1,20 +1,38 @@
-"""Soft-rank e-variable for post-hoc α and anytime-valid checks.
+"""Valid e-variable and conformal p-value for post-hoc alpha / anytime-valid checks.
 
-E >= 1/α is evidence against the null that the new point is exchangeable
-with calibration. Lets you pick α after seeing scores (post-hoc) while
-keeping a Markov/Ville-style bound. See Gauthier et al. on e-values for CP.
+conformal_p is the standard finite-sample exchangeability p-value:
+p = (1 + #{cal_i >= score}) / (n + 1), uniform on {1/(n+1), ..., 1} under
+the exchangeability null.
+
+soft_rank_e is a valid e-variable: e = score / mean(calibration + [score]).
+For n+1 exchangeable nonnegative scores, E[score_i / mean(all n+1)] = 1/(n+1)
+by symmetry, so E[e] = (n+1) * 1/(n+1) = 1 under the null. The running
+product of e across a stream is therefore a nonnegative test martingale and
+Markov/Ville bounds on it are justified for post-hoc / anytime-valid alpha
+selection.
+
+(The previous soft_rank_e returned (n+1)/(1+#{cal_i >= score}) -- the
+reciprocal of conformal_p. That is >= 1 by construction regardless of the
+data, so E[e] > 1 under the null: not a valid e-variable, and its running
+product is not a martingale.)
 """
 from __future__ import annotations
 
 import numpy as np
 
 
-def soft_rank_e(score: float, calibration: list[float]) -> float:
-    if not calibration:
-        return 1.0
+def conformal_p(score: float, calibration: list[float]) -> float:
     n = len(calibration)
     ge = 1 + sum(1 for s in calibration if s >= score)
-    return float(n + 1) / float(ge)
+    return float(ge) / float(n + 1)
+
+
+def soft_rank_e(score: float, calibration: list[float]) -> float:
+    pool = calibration + [score]
+    mean_pool = float(np.mean(pool))
+    if mean_pool <= 0:
+        return 1.0
+    return float(score) / mean_pool
 
 
 def posthoc_alpha(e: float) -> float:

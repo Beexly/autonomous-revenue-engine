@@ -2,11 +2,17 @@ import unittest
 
 import numpy as np
 
-from adaptive_cp import AdaptiveConformal
-from core import make
-from cqr import ConformalQR, quantile_residual
-from evalue import EValueConformal, posthoc_alpha, soft_rank_e
-from saocp import SAOCP
+from conformal_lite import (
+    AdaptiveConformal,
+    ConformalQR,
+    EValueConformal,
+    SAOCP,
+    conformal_p,
+    make,
+    posthoc_alpha,
+    quantile_residual,
+    soft_rank_e,
+)
 
 
 class TestACI(unittest.TestCase):
@@ -38,14 +44,19 @@ class TestSAOCP(unittest.TestCase):
 
 class TestCQR(unittest.TestCase):
     def test_residual_and_expand(self):
-        self.assertEqual(quantile_residual(0.0, -1.0, 1.0), 0.0)
+        self.assertEqual(quantile_residual(1.0, -1.0, 1.0), 0.0)
         self.assertEqual(quantile_residual(3.0, -1.0, 1.0), 2.0)
         m = ConformalQR()
         for i in range(20):
             m.update(float(i), float(i), q_lo=float(i) - 0.5, q_hi=float(i) + 0.5)
+        # Every point falls exactly 0.5 inside its quantile band, so the
+        # calibrated residual is -0.5: CQR correctly SHRINKS an overly wide
+        # prior band, it does not only ever widen it.
         lo, hi = m.expand(-1.0, 1.0)
-        self.assertLessEqual(lo, -1.0)
-        self.assertGreaterEqual(hi, 1.0)
+        self.assertAlmostEqual(lo, -0.5)
+        self.assertAlmostEqual(hi, 0.5)
+        self.assertGreater(lo, -1.0)
+        self.assertLess(hi, 1.0)
 
 
 class TestEValue(unittest.TestCase):
@@ -53,6 +64,11 @@ class TestEValue(unittest.TestCase):
         e = soft_rank_e(10.0, [0.0, 1.0, 2.0])
         self.assertGreater(e, 1.0)
         self.assertLessEqual(posthoc_alpha(e), 1.0)
+
+    def test_conformal_p_in_unit_interval(self):
+        p = conformal_p(10.0, [0.0, 1.0, 2.0])
+        self.assertGreaterEqual(p, 0.0)
+        self.assertLessEqual(p, 1.0)
 
     def test_stream(self):
         m = EValueConformal()
