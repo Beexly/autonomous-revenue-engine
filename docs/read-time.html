@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>read-time — words vs 50% visible</title>
+  <meta name="description" content="Words to seconds against the OCR ≥50% visible unit. Does not rewrite. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    input[type=number] { width:6rem; box-sizing:border-box; padding:.45rem .5rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    .wpmrow { margin-top:.75rem; }
+    .wpmrow label { display:inline; margin-right:.5rem; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .holds { color:var(--ok); } .buried { color:var(--bad); } .short { color:var(--rule); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .preview { font:14px/1.45 ui-monospace,monospace; background:#fffdf6; border:1px solid var(--ink); padding:.7rem .75rem; white-space:pre-wrap; word-break:break-word; }
+    .preview .in { background:#e7f0d8; }
+    .preview .over { background:#f3d4c8; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · reading time</p>
+  <h1>read-time</h1>
+  <p class="lede">Paste a draft. This turns words into seconds, then asks whether that time sits in the OCR unit: ≥50% of the post visible. Local heuristic. It does not rewrite or publish.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="Shipped the 9.2 floor after the 8.3 queue died. The rest of the thread is optional."></textarea>
+    <p class="wpmrow"><label for="wpm">Words per minute</label><input id="wpm" type="number" value="200" min="60" max="1000" step="10"></p>
+    <button type="submit">Time it</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function words(s) {
+    var t = String(s || "").trim();
+    return t ? t.split(/\s+/).filter(Boolean).length : 0;
+  }
+  function secs(n, wpm) {
+    var rate = wpm > 0 ? wpm : 200;
+    return (n / rate) * 60;
+  }
+  function fmt(sec) {
+    if (sec < 60) return sec.toFixed(1) + " s";
+    var m = Math.floor(sec / 60);
+    var s = Math.round(sec - m * 60);
+    return m + " min " + s + " s";
+  }
+  function measure(raw, wpm) {
+    var t = String(raw || "").replace(/\r\n/g, "\n");
+    if (!t.trim()) return { status: "EMPTY" };
+    var mid = Math.ceil(t.length / 2);
+    var vis = t.slice(0, mid);
+    var hid = t.slice(mid);
+    var wAll = words(t);
+    var wVis = words(vis);
+    var wHid = words(hid);
+    var sAll = secs(wAll, wpm);
+    var sVis = secs(wVis, wpm);
+    var sHid = secs(wHid, wpm);
+    var share = sAll > 0 ? sVis / sAll : 0;
+    var status = "HOLDS VISIBLE";
+    if (wAll < 8) status = "SHORT";
+    else if (share < 0.5) status = "BURIED";
+    return {
+      status: status,
+      wAll: wAll, wVis: wVis, wHid: wHid,
+      sAll: sAll, sVis: sVis, sHid: sHid,
+      share: share, rate: wpm > 0 ? wpm : 200,
+      vis: vis, hid: hid, chars: t.length
+    };
+  }
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var wpmInput = document.getElementById("wpm");
+  var out = document.getElementById("out");
+  function render() {
+    var data = measure(input.value, parseInt(wpmInput.value, 10));
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='short'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "HOLDS VISIBLE" ? "holds" : data.status === "BURIED" ? "buried" : "short";
+    var rows =
+      "<tr><td class='k'>words</td><td class='v'>" + data.wAll + "</td></tr>" +
+      "<tr><td class='k'>est. read at " + data.rate + " wpm</td><td class='v'>" + fmt(data.sAll) + "</td></tr>" +
+      "<tr><td class='k'>visible half (words)</td><td class='v'>" + data.wVis + " · " + fmt(data.sVis) + "</td></tr>" +
+      "<tr><td class='k'>dim half (words)</td><td class='v'>" + data.wHid + " · " + fmt(data.sHid) + "</td></tr>" +
+      "<tr><td class='k'>reading time in view</td><td class='v'>" + Math.round(data.share * 100) + "%</td></tr>";
+    var preview = "<span class='in'>" + esc(data.vis) + "</span>";
+    if (data.hid) preview += "<span class='over'>" + esc(data.hid) + "</span>";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='preview'>" + preview + "</p>" +
+      "<p class='note'>Green = first 50% of characters, the OCR ≥50% visible unit. Seconds = words ÷ wpm. HOLDS VISIBLE = at least half the reading time sits in that half. BURIED = the reader spends more seconds in the dim half. Local estimate, not dwell time. Not fold-ruler (no 160-char band). Not viewport-mock (no timeline card). Not qi-check.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  input.addEventListener("input", function () { if (!out.hidden) render(); });
+  wpmInput.addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>
