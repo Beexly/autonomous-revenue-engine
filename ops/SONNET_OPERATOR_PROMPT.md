@@ -199,8 +199,9 @@ A handoff without it is an incomplete session.
   math), #21 (GARRETT_PENDING security note), #22 (MIT LICENSE + real CI +
   dead-workflow removal), #23 (FIFTY_LOOPS truth pass), #24 (tools
   changelog RSS). Later sessions add more — always re-list.
-- Standing owner blockers, ranked: rotate the Meta token recoverable from
-  git history (app 1099624436068516); decide PR #17; merge the open
+- Standing owner blockers, ranked: rotate the Meta credential recoverable
+  from git history (see `ops/GARRETT_PENDING.md` — details go to Garrett out
+  of band, not into this public file); decide PR #17; merge the open
   `sonnet/*` PRs; enable GitHub Pages on `/docs`; fix Vercel project config
   (or merge the in-repo static config if a PR for it is open).
 - The 9.2 Hold floor stands. Approved-to-publish queue: check

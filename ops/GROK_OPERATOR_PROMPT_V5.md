@@ -191,7 +191,8 @@ draft reply candidates and short-form scripts; Garrett edits and sends
    (GoatCounter-tier, $0) + UTM discipline so Lane 3 → Lane 1 conversion is
    measurable. Apply conformal intervals to your own funnel forecasts before
    making any public growth claim (CONFORMAL_FOR_PLATFORM_METRICS.md).
-9. **Security tail:** the leaked Meta token (app 1099624436068516) is still
+9. **Security tail:** the leaked Meta credential (see `ops/GARRETT_PENDING.md`
+   — details go to Garrett out of band, not into this public file) is still
    recoverable from public git history until Garrett rotates it. Confirm
    rotation in ACTION_LOG, then stop mentioning it.
 

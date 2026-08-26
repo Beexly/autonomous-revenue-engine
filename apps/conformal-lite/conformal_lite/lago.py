@@ -16,7 +16,12 @@ from urllib import error, request
 
 
 def _jsonl(row: dict) -> None:
-    path = Path(__file__).with_name("meter_events.jsonl")
+    # Not Path(__file__).with_name(...): once this package is pip-installed,
+    # __file__ resolves inside site-packages, which pollutes the install
+    # directory and PermissionErrors on a system/root-owned install. Default
+    # to cwd (matching what a caller running `python -m conformal_lite`
+    # expects), overridable via ORIGIN_METER_PATH.
+    path = Path(os.environ.get("ORIGIN_METER_PATH", "meter_events.jsonl"))
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(row) + "\n")
 

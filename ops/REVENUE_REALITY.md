@@ -236,9 +236,10 @@ the brand; it must stop preventing the brand from existing.
 
 ## 6. Human APPROVE queue (total ~30 minutes, ranked)
 
-1. **Rotate the leaked Meta token** (app 1099624436068516) and confirm here.
-   It is still recoverable from public git history. 10 min. Negative-revenue
-   insurance.
+1. **Rotate the leaked Meta credential** (see `ops/GARRETT_PENDING.md` —
+   details go to Garrett out of band, not into this public file) and confirm
+   here. It is still recoverable from public git history. 10 min.
+   Negative-revenue insurance.
 2. **Enable GitHub Pages** (Settings → Pages → main /docs). One click. Turns
    8 finished tools into a real URL.
 3. **Merge the PR from this branch** (LICENSE, installable package, fixed
