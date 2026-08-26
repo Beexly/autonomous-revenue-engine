@@ -6,6 +6,14 @@
 
 ---
 
+## Do now -- security (do this first)
+
+1. **Rotate or revoke the Meta access token for Meta app ID 1099624436068516.** This token is still fully recoverable from this repo's git history — run `git show 0a38eed:ops/META_KEY.local` to see it — even though the file that held it was deleted from HEAD. Deleting the file did not revoke the token; it is still live until rotated. This is an account action only Garrett can take, in the Meta App Dashboard, and is unrelated to any code change.
+
+2. **PR 17 needs a decision from Garrett.** https://github.com/Beexly/autonomous-revenue-engine/pull/17 (branch `claude/signal-origin-handoff-vzl6b0`) is open and carries content not yet on main. No automated session can touch that branch or self-merge it, so only Garrett can rebase it (or merge main into it) or close it.
+
+---
+
 ## Do now
 
 1. **Apply CRT identity** (Identity tab / brand pack)
