@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>approve-desk: local grade + Approve</title>
+  <meta name="description" content="Grade Origin drafts offline and Approve to a Chicago slot. Does not post to X.">
+  <style>
+    :root { --bg:#0e0e0e; --ink:#e8e4d9; --mute:#9a9588; --line:#3a3a36; --card:#161616; --ok:#7dba8a; --warn:#d2a54a; --bad:#d46a6a; --btn:#e8e4d9; }
+    * { box-sizing: border-box; }
+    html, body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    header { padding:14px 16px 8px; border-bottom:1px solid var(--line); }
+    header h1 { font-size:18px; letter-spacing:-.03em; margin:0 0 4px; }
+    header p { margin:0; color:var(--mute); max-width:52rem; }
+    .board { display:grid; grid-template-columns:minmax(16rem,1fr) minmax(20rem,1.4fr) minmax(16rem,1fr); gap:12px; padding:12px 16px 24px; align-items:start; }
+    @media (max-width:960px) { .board { grid-template-columns:1fr; } }
+    .col { background:var(--card); border:1px solid var(--line); min-height:70vh; padding:12px; }
+    .col h2 { font-size:11px; letter-spacing:.14em; text-transform:uppercase; margin:0 0 10px; color:var(--mute); }
+    .item { border:1px solid var(--line); padding:8px 10px; margin:0 0 8px; cursor:pointer; white-space:pre-wrap; }
+    .item:hover, .item.on { border-color:var(--btn); }
+    .item small { display:block; color:var(--mute); margin-top:6px; font-size:11px; }
+    .sub { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin:14px 0 8px; }
+    textarea { width:100%; min-height:8rem; background:#111; color:var(--ink); border:1px solid var(--line); padding:8px; font:inherit; }
+    .row { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+    button { background:var(--btn); color:#111; border:0; padding:8px 12px; font-weight:650; cursor:pointer; }
+    button.ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
+    button:disabled { opacity:.5; cursor:default; }
+    input[type=password], input[type=text] { background:#111; color:var(--ink); border:1px solid var(--line); padding:6px 8px; font:inherit; min-width:12rem; }
+    .rec { font-size:22px; font-weight:700; margin:0 0 4px; }
+    .hold { color:var(--ok); } .soft { color:var(--warn); } .hard, .kill { color:var(--bad); }
+    table { width:100%; border-collapse:collapse; font-size:13px; margin:8px 0; }
+    td { padding:3px 0; } td.k { color:var(--mute); } td.v { text-align:right; }
+    ol { padding-left:18px; margin:8px 0; }
+    .muted { color:var(--mute); }
+    .err { color:var(--bad); }
+    .ok { color:var(--ok); }
+    .pill { display:inline-block; font:700 10px/1.6 ui-monospace,monospace; padding:0 6px; margin-right:6px; }
+    .pass { background:#1d3a24; color:var(--ok); } .fail { background:#3a1d1d; color:var(--bad); }
+    .checks li { margin:4px 0; list-style:none; }
+    .checks { padding:0; }
+    .keyrow { margin-top:16px; padding-top:12px; border-top:1px solid var(--line); }
+    .preview { white-space:pre-wrap; border:1px solid var(--line); padding:10px; background:#111; min-height:6rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>approve-desk</h1>
+    <p>Grade runs in this page. Approve is the human gate. It stamps a Chicago weekday slot (8:00 / 12:30 / 17:00). It does not post to X. Optional OpenRouter rewrite stays in localStorage. No key required. No secrets in the file.</p>
+  </header>
+  <div class="board">
+    <section class="col" id="col-drafts">
+      <h2>Drafts</h2>
+      <div id="draft-list"></div>
+      <div class="sub">Engage</div>
+      <div id="engage-list"></div>
+      <div class="sub">Add</div>
+      <textarea id="new-text" rows="4" placeholder="Paste a root draft or a reply."></textarea>
+      <div class="row">
+        <button type="button" id="add-root">Add draft</button>
+        <button type="button" class="ghost" id="add-reply">Add engage</button>
+      </div>
+    </section>
+    <section class="col" id="col-grader">
+      <h2>Grader</h2>
+      <p id="empty-g" class="muted">Pick a draft.</p>
+      <div id="grader" hidden>
+        <div id="preview" class="preview"></div>
+        <div class="row">
+          <button type="button" id="btn-grade">Grade (offline)</button>
+          <button type="button" class="ghost" id="btn-rewrite">Rewrite if key saved</button>
+          <button type="button" id="btn-approve">Approve</button>
+        </div>
+        <p id="grade-msg" class="muted"></p>
+        <div id="grade-out"></div>
+        <div class="keyrow">
+          <p class="muted">Optional free-model rewrite. Key never leaves this browser.</p>
+          <div class="row">
+            <input type="password" id="or-key" placeholder="OpenRouter key (optional)" autocomplete="off">
+            <input type="text" id="or-model" placeholder="model slug" value="meta-llama/llama-3.1-8b-instruct:free">
+            <button type="button" class="ghost" id="save-key">Save key</button>
+            <button type="button" class="ghost" id="clear-key">Clear key</button>
+          </div>
+          <p id="key-state" class="muted"></p>
+        </div>
+      </div>
+    </section>
+    <section class="col" id="col-ready">
+      <h2>Ready to post</h2>
+      <p class="muted">Human-approved only. Copy and paste yourself. This page cannot publish.</p>
+      <div id="ready-list"></div>
+    </section>
+  </div>
+<script>
+(function () {
+  var HOLD_FLOOR = 9.2;
+  var SOFT_FLOOR = 7.0;
+  var KEY_STORE = "so.approveDesk.openrouterKey";
+  var MODEL_STORE = "so.approveDesk.openrouterModel";
+  var STATE_STORE = "so.approveDesk.state.v1";
+  var BAIT_PATTERNS = [
+    /\bhot take\b/i, /\bwill be banned\b/i, /\blike if you agree\b/i,
+    /\bcomment (yes|below|if)\b/i, /\b(share|retweet) this\b/i,
+    /\bthread\s*\u{1F9F5}/iu, /\b\d+\s+(ways|tips|habits|mistakes)\b/i,
+    /\bnot financial advice\b/i, /\bgrowth hack\b/i
+  ];
+  var JARGON = /\b(leverage|10x|unlock|game-?changer|ecosystem|build in public|personal brand|viral|growth hack|let that sink in)\b/i;
+  var STAKE = /\b(killed|paid|refused|built|measured|failed|shipped|cut|deferred|chose silence|raised|moved|watched|stopped)\b/i;
+  var CONTRAST = /\bit'?s not\b[^.\n]{2,48}\.\s*it'?s\b/i;
+  var MANIFESTO = /\b(the future of|in a world where|at the end of the day|here'?s the thing)\b/i;
+  var LECTURE = /^(here is how|let me explain|operators should|most people don'?t)\b/im;
+  var SPORTS = /\b(nfl|nba|mlb|nhl|wnba|dfs|fanduel|draftkings|parlay|sportsbook|moneyline|point spread|super bowl|march madness|betting odds)\b/i;
+  var STRIPE = /\bstripe\b/i;
+  var EMDASH = /\u2014|\u2013/;
+  var TEMPLATE_LEAD = /^(so[, ]|well[, ]|today[, ]|in this\b|let me\b|here'?s the thing\b|in a world\b)/i;
+
+  var SEEDS = [
+    { id: "r1", kind: "root", text: "We killed three posts that had already cleared our own Pass gate.\n\nEach one was clean enough that a hundred AI-operator accounts could have run the same lines. The swap would not have shown.\n\nI chose silence over a first impression that teaches people we are generic." },
+    { id: "r2", kind: "root", text: "I watched Meta report 40 percent more purchases than the store for seven days.\n\nPixel and CAPI were both live. They were not sharing an event_id.\n\nI am not buying another click until those two rows match." },
+    { id: "r3", kind: "root", text: "I moved the Hold floor to 9.2 after an 8.3 got labeled Pass.\n\nThe draft was tidy. It had no cost in it. Anyone in this lane could have posted it.\n\nFrom Houston I would rather miss a day than train the timeline on a template." },
+    { id: "e1", kind: "reply", text: "If the ads number and the order number disagree, the order number is not the one performing." },
+    { id: "e2", kind: "reply", text: "A first line any growth account could steal is still a miss. I would rather post nothing." }
+  ];
+
+  function clamp(n) { return Math.max(0, Math.min(10, Math.round(n * 10) / 10)); }
+  function sentences(text) {
+    return text.split(/(?<=[.!?])\s+/).map(function (s) { return s.trim(); }).filter(Boolean);
+  }
+  function firstScreen(text, limit) {
+    return String(text).replace(/\s+/g, " ").trim().slice(0, limit || 160);
+  }
+  function staccato(t) {
+    return t.split(/\n+/).some(function (l) {
+      var w = l.trim().replace(/[.!?]/g, "").split(/\s+/).filter(Boolean);
+      return w.length > 0 && w.length <= 2 && /\.$/.test(l.trim());
+    });
+  }
+  function scoreFirstScreenDensity(text) {
+    var head = firstScreen(text);
+    var hasClaim = /\b(killed|paid|refused|built|measured|failed|shipped|cut|deferred|chose|moved|watched|stopped)\b/i.test(head) || /\d/.test(head) || head.length > 40;
+    var buried = /^(so|well|today|in this|let me|i('ve| have) been)\b/i.test(head.trim());
+    var s = hasClaim ? 7 : 4;
+    if (buried) s -= 2;
+    if (head.indexOf("?") >= 0 && head.length < 80) s -= 1;
+    if (/\b(killed|refused|paid|shipped|deferred|moved|watched)\b/i.test((head.split(/[.!?]/)[0] || ""))) s += 1.5;
+    return clamp(s);
+  }
+  function scoreFoldStructure(text) {
+    var lines = text.split(/\n+/).map(function (l) { return l.trim(); }).filter(Boolean);
+    if (!lines.length) return 0;
+    var s = lines[0].length <= 90 ? 7 : 4;
+    if (lines.length >= 2 || text.length > 120) s += 1;
+    if (lines[0] === lines[0].toUpperCase() && lines[0].length > 20) s -= 2;
+    if (lines.length >= 3) s += 0.5;
+    return clamp(s);
+  }
+  function scoreBait(text) {
+    var hits = 0;
+    for (var i = 0; i < BAIT_PATTERNS.length; i++) if (BAIT_PATTERNS[i].test(text)) hits++;
+    return clamp(10 - hits * 2);
+  }
+  function scoreLengthFitness(text) {
+    var n = text.trim().length;
+    if (n < 40) return 3;
+    if (n <= 400) return 9;
+    if (n <= 900) return 7;
+    if (n <= 2000) return 5;
+    return 3;
+  }
+  function scoreBurstiness(text) {
+    var ss = sentences(text);
+    if (ss.length < 2) return 6;
+    var lens = ss.map(function (s) { return s.split(/\s+/).length; });
+    var mean = lens.reduce(function (a, b) { return a + b; }, 0) / lens.length;
+    var variance = lens.reduce(function (a, b) { return a + Math.pow(b - mean, 2); }, 0) / lens.length;
+    var cv = mean === 0 ? 0 : Math.sqrt(variance) / mean;
+    if (cv < 0.2) return 4;
+    if (cv < 0.35) return 6;
+    if (cv < 0.55) return 8;
+    return 9;
+  }
+  function swapChecks(t) {
+    var checks = [];
+    function row(id, ok, why) { checks.push({ id: id, pass: !!ok, why: why }); }
+    row("stake", STAKE.test(t), "A real decision or cost verb is present.");
+    row("number", /\d/.test(t), "A number, floor, or count survives a brand swap.");
+    row("first-person", /\bI\b/.test(t) && STAKE.test(t), "Houston first person plus a decision, not a brand-deck we.");
+    row("jargon", !JARGON.test(t), "No interchangeable operator cliches.");
+    row("contrast", !CONTRAST.test(t), "No empty It's not X. It's Y. cadence.");
+    row("manifesto", !MANIFESTO.test(t), "No sermon opener or closer.");
+    row("staccato", !staccato(t), "No one-word or two-word fragment lines.");
+    row("lecture", !LECTURE.test(t), "Does not open as a category lecture.");
+    var stripped = t.replace(/\b(signal origin|qi-check|voice-delta|hold floor|burrows|houston)\b/ig, "BRAND");
+    row("residue", STAKE.test(stripped) || /\d/.test(stripped), "After swapping the brand name, a specific stake remains.");
+    var ss = sentences(t);
+    var lens = ss.map(function (s) { return s.split(/\s+/).length; });
+    var mean = lens.length ? lens.reduce(function (a, b) { return a + b; }, 0) / lens.length : 0;
+    var cv = 0;
+    if (lens.length > 1 && mean) {
+      var v = lens.reduce(function (a, b) { return a + Math.pow(b - mean, 2); }, 0) / lens.length;
+      cv = Math.sqrt(v) / mean;
+    }
+    row("cadence", ss.length < 2 || cv >= 0.28, "Sentence length is not flat model cadence.");
+    return checks;
+  }
+  function extraGates(t) {
+    var first = (t.split(/\n+/)[0] || "").trim();
+    return [
+      { id: "no-sports", pass: !SPORTS.test(t), why: "No sports or DFS." },
+      { id: "no-stripe", pass: !STRIPE.test(t), why: "No Stripe." },
+      { id: "no-emdash", pass: !EMDASH.test(t), why: "No em-dash default." },
+      { id: "no-template-lead", pass: !TEMPLATE_LEAD.test(first), why: "First line is not a template lead." },
+      { id: "houston-i", pass: /\bI\b/.test(t), why: "Houston first person (I), not a generic operator we." }
+    ];
+  }
+  function gradeText(raw) {
+    var t = String(raw || "").trim();
+    if (!t) return { error: "empty_text", recommendation: "Hard rewrite" };
+    var scores = {
+      firstScreenDensity: scoreFirstScreenDensity(t),
+      foldStructure: scoreFoldStructure(t),
+      baitAvoidance: scoreBait(t),
+      lengthFitness: scoreLengthFitness(t),
+      burstiness: scoreBurstiness(t)
+    };
+    var weights = { firstScreenDensity: 0.3, foldStructure: 0.2, baitAvoidance: 0.25, lengthFitness: 0.15, burstiness: 0.1 };
+    var total = 0;
+    Object.keys(weights).forEach(function (k) { total += scores[k] * weights[k]; });
+    total = Math.round(total * 10) / 10;
+    var swap = swapChecks(t);
+    var extra = extraGates(t);
+    var swapPassed = swap.filter(function (c) { return c.pass; }).length;
+    var swapScore = Math.round((swapPassed / swap.length) * 10 * 10) / 10;
+    var extraFail = extra.filter(function (c) { return !c.pass; });
+    var fixes = [];
+    if (scores.firstScreenDensity < 8) fixes.push("Put the concrete decision in the first line, not the third.");
+    if (scores.foldStructure < 7) fixes.push("Open short. Mechanism in line 2-3. No buried lede.");
+    if (scores.baitAvoidance < 9) fixes.push("Strip engagement-farm CTAs and listicle bait.");
+    if (scores.lengthFitness < 7) fixes.push("Tighten length. One complete thought.");
+    if (scores.burstiness < 7) fixes.push("Vary sentence length. Avoid flat model cadence.");
+    extraFail.forEach(function (c) { fixes.push("Fail " + c.id + ": " + c.why); });
+    swap.filter(function (c) { return !c.pass; }).forEach(function (c) { fixes.push("Swap fail " + c.id + ": " + c.why); });
+    if (total < HOLD_FLOOR) fixes.push("Composite " + total + " is below Hold floor " + HOLD_FLOOR + ". Rewrite or kill.");
+    var sportsKill = extraFail.some(function (c) { return c.id === "no-sports" || c.id === "no-stripe"; });
+    var rec = "Hold";
+    if (sportsKill) rec = "Kill";
+    else if (total < SOFT_FLOOR || scores.baitAvoidance < 6 || extraFail.some(function (c) { return c.id === "no-emdash" || c.id === "no-template-lead"; })) rec = "Hard rewrite";
+    else if (
+      total < HOLD_FLOOR ||
+      scores.firstScreenDensity < 8 ||
+      scores.baitAvoidance < 9 ||
+      extraFail.length ||
+      swapScore < 8
+    ) rec = "Soft rewrite";
+    if (rec === "Hold" && extraFail.length) rec = "Soft rewrite";
+    return {
+      scores: scores,
+      total: total,
+      floors: { hold: HOLD_FLOOR, soft: SOFT_FLOOR },
+      swapScore: swapScore,
+      swap: swap,
+      extra: extra,
+      fixes: fixes,
+      recommendation: rec,
+      firstScreenPreview: firstScreen(t)
+    };
+  }
+
+  function chicagoParts(d) {
+    var s = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Chicago",
+      weekday: "short", year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+    }).formatToParts(d);
+    function get(t) { return s.find(function (p) { return p.type === t; }).value; }
+    return { weekday: get("weekday"), year: +get("year"), month: +get("month"), day: +get("day"), hour: +get("hour"), minute: +get("minute") };
+  }
+  var WEEKDAY = { Mon: 1, Tue: 1, Wed: 1, Thu: 1, Fri: 1 };
+  var SLOTS = [{ h: 8, m: 0, label: "8:00" }, { h: 12, m: 30, label: "12:30" }, { h: 17, m: 0, label: "17:00" }];
+  function addChiDays(p, n) {
+    var dt = new Date(Date.UTC(p.year, p.month - 1, p.day + n, 17, 0, 0));
+    return chicagoParts(dt);
+  }
+  function nextSlot(from) {
+    var p = chicagoParts(from || new Date());
+    var nowMin = p.hour * 60 + p.minute;
+    function tryDay(parts, sameDay) {
+      if (!WEEKDAY[parts.weekday]) return null;
+      for (var i = 0; i < SLOTS.length; i++) {
+        var sl = SLOTS[i];
+        var m = sl.h * 60 + sl.m;
+        if (!sameDay || m > nowMin) {
+          return { label: parts.weekday + " " + sl.label + " CT", y: parts.year, mo: parts.month, d: parts.day, h: sl.h, mi: sl.m };
+        }
+      }
+      return null;
+    }
+    var hit = tryDay(p, true);
+    if (hit) return hit;
+    for (var n = 1; n <= 8; n++) {
+      hit = tryDay(addChiDays(p, n), false);
+      if (hit) return hit;
+    }
+    return { label: "next weekday 8:00 CT", y: p.year, mo: p.month, d: p.day, h: 8, mi: 0 };
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function uid() { return "d" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+  var state = loadState();
+  var selectedId = null;
+  var lastGrade = null;
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(STATE_STORE);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && Array.isArray(parsed.drafts) && Array.isArray(parsed.ready)) return parsed;
+      }
+    } catch (e) {}
+    return { drafts: SEEDS.map(function (s) { return { id: s.id, kind: s.kind, text: s.text }; }), ready: [] };
+  }
+  function saveState() {
+    localStorage.setItem(STATE_STORE, JSON.stringify({ drafts: state.drafts, ready: state.ready }));
+  }
+
+  var draftList = document.getElementById("draft-list");
+  var engageList = document.getElementById("engage-list");
+  var readyList = document.getElementById("ready-list");
+  var grader = document.getElementById("grader");
+  var emptyG = document.getElementById("empty-g");
+  var preview = document.getElementById("preview");
+  var gradeOut = document.getElementById("grade-out");
+  var gradeMsg = document.getElementById("grade-msg");
+
+  function selected() {
+    return state.drafts.filter(function (d) { return d.id === selectedId; })[0] || null;
+  }
+  function renderLists() {
+    function card(d) {
+      var on = d.id === selectedId ? " on" : "";
+      return "<div class='item" + on + "' data-id='" + esc(d.id) + "'>" + esc(d.text.slice(0, 220)) + (d.text.length > 220 ? "…" : "") + "</div>";
+    }
+    draftList.innerHTML = state.drafts.filter(function (d) { return d.kind !== "reply"; }).map(card).join("") || "<p class='muted'>No root drafts.</p>";
+    engageList.innerHTML = state.drafts.filter(function (d) { return d.kind === "reply"; }).map(card).join("") || "<p class='muted'>No comment drafts.</p>";
+    readyList.innerHTML = state.ready.map(function (r) {
+      return "<div class='item' data-ready='" + esc(r.id) + "'>" + esc(r.text) +
+        "<small>" + esc(r.slotLabel) + " · " + esc(r.kind) + "</small>" +
+        "<div class='row'><button type='button' data-copy='" + esc(r.id) + "'>Copy</button></div></div>";
+    }).join("") || "<p class='muted'>Nothing approved yet.</p>";
+  }
+  function showGrader(d) {
+    emptyG.hidden = true;
+    grader.hidden = false;
+    preview.textContent = d.text;
+    lastGrade = null;
+    gradeOut.innerHTML = "";
+    gradeMsg.textContent = "Grade is offline. Approve still requires your tap.";
+  }
+  function renderGrade(g) {
+    if (!g || g.error) {
+      gradeOut.innerHTML = "<p class='err'>" + esc((g && g.error) || "empty") + "</p>";
+      return;
+    }
+    var cls = g.recommendation === "Hold" ? "hold" : g.recommendation === "Soft rewrite" ? "soft" : "hard";
+    var rows = Object.keys(g.scores).map(function (k) {
+      return "<tr><td class='k'>" + esc(k) + "</td><td class='v'>" + g.scores[k] + "</td></tr>";
+    }).join("");
+    var extra = (g.extra || []).concat(g.swap || []).map(function (c) {
+      return "<li><span class='pill " + (c.pass ? "pass" : "fail") + "'>" + (c.pass ? "PASS" : "FAIL") + "</span>" + esc(c.id) + " · " + esc(c.why) + "</li>";
+    }).join("");
+    var fixes = (g.fixes || []).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("");
+    gradeOut.innerHTML =
+      "<p class='rec " + cls + "'>" + esc(g.recommendation) + " · " + g.total + "</p>" +
+      "<p class='muted'>Hold floor " + g.floors.hold + ". Soft floor " + g.floors.soft + ". Swap " + g.swapScore + "/10.</p>" +
+      "<p class='muted'>First screen: " + esc(g.firstScreenPreview) + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<ol class='checks'>" + extra + "</ol>" +
+      (fixes ? "<ol>" + fixes + "</ol>" : "");
+  }
+
+  draftList.addEventListener("click", onPick);
+  engageList.addEventListener("click", onPick);
+  function onPick(e) {
+    var el = e.target.closest("[data-id]");
+    if (!el) return;
+    selectedId = el.getAttribute("data-id");
+    var d = selected();
+    renderLists();
+    if (d) {
+      showGrader(d);
+      lastGrade = gradeText(d.text);
+      renderGrade(lastGrade);
+    }
+  }
+  document.getElementById("add-root").onclick = function () { addDraft("root"); };
+  document.getElementById("add-reply").onclick = function () { addDraft("reply"); };
+  function addDraft(kind) {
+    var t = document.getElementById("new-text").value.trim();
+    if (!t) return;
+    var d = { id: uid(), kind: kind, text: t };
+    state.drafts.unshift(d);
+    document.getElementById("new-text").value = "";
+    selectedId = d.id;
+    saveState();
+    renderLists();
+    showGrader(d);
+    lastGrade = gradeText(d.text);
+    renderGrade(lastGrade);
+  }
+  document.getElementById("btn-grade").onclick = function () {
+    var d = selected();
+    if (!d) return;
+    lastGrade = gradeText(d.text);
+    renderGrade(lastGrade);
+    gradeMsg.textContent = "Offline grade. Approve is still your tap.";
+  };
+  document.getElementById("btn-approve").onclick = function () {
+    var d = selected();
+    if (!d) return;
+    if (!lastGrade) lastGrade = gradeText(d.text);
+    if (lastGrade.recommendation && lastGrade.recommendation !== "Hold") {
+      var ok = window.confirm("Grade is " + lastGrade.recommendation + " (floor 9.2). Approve anyway? This still does not post.");
+      if (!ok) return;
+    }
+    var slot = nextSlot(new Date());
+    state.ready.unshift({
+      id: d.id,
+      kind: d.kind,
+      text: d.text,
+      slotLabel: slot.label,
+      approvedAt: new Date().toISOString()
+    });
+    state.drafts = state.drafts.filter(function (x) { return x.id !== d.id; });
+    selectedId = null;
+    lastGrade = null;
+    saveState();
+    grader.hidden = true;
+    emptyG.hidden = false;
+    renderLists();
+  };
+  readyList.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-copy]");
+    if (!btn) return;
+    var id = btn.getAttribute("data-copy");
+    var r = state.ready.filter(function (x) { return x.id === id; })[0];
+    if (!r) return;
+    var blob = r.text + "\n\n(" + r.slotLabel + ". Not posted.)";
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(blob);
+  });
+
+  function keySaved() { return !!(localStorage.getItem(KEY_STORE) || "").trim(); }
+  function refreshKeyState() {
+    var model = localStorage.getItem(MODEL_STORE) || "meta-llama/llama-3.1-8b-instruct:free";
+    document.getElementById("or-model").value = model;
+    document.getElementById("key-state").textContent = keySaved() ? "Key saved in localStorage. Rewrite enabled." : "No key. Grade still works.";
+    document.getElementById("or-key").value = "";
+  }
+  document.getElementById("save-key").onclick = function () {
+    var k = document.getElementById("or-key").value.trim();
+    var m = document.getElementById("or-model").value.trim() || "meta-llama/llama-3.1-8b-instruct:free";
+    if (k) localStorage.setItem(KEY_STORE, k);
+    localStorage.setItem(MODEL_STORE, m);
+    document.getElementById("or-key").value = "";
+    refreshKeyState();
+  };
+  document.getElementById("clear-key").onclick = function () {
+    localStorage.removeItem(KEY_STORE);
+    refreshKeyState();
+  };
+  document.getElementById("btn-rewrite").onclick = function () {
+    var d = selected();
+    if (!d) return;
+    var key = (localStorage.getItem(KEY_STORE) || "").trim();
+    if (!key) {
+      gradeMsg.textContent = "No key saved. Grade is still offline. Rewrite skipped.";
+      return;
+    }
+    var model = (localStorage.getItem(MODEL_STORE) || document.getElementById("or-model").value || "").trim();
+    gradeMsg.textContent = "Asking a free model for a rewrite. Original stays until you keep it.";
+    var prompt = "Rewrite this X draft. Keep every fact. Houston first person (I). No sports. No Stripe. No em dashes. No template lead (do not start with So, Well, Today, Let me, In this). Dry. Do not add a CTA. Do not invent names or numbers. Return only the draft.\n\n" + d.text;
+    fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + key,
+        "Content-Type": "application/json",
+        "HTTP-Referer": location.href,
+        "X-Title": "Signal Origin approve-desk"
+      },
+      body: JSON.stringify({
+        model: model,
+        temperature: 0.3,
+        max_tokens: 400,
+        messages: [{ role: "user", content: prompt }]
+      })
+    }).then(function (res) { return res.json().then(function (j) { return { ok: res.ok, j: j }; }); })
+      .then(function (out) {
+        var txt = out.j && out.j.choices && out.j.choices[0] && out.j.choices[0].message && out.j.choices[0].message.content;
+        if (!out.ok || !txt) {
+          gradeMsg.textContent = "Rewrite failed. Offline grade still stands. " + (out.j && out.j.error && out.j.error.message || "");
+          return;
+        }
+        d.text = String(txt).replace(/\u2014|\u2013/g, ",").trim();
+        saveState();
+        preview.textContent = d.text;
+        renderLists();
+        lastGrade = gradeText(d.text);
+        renderGrade(lastGrade);
+        gradeMsg.textContent = "Rewrite kept locally. Re-graded offline. Still not posted.";
+      })
+      .catch(function (err) {
+        gradeMsg.textContent = "Rewrite blocked or offline. " + String(err && err.message || err);
+      });
+  };
+
+  refreshKeyState();
+  renderLists();
+})();
+</script>
+</body>
+</html>
