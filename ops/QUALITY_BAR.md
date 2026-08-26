@@ -2,8 +2,9 @@
 
 **Locked after owner rejection of first Pass queue (2026-08-24).**  
 **Composite floor raised 2026-08-24 19:22 CDT: Hold requires ≥ 9.2.**
+**Gate fixed 2026-08-26:** the scorer's own ceiling on `firstScreenDensity` and `foldStructure` used to cap the max possible composite at exactly 9.0 — below this floor, for every input. That was an arithmetic bug in `apps/qi-check/lib/score.js`, not a quality problem; it made Hold mathematically unreachable since the floor was set. Fixed by giving both sub-scores a real, honest path to 10 (see the comment at the top of `score.js`); the floor itself did not move. `apps/qi-check/lib/score.test.js` now asserts both that a genuinely excellent draft can reach Hold and that a mediocre one cannot.
 
-If a post is not something we would put our name on next to the best operators on X, it does not leave the building. “Good enough for a new account” is banned. **8.3 is not Hold.**
+If a post is not something we would put our name on next to the best operators on X, it does not leave the building. “Good enough for a new account” is banned. **8.9 is not Hold — and neither is anything else below 9.2.**
 
 ## Numeric gate (qi-check)
 
@@ -37,4 +38,4 @@ World-class for this lane = posts a sharp Premium reader would save or quote wit
 If unsure → **do not post**. Rewrite or kill.
 
 ## Process implication
-SO-010 at 8.3 is **Soft rewrite**, not publishable. Queue does not clear until a draft hits Hold under the 9.2 floor + adversarial review.
+SO-010 (real text, `ops/REVIEW_SO009_011.md`) scores **8.9** under the shipped scorer — **Soft rewrite**, not publishable, because the kill is buried in paragraph three instead of the opening clause. It was previously recorded here as 8.3; that number came from an external sandbox score that was never reconciled against `apps/qi-check/lib/score.js` (see `ops/PASS_QUEUE.md` for the reconciliation note). Queue does not clear until a draft hits Hold under the 9.2 floor + adversarial review.

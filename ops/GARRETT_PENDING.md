@@ -1,8 +1,14 @@
 # GARRETT'S PENDING WORK
 
-**Updated:** 2026-08-24 19:26 CDT  
+**Updated:** 2026-08-26  
 **Repo:** Beexly/autonomous-revenue-engine  
 **Rule:** Minimum human steps. Everything else is operator-owned.
+
+---
+
+## OWNER ACTION — DO THIS FIRST
+
+**Rotate the Meta credential.** A Meta platform credential (`META_LLM_KEY`) was committed to this public repo in `0a38eed` and, although later deleted from HEAD, is still retrievable from git history by anyone who clones the repo. **History rewrite or repo re-creation is the only way to remove the blob; rotation is the only way to make it harmless.** Rotate it now at the Meta App Dashboard — this cannot be done from inside the repo or by an agent working in it. Full detail, with nothing sensitive reproduced: `SECURITY_INCIDENT.md` at repo root.
 
 ---
 
@@ -13,26 +19,9 @@
    - X header + YouTube banner
    - Kill any old ring mark
 
-2. **Do not post.** Hold floor is **9.2**. SO-012 was 7.9 (Soft rewrite). Paste SO-013 into qi-check after Build threshold sync; only publish if it shows Hold ≥ 9.2 and is listed under Approved in [PASS_QUEUE.md](./PASS_QUEUE.md).
+2. **SO-013 is staged and ready — your call.** It cleared the fixed gate (composite 9.5, Hold) and passed an adversarial read; both are recorded in full in [PASS_QUEUE.md](./PASS_QUEUE.md) under **Approved to publish**, including the one risk worth your own judgment (the closing line reads slightly aphoristic). Nothing left but pasting it on `@SignaL_OriginHQ` — do your own final read first, this repo can't see how it lands. For any *other* candidate: paste it into qi-check yourself before pasting to X; only publish if it shows Hold ≥ 9.2 and is listed under Approved in PASS_QUEUE.md.
 
-3. **Optional — Grok 4.6 Build prompt** (if you open Build to sync the gate):
-
-```
-Signal Origin qi-check gate sync.
-
-1. Hold recommendation requires composite >= 9.2 AND firstScreenDensity >= 8 AND baitAvoidance >= 9. Soft rewrite for 7.0–9.19. Hard rewrite below 7.0 or bait < 6. The UI currently labels 7.9 as Hold — that is wrong.
-2. VoiceFit must hard-penalize one-word / two-word staccato lines ("Clean structure." "Not policy. Quality."). Fragments like that are Soft rewrite maximum.
-3. Score this draft and report full breakdown + recommendation:
-
-We killed three posts that had already cleared our own Pass gate.
-
-Each one was clean and structured enough that a hundred AI-operator accounts could have run the same lines. The swap would not have shown.
-
-We chose silence over a first impression that teaches people we are generic.
-
-4. If composite < 9.2, propose one Soft rewrite that keeps human-primary authorship (no new facts, no CTA, no hashtags) and re-score. Do not mark Hold until the floor is cleared.
-5. Commit threshold constants to the score module so 8.x can never display as Hold again.
-```
+3. ~~Optional — Grok 4.6 Build prompt (sync the gate)~~ — **done directly in code, 2026-08-26.** This item asked an external tool to make sure "8.x can never display as Hold again." That was backwards: the actual bug was that the scorer's ceiling (9.0) sat *below* its own 9.2 Hold floor, so *nothing* — not even a perfect draft — could ever reach Hold. Fixed in `apps/qi-check/lib/score.js` (real paths to 10 on `firstScreenDensity`/`foldStructure`, a hard staccato-fragment cap replacing the never-implemented "VoiceFit" idea above). Proven by `apps/qi-check/lib/score.test.js`: a named excellent draft now reaches Hold, a named mediocre one and a staccato-heavy one do not, and all three hand-synced copies of the scorer (`lib/score.js`, `public/hold.html`, `docs/qi-check.html`) are asserted identical. Nothing was lowered to make this pass.
 
 ---
 

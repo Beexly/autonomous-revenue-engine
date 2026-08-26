@@ -21,12 +21,23 @@ def _jsonl(row: dict) -> None:
         f.write(json.dumps(row) + "\n")
 
 
+SECRET_FIELD_NAMES = ("api_key", "token", "secret", "password", "access_token")
+
+
+def _safe_fields(fields: dict) -> dict:
+    """Strip credential-shaped keys before a field dict goes anywhere —
+    local JSONL or the network payload. The original code filtered only the
+    local log while sending the raw fields to Lago's API (caught by review
+    on PR #36)."""
+    return {k: v for k, v in fields.items() if k not in SECRET_FIELD_NAMES}
+
+
 def emit(event: str, **fields) -> dict:
     row = {
         "transaction_id": str(uuid.uuid4()),
         "ts": int(time.time()),
         "code": event,
-        **{k: v for k, v in fields.items() if k not in ("api_key", "token", "secret")},
+        **_safe_fields(fields),
     }
     api_key = os.environ.get("LAGO_API_KEY", "").strip()
     base = os.environ.get("LAGO_API_URL", "https://api.getlago.com").rstrip("/")
@@ -39,7 +50,7 @@ def emit(event: str, **fields) -> dict:
                 "external_subscription_id": sub,
                 "code": event,
                 "timestamp": row["ts"],
-                "properties": {k: str(v) for k, v in fields.items()},
+                "properties": {k: str(v) for k, v in _safe_fields(fields).items()},
             }
         }
         req = request.Request(

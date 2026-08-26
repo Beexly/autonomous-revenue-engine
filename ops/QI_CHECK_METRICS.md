@@ -20,7 +20,7 @@
    Prefer focused single posts or tight threads; penalize sprawling unfocused walls with no early payoff.
 
 5. **Burstiness / sentence variety (lightweight)**  
-   Sentence-length coefficient of variation; very flat cadence = soft penalty.
+   Sentence-length coefficient of variation; very flat cadence = soft penalty. Also hard-caps the score (and blocks Hold outright) when over 40% of sentences are one/two-word staccato fragments — high variance from alternating long sentences with choppy fragments is not the same as healthy rhythm.
 
 6. **OCR alignment checklist**  
    Binary flags: original-angle present? reply-primary only? substance past first screen?
