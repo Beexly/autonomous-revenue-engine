@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Signal Origin tool changelog</title>
+    <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/index.html</link>
+    <description>File-only static HTML tools shipped under docs/ on the autonomous-revenue-engine repo. One item per tool, dated by its first commit. Nothing here publishes or charges.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Aug 2026 22:42:12 +0000</lastBuildDate>
+    <item>
+      <title>ghl-form</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/ghl-form.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/ghl-form.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:42:12 +0000</pubDate>
+      <description>GoHighLevel Lead event_id checker.</description>
+    </item>
+    <item>
+      <title>framer-capi</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/framer-capi.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/framer-capi.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:42:12 +0000</pubDate>
+      <description>Framer Pixel + CAPI coverage sheet.</description>
+    </item>
+    <item>
+      <title>shop-pay</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/shop-pay.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/shop-pay.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:42:12 +0000</pubDate>
+      <description>Shop Pay thank-you Pixel miss.</description>
+    </item>
+    <item>
+      <title>fbp-fbc</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/fbp-fbc.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/fbp-fbc.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:40:05 +0000</pubDate>
+      <description>_fbp / _fbc cookie checker. Does not send.</description>
+    </item>
+    <item>
+      <title>content-id</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/content-id.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/content-id.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:40:05 +0000</pubDate>
+      <description>Pixel vs Shopify catalog IDs.</description>
+    </item>
+    <item>
+      <title>pixel-source</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/pixel-source.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/pixel-source.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:40:05 +0000</pubDate>
+      <description>theme vs official app vs GTM inventory.</description>
+    </item>
+    <item>
+      <title>stape-capi</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/stape-capi.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/stape-capi.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:37:05 +0000</pubDate>
+      <description>Stape / sGTM CAPI payload checker. Does not send.</description>
+    </item>
+    <item>
+      <title>test-events</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/test-events.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/test-events.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:37:05 +0000</pubDate>
+      <description>Events Manager Test Events walkthrough. Does not send.</description>
+    </item>
+    <item>
+      <title>consent-capi</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/consent-capi.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/consent-capi.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:37:05 +0000</pubDate>
+      <description>consent-mode vs CAPI coverage. Does not send.</description>
+    </item>
+    <item>
+      <title>pronouns</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/pronouns.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/pronouns.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:33:01 +0000</pubDate>
+      <description>I / we / you mix.</description>
+    </item>
+    <item>
+      <title>dup-opener</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/dup-opener.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/dup-opener.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:33:01 +0000</pubDate>
+      <description>shared first-line check.</description>
+    </item>
+    <item>
+      <title>thread-beats</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/thread-beats.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/thread-beats.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:31:27 +0000</pubDate>
+      <description>local 1/n beat sheet. Does not post.</description>
+    </item>
+    <item>
+      <title>ocr-eligible</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/ocr-eligible.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/ocr-eligible.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:31:27 +0000</pubDate>
+      <description>public OCR checklist. No API.</description>
+    </item>
+    <item>
+      <title>hold-compare</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/hold-compare.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/hold-compare.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:31:27 +0000</pubDate>
+      <description>two pastes, local screen proxy.</description>
+    </item>
+    <item>
+      <title>id-pair</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/id-pair.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/id-pair.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:30:22 +0000</pubDate>
+      <description>Pixel vs CAPI event_id + 48h window.</description>
+    </item>
+    <item>
+      <title>count-gap</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/count-gap.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/count-gap.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:29:51 +0000</pubDate>
+      <description>Meta vs Shopify daily purchase counts.</description>
+    </item>
+    <item>
+      <title>emq-cover</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/emq-cover.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/tools/emq-cover.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:29:17 +0000</pubDate>
+      <description>local CAPI param coverage. Not Events Manager EMQ.</description>
+    </item>
+    <item>
+      <title>viewport-mock</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/viewport-mock.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/viewport-mock.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:29:04 +0000</pubDate>
+      <description>50% Premium timeline overlay.</description>
+    </item>
+    <item>
+      <title>function-words</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/function-words.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/function-words.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:29:04 +0000</pubDate>
+      <description>I/we/you/the/and rates.</description>
+    </item>
+    <item>
+      <title>cta-strip</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/cta-strip.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/cta-strip.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:29:04 +0000</pubDate>
+      <description>residue after CTAs and tags.</description>
+    </item>
+    <item>
+      <title>emoji-strip</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/emoji-strip.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/emoji-strip.html</guid>
+      <pubDate>Tue, 25 Aug 2026 22:29:04 +0000</pubDate>
+      <description>yarn and bait glyphs.</description>
+    </item>
+    <item>
+      <title>Meta Tracking Audit</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/meta-tracking-audit.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/meta-tracking-audit.html</guid>
+      <pubDate>Tue, 25 Aug 2026 17:56:49 +0000</pubDate>
+      <description>$250 diagnostic / $500&#8211;$1,500 fix. Free 15-point checklist.</description>
+    </item>
+    <item>
+      <title>claim-verb</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/claim-verb.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/claim-verb.html</guid>
+      <pubDate>Tue, 25 Aug 2026 16:04:49 +0000</pubDate>
+      <description>first-line decision verb.</description>
+    </item>
+    <item>
+      <title>specificity</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/specificity.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/specificity.html</guid>
+      <pubDate>Tue, 25 Aug 2026 16:03:48 +0000</pubDate>
+      <description>log vs lecture.</description>
+    </item>
+    <item>
+      <title>jargon</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/jargon.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/jargon.html</guid>
+      <pubDate>Tue, 25 Aug 2026 16:03:48 +0000</pubDate>
+      <description>densitometer.</description>
+    </item>
+    <item>
+      <title>contrast</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/contrast.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/contrast.html</guid>
+      <pubDate>Tue, 25 Aug 2026 16:03:48 +0000</pubDate>
+      <description>empty cadence detector.</description>
+    </item>
+    <item>
+      <title>kill-highlight</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/kill-highlight.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/kill-highlight.html</guid>
+      <pubDate>Tue, 25 Aug 2026 16:03:48 +0000</pubDate>
+      <description>instant-kill overlay.</description>
+    </item>
+    <item>
+      <title>ads-signal</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/ads-signal.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/ads-signal.html</guid>
+      <pubDate>Tue, 25 Aug 2026 16:03:48 +0000</pubDate>
+      <description>Pixel + CAPI shared event_id. Does not send.</description>
+    </item>
+    <item>
+      <title>burstiness</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/burstiness.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/burstiness.html</guid>
+      <pubDate>Tue, 25 Aug 2026 15:44:32 +0000</pubDate>
+      <description>sentence-length CV sparkline.</description>
+    </item>
+    <item>
+      <title>staccato</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/staccato.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/staccato.html</guid>
+      <pubDate>Tue, 25 Aug 2026 15:44:32 +0000</pubDate>
+      <description>one- and two-word fragment killer.</description>
+    </item>
+    <item>
+      <title>fold-ruler</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/fold-ruler.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/fold-ruler.html</guid>
+      <pubDate>Tue, 25 Aug 2026 15:24:32 +0000</pubDate>
+      <description>160-char first-screen band.</description>
+    </item>
+    <item>
+      <title>swap-check</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/swap-check.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/swap-check.html</guid>
+      <pubDate>Tue, 25 Aug 2026 10:05:20 +0000</pubDate>
+      <description>brand-swap pass.</description>
+    </item>
+    <item>
+      <title>bait-hook</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/bait-hook.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/bait-hook.html</guid>
+      <pubDate>Tue, 25 Aug 2026 09:57:37 +0000</pubDate>
+      <description>first-line bait detector.</description>
+    </item>
+    <item>
+      <title>swap-test</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/swap-test.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/swap-test.html</guid>
+      <pubDate>Tue, 25 Aug 2026 09:57:37 +0000</pubDate>
+      <description>interchangeability checklist.</description>
+    </item>
+    <item>
+      <title>qi-check</title>
+      <link>https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/qi-check.html</link>
+      <guid isPermaLink="true">https://raw.githack.com/Beexly/autonomous-revenue-engine/main/docs/qi-check.html</guid>
+      <pubDate>Tue, 25 Aug 2026 04:19:49 +0000</pubDate>
+      <description>viewport Hold / qualified-impression fitness.</description>
+    </item>
+  </channel>
+</rss>
