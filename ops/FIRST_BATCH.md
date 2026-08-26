@@ -1,6 +1,6 @@
 # First content batch — internal candidates only
 
-**Date:** 2026-08-24 (updated 2026-08-25)  
+**Date:** 2026-08-24 (updated 2026-08-26)  
 **Authorship:** Human-primary idea/angle/data. AI production only.  
 **Published:** 0. This file is not a publish queue.
 
@@ -15,8 +15,11 @@
 | SO-003 | 10 ways to grow on X in 2026 | 10 | 1 | Kill | C | Do not regenerate (bait listicle) |
 | SO-006 | Hot take: most AI content will be banned next month | 13 | 1 | Kill | C | Do not regenerate (misleading claims) |
 
-Gate: 42/60 pass, any dimension below 5 = automatic reject or rewrite.
+Gate: 42/60 pass, any dimension below 5 = automatic reject or rewrite.  
+Additional public bar: qi-check Hold ≥ 9.2 + adversarial Pass. Approved queue currently empty (see ops/PASS_QUEUE.md).
 
-**2026-08-25 cycle:** SO-002 and SO-005 rewritten against logged required changes, re-scored, full adversarial Pass. Pass count now 5 (internal only). Publish path remains disabled.
+**2026-08-25 cycle:** SO-002 and SO-005 rewritten against logged required changes, re-scored, full adversarial Pass. Pass count 5 (internal only). Publish path remains disabled.
+
+**2026-08-26 cycle:** Confirmed dispositions unchanged. Domain research + OPERATING/RESEARCH_LOG committed. No new public assets.
 
 Kill patterns to avoid: numbered growth listicles with bait closers; alarmist unpublished-ban predictions with share-this closers.

@@ -1,7 +1,7 @@
 # Domain shortlist — research only
 
 **Status:** Research. Do not buy.  
-**Date:** 2026-08-25  
+**Date:** 2026-08-26  
 **Constraint:** Owner decides purchase. Operator never spends money.
 
 ---
@@ -32,13 +32,15 @@
 
 ---
 
+## 2026-08-26 research note
+
+- Sandbox WHOIS/HTTP probes returned inconclusive (empty responses). Do not treat as availability confirmation.
+- Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
+- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
+- Still no operator purchase. Still no buy until first real Hold post + identity live.
+
 ## Recommendation to owner (when ready)
 
 1. Prefer one clean brand domain + one tool-specific domain only if the free-core ships publicly.
 2. Do not buy until first Pass asset has been posted and identity is live.
 3. Budget line already listed in GARRETT_PENDING; no operator purchase.
-
-## Next research (operator)
-
-- Spot-check WHOIS / registrar availability on top 3 when next cycle runs.
-- Log only; still no purchase.
