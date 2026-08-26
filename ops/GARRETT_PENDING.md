@@ -1,8 +1,14 @@
 # GARRETT'S PENDING WORK
 
-**Updated:** 2026-08-24 19:26 CDT  
+**Updated:** 2026-08-26  
 **Repo:** Beexly/autonomous-revenue-engine  
 **Rule:** Minimum human steps. Everything else is operator-owned.
+
+---
+
+## OWNER ACTION — DO THIS FIRST
+
+**Rotate the Meta credential.** A Meta platform credential (`META_LLM_KEY`) was committed to this public repo in `0a38eed` and, although later deleted from HEAD, is still retrievable from git history by anyone who clones the repo. **History rewrite or repo re-creation is the only way to remove the blob; rotation is the only way to make it harmless.** Rotate it now at the Meta App Dashboard — this cannot be done from inside the repo or by an agent working in it. Full detail, with nothing sensitive reproduced: `SECURITY_INCIDENT.md` at repo root.
 
 ---
 
