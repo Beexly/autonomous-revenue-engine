@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  node-apps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [hn-bait, qi-check, subject-fold, swap-check, voice-delta]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node --test apps/${{ matrix.app }}/lib/*.test.js
+
+  python-conformal-lite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e apps/conformal-lite
+      - run: python -m unittest discover -s apps/conformal-lite/tests -v
+      - name: CLI smoke test, all four modes
+        run: |
+          set -e
+          for mode in aci saocp cqr evalue; do
+            python -m conformal_lite --mode "$mode" --steps 50
+          done
+        working-directory: apps/conformal-lite
+
+  ops-tools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node --test ops/tools/*.test.mjs
+
+  static-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node ops/tools/check-selfcontained.mjs docs/
+      - run: node ops/tools/check-links.mjs docs/
