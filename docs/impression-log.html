@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>impression-log — CSV row builder</title>
+  <meta name="description" content="Builds one escaped CSV row for ops/IMPRESSION_LOG.csv. Sends nothing anywhere. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:0.7rem 0 .35rem; }
+    input[type=text], input[type=date], input[type=number] { width:100%; box-sizing:border-box; padding:.55rem .6rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    button { margin-top:.9rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    button.copy { margin-top:.55rem; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .cap { font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); margin:0 0 .3rem; }
+    .row { font:14px/1.5 ui-monospace,monospace; background:#fffdf6; border:1px solid var(--ink); padding:.7rem .75rem; white-space:pre-wrap; word-break:break-all; }
+    .status { font:700 12px/1 ui-monospace,monospace; color:var(--ok); margin:.45rem 0 0; min-height:1em; }
+    ol { padding-left:1.15rem; margin:.55rem 0 0; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · impression proxy</p>
+  <h1>impression-log</h1>
+  <p class="lede">Fill the fields, get one correctly-escaped CSV row for <code>ops/IMPRESSION_LOG.csv</code>. Everything happens in this file on your machine — nothing is sent anywhere, nothing is stored, nothing publishes. The counts are hand-read proxies, not an analytics API.</p>
+  <form id="f">
+    <label for="date">Date</label>
+    <input id="date" type="date">
+    <label for="post_id">Post ID (or URL slug)</label>
+    <input id="post_id" type="text" autocomplete="off" placeholder="1957483920481">
+    <label for="impressions_proxy">Impressions proxy (hand-read from the post's view counter)</label>
+    <input id="impressions_proxy" type="number" min="0" step="1" placeholder="0">
+    <label for="verified_views">Verified views (if visible; blank if unknown)</label>
+    <input id="verified_views" type="number" min="0" step="1" placeholder="">
+    <label for="premium_views">Premium views (if visible; blank if unknown)</label>
+    <input id="premium_views" type="number" min="0" step="1" placeholder="">
+    <label for="notes">Notes</label>
+    <input id="notes" type="text" autocomplete="off" placeholder='e.g. pinned 2h, quote-posted by @x, "counter jumped" at 14:00'>
+    <button type="submit">Build row</button>
+  </form>
+  <section id="out" hidden>
+    <p class="cap">csv row</p>
+    <div class="row" id="rowbox"></div>
+    <button type="button" class="copy" id="copybtn">Copy row</button>
+    <p class="status" id="copystatus"></p>
+    <p class="cap" style="margin-top:1rem">append by hand</p>
+    <ol>
+      <li>Copy the row above.</li>
+      <li>Open <code>ops/IMPRESSION_LOG.csv</code> in the repo.</li>
+      <li>Paste the row as a new last line (header stays line 1: <code>date,post_id,impressions_proxy,verified_views,premium_views,notes</code>).</li>
+      <li>Commit. This page never touches the file for you.</li>
+    </ol>
+  </section>
+  <p class="note">Local heuristic bookkeeping, not a platform metric. Feeds the deferred daily revenue-score job; garbage proxies in, garbage score out.</p>
+</main>
+<script>
+(function () {
+  function csvField(v) {
+    var s = String(v == null ? "" : v);
+    if (/[",\n\r]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+  var f = document.getElementById("f");
+  var out = document.getElementById("out");
+  var rowbox = document.getElementById("rowbox");
+  var copybtn = document.getElementById("copybtn");
+  var copystatus = document.getElementById("copystatus");
+  var dateEl = document.getElementById("date");
+  if (!dateEl.value) {
+    var d = new Date();
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    dateEl.value = d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  }
+  var currentRow = "";
+  function build() {
+    var fields = ["date", "post_id", "impressions_proxy", "verified_views", "premium_views", "notes"];
+    currentRow = fields.map(function (id) {
+      return csvField(document.getElementById(id).value.trim());
+    }).join(",");
+    rowbox.textContent = currentRow;
+    copystatus.textContent = "";
+    out.hidden = false;
+  }
+  f.addEventListener("submit", function (e) { e.preventDefault(); build(); });
+  copybtn.addEventListener("click", function () {
+    function ok() { copystatus.textContent = "copied"; }
+    function fail() {
+      copystatus.textContent = "clipboard blocked — select the row and copy manually";
+      var range = document.createRange();
+      range.selectNodeContents(rowbox);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(currentRow).then(ok, fail);
+    } else {
+      fail();
+    }
+  });
+})();
+</script>
+</body>
+</html>

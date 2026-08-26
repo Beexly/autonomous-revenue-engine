@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>reply-vs-main — which unit is this</title>
+  <meta name="description" content="Heuristic: does a paste read as a reply or a main post. Does not read your account. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .mainpost { color:var(--ok); } .reply { color:var(--bad); } .warn { color:var(--rule); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    ul { padding-left:1.15rem; margin:.45rem 0 0; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · unit check</p>
+  <h1>reply-vs-main</h1>
+  <p class="lede">Paste a draft. This guesses whether it reads as reply-primary or as a main post. X creator payouts count original posts, not replies — Hold work spent on a reply-shaped unit is spent on the wrong unit. This is a local heuristic on the text alone, not a platform metric. It does not read your account, rewrite, or publish.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="Exactly this. Couldn't have said it better."></textarea>
+    <button type="submit">Classify</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var STAKE = /\b(killed|paid|refused|built|measured|failed|shipped|cut|deferred|chose)\b/i;
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function measure(raw) {
+    var t = String(raw || "").replace(/\r\n/g, "\n").trim();
+    if (!t) return { status: "EMPTY" };
+    var flags = [];
+    var score = 0;
+    if (/^@[A-Za-z0-9_]+/.test(t)) { score += 3; flags.push("Leads with an @handle — addressed at someone, not the timeline."); }
+    if (/^replying to\b/i.test(t)) { score += 3; flags.push("Literal 'Replying to' prefix."); }
+    if (/^(this|that|agreed|exactly|yes,?\s*but|yep|yup|same|so true|100%|\+1)\b/i.test(t) || /^this\.\s*$/im.test(t.split("\n")[0])) {
+      score += 2; flags.push("Opener anaphora (This / That / Agreed / Exactly / Yes but) — leans on someone else's post for its subject.");
+    }
+    if (/^["“»>]/.test(t)) { score += 2; flags.push("Quote-fragment opener — the claim being answered lives elsewhere."); }
+    var hasClaim = STAKE.test(t) || /\d/.test(t);
+    if (t.length < 120 && !hasClaim) { score += 2; flags.push("Under 120 chars with no standalone claim (no decision verb, no number)."); }
+    if (/^(lol|lmao|haha|based|w|this you\??)\b/i.test(t)) { score += 2; flags.push("Reaction token opener."); }
+    var status = score >= 3 ? "REPLY-PRIMARY" : "MAIN-POST";
+    return { status: status, score: score, flags: flags, chars: t.length, hasClaim: hasClaim };
+  }
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var out = document.getElementById("out");
+  function render() {
+    var data = measure(input.value);
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='warn'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "MAIN-POST" ? "mainpost" : "reply";
+    var rows =
+      "<tr><td class='k'>reply score</td><td class='v'>" + data.score + " (3+ = reply-primary)</td></tr>" +
+      "<tr><td class='k'>chars</td><td class='v'>" + data.chars + "</td></tr>" +
+      "<tr><td class='k'>standalone claim</td><td class='v'>" + (data.hasClaim ? "yes" : "no") + "</td></tr>";
+    var lis = data.flags.length ? data.flags.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") : "<li>No reply signals. Reads as a unit that stands on its own.</li>";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<ul>" + lis + "</ul>" +
+      "<p class='note'>Payouts count original posts; replies do not earn. This page cannot see whether you actually hit Reply — it only reads the text, so a terse main post can trip it and a long reply can slip past. Local heuristic, not a platform metric, not qi-check.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  input.addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>
