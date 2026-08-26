@@ -1,5 +1,7 @@
 # 20,000-ft synthesis — 2026-08-24 evening
 
+**Superseded 2026-08-26 on SO-010 status:** this file says "SO-010 approved" and "Paste SO-010 when ready." `ops/PASS_QUEUE.md` records SO-010 as failed (Soft rewrite, under the 9.2 Hold floor) and is the current source of truth for publish status. Do not paste SO-010 on the strength of this file.
+
 ## Facilitator architecture (x402)
 
 Facilitator = optional but recommended service that **verifies** signed payment payloads and **settles** them on-chain so the resource server never talks to a chain.

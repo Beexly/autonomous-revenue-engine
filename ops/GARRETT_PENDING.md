@@ -19,7 +19,7 @@
    - X header + YouTube banner
    - Kill any old ring mark
 
-2. **Do not post without your own review.** Hold floor is **9.2**, unchanged. Paste any candidate into qi-check yourself before pasting to X; only publish if it shows Hold ≥ 9.2 and is listed under Approved in [PASS_QUEUE.md](./PASS_QUEUE.md).
+2. **SO-013 is staged and ready — your call.** It cleared the fixed gate (composite 9.5, Hold) and passed an adversarial read; both are recorded in full in [PASS_QUEUE.md](./PASS_QUEUE.md) under **Approved to publish**, including the one risk worth your own judgment (the closing line reads slightly aphoristic). Nothing left but pasting it on `@SignaL_OriginHQ` — do your own final read first, this repo can't see how it lands. For any *other* candidate: paste it into qi-check yourself before pasting to X; only publish if it shows Hold ≥ 9.2 and is listed under Approved in PASS_QUEUE.md.
 
 3. ~~Optional — Grok 4.6 Build prompt (sync the gate)~~ — **done directly in code, 2026-08-26.** This item asked an external tool to make sure "8.x can never display as Hold again." That was backwards: the actual bug was that the scorer's ceiling (9.0) sat *below* its own 9.2 Hold floor, so *nothing* — not even a perfect draft — could ever reach Hold. Fixed in `apps/qi-check/lib/score.js` (real paths to 10 on `firstScreenDensity`/`foldStructure`, a hard staccato-fragment cap replacing the never-implemented "VoiceFit" idea above). Proven by `apps/qi-check/lib/score.test.js`: a named excellent draft now reaches Hold, a named mediocre one and a staccato-heavy one do not, and all three hand-synced copies of the scorer (`lib/score.js`, `public/hold.html`, `docs/qi-check.html`) are asserted identical. Nothing was lowered to make this pass.
 

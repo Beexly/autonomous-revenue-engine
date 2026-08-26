@@ -64,10 +64,10 @@ Qualified impression proxies, engagement quality, revenue attribution across str
 Structured logs from every gate failure feed prompt and rubric improvements.
 
 ## 5. Repository Integration Strategy
-See TIERED_FORKS.md for the extensive, reviewed list of candidate repositories mapped to each layer, alignment with guardrails, current work, and future work.
+(`TIERED_FORKS.md`, previously linked here, no longer exists in this repo — no replacement has been written. Do not re-add this pointer without a real file behind it.)
 
 ## 6. First Public Surface
-SignalOrigin (X @SignalOrigin + YouTube / Instagram / TikTok). All content that reaches these surfaces has already cleared the full gate stack.
+SignalOrigin (X `@SignaL_OriginHQ` + YouTube / Instagram / TikTok — see `ops/LIVE_SURFACES.md` for the confirmed handle; `@SignalOrigin` and `@Signal_origin` are both wrong). All content that reaches these surfaces has already cleared the full gate stack.
 
 ## 7. Evolution Path
 - Phase 1: Internal systems + gates + first hardened content batch (current)

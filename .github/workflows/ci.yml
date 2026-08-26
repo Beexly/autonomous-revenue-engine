@@ -54,3 +54,4 @@ jobs:
           node-version: "22"
       - run: node ops/tools/check-selfcontained.mjs docs/
       - run: node ops/tools/check-links.mjs docs/
+      - run: node ops/tools/check-fifty-loops.mjs

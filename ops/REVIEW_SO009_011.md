@@ -1,5 +1,7 @@
 # Review — SO-009 / SO-010 / SO-011
 
+**Superseded 2026-08-26 on SO-010 status:** this file's verdict is "Pass (conditional)" for SO-010. `ops/PASS_QUEUE.md` records SO-010 as failed (Soft rewrite, under the 9.2 Hold floor via the qi-check scorer) and is the current source of truth for publish status. This review's adversarial/originality read may still be useful context; its publish recommendation is not current.
+
 **Date:** 2026-08-24  
 **Bar:** QUALITY_BAR + ADVERSARIAL + X ranking signal fit
 

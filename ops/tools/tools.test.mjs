@@ -6,6 +6,7 @@ import { join } from "node:path";
 
 import { checkSelfContained } from "./check-selfcontained.mjs";
 import { checkLinks } from "./check-links.mjs";
+import { checkFiftyLoops } from "./check-fifty-loops.mjs";
 
 describe("check-selfcontained", () => {
   it("flags an external script src", () => {
@@ -79,5 +80,32 @@ describe("check-links", () => {
     const findings = checkLinks(`<a href="b.html#s">b</a>`, a);
     assert.equal(findings.length, 0);
     rmSync(dir, { recursive: true, force: true });
+  });
+});
+
+describe("check-fifty-loops", () => {
+  const TABLE_HEADER = "| # | Name | Motion | $0 path | Status | Why |\n|---|---|---|---|---|---|\n";
+
+  it("parses a row's status and cited paths", () => {
+    const md =
+      TABLE_HEADER +
+      "| 1 | thing | does `README.md` stuff | New `README.md` | SHIPPED | money |\n";
+    const [row] = checkFiftyLoops(md);
+    assert.equal(row.row, 1);
+    assert.equal(row.status, "SHIPPED");
+    assert.ok(row.paths.includes("README.md"));
+    assert.equal(row.anyExists, true); // README.md exists at repo root
+  });
+
+  it("reports a path that doesn't exist as not existing", () => {
+    const md = TABLE_HEADER + "| 2 | thing | New `docs/definitely-not-a-real-file.html` | x | NEXT | y |\n";
+    const [row] = checkFiftyLoops(md);
+    assert.equal(row.anyExists, false);
+  });
+
+  it("ignores bare shell commands with no path component", () => {
+    const md = TABLE_HEADER + "| 3 | thing | `node cli.js` in the repo | x | SHIPPED | y |\n";
+    const [row] = checkFiftyLoops(md);
+    assert.deepEqual(row.paths, []);
   });
 });
