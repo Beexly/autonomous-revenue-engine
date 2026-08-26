@@ -45,9 +45,20 @@ git fetch origin && git status && git log --oneline -5
 6. Gates green BEFORE new work; red gate = task #1:
 
 ```
-cd apps/conformal-lite && pip install -q . && python -m unittest discover -s tests
 for a in hn-bait qi-check subject-fold swap-check voice-delta; do (cd apps/$a && npm test --silent) || echo "RED: $a"; done
+cd apps/conformal-lite && pip install -q . && python -m unittest discover -s tests
 ```
+
+Order matters: the JS loop runs first because each app's `cd` is scoped
+inside its own subshell `(...)`. The Python line is NOT subshell-scoped and
+leaves you inside `apps/conformal-lite` afterward — run it last, or the next
+`cd apps/$a` resolves under `apps/conformal-lite/apps/$a`, which does not
+exist, and every JS suite reports a fabricated `RED: $a` even though it
+never ran.
+
+If `apps/conformal-lite` has no `pyproject.toml` on your checkout, the
+installable-package fix is already open as a `sonnet/*` PR — do not redo it;
+base your work on `origin/main` and note the dependency.
 
 7. Branch: `git checkout -b sonnet/<task-slug> origin/main`. One task per
    branch, one branch per draft PR. Never push main. Never self-merge.
