@@ -1,0 +1,22 @@
+{
+  "name": "@signalorigin/swap-test",
+  "version": "0.1.0",
+  "description": "Interchangeability scorer for drafts: does the copy still work as a generic brand pitch after swapping first-person specifics for BrandX? Higher score = more interchangeable (worse).",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": "./index.js",
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "swap-test",
+    "interchangeability",
+    "content",
+    "quality-gate"
+  ]
+}
