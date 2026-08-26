@@ -13,7 +13,7 @@
   .tier{border:1px solid #ccc;border-radius:8px;padding:1rem;margin:.8rem 0}
   .tier b{font-size:1.05rem}
   .price{float:right;font-weight:700}
-  .cta{display:inline-block;border:2px solid #1a1a1a;border-radius:6px;padding:.5rem 1rem;margin:.6rem 0;text-decoration:none;color:#1a1a1a;font-weight:600}
+  .cta{display:inline-block;border:2px solid #1a1a1a;border-radius:6px;padding:.5rem 1rem;margin:.6rem .4rem .6rem 0;text-decoration:none;color:#1a1a1a;font-weight:600}
   ol li,ul li{margin:.35rem 0}
   code{background:#f4f4f4;padding:.1rem .3rem;border-radius:3px;font-size:.9em}
   .fine{font-size:.85rem;color:#666;margin-top:2.5rem;border-top:1px solid #eee;padding-top:.8rem}
@@ -28,8 +28,9 @@
 Events Manager deep review · Pixel/CAPI deduplication verification (shared <code>event_id</code> coverage per event) · EMQ score per event with the exact parameters missing · <code>action_source</code> and server-event correctness · Meta-vs-backend count reconciliation · prioritized fix list with effort estimates. You get a written report with before-state evidence.</div>
 <div class="tier"><span class="price">$500–$1,500</span><b>Implementation</b> — scoped from the diagnostic<br>
 Dedup fix (event_id parity across browser + server) · server-side event setup or repair · hashed-PII normalization for EMQ lift · test-event verification · after-state evidence: EMQ before/after and count reconciliation vs your backend. Fixed quote before work starts.</div>
-<p><a class="cta" href="https://x.com/GalaxySportsAI" rel="noopener">DM @GalaxySportsAI to book</a></p>
-<p class="muted">Evidence-first: every claim in the report is verifiable in your own Events Manager and backend numbers. No retainers required.</p>
+<p><a class="cta" href="mailto:Baxley.Garrett@gmail.com?subject=Meta%20tracking%20diagnostic">Email to book</a>
+<a class="cta" href="https://x.com/SignaL_OriginHQ" rel="noopener">DM @SignaL_OriginHQ</a></p>
+<p class="muted">Evidence-first: every claim in the report is verifiable in your own Events Manager and backend numbers. No retainers required. Sports/DFS is not in this service.</p>
 
 <h2>DIY: the free 15-point checklist</h2>
 <p class="muted">This is the real checklist, not a teaser. If you work through it yourself and get stuck, that's what the diagnostic is for.</p>
@@ -40,7 +41,7 @@ Dedup fix (event_id parity across browser + server) · server-side event setup o
   <li><b>Confirm the dedup window.</b> Server event must arrive within 48h of the browser event; in practice send within minutes. Batched nightly CAPI uploads of events the Pixel already sent will double-count.</li>
   <li><b>Score EMQ per event.</b> Events Manager shows Event Match Quality (1–10) for server events. Under 6 is leaving performance on the table; 8+ is the goal for Purchase/Lead.</li>
   <li><b>Fix EMQ inputs.</b> EMQ rises with matched customer parameters: email (<code>em</code>) and phone (<code>ph</code>) as SHA-256 of lowercase/trimmed values, <code>external_id</code>, <code>fbp</code>/<code>fbc</code> cookies forwarded from the browser, client IP + user agent on website events. Check which are absent per event — that's your fix list.</li>
-  <li><b>Normalize before hashing.</b> Lowercase, trim, strip formatting BEFORE SHA-256 (phone in E.164 digits). Hashing "&nbsp;Name@Gmail.com" and "name@gmail.com" produce different hashes — silent match-rate killers.</li>
+  <li><b>Normalize before hashing.</b> Lowercase, trim, strip formatting BEFORE SHA-256 (phone in E.164 digits). Hashing " Name@Gmail.com" and "name@gmail.com" produce different hashes — silent match-rate killers.</li>
   <li><b>Check action_source.</b> Server events must carry the true source (<code>website</code>, <code>physical_store</code>, etc.). Wrong action_source risks rejection and skews attribution.</li>
   <li><b>Forward fbp/fbc.</b> Your server events should include the <code>_fbp</code> cookie and, when a click id exists, <code>fbc</code>. Missing fbc on paid-click conversions is one of the most common attribution leaks.</li>
   <li><b>Use Test Events before trusting anything.</b> Events Manager → Test events + <code>test_event_code</code> on server payloads. Trigger a real test purchase; watch browser + server rows arrive and dedupe live.</li>
@@ -54,6 +55,6 @@ Dedup fix (event_id parity across browser + server) · server-side event setup o
 <h2>Why listen to us</h2>
 <p>We publish our measurement tooling as open source (<a href="https://github.com/Beexly/autonomous-revenue-engine">github.com/Beexly/autonomous-revenue-engine</a>) — including CAPI dedup/hashing helpers and a calibration library with honest statistical guarantees. Same discipline in the reports: numbers you can verify, nothing you can't.</p>
 
-<p class="fine">Signal Origin · Houston, TX · <a href="https://x.com/GalaxySportsAI" rel="noopener">@GalaxySportsAI</a> · Independent service; not affiliated with or endorsed by Meta Platforms, Inc.</p>
+<p class="fine">Signal Origin · Houston, TX · <a href="https://x.com/SignaL_OriginHQ" rel="noopener">@SignaL_OriginHQ</a> · Independent service; not affiliated with or endorsed by Meta Platforms, Inc.</p>
 </body>
 </html>
