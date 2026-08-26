@@ -5,3 +5,5 @@ meter_events.jsonl
 __pycache__/
 *.pyc
 .venv/
+.claude/settings.local.json
+.claude/worktrees/
