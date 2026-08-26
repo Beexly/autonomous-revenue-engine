@@ -1,0 +1,19 @@
+# Path-based PR labels for .github/workflows/label.yml (actions/labeler@v4).
+# The Labeler workflow has failed on every PR since repo creation because
+# this config file never existed. actions/labeler on pull_request_target
+# reads this file from the default branch, so it takes effect after merge.
+
+docs:
+  - docs/**
+
+apps:
+  - apps/**
+
+ops:
+  - ops/**
+
+ci:
+  - .github/**
+
+products:
+  - products/**
