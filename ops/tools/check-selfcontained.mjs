@@ -16,9 +16,9 @@
  * Exit 0 when clean, 1 when findings.
  */
 
-import { readFileSync, readdirSync, statSync } from "node:fs";
-import { join } from "node:path";
+import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { htmlFilesUnder } from "./walk-html.mjs";
 
 const EXTERNAL = /^(?:https?:)?\/\//i;
 
@@ -70,14 +70,6 @@ export function checkSelfContained(html, filename = "<input>") {
   });
 
   return findings;
-}
-
-function htmlFilesUnder(target) {
-  const st = statSync(target);
-  if (st.isFile()) return target.endsWith(".html") ? [target] : [];
-  return readdirSync(target, { withFileTypes: true }).flatMap((e) =>
-    htmlFilesUnder(join(target, e.name))
-  );
 }
 
 function main(argv) {

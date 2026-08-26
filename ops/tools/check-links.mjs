@@ -15,9 +15,10 @@
  * Exit 0 when clean, 1 when findings.
  */
 
-import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { dirname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
+import { htmlFilesUnder } from "./walk-html.mjs";
 
 const HREF = /\bhref\s*=\s*["']([^"']+)["']/gi;
 const EXTERNAL_OR_SPECIAL = /^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i;
@@ -44,14 +45,6 @@ export function checkLinks(html, filename) {
   });
 
   return findings;
-}
-
-function htmlFilesUnder(target) {
-  const st = statSync(target);
-  if (st.isFile()) return target.endsWith(".html") ? [target] : [];
-  return readdirSync(target, { withFileTypes: true }).flatMap((e) =>
-    htmlFilesUnder(join(target, e.name))
-  );
 }
 
 function main(argv) {
