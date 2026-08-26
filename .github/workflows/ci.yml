@@ -7,6 +7,20 @@ on:
     branches: [main]
 
 jobs:
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so the scan sees every tracked file, not just a shallow tip.
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Scan tracked files for credentials
+        run: node ops/tools/scan-secrets.mjs
+
   python-conformal-lite:
     name: Python (conformal-lite)
     runs-on: ubuntu-latest
@@ -19,11 +33,17 @@ jobs:
         run: pip install ./apps/conformal-lite
       - name: Run tests
         run: python -m unittest discover -s apps/conformal-lite/tests
+      - name: Smoke the CLI in every mode
+        run: |
+          for mode in aci saocp cqr evalue; do
+            python -m conformal_lite --mode "$mode" --steps 50
+          done
 
   node-apps:
-    name: Node (${{ matrix.app }})
+    name: Node app (${{ matrix.app }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         app:
           - hn-bait
@@ -41,3 +61,58 @@ jobs:
           node-version: "22"
       - name: Run tests
         run: npm test --silent
+
+  node-packages:
+    name: Package (${{ matrix.pkg }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg:
+          - hold-floor
+          - qi-score
+          - swap-test
+          - voice-delta
+    defaults:
+      run:
+        working-directory: packages/${{ matrix.pkg }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run tests
+        run: node --test
+
+  ops-tools:
+    name: Ops tools (linters + secret scanner)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run tests
+        run: node --test ops/tools/
+      - name: Lint the pass queue
+        run: node ops/tools/lint-pass-queue.mjs
+
+  static-docs:
+    name: Static docs (self-contained + well-formed)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: docs/changelog.xml is well-formed
+        run: python -c "import xml.dom.minidom as m; m.parse('docs/changelog.xml')"
+      - name: Every docs page is self-contained
+        # The static tools are served straight from the repo and are promised to
+        # work with no network. An external script/style/font/image silently
+        # breaks that and leaks every visitor to a third party. Plain <a href>
+        # hyperlinks are navigation, not resource loads, and are allowed.
+        run: node ops/tools/check-selfcontained.mjs docs

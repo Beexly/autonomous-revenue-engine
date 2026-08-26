@@ -8,6 +8,8 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { lintPassQueue } from "./lint-pass-queue.mjs";
 import { lintCandidate } from "./lint-candidate.mjs";
+import { scanSecrets, shannonEntropy, mask } from "./scan-secrets.mjs";
+import { checkSelfContained } from "./check-selfcontained.mjs";
 
 // ---------- lint-pass-queue fixtures ----------
 
@@ -155,4 +157,117 @@ test("lint-candidate: no frontmatter fails", () => {
   const findings = lintCandidate("# Just a heading\n\nNo frontmatter here.\n");
   assert.equal(findings.length, 1);
   assert.match(findings[0].message, /no YAML frontmatter block/);
+});
+
+// ---------- scan-secrets fixtures ----------
+//
+// The regression these guard: on 2026-08-25 a live 48-character token was
+// committed to this public repo on a bare line with no vendor prefix and no
+// NAME= to anchor on. Every structural rule missed it; only length + character
+// classes + entropy caught it. The fixture below reproduces that SHAPE using an
+// obviously synthetic value.
+
+const BARE_TOKEN_SHAPE = "LLM" + "_" + "Kq7Rv2Nz9Xt4Bw1Ym6Pc3Fd8Hj5Gs0La" + "Zn4Qe7";  // scan-secrets: allow
+
+test("scan-secrets: catches a bare high-entropy token with no prefix or assignment", () => {
+  const findings = scanSecrets(`# a comment\n\n${BARE_TOKEN_SHAPE}\n`);
+  assert.equal(findings.length, 1);
+  assert.equal(findings[0].rule, "high-entropy-token");
+  assert.equal(findings[0].line, 3);
+});
+
+test("scan-secrets: masks the value instead of echoing it", () => {
+  const [finding] = scanSecrets(BARE_TOKEN_SHAPE);
+  assert.ok(!finding.masked.includes(BARE_TOKEN_SHAPE), "must not echo the secret");
+  assert.match(finding.masked, new RegExp(`\\[${BARE_TOKEN_SHAPE.length} chars\\]$`));
+  assert.equal(mask("short"), "*****");
+});
+
+test("scan-secrets: catches vendor-prefixed keys", () => {
+  const cases = [
+    ["AKIAIOSFODNN7EXAMPLE", "aws-access-key-id"],  // scan-secrets: allow
+    ["AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY", "google-api-key"],  // scan-secrets: allow
+    ["xoxb-1234567890-abcdefghijkl", "slack-token"],  // scan-secrets: allow
+    ["-----BEGIN RSA PRIVATE KEY-----", "private-key-block"],  // scan-secrets: allow
+  ];
+  for (const [value, rule] of cases) {
+    const rules = scanSecrets(value).map((f) => f.rule);
+    assert.ok(rules.includes(rule), `${rule} not detected in ${value.slice(0, 8)}...`);
+  }
+});
+
+test("scan-secrets: does not flag git SHAs, placeholders, or prose about tokens", () => {
+  const safe = [
+    "commit e825efa98154e65a60ce88dc383f716f6a2c0d5c landed",
+    "run `npx gumroad-mcp@latest init` which sets GUMROAD_ACCESS_TOKEN",
+    "API_KEY=YOUR_API_KEY_HERE",
+    "token: <redacted>",
+    "password = changeme",
+    "Rotate the leaked Meta token (app 1099624436068516) and confirm here.",
+  ];
+  for (const line of safe) {
+    assert.deepEqual(scanSecrets(line), [], `false positive on: ${line}`);
+  }
+});
+
+test("scan-secrets: does not flag EIP-55 checksummed addresses but does flag 0x private keys", () => {
+  const addr = "0x03fF1f2C8e6dA4b7A9c0E5B3d81aF46C2b9E7D0a"; // 0x + 40 hex
+  assert.deepEqual(scanSecrets(addr), []);
+  const privkey = addr + "3fF1f2C8e6dA4b7A9c0E5B3d8"; // 0x + 64 hex
+  assert.equal(scanSecrets(privkey).length, 1);
+});
+
+test("scan-secrets: honours an explicit allow pragma", () => {
+  assert.deepEqual(scanSecrets(`${BARE_TOKEN_SHAPE}  // scan-secrets: allow`), []);
+});
+
+test("scan-secrets: ignores inline base64 assets", () => {
+  const dataUri = 'src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAmJLR0QA9AB0Cw"';
+  assert.deepEqual(scanSecrets(dataUri), []);
+});
+
+test("shannonEntropy: rises with disorder", () => {
+  assert.equal(shannonEntropy(""), 0);
+  assert.equal(shannonEntropy("aaaaaaaa"), 0);
+  assert.ok(shannonEntropy(BARE_TOKEN_SHAPE) > 3.5);
+});
+
+// ---------- check-selfcontained fixtures ----------
+
+test("check-selfcontained: allows plain <a href> hyperlinks", () => {
+  const html = '<a href="https://x.com/SignaL_OriginHQ">follow</a>';
+  assert.deepEqual(checkSelfContained(html), []);
+});
+
+test("check-selfcontained: flags every external resource load", () => {
+  const cases = [
+    ['<script src="https://cdn.example.com/x.js"></script>', "external-resource"],
+    ['<img src="//tracker.example.com/p.gif">', "external-resource"],
+    ['<link rel="stylesheet" href="https://cdn.example.com/a.css">', "external-stylesheet-or-preload"],
+    ['<style>@import "https://fonts.googleapis.com/css2?family=X";</style>', "external-css-import"],
+    ["<style>body{background:url(https://img.example.com/bg.png)}</style>", "external-css-url"],
+    ['<script>fetch("https://api.example.com/c")</script>', "runtime-network-call"],
+    ["<script>new WebSocket(\"wss://x\")</script>", "runtime-network-call"],
+  ];
+  for (const [html, kind] of cases) {
+    const kinds = checkSelfContained(html).map((f) => f.kind);
+    assert.ok(kinds.includes(kind), `${kind} not detected in: ${html}`);
+  }
+});
+
+test("check-selfcontained: relative and inline assets are fine", () => {
+  const html = [
+    '<script src="./score.js"></script>',
+    '<link rel="stylesheet" href="style.css">',
+    '<img src="data:image/png;base64,iVBORw0KGgo=">',
+    "<style>body{background:url(bg.png)}</style>",
+  ].join("\n");
+  assert.deepEqual(checkSelfContained(html), []);
+});
+
+test("check-selfcontained: reports the correct line number", () => {
+  const html = 'ok\nok\n<script src="https://cdn.example.com/x.js"></script>';
+  const [finding] = checkSelfContained(html, "p.html");
+  assert.equal(finding.line, 3);
+  assert.equal(finding.file, "p.html");
 });
