@@ -1,0 +1,2477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Call prep — Doug's sales workspace</title>
+  <meta name="description" content="A one-screen brief for the next call: who they are, where the deal stands, everything logged so far, and the four lines to settle before you dial. Built to be printed. All data stays in this browser.">
+  <style>
+    html, body {
+      margin: 0;
+      background: #0e0e0e;
+      color: #e8e4d9;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    body { font-size: 15px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+    main { max-width: 640px; margin: 40px auto; padding: 0 16px; }
+
+    h1 { font-size: 22px; letter-spacing: -0.03em; margin: 0 0 6px; }
+    p.lede { color: #b7b2a6; margin-top: 0; }
+    h2 {
+      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #b7b2a6; font-weight: 650; margin: 34px 0 6px;
+    }
+    h3 { font-size: 15px; margin: 0; font-weight: 650; }
+    p { margin: 0 0 10px; }
+    a { color: #e8e4d9; }
+    .muted { color: #b7b2a6; }
+    .section-note { color: #b7b2a6; font-size: 13px; margin: 0 0 12px; }
+    .pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+    /* ---- nav (markup comes from WS.nav) ---- */
+    .nav {
+      display: flex; flex-wrap: wrap;
+      border-bottom: 1px solid #3a3a36; margin: 0 0 24px;
+    }
+    .nav-item {
+      padding: 8px 12px 7px 0; margin-right: 14px; margin-bottom: -1px;
+      color: #b7b2a6; text-decoration: none; font-size: 14px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-item:hover, .nav-item:focus { color: #e8e4d9; }
+    .nav-item.active { color: #e8e4d9; font-weight: 650; border-bottom-color: #e8e4d9; }
+
+    /* ---- forms ---- */
+    label { display: block; font-size: 12px; letter-spacing: 0.04em; color: #b7b2a6; margin-bottom: 4px; }
+    input, select, textarea {
+      width: 100%; box-sizing: border-box;
+      background: #161616; color: #e8e4d9; border: 1px solid #3a3a36;
+      padding: 9px 10px;
+      font: 15px/1.4 ui-sans-serif, system-ui, sans-serif;
+    }
+    textarea { resize: vertical; }
+    input:focus, select:focus, textarea:focus, button:focus, summary:focus, a:focus {
+      outline: 2px solid #b7b2a6; outline-offset: 1px;
+    }
+    .field { margin-bottom: 12px; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+    @media (max-width: 460px) { .fields { grid-template-columns: 1fr; } }
+    .hint { font-size: 12px; color: #b7b2a6; margin: -6px 0 12px; }
+    #permalink-note { margin-top: 8px; }
+    fieldset { border: 1px solid #3a3a36; padding: 8px 12px 10px; margin: 0 0 12px; }
+    legend { font-size: 12px; letter-spacing: 0.04em; color: #b7b2a6; padding: 0 4px; }
+    .kinds label {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin: 4px 16px 0 0; font-size: 14px; color: #e8e4d9; letter-spacing: 0;
+    }
+    .kinds input { width: auto; }
+
+    button {
+      background: #e8e4d9; color: #111; border: 0;
+      font-weight: 650; padding: 10px 16px; cursor: pointer;
+      font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px;
+    }
+    button:disabled { opacity: 0.55; cursor: default; }
+    .btn-quiet {
+      background: transparent; color: #e8e4d9; border: 1px solid #3a3a36; font-weight: 650;
+    }
+    .btn-quiet:hover { border-color: #b7b2a6; }
+    .btn-small { padding: 6px 10px; font-size: 13px; }
+    .linkbtn {
+      display: inline-block; padding: 6px 10px; font-size: 13px; font-weight: 650;
+      border: 1px solid #3a3a36; color: #e8e4d9; text-decoration: none;
+    }
+    .linkbtn:hover { border-color: #b7b2a6; }
+    .actions { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: -4px 0 12px; }
+
+    /* ---- status / banners ---- */
+    .status { border: 1px solid #3a3a36; background: #161616; padding: 10px 12px; font-size: 14px; }
+    .status-ok { border-left: 3px solid #7fb069; }
+    .status-err { border-left: 3px solid #d46a6a; color: #d46a6a; }
+    .banner {
+      border: 1px solid #d46a6a; color: #d46a6a; background: #161616;
+      padding: 10px 12px; font-size: 14px;
+    }
+    .saved { font-size: 12px; color: #b7b2a6; }
+    .saved.is-ok { color: #7fb069; }
+    .saved.is-err { color: #d46a6a; }
+
+    /* ---- panels ---- */
+    .panel { border: 1px solid #3a3a36; background: #161616; padding: 14px; }
+    .panel h3 { margin-bottom: 6px; }
+    .panel p:last-child { margin-bottom: 0; }
+
+    /* ---- the sheet ---- */
+    #sheet { margin-top: 24px; }
+    .sheet-head { border-bottom: 1px solid #3a3a36; padding-bottom: 12px; }
+    .company-name {
+      font-size: 20px; font-weight: 650; letter-spacing: -0.02em;
+      text-transform: none; color: #e8e4d9; margin: 0 0 2px; overflow-wrap: anywhere;
+    }
+    .who-line { font-size: 14px; color: #b7b2a6; margin: 0 0 8px; overflow-wrap: anywhere; }
+    .kv { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; margin: 10px 0 0; font-size: 14px; }
+    .kv dt { color: #b7b2a6; }
+    .kv dd { margin: 0; overflow-wrap: anywhere; }
+    .kv dd.danger { color: #d46a6a; }
+    .kv dd.warn { color: #d4a24a; }
+    .kv dd.win { color: #7fb069; }
+
+    .badges { margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+    .badge {
+      display: inline-block; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase;
+      font-weight: 650; padding: 2px 6px; border: 1px solid #3a3a36; color: #b7b2a6;
+    }
+    .badge.danger { color: #d46a6a; border-color: #d46a6a; }
+    .badge.warn { color: #d4a24a; border-color: #d4a24a; }
+    .badge.win { color: #7fb069; border-color: #7fb069; }
+
+    .block { margin-top: 26px; }
+    h3.block-h {
+      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #b7b2a6; font-weight: 650; margin: 0 0 6px;
+    }
+    .next { font-size: 15px; margin: 0 0 4px; overflow-wrap: anywhere; }
+    .next.unset { color: #d46a6a; }
+    .next .k { color: #b7b2a6; }
+
+    ol.hist { list-style: none; margin: 0; padding: 0; }
+    ol.hist li { border-left: 2px solid #3a3a36; padding: 0 0 0 10px; margin: 0 0 14px; }
+    .hist-when { font-size: 12px; color: #b7b2a6; }
+    .hist-head { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+    .hist-actions { margin-left: auto; }
+    .hist-note { margin: 3px 0 0; font-size: 14px; }
+    .hist-note.empty { color: #b7b2a6; }
+
+    .answer { border-left: 2px solid #3a3a36; padding: 2px 0 2px 10px; margin: 10px 0 0; font-size: 14px; }
+    .answer .answer-h { font-size: 12px; color: #b7b2a6; margin: 0 0 2px; }
+
+    .backup-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    input[type="file"] { border: 1px dashed #3a3a36; padding: 8px; font-size: 13px; }
+
+    .privacy-note {
+      color: #b7b2a6; font-size: 13px; line-height: 1.5;
+      border-top: 1px solid #3a3a36; padding-top: 14px; margin-top: 34px;
+    }
+    footer { color: #b7b2a6; font-size: 12px; margin: 10px 0 40px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    /* print-only blocks are built on every render and hidden on screen */
+    .print-only { display: none; }
+    .pp { margin: 0 0 8px; }
+    .pp-k { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #b7b2a6; display: block; }
+    .pp-v { margin: 1px 0 0; }
+    .pp-blank { border-bottom: 1px solid #999; height: 1.15em; margin-top: 3px; }
+
+    /* ------------------------------------------------------------
+       Print: this is the page Doug takes to the car. White paper,
+       black ink, no chrome, no controls, one page.
+       ------------------------------------------------------------ */
+    @media print {
+      @page { margin: 12mm; }
+      html, body {
+        background: #fff; color: #000;
+        font-size: 10.5pt; line-height: 1.35;
+      }
+      main { max-width: none; margin: 0; padding: 0; }
+      h1, p.lede, .nav, nav, footer, noscript,
+      form, button, .linkbtn, .chips, .actions, .no-print,
+      .status, .banner, .privacy-note, input, select, textarea,
+      input[type="file"], .hist-actions, .saved { display: none !important; }
+      .print-only { display: block !important; }
+      a { color: #000; text-decoration: none; }
+      .muted, .section-note, .hint, .kv dt, .hist-when, .pp-k, .answer .answer-h,
+      .next .k, .hist-note.empty { color: #333; }
+      p { margin-bottom: 4pt; }
+      h2, h3.block-h { color: #000; font-size: 9pt; margin: 0 0 3pt; }
+      .block { margin-top: 9pt; page-break-inside: avoid; }
+      .sheet-head { border-bottom: 1pt solid #000; padding-bottom: 4pt; }
+      .company-name { font-size: 15pt; color: #000; margin-bottom: 0; }
+      .who-line { color: #333; margin-bottom: 3pt; }
+      .badges { margin-top: 3pt; }
+      .kv { gap: 0 10px; margin-top: 4pt; }
+      .kv dd.danger, .kv dd.warn, .kv dd.win { color: #000; font-weight: 650; }
+      .badge, .badge.danger, .badge.warn, .badge.win { color: #000; border-color: #000; }
+      .next, .next.unset { color: #000; margin-bottom: 0; }
+      .pp { margin-bottom: 4pt; }
+      .answer { margin-top: 5pt; }
+      ol.hist li { border-left: 1pt solid #999; margin-bottom: 4pt; page-break-inside: avoid; }
+      .hist-note { margin-top: 0; }
+      .hist-extra { display: none !important; }
+      .answer { border-left: 1pt solid #999; }
+      .panel { border: 1pt solid #000; background: #fff; }
+      .print-head {
+        display: flex !important; justify-content: space-between;
+        font-size: 8pt; color: #333; border-bottom: 1pt solid #999;
+        padding-bottom: 3pt; margin-bottom: 8pt;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div id="nav-slot"></div>
+
+  <h1>Call prep</h1>
+  <p class="lede">
+    Sixty seconds before you dial. Pick the deal, read what is already on record, settle the four
+    lines at the top of the call, and print the sheet if you are heading out. When the call is done,
+    log what happened at the bottom and set the next step without leaving this page.
+  </p>
+
+  <noscript>
+    <p class="banner">
+      This page needs JavaScript. It runs entirely in your browser and sends nothing anywhere,
+      but with scripting turned off it cannot read your saved deals.
+    </p>
+  </noscript>
+
+  <p id="storage-warning" class="banner" hidden></p>
+  <p id="status" class="status" role="status" aria-live="polite" hidden></p>
+
+  <section id="picker-section" class="no-print" aria-labelledby="picker-h" hidden>
+    <h2 id="picker-h">Deal</h2>
+    <form id="pick-form">
+      <div class="field">
+        <label for="deal-select">Which call is this?</label>
+        <select id="deal-select" name="deal"></select>
+      </div>
+    </form>
+    <div class="actions">
+      <button type="button" id="print-btn">Print this sheet</button>
+      <a class="linkbtn" id="pipeline-link" href="pipeline.html">Edit this deal</a>
+    </div>
+    <p class="hint" id="permalink-note" hidden></p>
+  </section>
+
+  <div class="panel" id="empty" hidden>
+    <h3>Nothing to prepare yet</h3>
+    <p class="muted" id="empty-body"></p>
+    <p><a href="index.html">Go to Today and add a deal</a>, or restore a backup below.</p>
+  </div>
+
+  <article id="sheet" hidden>
+    <div class="print-head print-only"><span id="print-head-left"></span><span id="print-head-right"></span></div>
+
+    <header class="sheet-head">
+      <h2 class="company-name" id="sheet-company"></h2>
+      <p class="who-line" id="sheet-who"></p>
+      <div class="badges" id="sheet-badges"></div>
+      <dl class="kv" id="sheet-kv"></dl>
+    </header>
+
+    <section class="block" aria-labelledby="next-h">
+      <h3 class="block-h" id="next-h">Next action on record</h3>
+      <p class="next" id="next-line"></p>
+    </section>
+
+    <section class="block" aria-labelledby="prep-h">
+      <h3 class="block-h" id="prep-h">Before you dial</h3>
+      <p class="section-note no-print">
+        Four lines. They are saved against this deal in this browser, so the sheet is here next time.
+      </p>
+      <form id="prep-form" class="no-print">
+        <div class="field">
+          <label for="prep-goal">The goal of this call</label>
+          <input type="text" id="prep-goal" name="goal" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="prep-question">The one question to ask</label>
+          <input type="text" id="prep-question" name="question" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="prep-objection">The objection you expect</label>
+          <input type="text" id="prep-objection" name="objection" list="objection-list" autocomplete="off">
+          <datalist id="objection-list"></datalist>
+        </div>
+        <p class="hint" id="objection-hint">
+          Type it, or pick one you have already written an answer for.
+          <a href="objections.html">Open the objections page</a>.
+        </p>
+        <div class="field">
+          <label for="prep-commitment">The commitment to ask for at the end</label>
+          <input type="text" id="prep-commitment" name="commitment" autocomplete="off">
+        </div>
+        <div class="actions">
+          <button type="submit">Save prep sheet</button>
+          <button type="button" class="btn-quiet btn-small" id="prep-clear">Clear these four lines</button>
+          <span class="saved" id="prep-saved" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+      <div class="print-only" id="prep-print"></div>
+      <div id="objection-answer"></div>
+    </section>
+
+    <section class="block" id="notes-block" aria-labelledby="notes-h" hidden>
+      <h3 class="block-h" id="notes-h">Notes on this deal</h3>
+      <p class="pre" id="notes-body"></p>
+    </section>
+
+    <section class="block" aria-labelledby="hist-h">
+      <h3 class="block-h" id="hist-h">What has happened</h3>
+      <p class="section-note" id="hist-note"></p>
+      <ol class="hist" id="hist"></ol>
+      <p class="print-only" id="hist-print-note"></p>
+    </section>
+
+    <section class="block no-print" aria-labelledby="after-h">
+      <h3 class="block-h" id="after-h">After the call</h3>
+      <p class="section-note" id="after-note"></p>
+      <form id="outcome-form">
+        <fieldset class="kinds">
+          <legend>What was it?</legend>
+          <label for="kind-call"><input type="radio" name="kind" id="kind-call" value="call" checked> Call</label>
+          <label for="kind-email"><input type="radio" name="kind" id="kind-email" value="email"> Email</label>
+          <label for="kind-meeting"><input type="radio" name="kind" id="kind-meeting" value="meeting"> Meeting</label>
+          <label for="kind-note"><input type="radio" name="kind" id="kind-note" value="note"> Note</label>
+        </fieldset>
+        <div class="field">
+          <label for="out-note">What happened</label>
+          <textarea id="out-note" name="note" rows="3" autocomplete="off"></textarea>
+        </div>
+        <div class="field">
+          <label for="out-action">Next action after this</label>
+          <input type="text" id="out-action" name="nextAction" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="out-date">Do it on</label>
+          <input type="date" id="out-date" name="nextDate" autocomplete="off">
+        </div>
+        <div class="chips" id="date-chips">
+          <button type="button" class="btn-quiet btn-small" data-days="0">Today</button>
+          <button type="button" class="btn-quiet btn-small" data-days="1">Tomorrow</button>
+          <button type="button" class="btn-quiet btn-small" data-days="3">In 3 days</button>
+          <button type="button" class="btn-quiet btn-small" data-days="7">In a week</button>
+          <button type="button" class="btn-quiet btn-small" data-days="14">In 2 weeks</button>
+          <button type="button" class="btn-quiet btn-small" data-days="clear">Clear date</button>
+        </div>
+        <div class="field">
+          <label for="out-stage">Stage after this</label>
+          <select id="out-stage" name="stage"></select>
+        </div>
+        <p class="hint">
+          The next action and date shown here are what is on record now. Change them to whatever
+          this call decided. Choosing Won or Lost closes the deal and asks you to confirm first.
+        </p>
+        <button type="submit">Log it</button>
+      </form>
+    </section>
+  </article>
+
+  <section class="no-print" aria-labelledby="backup-h">
+    <h2 id="backup-h">Backup</h2>
+    <p class="section-note">
+      Your deals, your activity log and these prep sheets live in this browser only. Clearing site
+      data, a new laptop, or a different browser means starting empty. Export a .json now and again,
+      and keep it somewhere private.
+    </p>
+    <div class="backup-row">
+      <button type="button" id="export-btn">Export backup</button>
+      <label class="sr-only" for="import-file">Restore from a backup file</label>
+      <input type="file" id="import-file" accept="application/json,.json">
+    </div>
+    <div class="panel" id="import-choice" style="margin-top:12px" hidden>
+      <h3>Backup read</h3>
+      <p id="import-summary"></p>
+      <div class="actions">
+        <button type="button" id="import-replace">Replace everything</button>
+        <button type="button" class="btn-quiet" id="import-merge">Merge into what is here</button>
+        <button type="button" class="btn-quiet" id="import-cancel">Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="privacy" class="no-print"></div>
+
+  <footer class="no-print">Works offline. Open it from a file, a plane, anywhere.</footer>
+</main>
+<script>
+/* ------------------------------------------------------------------
+   Doug's sales workspace - shared data layer.
+
+   Embedded verbatim in every page. No dependencies, no module syntax,
+   no side effects on load: this block only defines the global `WS`.
+   It touches localStorage / the DOM only when you call it.
+
+   PRIVACY: every byte of Doug's client data lives in this browser's
+   localStorage under WS.KEY. Nothing is uploaded, there is no
+   telemetry, and no client data may ever be written into the repo.
+   Backups go out through WS.exportJSON() as a file Doug saves
+   somewhere private - never committed.
+
+   Conventions:
+     - dates on records are ISO "yyyy-mm-dd" (activity `at` is a full
+       ISO datetime). "" always means UNSET.
+     - WS.daysBetween() returns NaN for unparseable input; every WS
+       predicate guards for that, and WS.migrate() guarantees stored
+       dates are parseable, so pages that use migrated state are safe.
+   ------------------------------------------------------------------ */
+var WS = (function () {
+  'use strict';
+
+  var KEY = 'doug.workspace.v1';
+  var VERSION = 1;
+
+  var STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation', 'Won', 'Lost'];
+  var OPEN_STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation'];
+  var CLOSED_STAGES = ['Won', 'Lost'];
+  var KINDS = ['call', 'email', 'meeting', 'note'];
+
+  var STALE_DAYS = 14;
+  var DEFAULT_CYCLE_DAYS = 30;
+  var DEFAULT_CURRENCY = 'USD';
+
+  /* Rough, editable odds per stage - used by the forecast page for a
+     weighted number. Deliberately conservative. */
+  var STAGE_PROBABILITY = {
+    'Lead': 0.05,
+    'Contacted': 0.15,
+    'Meeting': 0.30,
+    'Proposal': 0.50,
+    'Negotiation': 0.70,
+    'Won': 1,
+    'Lost': 0
+  };
+
+  var NAV_ITEMS = [
+    ['index.html', 'Today'],
+    ['pipeline.html', 'Pipeline'],
+    ['forecast.html', 'Forecast'],
+    ['prep.html', 'Call prep'],
+    ['objections.html', 'Objections']
+  ];
+
+  var CURRENCY_SYMBOLS = {
+    USD: '$', CAD: 'CA$', AUD: 'A$', NZD: 'NZ$', EUR: '€', GBP: '£',
+    JPY: '¥', CNY: '¥', INR: '₹', CHF: 'CHF ', SEK: 'kr ',
+    NOK: 'kr ', DKK: 'kr ', ZAR: 'R', BRL: 'R$', MXN: 'MX$', SGD: 'S$', HKD: 'HK$'
+  };
+
+  /* ---------------- tiny helpers ---------------- */
+
+  function isObj(v) { return !!v && typeof v === 'object' && !isArr(v); }
+  function isArr(v) { return Object.prototype.toString.call(v) === '[object Array]'; }
+
+  function text(v) {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string') return v.trim();
+    if (typeof v === 'number') return isFinite(v) ? String(v) : '';
+    if (typeof v === 'boolean') return v ? 'true' : '';
+    if (isArr(v)) return v.map(text).filter(Boolean).join(', ');
+    return '';
+  }
+
+  function toNum(v, dflt) {
+    if (typeof v === 'number') return isFinite(v) ? v : dflt;
+    if (typeof v === 'string') {
+      var cleaned = v.replace(/[^0-9.\-]/g, '');
+      if (cleaned && cleaned !== '-' && cleaned !== '.') {
+        var n = parseFloat(cleaned);
+        if (isFinite(n)) return n;
+      }
+    }
+    return dflt;
+  }
+
+  /* first non-empty value among several possible (legacy) key names */
+  function pick(o, names) {
+    for (var i = 0; i < names.length; i++) {
+      var v = o[names[i]];
+      if (v !== undefined && v !== null && v !== '') return v;
+    }
+    return '';
+  }
+
+  function uid() {
+    try {
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.randomUUID === 'function') {
+        return crypto.randomUUID();
+      }
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.getRandomValues === 'function') {
+        var b = new Uint8Array(16);
+        crypto.getRandomValues(b);
+        b[6] = (b[6] & 0x0f) | 0x40;
+        b[8] = (b[8] & 0x3f) | 0x80;
+        var hex = '';
+        for (var i = 0; i < 16; i++) {
+          hex += (b[i] + 0x100).toString(16).slice(1);
+          if (i === 3 || i === 5 || i === 7 || i === 9) hex += '-';
+        }
+        return hex;
+      }
+    } catch (e) { /* fall through */ }
+    return 'id-' + Date.now().toString(36) + '-' +
+      Math.random().toString(36).slice(2, 10) +
+      Math.random().toString(36).slice(2, 6);
+  }
+
+  /* ---------------- escaping (every page renders user text) ------ */
+
+  var ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  var ESC_ATTR = {
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    '`': '&#96;', '=': '&#61;', '/': '&#47;'
+  };
+
+  function esc(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"']/g, function (c) { return ESC[c]; });
+  }
+
+  function escAttr(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"'`=\/]/g, function (c) { return ESC_ATTR[c]; });
+  }
+
+  /* ---------------- dates ---------------- */
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function toISODate(d) {
+    if (!(d instanceof Date) || isNaN(d.getTime())) return '';
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+
+  /* Accepts a Date, a timestamp, "yyyy-mm-dd" (read as LOCAL midnight so
+     the day never shifts) or any ISO datetime. Returns Date or null. */
+  function parseDate(s) {
+    if (s instanceof Date) return isNaN(s.getTime()) ? null : s;
+    if (typeof s === 'number' && isFinite(s)) {
+      var dn = new Date(s);
+      return isNaN(dn.getTime()) ? null : dn;
+    }
+    if (typeof s !== 'string') return null;
+    var v = s.trim();
+    if (!v) return null;
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(v);
+    if (m) {
+      var y = +m[1], mo = +m[2], da = +m[3];
+      if (mo < 1 || mo > 12 || da < 1 || da > 31) return null;
+      var d = new Date(y, mo - 1, da, 0, 0, 0, 0);
+      if (isNaN(d.getTime()) || d.getMonth() !== mo - 1) return null;
+      return d;
+    }
+    var slash = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(v);
+    if (slash) {
+      var d2 = new Date(+slash[3], +slash[1] - 1, +slash[2], 0, 0, 0, 0);
+      return isNaN(d2.getTime()) ? null : d2;
+    }
+    var d3 = new Date(v);
+    return isNaN(d3.getTime()) ? null : d3;
+  }
+
+  function today() { return toISODate(new Date()); }
+  function now() { return new Date().toISOString(); }
+
+  /* whole days from a to b; positive when b is later. NaN if unparseable. */
+  function daysBetween(a, b) {
+    var da = parseDate(a), db = parseDate(b);
+    if (!da || !db) return NaN;
+    var ua = Date.UTC(da.getFullYear(), da.getMonth(), da.getDate());
+    var ub = Date.UTC(db.getFullYear(), db.getMonth(), db.getDate());
+    return Math.round((ub - ua) / 86400000);
+  }
+
+  function addDays(dateish, n) {
+    var d = parseDate(dateish);
+    if (!d) return '';
+    var out = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    out.setDate(out.getDate() + (toNum(n, 0) | 0));
+    return toISODate(out);
+  }
+
+  function laterISO(a, b) {
+    if (!a) return b || '';
+    if (!b) return a || '';
+    return a > b ? a : b; /* ISO dates sort lexicographically */
+  }
+
+  function fmtDate(v, opts) {
+    var d = parseDate(v);
+    if (!d) return '';
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.DateTimeFormat === 'function') {
+        var o = isObj(opts) ? opts : { month: 'short', day: 'numeric' };
+        return new Intl.DateTimeFormat(undefined, o).format(d);
+      }
+    } catch (e) { /* fall through */ }
+    return toISODate(d);
+  }
+
+  /* ---------------- money ---------------- */
+
+  function normCurrency(c) {
+    var v = text(c).toUpperCase();
+    return /^[A-Z]{3}$/.test(v) ? v : DEFAULT_CURRENCY;
+  }
+
+  function group3(n) {
+    var s = String(Math.round(Math.abs(n)));
+    var out = '', c = 0;
+    for (var i = s.length - 1; i >= 0; i--) {
+      out = s.charAt(i) + out;
+      c++;
+      if (c % 3 === 0 && i > 0) out = ',' + out;
+    }
+    return out;
+  }
+
+  function trim1(x) {
+    var s = (Math.round(x * 10) / 10).toFixed(1);
+    return s.replace(/\.0$/, '');
+  }
+
+  function manualMoney(v, cur) {
+    var sym = CURRENCY_SYMBOLS[cur] || (cur + ' ');
+    var sign = v < 0 ? '-' : '';
+    var abs = Math.abs(v);
+    var body;
+    if (abs >= 1e9) body = trim1(abs / 1e9) + 'B';
+    else if (abs >= 1e6) body = trim1(abs / 1e6) + 'M';
+    else if (abs >= 1e4) body = trim1(abs / 1e3) + 'K';
+    else body = group3(abs);
+    return sign + sym + body;
+  }
+
+  /* Compact human money: $8,500 / $12.5K / $1.2M */
+  function money(n, currency) {
+    var cur = normCurrency(currency);
+    var v = toNum(n, 0);
+    if (!isFinite(v)) v = 0;
+    var abs = Math.abs(v);
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.NumberFormat === 'function') {
+        var base = { style: 'currency', currency: cur, maximumFractionDigits: 0 };
+        if (abs >= 1e4) { base.notation = 'compact'; base.maximumFractionDigits = 1; }
+        try {
+          var narrow = { style: 'currency', currency: cur, currencyDisplay: 'narrowSymbol',
+            maximumFractionDigits: base.maximumFractionDigits, notation: base.notation };
+          return new Intl.NumberFormat(undefined, narrow).format(v);
+        } catch (e1) { /* narrowSymbol / compact unsupported */ }
+        try {
+          return new Intl.NumberFormat(undefined, base).format(v);
+        } catch (e2) { /* fall through */ }
+        try {
+          return new Intl.NumberFormat(undefined,
+            { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(v);
+        } catch (e3) { /* fall through */ }
+      }
+    } catch (e) { /* fall through */ }
+    return manualMoney(v, cur);
+  }
+
+  /* ---------------- shape / migration ---------------- */
+
+  function emptyState() {
+    return {
+      version: VERSION,
+      settings: { quota: null, cycleDays: DEFAULT_CYCLE_DAYS, currency: DEFAULT_CURRENCY },
+      deals: [],
+      activities: [],
+      objections: []
+    };
+  }
+
+  function uniqueId(v, seen) {
+    var id = text(v);
+    if (!id || seen['#' + id]) id = uid();
+    seen['#' + id] = true;
+    return id;
+  }
+
+  function coerceDate(v, dflt) {
+    var d = parseDate(v);
+    return d ? toISODate(d) : dflt;
+  }
+
+  function coerceDateTime(v, dflt) {
+    var d = parseDate(v);
+    if (!d) return dflt;
+    try { return d.toISOString(); } catch (e) { return dflt; }
+  }
+
+  function coerceStage(v, dflt) {
+    var s = text(v).toLowerCase();
+    if (!s) return dflt;
+    for (var i = 0; i < STAGES.length; i++) {
+      if (STAGES[i].toLowerCase() === s) return STAGES[i];
+    }
+    if (s.indexOf('won') !== -1 || s === 'closed-won' || s === 'closed won') return 'Won';
+    if (s.indexOf('lost') !== -1 || s === 'closed-lost' || s === 'closed lost') return 'Lost';
+    if (s.indexOf('propos') !== -1 || s.indexOf('quote') !== -1) return 'Proposal';
+    if (s.indexOf('negoti') !== -1) return 'Negotiation';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1) return 'Meeting';
+    if (s.indexOf('contact') !== -1) return 'Contacted';
+    if (s.indexOf('lead') !== -1 || s.indexOf('new') !== -1) return 'Lead';
+    return dflt;
+  }
+
+  function coerceOutcome(v) {
+    var s = text(v).toLowerCase();
+    if (!s) return '';
+    if (s.indexOf('won') !== -1 || s === 'w' || s === 'win') return 'won';
+    if (s.indexOf('lost') !== -1 || s === 'l' || s === 'lose' || s === 'loss') return 'lost';
+    return '';
+  }
+
+  function coerceKind(v) {
+    var s = text(v).toLowerCase();
+    for (var i = 0; i < KINDS.length; i++) if (KINDS[i] === s) return KINDS[i];
+    if (s.indexOf('phone') !== -1 || s.indexOf('dial') !== -1 || s.indexOf('voicemail') !== -1) return 'call';
+    if (s.indexOf('mail') !== -1) return 'email';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1 || s.indexOf('visit') !== -1) return 'meeting';
+    return 'note';
+  }
+
+  function coerceTags(v) {
+    var out = [], i;
+    if (isArr(v)) {
+      for (i = 0; i < v.length; i++) {
+        var t = text(v[i]).toLowerCase();
+        if (t && out.indexOf(t) === -1) out.push(t);
+      }
+      return out;
+    }
+    var s = text(v);
+    if (!s) return out;
+    var parts = s.split(/[,;|]/);
+    for (i = 0; i < parts.length; i++) {
+      var p = parts[i].trim().toLowerCase();
+      if (p && out.indexOf(p) === -1) out.push(p);
+    }
+    return out;
+  }
+
+  function migrateSettings(raw) {
+    var s = isObj(raw) ? raw : {};
+    var quota = null;
+    if (s.quota !== null && s.quota !== undefined && s.quota !== '') {
+      var q = toNum(s.quota, NaN);
+      if (isFinite(q) && q >= 0) quota = Math.round(q * 100) / 100;
+    }
+    var cycle = Math.round(toNum(pick(s, ['cycleDays', 'cycle_days', 'cycle']), DEFAULT_CYCLE_DAYS));
+    if (!isFinite(cycle) || cycle < 1) cycle = DEFAULT_CYCLE_DAYS;
+    if (cycle > 3650) cycle = 3650;
+    return { quota: quota, cycleDays: cycle, currency: normCurrency(s.currency) };
+  }
+
+  function migrateDeal(raw, seen, todayISO) {
+    var d = isObj(raw) ? raw : {};
+    var opened = coerceDate(pick(d, ['opened', 'openedAt', 'created', 'createdAt', 'date']), '') || todayISO;
+    var outcome = coerceOutcome(d.outcome);
+    var stage = coerceStage(d.stage, '');
+
+    if (!stage) stage = outcome === 'won' ? 'Won' : (outcome === 'lost' ? 'Lost' : 'Lead');
+    if (!outcome && stage === 'Won') outcome = 'won';
+    if (!outcome && stage === 'Lost') outcome = 'lost';
+    if (outcome === 'won') stage = 'Won';
+    if (outcome === 'lost') stage = 'Lost';
+
+    var closedAt = coerceDate(pick(d, ['closedAt', 'closed_at', 'closed']), '');
+    if (outcome && !closedAt) closedAt = laterISO(opened, todayISO);
+    if (!outcome) closedAt = '';
+
+    var value = toNum(pick(d, ['value', 'amount', 'dealValue', 'size']), 0);
+    if (!isFinite(value) || value < 0) value = 0;
+
+    return {
+      id: uniqueId(d.id, seen),
+      company: text(pick(d, ['company', 'account', 'org', 'name'])),
+      contact: text(pick(d, ['contact', 'person', 'contactName'])),
+      role: text(pick(d, ['role', 'title', 'jobTitle'])),
+      email: text(d.email),
+      phone: text(d.phone),
+      value: Math.round(value * 100) / 100,
+      stage: stage,
+      opened: opened,
+      nextAction: text(pick(d, ['nextAction', 'next_action', 'nextStep', 'next'])),
+      nextDate: coerceDate(pick(d, ['nextDate', 'next_date', 'dueDate', 'due']), ''),
+      source: text(d.source),
+      notes: typeof d.notes === 'string' ? d.notes.replace(/\s+$/, '') : text(d.notes),
+      closedAt: closedAt,
+      outcome: outcome
+    };
+  }
+
+  function migrateActivity(raw, seen, nowISO) {
+    var a = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(a.id, seen),
+      dealId: text(pick(a, ['dealId', 'deal_id', 'deal'])),
+      at: coerceDateTime(pick(a, ['at', 'date', 'when', 'ts']), nowISO),
+      kind: coerceKind(a.kind || a.type),
+      note: typeof a.note === 'string' ? a.note.replace(/\s+$/, '') : text(pick(a, ['note', 'text', 'body']))
+    };
+  }
+
+  function migrateObjection(raw, seen) {
+    var o = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(o.id, seen),
+      trigger: text(pick(o, ['trigger', 'objection', 'says', 'title'])),
+      response: typeof o.response === 'string'
+        ? o.response.replace(/\s+$/, '')
+        : text(pick(o, ['response', 'reply', 'answer'])),
+      tags: coerceTags(o.tags)
+    };
+  }
+
+  /* Tolerates a missing / old / partially corrupt shape and always
+     returns a complete, correctly typed v1 state. Never mutates input. */
+  function migrate(state) {
+    var src;
+    if (isArr(state)) src = { deals: state };            /* very old: bare deal list */
+    else if (isObj(state)) src = state;
+    else src = {};
+
+    var todayISO = today();
+    var nowISO = now();
+    var seenD = {}, seenA = {}, seenO = {};
+    var out = emptyState();
+    var i;
+
+    out.settings = migrateSettings(src.settings);
+
+    var deals = isArr(src.deals) ? src.deals : (isArr(src.pipeline) ? src.pipeline : []);
+    for (i = 0; i < deals.length; i++) {
+      if (!isObj(deals[i])) continue;
+      out.deals.push(migrateDeal(deals[i], seenD, todayISO));
+    }
+
+    var acts = isArr(src.activities) ? src.activities : (isArr(src.log) ? src.log : []);
+    for (i = 0; i < acts.length; i++) {
+      if (!isObj(acts[i])) continue;
+      out.activities.push(migrateActivity(acts[i], seenA, nowISO));
+    }
+
+    var objs = isArr(src.objections) ? src.objections : [];
+    for (i = 0; i < objs.length; i++) {
+      if (!isObj(objs[i])) continue;
+      var o = migrateObjection(objs[i], seenO);
+      if (!o.trigger && !o.response) continue;
+      out.objections.push(o);
+    }
+
+    out.version = VERSION;
+    return out;
+  }
+
+  /* ---------------- storage ---------------- */
+
+  function load() {
+    var raw = null;
+    try {
+      if (typeof localStorage !== 'undefined' && localStorage) raw = localStorage.getItem(KEY);
+    } catch (e) { raw = null; }                 /* private window / site data blocked */
+    if (!raw || typeof raw !== 'string') return emptyState();
+    var parsed = null;
+    try { parsed = JSON.parse(raw); } catch (e) { return emptyState(); }
+    try { return migrate(parsed); } catch (e) { return emptyState(); }
+  }
+
+  /* true on success; false means the caller should warn Doug loudly
+     (quota exceeded, blocked storage) instead of losing the edit. */
+  function save(state) {
+    try {
+      var clean = migrate(state);
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.setItem(KEY, JSON.stringify(clean));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function clearAll() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.removeItem(KEY);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /* ---------------- derived state ---------------- */
+
+  function isOpen(deal) {
+    return isObj(deal) && text(deal.outcome) === '';
+  }
+
+  function activitiesFor(state, dealId) {
+    var s = isObj(state) ? state : {};
+    var list = isArr(s.activities) ? s.activities : [];
+    var id = text(dealId);
+    var out = [];
+    for (var i = 0; i < list.length; i++) {
+      if (isObj(list[i]) && text(list[i].dealId) === id) out.push(list[i]);
+    }
+    out.sort(function (a, b) {
+      var ta = text(a.at), tb = text(b.at);
+      return ta < tb ? 1 : (ta > tb ? -1 : 0);          /* newest first */
+    });
+    return out;
+  }
+
+  /* ISO date of the most recent activity on this deal, else deal.opened */
+  function lastTouch(state, deal) {
+    var d = isObj(deal) ? deal : {};
+    var acts = activitiesFor(state, d.id);
+    var best = '';
+    for (var i = 0; i < acts.length; i++) {
+      var iso = coerceDate(acts[i].at, '');
+      if (iso) best = laterISO(best, iso);
+    }
+    return best || text(d.opened);
+  }
+
+  function isStale(state, deal) {
+    if (!isOpen(deal)) return false;
+    var anchor = laterISO(lastTouch(state, deal), text(deal.opened));
+    if (!anchor) return false;
+    var days = daysBetween(anchor, today());
+    return isFinite(days) && days > STALE_DAYS;
+  }
+
+  function isOverdue(deal) {
+    if (!isOpen(deal)) return false;
+    var nd = text(deal.nextDate);
+    if (!nd) return false;
+    var days = daysBetween(nd, today());
+    return isFinite(days) && days > 0;
+  }
+
+  function isAdrift(deal) {
+    if (!isOpen(deal)) return false;
+    return text(deal.nextAction) === '' || text(deal.nextDate) === '';
+  }
+
+  function flags(state, deal) {
+    var open = isOpen(deal);
+    var anchor = open ? laterISO(lastTouch(state, deal), text(deal && deal.opened)) : '';
+    var since = anchor ? daysBetween(anchor, today()) : NaN;
+    return {
+      open: open,
+      stale: isStale(state, deal),
+      overdue: isOverdue(deal),
+      adrift: isAdrift(deal),
+      daysSinceTouch: isFinite(since) ? since : null,
+      lastTouch: anchor
+    };
+  }
+
+  function stageIndex(stage) {
+    var s = coerceStage(stage, '');
+    var i = STAGES.indexOf(s);
+    return i === -1 ? 0 : i;
+  }
+
+  function stageProbability(stage) {
+    var s = coerceStage(stage, 'Lead');
+    var p = STAGE_PROBABILITY[s];
+    return typeof p === 'number' ? p : 0;
+  }
+
+  function byId(list, id) {
+    var arr = isArr(list) ? list : [];
+    var want = text(id);
+    for (var i = 0; i < arr.length; i++) {
+      if (isObj(arr[i]) && text(arr[i].id) === want) return arr[i];
+    }
+    return null;
+  }
+
+  /* blank records with sane defaults, ready to be filled by a form */
+  function newDeal(partial) {
+    var base = {
+      id: uid(), company: '', contact: '', role: '', email: '', phone: '',
+      value: 0, stage: 'Lead', opened: today(), nextAction: '', nextDate: '',
+      source: '', notes: '', closedAt: '', outcome: ''
+    };
+    if (isObj(partial)) {
+      for (var k in base) {
+        if (Object.prototype.hasOwnProperty.call(partial, k) && partial[k] !== undefined) {
+          base[k] = partial[k];
+        }
+      }
+    }
+    var seen = {};
+    return migrateDeal(base, seen, today());
+  }
+
+  function newActivity(dealId, kind, note) {
+    return {
+      id: uid(),
+      dealId: text(dealId),
+      at: now(),
+      kind: coerceKind(kind),
+      note: typeof note === 'string' ? note.replace(/\s+$/, '') : text(note)
+    };
+  }
+
+  function newObjection(trigger, response, tags) {
+    return { id: uid(), trigger: text(trigger), response: text(response), tags: coerceTags(tags) };
+  }
+
+  /* ---------------- export / import (Doug owns his data) --------- */
+
+  function exportFilename() { return 'doug-workspace-' + today() + '.json'; }
+
+  function exportJSON(state) {
+    try {
+      var data = JSON.stringify(migrate(state), null, 2);
+      if (typeof document === 'undefined' || !document || !document.body) return false;
+      if (typeof Blob === 'undefined') return false;
+      var api = (typeof URL !== 'undefined' && URL && URL.createObjectURL) ? URL
+        : ((typeof webkitURL !== 'undefined' && webkitURL && webkitURL.createObjectURL) ? webkitURL : null);
+      if (!api) return false;
+      var blob = new Blob([data], { type: 'application/json' });
+      var url = api.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = exportFilename();
+      a.rel = 'noopener';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        try { if (a.parentNode) a.parentNode.removeChild(a); } catch (e) {}
+        try { api.revokeObjectURL(url); } catch (e) {}
+      }, 5000);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function looksLikeWorkspace(o) {
+    if (isArr(o)) return true;
+    if (!isObj(o)) return false;
+    return isArr(o.deals) || isArr(o.activities) || isArr(o.objections) ||
+      isObj(o.settings) || o.version === 1 || isArr(o.pipeline);
+  }
+
+  /* cb(err, state) - never saves on its own; the page decides whether to
+     replace or merge, then calls WS.save(). */
+  function importJSON(file, cb) {
+    var done = typeof cb === 'function' ? cb : function () {};
+    if (!file) { done(new Error('No file chosen.')); return; }
+    if (typeof FileReader === 'undefined') { done(new Error('This browser cannot read files.')); return; }
+    if (typeof file.size === 'number' && file.size > 25 * 1024 * 1024) {
+      done(new Error('That file is too big to be a workspace backup.'));
+      return;
+    }
+    var reader;
+    try { reader = new FileReader(); } catch (e) { done(new Error('This browser cannot read files.')); return; }
+    reader.onerror = function () { done(new Error('Could not read that file.')); };
+    reader.onabort = function () { done(new Error('Reading that file was cancelled.')); };
+    reader.onload = function () {
+      var parsed;
+      try {
+        parsed = JSON.parse(String(reader.result));
+      } catch (e) {
+        done(new Error('That file is not valid JSON.'));
+        return;
+      }
+      if (!looksLikeWorkspace(parsed)) {
+        done(new Error('That JSON file does not look like a workspace backup.'));
+        return;
+      }
+      var state;
+      try { state = migrate(parsed); } catch (e) { done(new Error('That backup could not be read.')); return; }
+      done(null, state);
+    };
+    try { reader.readAsText(file); } catch (e) { done(new Error('Could not read that file.')); }
+  }
+
+  /* union by id; records from `incoming` win on conflict */
+  function merge(base, incoming) {
+    var a = migrate(base), b = migrate(incoming);
+    var out = emptyState();
+    out.settings = b.settings;
+    ['deals', 'activities', 'objections'].forEach(function (key) {
+      var index = {}, order = [], i, r;
+      for (i = 0; i < a[key].length; i++) {
+        r = a[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < b[key].length; i++) {
+        r = b[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < order.length; i++) out[key].push(index['#' + order[i]]);
+    });
+    return out;
+  }
+
+  /* ---------------- starter objection library ---------------- */
+
+  function seedObjections() {
+    var seeds = [
+      {
+        trigger: "It's too expensive / it's not in the budget.",
+        response: "Fair - let's make sure we're comparing the same thing. Is it more than you expected, or more than you have available this year? If it's the number itself, I'll walk through what's driving it and what we can take out. If it's the budget cycle, tell me who owns that budget and when it resets, and we'll size something that fits now and grows later.",
+        tags: ['price', 'budget']
+      },
+      {
+        trigger: "Now isn't a good time - check back next quarter.",
+        response: "Happy to. So I'm not just chasing you: what has to be true next quarter for this to move? If the honest answer is that it isn't a priority, say so and I'll stop pushing. If it's real timing, let's book fifteen minutes for the first week of that quarter now, and I'll send one useful thing a month in between rather than a check-in email.",
+        tags: ['timing', 'stall']
+      },
+      {
+        trigger: "We already use another vendor and we're happy with them.",
+        response: "Good - switching for its own sake is a bad idea, and I'm not going to ask you to. I'd rather understand where they're strong so I know when we're not a fit. Out of curiosity, if you could change one thing about how it works today, what would it be? If nothing comes to mind, we're done. If something does, that's the conversation worth having when your renewal comes up - when is that?",
+        tags: ['incumbent', 'competitor']
+      },
+      {
+        trigger: "I'd have to run this by my boss / it goes to a committee.",
+        response: "Of course - I'd expect that. Two things would help: what usually sinks a proposal like this internally, and who else has to be comfortable with it? I'd rather arm you with the numbers and the answers to their hard questions than have you carry it alone. And if it's useful, I'm glad to join that conversation for ten minutes so the technical questions don't bounce back and forth.",
+        tags: ['authority', 'decision-maker']
+      },
+      {
+        trigger: "We're fine as we are - this isn't a problem for us.",
+        response: "Then you should keep your money. Let me ask one question and I'll get out of your way: how are you handling it today, and what does it cost you when it goes wrong? If the answer is 'it doesn't really', you're genuinely fine and I'll note that. Most people I talk to have quietly absorbed the cost and stopped counting it - if that's the case, it's worth putting a number on it once.",
+        tags: ['need', 'status-quo']
+      },
+      {
+        trigger: "Just send me some information and I'll take a look.",
+        response: "I can, but generic material wastes your time. Give me two minutes on what you're actually trying to fix and I'll send the one page that's relevant instead of a brochure. And so it doesn't sit in your inbox: when should I follow up - and is a short call or a written summary easier for you?",
+        tags: ['brush-off', 'stall']
+      }
+    ];
+    var out = [];
+    for (var i = 0; i < seeds.length; i++) {
+      out.push({ id: uid(), trigger: seeds[i].trigger, response: seeds[i].response, tags: seeds[i].tags.slice() });
+    }
+    return out;
+  }
+
+  /* seeds the starter library only when there is nothing there;
+     returns true if the state was changed (caller should save). */
+  function ensureSeeded(state) {
+    if (!isObj(state)) return false;
+    if (!isArr(state.objections)) state.objections = [];
+    if (state.objections.length) return false;
+    state.objections = seedObjections();
+    return true;
+  }
+
+  /* ---------------- shared chrome ---------------- */
+
+  function normPage(current) {
+    var c = text(current).toLowerCase();
+    c = c.split('?')[0].split('#')[0];
+    c = c.substring(c.lastIndexOf('/') + 1);
+    if (!c || c === 'index' || c === 'today' || c === 'home') return 'index.html';
+    var aliases = {
+      'pipeline': 'pipeline.html', 'deals': 'pipeline.html',
+      'forecast': 'forecast.html',
+      'prep': 'prep.html', 'call prep': 'prep.html', 'call-prep': 'prep.html',
+      'objections': 'objections.html'
+    };
+    if (aliases[c]) return aliases[c];
+    return c;
+  }
+
+  /* Tiny markup; pages own the CSS for .nav / .nav-item / .active */
+  function nav(current) {
+    var cur = normPage(current);
+    var html = '<nav class="nav" aria-label="Workspace sections">';
+    for (var i = 0; i < NAV_ITEMS.length; i++) {
+      var href = NAV_ITEMS[i][0], label = NAV_ITEMS[i][1];
+      var on = href === cur;
+      html += '<a class="nav-item' + (on ? ' active' : '') + '" href="' + escAttr(href) + '"' +
+        (on ? ' aria-current="page"' : '') + '>' + esc(label) + '</a>';
+    }
+    return html + '</nav>';
+  }
+
+  /* The privacy note every page must show near the bottom. */
+  function privacyNote() {
+    return '<p class="privacy-note">Everything you enter here stays in this browser, on this device. ' +
+      'Nothing is uploaded, there is no tracking, and no client details ever leave your machine. ' +
+      'Use Export to keep a backup - save that .json somewhere private and never commit it to the repo.</p>';
+  }
+
+  /* ---------------- public surface ---------------- */
+
+  return {
+    KEY: KEY,
+    VERSION: VERSION,
+    STAGES: STAGES,
+    OPEN_STAGES: OPEN_STAGES,
+    CLOSED_STAGES: CLOSED_STAGES,
+    KINDS: KINDS,
+    STALE_DAYS: STALE_DAYS,
+    DEFAULT_CYCLE_DAYS: DEFAULT_CYCLE_DAYS,
+    STAGE_PROBABILITY: STAGE_PROBABILITY,
+    NAV_ITEMS: NAV_ITEMS,
+
+    load: load,
+    save: save,
+    clearAll: clearAll,
+    migrate: migrate,
+    emptyState: emptyState,
+
+    uid: uid,
+    esc: esc,
+    escAttr: escAttr,
+    money: money,
+    fmtDate: fmtDate,
+    today: today,
+    now: now,
+    parseDate: parseDate,
+    toISODate: toISODate,
+    daysBetween: daysBetween,
+    addDays: addDays,
+    laterISO: laterISO,
+
+    isOpen: isOpen,
+    isStale: isStale,
+    isOverdue: isOverdue,
+    isAdrift: isAdrift,
+    flags: flags,
+    lastTouch: lastTouch,
+    activitiesFor: activitiesFor,
+    byId: byId,
+    stageIndex: stageIndex,
+    stageProbability: stageProbability,
+
+    newDeal: newDeal,
+    newActivity: newActivity,
+    newObjection: newObjection,
+
+    exportJSON: exportJSON,
+    exportFilename: exportFilename,
+    importJSON: importJSON,
+    merge: merge,
+
+    seedObjections: seedObjections,
+    ensureSeeded: ensureSeeded,
+
+    nav: nav,
+    privacyNote: privacyNote
+  };
+})();
+
+/* ------------------------------------------------------------------
+   Call prep - the sixty seconds before the phone rings, and the one
+   page in this workspace built to come out of a printer.
+
+   Three jobs:
+     1. Show one deal whole: who, where it stands, everything logged.
+     2. Hold the four lines worth deciding before dialling. They are
+        kept per deal so the sheet is still here next time.
+     3. Take the outcome afterwards - one activity, a new next step,
+        and a stage change - without leaving the page.
+
+   SAFETY: no user text is ever assembled into an HTML string here.
+   Company names, notes, activity text and prep answers reach the DOM
+   through textContent only, which cannot execute markup. WS.esc() /
+   WS.escAttr() guard the two fixed chrome fragments (nav, privacy
+   note) that do use innerHTML and contain no user data at all.
+
+   STORAGE: the shared workspace lives untouched under WS.KEY in the
+   exact shape every other page expects. The prep answers are page
+   furniture rather than deal data, so they sit beside it under their
+   own key, PREP_KEY, and ride along in the export as one extra
+   top-level "prep" field. Older pages ignore that field; WS.migrate()
+   drops it, so it can never leak into the shared record.
+   ------------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  var PREP_KEY = 'doug.workspace.prep.v1';
+  var PREP_FIELDS = ['goal', 'question', 'objection', 'commitment'];
+  var PREP_MAX = 2000;              /* per line; stops a paste filling storage */
+  var PRINT_HISTORY = 6;            /* entries that fit on the printed page */
+
+  var state = WS.emptyState();
+  var prep = {};                    /* dealId -> { goal, question, objection, commitment, updated } */
+  var currentId = '';
+  var formDealId = '';              /* the deal the prep inputs currently hold - never assume it
+                                       is currentId, or a deal switch writes one deal's lines
+                                       onto another */
+  var pendingImport = null;         /* a read backup, waiting for replace / merge */
+  var prepTimer = null;
+  var savedTimer = null;
+  var permalinkWorks = false;
+
+  /* ---------------- tiny DOM helpers ---------------- */
+
+  function $(id) { return document.getElementById(id); }
+
+  function el(tag, cls, txt) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (txt !== undefined && txt !== null && txt !== '') n.textContent = String(txt);
+    return n;
+  }
+
+  function clear(node) {
+    if (!node) return;
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  function show(node, on) { if (node) node.hidden = !on; }
+
+  function str(v) { return v === null || v === undefined ? '' : String(v); }
+
+  function num(v) {
+    var n = typeof v === 'number' ? v : parseFloat(v);
+    return isFinite(n) ? n : 0;
+  }
+
+  function plural(n, one, many) { return n === 1 ? one : many; }
+
+  function ask(question) {
+    try { return !!window.confirm(question); } catch (e) { return false; }
+  }
+
+  function focusOn(node) {
+    if (!node) return;
+    try { node.focus(); } catch (e) { /* ignore */ }
+  }
+
+  function money(v) {
+    return WS.money(num(v), state.settings && state.settings.currency);
+  }
+
+  function dealName(d) {
+    return str(d && d.company).trim() || str(d && d.contact).trim() || 'Untitled deal';
+  }
+
+  function dateLabel(iso) {
+    return WS.fmtDate(iso, { year: 'numeric', month: 'short', day: 'numeric' }) || str(iso);
+  }
+
+  /* "today" / "yesterday" / "12 days ago" / "in 3 days" - never a bare number */
+  function relDays(iso) {
+    var n = WS.daysBetween(iso, WS.today());
+    if (!isFinite(n)) return '';
+    if (n === 0) return 'today';
+    if (n === 1) return 'yesterday';
+    if (n === -1) return 'tomorrow';
+    if (n > 0) return n + ' days ago';
+    return 'in ' + (-n) + ' days';
+  }
+
+  /* ---------------- storage ---------------- */
+
+  /* WS.load() cannot tell "empty" from "blocked", so probe once and say
+     so plainly rather than letting Doug type into a page that forgets. */
+  function storageWorks() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      var k = 'doug.workspace.probe';
+      localStorage.setItem(k, '1');
+      localStorage.removeItem(k);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function loadState() {
+    var s = null;
+    try { s = WS.load(); } catch (e) { s = null; }
+    if (!s || typeof s !== 'object') s = WS.emptyState();
+    if (!s.settings || typeof s.settings !== 'object') s.settings = WS.emptyState().settings;
+    if (Object.prototype.toString.call(s.deals) !== '[object Array]') s.deals = [];
+    if (Object.prototype.toString.call(s.activities) !== '[object Array]') s.activities = [];
+    if (Object.prototype.toString.call(s.objections) !== '[object Array]') s.objections = [];
+    state = s;
+  }
+
+  /* A failed save is loud - it is never allowed to look like a success. */
+  function commit(okMsg) {
+    try { state = WS.migrate(state); } catch (e) { /* keep the in-memory copy */ }
+    var ok = false;
+    try { ok = WS.save(state); } catch (e) { ok = false; }
+    if (ok) {
+      if (okMsg) setStatus(okMsg, 'ok');
+    } else {
+      setStatus('Could not save to this browser. The change is on screen but has NOT been stored. ' +
+        'Check private browsing or site-data settings, and export a backup before you close this tab.', 'err');
+    }
+    render();
+    return ok;
+  }
+
+  function setStatus(msg, kind) {
+    var n = $('status');
+    if (!n) return;
+    if (!msg) {
+      n.textContent = '';
+      n.className = 'status';
+      n.hidden = true;
+      return;
+    }
+    n.textContent = String(msg);
+    n.className = 'status' + (kind === 'err' ? ' status-err' : (kind === 'ok' ? ' status-ok' : ''));
+    n.hidden = false;
+  }
+
+  /* ---------------- prep sheets (own key, beside the workspace) ---- */
+
+  function blankSheet() {
+    return { goal: '', question: '', objection: '', commitment: '', updated: '' };
+  }
+
+  function sheetIsEmpty(s) {
+    for (var i = 0; i < PREP_FIELDS.length; i++) {
+      if (str(s && s[PREP_FIELDS[i]]).trim() !== '') return false;
+    }
+    return true;
+  }
+
+  function cleanLine(v) {
+    var s = str(v).replace(/\s+$/, '');
+    return s.length > PREP_MAX ? s.slice(0, PREP_MAX) : s;
+  }
+
+  function normalisePrep(raw) {
+    var out = {};
+    if (!raw || typeof raw !== 'object') return out;
+    var src = (raw.sheets && typeof raw.sheets === 'object') ? raw.sheets : raw;
+    for (var id in src) {
+      if (!Object.prototype.hasOwnProperty.call(src, id)) continue;
+      if (id === 'version' || id === 'sheets') continue;
+      var v = src[id];
+      if (!v || typeof v !== 'object') continue;
+      var sheet = blankSheet();
+      for (var i = 0; i < PREP_FIELDS.length; i++) {
+        sheet[PREP_FIELDS[i]] = cleanLine(v[PREP_FIELDS[i]]);
+      }
+      sheet.updated = cleanLine(v.updated);
+      if (!sheetIsEmpty(sheet)) out[String(id)] = sheet;
+    }
+    return out;
+  }
+
+  function loadPrep() {
+    var raw = null;
+    try {
+      if (typeof localStorage !== 'undefined' && localStorage) raw = localStorage.getItem(PREP_KEY);
+    } catch (e) { raw = null; }
+    var parsed = null;
+    if (raw && typeof raw === 'string') {
+      try { parsed = JSON.parse(raw); } catch (e) { parsed = null; }
+    }
+    prep = normalisePrep(parsed);
+  }
+
+  /* Drop sheets for deals that no longer exist - but only when we can
+     actually see the deal list, so a blocked read never wipes anything. */
+  function prunedPrep() {
+    var deals = state.deals || [];
+    if (!deals.length) return prep;
+    var live = {};
+    for (var i = 0; i < deals.length; i++) live['#' + str(deals[i].id)] = true;
+    var out = {};
+    for (var id in prep) {
+      if (!Object.prototype.hasOwnProperty.call(prep, id)) continue;
+      if (live['#' + id]) out[id] = prep[id];
+    }
+    return out;
+  }
+
+  function persistPrep() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      prep = prunedPrep();
+      localStorage.setItem(PREP_KEY, JSON.stringify({ version: 1, sheets: prep }));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function sheetFor(id) {
+    var key = str(id);
+    if (key && Object.prototype.hasOwnProperty.call(prep, key)) {
+      var s = prep[key];
+      var copy = blankSheet();
+      for (var i = 0; i < PREP_FIELDS.length; i++) copy[PREP_FIELDS[i]] = str(s[PREP_FIELDS[i]]);
+      copy.updated = str(s.updated);
+      return copy;
+    }
+    return blankSheet();
+  }
+
+  /* ---------------- deals ---------------- */
+
+  function currentDeal() {
+    return WS.byId(state.deals, currentId);
+  }
+
+  function sortedDeals() {
+    var deals = (state.deals || []).slice();
+    var far = '9999-12-31';
+    deals.sort(function (a, b) {
+      var oa = WS.isOpen(a) ? 0 : 1, ob = WS.isOpen(b) ? 0 : 1;
+      if (oa !== ob) return oa - ob;
+      if (oa === 0) {
+        var da = str(a.nextDate) || far, db = str(b.nextDate) || far;
+        if (da !== db) return da < db ? -1 : 1;
+      } else {
+        var ca = str(a.closedAt) || '', cb = str(b.closedAt) || '';
+        if (ca !== cb) return ca > cb ? -1 : 1;
+      }
+      var va = num(a.value), vb = num(b.value);
+      if (va !== vb) return vb - va;
+      var na = dealName(a).toLowerCase(), nb = dealName(b).toLowerCase();
+      return na < nb ? -1 : (na > nb ? 1 : 0);
+    });
+    return deals;
+  }
+
+  /* the deal Doug most likely opened this page for */
+  function defaultId() {
+    var deals = sortedDeals();
+    for (var i = 0; i < deals.length; i++) {
+      if (WS.isOpen(deals[i]) && str(deals[i].nextDate)) return deals[i].id;
+    }
+    for (i = 0; i < deals.length; i++) {
+      if (WS.isOpen(deals[i])) return deals[i].id;
+    }
+    return deals.length ? deals[0].id : '';
+  }
+
+  /* ---------------- the ?deal= link ---------------- */
+
+  function fromQuery(q) {
+    if (!q) return '';
+    var parts = String(q).split('&');
+    for (var i = 0; i < parts.length; i++) {
+      var kv = parts[i].split('=');
+      var key = '';
+      try { key = decodeURIComponent(str(kv[0]).replace(/\+/g, ' ')); } catch (e) { key = str(kv[0]); }
+      if (key.toLowerCase() === 'deal') {
+        try { return decodeURIComponent(str(kv[1]).replace(/\+/g, ' ')).trim(); }
+        catch (e) { return str(kv[1]).trim(); }
+      }
+    }
+    return '';
+  }
+
+  function readParamId() {
+    try {
+      var s = str(location.search);
+      if (s.charAt(0) === '?') s = s.slice(1);
+      var h = str(location.hash);
+      if (h.charAt(0) === '#') h = h.slice(1);
+      return fromQuery(s) || fromQuery(h);
+    } catch (e) {
+      return '';
+    }
+  }
+
+  /* Keep the address bar pointing at the deal on screen, so the sheet
+     can be bookmarked. Harmless if the browser refuses (some do on
+     file:// URLs) - the page just stops offering it. */
+  function updateURL(id) {
+    try {
+      if (!window.history || typeof window.history.replaceState !== 'function') return;
+      var base = str(location.pathname).split('/').pop() || 'prep.html';
+      window.history.replaceState(null, '', base + '?deal=' + encodeURIComponent(str(id)));
+      permalinkWorks = true;
+    } catch (e) {
+      permalinkWorks = false;
+    }
+  }
+
+  /* ---------------- picker ---------------- */
+
+  function optionLabel(d) {
+    var head = dealName(d);
+    var contact = str(d.contact).trim();
+    if (contact && str(d.company).trim()) head += ' — ' + contact;
+    var meta = [];
+    if (num(d.value) > 0) meta.push(money(d.value));
+    meta.push(str(d.stage) || 'Lead');
+    var f = WS.flags(state, d);
+    if (f.overdue) meta.push('overdue');
+    else if (f.adrift) meta.push('no next step');
+    else if (f.stale) meta.push('stale');
+    return head + ' · ' + meta.join(' · ');
+  }
+
+  function renderPicker() {
+    var sel = $('deal-select');
+    if (!sel) return;
+    clear(sel);
+    var deals = sortedDeals();
+    var open = document.createElement('optgroup');
+    open.label = 'Open';
+    var closed = document.createElement('optgroup');
+    closed.label = 'Closed';
+    var openCount = 0, closedCount = 0;
+
+    for (var i = 0; i < deals.length; i++) {
+      var d = deals[i];
+      var opt = document.createElement('option');
+      opt.value = str(d.id);
+      opt.textContent = optionLabel(d);          /* user text, never markup */
+      if (WS.isOpen(d)) { open.appendChild(opt); openCount++; }
+      else { closed.appendChild(opt); closedCount++; }
+    }
+    if (openCount) sel.appendChild(open);
+    if (closedCount) sel.appendChild(closed);
+    sel.value = str(currentId);
+
+    /* carry the deal through, so "Edit this deal" lands on that row in the
+       deal book instead of the top of the whole list */
+    var link = $('pipeline-link');
+    if (link) {
+      link.setAttribute('href', currentId
+        ? 'pipeline.html?deal=' + encodeURIComponent(str(currentId))
+        : 'pipeline.html');
+    }
+
+    var note = $('permalink-note');
+    if (note) {
+      if (permalinkWorks && currentId) {
+        note.textContent = 'The address bar now points at this deal. Bookmark it to come straight ' +
+          'back to this sheet.';
+        note.hidden = false;
+      } else {
+        note.textContent = '';
+        note.hidden = true;
+      }
+    }
+  }
+
+  /* ---------------- the brief ---------------- */
+
+  function addRow(dl, key, value, cls) {
+    if (value === '' || value === null || value === undefined) return;
+    dl.appendChild(el('dt', null, key));
+    dl.appendChild(el('dd', cls || null, value));
+  }
+
+  function addLinkRow(dl, key, value, href) {
+    dl.appendChild(el('dt', null, key));
+    var dd = el('dd');
+    if (href) {
+      var a = document.createElement('a');
+      a.setAttribute('href', href);
+      a.textContent = value;                     /* user text as text only */
+      dd.appendChild(a);
+    } else {
+      dd.textContent = value;
+    }
+    dl.appendChild(dd);
+  }
+
+  function mailHref(email) {
+    var v = str(email).trim();
+    return /^[^\s<>"'@]+@[^\s<>"'@]+\.[^\s<>"'@]+$/.test(v) ? 'mailto:' + v : '';
+  }
+
+  function telHref(phone) {
+    var v = str(phone).replace(/[^0-9+]/g, '');
+    return /^\+?[0-9]{5,20}$/.test(v) ? 'tel:' + v : '';
+  }
+
+  function renderHead(d, f) {
+    var company = $('sheet-company');
+    if (company) company.textContent = dealName(d);
+
+    var who = $('sheet-who');
+    if (who) {
+      var bits = [];
+      if (str(d.contact).trim()) bits.push(str(d.contact).trim());
+      if (str(d.role).trim()) bits.push(str(d.role).trim());
+      who.textContent = bits.length ? bits.join(', ') : 'No contact name on this deal yet.';
+    }
+
+    var badges = $('sheet-badges');
+    if (badges) {
+      clear(badges);
+      if (!f.open) {
+        badges.appendChild(el('span', 'badge ' + (str(d.outcome) === 'won' ? 'win' : 'danger'),
+          str(d.outcome) === 'won' ? 'Won' : 'Lost'));
+      } else {
+        if (f.overdue) badges.appendChild(el('span', 'badge danger', 'Overdue'));
+        if (f.adrift) badges.appendChild(el('span', 'badge danger', 'No next step'));
+        if (f.stale) {
+          badges.appendChild(el('span', 'badge warn',
+            f.daysSinceTouch === null ? 'Stale' : 'Stale ' + f.daysSinceTouch + ' days'));
+        }
+        if (!f.overdue && !f.adrift && !f.stale) badges.appendChild(el('span', 'badge', 'Nothing flagged'));
+      }
+    }
+
+    var dl = $('sheet-kv');
+    if (!dl) return;
+    clear(dl);
+
+    addRow(dl, 'Value', num(d.value) > 0 ? money(d.value) : 'Not recorded');
+    addRow(dl, 'Stage', str(d.stage) || 'Lead');
+
+    var openedDays = WS.daysBetween(d.opened, f.open ? WS.today() : (str(d.closedAt) || WS.today()));
+    var openedText = dateLabel(d.opened);
+    if (isFinite(openedDays) && openedDays >= 0) {
+      openedText += ' · ' + openedDays + ' ' + plural(openedDays, 'day', 'days') +
+        (f.open ? ' open' : ' to close');
+    }
+    addRow(dl, 'Opened', openedText);
+
+    if (!f.open) {
+      addRow(dl, 'Closed', (str(d.closedAt) ? dateLabel(d.closedAt) : 'Date not recorded'),
+        str(d.outcome) === 'won' ? 'win' : 'danger');
+    }
+
+    var touch = str(f.lastTouch) || WS.lastTouch(state, d);
+    if (touch) {
+      var rel = relDays(touch);
+      addRow(dl, 'Last contact', dateLabel(touch) + (rel ? ' · ' + rel : ''),
+        f.stale ? 'warn' : null);
+    } else {
+      addRow(dl, 'Last contact', 'Nothing logged');
+    }
+
+    if (str(d.email).trim()) addLinkRow(dl, 'Email', str(d.email).trim(), mailHref(d.email));
+    if (str(d.phone).trim()) addLinkRow(dl, 'Phone', str(d.phone).trim(), telHref(d.phone));
+    if (str(d.source).trim()) addRow(dl, 'Source', str(d.source).trim());
+
+    var left = $('print-head-left');
+    if (left) left.textContent = dealName(d) + (str(d.contact).trim() ? ' · ' + str(d.contact).trim() : '');
+    var right = $('print-head-right');
+    if (right) right.textContent = 'Call prep · as of ' + dateLabel(WS.today());
+  }
+
+  function renderNext(d, f) {
+    var line = $('next-line');
+    if (!line) return;
+    clear(line);
+    var action = str(d.nextAction).trim();
+    var when = str(d.nextDate).trim();
+
+    if (!f.open) {
+      line.className = 'next muted';
+      line.textContent = 'This deal is closed, so nothing is scheduled on it.';
+      return;
+    }
+    if (!action && !when) {
+      line.className = 'next unset';
+      line.textContent = 'Nothing scheduled. Decide the next step before you hang up.';
+      return;
+    }
+    line.className = 'next' + (!action || !when ? ' unset' : '');
+    if (action) {
+      line.appendChild(document.createTextNode(action));
+    } else {
+      line.appendChild(document.createTextNode('No action written down'));
+    }
+    var tail = el('span', 'k');
+    if (when) {
+      var rel = relDays(when);
+      tail.textContent = ' — due ' + dateLabel(when) + (rel ? ' (' + rel + ')' : '');
+    } else {
+      tail.textContent = ' — no date set';
+    }
+    line.appendChild(tail);
+  }
+
+  function renderNotes(d) {
+    var block = $('notes-block');
+    var body = $('notes-body');
+    var text = str(d.notes).replace(/\s+$/, '');
+    if (!body || !block) return;
+    if (!text) { block.hidden = true; body.textContent = ''; return; }
+    body.textContent = text;                     /* pre-wrap keeps the line breaks */
+    block.hidden = false;
+  }
+
+  function renderHistory(d) {
+    var list = $('hist');
+    var note = $('hist-note');
+    var printNote = $('hist-print-note');
+    if (!list) return;
+    clear(list);
+
+    var acts = WS.activitiesFor(state, d.id);    /* newest first */
+    if (note) {
+      note.textContent = acts.length
+        ? acts.length + ' ' + plural(acts.length, 'entry', 'entries') + ', newest first.'
+        : 'Nothing logged against this deal yet. The first entry appears here once you log the call below.';
+    }
+    if (printNote) {
+      if (acts.length > PRINT_HISTORY) {
+        printNote.textContent = (acts.length - PRINT_HISTORY) + ' older ' +
+          plural(acts.length - PRINT_HISTORY, 'entry is', 'entries are') + ' not printed.';
+      } else {
+        printNote.textContent = '';
+      }
+    }
+
+    for (var i = 0; i < acts.length; i++) {
+      var a = acts[i];
+      var li = el('li', i >= PRINT_HISTORY ? 'hist-extra' : null);
+
+      var head = el('div', 'hist-head');
+      var iso = WS.toISODate(WS.parseDate(a.at)) || '';
+      var rel = iso ? relDays(iso) : '';
+      head.appendChild(el('span', 'hist-when',
+        (iso ? dateLabel(iso) : 'Date unknown') + (rel ? ' · ' + rel : '')));
+      head.appendChild(el('span', 'badge', str(a.kind) || 'note'));
+      li.appendChild(head);
+
+      var tools = el('div', 'hist-actions no-print');
+      var del = el('button', 'btn-quiet btn-small', 'Remove');
+      del.type = 'button';
+      del.setAttribute('data-act', 'del');
+      del.setAttribute('data-id', str(a.id));
+      tools.appendChild(del);
+      head.appendChild(tools);       /* on the date row, so the log stays one line per entry */
+
+      var body = str(a.note).replace(/\s+$/, '');
+      li.appendChild(el('p', 'hist-note pre' + (body ? '' : ' empty'),
+        body || 'No detail written down.'));
+
+      list.appendChild(li);
+    }
+  }
+
+  /* ---------------- prep sheet ---------------- */
+
+  function objectionMatch(text) {
+    var want = str(text).trim().toLowerCase();
+    if (!want) return null;
+    var list = state.objections || [];
+    for (var i = 0; i < list.length; i++) {
+      if (str(list[i].trigger).trim().toLowerCase() === want) return list[i];
+    }
+    return null;
+  }
+
+  function renderObjectionList() {
+    var dl = $('objection-list');
+    if (!dl) return;
+    clear(dl);
+    var list = state.objections || [];
+    for (var i = 0; i < list.length; i++) {
+      var t = str(list[i].trigger).trim();
+      if (!t) continue;
+      var opt = document.createElement('option');
+      opt.value = t;                             /* set as a property, not markup */
+      dl.appendChild(opt);
+    }
+    var hint = $('objection-hint');
+    if (!hint) return;
+    clear(hint);
+    var a = document.createElement('a');
+    a.setAttribute('href', 'objections.html');
+    if (list.length) {
+      hint.appendChild(document.createTextNode('Type it, or pick one of the ' + list.length +
+        ' you have already answered. When it matches, that answer prints with this sheet. '));
+      a.textContent = 'Open the objections page';
+      hint.appendChild(a);
+      hint.appendChild(document.createTextNode('.'));
+    } else {
+      hint.appendChild(document.createTextNode('Type it in. You have no written answers yet — '));
+      a.textContent = 'start the objections page';
+      hint.appendChild(a);
+      hint.appendChild(document.createTextNode(' and anything you save there can be picked here, ' +
+        'with its answer printed on this sheet.'));
+    }
+  }
+
+  function renderObjectionAnswer(sheet) {
+    var box = $('objection-answer');
+    if (!box) return;
+    clear(box);
+    var found = objectionMatch(sheet.objection);
+    if (!found || !str(found.response).trim()) return;
+    var wrap = el('div', 'answer');
+    wrap.appendChild(el('p', 'answer-h', 'Your answer to this one'));
+    wrap.appendChild(el('p', 'pre', str(found.response).replace(/\s+$/, '')));
+    box.appendChild(wrap);
+  }
+
+  var PREP_LABELS = {
+    goal: 'The goal of this call',
+    question: 'The one question to ask',
+    objection: 'The objection you expect',
+    commitment: 'The commitment to ask for at the end'
+  };
+
+  /* The printed half of the checklist: answers as plain text, and a
+     ruled blank line for anything not filled in, so the sheet is still
+     worth carrying when it comes out half empty. */
+  function renderPrepPrint(sheet) {
+    var box = $('prep-print');
+    if (!box) return;
+    clear(box);
+    for (var i = 0; i < PREP_FIELDS.length; i++) {
+      var key = PREP_FIELDS[i];
+      var val = str(sheet[key]).trim();
+      var row = el('div', 'pp');
+      row.appendChild(el('span', 'pp-k', PREP_LABELS[key]));
+      if (val) row.appendChild(el('div', 'pp-v pre', val));
+      else row.appendChild(el('div', 'pp-v pp-blank'));
+      box.appendChild(row);
+    }
+  }
+
+  function syncPrepForm() {
+    var sheet = sheetFor(currentId);
+    for (var i = 0; i < PREP_FIELDS.length; i++) {
+      var input = $('prep-' + PREP_FIELDS[i]);
+      if (input) input.value = str(sheet[PREP_FIELDS[i]]);
+    }
+    formDealId = str(currentId);
+    setSaved(sheet.updated ? 'Saved ' + (relDays(sheet.updated) || 'earlier') + '.' : '', '');
+    renderPrepPrint(sheet);
+    renderObjectionAnswer(sheet);
+  }
+
+  function readPrepForm() {
+    var sheet = blankSheet();
+    for (var i = 0; i < PREP_FIELDS.length; i++) {
+      var input = $('prep-' + PREP_FIELDS[i]);
+      sheet[PREP_FIELDS[i]] = cleanLine(input ? input.value : '');
+    }
+    return sheet;
+  }
+
+  function setSaved(msg, kind) {
+    var n = $('prep-saved');
+    if (!n) return;
+    n.textContent = str(msg);
+    n.className = 'saved' + (kind === 'ok' ? ' is-ok' : (kind === 'err' ? ' is-err' : ''));
+  }
+
+  function savePrepNow(loud) {
+    if (prepTimer) { clearTimeout(prepTimer); prepTimer = null; }
+    if (!formDealId) return false;
+    var sheet = readPrepForm();
+    if (sheetIsEmpty(sheet)) {
+      delete prep[formDealId];
+    } else {
+      sheet.updated = WS.today();
+      prep[formDealId] = sheet;
+    }
+    var ok = persistPrep();
+    renderPrepPrint(sheet);
+    renderObjectionAnswer(sheet);
+    if (ok) {
+      setSaved(sheetIsEmpty(sheet) ? 'Nothing to save yet.' : 'Saved in this browser.', 'ok');
+      if (savedTimer) clearTimeout(savedTimer);
+      savedTimer = setTimeout(function () {
+        var s = sheetFor(currentId);
+        setSaved(s.updated ? 'Saved ' + (relDays(s.updated) || 'earlier') + '.' : '', '');
+      }, 4000);
+    } else {
+      setSaved('Not saved: this browser is blocking storage.', 'err');
+      if (loud) {
+        setStatus('The prep lines could not be stored in this browser. Print or copy them before ' +
+          'you close the tab.', 'err');
+      }
+    }
+    return ok;
+  }
+
+  function schedulePrepSave() {
+    setSaved('Unsaved changes.', '');
+    if (prepTimer) clearTimeout(prepTimer);
+    prepTimer = setTimeout(function () { savePrepNow(false); }, 700);
+  }
+
+  /* ---------------- after the call ---------------- */
+
+  function buildStageOptions() {
+    var sel = $('out-stage');
+    if (!sel) return;
+    clear(sel);
+    for (var i = 0; i < WS.STAGES.length; i++) {
+      var opt = document.createElement('option');
+      opt.value = WS.STAGES[i];
+      opt.textContent = WS.STAGES[i];
+      sel.appendChild(opt);
+    }
+  }
+
+  function resetOutcomeForm() {
+    var d = currentDeal();
+    var note = $('out-note');
+    if (note) note.value = '';
+    var kind = $('kind-call');
+    if (kind) kind.checked = true;
+    var action = $('out-action');
+    if (action) action.value = d ? str(d.nextAction) : '';
+    var when = $('out-date');
+    if (when) when.value = d ? str(d.nextDate) : '';
+    var stage = $('out-stage');
+    if (stage) stage.value = d ? (str(d.stage) || 'Lead') : 'Lead';
+
+    var after = $('after-note');
+    if (after) {
+      after.textContent = d && !WS.isOpen(d)
+        ? 'This deal is closed. You can still log a note here, and picking an open stage puts it ' +
+          'back in the pipeline.'
+        : 'One entry in the history, the next step, and the stage. All of it stays in this browser.';
+    }
+  }
+
+  function selectedKind() {
+    var names = ['call', 'email', 'meeting', 'note'];
+    for (var i = 0; i < names.length; i++) {
+      var r = $('kind-' + names[i]);
+      if (r && r.checked) return names[i];
+    }
+    return 'call';
+  }
+
+  function handleOutcome(e) {
+    e.preventDefault();
+    var d = currentDeal();
+    if (!d) { setStatus('Pick a deal first.', 'err'); return; }
+
+    var noteEl = $('out-note');
+    var noteText = str(noteEl && noteEl.value).replace(/\s+$/, '');
+    var kind = selectedKind();
+    var action = str(($('out-action') || {}).value).trim();
+    var when = str(($('out-date') || {}).value).trim();
+    var stage = str(($('out-stage') || {}).value).trim() || str(d.stage);
+
+    var wasOpen = WS.isOpen(d);
+    var closing = (stage === 'Won' || stage === 'Lost');
+    var reopening = !wasOpen && !closing;
+
+    var changedAction = action !== str(d.nextAction).trim();
+    var changedDate = when !== str(d.nextDate).trim();
+    var changedStage = stage !== str(d.stage);
+
+    if (!noteText.trim() && !changedAction && !changedDate && !changedStage) {
+      setStatus('Nothing to log. Write what happened, or change the next step or the stage.', 'err');
+      focusOn(noteEl);
+      return;
+    }
+
+    if (wasOpen && closing) {
+      if (!ask('Mark ' + dealName(d) + ' as ' + stage + '?\n\n' +
+        'That closes the deal, takes it out of the pipeline and clears its next step. ' +
+        'You can reopen it here later if this was wrong.')) return;
+    }
+    if (reopening) {
+      if (!ask('Put ' + dealName(d) + ' back in the pipeline at stage ' + stage + '?\n\n' +
+        'Its closed date and its ' + (str(d.outcome) === 'won' ? 'Won' : 'Lost') +
+        ' result will be cleared.')) return;
+    }
+
+    var parts = [];
+
+    if (noteText.trim()) {
+      state.activities.push(WS.newActivity(d.id, kind, noteText));
+      parts.push('Logged the ' + kind + '.');
+    }
+
+    d.stage = stage;
+    if (closing) {
+      d.outcome = (stage === 'Won') ? 'won' : 'lost';
+      d.closedAt = WS.today();
+      d.nextAction = '';
+      d.nextDate = '';
+      parts.push('Marked ' + stage + ' on ' + dateLabel(d.closedAt) + ' and cleared the next step.');
+    } else {
+      if (reopening) {
+        d.outcome = '';
+        d.closedAt = '';
+        parts.push('Reopened at stage ' + stage + '.');
+      } else if (changedStage) {
+        parts.push('Stage is now ' + stage + '.');
+      }
+      d.nextAction = action;
+      d.nextDate = when;
+      if (action && when) {
+        parts.push('Next: ' + action + ' on ' + dateLabel(when) + '.');
+      } else if (action) {
+        parts.push('Next: ' + action + ', with no date.');
+      } else if (when) {
+        parts.push('A date is set for ' + dateLabel(when) + ', but no action is written down.');
+      }
+      if (!action || !when) {
+        parts.push('This deal has no complete next step, so it will sit at the top of the ' +
+          'Today list until it gets one.');
+      }
+    }
+
+    commit(parts.join(' '));
+    resetOutcomeForm();
+    focusOn($('out-note'));
+  }
+
+  function handleHistoryClick(e) {
+    var t = e.target;
+    if (!t || t.getAttribute('data-act') !== 'del') return;
+    var id = t.getAttribute('data-id');
+    if (!id) return;
+    var acts = state.activities || [];
+    var found = null, idx = -1;
+    for (var i = 0; i < acts.length; i++) {
+      if (str(acts[i].id) === str(id)) { found = acts[i]; idx = i; break; }
+    }
+    if (!found) return;
+    var preview = str(found.note).replace(/\s+/g, ' ').slice(0, 60);
+    if (!ask('Delete this ' + str(found.kind) + ' entry?\n\n' +
+      (preview ? '"' + preview + '"\n\n' : '') + 'It cannot be undone.')) return;
+    state.activities.splice(idx, 1);
+    commit('Entry deleted.');
+  }
+
+  /* ---------------- backup ---------------- */
+
+  function backupObject() {
+    var s;
+    try { s = WS.migrate(state); } catch (e) { s = WS.emptyState(); }
+    s.prep = { version: 1, sheets: prunedPrep() };
+    return s;
+  }
+
+  function exportBackup() {
+    var data;
+    try { data = JSON.stringify(backupObject(), null, 2); }
+    catch (e) { setStatus('Could not build the backup file.', 'err'); return; }
+    try {
+      if (typeof Blob === 'undefined' || !document.body) throw new Error('no blob');
+      var api = (typeof URL !== 'undefined' && URL && URL.createObjectURL) ? URL : null;
+      if (!api) throw new Error('no url');
+      var blob = new Blob([data], { type: 'application/json' });
+      var url = api.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = WS.exportFilename();
+      a.rel = 'noopener';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        try { if (a.parentNode) a.parentNode.removeChild(a); } catch (err) { /* ignore */ }
+        try { api.revokeObjectURL(url); } catch (err) { /* ignore */ }
+      }, 5000);
+      setStatus('Backup downloaded as ' + WS.exportFilename() +
+        '. Keep it somewhere private and never commit it to a repository.', 'ok');
+    } catch (e) {
+      var ok = false;
+      try { ok = WS.exportJSON(state); } catch (err) { ok = false; }
+      setStatus(ok
+        ? 'Backup downloaded, without the prep sheets - this browser blocked the full export.'
+        : 'This browser would not download the backup file.', ok ? 'ok' : 'err');
+    }
+  }
+
+  function looksLikeWorkspace(o) {
+    if (Object.prototype.toString.call(o) === '[object Array]') return true;
+    if (!o || typeof o !== 'object') return false;
+    var arr = function (v) { return Object.prototype.toString.call(v) === '[object Array]'; };
+    return arr(o.deals) || arr(o.activities) || arr(o.objections) ||
+      (!!o.settings && typeof o.settings === 'object') || o.version === 1 || arr(o.pipeline);
+  }
+
+  /* Reads the file once and keeps both halves: the shared workspace,
+     which WS.migrate() validates, and the prep sheets WS ignores. */
+  function readBackup(file, cb) {
+    if (!file) { cb(new Error('No file chosen.')); return; }
+    if (typeof FileReader === 'undefined') { cb(new Error('This browser cannot read files.')); return; }
+    if (typeof file.size === 'number' && file.size > 25 * 1024 * 1024) {
+      cb(new Error('That file is too big to be a workspace backup.'));
+      return;
+    }
+    var reader;
+    try { reader = new FileReader(); } catch (e) { cb(new Error('This browser cannot read files.')); return; }
+    reader.onerror = function () { cb(new Error('Could not read that file.')); };
+    reader.onabort = function () { cb(new Error('Reading that file was cancelled.')); };
+    reader.onload = function () {
+      var parsed;
+      try { parsed = JSON.parse(String(reader.result)); }
+      catch (e) { cb(new Error('That file is not valid JSON.')); return; }
+      if (!looksLikeWorkspace(parsed)) {
+        cb(new Error('That JSON file does not look like a workspace backup.'));
+        return;
+      }
+      var next;
+      try { next = WS.migrate(parsed); } catch (e) { cb(new Error('That backup could not be read.')); return; }
+      var sheets = {};
+      try { sheets = normalisePrep(parsed && parsed.prep); } catch (e) { sheets = {}; }
+      cb(null, { state: next, prep: sheets });
+    };
+    try { reader.readAsText(file); } catch (e) { cb(new Error('Could not read that file.')); }
+  }
+
+  function countPrep(obj) {
+    var n = 0;
+    for (var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) n++; }
+    return n;
+  }
+
+  function hideImportChoice() {
+    pendingImport = null;
+    show($('import-choice'), false);
+    var input = $('import-file');
+    if (input) { try { input.value = ''; } catch (e) { /* ignore */ } }
+  }
+
+  function wireBackup() {
+    var exportBtn = $('export-btn');
+    if (exportBtn) exportBtn.addEventListener('click', exportBackup);
+
+    var file = $('import-file');
+    if (file) {
+      file.addEventListener('change', function () {
+        var chosen = file.files && file.files[0];
+        if (!chosen) return;
+        readBackup(chosen, function (err, payload) {
+          if (err) {
+            hideImportChoice();
+            setStatus(err.message || 'That backup could not be read.', 'err');
+            return;
+          }
+          pendingImport = payload;
+          var summary = $('import-summary');
+          if (summary) {
+            summary.textContent = 'That file holds ' + payload.state.deals.length + ' deal(s), ' +
+              payload.state.activities.length + ' activity entr(ies), ' +
+              payload.state.objections.length + ' objection(s) and ' +
+              countPrep(payload.prep) + ' prep sheet(s). Nothing has been changed yet.';
+          }
+          show($('import-choice'), true);
+          setStatus('', '');
+        });
+      });
+    }
+
+    var replace = $('import-replace');
+    if (replace) {
+      replace.addEventListener('click', function () {
+        if (!pendingImport) return;
+        if (!ask('Replace everything in this browser with the backup?\n\n' +
+          'Your current ' + (state.deals || []).length + ' deal(s), their history and all prep ' +
+          'sheets will be thrown away. This cannot be undone.')) return;
+        state = pendingImport.state;
+        prep = pendingImport.prep;
+        hideImportChoice();
+        currentId = '';
+        formDealId = '';               /* the form on screen belongs to data that is gone */
+        persistPrep();
+        commit('Backup restored. This browser now holds ' + (state.deals || []).length + ' deal(s).');
+        selectDeal(defaultId());
+      });
+    }
+
+    var merge = $('import-merge');
+    if (merge) {
+      merge.addEventListener('click', function () {
+        if (!pendingImport) return;
+        if (!ask('Merge the backup into what is already here?\n\n' +
+          'Records that share an id will be overwritten by the backup, and its settings will ' +
+          'replace yours. This cannot be undone.')) return;
+        var merged;
+        try { merged = WS.merge(state, pendingImport.state); } catch (e) { merged = null; }
+        if (!merged) { setStatus('That backup could not be merged.', 'err'); return; }
+        state = merged;
+        for (var id in pendingImport.prep) {
+          if (Object.prototype.hasOwnProperty.call(pendingImport.prep, id)) {
+            prep[id] = pendingImport.prep[id];
+          }
+        }
+        hideImportChoice();
+        formDealId = '';               /* let the merged sheets win over what is on screen */
+        persistPrep();
+        commit('Backup merged. This browser now holds ' + (state.deals || []).length + ' deal(s).');
+        selectDeal(currentId || defaultId());
+      });
+    }
+
+    var cancel = $('import-cancel');
+    if (cancel) {
+      cancel.addEventListener('click', function () {
+        hideImportChoice();
+        setStatus('Import cancelled. Nothing was changed.', '');
+      });
+    }
+  }
+
+  /* ---------------- render ---------------- */
+
+  function renderEmpty() {
+    var body = $('empty-body');
+    if (body) {
+      body.textContent = 'Call prep reads the same deal list as the rest of the workspace, and ' +
+        'there is nothing in this browser yet. Add a deal on the Today page and it will appear ' +
+        'in the picker here, ready to brief and print.';
+    }
+    show($('empty'), true);
+    show($('picker-section'), false);
+    show($('sheet'), false);
+  }
+
+  function render() {
+    var deals = state.deals || [];
+    if (!deals.length) { renderEmpty(); return; }
+    show($('empty'), false);
+    show($('picker-section'), true);
+
+    if (!currentId || !WS.byId(deals, currentId)) currentId = defaultId();
+
+    renderPicker();
+    renderObjectionList();
+
+    var d = currentDeal();
+    if (!d) { show($('sheet'), false); return; }
+    var f = WS.flags(state, d);
+
+    renderHead(d, f);
+    renderNext(d, f);
+    renderNotes(d);
+    renderHistory(d);
+    show($('sheet'), true);
+  }
+
+  function selectDeal(id) {
+    savePrepNow(false);            /* writes to formDealId, i.e. the deal leaving the screen */
+    currentId = str(id);
+    updateURL(currentId);
+    render();
+    syncPrepForm();
+    resetOutcomeForm();
+  }
+
+  /* ---------------- wiring ---------------- */
+
+  function wirePrepForm() {
+    var form = $('prep-form');
+    if (!form) return;
+    for (var i = 0; i < PREP_FIELDS.length; i++) {
+      var input = $('prep-' + PREP_FIELDS[i]);
+      if (!input) continue;
+      input.addEventListener('input', schedulePrepSave);
+      input.addEventListener('change', function () { savePrepNow(false); });
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      savePrepNow(true);
+    });
+    var clearBtn = $('prep-clear');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        var d = currentDeal();
+        if (!d) return;
+        if (sheetIsEmpty(readPrepForm())) { setSaved('Nothing to clear.', ''); return; }
+        if (!ask('Clear the four prep lines for ' + dealName(d) + '?\n\nThis cannot be undone.')) return;
+        for (var k = 0; k < PREP_FIELDS.length; k++) {
+          var input = $('prep-' + PREP_FIELDS[k]);
+          if (input) input.value = '';
+        }
+        savePrepNow(true);
+        setSaved('Cleared.', 'ok');
+        focusOn($('prep-goal'));
+      });
+    }
+  }
+
+  function wirePicker() {
+    var sel = $('deal-select');
+    if (sel) {
+      sel.addEventListener('change', function () {
+        selectDeal(sel.value);
+        setStatus('', '');
+      });
+    }
+    var form = $('pick-form');
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+    var printBtn = $('print-btn');
+    if (printBtn) {
+      printBtn.addEventListener('click', function () {
+        savePrepNow(false);
+        try { window.print(); }
+        catch (e) { setStatus('This browser would not open the print dialog. Use the browser menu.', 'err'); }
+      });
+    }
+  }
+
+  function wireOutcome() {
+    var form = $('outcome-form');
+    if (form) form.addEventListener('submit', handleOutcome);
+
+    var chips = $('date-chips');
+    if (chips) {
+      chips.addEventListener('click', function (e) {
+        var t = e.target;
+        if (!t || !t.getAttribute) return;
+        var days = t.getAttribute('data-days');
+        if (days === null) return;
+        var input = $('out-date');
+        if (!input) return;
+        input.value = (days === 'clear') ? '' : (WS.addDays(WS.today(), parseInt(days, 10)) || '');
+        focusOn(input);
+      });
+    }
+
+    var hist = $('hist');
+    if (hist) hist.addEventListener('click', handleHistoryClick);
+  }
+
+  /* ---------------- start ---------------- */
+
+  function start() {
+    var navSlot = $('nav-slot');
+    if (navSlot) navSlot.innerHTML = WS.nav('prep.html');        /* fixed chrome, no user data */
+    var privacy = $('privacy');
+    if (privacy) privacy.innerHTML = WS.privacyNote();           /* fixed chrome, no user data */
+
+    if (!storageWorks()) {
+      var warn = $('storage-warning');
+      if (warn) {
+        warn.textContent = 'This browser is not letting the page store anything ' +
+          '(private window, or site data is blocked). You can read and print what is already here, ' +
+          'but prep lines and anything you log will be gone when you close the tab.';
+        warn.hidden = false;
+      }
+    }
+
+    loadState();
+    loadPrep();
+    buildStageOptions();
+    wirePicker();
+    wirePrepForm();
+    wireOutcome();
+    wireBackup();
+
+    var wanted = readParamId();
+    var missing = wanted && !WS.byId(state.deals, wanted);
+    currentId = (wanted && !missing) ? wanted : defaultId();
+
+    if (currentId) updateURL(currentId);
+    render();
+    syncPrepForm();
+    resetOutcomeForm();
+
+    if (missing) {
+      setStatus('No deal in this browser matches that link. It may have been on another machine, ' +
+        'or removed. Showing the next call instead.', 'err');
+    }
+
+    /* last chance to keep the four lines if the tab goes away mid-edit */
+    window.addEventListener('pagehide', function () { savePrepNow(false); });
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') savePrepNow(false);
+    });
+    window.addEventListener('beforeprint', function () { savePrepNow(false); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>

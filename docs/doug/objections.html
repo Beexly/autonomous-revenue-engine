@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Objections &mdash; Doug's sales workspace</title>
+  <meta name="description" content="A searchable library of what prospects say and how you answer it. Starts with six common objections, then it is yours to edit, tag, and add to. Copy a response straight into an email. Runs offline in your browser; nothing is uploaded.">
+  <style>
+    html, body {
+      margin: 0;
+      background: #0e0e0e;
+      color: #e8e4d9;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    body { font-size: 15px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+    main { max-width: 640px; margin: 40px auto; padding: 0 16px; }
+    /* several rows below are display:flex, which would otherwise beat [hidden] */
+    [hidden] { display: none !important; }
+
+    h1 { font-size: 22px; letter-spacing: -0.03em; margin: 0 0 6px; }
+    p.lede { color: #b7b2a6; margin-top: 0; }
+    h2 {
+      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #b7b2a6; font-weight: 650; margin: 34px 0 6px;
+    }
+    h3 { font-size: 15px; margin: 0; font-weight: 650; }
+    p { margin: 0 0 10px; }
+    a { color: #e8e4d9; }
+    .muted { color: #b7b2a6; }
+    .section-note { color: #b7b2a6; font-size: 13px; margin: 0 0 12px; }
+    .pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+    /* ---- nav (markup comes from WS.nav) ---- */
+    .nav {
+      display: flex; flex-wrap: wrap;
+      border-bottom: 1px solid #3a3a36; margin: 0 0 24px;
+    }
+    .nav-item {
+      padding: 8px 12px 7px 0; margin-right: 14px; margin-bottom: -1px;
+      color: #b7b2a6; text-decoration: none; font-size: 14px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-item:hover, .nav-item:focus { color: #e8e4d9; }
+    .nav-item.active { color: #e8e4d9; font-weight: 650; border-bottom-color: #e8e4d9; }
+
+    /* ---- forms ---- */
+    label { display: block; font-size: 12px; letter-spacing: 0.04em; color: #b7b2a6; margin-bottom: 4px; }
+    input, select, textarea {
+      width: 100%; box-sizing: border-box;
+      background: #161616; color: #e8e4d9; border: 1px solid #3a3a36;
+      padding: 9px 10px;
+      font: 15px/1.4 ui-sans-serif, system-ui, sans-serif;
+    }
+    textarea { resize: vertical; }
+    input:focus, select:focus, textarea:focus, button:focus, a:focus {
+      outline: 2px solid #b7b2a6; outline-offset: 1px;
+    }
+    .field { margin-bottom: 12px; }
+    .hint { font-size: 12px; color: #b7b2a6; margin: -6px 0 12px; }
+    input[type="search"] { appearance: none; -webkit-appearance: none; }
+
+    button {
+      background: #e8e4d9; color: #111; border: 0;
+      font-weight: 650; padding: 10px 16px; cursor: pointer;
+      font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px;
+    }
+    button:disabled { opacity: 0.55; cursor: default; }
+    .btn-quiet {
+      background: transparent; color: #e8e4d9; border: 1px solid #3a3a36; font-weight: 650;
+    }
+    .btn-quiet:hover { border-color: #b7b2a6; }
+    .btn-small { padding: 6px 10px; font-size: 13px; }
+    .btn-danger { color: #d46a6a; }
+    .btn-danger:hover { border-color: #d46a6a; }
+    .actions { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+    /* ---- status / banners ---- */
+    .status { border: 1px solid #3a3a36; background: #161616; padding: 10px 12px; font-size: 14px; margin-bottom: 14px; }
+    .status-ok { border-left: 3px solid #7fb069; }
+    .status-err { border-left: 3px solid #d46a6a; color: #d46a6a; }
+    .banner {
+      border: 1px solid #d46a6a; color: #d46a6a; background: #161616;
+      padding: 10px 12px; font-size: 14px;
+    }
+    .panel { border: 1px solid #3a3a36; background: #161616; padding: 14px; }
+    .panel h3 { margin-bottom: 6px; }
+    .panel p:last-child { margin-bottom: 0; }
+
+    /* ---- search + filters ---- */
+    .searchbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; }
+    .searchbar .grow { flex: 1 1 220px; margin-bottom: 0; }
+    .filters { margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .filters-label { font-size: 12px; letter-spacing: 0.04em; color: #b7b2a6; margin-right: 2px; }
+    .tag-btn {
+      background: transparent; color: #b7b2a6; border: 1px solid #3a3a36;
+      font-weight: 650; font-size: 12px; padding: 4px 8px; cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .tag-btn:hover { border-color: #b7b2a6; color: #e8e4d9; }
+    .tag-btn[aria-pressed="true"] { color: #111; background: #e8e4d9; border-color: #e8e4d9; }
+    .count { font-size: 13px; color: #b7b2a6; margin: 12px 0 0; }
+
+    /* ---- entries ---- */
+    ol.entries { list-style: none; margin: 14px 0 0; padding: 0; }
+    li.entry {
+      border: 1px solid #3a3a36; background: #161616;
+      padding: 12px 14px; margin: 0 0 12px;
+    }
+    li.entry.editing { border-color: #d4a24a; }
+    .trigger { font-size: 15px; font-weight: 650; margin: 0 0 6px; overflow-wrap: anywhere; }
+    .response { font-size: 14px; margin: 0 0 8px; color: #e8e4d9; }
+    mark { background: #3a3a36; color: #e8e4d9; padding: 0 1px; }
+    ul.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; padding: 0; }
+    ul.tags li {
+      font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase;
+      font-weight: 650; padding: 2px 6px; border: 1px solid #3a3a36; color: #b7b2a6;
+    }
+    .entry-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .editing-flag { font-size: 12px; color: #d4a24a; margin: 0 0 6px; }
+
+    /* ---- backup ---- */
+    .backup-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    input[type="file"] { border: 1px dashed #3a3a36; padding: 8px; font-size: 13px; width: auto; }
+
+    .privacy-note {
+      color: #b7b2a6; font-size: 13px; line-height: 1.5;
+      border-top: 1px solid #3a3a36; padding-top: 14px; margin-top: 34px;
+    }
+    footer { color: #b7b2a6; font-size: 12px; margin: 10px 0 40px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    @media print {
+      @page { margin: 12mm; }
+      html, body { background: #fff; color: #000; font-size: 10.5pt; line-height: 1.35; }
+      main { max-width: none; margin: 0; padding: 0; }
+      .nav, form, button, .filters, .searchbar, .banner, .status,
+      .privacy-note, footer, noscript, input[type="file"], .entry-actions,
+      .no-print { display: none !important; }
+      li.entry { border: 1pt solid #999; background: #fff; page-break-inside: avoid; }
+      mark { background: transparent; color: #000; font-weight: 650; }
+      ul.tags li { color: #333; border-color: #999; }
+      .muted, .section-note, .count { color: #333; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div id="nav-slot"></div>
+
+  <h1>Objections</h1>
+  <p class="lede">
+    Read these before the call so the answer is already in your head, not on the screen in front of
+    you. A prospect can hear a script being read, so take the shape of the reply and say it in your
+    own words.
+  </p>
+
+  <noscript>
+    <p class="banner">
+      This page needs JavaScript. It runs entirely in your browser and sends nothing anywhere, but
+      with scripting turned off it cannot read the entries saved on this device.
+    </p>
+  </noscript>
+
+  <p id="storage-warning" class="banner" hidden></p>
+  <p id="status" class="status" role="status" aria-live="polite" hidden></p>
+
+  <section aria-labelledby="find-h">
+    <h2 id="find-h">Find one</h2>
+    <form id="search-form">
+      <div class="searchbar">
+        <div class="field grow">
+          <label for="q">Search triggers, responses and tags</label>
+          <input type="search" id="q" name="q" autocomplete="off" spellcheck="false"
+                 placeholder="price, timing, send me information">
+        </div>
+        <button type="button" class="btn-quiet" id="clear-search">Clear</button>
+        <button type="button" class="btn-quiet" id="jump-add">Add an entry</button>
+      </div>
+    </form>
+    <div class="filters" id="filters" hidden>
+      <span class="filters-label" id="filters-label">Tags</span>
+      <span id="tag-buttons"></span>
+      <button type="button" class="tag-btn" id="clear-tags" hidden>Clear tags</button>
+    </div>
+    <p class="count" id="count" role="status" aria-live="polite"></p>
+  </section>
+
+  <section aria-labelledby="library-h">
+    <h2 id="library-h" class="sr-only">Library</h2>
+    <div class="panel" id="empty" hidden></div>
+    <ol class="entries" id="list"></ol>
+  </section>
+
+  <section aria-labelledby="form-h">
+    <h2 id="form-h">Add an entry</h2>
+    <p class="section-note" id="form-note">
+      Write down what you actually said the last time this came up. A rough answer you have already
+      thought through beats a polished one you have to invent on the call.
+    </p>
+    <form id="entry-form">
+      <p id="form-error" class="banner" role="alert" hidden></p>
+      <div class="field">
+        <label for="obj-trigger">What they say</label>
+        <input type="text" id="obj-trigger" name="trigger" autocomplete="off" maxlength="400">
+      </div>
+      <div class="field">
+        <label for="obj-response">How you answer it</label>
+        <textarea id="obj-response" name="response" rows="6" autocomplete="off" maxlength="6000"></textarea>
+      </div>
+      <div class="field">
+        <label for="obj-tags">Tags, separated by commas</label>
+        <input type="text" id="obj-tags" name="tags" autocomplete="off" maxlength="300" list="tag-list">
+        <datalist id="tag-list"></datalist>
+      </div>
+      <p class="hint">Tags are how you find this again in a hurry: price, timing, incumbent, budget.</p>
+      <div class="actions">
+        <button type="submit" id="save-btn">Save entry</button>
+        <button type="button" class="btn-quiet" id="cancel-edit" hidden>Cancel</button>
+      </div>
+    </form>
+  </section>
+
+  <section aria-labelledby="backup-h">
+    <h2 id="backup-h">Backup</h2>
+    <p class="section-note">
+      This library, your deals and your activity log live in this browser only. Clearing site data, a
+      new laptop, or a different browser means starting empty. Export a .json now and again, and keep
+      it somewhere private.
+    </p>
+    <div class="backup-row">
+      <button type="button" id="export-btn">Export backup</button>
+      <label class="sr-only" for="import-file">Restore from a backup file</label>
+      <input type="file" id="import-file" accept="application/json,.json">
+    </div>
+    <div class="panel" id="import-choice" style="margin-top:12px" hidden>
+      <h3>Backup read</h3>
+      <p id="import-summary"></p>
+      <div class="actions">
+        <button type="button" id="import-replace">Replace everything</button>
+        <button type="button" class="btn-quiet" id="import-merge">Merge into what is here</button>
+        <button type="button" class="btn-quiet" id="import-cancel">Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="privacy"></div>
+
+  <footer>Works offline. Open it from a file, a plane, anywhere.</footer>
+</main>
+<script>
+/* ------------------------------------------------------------------
+   Doug's sales workspace - shared data layer.
+
+   Embedded verbatim in every page. No dependencies, no module syntax,
+   no side effects on load: this block only defines the global `WS`.
+   It touches localStorage / the DOM only when you call it.
+
+   PRIVACY: every byte of Doug's client data lives in this browser's
+   localStorage under WS.KEY. Nothing is uploaded, there is no
+   telemetry, and no client data may ever be written into the repo.
+   Backups go out through WS.exportJSON() as a file Doug saves
+   somewhere private - never committed.
+
+   Conventions:
+     - dates on records are ISO "yyyy-mm-dd" (activity `at` is a full
+       ISO datetime). "" always means UNSET.
+     - WS.daysBetween() returns NaN for unparseable input; every WS
+       predicate guards for that, and WS.migrate() guarantees stored
+       dates are parseable, so pages that use migrated state are safe.
+   ------------------------------------------------------------------ */
+var WS = (function () {
+  'use strict';
+
+  var KEY = 'doug.workspace.v1';
+  var VERSION = 1;
+
+  var STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation', 'Won', 'Lost'];
+  var OPEN_STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation'];
+  var CLOSED_STAGES = ['Won', 'Lost'];
+  var KINDS = ['call', 'email', 'meeting', 'note'];
+
+  var STALE_DAYS = 14;
+  var DEFAULT_CYCLE_DAYS = 30;
+  var DEFAULT_CURRENCY = 'USD';
+
+  /* Rough, editable odds per stage - used by the forecast page for a
+     weighted number. Deliberately conservative. */
+  var STAGE_PROBABILITY = {
+    'Lead': 0.05,
+    'Contacted': 0.15,
+    'Meeting': 0.30,
+    'Proposal': 0.50,
+    'Negotiation': 0.70,
+    'Won': 1,
+    'Lost': 0
+  };
+
+  var NAV_ITEMS = [
+    ['index.html', 'Today'],
+    ['pipeline.html', 'Pipeline'],
+    ['forecast.html', 'Forecast'],
+    ['prep.html', 'Call prep'],
+    ['objections.html', 'Objections']
+  ];
+
+  var CURRENCY_SYMBOLS = {
+    USD: '$', CAD: 'CA$', AUD: 'A$', NZD: 'NZ$', EUR: '€', GBP: '£',
+    JPY: '¥', CNY: '¥', INR: '₹', CHF: 'CHF ', SEK: 'kr ',
+    NOK: 'kr ', DKK: 'kr ', ZAR: 'R', BRL: 'R$', MXN: 'MX$', SGD: 'S$', HKD: 'HK$'
+  };
+
+  /* ---------------- tiny helpers ---------------- */
+
+  function isObj(v) { return !!v && typeof v === 'object' && !isArr(v); }
+  function isArr(v) { return Object.prototype.toString.call(v) === '[object Array]'; }
+
+  function text(v) {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string') return v.trim();
+    if (typeof v === 'number') return isFinite(v) ? String(v) : '';
+    if (typeof v === 'boolean') return v ? 'true' : '';
+    if (isArr(v)) return v.map(text).filter(Boolean).join(', ');
+    return '';
+  }
+
+  function toNum(v, dflt) {
+    if (typeof v === 'number') return isFinite(v) ? v : dflt;
+    if (typeof v === 'string') {
+      var cleaned = v.replace(/[^0-9.\-]/g, '');
+      if (cleaned && cleaned !== '-' && cleaned !== '.') {
+        var n = parseFloat(cleaned);
+        if (isFinite(n)) return n;
+      }
+    }
+    return dflt;
+  }
+
+  /* first non-empty value among several possible (legacy) key names */
+  function pick(o, names) {
+    for (var i = 0; i < names.length; i++) {
+      var v = o[names[i]];
+      if (v !== undefined && v !== null && v !== '') return v;
+    }
+    return '';
+  }
+
+  function uid() {
+    try {
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.randomUUID === 'function') {
+        return crypto.randomUUID();
+      }
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.getRandomValues === 'function') {
+        var b = new Uint8Array(16);
+        crypto.getRandomValues(b);
+        b[6] = (b[6] & 0x0f) | 0x40;
+        b[8] = (b[8] & 0x3f) | 0x80;
+        var hex = '';
+        for (var i = 0; i < 16; i++) {
+          hex += (b[i] + 0x100).toString(16).slice(1);
+          if (i === 3 || i === 5 || i === 7 || i === 9) hex += '-';
+        }
+        return hex;
+      }
+    } catch (e) { /* fall through */ }
+    return 'id-' + Date.now().toString(36) + '-' +
+      Math.random().toString(36).slice(2, 10) +
+      Math.random().toString(36).slice(2, 6);
+  }
+
+  /* ---------------- escaping (every page renders user text) ------ */
+
+  var ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  var ESC_ATTR = {
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    '`': '&#96;', '=': '&#61;', '/': '&#47;'
+  };
+
+  function esc(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"']/g, function (c) { return ESC[c]; });
+  }
+
+  function escAttr(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"'`=\/]/g, function (c) { return ESC_ATTR[c]; });
+  }
+
+  /* ---------------- dates ---------------- */
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function toISODate(d) {
+    if (!(d instanceof Date) || isNaN(d.getTime())) return '';
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+
+  /* Accepts a Date, a timestamp, "yyyy-mm-dd" (read as LOCAL midnight so
+     the day never shifts) or any ISO datetime. Returns Date or null. */
+  function parseDate(s) {
+    if (s instanceof Date) return isNaN(s.getTime()) ? null : s;
+    if (typeof s === 'number' && isFinite(s)) {
+      var dn = new Date(s);
+      return isNaN(dn.getTime()) ? null : dn;
+    }
+    if (typeof s !== 'string') return null;
+    var v = s.trim();
+    if (!v) return null;
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(v);
+    if (m) {
+      var y = +m[1], mo = +m[2], da = +m[3];
+      if (mo < 1 || mo > 12 || da < 1 || da > 31) return null;
+      var d = new Date(y, mo - 1, da, 0, 0, 0, 0);
+      if (isNaN(d.getTime()) || d.getMonth() !== mo - 1) return null;
+      return d;
+    }
+    var slash = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(v);
+    if (slash) {
+      var d2 = new Date(+slash[3], +slash[1] - 1, +slash[2], 0, 0, 0, 0);
+      return isNaN(d2.getTime()) ? null : d2;
+    }
+    var d3 = new Date(v);
+    return isNaN(d3.getTime()) ? null : d3;
+  }
+
+  function today() { return toISODate(new Date()); }
+  function now() { return new Date().toISOString(); }
+
+  /* whole days from a to b; positive when b is later. NaN if unparseable. */
+  function daysBetween(a, b) {
+    var da = parseDate(a), db = parseDate(b);
+    if (!da || !db) return NaN;
+    var ua = Date.UTC(da.getFullYear(), da.getMonth(), da.getDate());
+    var ub = Date.UTC(db.getFullYear(), db.getMonth(), db.getDate());
+    return Math.round((ub - ua) / 86400000);
+  }
+
+  function addDays(dateish, n) {
+    var d = parseDate(dateish);
+    if (!d) return '';
+    var out = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    out.setDate(out.getDate() + (toNum(n, 0) | 0));
+    return toISODate(out);
+  }
+
+  function laterISO(a, b) {
+    if (!a) return b || '';
+    if (!b) return a || '';
+    return a > b ? a : b; /* ISO dates sort lexicographically */
+  }
+
+  function fmtDate(v, opts) {
+    var d = parseDate(v);
+    if (!d) return '';
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.DateTimeFormat === 'function') {
+        var o = isObj(opts) ? opts : { month: 'short', day: 'numeric' };
+        return new Intl.DateTimeFormat(undefined, o).format(d);
+      }
+    } catch (e) { /* fall through */ }
+    return toISODate(d);
+  }
+
+  /* ---------------- money ---------------- */
+
+  function normCurrency(c) {
+    var v = text(c).toUpperCase();
+    return /^[A-Z]{3}$/.test(v) ? v : DEFAULT_CURRENCY;
+  }
+
+  function group3(n) {
+    var s = String(Math.round(Math.abs(n)));
+    var out = '', c = 0;
+    for (var i = s.length - 1; i >= 0; i--) {
+      out = s.charAt(i) + out;
+      c++;
+      if (c % 3 === 0 && i > 0) out = ',' + out;
+    }
+    return out;
+  }
+
+  function trim1(x) {
+    var s = (Math.round(x * 10) / 10).toFixed(1);
+    return s.replace(/\.0$/, '');
+  }
+
+  function manualMoney(v, cur) {
+    var sym = CURRENCY_SYMBOLS[cur] || (cur + ' ');
+    var sign = v < 0 ? '-' : '';
+    var abs = Math.abs(v);
+    var body;
+    if (abs >= 1e9) body = trim1(abs / 1e9) + 'B';
+    else if (abs >= 1e6) body = trim1(abs / 1e6) + 'M';
+    else if (abs >= 1e4) body = trim1(abs / 1e3) + 'K';
+    else body = group3(abs);
+    return sign + sym + body;
+  }
+
+  /* Compact human money: $8,500 / $12.5K / $1.2M */
+  function money(n, currency) {
+    var cur = normCurrency(currency);
+    var v = toNum(n, 0);
+    if (!isFinite(v)) v = 0;
+    var abs = Math.abs(v);
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.NumberFormat === 'function') {
+        var base = { style: 'currency', currency: cur, maximumFractionDigits: 0 };
+        if (abs >= 1e4) { base.notation = 'compact'; base.maximumFractionDigits = 1; }
+        try {
+          var narrow = { style: 'currency', currency: cur, currencyDisplay: 'narrowSymbol',
+            maximumFractionDigits: base.maximumFractionDigits, notation: base.notation };
+          return new Intl.NumberFormat(undefined, narrow).format(v);
+        } catch (e1) { /* narrowSymbol / compact unsupported */ }
+        try {
+          return new Intl.NumberFormat(undefined, base).format(v);
+        } catch (e2) { /* fall through */ }
+        try {
+          return new Intl.NumberFormat(undefined,
+            { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(v);
+        } catch (e3) { /* fall through */ }
+      }
+    } catch (e) { /* fall through */ }
+    return manualMoney(v, cur);
+  }
+
+  /* ---------------- shape / migration ---------------- */
+
+  function emptyState() {
+    return {
+      version: VERSION,
+      settings: { quota: null, cycleDays: DEFAULT_CYCLE_DAYS, currency: DEFAULT_CURRENCY },
+      deals: [],
+      activities: [],
+      objections: []
+    };
+  }
+
+  function uniqueId(v, seen) {
+    var id = text(v);
+    if (!id || seen['#' + id]) id = uid();
+    seen['#' + id] = true;
+    return id;
+  }
+
+  function coerceDate(v, dflt) {
+    var d = parseDate(v);
+    return d ? toISODate(d) : dflt;
+  }
+
+  function coerceDateTime(v, dflt) {
+    var d = parseDate(v);
+    if (!d) return dflt;
+    try { return d.toISOString(); } catch (e) { return dflt; }
+  }
+
+  function coerceStage(v, dflt) {
+    var s = text(v).toLowerCase();
+    if (!s) return dflt;
+    for (var i = 0; i < STAGES.length; i++) {
+      if (STAGES[i].toLowerCase() === s) return STAGES[i];
+    }
+    if (s.indexOf('won') !== -1 || s === 'closed-won' || s === 'closed won') return 'Won';
+    if (s.indexOf('lost') !== -1 || s === 'closed-lost' || s === 'closed lost') return 'Lost';
+    if (s.indexOf('propos') !== -1 || s.indexOf('quote') !== -1) return 'Proposal';
+    if (s.indexOf('negoti') !== -1) return 'Negotiation';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1) return 'Meeting';
+    if (s.indexOf('contact') !== -1) return 'Contacted';
+    if (s.indexOf('lead') !== -1 || s.indexOf('new') !== -1) return 'Lead';
+    return dflt;
+  }
+
+  function coerceOutcome(v) {
+    var s = text(v).toLowerCase();
+    if (!s) return '';
+    if (s.indexOf('won') !== -1 || s === 'w' || s === 'win') return 'won';
+    if (s.indexOf('lost') !== -1 || s === 'l' || s === 'lose' || s === 'loss') return 'lost';
+    return '';
+  }
+
+  function coerceKind(v) {
+    var s = text(v).toLowerCase();
+    for (var i = 0; i < KINDS.length; i++) if (KINDS[i] === s) return KINDS[i];
+    if (s.indexOf('phone') !== -1 || s.indexOf('dial') !== -1 || s.indexOf('voicemail') !== -1) return 'call';
+    if (s.indexOf('mail') !== -1) return 'email';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1 || s.indexOf('visit') !== -1) return 'meeting';
+    return 'note';
+  }
+
+  function coerceTags(v) {
+    var out = [], i;
+    if (isArr(v)) {
+      for (i = 0; i < v.length; i++) {
+        var t = text(v[i]).toLowerCase();
+        if (t && out.indexOf(t) === -1) out.push(t);
+      }
+      return out;
+    }
+    var s = text(v);
+    if (!s) return out;
+    var parts = s.split(/[,;|]/);
+    for (i = 0; i < parts.length; i++) {
+      var p = parts[i].trim().toLowerCase();
+      if (p && out.indexOf(p) === -1) out.push(p);
+    }
+    return out;
+  }
+
+  function migrateSettings(raw) {
+    var s = isObj(raw) ? raw : {};
+    var quota = null;
+    if (s.quota !== null && s.quota !== undefined && s.quota !== '') {
+      var q = toNum(s.quota, NaN);
+      if (isFinite(q) && q >= 0) quota = Math.round(q * 100) / 100;
+    }
+    var cycle = Math.round(toNum(pick(s, ['cycleDays', 'cycle_days', 'cycle']), DEFAULT_CYCLE_DAYS));
+    if (!isFinite(cycle) || cycle < 1) cycle = DEFAULT_CYCLE_DAYS;
+    if (cycle > 3650) cycle = 3650;
+    return { quota: quota, cycleDays: cycle, currency: normCurrency(s.currency) };
+  }
+
+  function migrateDeal(raw, seen, todayISO) {
+    var d = isObj(raw) ? raw : {};
+    var opened = coerceDate(pick(d, ['opened', 'openedAt', 'created', 'createdAt', 'date']), '') || todayISO;
+    var outcome = coerceOutcome(d.outcome);
+    var stage = coerceStage(d.stage, '');
+
+    if (!stage) stage = outcome === 'won' ? 'Won' : (outcome === 'lost' ? 'Lost' : 'Lead');
+    if (!outcome && stage === 'Won') outcome = 'won';
+    if (!outcome && stage === 'Lost') outcome = 'lost';
+    if (outcome === 'won') stage = 'Won';
+    if (outcome === 'lost') stage = 'Lost';
+
+    var closedAt = coerceDate(pick(d, ['closedAt', 'closed_at', 'closed']), '');
+    if (outcome && !closedAt) closedAt = laterISO(opened, todayISO);
+    if (!outcome) closedAt = '';
+
+    var value = toNum(pick(d, ['value', 'amount', 'dealValue', 'size']), 0);
+    if (!isFinite(value) || value < 0) value = 0;
+
+    return {
+      id: uniqueId(d.id, seen),
+      company: text(pick(d, ['company', 'account', 'org', 'name'])),
+      contact: text(pick(d, ['contact', 'person', 'contactName'])),
+      role: text(pick(d, ['role', 'title', 'jobTitle'])),
+      email: text(d.email),
+      phone: text(d.phone),
+      value: Math.round(value * 100) / 100,
+      stage: stage,
+      opened: opened,
+      nextAction: text(pick(d, ['nextAction', 'next_action', 'nextStep', 'next'])),
+      nextDate: coerceDate(pick(d, ['nextDate', 'next_date', 'dueDate', 'due']), ''),
+      source: text(d.source),
+      notes: typeof d.notes === 'string' ? d.notes.replace(/\s+$/, '') : text(d.notes),
+      closedAt: closedAt,
+      outcome: outcome
+    };
+  }
+
+  function migrateActivity(raw, seen, nowISO) {
+    var a = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(a.id, seen),
+      dealId: text(pick(a, ['dealId', 'deal_id', 'deal'])),
+      at: coerceDateTime(pick(a, ['at', 'date', 'when', 'ts']), nowISO),
+      kind: coerceKind(a.kind || a.type),
+      note: typeof a.note === 'string' ? a.note.replace(/\s+$/, '') : text(pick(a, ['note', 'text', 'body']))
+    };
+  }
+
+  function migrateObjection(raw, seen) {
+    var o = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(o.id, seen),
+      trigger: text(pick(o, ['trigger', 'objection', 'says', 'title'])),
+      response: typeof o.response === 'string'
+        ? o.response.replace(/\s+$/, '')
+        : text(pick(o, ['response', 'reply', 'answer'])),
+      tags: coerceTags(o.tags)
+    };
+  }
+
+  /* Tolerates a missing / old / partially corrupt shape and always
+     returns a complete, correctly typed v1 state. Never mutates input. */
+  function migrate(state) {
+    var src;
+    if (isArr(state)) src = { deals: state };            /* very old: bare deal list */
+    else if (isObj(state)) src = state;
+    else src = {};
+
+    var todayISO = today();
+    var nowISO = now();
+    var seenD = {}, seenA = {}, seenO = {};
+    var out = emptyState();
+    var i;
+
+    out.settings = migrateSettings(src.settings);
+
+    var deals = isArr(src.deals) ? src.deals : (isArr(src.pipeline) ? src.pipeline : []);
+    for (i = 0; i < deals.length; i++) {
+      if (!isObj(deals[i])) continue;
+      out.deals.push(migrateDeal(deals[i], seenD, todayISO));
+    }
+
+    var acts = isArr(src.activities) ? src.activities : (isArr(src.log) ? src.log : []);
+    for (i = 0; i < acts.length; i++) {
+      if (!isObj(acts[i])) continue;
+      out.activities.push(migrateActivity(acts[i], seenA, nowISO));
+    }
+
+    var objs = isArr(src.objections) ? src.objections : [];
+    for (i = 0; i < objs.length; i++) {
+      if (!isObj(objs[i])) continue;
+      var o = migrateObjection(objs[i], seenO);
+      if (!o.trigger && !o.response) continue;
+      out.objections.push(o);
+    }
+
+    out.version = VERSION;
+    return out;
+  }
+
+  /* ---------------- storage ---------------- */
+
+  function load() {
+    var raw = null;
+    try {
+      if (typeof localStorage !== 'undefined' && localStorage) raw = localStorage.getItem(KEY);
+    } catch (e) { raw = null; }                 /* private window / site data blocked */
+    if (!raw || typeof raw !== 'string') return emptyState();
+    var parsed = null;
+    try { parsed = JSON.parse(raw); } catch (e) { return emptyState(); }
+    try { return migrate(parsed); } catch (e) { return emptyState(); }
+  }
+
+  /* true on success; false means the caller should warn Doug loudly
+     (quota exceeded, blocked storage) instead of losing the edit. */
+  function save(state) {
+    try {
+      var clean = migrate(state);
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.setItem(KEY, JSON.stringify(clean));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function clearAll() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.removeItem(KEY);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /* ---------------- derived state ---------------- */
+
+  function isOpen(deal) {
+    return isObj(deal) && text(deal.outcome) === '';
+  }
+
+  function activitiesFor(state, dealId) {
+    var s = isObj(state) ? state : {};
+    var list = isArr(s.activities) ? s.activities : [];
+    var id = text(dealId);
+    var out = [];
+    for (var i = 0; i < list.length; i++) {
+      if (isObj(list[i]) && text(list[i].dealId) === id) out.push(list[i]);
+    }
+    out.sort(function (a, b) {
+      var ta = text(a.at), tb = text(b.at);
+      return ta < tb ? 1 : (ta > tb ? -1 : 0);          /* newest first */
+    });
+    return out;
+  }
+
+  /* ISO date of the most recent activity on this deal, else deal.opened */
+  function lastTouch(state, deal) {
+    var d = isObj(deal) ? deal : {};
+    var acts = activitiesFor(state, d.id);
+    var best = '';
+    for (var i = 0; i < acts.length; i++) {
+      var iso = coerceDate(acts[i].at, '');
+      if (iso) best = laterISO(best, iso);
+    }
+    return best || text(d.opened);
+  }
+
+  function isStale(state, deal) {
+    if (!isOpen(deal)) return false;
+    var anchor = laterISO(lastTouch(state, deal), text(deal.opened));
+    if (!anchor) return false;
+    var days = daysBetween(anchor, today());
+    return isFinite(days) && days > STALE_DAYS;
+  }
+
+  function isOverdue(deal) {
+    if (!isOpen(deal)) return false;
+    var nd = text(deal.nextDate);
+    if (!nd) return false;
+    var days = daysBetween(nd, today());
+    return isFinite(days) && days > 0;
+  }
+
+  function isAdrift(deal) {
+    if (!isOpen(deal)) return false;
+    return text(deal.nextAction) === '' || text(deal.nextDate) === '';
+  }
+
+  function flags(state, deal) {
+    var open = isOpen(deal);
+    var anchor = open ? laterISO(lastTouch(state, deal), text(deal && deal.opened)) : '';
+    var since = anchor ? daysBetween(anchor, today()) : NaN;
+    return {
+      open: open,
+      stale: isStale(state, deal),
+      overdue: isOverdue(deal),
+      adrift: isAdrift(deal),
+      daysSinceTouch: isFinite(since) ? since : null,
+      lastTouch: anchor
+    };
+  }
+
+  function stageIndex(stage) {
+    var s = coerceStage(stage, '');
+    var i = STAGES.indexOf(s);
+    return i === -1 ? 0 : i;
+  }
+
+  function stageProbability(stage) {
+    var s = coerceStage(stage, 'Lead');
+    var p = STAGE_PROBABILITY[s];
+    return typeof p === 'number' ? p : 0;
+  }
+
+  function byId(list, id) {
+    var arr = isArr(list) ? list : [];
+    var want = text(id);
+    for (var i = 0; i < arr.length; i++) {
+      if (isObj(arr[i]) && text(arr[i].id) === want) return arr[i];
+    }
+    return null;
+  }
+
+  /* blank records with sane defaults, ready to be filled by a form */
+  function newDeal(partial) {
+    var base = {
+      id: uid(), company: '', contact: '', role: '', email: '', phone: '',
+      value: 0, stage: 'Lead', opened: today(), nextAction: '', nextDate: '',
+      source: '', notes: '', closedAt: '', outcome: ''
+    };
+    if (isObj(partial)) {
+      for (var k in base) {
+        if (Object.prototype.hasOwnProperty.call(partial, k) && partial[k] !== undefined) {
+          base[k] = partial[k];
+        }
+      }
+    }
+    var seen = {};
+    return migrateDeal(base, seen, today());
+  }
+
+  function newActivity(dealId, kind, note) {
+    return {
+      id: uid(),
+      dealId: text(dealId),
+      at: now(),
+      kind: coerceKind(kind),
+      note: typeof note === 'string' ? note.replace(/\s+$/, '') : text(note)
+    };
+  }
+
+  function newObjection(trigger, response, tags) {
+    return { id: uid(), trigger: text(trigger), response: text(response), tags: coerceTags(tags) };
+  }
+
+  /* ---------------- export / import (Doug owns his data) --------- */
+
+  function exportFilename() { return 'doug-workspace-' + today() + '.json'; }
+
+  function exportJSON(state) {
+    try {
+      var data = JSON.stringify(migrate(state), null, 2);
+      if (typeof document === 'undefined' || !document || !document.body) return false;
+      if (typeof Blob === 'undefined') return false;
+      var api = (typeof URL !== 'undefined' && URL && URL.createObjectURL) ? URL
+        : ((typeof webkitURL !== 'undefined' && webkitURL && webkitURL.createObjectURL) ? webkitURL : null);
+      if (!api) return false;
+      var blob = new Blob([data], { type: 'application/json' });
+      var url = api.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = exportFilename();
+      a.rel = 'noopener';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        try { if (a.parentNode) a.parentNode.removeChild(a); } catch (e) {}
+        try { api.revokeObjectURL(url); } catch (e) {}
+      }, 5000);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function looksLikeWorkspace(o) {
+    if (isArr(o)) return true;
+    if (!isObj(o)) return false;
+    return isArr(o.deals) || isArr(o.activities) || isArr(o.objections) ||
+      isObj(o.settings) || o.version === 1 || isArr(o.pipeline);
+  }
+
+  /* cb(err, state) - never saves on its own; the page decides whether to
+     replace or merge, then calls WS.save(). */
+  function importJSON(file, cb) {
+    var done = typeof cb === 'function' ? cb : function () {};
+    if (!file) { done(new Error('No file chosen.')); return; }
+    if (typeof FileReader === 'undefined') { done(new Error('This browser cannot read files.')); return; }
+    if (typeof file.size === 'number' && file.size > 25 * 1024 * 1024) {
+      done(new Error('That file is too big to be a workspace backup.'));
+      return;
+    }
+    var reader;
+    try { reader = new FileReader(); } catch (e) { done(new Error('This browser cannot read files.')); return; }
+    reader.onerror = function () { done(new Error('Could not read that file.')); };
+    reader.onabort = function () { done(new Error('Reading that file was cancelled.')); };
+    reader.onload = function () {
+      var parsed;
+      try {
+        parsed = JSON.parse(String(reader.result));
+      } catch (e) {
+        done(new Error('That file is not valid JSON.'));
+        return;
+      }
+      if (!looksLikeWorkspace(parsed)) {
+        done(new Error('That JSON file does not look like a workspace backup.'));
+        return;
+      }
+      var state;
+      try { state = migrate(parsed); } catch (e) { done(new Error('That backup could not be read.')); return; }
+      done(null, state);
+    };
+    try { reader.readAsText(file); } catch (e) { done(new Error('Could not read that file.')); }
+  }
+
+  /* union by id; records from `incoming` win on conflict */
+  function merge(base, incoming) {
+    var a = migrate(base), b = migrate(incoming);
+    var out = emptyState();
+    out.settings = b.settings;
+    ['deals', 'activities', 'objections'].forEach(function (key) {
+      var index = {}, order = [], i, r;
+      for (i = 0; i < a[key].length; i++) {
+        r = a[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < b[key].length; i++) {
+        r = b[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < order.length; i++) out[key].push(index['#' + order[i]]);
+    });
+    return out;
+  }
+
+  /* ---------------- starter objection library ---------------- */
+
+  function seedObjections() {
+    var seeds = [
+      {
+        trigger: "It's too expensive / it's not in the budget.",
+        response: "Fair - let's make sure we're comparing the same thing. Is it more than you expected, or more than you have available this year? If it's the number itself, I'll walk through what's driving it and what we can take out. If it's the budget cycle, tell me who owns that budget and when it resets, and we'll size something that fits now and grows later.",
+        tags: ['price', 'budget']
+      },
+      {
+        trigger: "Now isn't a good time - check back next quarter.",
+        response: "Happy to. So I'm not just chasing you: what has to be true next quarter for this to move? If the honest answer is that it isn't a priority, say so and I'll stop pushing. If it's real timing, let's book fifteen minutes for the first week of that quarter now, and I'll send one useful thing a month in between rather than a check-in email.",
+        tags: ['timing', 'stall']
+      },
+      {
+        trigger: "We already use another vendor and we're happy with them.",
+        response: "Good - switching for its own sake is a bad idea, and I'm not going to ask you to. I'd rather understand where they're strong so I know when we're not a fit. Out of curiosity, if you could change one thing about how it works today, what would it be? If nothing comes to mind, we're done. If something does, that's the conversation worth having when your renewal comes up - when is that?",
+        tags: ['incumbent', 'competitor']
+      },
+      {
+        trigger: "I'd have to run this by my boss / it goes to a committee.",
+        response: "Of course - I'd expect that. Two things would help: what usually sinks a proposal like this internally, and who else has to be comfortable with it? I'd rather arm you with the numbers and the answers to their hard questions than have you carry it alone. And if it's useful, I'm glad to join that conversation for ten minutes so the technical questions don't bounce back and forth.",
+        tags: ['authority', 'decision-maker']
+      },
+      {
+        trigger: "We're fine as we are - this isn't a problem for us.",
+        response: "Then you should keep your money. Let me ask one question and I'll get out of your way: how are you handling it today, and what does it cost you when it goes wrong? If the answer is 'it doesn't really', you're genuinely fine and I'll note that. Most people I talk to have quietly absorbed the cost and stopped counting it - if that's the case, it's worth putting a number on it once.",
+        tags: ['need', 'status-quo']
+      },
+      {
+        trigger: "Just send me some information and I'll take a look.",
+        response: "I can, but generic material wastes your time. Give me two minutes on what you're actually trying to fix and I'll send the one page that's relevant instead of a brochure. And so it doesn't sit in your inbox: when should I follow up - and is a short call or a written summary easier for you?",
+        tags: ['brush-off', 'stall']
+      }
+    ];
+    var out = [];
+    for (var i = 0; i < seeds.length; i++) {
+      out.push({ id: uid(), trigger: seeds[i].trigger, response: seeds[i].response, tags: seeds[i].tags.slice() });
+    }
+    return out;
+  }
+
+  /* seeds the starter library only when there is nothing there;
+     returns true if the state was changed (caller should save). */
+  function ensureSeeded(state) {
+    if (!isObj(state)) return false;
+    if (!isArr(state.objections)) state.objections = [];
+    if (state.objections.length) return false;
+    state.objections = seedObjections();
+    return true;
+  }
+
+  /* ---------------- shared chrome ---------------- */
+
+  function normPage(current) {
+    var c = text(current).toLowerCase();
+    c = c.split('?')[0].split('#')[0];
+    c = c.substring(c.lastIndexOf('/') + 1);
+    if (!c || c === 'index' || c === 'today' || c === 'home') return 'index.html';
+    var aliases = {
+      'pipeline': 'pipeline.html', 'deals': 'pipeline.html',
+      'forecast': 'forecast.html',
+      'prep': 'prep.html', 'call prep': 'prep.html', 'call-prep': 'prep.html',
+      'objections': 'objections.html'
+    };
+    if (aliases[c]) return aliases[c];
+    return c;
+  }
+
+  /* Tiny markup; pages own the CSS for .nav / .nav-item / .active */
+  function nav(current) {
+    var cur = normPage(current);
+    var html = '<nav class="nav" aria-label="Workspace sections">';
+    for (var i = 0; i < NAV_ITEMS.length; i++) {
+      var href = NAV_ITEMS[i][0], label = NAV_ITEMS[i][1];
+      var on = href === cur;
+      html += '<a class="nav-item' + (on ? ' active' : '') + '" href="' + escAttr(href) + '"' +
+        (on ? ' aria-current="page"' : '') + '>' + esc(label) + '</a>';
+    }
+    return html + '</nav>';
+  }
+
+  /* The privacy note every page must show near the bottom. */
+  function privacyNote() {
+    return '<p class="privacy-note">Everything you enter here stays in this browser, on this device. ' +
+      'Nothing is uploaded, there is no tracking, and no client details ever leave your machine. ' +
+      'Use Export to keep a backup - save that .json somewhere private and never commit it to the repo.</p>';
+  }
+
+  /* ---------------- public surface ---------------- */
+
+  return {
+    KEY: KEY,
+    VERSION: VERSION,
+    STAGES: STAGES,
+    OPEN_STAGES: OPEN_STAGES,
+    CLOSED_STAGES: CLOSED_STAGES,
+    KINDS: KINDS,
+    STALE_DAYS: STALE_DAYS,
+    DEFAULT_CYCLE_DAYS: DEFAULT_CYCLE_DAYS,
+    STAGE_PROBABILITY: STAGE_PROBABILITY,
+    NAV_ITEMS: NAV_ITEMS,
+
+    load: load,
+    save: save,
+    clearAll: clearAll,
+    migrate: migrate,
+    emptyState: emptyState,
+
+    uid: uid,
+    esc: esc,
+    escAttr: escAttr,
+    money: money,
+    fmtDate: fmtDate,
+    today: today,
+    now: now,
+    parseDate: parseDate,
+    toISODate: toISODate,
+    daysBetween: daysBetween,
+    addDays: addDays,
+    laterISO: laterISO,
+
+    isOpen: isOpen,
+    isStale: isStale,
+    isOverdue: isOverdue,
+    isAdrift: isAdrift,
+    flags: flags,
+    lastTouch: lastTouch,
+    activitiesFor: activitiesFor,
+    byId: byId,
+    stageIndex: stageIndex,
+    stageProbability: stageProbability,
+
+    newDeal: newDeal,
+    newActivity: newActivity,
+    newObjection: newObjection,
+
+    exportJSON: exportJSON,
+    exportFilename: exportFilename,
+    importJSON: importJSON,
+    merge: merge,
+
+    seedObjections: seedObjections,
+    ensureSeeded: ensureSeeded,
+
+    nav: nav,
+    privacyNote: privacyNote
+  };
+})();
+/* ------------------------------------------------------------------
+   Objections - the library of what prospects say and what you say
+   back. Seeded once from WS.seedObjections(), then entirely Doug's:
+   add, edit, tag, delete, search, copy.
+
+   SAFETY: no user text is ever assembled into an HTML string here.
+   Triggers, responses and tags reach the DOM through textContent and
+   createTextNode only, which cannot execute markup. The two fixed
+   chrome fragments that do use innerHTML (WS.nav, WS.privacyNote)
+   contain no user data at all.
+
+   STORAGE: the shared workspace under WS.KEY, in the exact shape
+   every other page expects. One extra flag lives beside it under
+   SEED_KEY so that deleting every seeded entry is respected instead
+   of being undone the next time the page opens.
+   ------------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  var SEED_KEY = 'doug.workspace.objections.seeded.v1';
+  var MAX_TERMS = 8;              /* search words honoured; the rest are ignored */
+  var MAX_MARKS = 400;            /* highlight ranges per field, so a broad search stays fast */
+
+  var state = WS.emptyState();
+  var query = '';
+  var activeTags = [];
+  var editingId = '';
+  var pendingImport = null;
+  var copyTimer = null;
+  var copyBtn = null;             /* the button currently reading "Copied" */
+  var scrollToId = '';            /* entry to bring into view after the next render */
+
+  /* ---------------- tiny DOM helpers ---------------- */
+
+  function $(id) { return document.getElementById(id); }
+
+  function el(tag, cls, txt) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (txt !== undefined && txt !== null && txt !== '') n.textContent = String(txt);
+    return n;
+  }
+
+  function clear(node) {
+    if (!node) return;
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  function show(node, on) { if (node) node.hidden = !on; }
+
+  function str(v) { return v === null || v === undefined ? '' : String(v); }
+
+  function ask(question) {
+    try { return !!window.confirm(question); } catch (e) { return false; }
+  }
+
+  function focusOn(node) {
+    if (!node) return;
+    try { node.focus(); } catch (e) { /* ignore */ }
+  }
+
+  function scrollTo(node) {
+    if (!node) return;
+    try { node.scrollIntoView({ block: 'nearest' }); }
+    catch (e) {
+      try { node.scrollIntoView(); } catch (e2) { /* ignore */ }
+    }
+  }
+
+  function plural(n, one, many) { return n === 1 ? one : many; }
+
+  /* ---------------- storage ---------------- */
+
+  /* WS.load() cannot tell "empty" from "blocked", so probe once and say
+     so plainly rather than letting Doug type into a page that forgets. */
+  function storageWorks() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      var k = 'doug.workspace.probe';
+      localStorage.setItem(k, '1');
+      localStorage.removeItem(k);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function loadState() {
+    var s = null;
+    try { s = WS.load(); } catch (e) { s = null; }
+    if (!s || typeof s !== 'object') s = WS.emptyState();
+    if (!s.settings || typeof s.settings !== 'object') s.settings = WS.emptyState().settings;
+    if (Object.prototype.toString.call(s.deals) !== '[object Array]') s.deals = [];
+    if (Object.prototype.toString.call(s.activities) !== '[object Array]') s.activities = [];
+    if (Object.prototype.toString.call(s.objections) !== '[object Array]') s.objections = [];
+    state = s;
+  }
+
+  /* A failed save is loud - it is never allowed to look like a success. */
+  function commit(okMsg) {
+    try { state = WS.migrate(state); } catch (e) { /* keep the in-memory copy */ }
+    var ok = false;
+    try { ok = WS.save(state); } catch (e) { ok = false; }
+    if (ok) {
+      if (okMsg) setStatus(okMsg, 'ok');
+    } else {
+      setStatus('Could not save to this browser. The change is on screen but has NOT been stored. ' +
+        'Check private browsing or site-data settings, and export a backup before you close this tab.', 'err');
+    }
+    render();
+    return ok;
+  }
+
+  function setStatus(msg, kind) {
+    var n = $('status');
+    if (!n) return;
+    if (!msg) {
+      n.textContent = '';
+      n.className = 'status';
+      n.hidden = true;
+      return;
+    }
+    n.textContent = String(msg);
+    n.className = 'status' + (kind === 'err' ? ' status-err' : (kind === 'ok' ? ' status-ok' : ''));
+    n.hidden = false;
+  }
+
+  function setFormError(msg) {
+    var n = $('form-error');
+    if (!n) return;
+    if (!msg) { n.textContent = ''; n.hidden = true; return; }
+    n.textContent = String(msg);
+    n.hidden = false;
+  }
+
+  /* ---------------- first-run seeding ---------------- */
+
+  function seedMark() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return '';
+      return str(localStorage.getItem(SEED_KEY));
+    } catch (e) { return ''; }
+  }
+
+  function setSeedMark() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return;
+      localStorage.setItem(SEED_KEY, WS.today());
+    } catch (e) { /* nothing to do; worst case the starter library is offered again */ }
+  }
+
+  /* Only on a genuinely fresh browser. If Doug has cleared the library
+     on purpose, the mark stops it reappearing behind his back - the
+     button in the empty panel puts it back when he wants it. */
+  function seedIfFirstRun() {
+    if (state.objections.length) { setSeedMark(); return; }
+    if (seedMark()) return;
+    var seeds = null;
+    try { seeds = WS.seedObjections(); } catch (e) { seeds = null; }
+    if (!seeds || !seeds.length) return;
+    state.objections = seeds;
+    setSeedMark();
+    try { WS.save(state); } catch (e) { /* the storage warning already says why */ }
+  }
+
+  function loadStarterLibrary() {
+    var seeds = null;
+    try { seeds = WS.seedObjections(); } catch (e) { seeds = null; }
+    if (!seeds || !seeds.length) {
+      setStatus('The starter library could not be built in this browser.', 'err');
+      return;
+    }
+    for (var i = 0; i < seeds.length; i++) state.objections.push(seeds[i]);
+    setSeedMark();
+    commit(seeds.length + ' starter ' + plural(seeds.length, 'entry', 'entries') +
+      ' added. Edit them into your own words.');
+  }
+
+  /* ---------------- searching ---------------- */
+
+  function terms() {
+    var raw = query.toLowerCase().split(/\s+/);
+    var out = [];
+    for (var i = 0; i < raw.length && out.length < MAX_TERMS; i++) {
+      var t = raw[i].trim();
+      if (t && out.indexOf(t) === -1) out.push(t);
+    }
+    return out;
+  }
+
+  function tagsOf(o) {
+    return Object.prototype.toString.call(o && o.tags) === '[object Array]' ? o.tags : [];
+  }
+
+  function haystack(o) {
+    return (str(o.trigger) + '\n' + str(o.response) + '\n' + tagsOf(o).join(' ')).toLowerCase();
+  }
+
+  function matches(o, words) {
+    var i;
+    for (i = 0; i < activeTags.length; i++) {
+      if (tagsOf(o).indexOf(activeTags[i]) === -1) return false;
+    }
+    if (!words.length) return true;
+    var hay = haystack(o);
+    for (i = 0; i < words.length; i++) {
+      if (hay.indexOf(words[i]) === -1) return false;
+    }
+    return true;
+  }
+
+  function visible() {
+    var words = terms();
+    var out = [];
+    for (var i = 0; i < state.objections.length; i++) {
+      if (matches(state.objections[i], words)) out.push(state.objections[i]);
+    }
+    return out;
+  }
+
+  /* tag -> count, across the whole library */
+  function tagCounts() {
+    var map = {}, order = [];
+    for (var i = 0; i < state.objections.length; i++) {
+      var tags = tagsOf(state.objections[i]);
+      for (var j = 0; j < tags.length; j++) {
+        var t = str(tags[j]);
+        if (!t) continue;
+        if (!Object.prototype.hasOwnProperty.call(map, '#' + t)) { map['#' + t] = 0; order.push(t); }
+        map['#' + t]++;
+      }
+    }
+    order.sort();
+    var out = [];
+    for (var k = 0; k < order.length; k++) out.push({ tag: order[k], n: map['#' + order[k]] });
+    return out;
+  }
+
+  /* ---------------- highlighting (DOM only, never innerHTML) ------ */
+
+  function fillHighlighted(node, value, words) {
+    clear(node);
+    var s = str(value);
+    if (!s) return;
+    if (!words.length) { node.appendChild(document.createTextNode(s)); return; }
+
+    var lower = s.toLowerCase();
+    var marks = [];
+    var capped = false;
+    for (var i = 0; i < words.length && !capped; i++) {
+      var w = words[i];
+      if (!w) continue;
+      var from = 0, at;
+      while ((at = lower.indexOf(w, from)) !== -1) {
+        marks.push([at, at + w.length]);
+        from = at + w.length;
+        if (marks.length >= MAX_MARKS) { capped = true; break; }
+      }
+    }
+    if (!marks.length) { node.appendChild(document.createTextNode(s)); return; }
+
+    marks.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
+    var merged = [], cur = [marks[0][0], marks[0][1]];
+    for (var j = 1; j < marks.length; j++) {
+      if (marks[j][0] <= cur[1]) {
+        if (marks[j][1] > cur[1]) cur[1] = marks[j][1];
+      } else {
+        merged.push(cur);
+        cur = [marks[j][0], marks[j][1]];
+      }
+    }
+    merged.push(cur);
+
+    var pos = 0;
+    for (var k = 0; k < merged.length; k++) {
+      if (merged[k][0] > pos) node.appendChild(document.createTextNode(s.slice(pos, merged[k][0])));
+      var m = document.createElement('mark');
+      m.textContent = s.slice(merged[k][0], merged[k][1]);
+      node.appendChild(m);
+      pos = merged[k][1];
+    }
+    if (pos < s.length) node.appendChild(document.createTextNode(s.slice(pos)));
+  }
+
+  /* ---------------- copying (clipboard API, then execCommand) ----- */
+
+  function legacyCopy(value) {
+    if (typeof document === 'undefined' || !document.body) return false;
+    var active = null;
+    try { active = document.activeElement; } catch (e) { active = null; }
+    var ta = document.createElement('textarea');
+    ta.value = value;
+    ta.setAttribute('readonly', 'readonly');
+    ta.setAttribute('aria-hidden', 'true');
+    ta.style.position = 'fixed';
+    ta.style.top = '0';
+    ta.style.left = '0';
+    ta.style.width = '1px';
+    ta.style.height = '1px';
+    ta.style.padding = '0';
+    ta.style.border = '0';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    var ok = false;
+    try {
+      ta.focus();
+      ta.select();
+      if (typeof ta.setSelectionRange === 'function') ta.setSelectionRange(0, value.length);
+      ok = !!(document.execCommand && document.execCommand('copy'));
+    } catch (e) {
+      ok = false;
+    }
+    try { if (ta.parentNode) ta.parentNode.removeChild(ta); } catch (e) { /* ignore */ }
+    if (active && typeof active.focus === 'function') focusOn(active);
+    return ok;
+  }
+
+  /* done(ok) - the clipboard API is asynchronous and blocked outright in
+     some browsers on file:// pages, so execCommand is a real fallback
+     here, not a legacy nicety. */
+  function copyText(value, done) {
+    var v = str(value);
+    if (!v) { done(false); return; }
+    try {
+      if (typeof navigator !== 'undefined' && navigator && navigator.clipboard &&
+        typeof navigator.clipboard.writeText === 'function') {
+        var p = navigator.clipboard.writeText(v);
+        if (p && typeof p.then === 'function') {
+          p.then(function () { done(true); }, function () { done(legacyCopy(v)); });
+          return;
+        }
+      }
+    } catch (e) { /* fall through to execCommand */ }
+    done(legacyCopy(v));
+  }
+
+  /* last resort: put the response under the user's own cursor so
+     Ctrl+C still works when the page is not allowed to copy. */
+  function selectNode(node) {
+    if (!node) return false;
+    try {
+      var sel = window.getSelection && window.getSelection();
+      if (!sel || typeof document.createRange !== 'function') return false;
+      var range = document.createRange();
+      range.selectNodeContents(node);
+      sel.removeAllRanges();
+      sel.addRange(range);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /* ---------------- rendering ---------------- */
+
+  function renderFilters() {
+    var wrap = $('filters');
+    var host = $('tag-buttons');
+    var clearBtn = $('clear-tags');
+    if (!wrap || !host) return;
+    var counts = tagCounts();
+
+    /* a tag that only survives in the filter (its last entry was retagged)
+       must not silently keep filtering everything out */
+    var live = [];
+    for (var a = 0; a < activeTags.length; a++) {
+      for (var b = 0; b < counts.length; b++) {
+        if (counts[b].tag === activeTags[a]) { live.push(activeTags[a]); break; }
+      }
+    }
+    activeTags = live;
+
+    clear(host);
+    if (!counts.length) {
+      show(wrap, false);
+      show(clearBtn, false);
+      return;
+    }
+    for (var i = 0; i < counts.length; i++) {
+      var on = activeTags.indexOf(counts[i].tag) !== -1;
+      var b = el('button', 'tag-btn', counts[i].tag + ' (' + counts[i].n + ')');
+      b.type = 'button';
+      b.setAttribute('data-tag', counts[i].tag);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      host.appendChild(b);
+      host.appendChild(document.createTextNode(' '));
+    }
+    show(wrap, true);
+    show(clearBtn, activeTags.length > 0);
+  }
+
+  function renderCount(shown, total) {
+    var n = $('count');
+    if (!n) return;
+    if (!total) { n.textContent = ''; return; }
+    if (shown === total) {
+      n.textContent = total + ' ' + plural(total, 'entry', 'entries') + '.';
+    } else {
+      n.textContent = 'Showing ' + shown + ' of ' + total + '.';
+    }
+  }
+
+  function renderEmptyPanel(total) {
+    var panel = $('empty');
+    if (!panel) return;
+    clear(panel);
+
+    if (!total) {
+      panel.appendChild(el('h3', '', 'Nothing in the library yet'));
+      panel.appendChild(el('p', '',
+        'This is where you keep what prospects actually say and the answer you actually use. ' +
+        'Write the next one down straight after the call, while you still remember the words.'));
+      var p = el('p', '');
+      var load = el('button', '', 'Load the starter library');
+      load.type = 'button';
+      load.id = 'load-seed';
+      p.appendChild(load);
+      panel.appendChild(p);
+      panel.appendChild(el('p', 'muted',
+        'That adds six common objections you can edit into your own words, or you can start ' +
+        'from scratch in the form below.'));
+      show(panel, true);
+      return;
+    }
+
+    panel.appendChild(el('h3', '', 'Nothing matches'));
+    var bits = [];
+    if (query.trim()) bits.push('the search "' + query.trim() + '"');
+    if (activeTags.length) {
+      bits.push(plural(activeTags.length, 'the tag ', 'the tags ') + activeTags.join(', '));
+    }
+    panel.appendChild(el('p', '',
+      'No entry in your ' + total + ' matches ' + (bits.length ? bits.join(' and ') : 'that') + '.'));
+    var q = el('p', '');
+    var reset = el('button', 'btn-quiet', 'Show everything');
+    reset.type = 'button';
+    reset.id = 'reset-search';
+    q.appendChild(reset);
+    panel.appendChild(q);
+    show(panel, true);
+  }
+
+  function entryNode(o, words) {
+    var li = el('li', 'entry' + (o.id === editingId ? ' editing' : ''));
+    li.setAttribute('data-id', o.id);
+
+    if (o.id === editingId) {
+      li.appendChild(el('p', 'editing-flag', 'You are editing this entry in the form below.'));
+    }
+
+    var h3 = el('h3', 'trigger');
+    fillHighlighted(h3, str(o.trigger) || 'Untitled entry', words);
+    li.appendChild(h3);
+
+    var body = el('p', 'response pre');
+    fillHighlighted(body, o.response, words);
+    li.appendChild(body);
+
+    var tags = tagsOf(o);
+    if (tags.length) {
+      var ul = el('ul', 'tags');
+      for (var i = 0; i < tags.length; i++) {
+        var t = el('li', '');
+        fillHighlighted(t, tags[i], words);
+        ul.appendChild(t);
+      }
+      li.appendChild(ul);
+    }
+
+    var actions = el('div', 'entry-actions');
+    var label = str(o.trigger) || 'this entry';
+
+    var copy = el('button', 'btn-small', 'Copy response');
+    copy.type = 'button';
+    copy.setAttribute('data-act', 'copy');
+    copy.setAttribute('data-id', o.id);
+    copy.setAttribute('aria-label', 'Copy the response to: ' + label);
+    actions.appendChild(copy);
+
+    var edit = el('button', 'btn-quiet btn-small', 'Edit');
+    edit.type = 'button';
+    edit.setAttribute('data-act', 'edit');
+    edit.setAttribute('data-id', o.id);
+    edit.setAttribute('aria-label', 'Edit: ' + label);
+    actions.appendChild(edit);
+
+    var del = el('button', 'btn-quiet btn-small btn-danger', 'Delete');
+    del.type = 'button';
+    del.setAttribute('data-act', 'delete');
+    del.setAttribute('data-id', o.id);
+    del.setAttribute('aria-label', 'Delete: ' + label);
+    actions.appendChild(del);
+
+    li.appendChild(actions);
+    return li;
+  }
+
+  function renderList() {
+    var list = $('list');
+    if (!list) return;
+    var total = state.objections.length;
+    var rows = visible();
+    var words = terms();
+
+    /* the buttons are about to be thrown away, so drop the pending
+       label restore rather than poking a detached node later */
+    if (copyTimer) { try { clearTimeout(copyTimer); } catch (e) { /* ignore */ } }
+    copyTimer = null;
+    copyBtn = null;
+
+    clear(list);
+    for (var i = 0; i < rows.length; i++) list.appendChild(entryNode(rows[i], words));
+
+    renderCount(rows.length, total);
+    if (rows.length) show($('empty'), false);
+    else renderEmptyPanel(total);
+  }
+
+  function renderTagList() {
+    var dl = $('tag-list');
+    if (!dl) return;
+    clear(dl);
+    var counts = tagCounts();
+    for (var i = 0; i < counts.length; i++) {
+      var opt = document.createElement('option');
+      opt.value = counts[i].tag;
+      dl.appendChild(opt);
+    }
+  }
+
+  function renderFormMode() {
+    var h = $('form-h');
+    var note = $('form-note');
+    var save = $('save-btn');
+    var cancel = $('cancel-edit');
+    var editing = !!editingId && !!WS.byId(state.objections, editingId);
+    if (h) h.textContent = editing ? 'Edit entry' : 'Add an entry';
+    if (save) save.textContent = editing ? 'Save changes' : 'Save entry';
+    show(cancel, editing);
+    if (note) {
+      note.textContent = editing
+        ? 'Change the wording, the tags, or both. Nothing is saved until you press Save changes.'
+        : 'Write down what you actually said the last time this came up. A rough answer you have ' +
+          'already thought through beats a polished one you have to invent on the call.';
+    }
+  }
+
+  function render() {
+    renderFilters();
+    renderList();
+    renderTagList();
+    renderFormMode();
+
+    if (scrollToId) {
+      var want = scrollToId;
+      scrollToId = '';
+      var list = $('list');
+      if (list) {
+        var kids = list.childNodes;
+        for (var i = 0; i < kids.length; i++) {
+          if (kids[i].getAttribute && kids[i].getAttribute('data-id') === want) {
+            scrollTo(kids[i]);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  /* ---------------- form ---------------- */
+
+  function fillForm(o) {
+    var t = $('obj-trigger'), r = $('obj-response'), g = $('obj-tags');
+    if (t) t.value = o ? str(o.trigger) : '';
+    if (r) r.value = o ? str(o.response) : '';
+    if (g) g.value = o ? tagsOf(o).join(', ') : '';
+  }
+
+  function startEdit(id) {
+    var o = WS.byId(state.objections, id);
+    if (!o) { setStatus('That entry is no longer here.', 'err'); render(); return; }
+    editingId = o.id;
+    fillForm(o);
+    setFormError('');
+    render();
+    var t = $('obj-trigger');
+    scrollTo($('form-h'));
+    focusOn(t);
+    if (t && typeof t.setSelectionRange === 'function') {
+      try { t.setSelectionRange(t.value.length, t.value.length); } catch (e) { /* ignore */ }
+    }
+  }
+
+  function cancelEdit(msg) {
+    editingId = '';
+    fillForm(null);
+    setFormError('');
+    render();
+    if (msg) setStatus(msg, '');
+  }
+
+  function handleSave(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    var t = $('obj-trigger'), r = $('obj-response'), g = $('obj-tags');
+    var trigger = t ? t.value.trim() : '';
+    var response = r ? r.value.replace(/\s+$/, '') : '';
+    var tags = g ? g.value : '';
+
+    if (!trigger) {
+      setFormError('Write what the prospect says. That is how you find this entry again.');
+      focusOn(t);
+      return;
+    }
+    if (!response.trim()) {
+      setFormError('Write how you answer it. An entry with no response has nothing to copy.');
+      focusOn(r);
+      return;
+    }
+    setFormError('');
+
+    var rec = WS.newObjection(trigger, response, tags);
+    var wasEditing = editingId && WS.byId(state.objections, editingId);
+
+    if (wasEditing) {
+      rec.id = editingId;
+      for (var i = 0; i < state.objections.length; i++) {
+        if (str(state.objections[i].id) === str(editingId)) { state.objections[i] = rec; break; }
+      }
+    } else {
+      state.objections.unshift(rec);
+    }
+
+    editingId = '';
+    fillForm(null);
+    setSeedMark();
+    scrollToId = rec.id;
+    commit(wasEditing ? 'Entry saved.' : 'Entry added.');
+    focusOn($('obj-trigger'));
+  }
+
+  function handleDelete(id) {
+    var o = WS.byId(state.objections, id);
+    if (!o) return;
+    var label = str(o.trigger) || 'this entry';
+    if (!ask('Delete this entry?\n\n' + label + '\n\nThis cannot be undone. Export a backup first ' +
+      'if you are not sure.')) return;
+    var kept = [];
+    for (var i = 0; i < state.objections.length; i++) {
+      if (str(state.objections[i].id) !== str(id)) kept.push(state.objections[i]);
+    }
+    state.objections = kept;
+    if (str(editingId) === str(id)) { editingId = ''; fillForm(null); setFormError(''); }
+    setSeedMark();
+    commit('Entry deleted.');
+  }
+
+  /* one button at a time reads "Copied", and it always goes back */
+  function restoreCopyLabel() {
+    if (copyTimer) { try { clearTimeout(copyTimer); } catch (e) { /* ignore */ } }
+    copyTimer = null;
+    if (copyBtn) { try { copyBtn.textContent = 'Copy response'; } catch (e) { /* ignore */ } }
+    copyBtn = null;
+  }
+
+  function markCopied(btn) {
+    restoreCopyLabel();
+    if (!btn) return;
+    copyBtn = btn;
+    try { btn.textContent = 'Copied'; } catch (e) { copyBtn = null; return; }
+    copyTimer = setTimeout(restoreCopyLabel, 2500);
+  }
+
+  function handleCopy(id, btn) {
+    var o = WS.byId(state.objections, id);
+    if (!o) { setStatus('That entry is no longer here.', 'err'); render(); return; }
+    var value = str(o.response);
+    if (!value) { setStatus('That entry has no response to copy.', 'err'); return; }
+
+    copyText(value, function (ok) {
+      if (ok) {
+        setStatus('Response copied. Paste it into your email and change it to fit the person.', 'ok');
+        markCopied(btn);
+        return;
+      }
+      var li = btn && btn.parentNode ? btn.parentNode.parentNode : null;
+      var body = null;
+      if (li && li.getElementsByClassName) {
+        var found = li.getElementsByClassName('response');
+        body = found && found.length ? found[0] : null;
+      }
+      if (selectNode(body)) {
+        setStatus('This browser would not let the page use the clipboard. The response is selected ' +
+          'now, so press Ctrl+C (Cmd+C on a Mac) to copy it.', 'err');
+      } else {
+        setStatus('This browser would not let the page use the clipboard. Select the response by ' +
+          'hand and copy it.', 'err');
+      }
+    });
+  }
+
+  /* ---------------- backup ---------------- */
+
+  function exportBackup() {
+    var ok = false;
+    try { ok = WS.exportJSON(state); } catch (e) { ok = false; }
+    if (ok) {
+      setStatus('Backup downloaded as ' + WS.exportFilename() +
+        '. Keep it somewhere private and never commit it to a repository.', 'ok');
+    } else {
+      setStatus('This browser would not start the download. Try a different browser, or copy the ' +
+        'entries out by hand.', 'err');
+    }
+  }
+
+  function hideImportChoice() {
+    pendingImport = null;
+    show($('import-choice'), false);
+    var f = $('import-file');
+    if (f) { try { f.value = ''; } catch (e) { /* ignore */ } }
+  }
+
+  function wireBackup() {
+    var exportBtn = $('export-btn');
+    if (exportBtn) exportBtn.addEventListener('click', exportBackup);
+
+    var file = $('import-file');
+    if (file) {
+      file.addEventListener('change', function () {
+        var chosen = file.files && file.files[0];
+        if (!chosen) return;
+        WS.importJSON(chosen, function (err, incoming) {
+          if (err) {
+            hideImportChoice();
+            setStatus(err.message || 'That backup could not be read.', 'err');
+            return;
+          }
+          pendingImport = incoming;
+          var summary = $('import-summary');
+          if (summary) {
+            summary.textContent = 'That file holds ' + incoming.objections.length + ' ' +
+              plural(incoming.objections.length, 'objection', 'objections') + ', ' +
+              incoming.deals.length + ' ' + plural(incoming.deals.length, 'deal', 'deals') +
+              ' and ' + incoming.activities.length + ' activity ' +
+              plural(incoming.activities.length, 'entry', 'entries') + '. Nothing has been changed yet.';
+          }
+          show($('import-choice'), true);
+          setStatus('', '');
+        });
+      });
+    }
+
+    var replace = $('import-replace');
+    if (replace) {
+      replace.addEventListener('click', function () {
+        if (!pendingImport) return;
+        if (!ask('Replace everything in this browser with the backup?\n\n' +
+          'Your current ' + state.objections.length + ' objection(s), ' + state.deals.length +
+          ' deal(s) and their history will be thrown away. This cannot be undone.')) return;
+        state = pendingImport;
+        hideImportChoice();
+        editingId = '';
+        fillForm(null);
+        setFormError('');
+        setSeedMark();
+        commit('Backup restored. This browser now holds ' + state.objections.length + ' ' +
+          plural(state.objections.length, 'entry', 'entries') + '.');
+      });
+    }
+
+    var merge = $('import-merge');
+    if (merge) {
+      merge.addEventListener('click', function () {
+        if (!pendingImport) return;
+        if (!ask('Merge the backup into what is already here?\n\n' +
+          'Records that share an id will be overwritten by the backup, and its settings will ' +
+          'replace yours. This cannot be undone.')) return;
+        var merged = null;
+        try { merged = WS.merge(state, pendingImport); } catch (e) { merged = null; }
+        if (!merged) { setStatus('That backup could not be merged.', 'err'); return; }
+        state = merged;
+        hideImportChoice();
+        editingId = '';
+        fillForm(null);
+        setFormError('');
+        setSeedMark();
+        commit('Backup merged. This browser now holds ' + state.objections.length + ' ' +
+          plural(state.objections.length, 'entry', 'entries') + '.');
+      });
+    }
+
+    var cancel = $('import-cancel');
+    if (cancel) {
+      cancel.addEventListener('click', function () {
+        hideImportChoice();
+        setStatus('Import cancelled. Nothing was changed.', '');
+      });
+    }
+  }
+
+  /* ---------------- wiring ---------------- */
+
+  function wireSearch() {
+    var form = $('search-form');
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+    var q = $('q');
+    if (q) {
+      q.addEventListener('input', function () { query = q.value; render(); });
+      q.addEventListener('search', function () { query = q.value; render(); });
+    }
+
+    var clearBtn = $('clear-search');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        query = '';
+        if (q) q.value = '';
+        render();
+        focusOn(q);
+      });
+    }
+
+    var jump = $('jump-add');
+    if (jump) {
+      jump.addEventListener('click', function () {
+        if (editingId) cancelEdit('');
+        scrollTo($('form-h'));
+        focusOn($('obj-trigger'));
+      });
+    }
+
+    var tags = $('tag-buttons');
+    if (tags) {
+      tags.addEventListener('click', function (e) {
+        var t = e.target;
+        if (!t || !t.getAttribute) return;
+        var tag = t.getAttribute('data-tag');
+        if (!tag) return;
+        var at = activeTags.indexOf(tag);
+        if (at === -1) activeTags.push(tag);
+        else activeTags.splice(at, 1);
+        render();
+      });
+    }
+
+    var clearTags = $('clear-tags');
+    if (clearTags) {
+      clearTags.addEventListener('click', function () {
+        activeTags = [];
+        render();
+        focusOn($('q'));
+      });
+    }
+  }
+
+  function wireList() {
+    var list = $('list');
+    if (list) {
+      list.addEventListener('click', function (e) {
+        var t = e.target;
+        while (t && t !== list && (!t.getAttribute || !t.getAttribute('data-act'))) t = t.parentNode;
+        if (!t || t === list || !t.getAttribute) return;
+        var act = t.getAttribute('data-act');
+        var id = t.getAttribute('data-id');
+        if (!id) return;
+        if (act === 'copy') handleCopy(id, t);
+        else if (act === 'edit') startEdit(id);
+        else if (act === 'delete') handleDelete(id);
+      });
+    }
+
+    var panel = $('empty');
+    if (panel) {
+      panel.addEventListener('click', function (e) {
+        var t = e.target;
+        if (!t || !t.id) return;
+        if (t.id === 'load-seed') loadStarterLibrary();
+        if (t.id === 'reset-search') {
+          query = '';
+          activeTags = [];
+          var q = $('q');
+          if (q) q.value = '';
+          render();
+          focusOn(q);
+        }
+      });
+    }
+  }
+
+  function wireForm() {
+    var form = $('entry-form');
+    if (form) form.addEventListener('submit', handleSave);
+
+    var cancel = $('cancel-edit');
+    if (cancel) {
+      cancel.addEventListener('click', function () {
+        cancelEdit('Edit cancelled. The entry is unchanged.');
+        focusOn($('obj-trigger'));
+      });
+    }
+
+    /* Ctrl/Cmd+Enter saves from inside the response box, so a long
+       answer does not need a trip to the mouse. */
+    var r = $('obj-response');
+    if (r) {
+      r.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'Enter' || e.keyCode === 13)) {
+          e.preventDefault();
+          handleSave(null);
+        }
+      });
+    }
+  }
+
+  /* ---------------- start ---------------- */
+
+  function start() {
+    var navSlot = $('nav-slot');
+    if (navSlot) navSlot.innerHTML = WS.nav('objections.html');   /* fixed chrome, no user data */
+    var privacy = $('privacy');
+    if (privacy) privacy.innerHTML = WS.privacyNote();            /* fixed chrome, no user data */
+
+    if (!storageWorks()) {
+      var warn = $('storage-warning');
+      if (warn) {
+        warn.textContent = 'This browser is not letting the page store anything (private window, ' +
+          'or site data is blocked). You can read and copy what is here, but anything you add or ' +
+          'edit will be gone when you close the tab.';
+        warn.hidden = false;
+      }
+    }
+
+    loadState();
+    seedIfFirstRun();
+    wireSearch();
+    wireList();
+    wireForm();
+    wireBackup();
+    render();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>

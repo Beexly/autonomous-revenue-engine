@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pipeline — Doug's sales workspace</title>
+  <meta name="description" content="The deal book: every deal, its stage, its value, its last touch, and the one thing you do next. Deals with no next step are flagged and pinned to the top. Runs offline in your browser; nothing is uploaded.">
+  <style>
+    :root { color-scheme: dark; }
+    html, body { margin: 0; background: #0e0e0e; color: #e8e4d9; font-family: ui-sans-serif, system-ui, sans-serif; }
+    body { font-size: 15px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+    main { max-width: 900px; margin: 40px auto; padding: 0 16px; }
+    [hidden] { display: none !important; }
+    h1 { font-size: 22px; letter-spacing: -0.03em; margin: 0 0 6px; }
+    h2 { font-size: 16px; letter-spacing: -0.02em; margin: 0 0 6px; }
+    h3 { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #b7b2a6; font-weight: 650; margin: 0 0 8px; }
+    p { margin: 0 0 10px; }
+    p.lede { color: #b7b2a6; margin-top: 0; }
+    a { color: #e8e4d9; }
+    .muted { color: #b7b2a6; }
+    .small { font-size: 12.5px; }
+    .err { color: #d46a6a; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+    }
+    :focus-visible { outline: 2px solid #e8e4d9; outline-offset: 1px; }
+
+    /* ---- nav (markup comes from WS.nav) ---- */
+    .nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 22px; font-size: 13px; }
+    .nav-item { color: #b7b2a6; text-decoration: none; padding-bottom: 3px; border-bottom: 2px solid transparent; }
+    .nav-item:hover { color: #e8e4d9; }
+    .nav-item.active { color: #e8e4d9; border-bottom-color: #e8e4d9; }
+
+    /* ---- controls ---- */
+    button {
+      background: #e8e4d9; color: #111; border: 0; font-weight: 650;
+      padding: 10px 16px; cursor: pointer; font-family: inherit; font-size: 14px;
+    }
+    button:disabled { opacity: 0.6; cursor: default; }
+    button.ghost { background: transparent; color: #e8e4d9; border: 1px solid #3a3a36; }
+    button.ghost:hover { border-color: #b7b2a6; }
+    button.danger { background: #d46a6a; color: #14100f; }
+    button.warn-ghost { background: transparent; color: #d46a6a; border: 1px solid #d46a6a; }
+    button.small { padding: 5px 10px; font-size: 12.5px; }
+    button.linkbtn {
+      background: none; border: 0; padding: 0; color: #b7b2a6; font-size: 12px;
+      font-weight: 500; text-decoration: underline; cursor: pointer;
+    }
+    button.linkbtn:hover { color: #e8e4d9; }
+    input, select, textarea {
+      background: #161616; color: #e8e4d9; border: 1px solid #3a3a36; padding: 8px 9px;
+      font: inherit; font-size: 14px; box-sizing: border-box; border-radius: 0; max-width: 100%;
+    }
+    input[type="search"] { -webkit-appearance: textfield; }
+    textarea { width: 100%; resize: vertical; }
+    .fld { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .fld label, .ctl label {
+      font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+      color: #b7b2a6; font-weight: 650;
+    }
+    .fld input, .fld select, .fld textarea { width: 100%; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
+    .row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+    .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin: 18px 0 6px; }
+    .ctl { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .ctl-search { flex: 1 1 220px; }
+    .ctl-search input { width: 100%; }
+
+    /* ---- messages ---- */
+    .warnbox { border: 1px solid #d46a6a; border-left-width: 5px; background: rgba(212, 106, 106, 0.10); color: #e8e4d9; padding: 10px 12px; font-size: 13.5px; }
+    .flashbox { border: 1px solid #3a3a36; border-left: 5px solid #b7b2a6; background: #161616; padding: 10px 12px; font-size: 13.5px; }
+
+    /* ---- the forcing function ---- */
+    .banner { border: 1px solid #d46a6a; border-left-width: 5px; background: rgba(212, 106, 106, 0.10); padding: 14px; margin: 18px 0; }
+    .banner h2 { color: #d46a6a; }
+    .banner.ok { border-color: #7fb069; background: rgba(127, 176, 105, 0.08); }
+    .banner.ok h2 { color: #7fb069; }
+    .banner p { font-size: 13.5px; color: #b7b2a6; }
+    .banner-list { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+    .banner-list li { font-size: 13px; }
+    .banner-list button { color: #e8e4d9; }
+
+    /* ---- summary ---- */
+    .summary { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 16px 0 2px; font-size: 13px; color: #b7b2a6; }
+    .stat b { color: #e8e4d9; font-weight: 650; }
+    .stat.bad b { color: #d46a6a; }
+    .stat.warn b { color: #d4a24a; }
+    .stat.good b { color: #7fb069; }
+
+    /* ---- table ---- */
+    .tablewrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      text-align: left; font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase;
+      color: #b7b2a6; font-weight: 650; padding: 6px 8px; border-bottom: 1px solid #3a3a36; white-space: nowrap;
+    }
+    td { padding: 10px 8px; border-bottom: 1px solid #232320; vertical-align: top; font-size: 14px; overflow-wrap: anywhere; }
+    tr.deal-row.adrift td { background: rgba(212, 106, 106, 0.09); }
+    tr.deal-row.adrift td:first-child { box-shadow: inset 3px 0 0 #d46a6a; }
+    tr.deal-row.linked td { background: rgba(232, 228, 217, 0.07); }
+    tr.deal-row.linked td:first-child { box-shadow: inset 3px 0 0 #e8e4d9; }
+    tr.deal-row.adrift.linked td:first-child { box-shadow: inset 3px 0 0 #d46a6a, inset 6px 0 0 #e8e4d9; }
+    tr.deal-row.closed td { opacity: 0.72; }
+    .company { font-weight: 650; }
+    .who { font-size: 12.5px; color: #b7b2a6; }
+    .c-value { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .c-stage select { width: 100%; min-width: 120px; }
+    .c-touch, .c-status { white-space: normal; }
+    .c-deal { min-width: 130px; }
+    .c-next { min-width: 180px; }
+    .c-act { white-space: nowrap; text-align: right; }
+    .c-act button { white-space: nowrap; }
+    .next-act { }
+    .missing { color: #d46a6a; font-weight: 650; }
+    .overdue-text { color: #d46a6a; }
+    .linkrow { margin-top: 4px; }
+
+    .chip {
+      display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
+      padding: 2px 6px; border: 1px solid; margin: 0 4px 4px 0; white-space: nowrap;
+    }
+    .chip-adrift { background: #d46a6a; color: #14100f; border-color: #d46a6a; }
+    .chip-overdue { color: #d46a6a; border-color: #d46a6a; }
+    .chip-stale { color: #d4a24a; border-color: #d4a24a; }
+    .chip-won { color: #7fb069; border-color: #7fb069; }
+    .chip-lost { color: #b7b2a6; border-color: #3a3a36; }
+
+    form.nextform { display: flex; flex-direction: column; gap: 6px; }
+    form.nextform input { width: 100%; padding: 6px 8px; font-size: 13px; }
+    .nextform-btns { display: flex; gap: 6px; }
+
+    /* ---- expanded detail ---- */
+    tr.detail-row > td { padding: 0 8px 12px; background: transparent; border-bottom: 1px solid #3a3a36; }
+    .panel { background: #161616; border: 1px solid #3a3a36; padding: 14px; }
+    .panel-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 20px; }
+    ul.acts { list-style: none; margin: 10px 0 0; padding: 0; max-height: 300px; overflow-y: auto; }
+    ul.acts li { border-top: 1px solid #232320; padding: 8px 0; font-size: 13px; }
+    ul.acts li:first-child { border-top: 0; }
+    .kind {
+      display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em;
+      border: 1px solid #3a3a36; color: #b7b2a6; padding: 1px 5px; margin-right: 6px;
+    }
+    .note { margin-top: 4px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    form.noteform { display: flex; flex-wrap: wrap; gap: 6px; }
+    form.noteform select { flex: 0 0 auto; }
+    form.noteform input { flex: 1 1 140px; min-width: 0; }
+    .panel .contactline { font-size: 12.5px; color: #b7b2a6; margin: 0 0 10px; }
+
+    /* ---- legend, data, privacy ---- */
+    .legend { font-size: 12.5px; color: #b7b2a6; margin: 12px 0 0; }
+    .legend .chip { margin-right: 4px; }
+    .legend span.item { display: inline-block; margin: 0 14px 4px 0; }
+    .data { margin-top: 34px; border-top: 1px solid #3a3a36; padding-top: 16px; }
+    .privacy-note { font-size: 12.5px; color: #b7b2a6; border-top: 1px solid #3a3a36; margin-top: 26px; padding-top: 14px; }
+    .empty { border: 1px solid #3a3a36; background: #161616; padding: 16px; margin: 18px 0; }
+    .empty p { color: #b7b2a6; font-size: 14px; }
+
+    /* ---- modal ---- */
+    .modal-back {
+      position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0, 0, 0, 0.74);
+      display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 50;
+    }
+    .modal-card { background: #161616; border: 1px solid #3a3a36; width: 100%; max-width: 460px; padding: 18px; max-height: 88vh; overflow-y: auto; }
+    .modal-body { font-size: 13.5px; color: #b7b2a6; }
+    .modal-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .modal-card .fld { margin-bottom: 10px; }
+
+    /* ---- phone ---- */
+    @media (max-width: 760px) {
+      main { margin: 24px auto; }
+      .panel-grid { grid-template-columns: 1fr; }
+      table, tbody, tr, td { display: block; width: 100%; }
+      thead { display: none; }
+      tr.deal-row { border: 1px solid #3a3a36; padding: 10px 12px; margin: 0 0 10px; }
+      tr.deal-row.adrift { border-color: #d46a6a; border-left-width: 5px; }
+      tr.deal-row.linked { border-color: #e8e4d9; border-left-width: 5px; }
+      td { border-bottom: 0; padding: 5px 0; }
+      tr.deal-row.adrift td:first-child, tr.deal-row.linked td:first-child,
+      tr.deal-row.adrift.linked td:first-child { box-shadow: none; }
+      tr.deal-row.adrift td, tr.deal-row.linked td { background: transparent; }
+      td[data-label]::before {
+        content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.07em;
+        text-transform: uppercase; color: #b7b2a6; font-weight: 650; margin-bottom: 2px;
+      }
+      td.nolabel::before { content: none; }
+      .c-act { text-align: left; }
+      tr.detail-row > td { padding: 0 0 12px; border-bottom: 0; }
+      tr.detail-row { margin-top: -10px; margin-bottom: 10px; }
+    }
+    @media (max-width: 560px) {
+      .grid2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="nav"></div>
+
+    <h1>Pipeline</h1>
+    <p class="lede">
+      Your deal book. Every deal, what it is worth, where it stands, and the one thing you do next.
+      A deal with no next action and no date is pinned to the top of this page until you fix it.
+    </p>
+
+    <noscript>
+      <p class="err">This page needs JavaScript. It runs entirely in your browser — there is no server to talk to.</p>
+    </noscript>
+
+    <p id="storageWarn" class="warnbox" hidden></p>
+    <p id="flash" class="flashbox" hidden></p>
+
+    <section id="banner" class="banner" hidden></section>
+
+    <section id="empty" class="empty" hidden>
+      <h2>No deals yet</h2>
+      <p>
+        This is your deal book. Add the deals you are actually working: the company, who you talk to,
+        what you think it is worth, and the one thing you do next.
+      </p>
+      <p>
+        Any deal without a next action and a date gets flagged and pinned to the top of this list.
+        That flag is the point of the page — a deal with no next step is a deal you have stopped selling.
+      </p>
+      <p>Everything stays in this browser. If you already have a backup file, import it instead.</p>
+      <div class="row-actions">
+        <button type="button" id="emptyAdd">Add your first deal</button>
+        <button type="button" id="emptyImport" class="ghost">Import a backup</button>
+      </div>
+    </section>
+
+    <div id="summary" class="summary" hidden></div>
+    <p id="summaryNote" class="small muted" hidden>
+      Open estimate is the sum of your own value estimates for open deals. It is not a forecast.
+    </p>
+
+    <div id="controls" class="toolbar" hidden>
+      <form id="searchForm" class="ctl ctl-search" role="search">
+        <label for="q">Search</label>
+        <input id="q" type="search" placeholder="Company or contact" autocomplete="off">
+      </form>
+      <div class="ctl">
+        <label for="filter">Show</label>
+        <select id="filter">
+          <option value="open">Open deals</option>
+          <option value="all">All deals</option>
+          <option value="adrift">No next step</option>
+          <option value="overdue">Overdue</option>
+          <option value="stale">Untouched 14+ days</option>
+          <optgroup label="Stage">
+            <option value="stage:Lead">Lead</option>
+            <option value="stage:Contacted">Contacted</option>
+            <option value="stage:Meeting">Meeting</option>
+            <option value="stage:Proposal">Proposal</option>
+            <option value="stage:Negotiation">Negotiation</option>
+            <option value="stage:Won">Won</option>
+            <option value="stage:Lost">Lost</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="ctl">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="attention">Needs attention</option>
+          <option value="value">Value, high to low</option>
+          <option value="touch">Last touch, oldest first</option>
+          <option value="next">Next action date, soonest first</option>
+        </select>
+      </div>
+      <button type="button" id="addToggle">Add deal</button>
+    </div>
+    <p id="pinNote" class="small muted" hidden>Deals with no next step stay at the top of every sort.</p>
+
+    <form id="addForm" hidden>
+      <h2>Add a deal</h2>
+      <div class="grid2">
+        <div class="fld">
+          <label for="a-company">Company</label>
+          <input id="a-company" type="text" autocomplete="off" required>
+        </div>
+        <div class="fld">
+          <label for="a-contact">Contact</label>
+          <input id="a-contact" type="text" autocomplete="off">
+        </div>
+        <div class="fld">
+          <label for="a-value">Expected value</label>
+          <input id="a-value" type="text" inputmode="decimal" autocomplete="off">
+        </div>
+        <div class="fld">
+          <label for="a-stage">Stage</label>
+          <select id="a-stage"></select>
+        </div>
+        <div class="fld">
+          <label for="a-nextAction">Next action</label>
+          <input id="a-nextAction" type="text" autocomplete="off" placeholder="What you do next">
+        </div>
+        <div class="fld">
+          <label for="a-nextDate">Next action date</label>
+          <input id="a-nextDate" type="date">
+        </div>
+      </div>
+      <details class="more">
+        <summary class="small muted">More detail</summary>
+        <div class="grid2" style="margin-top:10px">
+          <div class="fld">
+            <label for="a-role">Role</label>
+            <input id="a-role" type="text" autocomplete="off">
+          </div>
+          <div class="fld">
+            <label for="a-email">Email</label>
+            <input id="a-email" type="email" autocomplete="off">
+          </div>
+          <div class="fld">
+            <label for="a-phone">Phone</label>
+            <input id="a-phone" type="tel" autocomplete="off">
+          </div>
+          <div class="fld">
+            <label for="a-source">Source</label>
+            <input id="a-source" type="text" autocomplete="off">
+          </div>
+          <div class="fld">
+            <label for="a-opened">Opened</label>
+            <input id="a-opened" type="date">
+          </div>
+        </div>
+        <div class="fld" style="margin-top:10px">
+          <label for="a-notes">Notes</label>
+          <textarea id="a-notes" rows="3"></textarea>
+        </div>
+      </details>
+      <p class="small muted" style="margin-top:10px">
+        Leave the next action blank and this deal appears flagged at the top of the list until you set one.
+      </p>
+      <p id="addErr" class="err small" hidden></p>
+      <div class="row-actions">
+        <button type="submit">Add deal</button>
+        <button type="button" id="addCancel" class="ghost">Cancel</button>
+      </div>
+    </form>
+
+    <div id="tableSection" hidden>
+      <p id="countLine" class="small muted"></p>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Deal</th>
+              <th scope="col">Value</th>
+              <th scope="col">Stage</th>
+              <th scope="col">Last touch</th>
+              <th scope="col">Next step</th>
+              <th scope="col">Status</th>
+              <th scope="col"><span class="sr-only">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p class="legend" id="legend">
+        <span class="item"><span class="chip chip-adrift">ADRIFT</span> no next action, or no date</span>
+        <span class="item"><span class="chip chip-overdue">OVERDUE</span> the next action date has passed</span>
+        <span class="item"><span class="chip chip-stale">STALE</span> nothing logged for more than 14 days</span>
+      </p>
+    </div>
+
+    <section id="dataSection" class="data" hidden>
+      <h3>Your data</h3>
+      <p class="small muted">
+        Export writes a .json backup to your downloads. Import reads one back — you choose whether to
+        merge it with what is already here or replace everything.
+      </p>
+      <div class="row-actions">
+        <button type="button" id="exportBtn">Export backup</button>
+        <button type="button" id="importBtn" class="ghost">Import backup</button>
+      </div>
+      <input id="importFile" type="file" accept="application/json,.json" class="sr-only" tabindex="-1" aria-hidden="true">
+    </section>
+
+    <div id="privacy"></div>
+  </main>
+  <div id="modalRoot"></div>
+  <script>
+/* ------------------------------------------------------------------
+   Doug's sales workspace - shared data layer.
+
+   Embedded verbatim in every page. No dependencies, no module syntax,
+   no side effects on load: this block only defines the global `WS`.
+   It touches localStorage / the DOM only when you call it.
+
+   PRIVACY: every byte of Doug's client data lives in this browser's
+   localStorage under WS.KEY. Nothing is uploaded, there is no
+   telemetry, and no client data may ever be written into the repo.
+   Backups go out through WS.exportJSON() as a file Doug saves
+   somewhere private - never committed.
+
+   Conventions:
+     - dates on records are ISO "yyyy-mm-dd" (activity `at` is a full
+       ISO datetime). "" always means UNSET.
+     - WS.daysBetween() returns NaN for unparseable input; every WS
+       predicate guards for that, and WS.migrate() guarantees stored
+       dates are parseable, so pages that use migrated state are safe.
+   ------------------------------------------------------------------ */
+var WS = (function () {
+  'use strict';
+
+  var KEY = 'doug.workspace.v1';
+  var VERSION = 1;
+
+  var STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation', 'Won', 'Lost'];
+  var OPEN_STAGES = ['Lead', 'Contacted', 'Meeting', 'Proposal', 'Negotiation'];
+  var CLOSED_STAGES = ['Won', 'Lost'];
+  var KINDS = ['call', 'email', 'meeting', 'note'];
+
+  var STALE_DAYS = 14;
+  var DEFAULT_CYCLE_DAYS = 30;
+  var DEFAULT_CURRENCY = 'USD';
+
+  /* Rough, editable odds per stage - used by the forecast page for a
+     weighted number. Deliberately conservative. */
+  var STAGE_PROBABILITY = {
+    'Lead': 0.05,
+    'Contacted': 0.15,
+    'Meeting': 0.30,
+    'Proposal': 0.50,
+    'Negotiation': 0.70,
+    'Won': 1,
+    'Lost': 0
+  };
+
+  var NAV_ITEMS = [
+    ['index.html', 'Today'],
+    ['pipeline.html', 'Pipeline'],
+    ['forecast.html', 'Forecast'],
+    ['prep.html', 'Call prep'],
+    ['objections.html', 'Objections']
+  ];
+
+  var CURRENCY_SYMBOLS = {
+    USD: '$', CAD: 'CA$', AUD: 'A$', NZD: 'NZ$', EUR: '€', GBP: '£',
+    JPY: '¥', CNY: '¥', INR: '₹', CHF: 'CHF ', SEK: 'kr ',
+    NOK: 'kr ', DKK: 'kr ', ZAR: 'R', BRL: 'R$', MXN: 'MX$', SGD: 'S$', HKD: 'HK$'
+  };
+
+  /* ---------------- tiny helpers ---------------- */
+
+  function isObj(v) { return !!v && typeof v === 'object' && !isArr(v); }
+  function isArr(v) { return Object.prototype.toString.call(v) === '[object Array]'; }
+
+  function text(v) {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string') return v.trim();
+    if (typeof v === 'number') return isFinite(v) ? String(v) : '';
+    if (typeof v === 'boolean') return v ? 'true' : '';
+    if (isArr(v)) return v.map(text).filter(Boolean).join(', ');
+    return '';
+  }
+
+  function toNum(v, dflt) {
+    if (typeof v === 'number') return isFinite(v) ? v : dflt;
+    if (typeof v === 'string') {
+      var cleaned = v.replace(/[^0-9.\-]/g, '');
+      if (cleaned && cleaned !== '-' && cleaned !== '.') {
+        var n = parseFloat(cleaned);
+        if (isFinite(n)) return n;
+      }
+    }
+    return dflt;
+  }
+
+  /* first non-empty value among several possible (legacy) key names */
+  function pick(o, names) {
+    for (var i = 0; i < names.length; i++) {
+      var v = o[names[i]];
+      if (v !== undefined && v !== null && v !== '') return v;
+    }
+    return '';
+  }
+
+  function uid() {
+    try {
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.randomUUID === 'function') {
+        return crypto.randomUUID();
+      }
+      if (typeof crypto !== 'undefined' && crypto && typeof crypto.getRandomValues === 'function') {
+        var b = new Uint8Array(16);
+        crypto.getRandomValues(b);
+        b[6] = (b[6] & 0x0f) | 0x40;
+        b[8] = (b[8] & 0x3f) | 0x80;
+        var hex = '';
+        for (var i = 0; i < 16; i++) {
+          hex += (b[i] + 0x100).toString(16).slice(1);
+          if (i === 3 || i === 5 || i === 7 || i === 9) hex += '-';
+        }
+        return hex;
+      }
+    } catch (e) { /* fall through */ }
+    return 'id-' + Date.now().toString(36) + '-' +
+      Math.random().toString(36).slice(2, 10) +
+      Math.random().toString(36).slice(2, 6);
+  }
+
+  /* ---------------- escaping (every page renders user text) ------ */
+
+  var ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  var ESC_ATTR = {
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    '`': '&#96;', '=': '&#61;', '/': '&#47;'
+  };
+
+  function esc(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"']/g, function (c) { return ESC[c]; });
+  }
+
+  function escAttr(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"'`=\/]/g, function (c) { return ESC_ATTR[c]; });
+  }
+
+  /* ---------------- dates ---------------- */
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function toISODate(d) {
+    if (!(d instanceof Date) || isNaN(d.getTime())) return '';
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+
+  /* Accepts a Date, a timestamp, "yyyy-mm-dd" (read as LOCAL midnight so
+     the day never shifts) or any ISO datetime. Returns Date or null. */
+  function parseDate(s) {
+    if (s instanceof Date) return isNaN(s.getTime()) ? null : s;
+    if (typeof s === 'number' && isFinite(s)) {
+      var dn = new Date(s);
+      return isNaN(dn.getTime()) ? null : dn;
+    }
+    if (typeof s !== 'string') return null;
+    var v = s.trim();
+    if (!v) return null;
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(v);
+    if (m) {
+      var y = +m[1], mo = +m[2], da = +m[3];
+      if (mo < 1 || mo > 12 || da < 1 || da > 31) return null;
+      var d = new Date(y, mo - 1, da, 0, 0, 0, 0);
+      if (isNaN(d.getTime()) || d.getMonth() !== mo - 1) return null;
+      return d;
+    }
+    var slash = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(v);
+    if (slash) {
+      var d2 = new Date(+slash[3], +slash[1] - 1, +slash[2], 0, 0, 0, 0);
+      return isNaN(d2.getTime()) ? null : d2;
+    }
+    var d3 = new Date(v);
+    return isNaN(d3.getTime()) ? null : d3;
+  }
+
+  function today() { return toISODate(new Date()); }
+  function now() { return new Date().toISOString(); }
+
+  /* whole days from a to b; positive when b is later. NaN if unparseable. */
+  function daysBetween(a, b) {
+    var da = parseDate(a), db = parseDate(b);
+    if (!da || !db) return NaN;
+    var ua = Date.UTC(da.getFullYear(), da.getMonth(), da.getDate());
+    var ub = Date.UTC(db.getFullYear(), db.getMonth(), db.getDate());
+    return Math.round((ub - ua) / 86400000);
+  }
+
+  function addDays(dateish, n) {
+    var d = parseDate(dateish);
+    if (!d) return '';
+    var out = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    out.setDate(out.getDate() + (toNum(n, 0) | 0));
+    return toISODate(out);
+  }
+
+  function laterISO(a, b) {
+    if (!a) return b || '';
+    if (!b) return a || '';
+    return a > b ? a : b; /* ISO dates sort lexicographically */
+  }
+
+  function fmtDate(v, opts) {
+    var d = parseDate(v);
+    if (!d) return '';
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.DateTimeFormat === 'function') {
+        var o = isObj(opts) ? opts : { month: 'short', day: 'numeric' };
+        return new Intl.DateTimeFormat(undefined, o).format(d);
+      }
+    } catch (e) { /* fall through */ }
+    return toISODate(d);
+  }
+
+  /* ---------------- money ---------------- */
+
+  function normCurrency(c) {
+    var v = text(c).toUpperCase();
+    return /^[A-Z]{3}$/.test(v) ? v : DEFAULT_CURRENCY;
+  }
+
+  function group3(n) {
+    var s = String(Math.round(Math.abs(n)));
+    var out = '', c = 0;
+    for (var i = s.length - 1; i >= 0; i--) {
+      out = s.charAt(i) + out;
+      c++;
+      if (c % 3 === 0 && i > 0) out = ',' + out;
+    }
+    return out;
+  }
+
+  function trim1(x) {
+    var s = (Math.round(x * 10) / 10).toFixed(1);
+    return s.replace(/\.0$/, '');
+  }
+
+  function manualMoney(v, cur) {
+    var sym = CURRENCY_SYMBOLS[cur] || (cur + ' ');
+    var sign = v < 0 ? '-' : '';
+    var abs = Math.abs(v);
+    var body;
+    if (abs >= 1e9) body = trim1(abs / 1e9) + 'B';
+    else if (abs >= 1e6) body = trim1(abs / 1e6) + 'M';
+    else if (abs >= 1e4) body = trim1(abs / 1e3) + 'K';
+    else body = group3(abs);
+    return sign + sym + body;
+  }
+
+  /* Compact human money: $8,500 / $12.5K / $1.2M */
+  function money(n, currency) {
+    var cur = normCurrency(currency);
+    var v = toNum(n, 0);
+    if (!isFinite(v)) v = 0;
+    var abs = Math.abs(v);
+    try {
+      if (typeof Intl !== 'undefined' && Intl && typeof Intl.NumberFormat === 'function') {
+        var base = { style: 'currency', currency: cur, maximumFractionDigits: 0 };
+        if (abs >= 1e4) { base.notation = 'compact'; base.maximumFractionDigits = 1; }
+        try {
+          var narrow = { style: 'currency', currency: cur, currencyDisplay: 'narrowSymbol',
+            maximumFractionDigits: base.maximumFractionDigits, notation: base.notation };
+          return new Intl.NumberFormat(undefined, narrow).format(v);
+        } catch (e1) { /* narrowSymbol / compact unsupported */ }
+        try {
+          return new Intl.NumberFormat(undefined, base).format(v);
+        } catch (e2) { /* fall through */ }
+        try {
+          return new Intl.NumberFormat(undefined,
+            { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(v);
+        } catch (e3) { /* fall through */ }
+      }
+    } catch (e) { /* fall through */ }
+    return manualMoney(v, cur);
+  }
+
+  /* ---------------- shape / migration ---------------- */
+
+  function emptyState() {
+    return {
+      version: VERSION,
+      settings: { quota: null, cycleDays: DEFAULT_CYCLE_DAYS, currency: DEFAULT_CURRENCY },
+      deals: [],
+      activities: [],
+      objections: []
+    };
+  }
+
+  function uniqueId(v, seen) {
+    var id = text(v);
+    if (!id || seen['#' + id]) id = uid();
+    seen['#' + id] = true;
+    return id;
+  }
+
+  function coerceDate(v, dflt) {
+    var d = parseDate(v);
+    return d ? toISODate(d) : dflt;
+  }
+
+  function coerceDateTime(v, dflt) {
+    var d = parseDate(v);
+    if (!d) return dflt;
+    try { return d.toISOString(); } catch (e) { return dflt; }
+  }
+
+  function coerceStage(v, dflt) {
+    var s = text(v).toLowerCase();
+    if (!s) return dflt;
+    for (var i = 0; i < STAGES.length; i++) {
+      if (STAGES[i].toLowerCase() === s) return STAGES[i];
+    }
+    if (s.indexOf('won') !== -1 || s === 'closed-won' || s === 'closed won') return 'Won';
+    if (s.indexOf('lost') !== -1 || s === 'closed-lost' || s === 'closed lost') return 'Lost';
+    if (s.indexOf('propos') !== -1 || s.indexOf('quote') !== -1) return 'Proposal';
+    if (s.indexOf('negoti') !== -1) return 'Negotiation';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1) return 'Meeting';
+    if (s.indexOf('contact') !== -1) return 'Contacted';
+    if (s.indexOf('lead') !== -1 || s.indexOf('new') !== -1) return 'Lead';
+    return dflt;
+  }
+
+  function coerceOutcome(v) {
+    var s = text(v).toLowerCase();
+    if (!s) return '';
+    if (s.indexOf('won') !== -1 || s === 'w' || s === 'win') return 'won';
+    if (s.indexOf('lost') !== -1 || s === 'l' || s === 'lose' || s === 'loss') return 'lost';
+    return '';
+  }
+
+  function coerceKind(v) {
+    var s = text(v).toLowerCase();
+    for (var i = 0; i < KINDS.length; i++) if (KINDS[i] === s) return KINDS[i];
+    if (s.indexOf('phone') !== -1 || s.indexOf('dial') !== -1 || s.indexOf('voicemail') !== -1) return 'call';
+    if (s.indexOf('mail') !== -1) return 'email';
+    if (s.indexOf('meet') !== -1 || s.indexOf('demo') !== -1 || s.indexOf('visit') !== -1) return 'meeting';
+    return 'note';
+  }
+
+  function coerceTags(v) {
+    var out = [], i;
+    if (isArr(v)) {
+      for (i = 0; i < v.length; i++) {
+        var t = text(v[i]).toLowerCase();
+        if (t && out.indexOf(t) === -1) out.push(t);
+      }
+      return out;
+    }
+    var s = text(v);
+    if (!s) return out;
+    var parts = s.split(/[,;|]/);
+    for (i = 0; i < parts.length; i++) {
+      var p = parts[i].trim().toLowerCase();
+      if (p && out.indexOf(p) === -1) out.push(p);
+    }
+    return out;
+  }
+
+  function migrateSettings(raw) {
+    var s = isObj(raw) ? raw : {};
+    var quota = null;
+    if (s.quota !== null && s.quota !== undefined && s.quota !== '') {
+      var q = toNum(s.quota, NaN);
+      if (isFinite(q) && q >= 0) quota = Math.round(q * 100) / 100;
+    }
+    var cycle = Math.round(toNum(pick(s, ['cycleDays', 'cycle_days', 'cycle']), DEFAULT_CYCLE_DAYS));
+    if (!isFinite(cycle) || cycle < 1) cycle = DEFAULT_CYCLE_DAYS;
+    if (cycle > 3650) cycle = 3650;
+    return { quota: quota, cycleDays: cycle, currency: normCurrency(s.currency) };
+  }
+
+  function migrateDeal(raw, seen, todayISO) {
+    var d = isObj(raw) ? raw : {};
+    var opened = coerceDate(pick(d, ['opened', 'openedAt', 'created', 'createdAt', 'date']), '') || todayISO;
+    var outcome = coerceOutcome(d.outcome);
+    var stage = coerceStage(d.stage, '');
+
+    if (!stage) stage = outcome === 'won' ? 'Won' : (outcome === 'lost' ? 'Lost' : 'Lead');
+    if (!outcome && stage === 'Won') outcome = 'won';
+    if (!outcome && stage === 'Lost') outcome = 'lost';
+    if (outcome === 'won') stage = 'Won';
+    if (outcome === 'lost') stage = 'Lost';
+
+    var closedAt = coerceDate(pick(d, ['closedAt', 'closed_at', 'closed']), '');
+    if (outcome && !closedAt) closedAt = laterISO(opened, todayISO);
+    if (!outcome) closedAt = '';
+
+    var value = toNum(pick(d, ['value', 'amount', 'dealValue', 'size']), 0);
+    if (!isFinite(value) || value < 0) value = 0;
+
+    return {
+      id: uniqueId(d.id, seen),
+      company: text(pick(d, ['company', 'account', 'org', 'name'])),
+      contact: text(pick(d, ['contact', 'person', 'contactName'])),
+      role: text(pick(d, ['role', 'title', 'jobTitle'])),
+      email: text(d.email),
+      phone: text(d.phone),
+      value: Math.round(value * 100) / 100,
+      stage: stage,
+      opened: opened,
+      nextAction: text(pick(d, ['nextAction', 'next_action', 'nextStep', 'next'])),
+      nextDate: coerceDate(pick(d, ['nextDate', 'next_date', 'dueDate', 'due']), ''),
+      source: text(d.source),
+      notes: typeof d.notes === 'string' ? d.notes.replace(/\s+$/, '') : text(d.notes),
+      closedAt: closedAt,
+      outcome: outcome
+    };
+  }
+
+  function migrateActivity(raw, seen, nowISO) {
+    var a = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(a.id, seen),
+      dealId: text(pick(a, ['dealId', 'deal_id', 'deal'])),
+      at: coerceDateTime(pick(a, ['at', 'date', 'when', 'ts']), nowISO),
+      kind: coerceKind(a.kind || a.type),
+      note: typeof a.note === 'string' ? a.note.replace(/\s+$/, '') : text(pick(a, ['note', 'text', 'body']))
+    };
+  }
+
+  function migrateObjection(raw, seen) {
+    var o = isObj(raw) ? raw : {};
+    return {
+      id: uniqueId(o.id, seen),
+      trigger: text(pick(o, ['trigger', 'objection', 'says', 'title'])),
+      response: typeof o.response === 'string'
+        ? o.response.replace(/\s+$/, '')
+        : text(pick(o, ['response', 'reply', 'answer'])),
+      tags: coerceTags(o.tags)
+    };
+  }
+
+  /* Tolerates a missing / old / partially corrupt shape and always
+     returns a complete, correctly typed v1 state. Never mutates input. */
+  function migrate(state) {
+    var src;
+    if (isArr(state)) src = { deals: state };            /* very old: bare deal list */
+    else if (isObj(state)) src = state;
+    else src = {};
+
+    var todayISO = today();
+    var nowISO = now();
+    var seenD = {}, seenA = {}, seenO = {};
+    var out = emptyState();
+    var i;
+
+    out.settings = migrateSettings(src.settings);
+
+    var deals = isArr(src.deals) ? src.deals : (isArr(src.pipeline) ? src.pipeline : []);
+    for (i = 0; i < deals.length; i++) {
+      if (!isObj(deals[i])) continue;
+      out.deals.push(migrateDeal(deals[i], seenD, todayISO));
+    }
+
+    var acts = isArr(src.activities) ? src.activities : (isArr(src.log) ? src.log : []);
+    for (i = 0; i < acts.length; i++) {
+      if (!isObj(acts[i])) continue;
+      out.activities.push(migrateActivity(acts[i], seenA, nowISO));
+    }
+
+    var objs = isArr(src.objections) ? src.objections : [];
+    for (i = 0; i < objs.length; i++) {
+      if (!isObj(objs[i])) continue;
+      var o = migrateObjection(objs[i], seenO);
+      if (!o.trigger && !o.response) continue;
+      out.objections.push(o);
+    }
+
+    out.version = VERSION;
+    return out;
+  }
+
+  /* ---------------- storage ---------------- */
+
+  function load() {
+    var raw = null;
+    try {
+      if (typeof localStorage !== 'undefined' && localStorage) raw = localStorage.getItem(KEY);
+    } catch (e) { raw = null; }                 /* private window / site data blocked */
+    if (!raw || typeof raw !== 'string') return emptyState();
+    var parsed = null;
+    try { parsed = JSON.parse(raw); } catch (e) { return emptyState(); }
+    try { return migrate(parsed); } catch (e) { return emptyState(); }
+  }
+
+  /* true on success; false means the caller should warn Doug loudly
+     (quota exceeded, blocked storage) instead of losing the edit. */
+  function save(state) {
+    try {
+      var clean = migrate(state);
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.setItem(KEY, JSON.stringify(clean));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function clearAll() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      localStorage.removeItem(KEY);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /* ---------------- derived state ---------------- */
+
+  function isOpen(deal) {
+    return isObj(deal) && text(deal.outcome) === '';
+  }
+
+  function activitiesFor(state, dealId) {
+    var s = isObj(state) ? state : {};
+    var list = isArr(s.activities) ? s.activities : [];
+    var id = text(dealId);
+    var out = [];
+    for (var i = 0; i < list.length; i++) {
+      if (isObj(list[i]) && text(list[i].dealId) === id) out.push(list[i]);
+    }
+    out.sort(function (a, b) {
+      var ta = text(a.at), tb = text(b.at);
+      return ta < tb ? 1 : (ta > tb ? -1 : 0);          /* newest first */
+    });
+    return out;
+  }
+
+  /* ISO date of the most recent activity on this deal, else deal.opened */
+  function lastTouch(state, deal) {
+    var d = isObj(deal) ? deal : {};
+    var acts = activitiesFor(state, d.id);
+    var best = '';
+    for (var i = 0; i < acts.length; i++) {
+      var iso = coerceDate(acts[i].at, '');
+      if (iso) best = laterISO(best, iso);
+    }
+    return best || text(d.opened);
+  }
+
+  function isStale(state, deal) {
+    if (!isOpen(deal)) return false;
+    var anchor = laterISO(lastTouch(state, deal), text(deal.opened));
+    if (!anchor) return false;
+    var days = daysBetween(anchor, today());
+    return isFinite(days) && days > STALE_DAYS;
+  }
+
+  function isOverdue(deal) {
+    if (!isOpen(deal)) return false;
+    var nd = text(deal.nextDate);
+    if (!nd) return false;
+    var days = daysBetween(nd, today());
+    return isFinite(days) && days > 0;
+  }
+
+  function isAdrift(deal) {
+    if (!isOpen(deal)) return false;
+    return text(deal.nextAction) === '' || text(deal.nextDate) === '';
+  }
+
+  function flags(state, deal) {
+    var open = isOpen(deal);
+    var anchor = open ? laterISO(lastTouch(state, deal), text(deal && deal.opened)) : '';
+    var since = anchor ? daysBetween(anchor, today()) : NaN;
+    return {
+      open: open,
+      stale: isStale(state, deal),
+      overdue: isOverdue(deal),
+      adrift: isAdrift(deal),
+      daysSinceTouch: isFinite(since) ? since : null,
+      lastTouch: anchor
+    };
+  }
+
+  function stageIndex(stage) {
+    var s = coerceStage(stage, '');
+    var i = STAGES.indexOf(s);
+    return i === -1 ? 0 : i;
+  }
+
+  function stageProbability(stage) {
+    var s = coerceStage(stage, 'Lead');
+    var p = STAGE_PROBABILITY[s];
+    return typeof p === 'number' ? p : 0;
+  }
+
+  function byId(list, id) {
+    var arr = isArr(list) ? list : [];
+    var want = text(id);
+    for (var i = 0; i < arr.length; i++) {
+      if (isObj(arr[i]) && text(arr[i].id) === want) return arr[i];
+    }
+    return null;
+  }
+
+  /* blank records with sane defaults, ready to be filled by a form */
+  function newDeal(partial) {
+    var base = {
+      id: uid(), company: '', contact: '', role: '', email: '', phone: '',
+      value: 0, stage: 'Lead', opened: today(), nextAction: '', nextDate: '',
+      source: '', notes: '', closedAt: '', outcome: ''
+    };
+    if (isObj(partial)) {
+      for (var k in base) {
+        if (Object.prototype.hasOwnProperty.call(partial, k) && partial[k] !== undefined) {
+          base[k] = partial[k];
+        }
+      }
+    }
+    var seen = {};
+    return migrateDeal(base, seen, today());
+  }
+
+  function newActivity(dealId, kind, note) {
+    return {
+      id: uid(),
+      dealId: text(dealId),
+      at: now(),
+      kind: coerceKind(kind),
+      note: typeof note === 'string' ? note.replace(/\s+$/, '') : text(note)
+    };
+  }
+
+  function newObjection(trigger, response, tags) {
+    return { id: uid(), trigger: text(trigger), response: text(response), tags: coerceTags(tags) };
+  }
+
+  /* ---------------- export / import (Doug owns his data) --------- */
+
+  function exportFilename() { return 'doug-workspace-' + today() + '.json'; }
+
+  function exportJSON(state) {
+    try {
+      var data = JSON.stringify(migrate(state), null, 2);
+      if (typeof document === 'undefined' || !document || !document.body) return false;
+      if (typeof Blob === 'undefined') return false;
+      var api = (typeof URL !== 'undefined' && URL && URL.createObjectURL) ? URL
+        : ((typeof webkitURL !== 'undefined' && webkitURL && webkitURL.createObjectURL) ? webkitURL : null);
+      if (!api) return false;
+      var blob = new Blob([data], { type: 'application/json' });
+      var url = api.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = exportFilename();
+      a.rel = 'noopener';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        try { if (a.parentNode) a.parentNode.removeChild(a); } catch (e) {}
+        try { api.revokeObjectURL(url); } catch (e) {}
+      }, 5000);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function looksLikeWorkspace(o) {
+    if (isArr(o)) return true;
+    if (!isObj(o)) return false;
+    return isArr(o.deals) || isArr(o.activities) || isArr(o.objections) ||
+      isObj(o.settings) || o.version === 1 || isArr(o.pipeline);
+  }
+
+  /* cb(err, state) - never saves on its own; the page decides whether to
+     replace or merge, then calls WS.save(). */
+  function importJSON(file, cb) {
+    var done = typeof cb === 'function' ? cb : function () {};
+    if (!file) { done(new Error('No file chosen.')); return; }
+    if (typeof FileReader === 'undefined') { done(new Error('This browser cannot read files.')); return; }
+    if (typeof file.size === 'number' && file.size > 25 * 1024 * 1024) {
+      done(new Error('That file is too big to be a workspace backup.'));
+      return;
+    }
+    var reader;
+    try { reader = new FileReader(); } catch (e) { done(new Error('This browser cannot read files.')); return; }
+    reader.onerror = function () { done(new Error('Could not read that file.')); };
+    reader.onabort = function () { done(new Error('Reading that file was cancelled.')); };
+    reader.onload = function () {
+      var parsed;
+      try {
+        parsed = JSON.parse(String(reader.result));
+      } catch (e) {
+        done(new Error('That file is not valid JSON.'));
+        return;
+      }
+      if (!looksLikeWorkspace(parsed)) {
+        done(new Error('That JSON file does not look like a workspace backup.'));
+        return;
+      }
+      var state;
+      try { state = migrate(parsed); } catch (e) { done(new Error('That backup could not be read.')); return; }
+      done(null, state);
+    };
+    try { reader.readAsText(file); } catch (e) { done(new Error('Could not read that file.')); }
+  }
+
+  /* union by id; records from `incoming` win on conflict */
+  function merge(base, incoming) {
+    var a = migrate(base), b = migrate(incoming);
+    var out = emptyState();
+    out.settings = b.settings;
+    ['deals', 'activities', 'objections'].forEach(function (key) {
+      var index = {}, order = [], i, r;
+      for (i = 0; i < a[key].length; i++) {
+        r = a[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < b[key].length; i++) {
+        r = b[key][i];
+        if (!index['#' + r.id]) order.push(r.id);
+        index['#' + r.id] = r;
+      }
+      for (i = 0; i < order.length; i++) out[key].push(index['#' + order[i]]);
+    });
+    return out;
+  }
+
+  /* ---------------- starter objection library ---------------- */
+
+  function seedObjections() {
+    var seeds = [
+      {
+        trigger: "It's too expensive / it's not in the budget.",
+        response: "Fair - let's make sure we're comparing the same thing. Is it more than you expected, or more than you have available this year? If it's the number itself, I'll walk through what's driving it and what we can take out. If it's the budget cycle, tell me who owns that budget and when it resets, and we'll size something that fits now and grows later.",
+        tags: ['price', 'budget']
+      },
+      {
+        trigger: "Now isn't a good time - check back next quarter.",
+        response: "Happy to. So I'm not just chasing you: what has to be true next quarter for this to move? If the honest answer is that it isn't a priority, say so and I'll stop pushing. If it's real timing, let's book fifteen minutes for the first week of that quarter now, and I'll send one useful thing a month in between rather than a check-in email.",
+        tags: ['timing', 'stall']
+      },
+      {
+        trigger: "We already use another vendor and we're happy with them.",
+        response: "Good - switching for its own sake is a bad idea, and I'm not going to ask you to. I'd rather understand where they're strong so I know when we're not a fit. Out of curiosity, if you could change one thing about how it works today, what would it be? If nothing comes to mind, we're done. If something does, that's the conversation worth having when your renewal comes up - when is that?",
+        tags: ['incumbent', 'competitor']
+      },
+      {
+        trigger: "I'd have to run this by my boss / it goes to a committee.",
+        response: "Of course - I'd expect that. Two things would help: what usually sinks a proposal like this internally, and who else has to be comfortable with it? I'd rather arm you with the numbers and the answers to their hard questions than have you carry it alone. And if it's useful, I'm glad to join that conversation for ten minutes so the technical questions don't bounce back and forth.",
+        tags: ['authority', 'decision-maker']
+      },
+      {
+        trigger: "We're fine as we are - this isn't a problem for us.",
+        response: "Then you should keep your money. Let me ask one question and I'll get out of your way: how are you handling it today, and what does it cost you when it goes wrong? If the answer is 'it doesn't really', you're genuinely fine and I'll note that. Most people I talk to have quietly absorbed the cost and stopped counting it - if that's the case, it's worth putting a number on it once.",
+        tags: ['need', 'status-quo']
+      },
+      {
+        trigger: "Just send me some information and I'll take a look.",
+        response: "I can, but generic material wastes your time. Give me two minutes on what you're actually trying to fix and I'll send the one page that's relevant instead of a brochure. And so it doesn't sit in your inbox: when should I follow up - and is a short call or a written summary easier for you?",
+        tags: ['brush-off', 'stall']
+      }
+    ];
+    var out = [];
+    for (var i = 0; i < seeds.length; i++) {
+      out.push({ id: uid(), trigger: seeds[i].trigger, response: seeds[i].response, tags: seeds[i].tags.slice() });
+    }
+    return out;
+  }
+
+  /* seeds the starter library only when there is nothing there;
+     returns true if the state was changed (caller should save). */
+  function ensureSeeded(state) {
+    if (!isObj(state)) return false;
+    if (!isArr(state.objections)) state.objections = [];
+    if (state.objections.length) return false;
+    state.objections = seedObjections();
+    return true;
+  }
+
+  /* ---------------- shared chrome ---------------- */
+
+  function normPage(current) {
+    var c = text(current).toLowerCase();
+    c = c.split('?')[0].split('#')[0];
+    c = c.substring(c.lastIndexOf('/') + 1);
+    if (!c || c === 'index' || c === 'today' || c === 'home') return 'index.html';
+    var aliases = {
+      'pipeline': 'pipeline.html', 'deals': 'pipeline.html',
+      'forecast': 'forecast.html',
+      'prep': 'prep.html', 'call prep': 'prep.html', 'call-prep': 'prep.html',
+      'objections': 'objections.html'
+    };
+    if (aliases[c]) return aliases[c];
+    return c;
+  }
+
+  /* Tiny markup; pages own the CSS for .nav / .nav-item / .active */
+  function nav(current) {
+    var cur = normPage(current);
+    var html = '<nav class="nav" aria-label="Workspace sections">';
+    for (var i = 0; i < NAV_ITEMS.length; i++) {
+      var href = NAV_ITEMS[i][0], label = NAV_ITEMS[i][1];
+      var on = href === cur;
+      html += '<a class="nav-item' + (on ? ' active' : '') + '" href="' + escAttr(href) + '"' +
+        (on ? ' aria-current="page"' : '') + '>' + esc(label) + '</a>';
+    }
+    return html + '</nav>';
+  }
+
+  /* The privacy note every page must show near the bottom. */
+  function privacyNote() {
+    return '<p class="privacy-note">Everything you enter here stays in this browser, on this device. ' +
+      'Nothing is uploaded, there is no tracking, and no client details ever leave your machine. ' +
+      'Use Export to keep a backup - save that .json somewhere private and never commit it to the repo.</p>';
+  }
+
+  /* ---------------- public surface ---------------- */
+
+  return {
+    KEY: KEY,
+    VERSION: VERSION,
+    STAGES: STAGES,
+    OPEN_STAGES: OPEN_STAGES,
+    CLOSED_STAGES: CLOSED_STAGES,
+    KINDS: KINDS,
+    STALE_DAYS: STALE_DAYS,
+    DEFAULT_CYCLE_DAYS: DEFAULT_CYCLE_DAYS,
+    STAGE_PROBABILITY: STAGE_PROBABILITY,
+    NAV_ITEMS: NAV_ITEMS,
+
+    load: load,
+    save: save,
+    clearAll: clearAll,
+    migrate: migrate,
+    emptyState: emptyState,
+
+    uid: uid,
+    esc: esc,
+    escAttr: escAttr,
+    money: money,
+    fmtDate: fmtDate,
+    today: today,
+    now: now,
+    parseDate: parseDate,
+    toISODate: toISODate,
+    daysBetween: daysBetween,
+    addDays: addDays,
+    laterISO: laterISO,
+
+    isOpen: isOpen,
+    isStale: isStale,
+    isOverdue: isOverdue,
+    isAdrift: isAdrift,
+    flags: flags,
+    lastTouch: lastTouch,
+    activitiesFor: activitiesFor,
+    byId: byId,
+    stageIndex: stageIndex,
+    stageProbability: stageProbability,
+
+    newDeal: newDeal,
+    newActivity: newActivity,
+    newObjection: newObjection,
+
+    exportJSON: exportJSON,
+    exportFilename: exportFilename,
+    importJSON: importJSON,
+    merge: merge,
+
+    seedObjections: seedObjections,
+    ensureSeeded: ensureSeeded,
+
+    nav: nav,
+    privacyNote: privacyNote
+  };
+})();
+
+/* ------------------------------------------------------------------
+   pipeline.html - the deal book.
+
+   Runs entirely in this browser. No network calls of any kind.
+   Every piece of Doug-entered text is rendered through WS.esc /
+   WS.escAttr before it goes anywhere near innerHTML.
+   ------------------------------------------------------------------ */
+(function () {
+  'use strict';
+
+  var esc = WS.esc;
+  var escA = WS.escAttr;
+
+  /* ---------------- element handles ---------------- */
+
+  function $(id) { return document.getElementById(id); }
+
+  var elNav = $('nav');
+  var elPrivacy = $('privacy');
+  var elStorageWarn = $('storageWarn');
+  var elFlash = $('flash');
+  var elBanner = $('banner');
+  var elEmpty = $('empty');
+  var elSummary = $('summary');
+  var elSummaryNote = $('summaryNote');
+  var elControls = $('controls');
+  var elPinNote = $('pinNote');
+  var elAddForm = $('addForm');
+  var elAddErr = $('addErr');
+  var elAddToggle = $('addToggle');
+  var elTableSection = $('tableSection');
+  var elCountLine = $('countLine');
+  var elRows = $('rows');
+  var elDataSection = $('dataSection');
+  var elSearchForm = $('searchForm');
+  var elQ = $('q');
+  var elFilter = $('filter');
+  var elSort = $('sort');
+  var elImportFile = $('importFile');
+  var elModalRoot = $('modalRoot');
+
+  /* ---------------- page state ---------------- */
+
+  var state = null;
+  var storageOK = false;
+  var expanded = Object.create(null);   /* dealId -> true, row detail open */
+  var editingNext = Object.create(null); /* dealId -> true, inline next-step editor open */
+  var drafts = Object.create(null);      /* unsaved keystrokes, survives a re-render */
+  var clearQueue = [];                   /* drafts to drop on the next render */
+  var skipNextCapture = false;
+  var highlightId = '';
+  var pendingFocus = null;
+  var pendingScroll = false;
+  var seq = 0;
+  var flashTimer = null;
+  var modalState = null;
+
+  /* ---------------- storage ---------------- */
+
+  function probeStorage() {
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      var k = 'doug.probe.' + Math.random();
+      localStorage.setItem(k, '1');
+      localStorage.removeItem(k);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function loadState() {
+    try { return WS.load(); } catch (e) { return WS.emptyState(); }
+  }
+
+  function persist() {
+    var ok = false;
+    try { ok = WS.save(state); } catch (e) { ok = false; }
+    try { state = WS.migrate(state); } catch (e) { /* keep the in-memory copy */ }
+    if (!ok) {
+      warn('That change is on screen but could not be saved in this browser. ' +
+        'Export a backup now: this browser may be blocking storage, out of space, or in private mode.');
+    } else {
+      clearWarn();
+    }
+    return ok;
+  }
+
+  function warn(msg) {
+    elStorageWarn.textContent = msg;
+    elStorageWarn.hidden = false;
+  }
+
+  function clearWarn() {
+    if (storageOK) {
+      elStorageWarn.textContent = '';
+      elStorageWarn.hidden = true;
+    }
+  }
+
+  function flash(msg) {
+    elFlash.textContent = msg;
+    elFlash.hidden = false;
+    if (flashTimer) { clearTimeout(flashTimer); flashTimer = null; }
+    flashTimer = setTimeout(function () {
+      elFlash.hidden = true;
+      elFlash.textContent = '';
+      flashTimer = null;
+    }, 9000);
+  }
+
+  /* ---------------- small helpers ---------------- */
+
+  function curCode() {
+    return (state && state.settings && state.settings.currency) || 'USD';
+  }
+
+  function money(n) {
+    try { return WS.money(n, curCode()); } catch (e) { return String(n); }
+  }
+
+  function exactValue(v) {
+    var n = Number(v);
+    if (!isFinite(n)) n = 0;
+    var s;
+    try { s = n.toLocaleString(undefined, { maximumFractionDigits: 2 }); }
+    catch (e) { s = String(n); }
+    return s + ' ' + curCode();
+  }
+
+  function plainNumber(v) {
+    var n = Number(v);
+    if (!isFinite(n)) n = 0;
+    return String(Math.round(n * 100) / 100);
+  }
+
+  /* "12,500" / "$12500" / "" -> number. null means "that is not a number". */
+  function parseMoney(sIn) {
+    var s = String(sIn === null || sIn === undefined ? '' : sIn).trim();
+    if (s === '') return 0;
+    var t = s.replace(/[\s,]/g, '').replace(/[^0-9.\-]/g, '');
+    if (!/^-?(\d+\.?\d*|\.\d+)$/.test(t)) return null;
+    var n = parseFloat(t);
+    if (!isFinite(n)) return null;
+    return Math.round(n * 100) / 100;
+  }
+
+  function dateCell(v) {
+    var d = WS.parseDate(v);
+    if (!d) return '';
+    var sameYear = d.getFullYear() === new Date().getFullYear();
+    return WS.fmtDate(d, sameYear
+      ? { month: 'short', day: 'numeric' }
+      : { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function stamp(v) {
+    var s = WS.fmtDate(v, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    return s || '';
+  }
+
+  /* how long ago a past date was */
+  function agoText(iso) {
+    var n = WS.daysBetween(iso, WS.today());
+    if (!isFinite(n)) return '';
+    if (n === 0) return 'today';
+    if (n === 1) return 'yesterday';
+    if (n < 0) return 'in ' + (-n) + (n === -1 ? ' day' : ' days');
+    return n + ' days ago';
+  }
+
+  /* how a due date reads */
+  function dueText(iso) {
+    var n = WS.daysBetween(WS.today(), iso);
+    if (!isFinite(n)) return '';
+    if (n === 0) return 'due today';
+    if (n === 1) return 'due tomorrow';
+    if (n > 0) return 'due in ' + n + ' days';
+    if (n === -1) return '1 day late';
+    return (-n) + ' days late';
+  }
+
+  function plural(n, one, many) { return n === 1 ? one : many; }
+
+  function nameOf(d) {
+    return (d && d.company) ? d.company : 'this deal';
+  }
+
+  function hasClass(node, name) {
+    return !!(node && node.classList && node.classList.contains(name));
+  }
+
+  function closestEl(node, sel) {
+    if (!node || node.nodeType !== 1 || !node.closest) return null;
+    return node.closest(sel);
+  }
+
+  function fieldVal(form, name) {
+    var f = form && form.elements ? form.elements[name] : null;
+    if (!f || typeof f.value !== 'string') return '';
+    return f.value.trim();
+  }
+
+  function rawFieldVal(form, name) {
+    var f = form && form.elements ? form.elements[name] : null;
+    if (!f || typeof f.value !== 'string') return '';
+    return f.value;
+  }
+
+  function formError(form, msg) {
+    var p = form ? form.querySelector('[data-role="formerr"]') : null;
+    if (!p) return;
+    p.textContent = msg || '';
+    p.hidden = !msg;
+  }
+
+  /* ---------------- drafts (keep typing across a re-render) ------ */
+
+  function draftBucket(id, make) {
+    var b = drafts[id];
+    if (!b && make) { b = Object.create(null); drafts[id] = b; }
+    return b || null;
+  }
+
+  function captureDrafts() {
+    var nodes = elRows.querySelectorAll('[data-did]');
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      draftBucket(n.getAttribute('data-did'), true)[n.getAttribute('data-fld')] = n.value;
+    }
+  }
+
+  function restoreDrafts() {
+    var nodes = elRows.querySelectorAll('[data-did]');
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      var b = draftBucket(n.getAttribute('data-did'), false);
+      if (!b) continue;
+      var f = n.getAttribute('data-fld');
+      if (Object.prototype.hasOwnProperty.call(b, f)) n.value = b[f];
+    }
+  }
+
+  /* Queued, because render() captures what is on screen before it rebuilds;
+     clearing any earlier would just be re-captured from the stale DOM. */
+  function clearDrafts(id, field) {
+    clearQueue.push({ id: id, field: field || null });
+  }
+
+  function runClearQueue() {
+    for (var i = 0; i < clearQueue.length; i++) {
+      var c = clearQueue[i];
+      if (c.field) {
+        var b = draftBucket(c.id, false);
+        if (b) delete b[c.field];
+      } else {
+        delete drafts[c.id];
+      }
+    }
+    clearQueue = [];
+  }
+
+  /* ---------------- filtering and sorting ---------------- */
+
+  function matchFilter(d, fl, mode) {
+    if (mode === 'all') return true;
+    if (mode === 'open') return fl.open;
+    if (mode === 'adrift') return fl.adrift;
+    if (mode === 'overdue') return fl.overdue;
+    if (mode === 'stale') return fl.stale;
+    if (mode.indexOf('stage:') === 0) return d.stage === mode.slice(6);
+    return true;
+  }
+
+  function matchQuery(d, q) {
+    if (!q) return true;
+    var hay = ((d.company || '') + '\n' + (d.contact || '')).toLowerCase();
+    return hay.indexOf(q) !== -1;
+  }
+
+  function currentQuery() {
+    return String(elQ.value || '').trim().toLowerCase();
+  }
+
+  function itemsAll() {
+    var out = [];
+    var deals = (state && state.deals) ? state.deals : [];
+    for (var i = 0; i < deals.length; i++) {
+      out.push({ deal: deals[i], fl: WS.flags(state, deals[i]) });
+    }
+    return out;
+  }
+
+  function groupOf(x) {
+    if (!x.fl.open) return 2;
+    return x.fl.adrift ? 0 : 1;
+  }
+
+  function cmpEmptyLast(a, b) {
+    if (a === b) return 0;
+    if (!a) return 1;
+    if (!b) return -1;
+    return a < b ? -1 : 1;
+  }
+
+  function tieBreak(a, b) {
+    var ca = (a.deal.company || '').toLowerCase();
+    var cb = (b.deal.company || '').toLowerCase();
+    if (ca !== cb) return ca < cb ? -1 : 1;
+    return a.deal.id < b.deal.id ? -1 : (a.deal.id > b.deal.id ? 1 : 0);
+  }
+
+  function makeCmp(mode) {
+    return function (a, b) {
+      var ga = groupOf(a), gb = groupOf(b);
+      if (ga !== gb) return ga - gb;
+
+      if (ga === 2) {
+        var r0 = cmpEmptyLast(b.deal.closedAt, a.deal.closedAt); /* newest close first */
+        if (r0) return r0;
+        return tieBreak(a, b);
+      }
+
+      var r;
+      if (mode === 'value') {
+        r = b.deal.value - a.deal.value;
+        if (r) return r;
+      } else if (mode === 'touch') {
+        r = cmpEmptyLast(a.fl.lastTouch, b.fl.lastTouch); /* oldest touch first */
+        if (r) return r;
+      } else if (mode === 'next') {
+        r = cmpEmptyLast(a.deal.nextDate, b.deal.nextDate); /* soonest first */
+        if (r) return r;
+      } else {
+        var oa = a.fl.overdue ? 0 : 1, ob = b.fl.overdue ? 0 : 1;
+        if (oa !== ob) return oa - ob;
+        var sa = a.fl.stale ? 0 : 1, sb = b.fl.stale ? 0 : 1;
+        if (sa !== sb) return sa - sb;
+        r = cmpEmptyLast(a.deal.nextDate, b.deal.nextDate);
+        if (r) return r;
+        r = cmpEmptyLast(a.fl.lastTouch, b.fl.lastTouch);
+        if (r) return r;
+      }
+      return tieBreak(a, b);
+    };
+  }
+
+  function visibleItems() {
+    var mode = elFilter.value || 'open';
+    var q = currentQuery();
+    var all = itemsAll();
+    var out = [];
+    for (var i = 0; i < all.length; i++) {
+      if (!matchFilter(all[i].deal, all[i].fl, mode)) continue;
+      if (!matchQuery(all[i].deal, q)) continue;
+      out.push(all[i]);
+    }
+    out.sort(makeCmp(elSort.value || 'attention'));
+    return out;
+  }
+
+  /* ---------------- row rendering ---------------- */
+
+  function stageOptions(selected) {
+    var out = '';
+    for (var i = 0; i < WS.STAGES.length; i++) {
+      var s = WS.STAGES[i];
+      out += '<option value="' + escA(s) + '"' + (s === selected ? ' selected' : '') + '>' + esc(s) + '</option>';
+    }
+    return out;
+  }
+
+  function kindOptions(selected) {
+    var out = '';
+    for (var i = 0; i < WS.KINDS.length; i++) {
+      var k = WS.KINDS[i];
+      out += '<option value="' + escA(k) + '"' + (k === selected ? ' selected' : '') + '>' + esc(k) + '</option>';
+    }
+    return out;
+  }
+
+  function nextDisplay(d, fl, withButton) {
+    var idA = escA(d.id);
+    var out = '';
+    out += d.nextAction
+      ? '<div class="next-act">' + esc(d.nextAction) + '</div>'
+      : '<div class="next-act missing">No next action</div>';
+    if (d.nextDate) {
+      out += '<div class="small ' + (fl.overdue ? 'overdue-text' : 'muted') + '">' +
+        esc(dateCell(d.nextDate)) + ' · ' + esc(dueText(d.nextDate)) + '</div>';
+    } else {
+      out += '<div class="small missing">No date</div>';
+    }
+    if (withButton) {
+      out += '<div class="linkrow"><button type="button" class="linkbtn" data-act="editnext" data-id="' +
+        idA + '">Change next step</button></div>';
+    }
+    return out;
+  }
+
+  function nextForm(d, n, adrift) {
+    var idA = escA(d.id);
+    var who = esc(nameOf(d));
+    return '<form class="nextform" data-id="' + idA + '">' +
+      (adrift ? '<div class="missing small">Set the next step</div>' : '') +
+      '<label class="sr-only" for="na-' + n + '">Next action for ' + who + '</label>' +
+      '<input id="na-' + n + '" name="nextAction" type="text" autocomplete="off" placeholder="What you do next"' +
+        ' value="' + escA(d.nextAction) + '" data-did="' + idA + '" data-fld="nextAction">' +
+      '<label class="sr-only" for="nd-' + n + '">Date for the next action for ' + who + '</label>' +
+      '<input id="nd-' + n + '" name="nextDate" type="date" value="' + escA(d.nextDate) + '"' +
+        ' data-did="' + idA + '" data-fld="nextDate">' +
+      '<div class="nextform-btns">' +
+        '<button type="submit" class="small">Save next step</button>' +
+        (adrift ? '' : '<button type="button" class="small ghost" data-act="cancelnext" data-id="' + idA + '">Cancel</button>') +
+      '</div>' +
+    '</form>';
+  }
+
+  function statusCell(d, fl) {
+    var out = '';
+    if (fl.adrift) {
+      out += '<span class="chip chip-adrift" title="No next action, or no date">ADRIFT</span>';
+    }
+    if (fl.overdue) {
+      var late = WS.daysBetween(d.nextDate, WS.today());
+      out += '<span class="chip chip-overdue" title="The next action date has passed">OVERDUE ' +
+        (isFinite(late) ? late : 0) + 'D</span>';
+    }
+    if (fl.stale) {
+      var since = fl.daysSinceTouch === null ? '' : (' ' + fl.daysSinceTouch + 'D');
+      out += '<span class="chip chip-stale" title="Nothing logged for more than ' + WS.STALE_DAYS +
+        ' days">STALE' + esc(since) + '</span>';
+    }
+    if (!fl.open) {
+      out += d.outcome === 'won'
+        ? '<span class="chip chip-won">WON</span>'
+        : '<span class="chip chip-lost">LOST</span>';
+      if (d.closedAt) out += '<div class="small muted">' + esc(dateCell(d.closedAt)) + '</div>';
+    }
+    if (!out) out = '<span class="small muted">on track</span>';
+    return out;
+  }
+
+  function rowHTML(item) {
+    var d = item.deal, fl = item.fl;
+    var idA = escA(d.id);
+    var n = ++seq;
+    var isOpenRow = !!expanded[d.id];
+    var who = esc(nameOf(d));
+
+    var cls = 'deal-row';
+    if (fl.adrift) cls += ' adrift';
+    if (!fl.open) cls += ' closed';
+    if (d.id === highlightId) cls += ' linked';
+
+    var whoBits = [];
+    if (d.contact) whoBits.push(esc(d.contact));
+    if (d.role) whoBits.push(esc(d.role));
+    var whoLine = whoBits.length
+      ? whoBits.join(' · ')
+      : '<span class="muted">contact not set</span>';
+
+    var touch = fl.open ? fl.lastTouch : WS.lastTouch(state, d);
+
+    var nextCell;
+    if (!fl.open) {
+      nextCell = '<span class="muted small">deal is closed</span>';
+    } else if (isOpenRow) {
+      nextCell = nextDisplay(d, fl, false) +
+        '<div class="small muted">Edit it in the detail panel below.</div>';
+    } else if (fl.adrift || editingNext[d.id]) {
+      nextCell = nextForm(d, n, fl.adrift);
+    } else {
+      nextCell = nextDisplay(d, fl, true);
+    }
+
+    var html = '<tr class="' + cls + '" data-id="' + idA + '" data-role="dealrow">' +
+      '<td data-label="Deal" class="c-deal nolabel">' +
+        '<div class="company">' + (d.company ? esc(d.company) : '<span class="muted">(no company name)</span>') + '</div>' +
+        '<div class="who">' + whoLine + '</div>' +
+      '</td>' +
+      '<td data-label="Value" class="c-value">' +
+        '<span title="' + escA(exactValue(d.value)) + '">' + esc(money(d.value)) + '</span>' +
+      '</td>' +
+      '<td data-label="Stage" class="c-stage">' +
+        '<label class="sr-only" for="stage-' + n + '">Stage for ' + who + '</label>' +
+        '<select id="stage-' + n + '" class="stage-sel" data-id="' + idA + '">' + stageOptions(d.stage) + '</select>' +
+      '</td>' +
+      '<td data-label="Last touch" class="c-touch">' +
+        (touch
+          ? '<div>' + esc(dateCell(touch)) + '</div><div class="small muted">' + esc(agoText(touch)) + '</div>'
+          : '<div class="small muted">not known</div>') +
+        '<div class="linkrow"><button type="button" class="linkbtn" data-act="log" data-id="' + idA + '">Log a touch</button></div>' +
+      '</td>' +
+      '<td data-label="Next step" class="c-next">' + nextCell + '</td>' +
+      '<td data-label="Status" class="c-status">' + statusCell(d, fl) + '</td>' +
+      '<td data-label="" class="c-act nolabel">' +
+        '<button type="button" class="small ghost" data-act="toggle" data-id="' + idA + '"' +
+          ' aria-expanded="' + (isOpenRow ? 'true' : 'false') + '">' +
+          (isOpenRow ? 'Close' : 'Details') + '</button>' +
+      '</td>' +
+    '</tr>';
+
+    if (isOpenRow) html += detailHTML(item, n);
+    return html;
+  }
+
+  function detailHTML(item, n) {
+    var d = item.deal, fl = item.fl;
+    var idA = escA(d.id);
+    var who = esc(nameOf(d));
+    var acts = WS.activitiesFor(state, d.id);
+
+    var list = '';
+    if (!acts.length) {
+      list = '<li class="muted">Nothing logged yet.</li>';
+    } else {
+      for (var i = 0; i < acts.length; i++) {
+        var a = acts[i];
+        list += '<li>' +
+          '<span class="kind">' + esc(a.kind) + '</span>' +
+          '<span class="small muted">' + esc(stamp(a.at)) + '</span>' +
+          (a.note ? '<div class="note">' + esc(a.note) + '</div>' : '') +
+        '</li>';
+      }
+    }
+
+    var contactBits = [];
+    if (d.email) contactBits.push('<a href="mailto:' + escA(d.email) + '">' + esc(d.email) + '</a>');
+    if (d.phone) contactBits.push('<a href="tel:' + escA(d.phone) + '">' + esc(d.phone) + '</a>');
+    if (d.source) contactBits.push('source: ' + esc(d.source));
+    contactBits.push('opened ' + esc(dateCell(d.opened) || d.opened));
+    if (d.closedAt) contactBits.push(esc(d.outcome === 'won' ? 'won ' : 'lost ') + esc(dateCell(d.closedAt)));
+
+    var editForm =
+      '<form class="editform" data-id="' + idA + '">' +
+        '<h3>Deal detail</h3>' +
+        (fl.adrift ? '<p class="missing small">This deal has no agreed next step. Set one here, or move it to Lost.</p>' : '') +
+        '<div class="grid2">' +
+          '<div class="fld"><label for="e-na-' + n + '">Next action</label>' +
+            '<input id="e-na-' + n + '" name="nextAction" type="text" autocomplete="off" value="' + escA(d.nextAction) + '"' +
+            ' data-did="' + idA + '" data-fld="nextAction"></div>' +
+          '<div class="fld"><label for="e-nd-' + n + '">Next action date</label>' +
+            '<input id="e-nd-' + n + '" name="nextDate" type="date" value="' + escA(d.nextDate) + '"' +
+            ' data-did="' + idA + '" data-fld="nextDate"></div>' +
+          '<div class="fld"><label for="e-co-' + n + '">Company</label>' +
+            '<input id="e-co-' + n + '" name="company" type="text" autocomplete="off" value="' + escA(d.company) + '"' +
+            ' data-did="' + idA + '" data-fld="company"></div>' +
+          '<div class="fld"><label for="e-ct-' + n + '">Contact</label>' +
+            '<input id="e-ct-' + n + '" name="contact" type="text" autocomplete="off" value="' + escA(d.contact) + '"' +
+            ' data-did="' + idA + '" data-fld="contact"></div>' +
+          '<div class="fld"><label for="e-ro-' + n + '">Role</label>' +
+            '<input id="e-ro-' + n + '" name="role" type="text" autocomplete="off" value="' + escA(d.role) + '"' +
+            ' data-did="' + idA + '" data-fld="role"></div>' +
+          '<div class="fld"><label for="e-va-' + n + '">Expected value (' + esc(curCode()) + ')</label>' +
+            '<input id="e-va-' + n + '" name="value" type="text" inputmode="decimal" autocomplete="off" value="' +
+            escA(plainNumber(d.value)) + '" data-did="' + idA + '" data-fld="value"></div>' +
+          '<div class="fld"><label for="e-em-' + n + '">Email</label>' +
+            '<input id="e-em-' + n + '" name="email" type="email" autocomplete="off" value="' + escA(d.email) + '"' +
+            ' data-did="' + idA + '" data-fld="email"></div>' +
+          '<div class="fld"><label for="e-ph-' + n + '">Phone</label>' +
+            '<input id="e-ph-' + n + '" name="phone" type="tel" autocomplete="off" value="' + escA(d.phone) + '"' +
+            ' data-did="' + idA + '" data-fld="phone"></div>' +
+          '<div class="fld"><label for="e-so-' + n + '">Source</label>' +
+            '<input id="e-so-' + n + '" name="source" type="text" autocomplete="off" value="' + escA(d.source) + '"' +
+            ' data-did="' + idA + '" data-fld="source"></div>' +
+          '<div class="fld"><label for="e-op-' + n + '">Opened</label>' +
+            '<input id="e-op-' + n + '" name="opened" type="date" value="' + escA(d.opened) + '"' +
+            ' data-did="' + idA + '" data-fld="opened"></div>' +
+        '</div>' +
+        '<div class="fld" style="margin-top:10px"><label for="e-no-' + n + '">Notes</label>' +
+          '<textarea id="e-no-' + n + '" name="notes" rows="3" data-did="' + idA + '" data-fld="notes">' +
+          esc(d.notes) + '</textarea></div>' +
+        '<p class="err small" data-role="formerr" hidden></p>' +
+        '<div class="row-actions">' +
+          '<button type="submit" class="small">Save changes</button>' +
+          '<button type="button" class="small warn-ghost" data-act="delete" data-id="' + idA + '">Delete this deal</button>' +
+        '</div>' +
+      '</form>';
+
+    var activity =
+      '<div class="activity">' +
+        '<h3>Activity</h3>' +
+        '<p class="contactline">' + contactBits.join(' · ') + '</p>' +
+        '<form class="noteform" data-id="' + idA + '">' +
+          '<label class="sr-only" for="k-' + n + '">Kind of touch for ' + who + '</label>' +
+          '<select id="k-' + n + '" name="kind" data-did="' + idA + '" data-fld="kind">' + kindOptions('call') + '</select>' +
+          '<label class="sr-only" for="nt-' + n + '">What happened with ' + who + '</label>' +
+          '<input id="nt-' + n + '" name="note" type="text" autocomplete="off" placeholder="What happened"' +
+            ' data-did="' + idA + '" data-fld="note">' +
+          '<button type="submit" class="small">Log it</button>' +
+        '</form>' +
+        '<ul class="acts">' + list + '</ul>' +
+      '</div>';
+
+    return '<tr class="detail-row" data-role="detailrow" data-id="' + idA + '">' +
+      '<td colspan="7" class="nolabel"><div class="panel"><div class="panel-grid">' +
+        editForm + activity +
+      '</div></div></td></tr>';
+  }
+
+  /* ---------------- banner, summary, counts ---------------- */
+
+  function tally() {
+    var t = { open: 0, adrift: 0, overdue: 0, stale: 0, openValue: 0, won: 0, lost: 0, adriftList: [] };
+    var deals = (state && state.deals) ? state.deals : [];
+    for (var i = 0; i < deals.length; i++) {
+      var d = deals[i];
+      var fl = WS.flags(state, d);
+      if (fl.open) {
+        t.open++;
+        t.openValue += (typeof d.value === 'number' && isFinite(d.value)) ? d.value : 0;
+        if (fl.adrift) { t.adrift++; t.adriftList.push(d); }
+        if (fl.overdue) t.overdue++;
+        if (fl.stale) t.stale++;
+      } else if (d.outcome === 'won') {
+        t.won++;
+      } else {
+        t.lost++;
+      }
+    }
+    return t;
+  }
+
+  function renderBanner(t) {
+    if (!state.deals.length) { elBanner.hidden = true; return; }
+
+    if (t.adrift) {
+      var names = '';
+      var max = Math.min(t.adriftList.length, 6);
+      for (var i = 0; i < max; i++) {
+        var d = t.adriftList[i];
+        names += '<li><button type="button" class="linkbtn" data-act="jump" data-id="' + escA(d.id) + '">' +
+          esc(d.company || '(no company name)') + '</button></li>';
+      }
+      if (t.adriftList.length > max) {
+        names += '<li class="muted">and ' + (t.adriftList.length - max) + ' more</li>';
+      }
+      elBanner.className = 'banner';
+      elBanner.innerHTML =
+        '<h2>' + t.adrift + ' ' + plural(t.adrift, 'deal has', 'deals have') + ' no next step</h2>' +
+        '<p>A deal with no next action, or no date for it, is a deal you have stopped working. ' +
+        'Give each one an action and a date, or move it to Lost and clear the deck.</p>' +
+        '<ul class="banner-list">' + names + '</ul>' +
+        '<button type="button" data-act="only-adrift">Show only these</button>';
+      elBanner.hidden = false;
+      return;
+    }
+
+    if (t.open) {
+      elBanner.className = 'banner ok';
+      elBanner.innerHTML =
+        '<h2>Every open deal has a next step</h2>' +
+        '<p>' + t.open + ' open ' + plural(t.open, 'deal', 'deals') + ', each with an action and a date on it.</p>';
+      elBanner.hidden = false;
+      return;
+    }
+
+    elBanner.hidden = true;
+  }
+
+  function renderSummary(t) {
+    if (!state.deals.length) {
+      elSummary.hidden = true;
+      elSummaryNote.hidden = true;
+      return;
+    }
+    var html =
+      '<span class="stat"><b>' + t.open + '</b> open ' + plural(t.open, 'deal', 'deals') + '</span>' +
+      '<span class="stat"><b>' + esc(money(t.openValue)) + '</b> open estimate</span>' +
+      '<span class="stat' + (t.adrift ? ' bad' : '') + '"><b>' + t.adrift + '</b> with no next step</span>' +
+      '<span class="stat' + (t.overdue ? ' bad' : '') + '"><b>' + t.overdue + '</b> overdue</span>' +
+      '<span class="stat' + (t.stale ? ' warn' : '') + '"><b>' + t.stale + '</b> untouched ' + WS.STALE_DAYS + '+ days</span>' +
+      '<span class="stat"><b>' + t.won + '</b> won, <b>' + t.lost + '</b> lost</span>';
+    elSummary.innerHTML = html;
+    elSummary.hidden = false;
+    elSummaryNote.hidden = false;
+  }
+
+  function renderCountLine(shown, total) {
+    if (shown === total) {
+      elCountLine.textContent = total + ' ' + plural(total, 'deal', 'deals') + '.';
+    } else {
+      elCountLine.textContent = 'Showing ' + shown + ' of ' + total + ' ' + plural(total, 'deal', 'deals') + '.';
+    }
+  }
+
+  /* ---------------- render ---------------- */
+
+  function render() {
+    if (skipNextCapture) {
+      skipNextCapture = false;
+      drafts = Object.create(null);
+      clearQueue = [];
+    } else {
+      captureDrafts();
+      runClearQueue();
+    }
+
+    var t = tally();
+    var has = state.deals.length > 0;
+
+    elEmpty.hidden = has;
+    elControls.hidden = !has;
+    elPinNote.hidden = !has;
+    elTableSection.hidden = !has;
+
+    renderSummary(t);
+    renderBanner(t);
+
+    if (!has) {
+      elRows.innerHTML = '';
+      return;
+    }
+
+    var items = visibleItems();
+    var html = '';
+    for (var i = 0; i < items.length; i++) html += rowHTML(items[i]);
+    if (!items.length) {
+      html = '<tr><td colspan="7" class="nolabel">' +
+        '<p class="muted">No deals match that search or filter. ' +
+        '<button type="button" class="linkbtn" data-act="clearfilters">Clear the filters</button></p></td></tr>';
+    }
+    elRows.innerHTML = html;
+    restoreDrafts();
+    renderCountLine(items.length, state.deals.length);
+    afterRender();
+  }
+
+  function findRow(id) {
+    var rows = elRows.querySelectorAll('tr[data-role="dealrow"]');
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].getAttribute('data-id') === id) return rows[i];
+    }
+    return null;
+  }
+
+  function findField(id, field) {
+    var nodes = elRows.querySelectorAll('[data-did]');
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i].getAttribute('data-did') === id && nodes[i].getAttribute('data-fld') === field) return nodes[i];
+    }
+    return null;
+  }
+
+  function afterRender() {
+    if (pendingFocus) {
+      var target = findField(pendingFocus.id, pendingFocus.field);
+      pendingFocus = null;
+      if (target) {
+        try { target.focus(); } catch (e) { /* ignore */ }
+        try { if (target.select) target.select(); } catch (e2) { /* ignore */ }
+      }
+    }
+    if (pendingScroll && highlightId) {
+      var row = findRow(highlightId);
+      pendingScroll = false;
+      if (row) {
+        try { row.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+        catch (e3) { try { row.scrollIntoView(); } catch (e4) { /* ignore */ } }
+      }
+    }
+  }
+
+  /* ---------------- modal ---------------- */
+
+  function openModal(o) {
+    if (modalState) closeModal(true);
+    var n = ++seq;
+    var fields = o.fields || [];
+    var i, f;
+
+    var fh = '';
+    for (i = 0; i < fields.length; i++) {
+      f = fields[i];
+      var fid = 'mf-' + n + '-' + i;
+      fh += '<div class="fld"><label for="' + fid + '">' + esc(f.label) + '</label>';
+      if (f.type === 'textarea') {
+        fh += '<textarea id="' + fid + '" data-mf="' + escA(f.name) + '" rows="3">' + esc(f.value || '') + '</textarea>';
+      } else {
+        fh += '<input id="' + fid + '" data-mf="' + escA(f.name) + '" type="' + escA(f.type || 'text') + '"' +
+          (f.inputmode ? ' inputmode="' + escA(f.inputmode) + '"' : '') +
+          ' autocomplete="off" value="' + escA(f.value === null || f.value === undefined ? '' : f.value) + '">';
+      }
+      fh += '</div>';
+    }
+
+    var actions = o.actions || [{
+      value: 'ok',
+      label: o.confirmLabel || 'Confirm',
+      kind: o.danger ? 'danger' : 'primary'
+    }];
+    var ah = '';
+    for (i = 0; i < actions.length; i++) {
+      var a = actions[i];
+      var cls = a.kind === 'danger' ? 'danger' : (a.kind === 'ghost' ? 'ghost' : '');
+      ah += '<button type="' + (i === 0 ? 'submit' : 'button') + '"' +
+        (cls ? ' class="' + cls + '"' : '') +
+        ' data-mact="' + escA(a.value) + '">' + esc(a.label) + '</button>';
+    }
+    ah += '<button type="button" class="ghost" data-mact="__cancel">' + esc(o.cancelLabel || 'Cancel') + '</button>';
+
+    elModalRoot.innerHTML =
+      '<div class="modal-back" data-mback="1">' +
+        '<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mt-' + n + '">' +
+          '<form data-mform="1" novalidate>' +
+            '<h2 id="mt-' + n + '">' + esc(o.title) + '</h2>' +
+            (o.body ? '<p class="modal-body">' + esc(o.body) + '</p>' : '') +
+            fh +
+            '<p class="err small" data-merr="1" hidden></p>' +
+            '<div class="modal-actions">' + ah + '</div>' +
+          '</form>' +
+        '</div>' +
+      '</div>';
+
+    modalState = {
+      opts: o,
+      primary: actions[0].value,
+      prevFocus: (document.activeElement && document.activeElement.focus) ? document.activeElement : null
+    };
+
+    try { document.body.style.overflow = 'hidden'; } catch (e5) { /* ignore */ }
+
+    var first = elModalRoot.querySelector('[data-mf]');
+    var focusTarget = first || elModalRoot.querySelector('button[data-mact]');
+    if (focusTarget) {
+      try { focusTarget.focus(); } catch (e6) { /* ignore */ }
+      try { if (first && first.select) first.select(); } catch (e7) { /* ignore */ }
+    }
+  }
+
+  function modalError(msg) {
+    var p = elModalRoot.querySelector('[data-merr]');
+    if (!p) return;
+    p.textContent = msg || '';
+    p.hidden = !msg;
+  }
+
+  function readModalFields() {
+    var out = {};
+    var nodes = elModalRoot.querySelectorAll('[data-mf]');
+    for (var i = 0; i < nodes.length; i++) {
+      out[nodes[i].getAttribute('data-mf')] = nodes[i].value;
+    }
+    return out;
+  }
+
+  function closeModal(silent) {
+    var prev = modalState ? modalState.prevFocus : null;
+    modalState = null;
+    elModalRoot.innerHTML = '';
+    try { document.body.style.overflow = ''; } catch (e) { /* ignore */ }
+    if (!silent && prev) {
+      try { prev.focus(); } catch (e2) { /* ignore */ }
+    }
+  }
+
+  function fireModal(action) {
+    if (!modalState) return;
+    var o = modalState.opts;
+    var vals = readModalFields();
+    var act = (action === '__cancel') ? null : action;
+    var keep;
+    try {
+      keep = o.onDone ? o.onDone(act, vals, { error: modalError }) : undefined;
+    } catch (e) {
+      keep = undefined;
+    }
+    if (keep === false) return;
+    closeModal();
+  }
+
+  elModalRoot.addEventListener('click', function (e) {
+    if (!modalState) return;
+    var t = e.target;
+    if (t && t.nodeType === 1 && t.getAttribute && t.getAttribute('data-mback') === '1') {
+      fireModal('__cancel');
+      return;
+    }
+    var b = closestEl(t, 'button[data-mact]');
+    if (b) {
+      e.preventDefault();
+      fireModal(b.getAttribute('data-mact'));
+    }
+  });
+
+  elModalRoot.addEventListener('submit', function (e) {
+    if (!modalState) return;
+    e.preventDefault();
+    fireModal(modalState.primary);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!modalState) return;
+    if (e.key === 'Escape' || e.keyCode === 27) {
+      e.preventDefault();
+      fireModal('__cancel');
+      return;
+    }
+    if (e.key !== 'Tab' && e.keyCode !== 9) return;
+    var card = elModalRoot.querySelector('.modal-card');
+    if (!card) return;
+    var f = card.querySelectorAll('input, select, textarea, button');
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    var active = document.activeElement;
+    var inside = !!(active && card.contains(active));
+    if (e.shiftKey && (!inside || active === first)) {
+      e.preventDefault();
+      try { last.focus(); } catch (e1) { /* ignore */ }
+    } else if (!e.shiftKey && (!inside || active === last)) {
+      e.preventDefault();
+      try { first.focus(); } catch (e2) { /* ignore */ }
+    }
+  });
+
+  /* ---------------- deal mutations ---------------- */
+
+  function getDeal(id) {
+    return WS.byId(state.deals, id);
+  }
+
+  function logActivity(id, kind, note) {
+    if (!state.activities) state.activities = [];
+    state.activities.push(WS.newActivity(id, kind, note));
+  }
+
+  function saveNext(form) {
+    var id = form.getAttribute('data-id');
+    var d = getDeal(id);
+    if (!d) { render(); return; }
+    d.nextAction = fieldVal(form, 'nextAction');
+    d.nextDate = fieldVal(form, 'nextDate');
+    delete editingNext[id];
+    clearDrafts(id);
+    persist();
+    var after = getDeal(id);
+    if (after && WS.isAdrift(after)) {
+      flash('Saved, but it still has ' + (after.nextAction ? 'no date' : 'no action') +
+        ', so it stays flagged at the top.');
+    } else {
+      flash('Next step saved.');
+    }
+    render();
+  }
+
+  function saveNote(form) {
+    var id = form.getAttribute('data-id');
+    var d = getDeal(id);
+    if (!d) { render(); return; }
+    var note = fieldVal(form, 'note');
+    if (!note) {
+      flash('Write what happened before logging it.');
+      pendingFocus = { id: id, field: 'note' };
+      render();
+      return;
+    }
+    logActivity(id, fieldVal(form, 'kind') || 'note', note);
+    clearDrafts(id, 'note');
+    persist();
+    var after = getDeal(id);
+    if (after && WS.isAdrift(after)) {
+      pendingFocus = { id: id, field: 'nextAction' };
+      flash('Logged. Now set the next step so this deal does not drift.');
+    } else {
+      flash('Logged.');
+    }
+    render();
+  }
+
+  function saveEdit(form) {
+    var id = form.getAttribute('data-id');
+    var d = getDeal(id);
+    if (!d) { render(); return; }
+
+    var company = fieldVal(form, 'company');
+    if (!company) {
+      formError(form, 'A deal needs a company name.');
+      return;
+    }
+    var value = parseMoney(fieldVal(form, 'value'));
+    if (value === null || value < 0) {
+      formError(form, 'Value must be a number that is not negative, like 12500. Leave it blank for zero.');
+      return;
+    }
+    formError(form, '');
+
+    d.company = company;
+    d.contact = fieldVal(form, 'contact');
+    d.role = fieldVal(form, 'role');
+    d.email = fieldVal(form, 'email');
+    d.phone = fieldVal(form, 'phone');
+    d.value = value;
+    d.source = fieldVal(form, 'source');
+    d.opened = fieldVal(form, 'opened') || d.opened || WS.today();
+    d.nextAction = fieldVal(form, 'nextAction');
+    d.nextDate = fieldVal(form, 'nextDate');
+    d.notes = rawFieldVal(form, 'notes');
+
+    clearDrafts(id);
+    persist();
+    flash('Saved.');
+    render();
+  }
+
+  function onStageChange(id, next) {
+    var d = getDeal(id);
+    if (!d) { render(); return; }
+    if (next === d.stage) return;
+
+    if (next === 'Won') { askWon(d); return; }
+    if (next === 'Lost') { askLost(d); return; }
+    if (!WS.isOpen(d)) { askReopen(d, next); return; }
+
+    d.stage = next;
+    clearDrafts(id);
+    persist();
+    var after = getDeal(id);
+    if (after && WS.isAdrift(after)) {
+      editingNext[id] = true;
+      pendingFocus = { id: id, field: 'nextAction' };
+      flash('Moved to ' + next + '. It has no next step — set one now.');
+    } else {
+      flash('Moved to ' + next + '.');
+    }
+    render();
+  }
+
+  function askWon(d) {
+    var id = d.id;
+    openModal({
+      title: 'Mark ' + nameOf(d) + ' as won',
+      body: 'Enter the value that actually closed. It is often not the estimate, and the forecast ' +
+        'page is only worth reading if this number is honest.',
+      fields: [{
+        name: 'value',
+        label: 'Closed value (' + curCode() + ')',
+        type: 'text',
+        inputmode: 'decimal',
+        value: plainNumber(d.value)
+      }],
+      confirmLabel: 'Mark as won',
+      onDone: function (action, vals, ctx) {
+        if (action !== 'ok') { render(); return; }
+        var raw = String(vals.value === undefined ? '' : vals.value).trim();
+        if (!raw) { ctx.error('Enter the value that closed.'); return false; }
+        var v = parseMoney(raw);
+        if (v === null || v < 0) {
+          ctx.error('That is not a number. Enter it like 12500.');
+          return false;
+        }
+        var deal = getDeal(id);
+        if (!deal) { render(); return; }
+        var estimate = deal.value;
+        deal.value = v;
+        deal.stage = 'Won';
+        deal.outcome = 'won';
+        deal.closedAt = WS.today();
+        logActivity(id, 'note', 'Closed won at ' + money(v) +
+          (v === estimate ? '.' : ' (estimate was ' + money(estimate) + ').'));
+        clearDrafts(id);
+        persist();
+        flash('Marked won at ' + money(v) + '.');
+        render();
+      }
+    });
+  }
+
+  function askLost(d) {
+    var id = d.id;
+    openModal({
+      title: 'Mark ' + nameOf(d) + ' as lost',
+      body: 'This closes the deal and takes it out of your open pipeline. A reason is optional, ' +
+        'but it is the only record you will have later.',
+      fields: [{ name: 'reason', label: 'Reason (optional)', type: 'text', value: '' }],
+      confirmLabel: 'Mark as lost',
+      danger: true,
+      onDone: function (action, vals) {
+        if (action !== 'ok') { render(); return; }
+        var deal = getDeal(id);
+        if (!deal) { render(); return; }
+        var reason = String(vals.reason === undefined ? '' : vals.reason).trim();
+        deal.stage = 'Lost';
+        deal.outcome = 'lost';
+        deal.closedAt = WS.today();
+        logActivity(id, 'note', 'Closed lost.' + (reason ? ' ' + reason : ''));
+        clearDrafts(id);
+        persist();
+        flash('Marked lost.');
+        render();
+      }
+    });
+  }
+
+  function askReopen(d, next) {
+    var id = d.id;
+    openModal({
+      title: 'Reopen ' + nameOf(d) + '?',
+      body: 'It goes back into your open pipeline at ' + next + ', and the outcome and close date are cleared. ' +
+        'The value stays at ' + money(d.value) + ' — change it in the deal detail if that is no longer right.',
+      confirmLabel: 'Reopen the deal',
+      onDone: function (action) {
+        if (action !== 'ok') { render(); return; }
+        var deal = getDeal(id);
+        if (!deal) { render(); return; }
+        deal.stage = next;
+        deal.outcome = '';
+        deal.closedAt = '';
+        clearDrafts(id);
+        persist();
+        var after = getDeal(id);
+        if (after && WS.isAdrift(after)) editingNext[id] = true;
+        flash('Reopened at ' + next + '.');
+        render();
+      }
+    });
+  }
+
+  function askDelete(id) {
+    var d = getDeal(id);
+    if (!d) return;
+    var count = WS.activitiesFor(state, id).length;
+    openModal({
+      title: 'Delete ' + nameOf(d) + '?',
+      body: 'This removes the deal and its ' + count + ' logged ' + plural(count, 'activity', 'activities') +
+        '. It cannot be undone. Export a backup first if you might want it back.',
+      confirmLabel: 'Delete the deal',
+      danger: true,
+      onDone: function (action) {
+        if (action !== 'ok') return;
+        var keptDeals = [], keptActs = [], i;
+        for (i = 0; i < state.deals.length; i++) {
+          if (state.deals[i].id !== id) keptDeals.push(state.deals[i]);
+        }
+        for (i = 0; i < state.activities.length; i++) {
+          if (state.activities[i].dealId !== id) keptActs.push(state.activities[i]);
+        }
+        state.deals = keptDeals;
+        state.activities = keptActs;
+        delete expanded[id];
+        delete editingNext[id];
+        clearDrafts(id);
+        if (highlightId === id) highlightId = '';
+        persist();
+        flash('Deleted ' + nameOf(d) + '.');
+        render();
+      }
+    });
+  }
+
+  /* ---------------- navigation helpers ---------------- */
+
+  function isShown(d) {
+    var fl = WS.flags(state, d);
+    return matchFilter(d, fl, elFilter.value || 'open') && matchQuery(d, currentQuery());
+  }
+
+  function jumpTo(id) {
+    var d = getDeal(id);
+    if (!d) return;
+    highlightId = d.id;
+    pendingScroll = true;
+    if (!isShown(d)) {
+      elFilter.value = 'all';
+      elQ.value = '';
+      flash('Filters cleared so that deal is visible.');
+    }
+    render();
+  }
+
+  /* ---------------- events: rows ---------------- */
+
+  elRows.addEventListener('click', function (e) {
+    var btn = closestEl(e.target, 'button[data-act]');
+    if (!btn || !elRows.contains(btn)) return;
+    var act = btn.getAttribute('data-act');
+    var id = btn.getAttribute('data-id');
+
+    if (act === 'clearfilters') {
+      elFilter.value = 'open';
+      elQ.value = '';
+      render();
+      return;
+    }
+    if (!id) return;
+
+    if (act === 'toggle') {
+      if (expanded[id]) {
+        delete expanded[id];
+        clearDrafts(id);
+      } else {
+        expanded[id] = true;
+        delete editingNext[id];
+      }
+      render();
+    } else if (act === 'editnext') {
+      editingNext[id] = true;
+      pendingFocus = { id: id, field: 'nextAction' };
+      render();
+    } else if (act === 'cancelnext') {
+      delete editingNext[id];
+      clearDrafts(id);
+      render();
+    } else if (act === 'log') {
+      expanded[id] = true;
+      delete editingNext[id];
+      pendingFocus = { id: id, field: 'note' };
+      render();
+    } else if (act === 'delete') {
+      askDelete(id);
+    }
+  });
+
+  elRows.addEventListener('submit', function (e) {
+    var form = closestEl(e.target, 'form');
+    if (!form || !elRows.contains(form)) return;
+    e.preventDefault();
+    if (hasClass(form, 'nextform')) saveNext(form);
+    else if (hasClass(form, 'noteform')) saveNote(form);
+    else if (hasClass(form, 'editform')) saveEdit(form);
+  });
+
+  elRows.addEventListener('change', function (e) {
+    var t = e.target;
+    if (!hasClass(t, 'stage-sel')) return;
+    onStageChange(t.getAttribute('data-id'), t.value);
+  });
+
+  /* ---------------- events: banner ---------------- */
+
+  elBanner.addEventListener('click', function (e) {
+    var btn = closestEl(e.target, 'button[data-act]');
+    if (!btn || !elBanner.contains(btn)) return;
+    var act = btn.getAttribute('data-act');
+    if (act === 'only-adrift') {
+      elFilter.value = 'adrift';
+      elQ.value = '';
+      elSort.value = 'attention';
+      render();
+      flash('Showing only the deals with no next step.');
+    } else if (act === 'jump') {
+      jumpTo(btn.getAttribute('data-id'));
+    }
+  });
+
+  /* ---------------- events: toolbar ---------------- */
+
+  elSearchForm.addEventListener('submit', function (e) { e.preventDefault(); render(); });
+  elQ.addEventListener('input', function () { render(); });
+  elQ.addEventListener('search', function () { render(); });
+  elFilter.addEventListener('change', function () { render(); });
+  elSort.addEventListener('change', function () { render(); });
+
+  /* ---------------- events: add form ---------------- */
+
+  function openAdd(withFocus) {
+    elAddForm.hidden = false;
+    elAddToggle.textContent = 'Hide the add form';
+    $('a-opened').value = WS.today();
+    if (withFocus !== false) {
+      try { $('a-company').focus(); } catch (e) { /* ignore */ }
+    }
+  }
+
+  function closeAdd() {
+    elAddForm.hidden = true;
+    elAddToggle.textContent = 'Add deal';
+    elAddErr.hidden = true;
+    elAddErr.textContent = '';
+    try { elAddForm.reset(); } catch (e) { /* ignore */ }
+    $('a-opened').value = WS.today();
+  }
+
+  elAddToggle.addEventListener('click', function () {
+    if (elAddForm.hidden) openAdd(); else closeAdd();
+  });
+  $('addCancel').addEventListener('click', function () { closeAdd(); });
+  $('emptyAdd').addEventListener('click', function () { openAdd(true); });
+
+  elAddForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var company = $('a-company').value.trim();
+    if (!company) {
+      elAddErr.textContent = 'A deal needs a company name.';
+      elAddErr.hidden = false;
+      try { $('a-company').focus(); } catch (err) { /* ignore */ }
+      return;
+    }
+    var value = parseMoney($('a-value').value);
+    if (value === null || value < 0) {
+      elAddErr.textContent = 'Value must be a number that is not negative, like 12500. Leave it blank if you do not know yet.';
+      elAddErr.hidden = false;
+      try { $('a-value').focus(); } catch (err2) { /* ignore */ }
+      return;
+    }
+    elAddErr.hidden = true;
+    elAddErr.textContent = '';
+
+    var deal = WS.newDeal({
+      company: company,
+      contact: $('a-contact').value.trim(),
+      role: $('a-role').value.trim(),
+      email: $('a-email').value.trim(),
+      phone: $('a-phone').value.trim(),
+      value: value,
+      stage: $('a-stage').value,
+      opened: $('a-opened').value.trim() || WS.today(),
+      nextAction: $('a-nextAction').value.trim(),
+      nextDate: $('a-nextDate').value.trim(),
+      source: $('a-source').value.trim(),
+      notes: $('a-notes').value
+    });
+    state.deals.push(deal);
+    persist();
+    closeAdd();
+
+    var added = getDeal(deal.id);
+    if (added && WS.isAdrift(added)) {
+      flash('Added. It has no next step, so it is pinned to the top until you set one.');
+    } else {
+      flash('Added.');
+    }
+    jumpTo(deal.id);
+  });
+
+  /* ---------------- events: export / import ---------------- */
+
+  $('exportBtn').addEventListener('click', function () {
+    var ok = false;
+    try { ok = WS.exportJSON(state); } catch (e) { ok = false; }
+    flash(ok
+      ? 'Backup downloaded. Save it somewhere private, and do not commit it to a repository.'
+      : 'This browser blocked the download. Try another browser, or copy the file across another way.');
+  });
+
+  function pickImport() {
+    try { elImportFile.click(); }
+    catch (e) { flash('This browser would not open the file picker.'); }
+  }
+
+  $('importBtn').addEventListener('click', pickImport);
+  $('emptyImport').addEventListener('click', pickImport);
+
+  elImportFile.addEventListener('change', function () {
+    var file = (this.files && this.files.length) ? this.files[0] : null;
+    try { this.value = ''; } catch (e) { /* ignore */ }
+    if (!file) return;
+    WS.importJSON(file, function (err, incoming) {
+      if (err) { flash(err.message || 'That file could not be read.'); return; }
+      askImportMode(incoming);
+    });
+  });
+
+  function askImportMode(incoming) {
+    var dn = incoming.deals.length;
+    var an = incoming.activities.length;
+    var on = incoming.objections.length;
+    openModal({
+      title: 'Import backup',
+      body: 'That file holds ' + dn + ' ' + plural(dn, 'deal', 'deals') + ', ' +
+        an + ' ' + plural(an, 'activity', 'activities') + ' and ' +
+        on + ' ' + plural(on, 'objection', 'objections') + '. ' +
+        'Merge keeps what is already in this browser and adds the rest; where a record exists in both, ' +
+        'the file wins. Replace deletes everything here first.',
+      actions: [
+        { value: 'merge', label: 'Merge', kind: 'primary' },
+        { value: 'replace', label: 'Replace everything', kind: 'danger' }
+      ],
+      onDone: function (action) {
+        if (action === 'merge') {
+          try { state = WS.merge(state, incoming); }
+          catch (e) { flash('That backup could not be merged.'); return; }
+          resetView();
+          persist();
+          flash('Merged. This browser now holds ' + state.deals.length + ' ' +
+            plural(state.deals.length, 'deal', 'deals') + '.');
+          render();
+        } else if (action === 'replace') {
+          setTimeout(function () { confirmReplace(incoming); }, 0);
+        }
+      }
+    });
+  }
+
+  function confirmReplace(incoming) {
+    var have = state.deals.length;
+    openModal({
+      title: 'Replace everything in this browser?',
+      body: 'The ' + have + ' ' + plural(have, 'deal', 'deals') + ' and all activity currently stored here ' +
+        'will be deleted and replaced by the file. This cannot be undone.',
+      confirmLabel: 'Replace everything',
+      danger: true,
+      onDone: function (action) {
+        if (action !== 'ok') return;
+        state = incoming;
+        resetView();
+        persist();
+        flash('Replaced. This browser now holds ' + state.deals.length + ' ' +
+          plural(state.deals.length, 'deal', 'deals') + '.');
+        render();
+      }
+    });
+  }
+
+  function resetView() {
+    expanded = Object.create(null);
+    editingNext = Object.create(null);
+    drafts = Object.create(null);
+    clearQueue = [];
+    skipNextCapture = true;
+    highlightId = '';
+    pendingFocus = null;
+    pendingScroll = false;
+  }
+
+  /* ---------------- ?deal=<id> ---------------- */
+
+  function deepLink() {
+    var search = '';
+    try { search = String(window.location.search || ''); } catch (e) { return; }
+    var m = /[?&]deal=([^&#]*)/.exec(search);
+    if (!m) return;
+    var raw = m[1].replace(/\+/g, ' ');
+    var id = raw;
+    try { id = decodeURIComponent(raw); } catch (e2) { id = raw; }
+    id = id.trim();
+    if (!id) return;
+    var d = getDeal(id);
+    if (!d) {
+      flash('That link points to a deal this browser does not have. It may be on another machine, or it was deleted.');
+      return;
+    }
+    highlightId = d.id;
+    pendingScroll = true;
+    expanded[d.id] = true;
+    elFilter.value = 'all';
+    elQ.value = '';
+  }
+
+  /* ---------------- boot ---------------- */
+
+  function boot() {
+    storageOK = probeStorage();
+    state = loadState();
+
+    try { elNav.innerHTML = WS.nav('pipeline.html'); } catch (e) { /* ignore */ }
+    try { elPrivacy.innerHTML = WS.privacyNote(); } catch (e2) { /* ignore */ }
+
+    var opts = '';
+    for (var i = 0; i < WS.OPEN_STAGES.length; i++) {
+      opts += '<option value="' + escA(WS.OPEN_STAGES[i]) + '">' + esc(WS.OPEN_STAGES[i]) + '</option>';
+    }
+    $('a-stage').innerHTML = opts;
+    $('a-opened').value = WS.today();
+
+    elDataSection.hidden = false;
+
+    if (!storageOK) {
+      warn('This browser is not letting this page store anything, so nothing you type here will be kept. ' +
+        'Private browsing and blocked site data are the usual causes. You can still work in this session ' +
+        'and export a backup before you close the tab.');
+    }
+
+    deepLink();
+    render();
+
+    /* first visit: the form is already open, but do not steal the scroll
+       position from the explanation above it */
+    if (!state.deals.length) openAdd(false);
+  }
+
+  boot();
+})();
+  </script>
+</body>
+</html>
