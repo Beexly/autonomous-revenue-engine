@@ -44,29 +44,26 @@ export function checkSelfContained(html, filename = "<input>") {
   const findings = [];
   const lines = String(html).split(/\r?\n/);
 
+  // matchAll clones each regex internally instead of mutating its shared
+  // lastIndex, so the module-scope RESOURCE_ATTR/LINK_TAG/etc. constants stay
+  // safe to reuse across lines and across calls without a manual reset.
   lines.forEach((line, i) => {
     const at = (kind, detail) => findings.push({ file: filename, line: i + 1, kind, detail });
 
-    RESOURCE_ATTR.lastIndex = 0;
-    let m;
-    while ((m = RESOURCE_ATTR.exec(line)) !== null) {
+    for (const m of line.matchAll(RESOURCE_ATTR)) {
       if (EXTERNAL.test(m[2])) at("external-resource", `${m[1]}="${m[2]}"`);
     }
 
-    LINK_TAG.lastIndex = 0;
-    while ((m = LINK_TAG.exec(line)) !== null) {
+    for (const m of line.matchAll(LINK_TAG)) {
       const href = m[0].match(HREF_IN_TAG)?.[1];
       if (href && EXTERNAL.test(href)) at("external-stylesheet-or-preload", `<link href="${href}">`);
     }
 
-    CSS_URL.lastIndex = 0;
-    while ((m = CSS_URL.exec(line)) !== null) at("external-css-url", m[1]);
+    for (const m of line.matchAll(CSS_URL)) at("external-css-url", m[1]);
 
-    CSS_IMPORT.lastIndex = 0;
-    while ((m = CSS_IMPORT.exec(line)) !== null) at("external-css-import", m[1]);
+    for (const m of line.matchAll(CSS_IMPORT)) at("external-css-import", m[1]);
 
-    RUNTIME_NET.lastIndex = 0;
-    while ((m = RUNTIME_NET.exec(line)) !== null) at("runtime-network-call", m[0].trim());
+    for (const m of line.matchAll(RUNTIME_NET)) at("runtime-network-call", m[0].trim());
   });
 
   return findings;

@@ -108,9 +108,11 @@ export function scanSecrets(text, filename = "<input>") {
 
     for (const { name, re, validate } of RULES) {
       if (name === "high-entropy-token" && NOISE_LINE.test(line)) continue;
-      re.lastIndex = 0;
-      let m;
-      while ((m = re.exec(line)) !== null) {
+      // matchAll clones re internally rather than mutating its shared
+      // lastIndex, so RULES stays safe to reuse across calls (including a
+      // scanSecrets call re-entering while another is on the stack) without
+      // relying on every call site remembering to reset state first.
+      for (const m of line.matchAll(re)) {
         const value = m[1] ?? m[0];
         if (PLACEHOLDER.test(value)) continue;
         if (validate && !validate(value)) continue;
