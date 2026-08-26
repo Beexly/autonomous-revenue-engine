@@ -82,6 +82,7 @@ class EValueConformal:
         q = conformal_quantile(self.calibration_scores, self.alpha)
         width = scale_width(q, residual_scale)
         if not np.isfinite(width):
+            # Cold start: uncalibrated heuristic band, no coverage guarantee.
             width = 2.0 * residual_scale
         return y_pred - width, y_pred + width
 

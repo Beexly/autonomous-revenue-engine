@@ -1,1 +1,1 @@
-date,prospect,url,channel,contact,sent,replied,outcome,amount_usd
+date,prospect,url,channel,contact,stage,sent,replied,outcome,next_action,next_date,amount_usd

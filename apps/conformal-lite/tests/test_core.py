@@ -237,6 +237,26 @@ class TestEValue(unittest.TestCase):
         self.assertLess(lo, hi)
 
 
+class TestLago(unittest.TestCase):
+    def test_secret_fields_stripped_everywhere(self):
+        # Regression for the PR #36 review finding: the local JSONL row was
+        # filtered but the network payload's properties were built from the
+        # RAW fields, shipping credential-shaped values to Lago's API.
+        # _safe_fields is now the single filter both paths use.
+        from conformal_lite.lago import _safe_fields
+
+        fields = {
+            "steps": 200,
+            "api_key": "AAAA",
+            "token": "BBBB",
+            "secret": "CCCC",
+            "password": "DDDD",
+            "access_token": "EEEE",
+        }
+        safe = _safe_fields(fields)
+        self.assertEqual(safe, {"steps": 200})
+
+
 class TestFactory(unittest.TestCase):
     def test_modes(self):
         for mode in ("aci", "saocp", "cqr", "evalue"):

@@ -53,8 +53,10 @@ class AdaptiveConformal:
     ) -> Tuple[float, float]:
         q = conformal_quantile(self.calibration_scores, self.alpha_t)
         if not np.isfinite(q):
-            # Not enough calibration data yet to certify alpha_t coverage —
-            # an honest unbounded-ish interval, not a confident guess.
+            # Cold start: not enough calibration data to certify alpha_t
+            # coverage. The +/-2*residual_scale band returned here is an
+            # UNCALIBRATED heuristic fallback carrying no coverage guarantee
+            # — treat cold-start intervals as placeholders, not results.
             width = 2.0 * residual_scale
             return y_pred - width, y_pred + width
         width = scale_width(q, residual_scale)

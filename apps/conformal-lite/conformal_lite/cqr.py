@@ -53,6 +53,7 @@ class ConformalQR:
     def expand(self, q_lo: float, q_hi: float) -> Tuple[float, float]:
         q = conformal_quantile(self.scores, self.alpha)
         if not math.isfinite(q):
+            # Cold start: uncalibrated heuristic pad, no coverage guarantee.
             pad = 0.5 * max(q_hi - q_lo, 1.0)
             return q_lo - pad, q_hi + pad
         return q_lo - q, q_hi + q
