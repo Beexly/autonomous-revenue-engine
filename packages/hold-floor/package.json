@@ -1,6 +1,7 @@
 {
   "name": "@signalorigin/hold-floor",
   "version": "0.1.0",
+  "private": true,
   "description": "The publish-gate constants (HOLD_FLOOR 9.2, SOFT_FLOOR 7.0) plus a classify(score) helper returning Hold / Soft / Hard.",
   "license": "MIT",
   "type": "module",

@@ -1,6 +1,7 @@
 {
   "name": "@signalorigin/qi-score",
   "version": "0.1.0",
+  "private": true,
   "description": "Deterministic quality-gate scorer for short-form drafts (Hold floor 9.2, Soft floor 7.0). Scores; never rewrites.",
   "license": "MIT",
   "type": "module",
