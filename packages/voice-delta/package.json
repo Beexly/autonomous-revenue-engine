@@ -1,0 +1,22 @@
+{
+  "name": "@signalorigin/voice-delta",
+  "version": "0.1.0",
+  "description": "Classic Burrows' Delta stylometry in plain JS: distance between a candidate text and a reference corpus. Lower delta = closer stylistic match.",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": "./index.js",
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "stylometry",
+    "burrows-delta",
+    "authorship",
+    "text-analysis"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@signalorigin/hold-floor",
+  "version": "0.1.0",
+  "description": "The publish-gate constants (HOLD_FLOOR 9.2, SOFT_FLOOR 7.0) plus a classify(score) helper returning Hold / Soft / Hard.",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": "./index.js",
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "quality-gate",
+    "constants",
+    "threshold"
+  ]
+}
