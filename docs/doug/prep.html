@@ -485,6 +485,7 @@ var WS = (function () {
     return '';
   }
 
+  var _uidCounter = 0;
   function uid() {
     try {
       if (typeof crypto !== 'undefined' && crypto && typeof crypto.randomUUID === 'function') {
@@ -503,9 +504,15 @@ var WS = (function () {
         return hex;
       }
     } catch (e) { /* fall through */ }
-    return 'id-' + Date.now().toString(36) + '-' +
-      Math.random().toString(36).slice(2, 10) +
-      Math.random().toString(36).slice(2, 6);
+    /* crypto.getRandomValues has shipped in every browser since IE11, so
+       this only runs in an environment lacking it entirely. A counter
+       plus timestamp gives a guaranteed-unique id within this session
+       without reaching for Math.random() - which is unnecessary here
+       (this only makes a local lookup key, never anything security-
+       sensitive) but is flagged as a security-sensitive pattern by
+       static analysis regardless of how it is used. */
+    _uidCounter += 1;
+    return 'id-' + Date.now().toString(36) + '-' + _uidCounter.toString(36);
   }
 
   /* ---------------- escaping (every page renders user text) ------ */
