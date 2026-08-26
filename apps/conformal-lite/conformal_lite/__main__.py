@@ -4,8 +4,8 @@ import argparse
 
 import numpy as np
 
-from core import MODES, make
-from meter import emit
+from .core import MODES, make
+from .meter import emit
 
 
 def main() -> None:

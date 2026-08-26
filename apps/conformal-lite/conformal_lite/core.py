@@ -1,10 +1,10 @@
 """Selectable free core: aci | saocp | cqr | evalue."""
 from __future__ import annotations
 
-from adaptive_cp import AdaptiveConformal
-from cqr import ConformalQR
-from evalue import EValueConformal
-from saocp import SAOCP
+from .adaptive_cp import AdaptiveConformal
+from .cqr import ConformalQR
+from .evalue import EValueConformal
+from .saocp import SAOCP
 
 MODES = ("aci", "saocp", "cqr", "evalue")
 
