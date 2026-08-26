@@ -11,7 +11,7 @@ Not deferred. Spend is still human APPROVE. Everything else in this file is in m
 
 ## This week (no spend)
 1. Dual-signal kit lives at `docs/ads-signal.html` (shared `event_id`, SHA-256 PII, Pixel + CAPI payloads). It does not send.
-2. Python twin: `apps/conformal-lite/capi.py`. Sends only if `META_PIXEL_ID` and `META_ACCESS_TOKEN` are in env. Attribution: 7d click + 1d view.
+2. Python twin: `apps/conformal-lite/conformal_lite/capi.py`. Sends only if `META_PIXEL_ID` and `META_ACCESS_TOKEN` are in env. Attribution: 7d click + 1d view.
 3. Log every test row in `ops/ADS_CALIBRATION.csv` (platform number vs backend number). Empty cells stay empty. No invented fills.
 4. Destination for any future paid click: githack hub / qi-check, not a fake Vercel URL.
 5. Organic winners only. Drafts in Distro. Human posts.

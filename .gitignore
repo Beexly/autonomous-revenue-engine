@@ -5,3 +5,9 @@ meter_events.jsonl
 __pycache__/
 *.pyc
 .venv/
+*.egg-info/
+build/
+dist/
+node_modules/
+.next/
+.DS_Store

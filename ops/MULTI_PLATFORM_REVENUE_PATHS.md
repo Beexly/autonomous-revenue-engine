@@ -28,7 +28,7 @@ The Meta-only view is incomplete. Full attention + revenue surface map.
 
 **Revenue math:**
 - Shorts RPM typically 3–14% of long-form. ~$0.01–$0.07 / 1k views common; US-heavy higher.
-- 1M Shorts views ≈ $150–$300 depending on geo.
+- 1M Shorts views ≈ $20–$150 typical (US-heavy finance can print higher). **Corrected 2026-08-26** — this line previously said "$150–$300 depending on geo"; `ops/CONFORMAL_FOR_PLATFORM_METRICS.md:48` retracted that figure ("Do not cite $150–$300 as typical") but this file was never updated to match. Three-column check: stated $150–$300, recalculated (from the same creator-reported ranges the retraction cites) $20–$150, now reconciled here.
 - Long-form still the real money (RPM $2–$10+).
 - Additional: Super Thanks, memberships, Shopping affiliate, brand deals, targeted Shorts ads (45% direct share in narrow cases).
 

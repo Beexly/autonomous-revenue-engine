@@ -10,28 +10,31 @@ Core idea:
 - Result: P(true label ∈ prediction set) ≥ 1-α (marginal coverage), without strong distributional assumptions.
 
 Key variants already in `apps/conformal-lite`:
-- **ACI** (Adaptive Conformal Inference): online update of α_t so long-run coverage tracks target under distribution shift.
-- **SAOCP**: strongly adaptive mix of ACI experts at different learning rates (regime tracking).
-- **CQR**: conformalized quantile residuals — preferred when residuals are heteroscedastic (different noise levels).
-- **E-value / soft-rank**: anytime-valid, post-hoc α selection while preserving validity bounds.
+- **ACI** (Adaptive Conformal Inference): online update of α_t so long-run coverage tracks target under distribution shift. Asymptotic, not exact at small n.
+- **SAOCP**: mix of ACI experts at different learning rates (regime tracking), predicted as a weights-weighted mixture.
+- **CQR**: conformalized quantile residuals — adapts to heteroscedastic residuals **only if you supply real per-point quantile predictions** (`q_lo`/`q_hi`) from your own model. This package doesn't fit one; without real predictions it reduces to plain split conformal on `|residual|`. See `apps/conformal-lite/README.md`.
+- **E-value / soft-rank**: a marginally-valid e-value (E[e]=1 under exchangeability) plus its matching conformal p-value, for post-hoc α selection. **Not** anytime-valid — its running product is not a test martingale (see `apps/conformal-lite/conformal_lite/evalue.py`'s module docstring).
 
 For non-stationary streams (X engagement, virality, CPM/RPM over time) prefer ACI / SAOCP / e-value over plain split conformal.
 
 ## 2. How to implement CP for these metrics
 
-Run from the package directory. Hyphenated folder is not an importable package named `conformal_lite`.
+`apps/conformal-lite` installs as the `conformal_lite` package (`pip install -e apps/conformal-lite`) — fixed 2026-08-26; it used to be an unimportable hyphenated folder with no `__init__.py`.
 
 ```python
-# cd apps/conformal-lite
-from core import make
+from conformal_lite import make
 
 cp = make("cqr", alpha=0.1)  # or "saocp" / "aci" / "evalue"
 
-# CQR: pass real quantile edges. If q_lo/q_hi are omitted, the core uses a dummy +/-1 band.
+# CQR: pass real quantile edges from your own model. If q_lo/q_hi are
+# omitted, this reduces to plain split conformal on |residual| — see
+# apps/conformal-lite/README.md.
 cp.update(y_true=actual_rpm, y_pred=model_rpm, q_lo=q_lo, q_hi=q_hi)
 
 lo, hi = cp.predict_interval(y_pred=next_rpm_point_estimate)
-# Claim only after n>=10 updates: with ~90% coverage, true RPM lands in [lo, hi]
+# Coverage is asymptotic, not exact at small n: expect it to approach the
+# 90% target as calibration grows, not hit it immediately once n crosses
+# some fixed cutoff.
 ```
 
 Honesty rule: always state the coverage level and the exchangeability/adaptive assumption. X and short-form streams are non-exchangeable so prefer adaptive modes. Cold start uses a fat interval.

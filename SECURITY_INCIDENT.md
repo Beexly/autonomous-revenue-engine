@@ -7,7 +7,7 @@
 
 A Meta platform credential was committed to this public repository as `ops/META_KEY.local` in commit `0a38eed` ("Add Meta MCP/Ads/Dev platform exploration + temporary key placeholder for rotation"). It was removed from the working tree in a later commit, `07a00e0` ("Lago + CAPI helpers; drop leaked Meta key"), and `ops/META_KEY.local` / the `*.local` glob were added to `.gitignore`.
 
-The affected variable name, as documented elsewhere in this repo (`ops/META_INTEGRATIONS.md`), is `META_LLM_KEY` — a different credential from `META_ACCESS_TOKEN`, which is what `apps/conformal-lite/capi.py` reads at runtime. Do not assume rotating one covers the other; confirm both if both were ever populated.
+The affected variable name, as documented elsewhere in this repo (`ops/META_INTEGRATIONS.md`), is `META_LLM_KEY` — a different credential from `META_ACCESS_TOKEN`, which is what `apps/conformal-lite/conformal_lite/capi.py` reads at runtime. Do not assume rotating one covers the other; confirm both if both were ever populated.
 
 ## Why deleting the file did not fix anything
 
