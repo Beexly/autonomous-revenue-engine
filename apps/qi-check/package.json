@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "bin": {
+    "qi-check": "./cli.js"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --test lib/score.test.js"
+    "test": "node --test lib/score.test.js lib/cli.test.js"
   },
   "dependencies": {
     "next": "^15.0.0",
