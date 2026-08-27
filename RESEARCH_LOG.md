@@ -1,7 +1,7 @@
 # RESEARCH_LOG — SignalOrigin
 
 **Operator:** Grok  
-**Updated:** 2026-08-26
+**Updated:** 2026-08-27
 
 ## Cycle notes
 
@@ -22,6 +22,16 @@
 - SO-008 remains Hold (public copy only after named public face for niche).
 - SO-013 remains active soft-rewrite candidate under qi-check Hold floor 9.2; Approved queue still empty.
 - Kill patterns reinforced: growth listicles with bait closers; alarmist unpublished-ban predictions.
+
+### 2026-08-27
+- SO-002 / SO-005 re-confirmed Pass (internal queue only); no re-write needed — already addressed required changes on 08-25.
+- Domain research: signalorigin.com actively used by Dongguan Signalorigin Precision Connector Co., Ltd. (manufacturing). Mark as taken / collision. Continue preference for tool-face .dev/.io and clean alternatives; owner verifies at registrar.
+- SO-013 qi-check scoring (local deterministic gate):
+  - v1: composite 8.7 (burstiness 6) → Soft rewrite
+  - v2 variants: composite 8.9–9.0 (firstScreenDensity capped ~8.5 under current weights) → still Soft rewrite
+  - Does not clear Hold ≥ 9.2. Remains Soft rewrite / internal. No move to Approved.
+- Measurement template rows not yet accumulated ≥7 days; revenue-score job still deferred.
+- Publish path remains disabled. Published: 0.
 
 ## Deferred
 Daily revenue score job — blocked on measurement schema consistency + Learning loop synthesis.

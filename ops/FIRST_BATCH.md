@@ -1,6 +1,6 @@
 # First content batch — internal candidates only
 
-**Date:** 2026-08-24 (updated 2026-08-26)  
+**Date:** 2026-08-24 (updated 2026-08-27)  
 **Authorship:** Human-primary idea/angle/data. AI production only.  
 **Published:** 0. This file is not a publish queue.
 
@@ -21,5 +21,7 @@ Additional public bar: qi-check Hold ≥ 9.2 + adversarial Pass. Approved queue 
 **2026-08-25 cycle:** SO-002 and SO-005 rewritten against logged required changes, re-scored, full adversarial Pass. Pass count 5 (internal only). Publish path remains disabled.
 
 **2026-08-26 cycle:** Confirmed dispositions unchanged. Domain research + OPERATING/RESEARCH_LOG committed. No new public assets.
+
+**2026-08-27 cycle:** Re-confirmed SO-002/SO-005 Pass. SO-013 soft-rewrite attempts (qi-check composites 8.7–9.0) remain below Hold 9.2; no Approved. Domain note: signalorigin.com taken. Publish path remains disabled.
 
 Kill patterns to avoid: numbered growth listicles with bait closers; alarmist unpublished-ban predictions with share-this closers.

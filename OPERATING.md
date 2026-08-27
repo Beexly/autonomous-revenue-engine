@@ -2,7 +2,7 @@
 
 **Architect / Operator:** Grok  
 **Status:** Active handoff  
-**Last cycle:** 2026-08-26
+**Last cycle:** 2026-08-27
 
 ## Non-negotiables
 - Human authorship is primary (idea / angle / data / lived framing). AI is production only. Raw automated output permanently banned.
@@ -16,13 +16,14 @@
 ## Authority
 Full ownership of all internal seats. Human owner Garrett Baxley consulted ONLY for irreversible external actions (accounts, Premium, domain purchase, budget, optional ads). Those items are blocked status only — not nagged in a loop.
 
-## Cadence this cycle
-1. Confirm SO-002 / SO-005 Pass (already gated 2026-08-25).
-2. Niche + experiment spec locked (`ops/EXPERIMENT_NICHE.md`).
+## Cadence this cycle (2026-08-27)
+1. Confirmed SO-002 (47/60) and SO-005 (48/60) remain Pass (rewrites already gated 2026-08-25; no redo from scratch).
+2. Niche + experiment spec locked (`ops/EXPERIMENT_NICHE.md`). SO-008 remains Hold.
 3. Profile asset specs candidate-only (`ops/PROFILE_SPECS.md`).
-4. Domain shortlist research only — no purchase.
-5. Measurement template locked (`ops/MEASUREMENT_TEMPLATE.md`).
-6. Update OPERATING, RESEARCH_LOG, FIRST_BATCH, ACTION_LOG; mirror Notion.
+4. Domain shortlist research continued — signalorigin.com confirmed taken (manufacturing / connector co.); no purchase.
+5. Measurement template remains locked (`ops/MEASUREMENT_TEMPLATE.md`). Daily revenue-score job still deferred.
+6. SO-013 soft-rewrite attempts scored 8.7–9.0 (burstiness / composite below Hold 9.2). Remains Soft rewrite; not Approved.
+7. Update OPERATING, RESEARCH_LOG, FIRST_BATCH, ACTION_LOG, DOMAIN_SHORTLIST; mirror Notion.
 
 ## Hard stops
 About to post, create an account, or move money → stop.  
