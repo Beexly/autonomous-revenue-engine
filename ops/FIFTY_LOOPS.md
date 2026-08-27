@@ -30,21 +30,21 @@
 | 6 | Static tools hub | Index of the HTML tools | `docs/index.html` | SHIPPED | One entry point when Pages is on; no extra domain |
 | 7 | Fold-length ruler | Paste → char/word count vs 160-char first-screen band | `docs/fold-ruler.html` live on githack | SHIPPED | Teaches the 50%-visible unit that OCR actually pays |
 | 8 | Burstiness sparkline | Sentence-length CV drawn as a tiny bar chart | `docs/burstiness.html` | SHIPPED | Makes “flat model cadence” visible; upsell to voice-delta |
-| 9 | Staccato-fragment killer | Flags one-word / two-word period lines | New `docs/staccato.html` | NEXT | Directly implements the SO-012 fail; operators will bookmark it |
-| 10 | Specificity counter | Counts numbers, $, proper-noun-ish tokens, decision verbs | New `docs/specificity.html` | NEXT | Free “is this a lecture or a log?” meter; paid: corpus baselines |
-| 11 | Jargon densitometer | Hits on leverage / 10x / unlock / viral / build-in-public | New `docs/jargon.html` | NEXT | Same audience as swap-test; affiliate later on editing tools, not ads |
-| 12 | Contrast-triple detector | Flags empty “It’s not X. It’s Y.” cadence | New `docs/contrast.html` | NEXT | Distinct fail vs bait-hook; feeds the originality gate story |
-| 13 | 50% viewport mock | Overlay showing what a Premium Home Timeline actually sees | New `docs/viewport-mock.html` | NEXT | Visual twin of qi-check; screenshot-friendly for later Show HN |
-| 14 | Kill-pattern highlighter | Regex overlay of QUALITY_BAR instant-kill patterns | New `docs/kill-highlight.html` | NEXT | Doctrine as a highlighter; later a lint rule people pay to run in CI |
-| 15 | Function-word histogram | Static bars of I/we/you/the/and rates | New `docs/function-words.html` | NEXT | On-ramp to voice-delta without Node |
-| 16 | CTA / hashtag strip preview | Shows the draft with CTAs and tags removed | New `docs/cta-strip.html` | NEXT | “Before you post, see the residue”; later a browser extension |
-| 17 | Thread-beat planner | Local 1/n beat sheet; does not post | New `docs/thread-beats.html` | NEXT | Structure tool, not a publisher; paid: saved beat libraries |
-| 18 | OCR eligibility self-check | Static checklist of public OCR rules (Premium, 500 verified, etc.) | New `docs/ocr-eligible.html` | NEXT | Honest eligibility, no API; later a logged tracker |
-| 19 | Before/after Hold compare | Two pastes, local only, side-by-side scores | New `docs/hold-compare.html` | NEXT | Makes rewrite work visible; paid history of pairs |
-| 20 | Pronoun-ratio viewer | I / we / you mix for a paste | New `docs/pronouns.html` | NEXT | Cheap voice tell; pairs with Delta |
-| 21 | Claim-verb first-line scorer | Scores whether line one has killed/paid/refused/shipped | New `docs/claim-verb.html` | NEXT | Complements bait-hook (presence of stake, not bait) |
-| 22 | Emoji / yarn stripper | Strips 🧵🔥👇 and reports what remains | New `docs/emoji-strip.html` | NEXT | Tiny utility; bookmark + later extension |
-| 23 | Duplicate-opener checker | Paste candidate + 3 refs; flags shared first lines | New `docs/dup-opener.html` | NEXT | Stops us repeating ourselves; later corpus-wide |
+| 9 | Staccato-fragment killer | Flags one-word / two-word period lines | New `docs/staccato.html` | SHIPPED | Directly implements the SO-012 fail; operators will bookmark it |
+| 10 | Specificity counter | Counts numbers, $, proper-noun-ish tokens, decision verbs | New `docs/specificity.html` | SHIPPED | Free “is this a lecture or a log?” meter; paid: corpus baselines |
+| 11 | Jargon densitometer | Hits on leverage / 10x / unlock / viral / build-in-public | New `docs/jargon.html` | SHIPPED | Same audience as swap-test; affiliate later on editing tools, not ads |
+| 12 | Contrast-triple detector | Flags empty “It’s not X. It’s Y.” cadence | New `docs/contrast.html` | SHIPPED | Distinct fail vs bait-hook; feeds the originality gate story |
+| 13 | 50% viewport mock | Overlay showing what a Premium Home Timeline actually sees | New `docs/viewport-mock.html` | SHIPPED | Visual twin of qi-check; screenshot-friendly for later Show HN |
+| 14 | Kill-pattern highlighter | Regex overlay of QUALITY_BAR instant-kill patterns | New `docs/kill-highlight.html` | SHIPPED | Doctrine as a highlighter; later a lint rule people pay to run in CI |
+| 15 | Function-word histogram | Static bars of I/we/you/the/and rates | New `docs/function-words.html` | SHIPPED | On-ramp to voice-delta without Node |
+| 16 | CTA / hashtag strip preview | Shows the draft with CTAs and tags removed | New `docs/cta-strip.html` | SHIPPED | “Before you post, see the residue”; later a browser extension |
+| 17 | Thread-beat planner | Local 1/n beat sheet; does not post | New `docs/thread-beats.html` | SHIPPED | Structure tool, not a publisher; paid: saved beat libraries |
+| 18 | OCR eligibility self-check | Static checklist of public OCR rules (Premium, 500 verified, etc.) | New `docs/ocr-eligible.html` | SHIPPED | Honest eligibility, no API; later a logged tracker |
+| 19 | Before/after Hold compare | Two pastes, local only, side-by-side scores | New `docs/hold-compare.html` | SHIPPED | Makes rewrite work visible; paid history of pairs |
+| 20 | Pronoun-ratio viewer | I / we / you mix for a paste | New `docs/pronouns.html` | SHIPPED | Cheap voice tell; pairs with Delta |
+| 21 | Claim-verb first-line scorer | Scores whether line one has killed/paid/refused/shipped | New `docs/claim-verb.html` | SHIPPED | Complements bait-hook (presence of stake, not bait) |
+| 22 | Emoji / yarn stripper | Strips 🧵🔥👇 and reports what remains | New `docs/emoji-strip.html` | SHIPPED | Tiny utility; bookmark + later extension |
+| 23 | Duplicate-opener checker | Paste candidate + 3 refs; flags shared first lines | New `docs/dup-opener.html` | SHIPPED | Stops us repeating ourselves; later corpus-wide |
 | 24 | Impression-proxy log template | CSV + static form for Premium/verified impression proxies | New `docs/impression-log.html` + `ops/IMPRESSION_LOG.csv` | NEXT | Unlocks the deferred daily revenue-score job in HANDOFF |
 | 25 | Reading-time vs visible estimator | Words → seconds vs “≥50% visible” heuristic | New `docs/read-time.html` | NEXT | Translates OCR’s visibility rule into a number people share |
 | 26 | qi-check CLI | `node` stdin/file wrapper around `apps/qi-check/lib/score.js` | File in `apps/qi-check`; no publish | NEXT | CI and editor users; npm draft later (do not publish until owner) |
@@ -67,7 +67,7 @@
 | 43 | GitHub Pages on `/docs` | Serve the hub + HTML tools from Pages | Owner enables Pages on `docs/` | BLOCKED-OWNER | Stable `*.github.io` URL without buying a domain |
 | 44 | Hugging Face Space (static) | Static clone of qi-check / bait-hook / swap-test | Owner creates Space if write is blocked for the operator | BLOCKED-OWNER | Second free host; HF audience ≠ GitHub audience |
 | 45 | HF dataset card (Pass-style samples) | Card + tiny public sample set, no private drafts | Files in `ops/drafts/hf-dataset/`; upload is owner | BLOCKED-APPROVE | Dataset SEO; do not upload secret Pass queue |
-| 46 | Hold-floor SVG badge | Static `docs/hold-floor.svg` reading “Hold ≥ 9.2” | Commit an SVG | NEXT | README bait that is doctrine, not vanity metrics |
+| 46 | Hold-floor SVG badge | Static `docs/hold-floor.svg` reading “Hold ≥ 9.2” | Commit an SVG | SHIPPED | README bait that is doctrine, not vanity metrics |
 | 47 | Tools changelog RSS | `docs/changelog.xml` listing tool ships | Static XML in docs/ | NEXT | Subscribe-able without a newsletter product |
 | 48 | SO-candidate markdown template | Frontmatter + Hold fields for new drafts | `ops/templates/SO_CANDIDATE.md` | NEXT | Speeds gated drafting; later a form |
 | 49 | Reply-vs-main heuristic page | Scores whether a paste is reply-primary (OCR: replies don’t pay) | New `docs/reply-vs-main.html` | NEXT | Stops wasting Hold work on the wrong unit |
@@ -77,10 +77,11 @@
 
 Shipped on `main`:
 - `docs/qi-check.html`, `docs/bait-hook.html`, `docs/swap-test.html`, `docs/swap-check.html`, `docs/fold-ruler.html`, `docs/burstiness.html`, `docs/index.html`
+- `docs/staccato.html`, `docs/specificity.html`, `docs/jargon.html`, `docs/contrast.html`, `docs/viewport-mock.html`, `docs/kill-highlight.html`, `docs/function-words.html`, `docs/cta-strip.html`, `docs/thread-beats.html`, `docs/ocr-eligible.html`, `docs/hold-compare.html`, `docs/pronouns.html`, `docs/claim-verb.html`, `docs/emoji-strip.html`, `docs/dup-opener.html`, `docs/hold-floor.svg`
 - `apps/qi-check`, `apps/voice-delta`, `apps/swap-check`, `apps/hn-bait`, `apps/subject-fold`, `apps/conformal-lite`
 - Lago stub + CAPI helpers (env-gated, no spend)
 
-Not started as files yet: 9–38, 46–50 (NEXT).  
+Not started as files yet: 24–38, 47–50 (NEXT).  
 Not started because owner must click: 43, 44.  
 Not posted/uploaded: 39–42, 45.
 

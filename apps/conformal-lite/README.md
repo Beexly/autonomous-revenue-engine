@@ -10,9 +10,9 @@ Does not rewrite copy. Does not publish. Does not meter paid usage unless `ORIGI
 
 ```
 cd apps/conformal-lite
-pip install -r requirements.txt
+pip install .
 python -m conformal_lite --mode aci
-python -m unittest test_core.py
+python -m unittest discover -s tests
 ```
 
 ## Modes

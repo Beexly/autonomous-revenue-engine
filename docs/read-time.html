@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>read-time — words to seconds</title>
+  <meta name="description" content="Word count, reading seconds at your WPM, and a 160-char front-load check. Does not rewrite. Does not publish.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; --band:#d8ccb4; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem; }
+    textarea { width:100%; box-sizing:border-box; min-height:8.5rem; padding:.7rem .75rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; resize:vertical; }
+    input[type=number] { width:6rem; box-sizing:border-box; padding:.45rem .5rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    .wpmrow { margin-top:.75rem; }
+    .wpmrow label { display:inline; margin-right:.5rem; }
+    button { margin-top:.75rem; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    .verdict { font-size:1.35rem; font-weight:700; }
+    .front { color:var(--ok); } .slow { color:var(--bad); } .short { color:var(--rule); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; margin:.55rem 0; }
+    td { padding:.22rem 0; border-bottom:1px dotted #d8ccb4; }
+    td.k { color:var(--mute); } td.v { text-align:right; font-family:ui-monospace,monospace; }
+    .preview { font:14px/1.45 ui-monospace,monospace; background:#fffdf6; border:1px solid var(--ink); padding:.7rem .75rem; white-space:pre-wrap; word-break:break-word; }
+    .preview .in { background:#e7f0d8; }
+    .preview .over { background:#f3d4c8; }
+    .note { font-size:.85rem; color:var(--mute); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · reading time</p>
+  <h1>read-time</h1>
+  <p class="lede">Paste a draft. This counts words, estimates reading seconds at an adjustable words-per-minute, and checks whether the claim lands inside the 160-character first-screen band (the fold-ruler unit). Local heuristic only — not a platform metric. It does not rewrite or publish.</p>
+  <form id="f">
+    <label for="draft">Draft</label>
+    <textarea id="draft" placeholder="The first sentence is the whole argument."></textarea>
+    <p class="wpmrow"><label for="wpm">Words per minute</label><input id="wpm" type="number" value="220" min="60" max="1000" step="10"></p>
+    <button type="submit">Time it</button>
+  </form>
+  <section id="out" hidden></section>
+</main>
+<script>
+(function () {
+  var BAND = 160;
+  var STAKE = /\b(killed|paid|refused|built|measured|failed|shipped|cut|deferred|chose)\b/i;
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function words(s) {
+    var t = String(s || "").trim();
+    return t ? t.split(/\s+/).length : 0;
+  }
+  function measure(raw, wpm) {
+    var t = String(raw || "").replace(/\r\n/g, "\n");
+    if (!t.trim()) return { status: "EMPTY" };
+    var w = words(t);
+    var rate = wpm > 0 ? wpm : 220;
+    var seconds = (w / rate) * 60;
+    var band = t.slice(0, BAND);
+    var overflow = t.slice(BAND);
+    var hasVerb = STAKE.test(band);
+    var hasNumber = /\d/.test(band);
+    var status;
+    if (t.length <= BAND) status = "ALL FIRST-SCREEN";
+    else if (hasVerb || hasNumber) status = "FRONT-LOADED";
+    else status = "SLOW-OPEN";
+    return {
+      status: status, w: w, chars: t.length, seconds: seconds, rate: rate,
+      band: band, overflow: overflow, bandWords: words(band),
+      hasVerb: hasVerb, hasNumber: hasNumber
+    };
+  }
+  var form = document.getElementById("f");
+  var input = document.getElementById("draft");
+  var wpmInput = document.getElementById("wpm");
+  var out = document.getElementById("out");
+  function fmt(sec) {
+    if (sec < 60) return sec.toFixed(1) + " s";
+    var m = Math.floor(sec / 60);
+    var s = Math.round(sec - m * 60);
+    return m + " min " + s + " s";
+  }
+  function render() {
+    var data = measure(input.value, parseInt(wpmInput.value, 10));
+    if (data.status === "EMPTY") {
+      out.hidden = false;
+      out.innerHTML = "<p class='short'>empty_text</p>";
+      return;
+    }
+    var cls = data.status === "SLOW-OPEN" ? "slow" : data.status === "ALL FIRST-SCREEN" ? "short" : "front";
+    var rows =
+      "<tr><td class='k'>words</td><td class='v'>" + data.w + "</td></tr>" +
+      "<tr><td class='k'>chars</td><td class='v'>" + data.chars + "</td></tr>" +
+      "<tr><td class='k'>est. read at " + data.rate + " wpm</td><td class='v'>" + fmt(data.seconds) + "</td></tr>" +
+      "<tr><td class='k'>words in 160-char band</td><td class='v'>" + data.bandWords + "</td></tr>" +
+      "<tr><td class='k'>decision verb in band</td><td class='v'>" + (data.hasVerb ? "yes" : "no") + "</td></tr>" +
+      "<tr><td class='k'>number in band</td><td class='v'>" + (data.hasNumber ? "yes" : "no") + "</td></tr>";
+    var preview = "<span class='in'>" + esc(data.band) + "</span>";
+    if (data.overflow) preview += "<span class='over'>" + esc(data.overflow) + "</span>";
+    out.innerHTML =
+      "<p class='verdict " + cls + "'>" + data.status + "</p>" +
+      "<table><tbody>" + rows + "</tbody></table>" +
+      "<p class='preview'>" + preview + "</p>" +
+      "<p class='note'>Green = the 160-character first screen (fold-ruler band): what a reader sees before deciding to expand. FRONT-LOADED = a decision verb or a number sits inside that band. SLOW-OPEN = the claim arrives after the fold. Seconds are words &divide; wpm, a local estimate, not dwell time and not a platform metric. This is a ruler, not qi-check.</p>";
+    out.hidden = false;
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  input.addEventListener("input", function () { if (!out.hidden) render(); });
+  wpmInput.addEventListener("input", function () { if (!out.hidden) render(); });
+})();
+</script>
+</body>
+</html>

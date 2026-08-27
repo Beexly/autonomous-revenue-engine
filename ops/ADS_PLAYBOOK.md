@@ -28,7 +28,7 @@ Not deferred. Spend is still human APPROVE. Everything else in this file is in m
 ABO creative tests then winners into Advantage+. Backend (Stripe/server) is the money number. Meta reported conversions are a lagging proxy. Frequency above 3 plus CTR down means fatigue: pause, do not scale.
 
 ## Calibration
-Use conformal-lite (`cd apps/conformal-lite`, `from core import make`) on CPM/CTR/RPM streams with ACI/SAOCP. CQR needs real `q_lo`/`q_hi`. Omitting them is a dummy +/-1 band.
+Use conformal-lite (`pip install ./apps/conformal-lite`, `from conformal_lite import make`) on CPM/CTR/RPM streams with ACI/SAOCP. CQR needs real `q_lo`/`q_hi`. Omitting them is a dummy +/-1 band.
 
 ## Sports
 Out. Forever. Not a SKU, not a targeting interest, not a case study.

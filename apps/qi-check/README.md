@@ -28,10 +28,20 @@ Next.js 15 app (`dev`, `build`, `start`, `test`). The UI in `app/page.js` POSTs 
 
 Never publish below Hold. 9.2 is the floor.
 
+## CLI
+
+```
+node cli.js draft.txt          # human-readable report, exit 0/1/2 (see cli.js header)
+echo "draft text" | node cli.js --json --platform linkedin
+```
+
+Thin wrapper around the same `lib/score.js` — no scoring logic is duplicated.
+`--help` for the full flag list.
+
 ## Tests
 
 ```
 npm test
 ```
 
-Runs `node --test lib/score.test.js`.
+Runs `node --test lib/score.test.js lib/cli.test.js`.

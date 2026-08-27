@@ -5,3 +5,7 @@ meter_events.jsonl
 __pycache__/
 *.pyc
 .venv/
+build/
+*.egg-info/
+.claude/settings.local.json
+.claude/worktrees/
