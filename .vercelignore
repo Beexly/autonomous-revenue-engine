@@ -1,0 +1,10 @@
+apps/qi-check
+apps/conformal-lite
+apps/adaptive-cp
+apps/hn-bait
+apps/subject-fold
+apps/swap-check
+apps/voice-delta
+.github
+ops
+node_modules
