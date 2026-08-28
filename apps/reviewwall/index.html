@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Review Wall — social proof without Shopify</title>
+  <meta name="description" content="Paste reviews or import a CSV. Get a wall you can screenshot or embed. Nothing is uploaded." />
+  <style>
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --ink2:#06281c; --line:#242b35; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+    a { color: var(--accent); text-decoration:none; }
+    header { border-bottom:1px solid var(--line); padding:12px 20px; display:flex; gap:16px; align-items:center; justify-content:space-between; }
+    header nav a { color:var(--mute); margin-left:12px; font-size:14px; }
+    main { max-width: 1080px; margin: 0 auto; padding: 28px 20px 80px; }
+    h1 { font-size: 32px; letter-spacing:-.03em; margin:0 0 8px; }
+    .lead { color:var(--mute); margin:0 0 24px; line-height:1.5; max-width:38rem; }
+    .layout { display:grid; gap:16px; }
+    @media (min-width:900px){ .layout { grid-template-columns: 300px 1fr; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    label { display:block; font-size:11px; color:var(--mute); margin:12px 0 6px; text-transform:uppercase; letter-spacing:.1em; }
+    input, textarea, select { width:100%; background:#0b0d10; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font: inherit; }
+    button { background:var(--accent); color:var(--ink2); border:0; border-radius:10px; padding:12px 14px; font-weight:700; cursor:pointer; width:100%; margin-top:10px; }
+    button.ghost { background:#1c232c; color:var(--ink); }
+    .wall { columns:1; column-gap:12px; }
+    @media (min-width:700px){ .wall { columns:2; } }
+    .rev { break-inside:avoid; background:#0b0d10; border:1px solid var(--line); border-radius:14px; padding:14px; margin:0 0 12px; }
+    .stars { color:var(--accent); letter-spacing:2px; font-size:14px; }
+    .meta { font-size:13px; color:var(--mute); }
+    .tiny { font-size:13px; color:var(--mute); }
+    .stats { display:flex; gap:12px; margin-bottom:12px; }
+    .stats b { display:block; font-size:22px; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Review Wall</strong>
+    <nav>
+      <a href="index.html">Hub</a>
+      <a href="framefit.html">FrameFit</a>
+      <a href="linknest.html">LinkNest</a>
+      <a href="brain.html">Brain</a>
+    </nav>
+  </header>
+  <main>
+    <p class="tiny">Judge.me analog · no Shopify required</p>
+    <h1>A wall of proof you can ship today.</h1>
+    <p class="lead">Add reviews by hand or drop a CSV (author, product, stars, text). Filter, copy an embed snippet, download HTML. Stays on this device.</p>
+    <div class="layout">
+      <section class="card">
+        <label>Author</label>
+        <input id="author" placeholder="Maya R." />
+        <label>Product</label>
+        <input id="product" placeholder="Midnight Tee" />
+        <label>Stars</label>
+        <select id="stars"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+        <label>Review</label>
+        <textarea id="text" rows="3" placeholder="Showed up in two days. Print didn't crack."></textarea>
+        <button id="add" type="button">Add review</button>
+        <label>Import CSV</label>
+        <input id="csv" type="file" accept=".csv,text/csv" />
+        <button class="ghost" id="embed" type="button">Copy embed snippet</button>
+        <button class="ghost" id="dl" type="button">Download wall HTML</button>
+        <p class="tiny" id="status">CSV columns: author, product, stars, text</p>
+      </section>
+      <section>
+        <div class="stats card" id="stats"></div>
+        <div class="card" style="margin-bottom:12px">
+          <label>Filter</label>
+          <select id="filter">
+            <option value="0">All ratings</option>
+            <option value="5">5 only</option>
+            <option value="4">4+</option>
+            <option value="3">3+</option>
+          </select>
+        </div>
+        <div class="wall" id="wall"></div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const KEY = "reviewwall-v1";
+    const seed = [
+      { author:"Maya R.", product:"Midnight Tee", stars:5, text:"Showed up in two days. Print didn't crack in the wash." },
+      { author:"Chris P.", product:"Trail Cap", stars:5, text:"Fits under a helmet. Bought a second color the same night." },
+      { author:"Elena V.", product:"Studio Tote", stars:4, text:"Stitching is clean. Strap could be an inch longer." },
+      { author:"Omar K.", product:"Midnight Tee", stars:5, text:"Wore it on camera. Three people asked where it was from." },
+      { author:"Jen S.", product:"Trail Cap", stars:4, text:"Brim holds shape. Black runs hot in July." }
+    ];
+    const state = { reviews: JSON.parse(localStorage.getItem(KEY) || "null") || seed };
+    const el = (id) => document.getElementById(id);
+    function save(){ localStorage.setItem(KEY, JSON.stringify(state.reviews)); draw(); }
+    function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c => "&#"+c.charCodeAt(0)+";"); }
+    function stars(n){ return "★★★★★".slice(0,n) + "☆☆☆☆☆".slice(n); }
+    function filtered(){
+      const min = +el("filter").value;
+      return state.reviews.filter(r => r.stars >= (min || 0) && (min !== 5 || r.stars === 5) || (min===5 && r.stars===5));
+    }
+    function vis(){
+      const min = +el("filter").value;
+      if (min === 5) return state.reviews.filter(r => r.stars === 5);
+      if (min === 0) return state.reviews;
+      return state.reviews.filter(r => r.stars >= min);
+    }
+    function draw(){
+      const list = vis();
+      const avg = state.reviews.length ? (state.reviews.reduce((a,r)=>a+r.stars,0)/state.reviews.length).toFixed(1) : "0.0";
+      el("stats").innerHTML = `<div><b>${avg}</b><span class="tiny">avg</span></div><div><b>${state.reviews.length}</b><span class="tiny">reviews</span></div><div><b>${state.reviews.filter(r=>r.stars===5).length}</b><span class="tiny">five-star</span></div>`;
+      el("wall").innerHTML = list.map(r => `
+        <article class="rev">
+          <div class="stars">${stars(r.stars)}</div>
+          <p style="margin:8px 0;line-height:1.45">${esc(r.text)}</p>
+          <p class="meta">${esc(r.author)} · ${esc(r.product)}</p>
+        </article>`).join("");
+    }
+    el("add").onclick = () => {
+      const author = el("author").value.trim();
+      const text = el("text").value.trim();
+      if (!author || !text) { el("status").textContent = "Author and text required."; return; }
+      state.reviews.unshift({ author, product: el("product").value.trim() || "Product", stars:+el("stars").value, text });
+      el("author").value = el("product").value = el("text").value = "";
+      save();
+    };
+    el("filter").onchange = draw;
+    el("csv").onchange = e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = () => {
+        const lines = String(r.result).split(/\r?\n/).filter(Boolean);
+        const start = /author/i.test(lines[0]) ? 1 : 0;
+        let n = 0;
+        for (let i=start;i<lines.length;i++){
+          const parts = lines[i].split(",").map(s => s.trim().replace(/^"|"$/g,""));
+          if (parts.length < 4) continue;
+          const [author, product, starsRaw, ...rest] = parts;
+          const s = Math.min(5, Math.max(1, parseInt(starsRaw,10)||5));
+          state.reviews.unshift({ author, product, stars:s, text: rest.join(", ") });
+          n++;
+        }
+        el("status").textContent = "Imported " + n + " rows.";
+        save();
+      };
+      r.readAsText(f);
+    };
+    function page(){
+      return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reviews</title>
+<style>body{margin:0;background:#0b0d10;color:#e8edf4;font-family:ui-sans-serif,system-ui;padding:32px 16px}.wall{columns:1;max-width:720px;margin:auto}@media(min-width:700px){.wall{columns:2}}article{break-inside:avoid;border:1px solid #242b35;border-radius:14px;padding:14px;margin:0 0 12px}.stars{color:#6ee7b7}p{line-height:1.45}.m{color:#8b97a8;font-size:13px}</style></head>
+<body><div class="wall">${vis().map(r=>`<article><div class="stars">${stars(r.stars)}</div><p>${esc(r.text)}</p><p class="m">${esc(r.author)} · ${esc(r.product)}</p></article>`).join("")}</div></body></html>`;
+    }
+    el("dl").onclick = () => {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([page()],{type:"text/html"}));
+      a.download = "review-wall.html";
+      a.click();
+    };
+    el("embed").onclick = async () => {
+      const snippet = "<iframe srcdoc=\"" + page().replace(/"/g,""") + "\" style=\"width:100%;min-height:640px;border:0\"></iframe>";
+      await navigator.clipboard.writeText(snippet);
+      el("status").textContent = "Embed snippet copied.";
+    };
+    draw();
+  </script>
+</body>
+</html>

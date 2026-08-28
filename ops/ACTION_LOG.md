@@ -2,6 +2,15 @@
 
 Operator cycle log. Counts that matter stay internal until publish path is enabled.
 
+## 2026-08-28 (cycle 3)
+- Vercel production READY after owner re-add: https://autonomous-revenue-engine-eight.vercel.app (200).
+- FrameFit dedicated: https://framefit-eta.vercel.app (200).
+- Shipped T03 LinkNest, T04 Review Wall, T05 Bookmark Brain as static docs/*.html. Hub rewritten to lead with those four + cash CTA.
+- Deleted leftover GitHub starter workflows (npm-publish token, greetings, label, stale, manual injection sink).
+- Sports clip cut for GalaxySportsAI → FrameFit URL. Architect does not post.
+- Cash CTA unchanged: Gumroad $19 workbook. $40 budget unused.
+- Published SO posts: 0. Factory live surfaces: 5 (FrameFit, qi-check, LinkNest, Review Wall, Bookmark Brain).
+
 ## 2026-08-28 (cycle 2)
 - Vercel reconnected. Project `autonomous-revenue-engine` production READY on commit `652f4b0`.
 - Disabled Vercel Authentication (SSO) on ARE + FrameFit projects so production actually serves public traffic.

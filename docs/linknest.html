@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LinkNest — one page for every link</title>
+  <meta name="description" content="Build a link-in-bio page in the browser. Download a single HTML file. Nothing is uploaded." />
+  <style>
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --ink2:#06281c; --line:#242b35; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+    a { color: var(--accent); }
+    header { border-bottom:1px solid var(--line); padding:12px 20px; display:flex; gap:16px; align-items:center; justify-content:space-between; }
+    header nav a { color:var(--mute); text-decoration:none; margin-left:12px; font-size:14px; }
+    main { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
+    h1 { font-size: 32px; letter-spacing:-.03em; margin:0 0 8px; }
+    .lead { color:var(--mute); margin:0 0 24px; line-height:1.5; max-width:36rem; }
+    .grid { display:grid; gap:16px; }
+    @media (min-width:860px){ .grid { grid-template-columns: 1fr 340px; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    label { display:block; font-size:11px; color:var(--mute); margin:12px 0 6px; text-transform:uppercase; letter-spacing:.1em; }
+    input, textarea { width:100%; background:#0b0d10; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font: inherit; }
+    .row { display:flex; gap:8px; margin-top:8px; }
+    .row input { flex:1; }
+    button { background:var(--accent); color:var(--ink2); border:0; border-radius:10px; padding:12px 14px; font-weight:700; cursor:pointer; }
+    button.ghost { background:#1c232c; color:var(--ink); }
+    button.danger { background:transparent; color:var(--mute); padding:8px; }
+    button:disabled { opacity:.4; cursor:not-allowed; }
+    .phone { border-radius:28px; border:1px solid var(--line); padding:28px 18px; min-height:520px; text-align:center; background:#0b0d10; }
+    .avatar { width:84px; height:84px; border-radius:50%; object-fit:cover; margin:0 auto 12px; display:block; background:#1c232c; border:2px solid var(--accent); }
+    .plink { display:block; background:#1c232c; color:var(--ink); text-decoration:none; border-radius:12px; padding:14px; margin:8px 0; font-weight:600; }
+    .plink:hover { background:#242b35; }
+    .themes { display:flex; gap:8px; }
+    .swatch { width:28px; height:28px; border-radius:50%; border:2px solid transparent; cursor:pointer; }
+    .swatch.on { border-color:#fff; }
+    .tiny { font-size:13px; color:var(--mute); margin-top:10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>LinkNest</strong>
+    <nav>
+      <a href="index.html">Hub</a>
+      <a href="framefit.html">FrameFit</a>
+      <a href="reviewwall.html">Review Wall</a>
+      <a href="brain.html">Brain</a>
+    </nav>
+  </header>
+  <main>
+    <p class="tiny">Stan analog · local only</p>
+    <h1>Your links. One page.</h1>
+    <p class="lead">Edit on the left. Preview on the right. Download a single HTML file you can host anywhere. Nothing leaves this tab.</p>
+    <div class="grid">
+      <section class="card">
+        <label>Name</label>
+        <input id="name" maxlength="48" />
+        <label>Handle</label>
+        <input id="handle" maxlength="32" placeholder="@you" />
+        <label>Bio</label>
+        <textarea id="bio" rows="2" maxlength="160"></textarea>
+        <label>Avatar</label>
+        <input id="file" type="file" accept="image/*" />
+        <label>Theme</label>
+        <div class="themes" id="themes"></div>
+        <label>Links</label>
+        <div id="links"></div>
+        <div class="row" style="margin-top:16px">
+          <button class="ghost" id="add" type="button">Add link</button>
+          <button id="dl" type="button">Download HTML</button>
+        </div>
+        <p class="tiny" id="meta">Stored on this device.</p>
+      </section>
+      <section class="card">
+        <div class="phone" id="preview"></div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const KEY = "linknest-v1";
+    const THEMES = [
+      { id:"mint", accent:"#6ee7b7" },
+      { id:"gold", accent:"#f5c56b" },
+      { id:"rose", accent:"#f4a3b5" },
+      { id:"sky", accent:"#7dd3fc" }
+    ];
+    const state = JSON.parse(localStorage.getItem(KEY) || "null") || {
+      name: "Galaxy Sports",
+      handle: "@galaxysportsai",
+      bio: "Tools that fit in one tab. Crop, nest, ship.",
+      avatar: "",
+      theme: "mint",
+      links: [
+        { label: "FrameFit — crop for every network", href: "https://framefit-eta.vercel.app" },
+        { label: "$19 Meta tracking workbook", href: "https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook" },
+        { label: "Book a diagnostic", href: "mailto:Baxley.Garrett@gmail.com?subject=LinkNest" }
+      ]
+    };
+    const el = (id) => document.getElementById(id);
+    function save(){ localStorage.setItem(KEY, JSON.stringify(state)); render(); }
+    function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c => "&#"+c.charCodeAt(0)+";"); }
+    function renderLinks(){
+      el("links").innerHTML = state.links.map((l,i)=>`
+        <div class="row">
+          <input data-i="${i}" data-k="label" value="${esc(l.label)}" placeholder="Label" />
+          <input data-i="${i}" data-k="href" value="${esc(l.href)}" placeholder="https://" />
+          <button class="danger" data-del="${i}" type="button">✕</button>
+        </div>`).join("");
+    }
+    function renderPreview(){
+      const t = THEMES.find(x=>x.id===state.theme) || THEMES[0];
+      const img = state.avatar
+        ? `<img class="avatar" src="${state.avatar}" alt="" />`
+        : `<div class="avatar" style="display:grid;place-items:center;color:${t.accent};font-weight:700">${esc((state.name||"N")[0])}</div>`;
+      el("preview").innerHTML = `
+        ${img}
+        <h2 style="margin:0 0 4px;font-size:22px">${esc(state.name)}</h2>
+        <p style="margin:0;color:var(--mute);font-size:13px">${esc(state.handle)}</p>
+        <p style="margin:12px 0 18px;color:var(--mute);font-size:14px;line-height:1.45">${esc(state.bio)}</p>
+        ${state.links.map(l=>`<a class="plink" style="border:1px solid ${t.accent}33" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}
+      `;
+    }
+    function renderThemes(){
+      el("themes").innerHTML = THEMES.map(t=>`<button type="button" class="swatch ${t.id===state.theme?'on':''}" data-theme="${t.id}" style="background:${t.accent}" aria-label="${t.id}"></button>`).join("");
+    }
+    function render(){
+      el("name").value = state.name;
+      el("handle").value = state.handle;
+      el("bio").value = state.bio;
+      renderThemes();
+      renderLinks();
+      renderPreview();
+    }
+    el("name").oninput = e => { state.name = e.target.value; save(); };
+    el("handle").oninput = e => { state.handle = e.target.value; save(); };
+    el("bio").oninput = e => { state.bio = e.target.value; save(); };
+    el("add").onclick = () => { state.links.push({label:"New link", href:"https://"}); save(); };
+    document.body.addEventListener("click", e => {
+      const t = e.target;
+      if (t.dataset.theme){ state.theme = t.dataset.theme; save(); }
+      if (t.dataset.del != null){ state.links.splice(+t.dataset.del,1); save(); }
+    });
+    document.body.addEventListener("input", e => {
+      const t = e.target;
+      if (t.dataset.k){ state.links[+t.dataset.i][t.dataset.k] = t.value; save(); }
+    });
+    el("file").onchange = e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = () => { state.avatar = r.result; save(); };
+      r.readAsDataURL(f);
+    };
+    function exportedPage(){
+      const t = THEMES.find(x=>x.id===state.theme) || THEMES[0];
+      const img = state.avatar ? `<img src="${state.avatar}" alt="" style="width:92px;height:92px;border-radius:50%;object-fit:cover;border:2px solid ${t.accent}" />` : "";
+      return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(state.name)}</title>
+<style>body{margin:0;background:#0b0d10;color:#e8edf4;font-family:ui-sans-serif,system-ui;display:grid;place-items:start center;padding:48px 16px}main{max-width:380px;width:100%;text-align:center}a{display:block;background:#1c232c;color:#e8edf4;text-decoration:none;border-radius:12px;padding:14px;margin:8px 0;font-weight:600;border:1px solid ${t.accent}33}p{color:#8b97a8}</style></head>
+<body><main>${img}<h1>${esc(state.name)}</h1><p>${esc(state.handle)}</p><p>${esc(state.bio)}</p>${state.links.map(l=>`<a href="${esc(l.href)}">${esc(l.label)}</a>`).join("")}</main></body></html>`;
+    }
+    el("dl").onclick = () => {
+      const blob = new Blob([exportedPage()], {type:"text/html"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "linknest.html";
+      a.click();
+    };
+    render();
+  </script>
+</body>
+</html>

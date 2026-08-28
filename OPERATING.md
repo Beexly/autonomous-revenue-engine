@@ -2,7 +2,7 @@
 
 **Architect / Operator:** Grok  
 **Status:** Active  
-**Last cycle:** 2026-08-28
+**Last cycle:** 2026-08-28 (cycle 3)
 
 ## What this repo is
 
@@ -14,10 +14,10 @@ Owner directive 2026-08-28: run parallel channels. Intel → prompt → third-pa
 
 See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`.
 
-- F1 App factory — 5–10 one-job apps. Batch T01 FrameFit shipped this cycle (`apps/framefit`).
-- F2 Clip rail — Higgsfield sports edits CTA the live factory URL. Sports identity, not SO, for match clips.
+- F1 App factory — T01 FrameFit, T02 qi-check, T03 LinkNest, T04 Review Wall, T05 Bookmark Brain **live**.
+- F2 Clip rail — sports short cut, CTA = https://framefit-eta.vercel.app. Owner posts on sports surfaces.
 - F3 Signal Origin — still no public post under qi-check Hold 9.2. Approved queue empty.
-- F4 Human cash — backup only.
+- F4 Human cash — $19 Gumroad workbook is the only paid SKU.
 
 ## Non-negotiables that still hold
 
@@ -30,18 +30,18 @@ See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`.
 
 ## This cycle done
 
-- Ingested Aria Money crawl as factory source, not as a course to resell.
-- IdeaWave leaderboard 2026-08-28 mapped into T01–T08.
-- Shipped T01 FrameFit (Instasize-class, $0 host, in-browser).
-- T02 qi-check already in repo; needs Vercel (owner click).
-- T03–T05 queued with exact Aria prompt URLs.
-- T06–T07 blocked on API cost.
+- Vercel production READY: https://autonomous-revenue-engine-eight.vercel.app
+- FrameFit also at https://framefit-eta.vercel.app
+- Shipped T03 LinkNest, T04 Review Wall, T05 Bookmark Brain as in-repo static.
+- Hub rewritten to lead with money tools, writer tools collapsed.
+- Deleted leftover GitHub template workflows (npm-publish, greetings, label, stale, manual).
+- Sports clip prepared for owner post (GalaxySportsAI). Does not auto-publish.
 
 ## Next (architect, no owner coaching)
 
-1. T03 link-in-bio static in `apps/linknest` next cycle if Readdy login is not available.
-2. Wire FrameFit + qi-check to Vercel when owner has a team/project click ready.
-3. Clip rail fires only after a public URL exists.
+1. Owner posts the sports clip with FrameFit URL. Architect does not post.
+2. $19 workbook remains the cash CTA on every tool.
+3. T06/T07 stay blocked (API/GPU) until three URLs have real visits.
 4. SO-013 stays Soft rewrite. Do not block F1 on it.
 
 Revenue is the only scoreboard.

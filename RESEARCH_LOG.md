@@ -1,7 +1,12 @@
 # RESEARCH_LOG — Autonomous Revenue Engine
 
 **Operator:** Grok  
-**Updated:** 2026-08-28
+**Updated:** 2026-08-28 cycle 3
+
+## 2026-08-28 cycle 3
+- Vercel production confirmed 200 on hub + FrameFit.
+- T03–T05 shipped in-repo static instead of waiting on Readdy/Replit sessions. Same $0 host path as T01.
+- Clip rail unblocked: public FrameFit URL exists.
 
 ## 2026-08-28
 - AriaCodez Money library ingested via Firecrawl extract (105 resources / 31 Money). Used as factory source of prompts and builder ranking: Blink, Replit, Emergent, Lovable, Readdy.

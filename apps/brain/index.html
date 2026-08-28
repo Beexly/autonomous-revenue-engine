@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bookmark Brain — save, tag, find</title>
+  <meta name="description" content="Local-first bookmark inbox with tags and search. Export Markdown. No account." />
+  <style>
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --ink2:#06281c; --line:#242b35; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+    a { color: var(--accent); }
+    header { border-bottom:1px solid var(--line); padding:12px 20px; display:flex; gap:16px; align-items:center; justify-content:space-between; }
+    header nav a { color:var(--mute); text-decoration:none; margin-left:12px; font-size:14px; }
+    main { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
+    h1 { font-size: 32px; letter-spacing:-.03em; margin:0 0 8px; }
+    .lead { color:var(--mute); margin:0 0 24px; line-height:1.5; max-width:38rem; }
+    .layout { display:grid; gap:16px; }
+    @media (min-width:860px){ .layout { grid-template-columns: 300px 1fr; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    label { display:block; font-size:11px; color:var(--mute); margin:12px 0 6px; text-transform:uppercase; letter-spacing:.1em; }
+    input, textarea { width:100%; background:#0b0d10; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font: inherit; }
+    button { background:var(--accent); color:var(--ink2); border:0; border-radius:10px; padding:12px 14px; font-weight:700; cursor:pointer; width:100%; margin-top:10px; }
+    button.ghost { background:#1c232c; color:var(--ink); }
+    button.tinybtn { width:auto; padding:6px 10px; font-size:12px; margin:0; background:#1c232c; color:var(--mute); }
+    .item { border:1px solid var(--line); border-radius:14px; padding:14px; margin:0 0 10px; background:#0b0d10; }
+    .item h3 { margin:0 0 4px; font-size:16px; }
+    .item p { margin:6px 0; color:var(--mute); font-size:14px; line-height:1.45; }
+    .tag { display:inline-block; background:#1c232c; color:var(--accent); border-radius:999px; padding:2px 8px; font-size:12px; margin:0 6px 0 0; cursor:pointer; }
+    .tiny { font-size:13px; color:var(--mute); }
+    .bar { display:flex; gap:8px; margin-bottom:12px; }
+    .bar input { flex:1; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Bookmark Brain</strong>
+    <nav>
+      <a href="index.html">Hub</a>
+      <a href="framefit.html">FrameFit</a>
+      <a href="linknest.html">LinkNest</a>
+      <a href="reviewwall.html">Review Wall</a>
+    </nav>
+  </header>
+  <main>
+    <p class="tiny">IdeaWave daily idea · score 89 · local first</p>
+    <h1>Save it. Tag it. Find it.</h1>
+    <p class="lead">A bookmark inbox that actually searches. No embedding API. Export Markdown when you want it out of the browser.</p>
+    <div class="layout">
+      <section class="card">
+        <label>URL</label>
+        <input id="url" placeholder="https://" />
+        <label>Title</label>
+        <input id="title" placeholder="Optional — pulled from the URL if blank" />
+        <label>Tags</label>
+        <input id="tags" placeholder="sports, clone, ads" />
+        <label>Note</label>
+        <textarea id="note" rows="3" placeholder="Why this matters"></textarea>
+        <button id="add" type="button">Save bookmark</button>
+        <button class="ghost" id="md" type="button">Export Markdown</button>
+        <button class="ghost" id="json" type="button">Export JSON</button>
+        <p class="tiny" id="status">Stored on this device only.</p>
+      </section>
+      <section>
+        <div class="bar">
+          <input id="q" placeholder="Search title, url, tags, notes" />
+        </div>
+        <div id="tagsel" style="margin-bottom:12px"></div>
+        <div id="list"></div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const KEY = "brain-v1";
+    const seed = [
+      { id:"1", url:"https://framefit-eta.vercel.app", title:"FrameFit", tags:["factory","tools"], note:"T01 live. Crop for IG/X/Shorts." },
+      { id:"2", url:"https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook", title:"$19 Meta tracking workbook", tags:["cash","ads"], note:"Only paid SKU until Stripe." },
+      { id:"3", url:"https://judge.me", title:"Judge.me", tags:["clone","proof"], note:"$916.7K/mo IdeaWave. Analog is Review Wall." }
+    ];
+    const state = { items: JSON.parse(localStorage.getItem(KEY) || "null") || seed, tag: "", q: "" };
+    const el = (id) => document.getElementById(id);
+    function save(){ localStorage.setItem(KEY, JSON.stringify(state.items)); draw(); }
+    function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c => "&#"+c.charCodeAt(0)+";"); }
+    function allTags(){
+      const s = new Set();
+      state.items.forEach(i => i.tags.forEach(t => s.add(t)));
+      return [...s].sort();
+    }
+    function vis(){
+      const q = state.q.toLowerCase();
+      return state.items.filter(i => {
+        const hay = (i.title+" "+i.url+" "+i.note+" "+i.tags.join(" ")).toLowerCase();
+        const okq = !q || hay.includes(q);
+        const okt = !state.tag || i.tags.includes(state.tag);
+        return okq && okt;
+      });
+    }
+    function draw(){
+      el("tagsel").innerHTML = `<button class="tinybtn" data-tag="">all</button> ` + allTags().map(t => `<button class="tinybtn" data-tag="${esc(t)}">#${esc(t)}</button>`).join(" ");
+      const list = vis();
+      el("list").innerHTML = list.length ? list.map(i => `
+        <article class="item">
+          <h3><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title || i.url)}</a></h3>
+          <p class="tiny">${esc(i.url)}</p>
+          ${i.note ? `<p>${esc(i.note)}</p>` : ""}
+          <p>${i.tags.map(t=>`<span class="tag" data-tag="${esc(t)}">#${esc(t)}</span>`).join("")}
+            <button class="tinybtn" data-del="${i.id}">delete</button></p>
+        </article>`).join("") : `<p class="tiny">Nothing matches.</p>`;
+    }
+    el("add").onclick = () => {
+      let url = el("url").value.trim();
+      if (!url) { el("status").textContent = "URL required."; return; }
+      if (!/^https?:\/\//i.test(url)) url = "https://" + url;
+      const title = el("title").value.trim() || url.replace(/^https?:\/\//,"").replace(/\/$/,"");
+      const tags = el("tags").value.split(/[, ]+/).map(s=>s.trim().toLowerCase()).filter(Boolean);
+      state.items.unshift({ id: String(Date.now()), url, title, tags, note: el("note").value.trim() });
+      el("url").value = el("title").value = el("tags").value = el("note").value = "";
+      el("status").textContent = "Saved.";
+      save();
+    };
+    el("q").oninput = e => { state.q = e.target.value; draw(); };
+    document.body.addEventListener("click", e => {
+      const t = e.target;
+      if (t.dataset.tag != null){ state.tag = t.dataset.tag; draw(); }
+      if (t.dataset.del){ state.items = state.items.filter(i => i.id !== t.dataset.del); save(); }
+    });
+    function download(name, text, type){
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text],{type}));
+      a.download = name;
+      a.click();
+    }
+    el("md").onclick = () => {
+      const md = vis().map(i => `- [${i.title}](${i.url})${i.tags.length?" #"+i.tags.join(" #"):""}${i.note?" — "+i.note:""}`).join("\n");
+      download("bookmarks.md", "# Bookmark Brain\n\n"+md+"\n", "text/markdown");
+    };
+    el("json").onclick = () => download("bookmarks.json", JSON.stringify(vis(), null, 2), "application/json");
+    draw();
+  </script>
+</body>
+</html>

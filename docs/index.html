@@ -3,60 +3,83 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Signal Origin — static tools</title>
+  <title>Factory — live tools</title>
+  <meta name="description" content="Free in-browser tools. Crop, nest links, collect reviews, save bookmarks. $19 Meta tracking workbook." />
   <style>
-    body { margin:0; background:#111; color:#e8e4d9; font:16px/1.45 ui-sans-serif, system-ui, sans-serif; }
-    main { max-width:36rem; margin:3rem auto; padding:0 1rem; }
-    h1 { font-size:1.25rem; }
-    a { color:#e8e4d9; }
-    .muted { color:#9a9588; }
-    li { margin:.45rem 0; }
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --line:#242b35; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    a { color:var(--accent); }
+    main { max-width:40rem; margin:0 auto; padding:48px 20px 80px; }
+    h1 { font-size:2rem; letter-spacing:-.03em; margin:0 0 8px; }
+    .muted { color:var(--mute); }
+    .grid { display:grid; gap:12px; margin:28px 0; }
+    .tile { display:block; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px 18px; color:inherit; text-decoration:none; }
+    .tile:hover { border-color:var(--accent); }
+    .tile b { display:block; font-size:1.05rem; margin-bottom:4px; }
+    .kicker { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); }
+    details { margin-top:28px; color:var(--mute); }
+    details summary { cursor:pointer; }
+    details li { margin:.4rem 0; }
+    .pay { margin-top:28px; padding:16px; border:1px solid var(--line); border-radius:16px; background:var(--card); }
   </style>
 </head>
 <body>
 <main>
-  <h1>Static tools</h1>
-  <p class="muted">File-only pages. The $19 workbook takes a card on Gumroad.</p>
-  <ul>
-    <li><a href="framefit.html"><b>FrameFit</b></a> — resize a photo for IG, X, Shorts, YouTube, LinkedIn. Nothing uploaded.</li>
-    <li><a href="meta-tracking-audit.html"><b>Meta Tracking Audit</b></a> — $19 workbook (Gumroad) / email to book diagnostic.</li>
-    <li><a href="qi-check.html">qi-check</a> — viewport Hold / qualified-impression fitness.</li>
-    <li><a href="bait-hook.html">bait-hook</a> — first-line bait detector.</li>
-    <li><a href="swap-test.html">swap-test</a> — interchangeability checklist.</li>
-    <li><a href="swap-check.html">swap-check</a> — brand-swap pass.</li>
-    <li><a href="fold-ruler.html">fold-ruler</a> — 160-char first-screen band.</li>
-    <li><a href="burstiness.html">burstiness</a> — sentence-length CV sparkline.</li>
-    <li><a href="staccato.html">staccato</a> — one- and two-word fragment killer.</li>
-    <li><a href="specificity.html">specificity</a> — log vs lecture.</li>
-    <li><a href="jargon.html">jargon</a> — densitometer.</li>
-    <li><a href="contrast.html">contrast</a> — empty cadence detector.</li>
-    <li><a href="claim-verb.html">claim-verb</a> — first-line decision verb.</li>
-    <li><a href="kill-highlight.html">kill-highlight</a> — instant-kill overlay.</li>
-    <li><a href="viewport-mock.html">viewport-mock</a> — 50% Premium timeline overlay.</li>
-    <li><a href="function-words.html">function-words</a> — I/we/you/the/and rates.</li>
-    <li><a href="cta-strip.html">cta-strip</a> — residue after CTAs and tags.</li>
-    <li><a href="thread-beats.html">thread-beats</a> — local 1/n beat sheet. Does not post.</li>
-    <li><a href="ocr-eligible.html">ocr-eligible</a> — public OCR checklist. No API.</li>
-    <li><a href="hold-compare.html">hold-compare</a> — two pastes, local screen proxy.</li>
-    <li><a href="pronouns.html">pronouns</a> — I / we / you mix.</li>
-    <li><a href="emoji-strip.html">emoji-strip</a> — yarn and bait glyphs.</li>
-    <li><a href="dup-opener.html">dup-opener</a> — shared first-line check.</li>
-    <li><a href="ads-signal.html">ads-signal</a> — Pixel + CAPI shared event_id. Does not send.</li>
-    <li><a href="tools/emq-cover.html">emq-cover</a> — local CAPI param coverage.</li>
-    <li><a href="tools/count-gap.html">count-gap</a> — Meta vs Shopify daily purchase counts.</li>
-    <li><a href="tools/id-pair.html">id-pair</a> — Pixel vs CAPI event_id + 48h window.</li>
-    <li><a href="tools/stape-capi.html">stape-capi</a> — Stape / sGTM CAPI payload checker.</li>
-    <li><a href="tools/test-events.html">test-events</a> — Events Manager Test Events walkthrough.</li>
-    <li><a href="tools/consent-capi.html">consent-capi</a> — consent-mode vs CAPI coverage.</li>
-    <li><a href="tools/fbp-fbc.html">fbp-fbc</a> — _fbp / _fbc cookie checker.</li>
-    <li><a href="tools/content-id.html">content-id</a> — Pixel vs Shopify catalog IDs.</li>
-    <li><a href="tools/pixel-source.html">pixel-source</a> — theme vs official app vs GTM inventory.</li>
-    <li><a href="tools/ghl-form.html">ghl-form</a> — GoHighLevel Lead event_id checker.</li>
-    <li><a href="tools/framer-capi.html">framer-capi</a> — Framer Pixel + CAPI coverage sheet.</li>
-    <li><a href="tools/shop-pay.html">shop-pay</a> — Shop Pay thank-you Pixel miss.</li>
-  </ul>
-  <p class="muted">Buy the $19 workbook: <a href="https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook">Gumroad</a></p>
-  <p class="muted">Book a diagnostic: <a href="mailto:Baxley.Garrett@gmail.com?subject=Meta%20tracking%20diagnostic">Baxley.Garrett@gmail.com</a></p>
+  <p class="kicker">Live · $0 host</p>
+  <h1>Four tools. One tab each.</h1>
+  <p class="muted">Nothing uploads. First cash is the $19 workbook until a store is leaking purchases.</p>
+  <div class="grid">
+    <a class="tile" href="framefit.html"><b>FrameFit</b> Resize a photo for IG, X, Shorts, YouTube, LinkedIn.</a>
+    <a class="tile" href="linknest.html"><b>LinkNest</b> Build a link-in-bio page. Download a single HTML file.</a>
+    <a class="tile" href="reviewwall.html"><b>Review Wall</b> Social proof wall. CSV in, embed out. No Shopify.</a>
+    <a class="tile" href="brain.html"><b>Bookmark Brain</b> Save, tag, search, export Markdown.</a>
+    <a class="tile" href="qi-check.html"><b>Hold Check</b> First-screen / Hold fitness. Does not post.</a>
+    <a class="tile" href="meta-tracking-audit.html"><b>Pixel Audit</b> Free checklist. Paid pack is the workbook.</a>
+  </div>
+  <div class="pay">
+    <p style="margin:0 0 8px"><b>$19 Meta tracking workbook</b></p>
+    <p class="muted" style="margin:0 0 12px">If ads are firing and purchases are not, this is the pack.</p>
+    <p style="margin:0"><a href="https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook">Buy on Gumroad</a> · <a href="mailto:Baxley.Garrett@gmail.com?subject=Meta%20tracking%20diagnostic">Book a diagnostic</a></p>
+  </div>
+  <details>
+    <summary>Writer + tracking tools</summary>
+    <ul>
+      <li><a href="bait-hook.html">bait-hook</a></li>
+      <li><a href="swap-test.html">swap-test</a></li>
+      <li><a href="swap-check.html">swap-check</a></li>
+      <li><a href="fold-ruler.html">fold-ruler</a></li>
+      <li><a href="burstiness.html">burstiness</a></li>
+      <li><a href="staccato.html">staccato</a></li>
+      <li><a href="specificity.html">specificity</a></li>
+      <li><a href="jargon.html">jargon</a></li>
+      <li><a href="contrast.html">contrast</a></li>
+      <li><a href="claim-verb.html">claim-verb</a></li>
+      <li><a href="kill-highlight.html">kill-highlight</a></li>
+      <li><a href="viewport-mock.html">viewport-mock</a></li>
+      <li><a href="function-words.html">function-words</a></li>
+      <li><a href="cta-strip.html">cta-strip</a></li>
+      <li><a href="thread-beats.html">thread-beats</a></li>
+      <li><a href="ocr-eligible.html">ocr-eligible</a></li>
+      <li><a href="hold-compare.html">hold-compare</a></li>
+      <li><a href="pronouns.html">pronouns</a></li>
+      <li><a href="emoji-strip.html">emoji-strip</a></li>
+      <li><a href="dup-opener.html">dup-opener</a></li>
+      <li><a href="ads-signal.html">ads-signal</a></li>
+      <li><a href="tools/emq-cover.html">emq-cover</a></li>
+      <li><a href="tools/count-gap.html">count-gap</a></li>
+      <li><a href="tools/id-pair.html">id-pair</a></li>
+      <li><a href="tools/stape-capi.html">stape-capi</a></li>
+      <li><a href="tools/test-events.html">test-events</a></li>
+      <li><a href="tools/consent-capi.html">consent-capi</a></li>
+      <li><a href="tools/fbp-fbc.html">fbp-fbc</a></li>
+      <li><a href="tools/content-id.html">content-id</a></li>
+      <li><a href="tools/pixel-source.html">pixel-source</a></li>
+      <li><a href="tools/ghl-form.html">ghl-form</a></li>
+      <li><a href="tools/framer-capi.html">framer-capi</a></li>
+      <li><a href="tools/shop-pay.html">shop-pay</a></li>
+    </ul>
+  </details>
 </main>
 </body>
 </html>
