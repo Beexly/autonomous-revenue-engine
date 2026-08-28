@@ -1,37 +1,20 @@
-# RESEARCH_LOG — SignalOrigin
+# RESEARCH_LOG — Autonomous Revenue Engine
 
 **Operator:** Grok  
-**Updated:** 2026-08-27
+**Updated:** 2026-08-28
 
-## Cycle notes
+## 2026-08-28
+- AriaCodez Money library ingested via Firecrawl extract (105 resources / 31 Money). Used as factory source of prompts and builder ranking: Blink, Replit, Emergent, Lovable, Readdy.
+- IdeaWave leaderboard: Instasize $12.5M/mo is the cheapest-clone high-proof one-job product (client-side resize). Aragon $833.3K/mo is category proof, not a $0 v1.
+- IdeaWave homepage daily idea: Bookmark Brain, score 89.
+- Start.me `copy-of-osint4all` requires login; not scraped this cycle.
+- Filter confirmed: no Plaid/bank, no official-league license, no per-render GPU on batch 1.
 
-### 2026-08-25 (LOG-030)
-- SO-002 v2 Pass 47/60 + adversarial Pass (Premium/verified impression proxy template).
-- SO-005 v2 Pass 48/60 + adversarial Pass (before/after Burrows Delta table).
-- Niche locked: Viewport Hold / qi-check free-core micro-tool.
-- Measurement template for Premium/verified impression proxies locked.
-- Daily revenue-score job remains deferred (schema use ≥7 days + Learning synthesis required).
-
-### 2026-08-26
-- Confirmed prior Pass assets remain internal-only; publish path disabled.
-- Domain shortlist research continued (research only, no purchase):
-  - Criteria unchanged: clean professional, no AI-package smell, align with SignalOrigin / qi-check / viewport-hold language.
-  - Top candidates for owner later: signalorigin.com (likely taken/premium — verify), qicheck.dev / qicheck.io (tool face), viewporthold.com, firstscreen.dev, so-hq.com.
-  - Sandbox WHOIS/HTTP probes inconclusive this cycle; availability must be verified at registrar by owner before any buy decision.
-  - Recommendation unchanged: do not buy until first real Hold post and identity live.
-- SO-008 remains Hold (public copy only after named public face for niche).
-- SO-013 remains active soft-rewrite candidate under qi-check Hold floor 9.2; Approved queue still empty.
-- Kill patterns reinforced: growth listicles with bait closers; alarmist unpublished-ban predictions.
-
-### 2026-08-27
-- SO-002 / SO-005 re-confirmed Pass (internal queue only); no re-write needed — already addressed required changes on 08-25.
-- Domain research: signalorigin.com actively used by Dongguan Signalorigin Precision Connector Co., Ltd. (manufacturing). Mark as taken / collision. Continue preference for tool-face .dev/.io and clean alternatives; owner verifies at registrar.
-- SO-013 qi-check scoring (local deterministic gate):
-  - v1: composite 8.7 (burstiness 6) → Soft rewrite
-  - v2 variants: composite 8.9–9.0 (firstScreenDensity capped ~8.5 under current weights) → still Soft rewrite
-  - Does not clear Hold ≥ 9.2. Remains Soft rewrite / internal. No move to Approved.
-- Measurement template rows not yet accumulated ≥7 days; revenue-score job still deferred.
-- Publish path remains disabled. Published: 0.
+## 2026-08-27
+- SO-002 / SO-005 re-confirmed Pass (internal queue only).
+- Domain research: signalorigin.com collision (manufacturing co.).
+- SO-013 qi-check 8.7–9.0, below Hold 9.2.
+- Publish path disabled. Published: 0.
 
 ## Deferred
-Daily revenue score job — blocked on measurement schema consistency + Learning loop synthesis.
+Daily revenue score job — still blocked on measurement schema + Learning loop. Factory ships do not wait on that job.
