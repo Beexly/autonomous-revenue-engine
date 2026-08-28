@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stamp — watermark a photo in the browser</title>
+  <meta name="description" content="Free in-browser watermark. Stamp a handle on a photo. Nothing is uploaded.">
+  <style>
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --ink2:#06281c; --line:#242b35; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 ui-sans-serif,system-ui,sans-serif; }
+    a { color:var(--accent); }
+    main { max-width:920px; margin:0 auto; padding:32px 20px 80px; }
+    h1 { font-size:1.8rem; letter-spacing:-.03em; margin:0 0 8px; }
+    .muted { color:var(--mute); }
+    .grid { display:grid; gap:16px; }
+    @media (min-width:800px) { .grid { grid-template-columns:280px 1fr; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    button { min-height:40px; border-radius:10px; border:0; cursor:pointer; background:#0b0d10; color:var(--ink); border:1px solid var(--line); }
+    .go { width:100%; background:var(--accent); color:var(--ink2); font-weight:700; border:0; min-height:44px; }
+    .drop { border:1px dashed var(--line); border-radius:12px; padding:22px; text-align:center; color:var(--mute); }
+    canvas { width:100%; background:#000; border-radius:12px; }
+    label { display:block; font-size:12px; color:var(--mute); margin:14px 0 6px; text-transform:uppercase; letter-spacing:.08em; }
+    input[type=text] { width:100%; min-height:44px; border-radius:10px; border:1px solid var(--line); background:#0b0d10; color:var(--ink); padding:0 12px; }
+    input[type=range] { width:100%; accent-color:var(--accent); }
+    .pos { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="muted" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase">Watermark · $0</p>
+  <h1>Stamp your handle. Keep the clip.</h1>
+  <p class="muted">Text watermark in this tab. Then crop with <a href="framefit.html">FrameFit</a>.</p>
+  <div class="grid" style="margin-top:24px">
+    <section class="card">
+      <div class="drop" id="drop">Drop a photo or choose a file</div>
+      <input id="file" type="file" accept="image/*" style="margin-top:10px;width:100%">
+      <label>Mark</label>
+      <input id="text" type="text" value="@galaxysportsai">
+      <label>Position</label>
+      <div class="pos" id="pos"></div>
+      <label>Opacity <span id="oval">55</span>%</label>
+      <input id="op" type="range" min="15" max="95" value="55">
+      <label>Size</label>
+      <input id="sz" type="range" min="25" max="100" value="45">
+      <button class="go" id="dl" type="button" disabled>Download PNG</button>
+    </section>
+    <section class="card"><canvas id="cv"></canvas></section>
+  </div>
+  <p class="muted" style="margin-top:24px;font-size:13px"><a href="index.html">Factory hub</a> · <a href="https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook">$19 workbook</a></p>
+</main>
+<script>
+const POS=["tl","tc","tr","ml","mc","mr","bl","bc","br"];
+const LAB=["Top L","Top","Top R","Left","Center","Right","Bot L","Bot","Bot R"];
+let pos="br", img=null;
+const $=(id)=>document.getElementById(id);
+const box=$("pos");
+POS.forEach((id,i)=>{ const b=document.createElement("button"); b.type="button"; b.textContent=LAB[i]; b.onclick=()=>{ pos=id; draw(); mark(); }; b.dataset.id=id; box.appendChild(b); });
+function mark(){ [...box.children].forEach((b)=>{ const on=b.dataset.id===pos; b.style.background=on?"var(--accent)":"#0b0d10"; b.style.color=on?"var(--ink2)":"var(--ink)"; }); }
+mark();
+function load(file){ if(!file||!file.type.startsWith("image/")) return; const i=new Image(); i.onload=()=>{ img=i; $("dl").disabled=false; draw(); }; i.src=URL.createObjectURL(file); }
+$("file").onchange=(e)=>load(e.target.files[0]);
+["dragover","drop"].forEach((ev)=>$("drop").addEventListener(ev,(e)=>{ e.preventDefault(); if(ev==="drop") load(e.dataTransfer.files[0]); }));
+["text","op","sz"].forEach((id)=>$(id).oninput=()=>{ if(id==="op") $("oval").textContent=$("op").value; draw(); });
+function draw(){
+  if(!img) return;
+  const c=$("cv"); c.width=img.width; c.height=img.height;
+  const ctx=c.getContext("2d"); ctx.drawImage(img,0,0);
+  const size=Math.max(18,Math.round(img.width*(Number($("sz").value)/1000)));
+  ctx.font="600 "+size+"px ui-sans-serif,system-ui,sans-serif";
+  ctx.fillStyle="rgba(232,237,244,"+(Number($("op").value)/100)+")";
+  ctx.textBaseline="middle";
+  const t=$("text").value; const pad=size*0.8; const tw=ctx.measureText(t).width;
+  const col=pos[1], row=pos[0];
+  let x=pad; if(col==="c") x=(img.width-tw)/2; if(col==="r") x=img.width-tw-pad;
+  let y=pad+size/2; if(row==="m") y=img.height/2; if(row==="b") y=img.height-pad-size/2;
+  ctx.fillText(t,x,y);
+}
+$("dl").onclick=()=>{ const a=document.createElement("a"); a.download="stamp.png"; a.href=$("cv").toDataURL("image/png"); a.click(); };
+</script>
+</body>
+</html>

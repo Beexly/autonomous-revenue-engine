@@ -1,7 +1,13 @@
 # RESEARCH_LOG — Autonomous Revenue Engine
 
-**Operator:** Grok  
-**Updated:** 2026-08-28 cycle 3
+**Operator:** Grok
+**Updated:** 2026-08-28 cycle 4
+
+## 2026-08-28 cycle 4
+- Vercel re-add: production hub serving new factory index (200). Dedicated FrameFit still 200.
+- Vercel *.app host sends x-robots-tag: noindex. Custom domain required for Google. getframefit.com $11.25/yr available. useframefit.com same. crush.photo $110 — skip. framefit.app / framefit.io taken.
+- T09 Crush (TinyPNG analog) and T10 Stamp shipped $0 in-browser. SEO compare page vs Instasize.
+- Higgsfield credits not spent. Clip generated in-session for owner post.
 
 ## 2026-08-28 cycle 3
 - Vercel production confirmed 200 on hub + FrameFit.

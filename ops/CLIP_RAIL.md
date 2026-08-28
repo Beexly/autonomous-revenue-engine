@@ -1,4 +1,4 @@
-# CLIP_RAIL — 2026-08-28 cycle 3
+# CLIP_RAIL — 2026-08-28 cycle 4
 
 Distribution for factory URLs. Not a second brand strategy memo.
 
@@ -16,7 +16,8 @@ Distribution for factory URLs. Not a second brand strategy memo.
 
 ## This cycle CTA
 
-**Live:** https://framefit-eta.vercel.app  
+**Live:** https://framefit-eta.vercel.app
 Hub: https://autonomous-revenue-engine-eight.vercel.app
+Compare: https://autonomous-revenue-engine-eight.vercel.app/vs-instasize.html
 
-Clip cut 2026-08-28: night-stadium catch → FrameFit card. Owner posts on GalaxySportsAI. Architect does not publish.
+Clip recut 2026-08-28 cycle 4: night-stadium catch → FrameFit card. Owner posts on GalaxySportsAI. Architect does not publish.

@@ -2,10 +2,19 @@
 
 Operator cycle log. Counts that matter stay internal until publish path is enabled.
 
+## 2026-08-28 (cycle 4)
+- Owner re-added Vercel. Production hub 200: https://autonomous-revenue-engine-eight.vercel.app (Factory — live tools).
+- FrameFit dedicated still 200: https://framefit-eta.vercel.app
+- *.vercel.app sends x-robots-tag: noindex. Indexing needs a custom domain. getframefit.com available $11.25/yr. Not purchased.
+- Shipped T09 Crush + T10 Stamp (in-repo static + Grok Build). SEO compare: /vs-instasize.html.
+- Sports clip recut for GalaxySportsAI → FrameFit URL. Architect does not post.
+- Cash CTA unchanged: Gumroad $19 workbook. $40 budget unused.
+- Published SO posts: 0. Factory live surfaces: 7 (FrameFit, Crush, Stamp, LinkNest, Review Wall, Bookmark Brain, qi-check).
+
 ## 2026-08-28 (cycle 3)
 - Vercel production READY after owner re-add: https://autonomous-revenue-engine-eight.vercel.app (200).
 - FrameFit dedicated: https://framefit-eta.vercel.app (200).
-- Shipped T03 LinkNest, T04 Review Wall, T05 Bookmark Brain as static docs/*.html. Hub rewritten to lead with those four + cash CTA.
+- Shipped T03 LinkNest, T04 Review Wall, T05 Bookmark Brain as static docs/*.html. Hub rewritten to lead with money products.
 - Deleted leftover GitHub starter workflows (npm-publish token, greetings, label, stale, manual injection sink).
 - Sports clip cut for GalaxySportsAI → FrameFit URL. Architect does not post.
 - Cash CTA unchanged: Gumroad $19 workbook. $40 budget unused.
@@ -15,7 +24,6 @@ Operator cycle log. Counts that matter stay internal until publish path is enabl
 - Vercel reconnected. Project `autonomous-revenue-engine` production READY on commit `652f4b0`.
 - Disabled Vercel Authentication (SSO) on ARE + FrameFit projects so production actually serves public traffic.
 - Production aliases: autonomous-revenue-engine-eight.vercel.app, autonomous-revenue-engine-pick-pilot-s-projects.vercel.app, framefit-pick-pilot-s-projects.vercel.app.
-- Template webpack workflow deleted earlier. Remaining deno.yml still failing — kill next push.
 - Grok Build shipping FrameFit + Hold Check + LinkNest + Pixel Audit as one public product (preview this cycle).
 - Cash CTA remains Gumroad $19 workbook. $40 budget unused (hosting already Pro; no domain buy without contact).
 - Published SO posts: 0. Factory live surfaces: FrameFit static + Vercel production.

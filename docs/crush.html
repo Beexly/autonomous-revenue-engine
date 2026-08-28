@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crush — compress a photo in the browser</title>
+  <meta name="description" content="Free TinyPNG analog. Compress JPEG or WebP in your browser. Nothing is uploaded.">
+  <style>
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --ink2:#06281c; --line:#242b35; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 ui-sans-serif,system-ui,sans-serif; }
+    a { color:var(--accent); }
+    main { max-width:920px; margin:0 auto; padding:32px 20px 80px; }
+    h1 { font-size:1.8rem; letter-spacing:-.03em; margin:0 0 8px; }
+    .muted { color:var(--mute); }
+    .grid { display:grid; gap:16px; }
+    @media (min-width:800px) { .grid { grid-template-columns:280px 1fr; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    button, select { width:100%; min-height:44px; border-radius:10px; border:0; font-weight:600; cursor:pointer; }
+    .go { background:var(--accent); color:var(--ink2); }
+    .ghost { background:#0b0d10; color:var(--ink); border:1px solid var(--line); }
+    .drop { border:1px dashed var(--line); border-radius:12px; padding:22px; text-align:center; color:var(--mute); }
+    img { width:100%; border-radius:12px; background:#000; }
+    label { display:block; font-size:12px; color:var(--mute); margin:14px 0 6px; text-transform:uppercase; letter-spacing:.08em; }
+    input[type=range] { width:100%; accent-color:var(--accent); }
+    .row { display:flex; gap:8px; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="muted" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase">TinyPNG analog · $0</p>
+  <h1>Crush the file. Keep the photo.</h1>
+  <p class="muted">Compress in this tab. Nothing is uploaded. Then send it through <a href="framefit.html">FrameFit</a>.</p>
+  <div class="grid" style="margin-top:24px">
+    <section class="card">
+      <div class="drop" id="drop">Drop a photo or choose a file</div>
+      <input id="file" type="file" accept="image/*" style="margin-top:10px;width:100%">
+      <label>Format</label>
+      <div class="row">
+        <button class="ghost" id="webp" type="button">WebP</button>
+        <button class="ghost" id="jpeg" type="button">JPEG</button>
+      </div>
+      <label>Quality <span id="qval">72</span></label>
+      <input id="quality" type="range" min="40" max="95" value="72">
+      <label>Max edge <span id="eval">1600</span>px</label>
+      <input id="edge" type="range" min="800" max="2400" step="100" value="1600">
+      <a id="dl" class="go" style="display:flex;align-items:center;justify-content:center;margin-top:16px;text-decoration:none;min-height:44px;border-radius:10px;pointer-events:none;opacity:.4">Download</a>
+      <p class="muted" id="meta" style="font-size:13px;margin:10px 0 0">Drop a photo. The file never leaves this tab.</p>
+    </section>
+    <section class="card"><img id="preview" alt="Compressed preview" hidden></section>
+  </div>
+  <p class="muted" style="margin-top:24px;font-size:13px"><a href="index.html">Factory hub</a> · <a href="https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook">$19 workbook</a></p>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+let img, srcBytes = 0, fmt = "image/webp", url = "";
+function kb(n){ if(n<1024) return n+" B"; if(n<1048576) return (n/1024).toFixed(1)+" KB"; return (n/1048576).toFixed(2)+" MB"; }
+function markFmt(){ $("webp").style.background = fmt==="image/webp" ? "var(--accent)" : "#0b0d10"; $("webp").style.color = fmt==="image/webp" ? "var(--ink2)" : "var(--ink)"; $("jpeg").style.background = fmt==="image/jpeg" ? "var(--accent)" : "#0b0d10"; $("jpeg").style.color = fmt==="image/jpeg" ? "var(--ink2)" : "var(--ink)"; }
+markFmt();
+$("webp").onclick = () => { fmt="image/webp"; markFmt(); crush(); };
+$("jpeg").onclick = () => { fmt="image/jpeg"; markFmt(); crush(); };
+$("quality").oninput = () => { $("qval").textContent = $("quality").value; crush(); };
+$("edge").oninput = () => { $("eval").textContent = $("edge").value; crush(); };
+function load(file){ if(!file||!file.type.startsWith("image/")) return; srcBytes=file.size; const i=new Image(); i.onload=()=>{ img=i; crush(); }; i.src=URL.createObjectURL(file); }
+$("file").onchange = (e) => load(e.target.files[0]);
+["dragover","drop"].forEach((ev) => $("drop").addEventListener(ev, (e) => { e.preventDefault(); if(ev==="drop") load(e.dataTransfer.files[0]); }));
+function crush(){
+  if(!img) return;
+  const q = Number($("quality").value)/100;
+  const edge = Number($("edge").value);
+  const scale = Math.min(1, edge/Math.max(img.width,img.height));
+  const c=document.createElement("canvas");
+  c.width=Math.max(1,Math.round(img.width*scale));
+  c.height=Math.max(1,Math.round(img.height*scale));
+  c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+  c.toBlob((blob) => {
+    if(!blob) return;
+    if(url) URL.revokeObjectURL(url);
+    url=URL.createObjectURL(blob);
+    const ext = fmt==="image/webp"?"webp":"jpg";
+    const a=$("dl"); a.href=url; a.download="crush."+ext; a.style.pointerEvents="auto"; a.style.opacity="1";
+    $("preview").src=url; $("preview").hidden=false;
+    const saved=Math.max(0,1-blob.size/srcBytes);
+    $("meta").textContent = kb(srcBytes)+" → "+kb(blob.size)+" · saved "+Math.round(saved*100)+"%";
+  }, fmt, q);
+}
+</script>
+</body>
+</html>

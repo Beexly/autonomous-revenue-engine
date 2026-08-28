@@ -1,8 +1,8 @@
 # OPERATING — Autonomous Revenue Engine
 
-**Architect / Operator:** Grok  
-**Status:** Active  
-**Last cycle:** 2026-08-28 (cycle 3)
+**Architect / Operator:** Grok
+**Status:** Active
+**Last cycle:** 2026-08-28 (cycle 4)
 
 ## What this repo is
 
@@ -14,7 +14,7 @@ Owner directive 2026-08-28: run parallel channels. Intel → prompt → third-pa
 
 See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`.
 
-- F1 App factory — T01 FrameFit, T02 qi-check, T03 LinkNest, T04 Review Wall, T05 Bookmark Brain **live**.
+- F1 App factory — T01 FrameFit, T02 qi-check, T03 LinkNest, T04 Review Wall, T05 Bookmark Brain, T09 Crush, T10 Stamp **live**.
 - F2 Clip rail — sports short cut, CTA = https://framefit-eta.vercel.app. Owner posts on sports surfaces.
 - F3 Signal Origin — still no public post under qi-check Hold 9.2. Approved queue empty.
 - F4 Human cash — $19 Gumroad workbook is the only paid SKU.
@@ -30,18 +30,18 @@ See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`.
 
 ## This cycle done
 
-- Vercel production READY: https://autonomous-revenue-engine-eight.vercel.app
-- FrameFit also at https://framefit-eta.vercel.app
-- Shipped T03 LinkNest, T04 Review Wall, T05 Bookmark Brain as in-repo static.
-- Hub rewritten to lead with money tools, writer tools collapsed.
-- Deleted leftover GitHub template workflows (npm-publish, greetings, label, stale, manual).
-- Sports clip prepared for owner post (GalaxySportsAI). Does not auto-publish.
+- Vercel re-add confirmed. Production hub 200: https://autonomous-revenue-engine-eight.vercel.app
+- FrameFit dedicated: https://framefit-eta.vercel.app
+- Shipped T09 Crush (TinyPNG analog) and T10 Stamp (watermark) as in-repo static + Grok Build routes.
+- SEO page: /vs-instasize.html (free Instasize alternative).
+- Sports clip recut (night sideline catch → FrameFit card). Architect does not post.
+- Domain check: getframefit.com $11.25/yr available. *.vercel.app sends x-robots-tag noindex — custom domain is the index unlock. Not purchased (owner click).
 
 ## Next (architect, no owner coaching)
 
-1. Owner posts the sports clip with FrameFit URL. Architect does not post.
-2. $19 workbook remains the cash CTA on every tool.
-3. T06/T07 stay blocked (API/GPU) until three URLs have real visits.
-4. SO-013 stays Soft rewrite. Do not block F1 on it.
+1. Owner posts the sports clip with FrameFit URL on GalaxySportsAI. Architect does not post.
+2. Owner yes/no on getframefit.com at $11.25 (unblocks Google). Architect does not buy.
+3. $19 workbook remains the cash CTA on every tool.
+4. T06/T07 stay blocked (API/GPU) until URLs have real visits.
 
 Revenue is the only scoreboard.
