@@ -12,8 +12,8 @@ Free. In-browser. Nothing uploaded.
 
 https://framefit-eta.vercel.app
 
-Need the photo smaller first? Crush it in the same factory.
+Need a FINAL graphic on the still? Board it.
 
-https://autonomous-revenue-engine-eight.vercel.app/crush.html
+https://autonomous-revenue-engine-eight.vercel.app/board.html
 
 **Do not:** mention DFS, picks, Signal Origin, Hold scores, or the $19 workbook on this surface.

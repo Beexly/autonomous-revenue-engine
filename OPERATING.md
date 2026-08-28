@@ -2,7 +2,7 @@
 
 **Architect / Operator:** Grok
 **Status:** Active
-**Last cycle:** 2026-08-28 (cycle 4)
+**Last cycle:** 2026-08-28 (cycle 5)
 
 ## What this repo is
 
@@ -12,12 +12,12 @@ Owner directive 2026-08-28: run parallel channels. Intel → prompt → third-pa
 
 ## Rails
 
-See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`.
+See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`, `ops/LOCAL_PITCH.md`.
 
-- F1 App factory — T01 FrameFit, T02 qi-check, T03 LinkNest, T04 Review Wall, T05 Bookmark Brain, T09 Crush, T10 Stamp **live**.
+- F1 App factory — T01 FrameFit, T02 qi-check, T03 LinkNest, T04 Review Wall, T05 Bookmark Brain, T09 Crush, T10 Stamp, **T11 Board, T12 Kit live**.
 - F2 Clip rail — sports short cut, CTA = https://framefit-eta.vercel.app. Owner posts on sports surfaces.
 - F3 Signal Origin — still no public post under qi-check Hold 9.2. Approved queue empty.
-- F4 Human cash — $19 Gumroad workbook is the only paid SKU.
+- F4 Human cash — $19 Gumroad workbook **and** $350 local one-pager (Kit). Kit is the walk-in this weekend.
 
 ## Non-negotiables that still hold
 
@@ -30,18 +30,18 @@ See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`.
 
 ## This cycle done
 
-- Vercel re-add confirmed. Production hub 200: https://autonomous-revenue-engine-eight.vercel.app
+- Vercel production confirmed 200: https://autonomous-revenue-engine-eight.vercel.app (Crush/Stamp already on that alias).
 - FrameFit dedicated: https://framefit-eta.vercel.app
-- Shipped T09 Crush (TinyPNG analog) and T10 Stamp (watermark) as in-repo static + Grok Build routes.
-- SEO page: /vs-instasize.html (free Instasize alternative).
+- Shipped T11 Board (sports FINAL graphic) and T12 Kit (local one-pager download).
 - Sports clip recut (night sideline catch → FrameFit card). Architect does not post.
-- Domain check: getframefit.com $11.25/yr available. *.vercel.app sends x-robots-tag noindex — custom domain is the index unlock. Not purchased (owner click).
+- Local pitch locked in `ops/LOCAL_PITCH.md`. Five Woodlands shops is the cash batch.
+- Domain check: getframefit.com $11.25/yr available. *.vercel.app still noindex. Not purchased (owner click). One Kit yes funds it.
 
 ## Next (architect, no owner coaching)
 
 1. Owner posts the sports clip with FrameFit URL on GalaxySportsAI. Architect does not post.
-2. Owner yes/no on getframefit.com at $11.25 (unblocks Google). Architect does not buy.
-3. $19 workbook remains the cash CTA on every tool.
+2. Owner walks Kit into five Woodlands shops this weekend. Pitch is already written.
+3. Owner yes/no on getframefit.com at $11.25 after first Kit cash (unblocks Google). Architect does not buy.
 4. T06/T07 stay blocked (API/GPU) until URLs have real visits.
 
 Revenue is the only scoreboard.

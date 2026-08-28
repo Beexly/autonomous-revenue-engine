@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kit — local one-pager in the browser</title>
+  <meta name="description" content="Build a one-page site for a local shop. Download a single HTML file. Sell it for $350.">
+  <style>
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --ink2:#06281c; --line:#242b35; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 ui-sans-serif,system-ui,sans-serif; }
+    a { color:var(--accent); }
+    main { max-width:980px; margin:0 auto; padding:32px 20px 80px; }
+    h1 { font-size:1.8rem; letter-spacing:-.03em; margin:0 0 8px; }
+    .muted { color:var(--mute); }
+    .grid { display:grid; gap:16px; }
+    @media (min-width:860px) { .grid { grid-template-columns:300px 1fr; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    label { display:block; font-size:12px; color:var(--mute); margin:12px 0 6px; text-transform:uppercase; letter-spacing:.08em; }
+    input { width:100%; min-height:44px; border-radius:10px; border:1px solid var(--line); background:#0b0d10; color:var(--ink); padding:0 12px; }
+    .go { display:flex; align-items:center; justify-content:center; width:100%; min-height:44px; margin-top:16px; border:0; border-radius:10px; background:var(--accent); color:var(--ink2); font-weight:700; cursor:pointer; }
+    iframe { width:100%; height:640px; border:0; border-radius:12px; background:#f4efe6; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="muted" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase">Local cash · Aria flip</p>
+  <h1>A one-pager they can sell from.</h1>
+  <p class="muted">Fill the shop. Download HTML. Walk it into a Woodlands business at $350.</p>
+  <div class="grid" style="margin-top:24px">
+    <section class="card">
+      <label>Business name</label><input id="name" value="Woodlands Lawn Co">
+      <label>City</label><input id="city" value="The Woodlands, TX">
+      <label>Phone</label><input id="phone" value="(281) 555-0142">
+      <label>Email</label><input id="email" value="hello@woodlandslawn.example">
+      <label>One line</label><input id="line" value="Weekly cuts. Same crew. No surprise add-ons.">
+      <label>Service 1</label><input id="a" value="Weekly and biweekly mowing">
+      <label>Service 2</label><input id="b" value="Bed cleanup and seasonal color">
+      <label>Service 3</label><input id="c" value="Text for a same-week quote">
+      <button class="go" id="dl" type="button">Download HTML</button>
+    </section>
+    <section class="card"><iframe id="prev" title="Preview"></iframe></section>
+  </div>
+  <p class="muted" style="margin-top:24px;font-size:13px"><a href="index.html">Factory hub</a> · Pitch lives in ops/LOCAL_PITCH.md</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const ids=["name","city","phone","email","line","a","b","c"];
+function esc(s){ return s.replace(/&/g,"&"+"amp;").replace(/</g,"&"+"lt;").replace(/>/g,"&"+"gt;").replace(/"/g,"&"+"quot;"); }
+function html(){
+  const k=Object.fromEntries(ids.map(id=>[id,$(id).value]));
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(k.name)} · ${esc(k.city)}</title>
+<style>:root{--ink:#14201a;--paper:#f4efe6;--accent:#1f6b4a;--mute:#5c6b63}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.5 Georgia,serif}header,main,footer{max-width:40rem;margin:0 auto;padding:40px 24px}.kicker{letter-spacing:.18em;text-transform:uppercase;font:12px/1 ui-sans-serif,system-ui,sans-serif;color:var(--mute)}h1{font-size:2.6rem;letter-spacing:-.03em;margin:12px 0 8px}.line{font-size:1.2rem;color:var(--mute)}a.btn{display:inline-block;margin-top:22px;background:var(--accent);color:#f4efe6;text-decoration:none;padding:14px 22px;border-radius:999px;font:600 16px ui-sans-serif,system-ui,sans-serif}ul{padding:0;list-style:none;margin:32px 0}li{border-top:1px solid #d9d2c6;padding:14px 0}footer{color:var(--mute);font-size:14px}</style></head>
+<body><header><p class="kicker">${esc(k.city)}</p><h1>${esc(k.name)}</h1><p class="line">${esc(k.line)}</p><a class="btn" href="tel:${esc(k.phone)}">Call ${esc(k.phone)}</a></header>
+<main><ul><li>${esc(k.a)}</li><li>${esc(k.b)}</li><li>${esc(k.c)}</li></ul><p>Text or call. Same-week quotes. No form, no chatbot.</p></main>
+<footer>${esc(k.name)} · <a href="mailto:${esc(k.email)}">${esc(k.email)}</a></footer></body></html>`;
+}
+function render(){ $("prev").srcdoc=html(); }
+ids.forEach(id=>$(id).oninput=render);
+render();
+$("dl").onclick=()=>{ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([html()],{type:"text/html"})); a.download="one-pager.html"; a.click(); };
+</script>
+</body>
+</html>

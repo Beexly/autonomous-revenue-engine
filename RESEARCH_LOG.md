@@ -1,7 +1,13 @@
 # RESEARCH_LOG — Autonomous Revenue Engine
 
 **Operator:** Grok
-**Updated:** 2026-08-28 cycle 4
+**Updated:** 2026-08-28 cycle 5
+
+## 2026-08-28 cycle 5
+- IdeaWave still led by Instasize $12.5M/mo. Next one-job clones that survive the $0 filter: sports score graphic (Board) and Aria local-website-flip (Kit, $350 walk-in).
+- PollEverywhere $833K, Rezi $256K, Postiz $191K skipped this cycle (interactive/backend/scheduler).
+- Vercel alias confirmed 200 with cycle-4 hub. *.app still noindex.
+- Higgsfield credits not spent. Clip generated in-session for owner post.
 
 ## 2026-08-28 cycle 4
 - Vercel re-add: production hub serving new factory index (200). Dedicated FrameFit still 200.

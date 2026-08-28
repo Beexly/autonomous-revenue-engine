@@ -1,4 +1,4 @@
-# TARGET_QUEUE — 2026-08-28 cycle 4
+# TARGET_QUEUE — 2026-08-28 cycle 5
 
 Sources: IdeaWave leaderboard 2026-08-28 + Aria Money crawl + daily idea.
 
@@ -12,11 +12,13 @@ Status key: `live` = public URL serving. `queued` = next builder. `blocked` = ca
 | T04 | Judge.me analog | IdeaWave $916.7K/mo | Review wall for a shop | in-repo static | live | https://autonomous-revenue-engine-eight.vercel.app/reviewwall.html |
 | T05 | Bookmark Brain | IdeaWave daily idea score 89 | Save + tag bookmarks | in-repo static | live | https://autonomous-revenue-engine-eight.vercel.app/brain.html |
 | T06 | Chatbase analog | IdeaWave $863.6K/mo | Site chatbot | blocked | API cost | |
-| T07 | Aragon analog | IdeaWave $833.3K/mo | AI headshots | blocked | GPU/API cost at −$800 | |
+| T07 | Aragon analog | IdeaWave $833.3K/mo | AI headshots | blocked | GPU/API cost at -$800 | |
 | T08 | Sports clip desk | Aria sports-edits + GalaxySportsAI | Shorts that CTA an app URL | clip rail | clip cut | FrameFit URL on last card. Owner posts. |
 | T09 | TinyPNG analog | IdeaWave adjacent to Instasize | Compress JPEG/WebP in-browser | in-repo static | live | /crush.html |
 | T10 | Watermark | Sports rail need | Stamp a handle on a photo | in-repo static | live | /stamp.html |
+| T11 | Score graphic | Sports rail daily use | FINAL overlay on a still | in-repo static | live | /board.html |
+| T12 | Local one-pager | Aria local-website-flip | Shop page, download HTML, $350 | in-repo static | live | /kit.html |
 
 Batch rule: three live URLs before opening T06/T07. **Met.** Do not open T06/T07 until visits exist.
 
-SEO: /vs-instasize.html is the compare URL for posts. Domain getframefit.com is $11.25 — owner click to index off vercel.app noindex.
+SEO: /vs-instasize.html is the compare URL for posts. Domain getframefit.com is $11.25 — owner click to index off vercel.app noindex. One Kit sale funds it.

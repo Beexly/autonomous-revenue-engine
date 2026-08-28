@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Board — score graphic in the browser</title>
+  <meta name="description" content="Free sports score card. Drop a still, print FINAL. Nothing is uploaded.">
+  <style>
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --ink2:#06281c; --line:#242b35; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 ui-sans-serif,system-ui,sans-serif; }
+    a { color:var(--accent); }
+    main { max-width:920px; margin:0 auto; padding:32px 20px 80px; }
+    h1 { font-size:1.8rem; letter-spacing:-.03em; margin:0 0 8px; }
+    .muted { color:var(--mute); }
+    .grid { display:grid; gap:16px; }
+    @media (min-width:800px) { .grid { grid-template-columns:280px 1fr; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    button { min-height:40px; border-radius:10px; border:1px solid var(--line); background:#0b0d10; color:var(--ink); cursor:pointer; }
+    .go { width:100%; background:var(--accent); color:var(--ink2); font-weight:700; border:0; min-height:44px; }
+    .drop { border:1px dashed var(--line); border-radius:12px; padding:22px; text-align:center; color:var(--mute); }
+    canvas { width:100%; background:#000; border-radius:12px; }
+    label { display:block; font-size:12px; color:var(--mute); margin:14px 0 6px; text-transform:uppercase; letter-spacing:.08em; }
+    input { width:100%; min-height:44px; border-radius:10px; border:1px solid var(--line); background:#0b0d10; color:var(--ink); padding:0 12px; }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="muted" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase">Sports rail · $0</p>
+  <h1>Drop the still. Print the final.</h1>
+  <p class="muted">Score graphic in this tab. Then crop with <a href="framefit.html">FrameFit</a>.</p>
+  <div class="grid" style="margin-top:24px">
+    <section class="card">
+      <div class="drop" id="drop">Drop a still or choose a file</div>
+      <input id="file" type="file" accept="image/*" style="margin-top:10px">
+      <label>Tag</label>
+      <input id="tag" type="text" value="FINAL">
+      <div class="two">
+        <div><label>Away</label><input id="away" type="text" value="AWAY"><input id="as" type="text" value="14" style="margin-top:8px"></div>
+        <div><label>Home</label><input id="home" type="text" value="HOME"><input id="hs" type="text" value="21" style="margin-top:8px"></div>
+      </div>
+      <label>Handle</label>
+      <input id="handle" type="text" value="@galaxysportsai">
+      <label>Frame</label>
+      <div class="two" id="sizes"></div>
+      <button class="go" id="dl" type="button" disabled>Download PNG</button>
+    </section>
+    <section class="card"><canvas id="cv"></canvas></section>
+  </div>
+  <p class="muted" style="margin-top:24px;font-size:13px"><a href="index.html">Factory hub</a> · <a href="stamp.html">Stamp</a></p>
+</main>
+<script>
+const SIZES=[{id:"ig",w:1080,h:1350,label:"4:5"},{id:"story",w:1080,h:1920,label:"9:16"},{id:"sq",w:1080,h:1080,label:"1:1"}];
+let size=SIZES[0], img=null;
+const $=id=>document.getElementById(id);
+SIZES.forEach(s=>{ const b=document.createElement("button"); b.type="button"; b.textContent=s.label; b.onclick=()=>{ size=s; mark(); draw(); }; b.dataset.id=s.id; $("sizes").appendChild(b); });
+function mark(){ [...$("sizes").children].forEach(b=>{ const on=b.dataset.id===size.id; b.style.background=on?"var(--accent)":"#0b0d10"; b.style.color=on?"var(--ink2)":"var(--ink)"; }); }
+mark();
+function load(file){ if(!file||!file.type.startsWith("image/")) return; const i=new Image(); i.onload=()=>{ img=i; $("dl").disabled=false; draw(); }; i.src=URL.createObjectURL(file); }
+$("file").onchange=e=>load(e.target.files[0]);
+["dragover","drop"].forEach(ev=>$("drop").addEventListener(ev,e=>{ e.preventDefault(); if(ev==="drop") load(e.dataTransfer.files[0]); }));
+["tag","away","home","as","hs","handle"].forEach(id=>$(id).oninput=draw);
+function draw(){
+  const c=$("cv"); c.width=size.w; c.height=size.h;
+  const ctx=c.getContext("2d");
+  ctx.fillStyle="#0b0d10"; ctx.fillRect(0,0,size.w,size.h);
+  if(img){ const sc=Math.max(size.w/img.width,size.h/img.height); const dw=img.width*sc, dh=img.height*sc; ctx.drawImage(img,(size.w-dw)/2,(size.h-dh)/2-size.h*0.04,dw,dh); }
+  const g=ctx.createLinearGradient(0,size.h*0.45,0,size.h);
+  g.addColorStop(0,"rgba(11,13,16,0)"); g.addColorStop(.45,"rgba(11,13,16,.55)"); g.addColorStop(1,"rgba(11,13,16,.96)");
+  ctx.fillStyle=g; ctx.fillRect(0,0,size.w,size.h);
+  const pad=64, y=size.h-220;
+  ctx.fillStyle="#6ee7b7"; ctx.font="700 28px ui-sans-serif,system-ui,sans-serif"; ctx.fillText($("tag").value.toUpperCase(),pad,y-70);
+  ctx.fillStyle="#e8edf4"; ctx.font="600 36px ui-sans-serif,system-ui,sans-serif";
+  ctx.fillText($("away").value.slice(0,14).toUpperCase(),pad,y);
+  const score=$("as").value+" – "+$("hs").value;
+  ctx.font="700 92px Georgia,serif"; const sw=ctx.measureText(score).width; ctx.fillText(score,(size.w-sw)/2,y+8);
+  ctx.font="600 36px ui-sans-serif,system-ui,sans-serif";
+  const hw=ctx.measureText($("home").value.slice(0,14).toUpperCase()).width;
+  ctx.fillText($("home").value.slice(0,14).toUpperCase(),size.w-pad-hw,y);
+  ctx.fillStyle="#8b97a8"; ctx.font="500 24px ui-sans-serif,system-ui,sans-serif"; ctx.fillText($("handle").value,pad,size.h-72);
+}
+draw();
+$("dl").onclick=()=>{ const a=document.createElement("a"); a.download="board.png"; a.href=$("cv").toDataURL("image/png"); a.click(); };
+</script>
+</body>
+</html>

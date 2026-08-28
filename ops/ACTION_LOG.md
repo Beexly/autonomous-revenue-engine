@@ -2,6 +2,15 @@
 
 Operator cycle log. Counts that matter stay internal until publish path is enabled.
 
+## 2026-08-28 (cycle 5)
+- Confirmed production alias still 200 with Crush/Stamp: https://autonomous-revenue-engine-eight.vercel.app
+- FrameFit dedicated still 200: https://framefit-eta.vercel.app
+- Shipped T11 Board (sports FINAL graphic) + T12 Kit (local one-pager). Hub now eight money tools.
+- Local pitch locked: `ops/LOCAL_PITCH.md`. $350 walk-in, five Woodlands shops.
+- Sports clip recut (night sideline catch → FrameFit card). Architect does not post.
+- Cash CTA: Kit $350 walk-in is the fastest cash. $19 workbook remains. $40 budget unused.
+- Published SO posts: 0. Factory live surfaces: 9 (FrameFit, Crush, Stamp, Board, Kit, LinkNest, Review Wall, Bookmark Brain, qi-check).
+
 ## 2026-08-28 (cycle 4)
 - Owner re-added Vercel. Production hub 200: https://autonomous-revenue-engine-eight.vercel.app (Factory — live tools).
 - FrameFit dedicated still 200: https://framefit-eta.vercel.app
