@@ -3,10 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FrameFit</title>
-  <meta http-equiv="refresh" content="0; url=../apps/framefit/index.html" />
+  <title>FrameFit — resize for the network you are actually posting to</title>
+  <meta name="description" content="Free in-browser image resize for X, Instagram, TikTok, YouTube, and LinkedIn. No upload to a server. No account." />
+  <style>
+    :root { --bg:#0b0d10; --card:#14181e; --ink:#e8edf4; --mute:#8b97a8; --accent:#6ee7b7; --line:#242b35; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+    main { max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; }
+    h1 { font-size: 28px; letter-spacing: -0.03em; margin: 0 0 8px; }
+    p.lead { color:var(--mute); margin: 0 0 28px; line-height: 1.5; }
+    .grid { display:grid; grid-template-columns: 1fr; gap:16px; }
+    @media (min-width: 800px) { .grid { grid-template-columns: 280px 1fr; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    label { display:block; font-size:12px; color:var(--mute); margin: 12px 0 6px; text-transform:uppercase; letter-spacing:.08em; }
+    select, button, input[type=file] { width:100%; }
+    select { background:#0b0d10; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px; }
+    button { margin-top:16px; background:var(--accent); color:#06281c; border:0; border-radius:10px; padding:12px; font-weight:700; cursor:pointer; }
+    button:disabled { opacity:.4; cursor:not-allowed; }
+    canvas { width:100%; background:#000; border-radius:12px; min-height:220px; }
+    .meta { font-size:13px; color:var(--mute); margin-top:8px; }
+    .drop { border:1px dashed var(--line); border-radius:12px; padding:22px; text-align:center; color:var(--mute); }
+    .pay { margin-top:28px; color:var(--mute); font-size:14px; }
+    .pay a { color:var(--accent); }
+  </style>
 </head>
 <body>
-  <p><a href="../apps/framefit/index.html">Open FrameFit</a></p>
+  <main>
+    <h1>FrameFit</h1>
+    <p class="lead">Resize one photo to the frame the network actually uses. Runs in your browser. Nothing is uploaded.</p>
+    <div class="grid">
+      <section class="card">
+        <div class="drop" id="drop">Drop an image or choose a file</div>
+        <input id="file" type="file" accept="image/*" />
+        <label for="preset">Preset</label>
+        <select id="preset">
+          <option value="1080x1080">Instagram / TikTok post 1080×1080</option>
+          <option value="1080x1350">Instagram portrait 1080×1350</option>
+          <option value="1080x1920">Stories / Shorts / Reels 1080×1920</option>
+          <option value="1600x900">X landscape 1600×900</option>
+          <option value="1280x720">YouTube thumb 1280×720</option>
+          <option value="1200x627">LinkedIn / OG 1200×627</option>
+        </select>
+        <button id="dl" disabled>Download PNG</button>
+        <p class="meta" id="meta">No file yet.</p>
+      </section>
+      <section class="card">
+        <canvas id="out" width="1080" height="1080"></canvas>
+      </section>
+    </div>
+    <p class="pay">Free tool. Tracking broken on ads? <a href="https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook">$19 Meta audit workbook</a></p>
+  </main>
+  <script>
+    const file = document.getElementById('file');
+    const preset = document.getElementById('preset');
+    const canvas = document.getElementById('out');
+    const ctx = canvas.getContext('2d');
+    const dl = document.getElementById('dl');
+    const meta = document.getElementById('meta');
+    const drop = document.getElementById('drop');
+    let img = null;
+    function size() { const [w,h] = preset.value.split('x').map(Number); return {w,h}; }
+    function draw() {
+      if (!img) return;
+      const {w,h} = size();
+      canvas.width = w; canvas.height = h;
+      ctx.fillStyle = '#000'; ctx.fillRect(0,0,w,h);
+      const scale = Math.max(w/img.width, h/img.height);
+      const dw = img.width*scale, dh = img.height*scale;
+      ctx.drawImage(img, (w-dw)/2, (h-dh)/2, dw, dh);
+      meta.textContent = w + '×' + h + ' · cover crop · local only';
+      dl.disabled = false;
+    }
+    function load(f) {
+      if (!f || !f.type.startsWith('image/')) return;
+      const url = URL.createObjectURL(f);
+      const image = new Image();
+      image.onload = () => { img = image; draw(); URL.revokeObjectURL(url); };
+      image.src = url;
+    }
+    file.addEventListener('change', e => load(e.target.files[0]));
+    preset.addEventListener('change', draw);
+    dl.addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.download = 'framefit-' + preset.value + '.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    });
+    ;['dragover','drop'].forEach(ev => {
+      drop.addEventListener(ev, e => { e.preventDefault(); if (ev==='drop') load(e.dataTransfer.files[0]); });
+    });
+  </script>
 </body>
 </html>
