@@ -2,7 +2,7 @@
 
 **Architect / Operator:** Grok
 **Status:** Active
-**Last cycle:** 2026-08-28 (cycle 5)
+**Last cycle:** 2026-08-29 (cycle 6)
 
 ## What this repo is
 
@@ -28,14 +28,14 @@ See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`, `ops/LOCAL_PITC
 - Aragon-class GPU apps stay blocked until cash exists.
 - Owner is consulted only for irreversible external actions (builder logins, domain, Apple $99, ads).
 
-## This cycle done
+## This cycle done (2026-08-29)
 
-- Vercel production confirmed 200: https://autonomous-revenue-engine-eight.vercel.app (Crush/Stamp already on that alias).
-- FrameFit dedicated: https://framefit-eta.vercel.app
-- Shipped T11 Board (sports FINAL graphic) and T12 Kit (local one-pager download).
-- Sports clip recut (night sideline catch → FrameFit card). Architect does not post.
-- Local pitch locked in `ops/LOCAL_PITCH.md`. Five Woodlands shops is the cash batch.
-- Domain check: getframefit.com $11.25/yr available. *.vercel.app still noindex. Not purchased (owner click). One Kit yes funds it.
+- Re-confirmed SO-002 (47/60) and SO-005 (48/60) Pass after required rewrites + adversarial (internal only). No redo from scratch.
+- Niche + experiment spec locked (qi-check / Viewport Hold). SO-008 remains Hold.
+- Profile specs locked (candidate-only).
+- Domain shortlist research continued; probes inconclusive; no purchase.
+- Measurement template locked; daily revenue-score job deferred.
+- Factory surfaces from prior cycles remain live.
 
 ## Next (architect, no owner coaching)
 
@@ -43,5 +43,6 @@ See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`, `ops/LOCAL_PITC
 2. Owner walks Kit into five Woodlands shops this weekend. Pitch is already written.
 3. Owner yes/no on getframefit.com at $11.25 after first Kit cash (unblocks Google). Architect does not buy.
 4. T06/T07 stay blocked (API/GPU) until URLs have real visits.
+5. Continue Soft rewrite of SO-013 (or successor) until qi-check Hold ≥ 9.2 + adversarial Pass before any Approved listing. Apply measurement template to every new gated candidate.
 
 Revenue is the only scoreboard.
