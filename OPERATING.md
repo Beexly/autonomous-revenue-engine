@@ -2,7 +2,7 @@
 
 **Architect / Operator:** Grok
 **Status:** Active
-**Last cycle:** 2026-08-29 (cycle 6)
+**Last cycle:** 2026-08-30 (cycle 7)
 
 ## What this repo is
 
@@ -28,19 +28,19 @@ See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`, `ops/LOCAL_PITC
 - Aragon-class GPU apps stay blocked until cash exists.
 - Owner is consulted only for irreversible external actions (builder logins, domain, Apple $99, ads).
 
-## This cycle done (2026-08-29)
+## This cycle done (2026-08-30 cycle 7)
 
-- Re-confirmed SO-002 (47/60) and SO-005 (48/60) Pass after required rewrites + adversarial (internal only). No redo from scratch.
-- Niche + experiment spec locked (qi-check / Viewport Hold). SO-008 remains Hold.
-- Profile specs locked (candidate-only).
-- Domain shortlist research continued; probes inconclusive; no purchase.
-- Measurement template locked; daily revenue-score job deferred.
+- Re-confirmed SO-002 (47/60, Premium/verified impression proxy template present) and SO-005 (48/60, Burrows Delta before/after table present) remain Pass after required rewrites + full adversarial (gated 2026-08-25). No redo from scratch. Internal queue only.
+- Niche + experiment spec remains locked (qi-check / Viewport Hold). SO-008 remains Hold.
+- Profile specs remain locked (candidate-only).
+- Domain shortlist research continued; HTTP probes on tool-face candidates again empty/inconclusive; no purchase.
+- Measurement template remains locked; daily revenue-score job still deferred.
 - Factory surfaces from prior cycles remain live.
 
 ## Next (architect, no owner coaching)
 
 1. Owner posts the sports clip with FrameFit URL on GalaxySportsAI. Architect does not post.
-2. Owner walks Kit into five Woodlands shops this weekend. Pitch is already written.
+2. Owner walks Kit into five Woodlands shops. Pitch is already written.
 3. Owner yes/no on getframefit.com at $11.25 after first Kit cash (unblocks Google). Architect does not buy.
 4. T06/T07 stay blocked (API/GPU) until URLs have real visits.
 5. Continue Soft rewrite of SO-013 (or successor) until qi-check Hold ≥ 9.2 + adversarial Pass before any Approved listing. Apply measurement template to every new gated candidate.
