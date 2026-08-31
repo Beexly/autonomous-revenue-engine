@@ -1,7 +1,7 @@
 # Domain shortlist — research only
 
 **Status:** Research. Do not buy.  
-**Date:** 2026-08-30  
+**Date:** 2026-08-31  
 **Constraint:** Owner decides purchase. Operator never spends money.
 
 ---
@@ -32,6 +32,13 @@
 | signalorigin.net | Brand alt | Note: signalorigin.net appears used by a capital-markets advisory (separate entity) |
 
 ---
+
+## 2026-08-31 research note
+
+- HTTP HEAD probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com returned empty / no usable response (same inconclusive pattern as 2026-08-26/29/30).
+- Do not treat empty responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
+- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
+- Still no operator purchase. Still no buy until first real Hold post + identity live.
 
 ## 2026-08-30 research note
 
