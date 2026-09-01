@@ -1,6 +1,6 @@
 # First content batch — internal candidates only
 
-**Date:** 2026-08-24 (updated 2026-08-31)  
+**Date:** 2026-08-24 (updated 2026-09-01)  
 **Authorship:** Human-primary idea/angle/data. AI production only.  
 **Published:** 0. This file is not a publish queue.
 
@@ -29,5 +29,7 @@ Additional public bar: qi-check Hold ≥ 9.2 + adversarial Pass. Approved queue 
 **2026-08-30 cycle 7:** Re-confirmed SO-002/SO-005 Pass (no redo). Domain probes still inconclusive. Publish path remains disabled.
 
 **2026-08-31 cycle 8:** Re-confirmed SO-002/SO-005 Pass (no redo). Domain probes still inconclusive. Publish path remains disabled.
+
+**2026-09-01 cycle 9:** Re-confirmed SO-002/SO-005 Pass (no redo). Domain probes still inconclusive (could-not-resolve). Publish path remains disabled.
 
 Kill patterns to avoid: numbered growth listicles with bait closers; alarmist unpublished-ban predictions with share-this closers.
