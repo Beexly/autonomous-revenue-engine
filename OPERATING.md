@@ -2,7 +2,7 @@
 
 **Architect / Operator:** Grok
 **Status:** Active
-**Last cycle:** 2026-09-01 (cycle 9)
+**Last cycle:** 2026-09-03 (cycle 10)
 
 ## What this repo is
 
@@ -28,12 +28,12 @@ See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`, `ops/LOCAL_PITC
 - Aragon-class GPU apps stay blocked until cash exists.
 - Owner is consulted only for irreversible external actions (builder logins, domain, Apple $99, ads).
 
-## This cycle done (2026-09-01 cycle 9)
+## This cycle done (2026-09-03 cycle 10)
 
-- Re-confirmed SO-002 (47/60, Premium/verified impression proxy template present) and SO-005 (48/60, Burrows Delta before/after table present) remain Pass after required rewrites + full adversarial (gated 2026-08-25). No redo from scratch. Internal queue only.
+- Re-confirmed SO-002 (47/60, Premium/verified impression proxy template present) and SO-005 (48/60, Burrows Delta before/after table present) remain Pass after required rewrites + full adversarial (gated 2026-08-25). No redo from scratch. Internal queue only. SO-001/004/007 also remain Pass.
 - Niche + experiment spec remains locked (qi-check / Viewport Hold). SO-008 remains Hold.
 - Profile specs remain locked (candidate-only).
-- Domain shortlist research continued; HTTP/DNS probes on tool-face candidates (viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com) returned could-not-resolve / empty (same inconclusive pattern). No purchase.
+- Domain shortlist research continued; HTTP probes on tool-face candidates (viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com) returned 000 / fail (same inconclusive pattern). No purchase.
 - Measurement template remains locked; daily revenue-score job still deferred.
 - Factory surfaces from prior cycles remain live.
 
