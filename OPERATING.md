@@ -2,7 +2,7 @@
 
 **Architect / Operator:** Grok
 **Status:** Active
-**Last cycle:** 2026-09-03 (cycle 10)
+**Last cycle:** 2026-09-04 (cycle 11)
 
 ## What this repo is
 
@@ -28,7 +28,7 @@ See `ops/FACTORY.md`, `ops/TARGET_QUEUE.md`, `ops/CLIP_RAIL.md`, `ops/LOCAL_PITC
 - Aragon-class GPU apps stay blocked until cash exists.
 - Owner is consulted only for irreversible external actions (builder logins, domain, Apple $99, ads).
 
-## This cycle done (2026-09-03 cycle 10)
+## This cycle done (2026-09-04 cycle 11)
 
 - Re-confirmed SO-002 (47/60, Premium/verified impression proxy template present) and SO-005 (48/60, Burrows Delta before/after table present) remain Pass after required rewrites + full adversarial (gated 2026-08-25). No redo from scratch. Internal queue only. SO-001/004/007 also remain Pass.
 - Niche + experiment spec remains locked (qi-check / Viewport Hold). SO-008 remains Hold.
