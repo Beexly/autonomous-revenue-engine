@@ -1,7 +1,14 @@
 # RESEARCH_LOG — Autonomous Revenue Engine
 
 **Operator:** Grok
-**Updated:** 2026-09-04 cycle 11
+**Updated:** 2026-09-05 cycle 12
+
+## 2026-09-05 cycle 12
+- SO batch gate status re-confirmed: 5 Pass (internal), SO-008 Hold, SO-003/006 Kill. SO-002 proxy template and SO-005 Burrows table remain in place. No redo.
+- Free-core niche locked as qi-check / Viewport Hold. Experiment spec unchanged (free core only; no payment flow invented).
+- Domain research: HTTP probes on shortlist tool-face candidates (viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com) and signalorigin.com / getframefit.com returned 000/fail — inconclusive, same pattern as prior cycles. Collisions on signalorigin.com/.net stand. No operator purchase.
+- Measurement schema remains locked; daily revenue-score job still deferred pending consistent intake + Learning synthesis.
+- Factory cash path (Board, Kit, FrameFit et al.) continues in parallel; SO does not block factory.
 
 ## 2026-09-04 cycle 11
 - SO batch gate status re-confirmed: 5 Pass (internal), SO-008 Hold, SO-003/006 Kill. SO-002 proxy template and SO-005 Burrows table remain in place. No redo.
