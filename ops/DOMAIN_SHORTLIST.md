@@ -33,7 +33,15 @@
 
 ---
 
-## 2026-09-08 research note
+## 2026-09-08 research note (cycle 15)
+
+- HTTP probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com, signalorigin.com, getframefit.com, signal-origin.com returned 000/fail (same inconclusive pattern as prior cycles).
+- holdscore.com returned HTTP 200 (short HTML lander that redirects to /lander). Treat as parked/sold risk; remove from preferred shortlist until owner verifies WHOIS.
+- Do not treat empty or NXDOMAIN-like responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
+- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
+- Still no operator purchase. Still no buy until first real Hold post + identity live.
+
+## 2026-09-08 research note (cycle 14)
 
 - HTTP probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com, signalorigin.com, getframefit.com, signal-origin.com returned 000/fail (same inconclusive pattern as prior cycles).
 - holdscore.com returned HTTP 200 (short HTML lander that redirects to /lander). Treat as parked/sold risk; remove from preferred shortlist until owner verifies WHOIS.
@@ -48,61 +56,6 @@
 - Do not treat empty or NXDOMAIN-like responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
 - Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
 - Still no operator purchase. Still no buy until first real Hold post + identity live.
-
-## 2026-09-05 research note
-
-- HTTP probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com, signalorigin.com, getframefit.com returned 000/fail (same inconclusive pattern as prior cycles).
-- Do not treat empty or NXDOMAIN-like responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
-- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
-- Still no operator purchase. Still no buy until first real Hold post + identity live.
-
-## 2026-09-03 research note
-
-- HTTP probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com returned 000/fail (same inconclusive pattern as 2026-08-26/29/30/31/09-01).
-- Do not treat empty or NXDOMAIN-like responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
-- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
-- Still no operator purchase. Still no buy until first real Hold post + identity live.
-
-## 2026-09-01 research note
-
-- HTTP/DNS probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com returned could-not-resolve / empty (same inconclusive pattern as 2026-08-26/29/30/31).
-- Do not treat empty or NXDOMAIN-like responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
-- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
-- Still no operator purchase. Still no buy until first real Hold post + identity live.
-
-## 2026-08-31 research note
-
-- HTTP HEAD probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com returned empty / no usable response (same inconclusive pattern as 2026-08-26/29/30).
-- Do not treat empty responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
-- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
-- Still no operator purchase. Still no buy until first real Hold post + identity live.
-
-## 2026-08-30 research note
-
-- HTTP HEAD probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com returned empty / no usable response (same inconclusive pattern as 2026-08-26/29).
-- Do not treat empty responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
-- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
-- Still no operator purchase. Still no buy until first real Hold post + identity live.
-
-## 2026-08-29 research note
-
-- Sandbox RDAP and HTTP HEAD probes on viewporthold.com, qicheck.dev, firstscreen.dev, so-hq.com returned empty / no usable response (same inconclusive pattern as 2026-08-26).
-- Do not treat empty responses as availability. Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
-- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
-- Still no operator purchase. Still no buy until first real Hold post + identity live.
-
-## 2026-08-27 research note
-
-- signalorigin.com: active commercial site (Signalorigin / Dongguan manufacturing). Do not pursue.
-- signalorigin.net: appears used by a strategic advisory (capital markets / AI). Collision risk.
-- Tool-face candidates (qicheck.dev, firstscreen.dev, viewporthold.com, so-hq.com) remain preferred research targets when owner is ready.
-- Still no operator purchase. Still no buy until first real Hold post + identity live.
-
-## 2026-08-26 research note
-
-- Sandbox WHOIS/HTTP probes returned inconclusive (empty responses). Do not treat as availability confirmation.
-- Owner must verify live RDAP/WHOIS at preferred registrar before any purchase decision.
-- Priority order when owner is ready: (1) clean brand .com if obtainable at reasonable cost, (2) tool face `.dev`/`.io` only if free-core ships publicly.
 
 ## Recommendation to owner (when ready)
 
