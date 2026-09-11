@@ -229,23 +229,24 @@ pills('typePills',function(v){type=v});
 pills('stylePills',function(v){style=v});
 
 var STYLES={
-  modern:'huge bold minimalist sans-serif channel-letter sign',
-  classic:'refined gold serif lettering sign with elegant traditional styling',
-  neon:'vibrant glowing neon sign, cinematic dusk lighting',
-  rustic:'hand-carved wooden hanging sign on a wrought-iron bracket, craftsman style'
+  modern:'monumental bold sans-serif channel letters in brushed aluminum with subtle halo backlighting, ultra-clean minimalist design',
+  classic:'refined hand-painted gold serif lettering with elegant traditional styling, dark green fascia, brass trim details',
+  neon:'vibrant glowing neon sign in warm amber and rose, elegant script letterforms, cinematic dusk lighting, soft reflections on glass',
+  rustic:'hand-carved wooden hanging sign with chiseled serif letters on a wrought-iron bracket, craftsman style, visible natural wood grain'
 };
 var TYPES={
-  storefront:'on the facade of a beautiful modern retail storefront, bright daylight',
-  monument:'as a freestanding monument sign at a landscaped business entrance, daylight',
-  banner:'as a large vinyl banner stretched across a storefront, daylight',
-  window:'as vinyl lettering applied to a glass shop window and door, daylight'
+  storefront:'on the facade of a beautiful independent retail storefront, bright daylight, architectural digest photography',
+  monument:'as a freestanding monument sign with a stone base at a landscaped business entrance, daylight, architectural photography',
+  banner:'as a large professionally printed vinyl banner stretched taut across a storefront, daylight, commercial photography',
+  window:'as crisp white vinyl lettering applied to a glass shop window and door, daylight, commercial photography'
 };
 var MSGS=['Sketching the layout…','Choosing the lettering…','Lighting the scene…','Polishing the details…'];
 
 function buildPrompt(name, tagline){
   var sign='photorealistic architectural photograph, '+STYLES[style]+' reading "'+name+'"'+
     (tagline?', with smaller text below reading "'+tagline+'"':'')+', '+TYPES[type]+
-    ', ultra detailed, professional commercial photography';
+    ', sign text spelled exactly as written, centered composition, no watermark, '+
+    'no people blocking the sign, ultra detailed, professional commercial photography';
   return sign;
 }
 
