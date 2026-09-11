@@ -138,6 +138,16 @@ footer .rule{max-width:1080px;margin:0 auto 24px;border-top:1px solid var(--line
 .tier li:last-child{border-bottom:0}
 .tier li::before{content:"\2713";position:absolute;left:2px;top:9px;color:var(--accent);font-weight:800}
 .tier .btn{text-align:center}
+
+/* workbench */
+.tools{display:grid;gap:14px}
+@media(min-width:680px){.tools{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.tools{grid-template-columns:repeat(3,1fr)}}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;display:flex;flex-direction:column}
+.tool h4{font-size:17px;margin-bottom:6px}
+.tool p{color:var(--mute);font-size:14px;flex:1;margin-bottom:14px}
+.tool a{color:var(--accent);font-weight:800;font-size:14px;text-decoration:none}
+.tool a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -287,6 +297,61 @@ footer .rule{max-width:1080px;margin:0 auto 24px;border-top:1px solid var(--line
   </div>
 </section>
 
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">The workbench</h2>
+    <p class="sec-sub">Free tools we've built and shipped. Your site gets built with the same hands. Try any of them live — no signup.</p>
+    <div class="tools">
+      <div class="tool">
+        <h4>Crush</h4>
+        <p>Shrink big photos for your site or socials without them looking blurry. Runs in your browser — nothing uploads.</p>
+        <a href="../crush.html">Try it live &rarr;</a>
+      </div>
+      <div class="tool">
+        <h4>FrameFit</h4>
+        <p>One click to resize any image for Instagram, Facebook, or X. No more cropped heads.</p>
+        <a href="../framefit.html">Try it live &rarr;</a>
+      </div>
+      <div class="tool">
+        <h4>Stamp</h4>
+        <p>Watermark your work photos so competitors can't just lift them.</p>
+        <a href="../stamp.html">Try it live &rarr;</a>
+      </div>
+      <div class="tool">
+        <h4>LinkNest</h4>
+        <p>One page holding every link you send customers. Like Linktree, except you own it.</p>
+        <a href="../linknest.html">Try it live &rarr;</a>
+      </div>
+      <div class="tool">
+        <h4>Review Wall</h4>
+        <p>Turn your best Google reviews into a wall of proof for your website.</p>
+        <a href="../reviewwall.html">Try it live &rarr;</a>
+      </div>
+      <div class="tool">
+        <h4>Board</h4>
+        <p>Make clean update and announcement graphics for social media in seconds.</p>
+        <a href="../board.html">Try it live &rarr;</a>
+      </div>
+      <div class="tool">
+        <h4>Kit builder</h4>
+        <p>The tool I use to draft one-page websites like the samples above. Take it for a spin.</p>
+        <a href="../kit.html">Try it live &rarr;</a>
+      </div>
+      <div class="tool">
+        <h4>Meta Tracking Audit</h4>
+        <p>Checks whether your Facebook ad tracking is actually set up right — most shops' isn't.</p>
+        <a href="../meta-tracking-audit.html">Try it live &rarr;</a>
+      </div>
+      <div class="tool">
+        <h4>Bookmark Brain</h4>
+        <p>Save ideas, tag them, find them instantly. A second brain for your business.</p>
+        <a href="../brain.html">Try it live &rarr;</a>
+      </div>
+    </div>
+    <p style="margin-top:24px;color:var(--mute)">Plus 30 more in the <a href="../" style="color:var(--accent);font-weight:700">Factory</a> — the full shelf of everything we've built.</p>
+  </div>
+</section>
+
 <section style="background:#fff;border-top:1px solid var(--line)" id="faq">
   <div class="wrap">
     <h2 class="sec-title">Questions, answered straight</h2>
@@ -327,7 +392,7 @@ footer .rule{max-width:1080px;margin:0 auto 24px;border-top:1px solid var(--line
       </details>
       <details>
         <summary>Do you build bigger websites?</summary>
-        <div class="a">Not right now. One page, done well, is the whole offer — it's what most local shops actually need, and it's why I can charge $350 instead of $3,500.</div>
+        <div class="a">Yes — the full website tier is up to 5 pages (home, services, about, reviews, contact) with a quote form that sends leads to your phone, your Google reviews and maps embedded, and basic SEO — $900 flat. Same deal: free homepage preview first, you own it, no monthly fees.</div>
       </details>
     </div>
   </div>
