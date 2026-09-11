@@ -41,11 +41,18 @@ Ranked by signal value:
 
 Non-negotiable: spend stays $0 until revenue exists.
 
-- Hosting: Vercel (live) / Cloudflare Pages
-- Image generation: free-tier APIs for the renderer (v1: pollinations, no key)
-- Email alerts: Resend / Mailgun free tiers (lead notifications)
-- Database: Supabase / Neon free tier (lead capture, v2)
-- Video: Recordly (open-source, AGPL — used as a tool, not forked)
+### The $0 stack (deliberate, not accidental)
+
+| Need | Choice | Free tier |
+|---|---|---|
+| Hosting | Vercel | hobby |
+| Sign rendering | pollinations.ai | no key |
+| Lead database | Supabase | 500MB / 50k rows |
+| Lead alerts | Resend | 100 emails/day |
+| Demo recording | Playwright | open-source |
+| Video polish | Recordly | open-source (AGPL, used as tool) |
+
+Rule: nothing moves to paid until the lane it serves has paid for it twice over.
 
 ## Layer 3 — RENDER (SignPreview engine, one renderer, two skins)
 
@@ -104,6 +111,9 @@ The mechanic that works: "I made this for YOU already — want it?"
 ## Rules
 
 - $0 spend until revenue. No exceptions without Garrett.
+- Fulfillment is Garrett's time until templates exist: every $150 design package must
+  be fulfillable from presets in under 30 minutes, or the lane bottlenecks on him.
+  Productize the fulfillment before scaling the outreach.
 - Never "AI wedding signs". Craft brand only.
 - AGPL: Recordly is a tool, not a fork. Don't distribute modified builds.
 - Every artifact must serve the loop. If it doesn't find, render, show,

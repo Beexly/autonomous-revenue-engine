@@ -119,7 +119,7 @@ footer strong{font-family:var(--serif);color:var(--ink)}
 <body>
 
 <nav class="nav"><div class="wrap">
-  <a class="logo" href="#">SignPreview<em>.</em></a>
+  <a class="logo" href="index.html">SignPreview<em>.</em></a>
   <a class="btn btn-ember btn-sm" href="https://ig.me/m/gbeexly">Get the full design</a>
 </div></nav>
 
@@ -162,7 +162,7 @@ footer strong{font-family:var(--serif);color:var(--ink)}
       </div>
     </div>
     <div class="go">
-      <button class="btn btn-ember" id="genBtn">Generate my sign</button>
+      <button class="btn btn-ember" id="genBtn">Design my sign</button>
       <div class="fine">Free preview · no account · yours to keep</div>
     </div>
     <div class="result" id="result">
@@ -182,7 +182,7 @@ footer strong{font-family:var(--serif);color:var(--ink)}
     <h2>How it <em>works</em></h2>
     <div class="grid3">
       <div class="step"><div class="n">i.</div><h3>You describe it</h3><p>Business name, sign type, style. Twenty seconds, no design vocabulary needed.</p></div>
-      <div class="step"><div class="n">ii.</div><h3>You see it</h3><p>A photorealistic mockup of your actual sign, on a real storefront. Not a sketch — the thing.</p></div>
+      <div class="step"><div class="n">ii.</div><h3>You see it</h3><p>A photorealistic mockup of your actual sign, in a real setting. Not a sketch — the thing.</p></div>
       <div class="step"><div class="n">iii.</div><h3>You decide</h3><p>Love it? Get the print-ready design package for $150 flat, or take the mockup to any shop. Hate it? Pay nothing.</p></div>
     </div>
   </section>
@@ -193,7 +193,7 @@ footer strong{font-family:var(--serif);color:var(--ink)}
     <ul>
       <li>Embeddable mockup widget for your website</li>
       <li>Your logo, your styles, your lead inbox</li>
-      <li>We also send you qualified local leads weekly</li>
+      <li>I also send you qualified local leads weekly</li>
     </ul>
     <a class="btn btn-ember" href="https://ig.me/m/gbeexly" style="background:var(--gold);color:#241a08!important">Talk to me about the shop plan</a>
   </section>
@@ -265,7 +265,7 @@ function generate(){
     '?width=1024&height=768&seed='+seed+'&nologo=true';
   mockImg.onload=function(){ clearInterval(msgTimer); mock.classList.add('done'); };
   mockImg.onerror=function(){ clearInterval(msgTimer);
-    loadMsg.textContent='Hmm, the renderer hiccuped. Hit "try another style" to go again.'; };
+    loadMsg.textContent='Hmm, that one didn\'t come out right. Hit "try another style" to go again.'; };
   mockImg.src=url;
   mockImg.alt='Sign mockup for '+name;
 }
