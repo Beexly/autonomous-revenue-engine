@@ -121,6 +121,23 @@ footer .rule{max-width:1080px;margin:0 auto 24px;border-top:1px solid var(--line
   border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none}
 @media(max-width:640px){.msticky{display:block}}
 .msticky .btn{width:100%;text-align:center}
+
+/* pricing tiers */
+.tiers{display:grid;gap:18px;margin-top:8px}
+@media(min-width:900px){.tiers{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;position:relative}
+.tier.hot{border:2px solid var(--accent);box-shadow:0 12px 32px rgba(255,77,0,.14)}
+.tier-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;
+  font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:999px;white-space:nowrap}
+.tier-name{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.tier-price{font-size:44px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.tier-price small{font-size:16px;font-weight:600;color:var(--mute);letter-spacing:0}
+.tier-desc{color:var(--mute);font-size:15px;margin-bottom:20px}
+.tier ul{list-style:none;margin-bottom:28px;flex:1}
+.tier li{padding:9px 0 9px 30px;position:relative;font-size:15px;border-bottom:1px solid var(--soft)}
+.tier li:last-child{border-bottom:0}
+.tier li::before{content:"\2713";position:absolute;left:2px;top:9px;color:var(--accent);font-weight:800}
+.tier .btn{text-align:center}
 </style>
 </head>
 <body>
@@ -194,7 +211,55 @@ footer .rule{max-width:1080px;margin:0 auto 24px;border-top:1px solid var(--line
 
 <section>
   <div class="wrap">
-    <h2 class="sec-title">Here's what they look like</h2>
+    <section>
+  <div class="wrap">
+    <h2 class="sec-title">Pick your build</h2>
+    <p class="sec-sub">Start with the one-pager. Scale up when the phone won't stop ringing.</p>
+    <div class="tiers">
+      <div class="tier hot">
+        <div class="tier-tag">Most popular</div>
+        <div class="tier-name">One-pager</div>
+        <div class="tier-price">$350 <small>flat</small></div>
+        <p class="tier-desc">One page that makes the phone ring. Live within days.</p>
+        <ul>
+          <li>Your name, services, towns, big tap-to-call button</li>
+          <li>Built for phones first</li>
+          <li>No monthly fees — you own it</li>
+          <li>Free preview first. Hate it, pay nothing.</li>
+        </ul>
+        <a class="btn btn-gold" href="https://ig.me/m/gbeexly">DM &ldquo;KIT&rdquo;</a>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Full website</div>
+        <div class="tier-price">$900 <small>flat</small></div>
+        <p class="tier-desc">A complete site for shops ready to look like the obvious choice.</p>
+        <ul>
+          <li>Up to 5 pages: home, services, about, reviews, contact</li>
+          <li>Quote form that sends leads straight to your phone</li>
+          <li>Google Maps and your reviews embedded</li>
+          <li>Basic SEO baked in from day one</li>
+          <li>Free homepage preview first</li>
+        </ul>
+        <a class="btn btn-green" href="https://ig.me/m/gbeexly">DM &ldquo;SITE&rdquo;</a>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Workflows</div>
+        <div class="tier-price">from $500</div>
+        <p class="tier-desc">Custom automation for the stuff that's eating your week.</p>
+        <ul>
+          <li>Missed-call text-back</li>
+          <li>Online booking that pings your phone</li>
+          <li>Lead follow-up that runs itself</li>
+          <li>Review engine: happy customers asked automatically</li>
+          <li>Priced by scope — tell me what to automate</li>
+        </ul>
+        <a class="btn btn-green" href="https://ig.me/m/gbeexly">DM &ldquo;WORKFLOW&rdquo;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<h2 class="sec-title">Here's what they look like</h2>
     <p class="sec-sub">Real pages I've built the same way yours will be — one screen, your info, a call button.</p>
     <div class="samples-note"><strong>Note:</strong> these are sample designs with fictional business names, so you can see the format. Yours gets <em>your</em> name, <em>your</em> services, and <em>your</em> phone number.</div>
     <div class="gallery">
@@ -228,6 +293,15 @@ footer .rule{max-width:1080px;margin:0 auto 24px;border-top:1px solid var(--line
     <p class="sec-sub">No fine print beyond this.</p>
     <div class="faq">
       <details>
+        <summary>What's the difference between the one-pager and the full website?</summary>
+        <div class="a">The one-pager is a single screen: your name, services, and a big call button — $350 flat. The full website is up to 5 pages with a quote form, your Google reviews, maps, and SEO baked in — $900 flat. Same deal on both: free preview first, you own it, no monthly fees.</div>
+      </details>
+      <details>
+        <summary>What kind of workflows do you build?</summary>
+        <div class="a">The boring stuff that loses you money: missed calls that never get a text back, leads nobody follows up with, happy customers nobody asks for a review. DM &ldquo;WORKFLOW&rdquo; and tell me what's eating your time — I'll tell you straight if I can automate it and what it'll cost.</div>
+      </details>
+      
+      <details>
         <summary>How long does it take?</summary>
         <div class="a">The preview usually lands the same day you send your info. Once you approve it, the site goes live within a few days.</div>
       </details>
@@ -259,6 +333,13 @@ footer .rule{max-width:1080px;margin:0 auto 24px;border-top:1px solid var(--line
   </div>
 </section>
 
+<section style="padding:32px 0">
+  <div class="wrap">
+    <div class="samples-note" style="max-width:720px;margin:0 auto;text-align:center;font-size:16px">
+      Already have a website? DM &ldquo;AUDIT&rdquo; with your site address and I'll send you a free 1-page SEO health check — your score out of 100 and the top 3 things hurting you on Google. Takes me two minutes.
+    </div>
+  </div>
+</section>
 <section id="get" style="padding-top:20px">
   <div class="final">
     <h2>What's your <span class="gold">business name?</span></h2>
