@@ -2,13 +2,19 @@
 <html lang="en">
 <head>
 <!--
-  SignPreview v1 — the render engine.
+  SignPreview v2 — the render engine.
+  v2 composite approach: Pollinations renders a TEXT-FREE scene (blank sign),
+  then real typography is composited client-side on Canvas. This guarantees the
+  business name is spelled exactly — AI image models cannot do that reliably.
   One engine, two skins: B2B/consumer sign mockups + Vow & Post wedding signage.
-  Part of THE SIGN SYSTEM (SIGN_SYSTEM.md). $0 infra. No keys. No backend (v1).
+  Part of THE SIGN SYSTEM (SIGN_SYSTEM.md). $0 infra. No keys. No backend (v2).
   Instagram: gbeexly
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Playfair+Display:wght@700&family=Rye&family=Sacramento&display=swap" rel="stylesheet">
 <title>SignPreview — See your new sign before you buy it</title>
 <meta name="description" content="Type your business name, pick a style, and see a photorealistic mockup of your new sign in seconds. Free.">
 <style>
@@ -69,8 +75,8 @@ a{color:inherit}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .mock{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--cream);
   aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;min-height:280px}
-.mock img{width:100%;height:100%;object-fit:cover;display:none}
-.mock.done img{display:block}
+.mock img,.mock canvas{width:100%;height:100%;object-fit:cover;display:none}
+.mock.done img,.mock.done canvas{display:block}
 .mock .loading{display:flex;flex-direction:column;gap:16px;align-items:center;color:var(--mute)}
 .mock.done .loading{display:none}
 .shimmer{width:min(420px,80%);height:14px;border-radius:999px;
@@ -168,7 +174,7 @@ footer strong{font-family:var(--serif);color:var(--ink)}
     <div class="result" id="result">
       <div class="mock" id="mock">
         <div class="loading"><div class="shimmer"></div><div id="loadMsg">Designing your sign…</div><div class="shimmer"></div></div>
-        <img id="mockImg" alt="Your sign mockup">
+        <canvas id="mockCanvas" width="1024" height="768" role="img" aria-label="Your sign mockup"></canvas>
       </div>
       <div class="result-actions">
         <button class="btn btn-ghost" id="againBtn">↻ Try another style</button>
@@ -214,7 +220,8 @@ footer strong{font-family:var(--serif);color:var(--ink)}
 "use strict";
 var $=function(id){return document.getElementById(id)};
 var biz=$('biz'), tag=$('tag'), genBtn=$('genBtn'), result=$('result'),
-    mock=$('mock'), mockImg=$('mockImg'), againBtn=$('againBtn'), loadMsg=$('loadMsg');
+    mock=$('mock'), canvas=$('mockCanvas'), againBtn=$('againBtn'), loadMsg=$('loadMsg');
+var ctx=canvas.getContext('2d');
 var type='storefront', style='modern';
 
 function pills(id, cb){
@@ -228,29 +235,158 @@ function pills(id, cb){
 pills('typePills',function(v){type=v});
 pills('stylePills',function(v){style=v});
 
-var STYLES={
-  modern:'monumental bold sans-serif channel letters in brushed aluminum with subtle halo backlighting, ultra-clean minimalist design',
-  classic:'refined hand-painted gold serif lettering with elegant traditional styling, dark green fascia, brass trim details',
-  neon:'vibrant glowing neon sign in warm amber and rose, elegant script letterforms, cinematic dusk lighting, soft reflections on glass',
-  rustic:'hand-carved wooden hanging sign with chiseled serif letters on a wrought-iron bracket, craftsman style, visible natural wood grain'
+/* ---- v2: text-free scenes. The model renders the setting; we set the type. ---- */
+var SCENES={
+  modern:'bright daylight, beautiful independent retail building with a large blank brushed-aluminum sign backer board mounted above the entrance, completely blank panel, no text, no letters, no logos',
+  classic:'daylight, elegant traditional storefront with a large blank dark-green sign fascia with brass trim, completely blank, no text, no letters',
+  neon:'cinematic dusk, moody independent shop front with a large blank unlit rectangular sign cabinet above the window, dark and empty, no text, no letters',
+  rustic:'daylight, charming craftsman-style shop with a large blank natural wood sign board hanging from a wrought-iron bracket, visible wood grain, completely blank, no text, no letters'
 };
-var TYPES={
-  storefront:'on the facade of a beautiful independent retail storefront, bright daylight, architectural digest photography',
-  monument:'as a freestanding monument sign with a stone base at a landscaped business entrance, daylight, architectural photography',
-  banner:'as a large professionally printed vinyl banner stretched taut across a storefront, daylight, commercial photography',
-  window:'as crisp white vinyl lettering applied to a glass shop window and door, daylight, commercial photography'
+var GEOM={
+  storefront:'photorealistic architectural photograph, centered composition',
+  monument:'photorealistic architectural photograph of a freestanding monument sign with a stone base at a landscaped entrance, the sign panel large and blank, centered composition',
+  banner:'photorealistic commercial photograph of a large blank vinyl banner stretched taut across a storefront, completely blank white surface, centered composition',
+  window:'photorealistic commercial photograph of a glass shop window and door, clear empty glass with nothing on it, daylight'
+};
+/* Text/panel anchor per type (fractions of canvas) — upper-third sign band. */
+var ZONES={
+  storefront:{x:.5,y:.32},
+  monument:{x:.5,y:.40},
+  banner:{x:.5,y:.48},
+  window:{x:.5,y:.44}
+};
+/* Per-type panel geometry (fractions of canvas). Window = vinyl on glass, no panel. */
+var PANELS={
+  storefront:{w:.84,h:.24},
+  monument:{w:.80,h:.26},
+  banner:{w:.88,h:.32},
+  window:null
+};
+/* Real typography per style — this is what guarantees exact spelling. */
+var TYPESET={
+  modern:{family:'Archivo, sans-serif',weight:900,color:'#f2efe8',shadow:'rgba(20,16,10,.55)',tracking:.05,upper:true},
+  classic:{family:'"Playfair Display", Georgia, serif',weight:700,color:'#e9c86e',shadow:'rgba(10,8,4,.6)',tracking:.03,upper:false},
+  neon:{family:'Sacramento, cursive',weight:400,color:'#ffe3b3',glow:['#ff9d2e','#ff5e62'],tracking:.01,upper:false},
+  rustic:{family:'Rye, Georgia, serif',weight:400,color:'#f5e9d4',shadow:'rgba(30,18,8,.6)',tracking:.04,upper:false}
+};
+var TAGSET={
+  modern:{family:'Archivo, sans-serif',weight:800,color:'#e8e2d4'},
+  classic:{family:'"Playfair Display", Georgia, serif',weight:700,color:'#d9b95c'},
+  neon:{family:'Archivo, sans-serif',weight:800,color:'#ffd9a0'},
+  rustic:{family:'Archivo, sans-serif',weight:800,color:'#efe0c6'}
 };
 var MSGS=['Sketching the layout…','Choosing the lettering…','Lighting the scene…','Polishing the details…'];
 
-function buildPrompt(name, tagline){
-  var sign='photorealistic architectural photograph, '+STYLES[style]+' reading "'+name+'"'+
-    (tagline?', with smaller text below reading "'+tagline+'"':'')+', '+TYPES[type]+
-    ', sign text spelled exactly as written, centered composition, no watermark, '+
-    'no people blocking the sign, ultra detailed, professional commercial photography';
-  return sign;
+function buildPrompt(){
+  return GEOM[type]+', '+SCENES[style]+
+    ', ultra detailed, professional commercial photography, no watermark, no people blocking the sign';
+}
+
+function fitFont(text, family, weight, maxW, start){
+  var size=start;
+  ctx.font=weight+' '+size+'px '+family;
+  while(size>18 && ctx.measureText(text).width>maxW){ size-=4; ctx.font=weight+' '+size+'px '+family; }
+  return size;
+}
+function drawTracked(text, cx, y, tracking){
+  var widths=[], total=0, i, ch;
+  for(i=0;i<text.length;i++){ ch=text[i]; var w=ctx.measureText(ch).width; widths.push(w); total+=w; }
+  total+=tracking*(text.length-1);
+  var x=cx-total/2;
+  var prevAlign=ctx.textAlign; ctx.textAlign='left';
+  for(i=0;i<text.length;i++){ ctx.fillText(text[i],x,y); x+=widths[i]+tracking; }
+  ctx.textAlign=prevAlign;
+}
+function avgColor(x,y,w,h){
+  try{
+    var d=ctx.getImageData(Math.max(0,x|0),Math.max(0,y|0),Math.max(1,w|0),Math.max(1,h|0)).data;
+    var r=0,g=0,b=0,n=0,i;
+    for(i=0;i<d.length;i+=16){ r+=d[i]; g+=d[i+1]; b+=d[i+2]; n++; }
+    if(!n) return null;
+    return [r/n,g/n,b/n];
+  }catch(e){ return null; }
+}
+function rr(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+function composite(img, name, tagline){
+  var W=canvas.width, H=canvas.height;
+  /* Draw the photo, cropping the bottom ~8% to remove the watermark band. */
+  var iw=img.naturalWidth||1024, ih=img.naturalHeight||840;
+  var cropB=Math.round(ih*0.08);
+  ctx.clearRect(0,0,W,H);
+  ctx.drawImage(img, 0,0,iw,ih-cropB, 0,0,W,H);
+
+  var zone=ZONES[type], ts=TYPESET[style], gs=TAGSET[style];
+  var cx=zone.x*W, cy=zone.y*H;
+  var panel=PANELS[type];
+  var label=ts.upper?name.toUpperCase():name;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+
+  var px=W/2, py=cy, panelW=0, panelH=0;
+  if(panel){
+    /* Deterministic sign panel: covers any model gibberish, keeps the scene's hue. */
+    panelW=panel.w*W; panelH=panel.h*H;
+    px=cx-panelW/2; py=cy-panelH/2;
+    var c=avgColor(px,py,panelW,panelH);
+    var base=c?('rgb('+(c[0]*.42|0)+','+(c[1]*.42|0)+','+(c[2]*.42|0)+')'):'#22252b';
+    ctx.save();
+    ctx.shadowColor='rgba(0,0,0,.45)'; ctx.shadowBlur=28; ctx.shadowOffsetY=10;
+    rr(px,py,panelW,panelH,16);
+    ctx.fillStyle=base; ctx.fill();
+    ctx.restore();
+    ctx.save();
+    rr(px,py,panelW,panelH,16); ctx.clip();
+    var sheen=ctx.createLinearGradient(0,py,0,py+panelH);
+    sheen.addColorStop(0,'rgba(255,255,255,.10)'); sheen.addColorStop(.28,'rgba(255,255,255,0)');
+    ctx.fillStyle=sheen; ctx.fillRect(px,py,panelW,panelH);
+    ctx.restore();
+  }
+
+  var maxW=(panel?panelW:W)*.86;
+  var size=fitFont(label, ts.family, ts.weight, maxW, 112);
+  ctx.font=ts.weight+' '+size+'px '+ts.family;
+  var trackingPx=size*ts.tracking;
+  var nameY=panel?(tagline?cy-panelH*.13:cy):cy-(tagline?size*.32:0);
+
+  ctx.save();
+  if(ts.glow){
+    ctx.shadowColor=ts.glow[0]; ctx.shadowBlur=size*.55;
+    ctx.fillStyle=ts.glow[1];
+    drawTracked(label,cx,nameY,trackingPx);
+    drawTracked(label,cx,nameY,trackingPx);
+    ctx.shadowBlur=size*.22;
+    ctx.fillStyle=ts.color;
+    drawTracked(label,cx,nameY,trackingPx);
+  }else{
+    ctx.shadowColor=ts.shadow; ctx.shadowBlur=size*.06; ctx.shadowOffsetY=Math.max(2,size*.03);
+    ctx.fillStyle=ts.color;
+    drawTracked(label,cx,nameY,trackingPx);
+  }
+  ctx.restore();
+
+  if(tagline){
+    var tSize=fitFont(tagline, gs.family, gs.weight, maxW*.92, Math.round(size*.30));
+    ctx.save();
+    ctx.font=gs.weight+' '+tSize+'px '+gs.family;
+    if(ts.glow){ ctx.shadowColor=ts.glow[0]; ctx.shadowBlur=tSize*.5; }
+    else{ ctx.shadowColor='rgba(0,0,0,.5)'; ctx.shadowBlur=tSize*.12; ctx.shadowOffsetY=2; }
+    ctx.fillStyle=ts.glow?ts.color:gs.color;
+    var tagY=panel?cy+panelH*.26:nameY+size*.62+tSize*.5;
+    drawTracked(tagline,cx,tagY,tSize*.08);
+    ctx.restore();
+  }
 }
 
 var msgTimer=null;
+function fail(msg){
+  clearInterval(msgTimer);
+  loadMsg.textContent=msg||'Hmm, that one didn\'t come out right. Hit "try another style" to go again.';
+}
 function generate(){
   var name=biz.value.trim();
   if(!name){ biz.focus(); biz.style.borderColor='#c2410c';
@@ -261,14 +397,27 @@ function generate(){
   var mi=0; loadMsg.textContent=MSGS[0];
   clearInterval(msgTimer);
   msgTimer=setInterval(function(){ mi=(mi+1)%MSGS.length; loadMsg.textContent=MSGS[mi]; },2200);
+
   var seed=Math.floor(Math.random()*999999);
-  var url='https://image.pollinations.ai/prompt/'+encodeURIComponent(buildPrompt(name,tagline))+
-    '?width=1024&height=768&seed='+seed+'&nologo=true';
-  mockImg.onload=function(){ clearInterval(msgTimer); mock.classList.add('done'); };
-  mockImg.onerror=function(){ clearInterval(msgTimer);
-    loadMsg.textContent='Hmm, that one didn\'t come out right. Hit "try another style" to go again.'; };
-  mockImg.src=url;
-  mockImg.alt='Sign mockup for '+name;
+  /* Taller source so the watermark-crop stays distortion-free. */
+  var url='https://image.pollinations.ai/prompt/'+encodeURIComponent(buildPrompt())+
+    '?width=1024&height=840&seed='+seed+'&nologo=true';
+  var img=new Image();
+  img.crossOrigin='anonymous';
+
+  function render(){
+    try{
+      composite(img, name, tagline);
+      clearInterval(msgTimer); mock.classList.add('done');
+    }catch(err){ fail(); }
+  }
+  img.onload=function(){
+    /* Wait for display fonts so the overlay sets in the right typeface. */
+    if(document.fonts && document.fonts.ready){ document.fonts.ready.then(render); }
+    else{ render(); }
+  };
+  img.onerror=function(){ fail(); };
+  img.src=url;
 }
 genBtn.addEventListener('click',generate);
 againBtn.addEventListener('click',function(){
