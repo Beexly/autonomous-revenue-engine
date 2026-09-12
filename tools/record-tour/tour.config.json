@@ -1,0 +1,29 @@
+{
+  "tours": [
+    {
+      "name": "signpreview",
+      "url": "https://beexly.github.io/autonomous-revenue-engine/docs/signpreview.html",
+      "viewport": { "width": 1280, "height": 720 },
+      "durationSec": 20,
+      "steps": [
+        { "type": "navigate", "url": "https://beexly.github.io/autonomous-revenue-engine/docs/signpreview.html" },
+        { "type": "fill", "selector": "input[name='business']", "text": "Garrett Baxley" },
+        { "type": "click", "selector": "button:has-text('Generate')", "text": "Generate" },
+        { "type": "wait", "waitMs": 3000 }
+      ]
+    },
+    {
+      "name": "kit",
+      "url": "https://beexly.github.io/autonomous-revenue-engine/docs/kit/",
+      "viewport": { "width": 1280, "height": 720 },
+      "durationSec": 30,
+      "steps": [
+        { "type": "navigate", "url": "https://beexly.github.io/autonomous-revenue-engine/docs/kit/" },
+        { "type": "scrollTo", "scrollTo": "top", "waitMs": 500 },
+        { "type": "wait", "waitMs": 1000 },
+        { "type": "scrollTo", "scrollTo": "bottom", "waitMs": 3000 },
+        { "type": "wait", "waitMs": 2000 }
+      ]
+    }
+  ]
+}

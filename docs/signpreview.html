@@ -215,6 +215,14 @@ footer strong{font-family:var(--serif);color:var(--ink)}
   <p style="margin-top:6px">Free concept mockups. Full design packages $150 flat. No accounts, no subscriptions.</p>
 </div></footer>
 
+<!-- Lead capture: Supabase + Resend -->
+<script type="module">
+  import { SUPABASE_URL, SUPABASE_ANON_KEY } from './js/config.js';
+  window.SUPABASE_URL = SUPABASE_URL;
+  window.SUPABASE_ANON_KEY = SUPABASE_ANON_KEY;
+</script>
+<script src="./js/lead-capture.js" type="module"></script>
+
 <script>
 (function(){
 "use strict";
