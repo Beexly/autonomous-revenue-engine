@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vow &amp; Post — Wedding Signage Design</title>
+<meta name="description" content="Custom wedding signage designed for your special day. Welcome signs, seating charts, menus, table numbers.">
+<style>
+/* ---------- Brand palette ---------- */
+:root{--cream:#f6efe0;--ink:#1d130b;--ember:#c2410c;--gold:#d9a441;--warm:#fdfcf8;--muted:#8a755a;--line:#e2d3b4}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--ember);color:#fff}
+
+/* ---------- Watermark ---------- */
+.watermark{background:#3d2519;color:#fff;text-align:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 0}
+
+/* ---------- Header ---------- */
+header{text-align:center;padding:50px 20px 40px}
+header h1{font-family:Georgia,serif;font-size:clamp(36px,8vw,58px);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
+header h1 span{color:var(--ember)}
+header p{font-size:18px;color:var(--muted);max-width:480px;margin:0 auto}
+
+/* ---------- Form ---------- */
+.form{background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(29,19,11,.08)}
+.form label{display:block;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.form input,.form select{width:100%;font-size:16px;padding:12px 14px;border:2px solid var(--line);border-radius:12px;font-family:Georgia,serif;background:var(--warm);color:var(--ink);outline:none;transition:border-color .2s}
+.form input:focus,.form select:focus{border-color:var(--ember)}
+.form input::placeholder{color:#baa88a}
+.form .row{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:600px){.form .row{grid-template-columns:repeat(3,1fr)}}
+.form .field{margin-bottom:16px}
+
+/* ---------- Pills ---------- */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.pill{border:2px solid var(--line);background:var(--warm);border-radius:999px;padding:8px 18px;font-size:13px;font-weight:700;cursor:pointer;transition:all .18s;color:var(--muted)}
+.pill:hover{border-color:var(--ember)}
+.pill.on{background:var(--ember);border-color:var(--ember);color:#fff}
+
+/* ---------- Generate button ---------- */
+.go{margin:20px 0;text-align:center}
+.go button{font-size:18px;padding:16px 40px;border:0;border-radius:999px;font-weight:800;cursor:pointer;background:var(--ember);color:#fff;transition:transform .15s}
+.go button:active{transform:scale(.96)}
+.go button:hover{background:#a53608}
+
+/* ---------- Result ---------- */
+.result{display:none;margin-top:24px;text-align:center}
+.result.show{display:block}
+.mock{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--warm);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;min-height:260px;position:relative}
+.mock canvas{width:100%;height:100%}
+.mock .loading{display:flex;flex-direction:column;gap:8px;align-items:center;color:var(--muted);font-size:14px}
+.shimmer{width:70%;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--line) 25%,var(--warm) 50%,var(--line) 75%);background-size:200% 100%;animation:shim 1.4s linear infinite}
+@keyframes shim{to{background-position:-200% 0}}
+.actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-block;font-weight:800;border-radius:999px;padding:12px 24px;font-size:14px;border:0;cursor:pointer;transition:transform .15s}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--ember);color:#fff}
+.btn-ghost{background:transparent;border:2px solid var(--line);color:var(--ink)}
+.note{margin-top:10px;font-size:13px;color:var(--muted)}
+
+/* ---------- Offer ---------- */
+.offer{background:#fff;border-radius:20px;padding:32px;margin-top:30px;box-shadow:0 4px 24px rgba(29,19,11,.08)}
+.offer h2{font-family:Georgia,serif;font-size:28px;margin-bottom:12px}
+.offer .cards{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:500px){.offer .cards{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--warm);border:2px solid var(--line);border-radius:16px;padding:24px;text-align:center}
+.card .price{font-family:Georgia,serif;font-size:42px;font-weight:700;color:var(--ember);margin-bottom:4px}
+.card .price small{font-size:16px;font-weight:400;color:var(--muted)}
+.card p{font-size:14px;color:var(--muted);margin-bottom:14px}
+.card .btn{display:block;text-align:center}
+
+/* ---------- Print-on section ---------- */
+.print{background:#fff;border-radius:20px;padding:32px;margin-top:30px;box-shadow:0 4px 24px rgba(29,19,11,.08)}
+.print h2{font-family:Georgia,serif;font-size:24px;margin-bottom:14px}
+.print ul{list-style:none;display:grid;gap:10px}
+.print li{padding:12px 16px;background:var(--warm);border-radius:10px;font-size:14px;display:flex;justify-content:space-between;align-items:center}
+.print .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.print .affiliate{font-size:12px;color:var(--muted);margin-top:14px;font-style:italic}
+
+/* ---------- Cross-sell ---------- */
+.cross{background:var(--ink);color:#fff;border-radius:20px;padding:36px 24px;margin-top:30px;text-align:center}
+.cross h2{font-family:Georgia,serif;font-size:24px;margin-bottom:8px}
+.cross p{font-size:16px;opacity:.85;margin-bottom:20px}
+.cross .btn{display:inline-block;background:var(--gold);color:var(--ink);font-size:18px;padding:16px 36px}
+
+/* ---------- Footer ---------- */
+footer{padding:30px 20px;text-align:center;font-size:12px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
+
+@media(max-width:768px){.form{padding:20px}header{padding:40px 20px 30px}}
+@media(prefers-reduced-motion:reduce){.shimmer{animation:none}}
+</style>
+</head>
+<body>
+<div class="watermark">SAMPLE PREVIEW — NOT A REAL BUSINESS</div>
+
+<header>
+<h1>Vow &amp; <span>Post</span></h1>
+<p>Custom wedding signage, hand-finished and designed for your day.</p>
+</header>
+
+<section class="form">
+<h2 style="font-family:Georgia,serif;font-size:22px;margin-bottom:18px">Design your sign</h2>
+<div class="row">
+  <div class="field">
+    <label for="couple">Couple names</label>
+    <input type="text" id="couple" placeholder="Sarah &amp; James">
+  </div>
+  <div class="field">
+    <label for="date">Wedding date</label>
+    <input type="text" id="date" placeholder="June 14, 2026">
+  </div>
+  <div class="field">
+    <label for="venue">Venue name</label>
+    <input type="text" id="venue" placeholder="The Woodlands">
+  </div>
+</div>
+
+<div class="field">
+  <label>Product type</label>
+  <div class="pills" id="productPills">
+    <button class="pill on" data-v="welcome">Welcome sign</button>
+    <button class="pill" data-v="seating">Seating chart</button>
+    <button class="pill" data-v="menu">Menu</button>
+    <button class="pill" data-v="table">Table number</button>
+  </div>
+</div>
+
+<div class="field">
+  <label>Style</label>
+  <div class="pills" id="stylePills">
+    <button class="pill on" data-v="modern">Modern Minimal</button>
+    <button class="pill" data-v="romantic">Romantic Script</button>
+    <button class="pill" data-v="rustic">Rustic Charm</button>
+    <button class="pill" data-v="classic">Classic Formal</button>
+  </div>
+</div>
+
+<div class="go">
+  <button id="generate">Generate mockup</button>
+</div>
+
+<div class="result" id="result">
+  <div class="mock" id="mock">
+    <div class="loading"><div class="shimmer"></div><span>Rendering your sign…</span></div>
+    <canvas id="preview" width="800" height="600" role="img" aria-label="Your wedding sign mockup"></canvas>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" id="request">Request this design</button>
+    <button class="btn btn-ghost" id="retry">Try another</button>
+  </div>
+  <p class="note">$29 single design · Full 4-piece suite $79 · Free preview first</p>
+</div>
+</section>
+
+<section class="offer">
+<h2>One design or the full suite</h2>
+<div class="cards">
+  <div class="card">
+    <div class="price">$29 <small>single</small></div>
+    <p>One design, print-ready, delivered the same day.</p>
+    <button class="btn btn-ghost" id="buySingle">Order now</button>
+  </div>
+  <div class="card" style="border-color:var(--gold)">
+    <div class="price">$79 <small>4-piece suite</small></div>
+    <p>Welcome sign + seating chart + menu + table number — matched and complete.</p>
+    <button class="btn btn-primary" id="buySuite">Order now</button>
+  </div>
+</div>
+</section>
+
+<section class="print">
+<h2>What to print on</h2>
+<ul>
+  <li><span>Cardstock 110lb</span><span class="tag">Best for signs</span></li>
+  <li><span>Felted cotton paper</span><span class="tag">Classic feel</span></li>
+  <li><span>Metallic paper</span><span class="tag">Gold accents</span></li>
+  <li><span>Acrylic sign holder</span><span class="tag">Table numbers</span></li>
+  <li><span>Wooden easel stand</span><span class="tag">Welcome signs</span></li>
+</ul>
+<p class="affiliate">Affiliate links: Amazon Associates (tracking ID placeholder — Garrett activates later). FTC disclosure: we may earn from qualifying purchases.</p>
+</section>
+
+<section class="cross">
+<h2>Your wedding needs a website too</h2>
+<p>Kit websites — $350 one-pagers. Your guests find everything in one place.</p>
+<a href="https://ig.me/m/gbeexly" class="btn">Start with a free preview</a>
+</section>
+
+<footer>Vow &amp; Post · The Woodlands, TX · Sample preview only</footer>
+
+<script>
+(function(){
+  var product='welcome', style='modern';
+  var couple=document.getElementById('couple');
+  var date=document.getElementById('date');
+  var venue=document.getElementById('venue');
+
+  // Product pills
+  document.getElementById('productPills').addEventListener('click',function(e){
+    var b=e.target.closest('.pill'); if(!b) return;
+    document.querySelectorAll('#productPills .pill').forEach(function(p){p.classList.remove('on')});
+    b.classList.add('on'); product=b.dataset.v;
+  });
+
+  // Style pills
+  document.getElementById('stylePills').addEventListener('click',function(e){
+    var b=e.target.closest('.pill'); if(!b) return;
+    document.querySelectorAll('#stylePills .pill').forEach(function(p){p.classList.remove('on')});
+    b.classList.add('on'); style=b.dataset.v;
+  });
+
+  // Generate
+  document.getElementById('generate').addEventListener('click',function(){
+    var name=couple.value.trim();
+    if(!name){ couple.focus(); couple.style.borderColor='#c2410c'; setTimeout(function(){couple.style.borderColor=''},1600); return; }
+    var d=date.value.trim()||'2026';
+    var v=venue.value.trim()||'Your venue';
+    var canvas=document.getElementById('preview');
+    var ctx=canvas.getContext('2d');
+    var W=canvas.width, H=canvas.height;
+
+    // Background
+    var bg=style==='modern'?'#f6efe0':style==='romantic'?'#fdf5f0':style==='rustic'?'#f2e8d8':'#f8f4ee';
+    ctx.fillStyle=bg;
+    ctx.fillRect(0,0,W,H);
+
+    // Decorative border
+    ctx.strokeStyle='#c2410c';
+    ctx.lineWidth=2;
+    ctx.strokeRect(20,20,W-40,H-40);
+
+    // Text
+    ctx.fillStyle='#1d130b';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.font='bold 36px Georgia,serif';
+    var text=product==='welcome'?name+' Welcome':product==='menu'?'Menu for '+name+' & '+d:'Table '+name;
+    ctx.fillText(text,W/2,H/2-20);
+
+    ctx.font='20px Georgia,serif';
+    ctx.fillStyle='#8a755a';
+    ctx.fillText(style+' · '+v,W/2,H/2+30);
+
+    document.querySelector('.loading').style.display='none';
+    canvas.style.display='block';
+    document.getElementById('result').classList.add('show');
+  });
+
+  document.getElementById('retry').addEventListener('click',function(){
+    document.getElementById('result').classList.remove('show');
+    document.querySelector('.loading').style.display='';
+    document.getElementById('preview').style.display='none';
+  });
+
+  document.getElementById('request').addEventListener('click',function(){
+    window.open('https://ig.me/m/gbeexly','_blank');
+  });
+  document.getElementById('buySingle').addEventListener('click',function(){
+    window.open('https://ig.me/m/gbeexly','_blank');
+  });
+  document.getElementById('buySuite').addEventListener('click',function(){
+    window.open('https://ig.me/m/gbeexly','_blank');
+  });
+})();
+</script>
+</body>
+</html>
