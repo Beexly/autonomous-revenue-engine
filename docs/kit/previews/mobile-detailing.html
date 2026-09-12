@@ -1,150 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SAMPLE PREVIEW — fictional business, built by Kit (Garrett Baxley, The Woodlands TX).
+  Art direction: "BLACK GLOSS" — automotive noir, chrome gradients, cyan rim-light.
+  Configurator/spec-sheet rhythm. Single file, no build step.
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suds & Shine Mobile Detail — Auto Detailing in The Woodlands, TX</title>
+<title>Obsidian Auto Spa — Mobile Detailing in Houston, TX</title>
+<meta name="description" content="Obsidian Auto Spa: premium mobile detailing that comes to you. Interior from $129, full details from $199. Houston, Katy, Sugar Land.">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
 :root{
-  --deep:#2d1f3d;
-  --violet:#4a2d7d;
-  --gold:#d4a853;
-  --cream:#fdfcf8;
-  --ink:#241f2b;
-  --glass:#e8e0f0;
+  --bg:#060607; --bg2:#0c0d10; --panel:#111318;
+  --chrome1:#f4f7fb; --chrome2:#9aa7b8; --steel:#5b6675;
+  --cyan:#37e6ff; --cyan-dim:rgba(55,230,255,.14);
+  --paper:#eef2f7; --dim:#a7b1bf;
+  --line:rgba(238,242,247,.12);
+  --disp:'Archivo',Impact,'Arial Narrow',sans-serif;
+  --body:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
 }
-body{font-family:"Bebas Neue",sans-serif;color:var(--ink);background:var(--deep);
-  line-height:1.5;-webkit-font-smoothing:antialiased}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-::selection{background:var(--gold);color:var(--ink)}
+body{background:var(--bg);color:var(--paper);font-family:var(--body);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--cyan);color:#00181d}
+a{color:inherit}
 
-/* ---------- Google Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro:wght@400;600&display=swap');
+/* gloss sweep */
+.sheen{position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.5;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.035) 45%,transparent 60%);
+  background-size:280% 280%;animation:sheen 11s ease-in-out infinite}
+@keyframes sheen{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
 
-/* ---------- Watermark ---------- */
-.watermark{background:#1a1028;color:var(--gold);text-align:center;
-  font-family:"Bebas Neue",sans-serif;font-size:12px;letter-spacing:.2em;
-  text-transform:uppercase;padding:8px 0}
+.wm{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(6,6,7,.88);
+  border-bottom:1px solid var(--line);color:var(--dim);font-size:10px;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;text-align:center;padding:7px 10px;backdrop-filter:blur(8px)}
 
-/* ---------- Hero ---------- */
-.hero{position:relative;text-align:center;padding:60px 20px 40px;
-  background:linear-gradient(180deg,var(--violet) 0%,var(--deep) 100%)}
-.hero h1{font-family:"Bebas Neue",sans-serif;font-size:52px;font-weight:400;
-  letter-spacing:-.04em;color:var(--cream);margin-bottom:12px;line-height:1.1}
-.hero h1 span{color:var(--gold);font-weight:400}
-.hero .tagline{font-family:"Source Sans Pro",sans-serif;font-size:18px;
-  color:var(--glass);margin-bottom:24px;letter-spacing:.02em}
-.hero .city{font-family:"Source Sans Pro",sans-serif;font-size:15px;opacity:.85;
-  margin-bottom:30px}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:120px 24px 0;overflow:hidden;
+  background:
+    radial-gradient(900px 420px at 50% 115%,rgba(55,230,255,.13),transparent 60%),
+    radial-gradient(700px 380px at 85% -10%,rgba(154,167,184,.10),transparent 55%),
+    linear-gradient(180deg,#0a0b0e 0%,var(--bg) 75%)}
+/* speed lines */
+.speed{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.speed i{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(55,230,255,.5),transparent);
+  animation:sp linear infinite}
+@keyframes sp{from{transform:translateX(-30vw)}to{transform:translateX(115vw)}}
+.hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%}
+.badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;
+  padding:8px 18px;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--cyan);background:var(--cyan-dim);margin-bottom:26px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);
+  animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.4}}
+h1{font-family:var(--disp);font-weight:900;font-size:clamp(54px,11.5vw,158px);line-height:.94;
+  letter-spacing:-.015em;text-transform:uppercase}
+.chrome{background:linear-gradient(180deg,#ffffff 20%,#9aa7b8 48%,#e8edf4 52%,#5b6675 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .cy{color:var(--cyan);-webkit-text-stroke:0}
+.hero-sub{max-width:56ch;color:var(--dim);font-size:clamp(15px,2vw,18px);margin:24px 0 32px}
+.hero-sub strong{color:var(--paper)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:12px;
+  padding:16px 32px;font-size:16px;transition:transform .15s,box-shadow .2s;letter-spacing:.02em}
+.btn:active{transform:scale(.96)}
+.btn-cy{background:var(--cyan);color:#02181c;box-shadow:0 10px 34px rgba(55,230,255,.35)}
+.btn-cy:hover{transform:translateY(-2px);box-shadow:0 16px 46px rgba(55,230,255,.5)}
+.btn-ghost{border:1px solid var(--line);color:var(--paper);background:rgba(238,242,247,.04)}
+.btn-ghost:hover{border-color:var(--chrome2);transform:translateY(-2px)}
+.spec-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:0}
+.spec{background:rgba(12,13,16,.9);padding:20px 18px;text-align:center}
+.spec .v{font-family:var(--disp);font-weight:800;font-size:clamp(22px,3.6vw,34px);color:var(--paper)}
+.spec .v em{font-style:normal;color:var(--cyan)}
+.spec .k{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-top:6px}
+.hero-foot{height:56px}
 
-/* ---------- Services ---------- */
-.services{max-width:620px;margin:0 auto 60px;padding:0 20px}
-.services h2{font-family:"Bebas Neue",sans-serif;font-size:32px;font-weight:400;
-  letter-spacing:-.02em;margin-bottom:32px;padding-bottom:12px;
-  border-bottom:1px solid var(--gold);color:var(--cream)}
-.services-grid{display:grid;gap:24px;grid-template-columns:1fr}
-@media(min-width:480px){.services-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+/* ---------- sections ---------- */
+section{padding:96px 24px}
+.wrap{max-width:1120px;margin:0 auto}
+.kick{font-size:11px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+h2{font-family:var(--disp);font-weight:900;font-size:clamp(36px,6vw,70px);line-height:.96;
+  text-transform:uppercase;letter-spacing:-.01em;margin-bottom:14px}
+.lede{color:var(--dim);font-size:17px;max-width:58ch;margin-bottom:54px}
 
-/* ---------- Service Card ---------- */
-.service-card{background:var(--cream);border-radius:12px;padding:28px 24px;
-  position:relative;overflow:min(320px,100%);min-height:280px;display:flex;
-  flex-direction:column;justify-content:space-between;transition:transform .3s}
-.service-card:hover{transform:translateY(-4px)}
-.service-card::before{content:'';position:absolute;top:-40px;right:-40px;
-  width:120px;height:120px;border-radius:50%;background:rgba(212,168,83,.08)}
-.service-card .icon{width:48px;height:48px;margin:0 auto 20px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;color:var(--violet);background:rgba(74,45,125,.08)}
-.service-card h3{font-family:"Bebas Neue",sans-serif;font-size:22px;letter-spacing:-.01em;
-  margin-bottom:8px;text-align:center}
-.service-card p{font-family:"Source Sans Pro",sans-serif;font-size:14px;
-  color:var(--ink);text-align:center;line-height:1.5}
+/* packages — configurator cards */
+.pkgs{display:grid;gap:16px}
+@media(min-width:880px){.pkgs{grid-template-columns:repeat(3,1fr)}}
+.pkg{background:linear-gradient(180deg,var(--panel),#0a0b0e);border:1px solid var(--line);
+  border-radius:22px;padding:36px 30px;position:relative;overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s}
+.pkg:hover{transform:translateY(-8px);border-color:rgba(55,230,255,.5);box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.pkg.hot{border:1px solid rgba(55,230,255,.55);box-shadow:0 18px 60px rgba(55,230,255,.12)}
+.pkg .flag{position:absolute;top:18px;right:-34px;transform:rotate(38deg);background:var(--cyan);color:#02181c;
+  font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:6px 40px}
+.pkg .code{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
+.pkg h3{font-family:var(--disp);font-weight:800;font-size:27px;text-transform:uppercase;letter-spacing:.01em;margin-bottom:8px}
+.pkg .desc{color:var(--dim);font-size:14px;margin-bottom:22px;flex:0}
+.pkg ul{list-style:none;margin-bottom:26px;flex:1}
+.pkg li{padding:10px 0 10px 26px;position:relative;font-size:14px;color:var(--dim);border-bottom:1px solid var(--line)}
+.pkg li:last-child{border-bottom:0}
+.pkg li::before{content:"";position:absolute;left:2px;top:16px;width:12px;height:7px;
+  border-left:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(-45deg)}
+.pkg .price{display:flex;align-items:baseline;gap:10px;margin-bottom:24px}
+.pkg .price .from{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+.pkg .price .amt{font-family:var(--disp);font-weight:900;font-size:44px;color:var(--paper)}
+.pkg .btn{text-align:center}
 
-/* ---------- Proof Strip ---------- */
-.proof{background:var(--deep);color:var(--cream);padding:32px 24px;text-align:center}
-.proof h3{font-family:"Bebas Neue",sans-serif;font-size:28px;letter-spacing:-.02em;
-  margin-bottom:12px}
-.proof .stars{color:var(--gold);font-size:16px;margin-bottom:12px}
-.proof p{font-size:15px;max-width:460px;margin:0 auto;line-height:1.6}
+/* add-ons strip */
+.addons{margin-top:22px;border:1px dashed rgba(55,230,255,.35);border-radius:18px;padding:26px 30px;
+  display:flex;gap:14px 34px;flex-wrap:wrap;align-items:center;background:rgba(55,230,255,.04)}
+.addons .t{font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan)}
+.addons span.a{font-size:15px;color:var(--dim)}
+.addons span.a b{color:var(--paper)}
 
-/* ---------- Service Area ---------- */
-.area{background:var(--cream);border-top:1px solid var(--gold);
-  border-bottom:1px solid var(--gold);padding:24px 20px;max-width:620px;margin:0 auto}
-.area h3{font-family:"Bebas Neue",sans-serif;font-size:24px;letter-spacing:-.02em;
-  margin-bottom:16px}
-.area .towns{font-family:"Source Sans Pro",sans-serif;color:var(--ink);opacity:.6;
-  font-size:14px}
-.area .towns span{margin-right:20px;margin-bottom:8px;display:inline-block}
+/* how it works — horizontal steps */
+.steps{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+@media(min-width:820px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:var(--bg2);padding:34px 28px;position:relative}
+.step .n{font-family:var(--disp);font-weight:900;font-size:52px;color:transparent;
+  -webkit-text-stroke:1.5px var(--steel);line-height:1;margin-bottom:16px}
+.step h4{font-size:16px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+.step p{font-size:14px;color:var(--dim)}
 
-/* ---------- Sticky Call Path ---------- */
-.call{position:fixed;bottom:0;left:0;right:0;background:var(--deep);
-  padding:16px 20px 16px calc(20px + env(safe-area-inset-bottom))}
-.call a{display:block;max-width:600px;margin:0 auto;background:var(--gold);
-  color:var(--ink);font-family:"Bebas Neue",sans-serif;font-size:24px;
-  letter-spacing:-.02em;text-align:center;text-decoration:none;
-  padding:18px;border-radius:12px;transition:background .3s}
-.call a:hover{background:#c9963f}
+/* proof */
+.proof{background:linear-gradient(180deg,var(--bg2),var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quotes{display:grid;gap:16px}
+@media(min-width:880px){.quotes{grid-template-columns:1fr 1fr}}
+.quote{border:1px solid var(--line);border-radius:20px;padding:34px 32px;background:rgba(238,242,247,.03)}
+.quote .stars{color:var(--cyan);letter-spacing:.3em;font-size:14px;margin-bottom:16px}
+.quote p{font-size:16px;line-height:1.7;color:var(--paper);margin-bottom:18px}
+.quote .who{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.quote .who span{color:var(--steel)}
 
-/* ---------- Footer ---------- */
-footer{padding:24px 20px;text-align:center;font-size:12px;
-  color:var(--glass);font-family:"Source Sans Pro",sans-serif;letter-spacing:.15em;
-  text-transform:uppercase}
-footer a{color:var(--gold);text-decoration:none}
+/* area */
+.towns{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.town{border:1px solid var(--line);border-radius:10px;padding:12px 22px;font-weight:700;font-size:14px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--dim);transition:all .25s;background:rgba(238,242,247,.02)}
+.town:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
 
-@media (prefers-reduced-motion:reduce){*{-webkit-animation-duration:.01ms!important;
-  animation-duration:.01ms!important;-webkit-transition-duration:.01ms!important;
-  transition-duration:.01ms!important}}
+/* final */
+.final{text-align:center;background:
+  radial-gradient(800px 420px at 50% 130%,rgba(55,230,255,.16),transparent 65%)}
+.final h2{font-size:clamp(44px,8.6vw,104px)}
+.final h2 .cy2{color:var(--cyan)}
+.final p{color:var(--dim);font-size:18px;max-width:52ch;margin:18px auto 36px}
+.big-call{display:inline-block;font-family:var(--disp);font-weight:900;font-size:clamp(30px,6vw,58px);
+  color:var(--paper);text-decoration:none;letter-spacing:.01em;border-bottom:4px solid var(--cyan);
+  padding-bottom:6px;transition:color .2s}
+.big-call:hover{color:var(--cyan)}
+
+.stick{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:250;display:flex;gap:10px}
+.stick a{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size:17px;border-radius:14px;
+  padding:17px 10px;box-shadow:0 14px 40px rgba(0,0,0,.6)}
+.stick .call{background:var(--cyan);color:#02181c}
+.stick .txt{background:rgba(17,19,24,.94);color:var(--paper);border:1px solid var(--line)}
+@media(min-width:760px){.stick{display:none}}
+
+footer.site{border-top:1px solid var(--line);padding:40px 24px 120px;color:var(--steel);font-size:13px}
+@media(min-width:760px){footer.site{padding-bottom:44px}}
+footer.site .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);letter-spacing:.08em}
+
+[data-r]{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+[data-r].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  [data-r]{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
-<div class="watermark">SAMPLE PREVIEW — NOT A REAL BUSINESS</div>
+<div class="sheen" aria-hidden="true"></div>
+<div class="wm">Sample preview — fictional business · built by Kit</div>
 
 <header class="hero">
-<h1>Gloss &amp; <span>Reflection</span></h1>
-<div class="tagline">Mobile auto detailing that makes your car showroom-worthy again</div>
-<div class="city">The Woodlands, TX</div>
+  <div class="speed" id="speed" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <span class="badge"><i></i>Mobile — we come to you</span>
+    <h1><span class="chrome">Showroom shine,</span><br><span class="cy">driveway delivered.</span></h1>
+    <p class="hero-sub">Obsidian Auto Spa is Houston's mobile detailing studio. <strong>We bring the water, the power, and the obsession</strong> — you keep your keys and your Saturday.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-cy" href="tel:+18325550188">Book — (832) 555-0188</a>
+      <a class="btn btn-ghost" href="#packages">Packages &amp; prices</a>
+    </div>
+    <div class="spec-row" data-r>
+      <div class="spec"><div class="v">2<em>–</em>3<em>hr</em></div><div class="k">At your curb</div></div>
+      <div class="spec"><div class="v">100<em>%</em></div><div class="k">Self-contained</div></div>
+      <div class="spec"><div class="v">4.9<em>★</em></div><div class="k">900+ reviews</div></div>
+    </div>
+    <div class="hero-foot"></div>
+  </div>
 </header>
 
-<section class="services">
-<h2>Our Services</h2>
-<div class="services-grid">
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/></svg></div>
-    <h3>Full Interior & Exterior</h3>
-    <p>Deep-clean inside and out in your driveway — seats, carpets, paint, wheels.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-    <h3>Ceramic Spray Coating</h3>
-    <p>Months of gloss and water-beading protection without the ceramic-shop price.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
-    <h3>Fleet & Work Trucks</h3>
-    <p>Keep your business vehicles looking sharp with recurring fleet plans.</p>
-  </article>
-</div>
+<section id="packages">
+  <div class="wrap">
+    <div class="kick" data-r>Configure yours</div>
+    <h2 data-r>Pick a package.<br>We bring the shine.</h2>
+    <p class="lede" data-r>Every package is done at your home or office. Final price confirmed by text before we start — with photos of your car, not a guess.</p>
+    <div class="pkgs">
+      <div class="pkg" data-r>
+        <div class="code">PKG—01</div>
+        <h3>Interior Reset</h3>
+        <p class="desc">For daily drivers that have seen things.</p>
+        <ul>
+          <li>Deep vacuum + compressed-air blowout</li><li>Shampoo seats &amp; carpets</li><li>Leather cleaned &amp; conditioned</li><li>Streak-free glass, inside</li><li>Odor neutralizing treatment</li>
+        </ul>
+        <div class="price"><span class="from">From</span><span class="amt">$129</span></div>
+        <a class="btn btn-ghost" href="tel:+18325550188">Book Interior</a>
+      </div>
+      <div class="pkg hot" data-r>
+        <div class="flag">Most booked</div>
+        <div class="code">PKG—02</div>
+        <h3>The Full Obsidian</h3>
+        <p class="desc">Inside and out. The driveway showroom.</p>
+        <ul>
+          <li>Everything in Interior Reset</li><li>Foam bath + hand wash</li><li>Wheels, tires &amp; wells detailed</li><li>Spray sealant — 3-month gloss</li><li>Trim &amp; chrome dressed</li>
+        </ul>
+        <div class="price"><span class="from">From</span><span class="amt">$199</span></div>
+        <a class="btn btn-cy" href="tel:+18325550188">Book Full Detail</a>
+      </div>
+      <div class="pkg" data-r>
+        <div class="code">PKG—03</div>
+        <h3>Ceramic Armor</h3>
+        <p class="desc">Years of gloss, locked in.</p>
+        <ul>
+          <li>Everything in Full Obsidian</li><li>Paint decontamination</li><li>One-step gloss enhancement</li><li>3-year ceramic coating</li><li>Free annual inspection</li>
+        </ul>
+        <div class="price"><span class="from">From</span><span class="amt">$499</span></div>
+        <a class="btn btn-ghost" href="tel:+18325550188">Book Ceramic</a>
+      </div>
+    </div>
+    <div class="addons" data-r>
+      <span class="t">Add-ons</span>
+      <span class="a"><b>$40</b> pet hair extraction</span>
+      <span class="a"><b>$60</b> engine bay</span>
+      <span class="a"><b>$35</b> headlight restoration</span>
+      <span class="a"><b>$25</b> kid-seat deep clean</span>
+    </div>
+  </div>
 </section>
 
-<div class="proof">
-<h3>Cars that turn heads</h3>
-<div class="stars">★ ★ ★ ★ ★</div>
-<p>"Our SUV looks better than when we bought it. They come to us — we don't go anywhere."</p>
-</div>
-
-<section class="area">
-<h3>Service Area</h3>
-<div class="towns">Serving <span>The Woodlands</span> <span>Spring</span> <span>Shenandoah</span> <span>Aldine</span></div>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick" data-r>Zero effort required</div>
+    <h2 data-r>How it works</h2>
+    <div class="steps" style="margin-top:44px">
+      <div class="step" data-r><div class="n">01</div><h4>You text us</h4><p>Send your address, car, and what it needs. Price confirmed in minutes.</p></div>
+      <div class="step" data-r><div class="n">02</div><h4>We roll up</h4><p>Van, water, power — fully self-contained. We need nothing but the keys.</p></div>
+      <div class="step" data-r><div class="n">03</div><h4>2–3 hours</h4><p>Work from home, or don't. We'll text before/after photos when done.</p></div>
+      <div class="step" data-r><div class="n">04</div><h4>Walk-around</h4><p>Inspect it in daylight with us. Not thrilled? We re-do the panel free.</p></div>
+    </div>
+  </div>
 </section>
 
-<footer class="call">
-<a href="tel:+18325550461">Call (832) 555-0461 — Schedule your mobile detail</a>
+<section class="proof">
+  <div class="wrap">
+    <div class="kick" data-r>Receipts</div>
+    <h2 data-r>Houston keeps<br>rebooking.</h2>
+    <div class="quotes" style="margin-top:44px">
+      <div class="quote" data-r>
+        <div class="stars">★★★★★</div>
+        <p>My Tahoe had two kids, one labrador, and three years of road trips in it. It came back looking like the dealership. My wife thought I'd bought a new car.</p>
+        <div class="who">Derek W. <span>· Katy, TX</span></div>
+      </div>
+      <div class="quote" data-r>
+        <div class="stars">★★★★★</div>
+        <p>Booked at 9 AM from my office parking lot, car detailed by lunch, before/after photos in my texts. This is how every service should work.</p>
+        <div class="who">Alicia M. <span>· Sugar Land, TX</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick" data-r>Where we roll</div>
+    <h2 data-r>We come to you.</h2>
+    <div class="towns" data-r>
+      <span class="town">Houston</span><span class="town">Katy</span><span class="town">Sugar Land</span>
+      <span class="town">Pearland</span><span class="town">Cypress</span><span class="town">The Woodlands</span>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="kick" data-r style="text-align:center">Same-week slots</div>
+    <h2 data-r>Your car called.<br><span class="cy2">It wants this.</span></h2>
+    <p data-r>Text a photo of your car for an exact quote — back within the hour, 7 days a week.</p>
+    <div data-r><a class="big-call" href="tel:+18325550188">(832) 555-0188</a></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div><strong>OBSIDIAN AUTO SPA</strong><br>Houston, TX · Mobile detailing</div>
+    <div>Sample preview by Kit — not a real business.<br>© 2026</div>
+  </div>
 </footer>
 
-<footer>
-  © 2026 Suds & Shine Mobile Detail | Sample preview only | <a href="#">Privacy</a>
-</footer>
+<div class="stick">
+  <a class="call" href="tel:+18325550188">Call now</a>
+  <a class="txt" href="sms:+18325550188">Text a photo</a>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* speed lines */
+var sp=document.getElementById('speed');
+for(var i=0;i<14;i++){
+  var l=document.createElement('i');
+  var top=Math.random()*100, w=8+Math.random()*22, d=1.6+Math.random()*2.6, delay=-Math.random()*4;
+  l.style.cssText='top:'+top+'%;width:'+w+'vw;left:0;animation-duration:'+d+'s;animation-delay:'+delay+'s;opacity:'+(0.25+Math.random()*0.5);
+  sp.appendChild(l);
+}
+/* reveals */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('[data-r]').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>

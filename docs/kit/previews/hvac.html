@@ -1,145 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SAMPLE PREVIEW — fictional business, built by Kit (Garrett Baxley, The Woodlands TX).
+  Art direction: "MIDNIGHT SERVICE" — industrial, urgent, cold-air-in-a-hot-city.
+  Anton condensed display + Inter body. Single file, no build step.
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bayou Breeze Air Conditioning — HVAC in Houston, TX</title>
+<title>Bayou Breeze Air — 24/7 HVAC in Houston, TX</title>
+<meta name="description" content="Bayou Breeze Air: fast, honest AC repair and installs for Houston-area homes. 24/7 emergency service. Free second opinions.">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800&display=swap');
 :root{
-  --cool:#16345c;
-  --deep:#0e2643;
-  --ice:#e0f0ff;
-  --steel:#4a6b8a;
-  --charcoal:#222;
-  --white:#ffffff;
-  --gray:#555;
+  --bg:#05080f; --bg2:#0a1220; --panel:#0d1626;
+  --ice:#bfe3ff; --ice-dim:#7fa3c8; --steel:#5b7a99;
+  --hot:#ff5c1a; --hot-deep:#c23c07;
+  --paper:#f2f7fd; --line:rgba(191,227,255,.14);
+  --disp:'Anton',Impact,'Arial Narrow',sans-serif;
+  --body:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
 }
-body{font-family:"Inter",sans-serif;color:var(--steel);background:var(--deep);
-  line-height:1.6;-webkit-font-smoothing:antialiased}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-::selection{background:var(--ice);color:var(--steel)}
+body{background:var(--bg);color:var(--paper);font-family:var(--body);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--hot);color:#fff}
+a{color:inherit}
 
-/* ---------- Google Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+/* film grain */
+.grain{position:fixed;inset:-40%;width:180%;height:180%;pointer-events:none;z-index:200;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:gr 7s steps(8) infinite}
+@keyframes gr{0%,100%{transform:translate(0,0)}25%{transform:translate(-2%,3%)}50%{transform:translate(3%,-2%)}75%{transform:translate(-3%,-3%)}}
 
-/* ---------- Watermark ---------- */
-.watermark{background:#06192b;color:#fff;text-align:center;
-  font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;padding:8px 0}
+/* watermark */
+.wm{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(5,8,15,.9);
+  border-bottom:1px solid var(--line);color:var(--ice-dim);font-size:10px;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;text-align:center;padding:7px 10px;
+  backdrop-filter:blur(8px)}
 
-/* ---------- Hero ---------- */
-.hero{position:relative;text-align:center;padding:60px 20px 40px;
-  background:linear-gradient(180deg,var(--cool) 0%,var(--deep) 100%)}
-.hero h1{font-family:"Inter",sans-serif;font-size:42px;font-weight:900;
-  letter-spacing:-.04em;color:var(--white);margin-bottom:12px;line-height:1.2}
-.hero h1 span{color:var(--ice);font-weight:600}
-.hero .tagline{font-family:"Inter",sans-serif;font-size:18px;color:var(--ice);
-  margin-bottom:24px;letter-spacing:.02em}
-.hero .city{font-family:"Inter",sans-serif;font-size:15px;opacity:.85;
-  margin-bottom:30px}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:110px 24px 0;overflow:hidden;
+  background:
+    radial-gradient(1100px 520px at 85% -10%,rgba(255,92,26,.14),transparent 60%),
+    radial-gradient(900px 600px at 10% 110%,rgba(191,227,255,.10),transparent 55%),
+    linear-gradient(180deg,#070d18 0%,var(--bg) 70%)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(-55deg,transparent 0 46px,rgba(191,227,255,.045) 46px 48px)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 55%,var(--bg) 98%)}
+.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%}
+.live{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,92,26,.5);
+  border-radius:999px;padding:8px 18px;font-size:12px;font-weight:800;letter-spacing:.22em;
+  text-transform:uppercase;color:#ffb59a;background:rgba(255,92,26,.08);margin-bottom:26px}
+.live i{width:9px;height:9px;border-radius:50%;background:var(--hot);box-shadow:0 0 12px var(--hot);
+  animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35;transform:scale(.8)}}
+h1{font-family:var(--disp);font-size:clamp(58px,12.5vw,168px);line-height:.92;letter-spacing:.005em;
+  text-transform:uppercase;color:var(--paper)}
+h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--ice)}
+h1 .hot{color:var(--hot)}
+.temp{display:flex;gap:34px;margin:30px 0 8px;flex-wrap:wrap}
+.temp div{font-family:var(--disp);font-size:clamp(22px,3.4vw,34px);color:var(--ice-dim);text-transform:uppercase}
+.temp div b{color:var(--paper);font-weight:400}
+.temp .outside b{color:#ff8a5c}
+.hero-sub{max-width:56ch;color:var(--ice-dim);font-size:clamp(15px,2vw,18px);margin:14px 0 34px}
+.hero-sub strong{color:var(--paper)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:14px;
+  padding:17px 32px;font-size:16px;transition:transform .15s,box-shadow .2s;letter-spacing:.01em}
+.btn:active{transform:scale(.96)}
+.btn-hot{background:linear-gradient(180deg,#ff6a2b,var(--hot-deep));color:#fff;
+  box-shadow:0 10px 34px rgba(255,92,26,.4)}
+.btn-hot:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(255,92,26,.55)}
+.btn-ghost{border:1px solid var(--line);color:var(--ice);background:rgba(191,227,255,.05)}
+.btn-ghost:hover{border-color:var(--ice-dim);transform:translateY(-2px)}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;color:var(--steel);font-size:13px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;padding-bottom:44px}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.hero-meta svg{width:16px;height:16px;stroke:var(--ice-dim)}
 
-/* ---------- Services ---------- */
-.services{max-width:620px;margin:0 auto 60px;padding:0 20px}
-.services h2{font-family:"Inter",sans-serif;font-size:28px;font-weight:700;
-  letter-spacing:-.02em;margin-bottom:32px;padding-bottom:12px;
-  border-bottom:1px solid var(--steel);color:var(--white)}
-.services-grid{display:grid;gap:24px;grid-template-columns:1fr}
-@media(min-width:480px){.services-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+/* ticker */
+.ticker{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:rgba(255,92,26,.06);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-block;padding:13px 0;animation:tick 26s linear infinite;
+  font-family:var(--disp);font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:var(--ice)}
+.ticker .track b{color:var(--hot);font-weight:400;margin:0 18px}
+@keyframes tick{to{transform:translateX(-50%)}}
 
-/* ---------- Service Card ---------- */
-.service-card{background:var(--white);border-radius:12px;padding:28px 24px;
-  position:relative;overflow:min(320px,100%);min-height:280px;display:flex;
-  flex-direction:column;justify-content:space-between;transition:transform .3s}
-.service-card:hover{transform:translateY(-4px)}
-.service-card::before{content:'';position:absolute;top:-40px;right:-40px;
-  width:120px;height:120px;border-radius:50%;background:rgba(224,240,255,.08)}
-.service-card .icon{width:48px;height:48px;margin:0 auto 20px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;color:var(--ice);background:rgba(224,240,255,.12)}
-.service-card h3{font-family:"Inter",sans-serif;font-size:18px;font-weight:600;
-  letter-spacing:-.01em;margin-bottom:8px;text-align:center}
-.service-card p{font-family:"Inter",sans-serif;font-size:14px;
-  color:var(--steel);text-align:center;line-height:1.5}
+/* ---------- sections ---------- */
+section{padding:96px 24px;position:relative}
+.wrap{max-width:1100px;margin:0 auto}
+.kick{font-size:11px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--hot);margin-bottom:16px}
+h2{font-family:var(--disp);font-size:clamp(38px,6.5vw,72px);line-height:.95;text-transform:uppercase;
+  letter-spacing:.01em;margin-bottom:14px}
+h2 .stroke{color:transparent;-webkit-text-stroke:1.5px var(--ice-dim)}
+.lede{color:var(--ice-dim);font-size:17px;max-width:60ch;margin-bottom:54px}
 
-/* Icon shapes (SVG, no emoji) */
-.repair-icon .path1{fill:var(--ice);stroke:var(--steel);stroke-width:2}
-.air-icon .path1{fill:var(--ice);stroke:var(--steel);stroke-width:1.5}
-.emergency-icon .path1{fill:var(--ice);stroke:var(--ice);stroke-width:2}
+/* services */
+.svc{display:grid;gap:16px}
+@media(min-width:820px){.svc{grid-template-columns:repeat(3,1fr)}}
+.card{background:linear-gradient(180deg,var(--panel),#0a1220);border:1px solid var(--line);
+  border-radius:20px;padding:34px 30px 30px;position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-8px);border-color:rgba(255,92,26,.45)}
+.card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--hot),transparent);opacity:0;transition:opacity .35s}
+.card:hover::after{opacity:1}
+.card .idx{font-family:var(--disp);font-size:15px;color:var(--steel);letter-spacing:.2em;margin-bottom:18px}
+.card .ic{width:52px;height:52px;border-radius:14px;background:rgba(191,227,255,.08);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.card .ic svg{width:26px;height:26px;stroke:var(--ice);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:20px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
+.card p{color:var(--ice-dim);font-size:15px;flex:1;margin-bottom:22px}
+.price{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:18px}
+.price .from{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--steel)}
+.price .amt{font-family:var(--disp);font-size:34px;color:var(--paper);letter-spacing:.02em}
+.price .note{font-size:13px;color:var(--steel)}
 
-/* ---------- Proof Strip ---------- */
-.proof{background:var(--deep);color:var(--white);padding:32px 24px;text-align:center}
-.proof h3{font-family:"Inter",sans-serif;font-size:22px;font-weight:700;
-  margin-bottom:12px}
-.proof .stars{color:var(--ice);font-size:16px;margin-bottom:12px}
-.proof p{font-size:15px;max-width:460px;margin:0 auto;line-height:1.6}
+/* stats band */
+.stats{background:linear-gradient(180deg,#0a1220,#070d18);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;text-align:center}
+@media(min-width:760px){.stats .wrap{grid-template-columns:repeat(4,1fr)}}
+.stat .n{font-family:var(--disp);font-size:clamp(40px,5.5vw,62px);color:var(--paper)}
+.stat .n em{font-style:normal;color:var(--hot)}
+.stat .l{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);margin-top:6px}
 
-/* ---------- Service Area ---------- */
-.area{background:var(--white);border-top:1px solid var(--steel);
-  border-bottom:1px solid var(--steel);padding:24px 20px;max-width:620px;margin:0 auto}
-.area h3{font-family:"Inter",sans-serif;font-size:20px;font-weight:600;
-  letter-spacing:-.01em;margin-bottom:16px}
-.area .towns{font-family:"Inter",sans-serif;color:var(--steel);font-size:14px}
-.area .towns span{margin-right:20px;margin-bottom:8px;display:inline-block}
+/* proof */
+.quotes{display:grid;gap:16px}
+@media(min-width:820px){.quotes{grid-template-columns:1fr 1fr}}
+.quote{background:rgba(191,227,255,.04);border:1px solid var(--line);border-radius:20px;padding:32px 30px}
+.quote .stars{color:var(--hot);letter-spacing:.3em;font-size:15px;margin-bottom:16px}
+.quote p{font-size:17px;line-height:1.65;color:var(--paper);margin-bottom:18px}
+.quote p::before{content:"“";font-family:var(--disp);color:var(--steel);font-size:30px;line-height:0;margin-right:6px}
+.quote .who{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-dim)}
+.quote .who span{color:var(--steel);font-weight:400}
 
-/* ---------- Sticky Call Path ---------- */
-.call{position:fixed;bottom:0;left:0;right:0;background:var(--deep);
-  padding:16px 20px 16px calc(20px + env(safe-area-inset-bottom))}
-.call a{display:block;max-width:600px;margin:0 auto;background:var(--ice);
-  color:var(--steel);font-family:"Inter",sans-serif;font-size:22px;font-weight:700;
-  letter-spacing:-.02em;text-align:center;text-decoration:none;
-  padding:18px;border-radius:12px;transition:background .3s}
-.call a:hover{background:var(--gray)}
+/* area */
+.towns{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.town{border:1px solid var(--line);border-radius:999px;padding:12px 24px;font-weight:700;font-size:15px;
+  color:var(--ice);background:rgba(191,227,255,.04);transition:border-color .25s,transform .25s}
+.town:hover{border-color:var(--hot);transform:translateY(-2px)}
+
+/* final CTA */
+.final{background:
+  radial-gradient(800px 420px at 50% 120%,rgba(255,92,26,.22),transparent 65%),
+  linear-gradient(180deg,var(--bg) 0%,#0a1220 100%);text-align:center}
+.final h2{font-size:clamp(46px,9vw,110px)}
+.final h2 .hot{color:var(--hot)}
+.final p{color:var(--ice-dim);font-size:18px;max-width:52ch;margin:18px auto 36px}
+.big-call{display:inline-block;font-family:var(--disp);font-size:clamp(30px,6vw,58px);color:var(--paper);
+  text-decoration:none;letter-spacing:.02em;border-bottom:4px solid var(--hot);padding-bottom:6px;
+  transition:color .2s,border-color .2s}
+.big-call:hover{color:var(--hot);border-color:var(--paper)}
+
+/* sticky call bar */
+.stick{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:250;
+  display:flex;gap:10px}
+.stick a{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size:17px;border-radius:16px;
+  padding:17px 10px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.stick .call{background:linear-gradient(180deg,#ff6a2b,var(--hot-deep));color:#fff}
+.stick .txt{background:rgba(13,22,38,.92);color:var(--ice);border:1px solid var(--line);backdrop-filter:blur(10px)}
+@media(min-width:760px){.stick{display:none}}
+
+footer.site{border-top:1px solid var(--line);padding:40px 24px 120px;color:var(--steel);font-size:13px}
+@media(min-width:760px){footer.site{padding-bottom:44px}}
+footer.site .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer.site strong{font-family:var(--disp);font-weight:400;color:var(--ice-dim);letter-spacing:.06em;font-size:16px}
+
+/* reveals */
+[data-r]{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+[data-r].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  [data-r]{opacity:1;transform:none}
+  .ticker .track{animation:none}
+}
 </style>
 </head>
 <body>
-<div class="watermark">SAMPLE PREVIEW — NOT A REAL BUSINESS</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="wm">Sample preview — fictional business · built by Kit</div>
 
 <header class="hero">
-<h1>Cool Air. Fixed Right. <span>Today.</span></h1>
-<div class="tagline">Fast, honest HVAC service for Houston-area homes</div>
-<div class="city">Houston, TX</div>
+  <div class="hero-inner">
+    <span class="live"><i></i>Technicians on duty — 24/7</span>
+    <h1>Cool air.<br><span class="stroke">Fixed right.</span><br><span class="hot">Today.</span></h1>
+    <div class="temp">
+      <div class="outside">Outside <b>102°F</b></div>
+      <div>Inside <b>72°F</b></div>
+    </div>
+    <p class="hero-sub">Houston heat doesn't negotiate — <strong>neither do we.</strong> Bayou Breeze Air fixes and installs AC for Houston-area homes, with honest flat pricing and techs who actually show up on time.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-hot" href="tel:+17135550392">Call (713) 555-0392</a>
+      <a class="btn btn-ghost" href="#services">See services &amp; prices</a>
+    </div>
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Licensed &amp; insured · TACLA #000000</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Avg. response 45 min</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>4.9 from 600+ reviews</span>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="track" id="tick"></div></div>
 </header>
 
-<section class="services">
-<h2>Our Services</h2>
-<div class="services-grid">
-  <article class="service-card">
-    <div class="icon repair-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16a4 4 0 0 0 0 8 4 4 0 0 0 0-8 4 4 0 0 0 0 8"/></svg></div>
-    <h3>AC Repair & Tune-Ups</h3>
-    <p>Fast diagnosis, honest pricing, and your house cooling before bedtime.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon air-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4"/></svg></div>
-    <h3>New System Installs</h3>
-    <p>High-efficiency systems sized for your home — installed in one day.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon emergency-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17a5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5z"/><path d="M12 9l-8 8 18 8"/></svg></div>
-    <h3>24/7 Emergency Calls</h3>
-    <p>AC out at 2 AM in August? We answer, and we show up.</p>
-  </article>
-</div>
+<section id="services">
+  <div class="wrap">
+    <div class="kick" data-r>What we do</div>
+    <h2 data-r>One call.<br><span class="stroke">Cold house.</span></h2>
+    <p class="lede" data-r>Flat prices quoted before we touch a wrench. If we can't fix it, the diagnostic is free.</p>
+    <div class="svc">
+      <article class="card" data-r>
+        <div class="idx">01</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></div>
+        <h3>AC Repair</h3>
+        <p>Dead compressor, frozen coil, mystery rattle — diagnosed in one visit, fixed same-day in most cases.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$89</span><span class="note">diagnostic · waived with repair</span></div>
+      </article>
+      <article class="card" data-r>
+        <div class="idx">02</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div>
+        <h3>Tune-Up &amp; Maintenance</h3>
+        <p>A 21-point summer-ready check: coils, refrigerant, drain line, thermostat — before August finds your weak spot.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$129</span><span class="note">per system · most homes need one</span></div>
+      </article>
+      <article class="card" data-r>
+        <div class="idx">03</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+        <h3>New System Installs</h3>
+        <p>High-efficiency systems sized by Manual J — not guesswork. Installed in one day, permitted and registered.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$5,900</span><span class="note">installed · 10-yr parts warranty</span></div>
+      </article>
+    </div>
+  </div>
 </section>
 
-<div class="proof">
-<h3>Trusted by Houston families</h3>
-<div class="stars">★ ★ ★ ★ ★</div>
-<p>"They came at 11 PM with a broken AC. Fixed it in 20 minutes and my kids slept through the night."</p>
+<div class="stats">
+  <div class="wrap">
+    <div class="stat" data-r><div class="n">2,300<em>+</em></div><div class="l">Homes cooled</div></div>
+    <div class="stat" data-r><div class="n">45<em>min</em></div><div class="l">Avg. emergency response</div></div>
+    <div class="stat" data-r><div class="n">4.9<em>★</em></div><div class="l">Google rating</div></div>
+    <div class="stat" data-r><div class="n">14<em>yrs</em></div><div class="l">In Houston</div></div>
+  </div>
 </div>
 
-<section class="area">
-<h3>Service Area</h3>
-<div class="towns">Serving <span>Houston</span> <span>Spring</span> <span>The Woodlands</span> <span>Tomball</span></div>
+<section>
+  <div class="wrap">
+    <div class="kick" data-r>Neighbors talking</div>
+    <h2 data-r>Don't take<br><span class="stroke">our word.</span></h2>
+    <p class="lede" data-r>Real reviews from real zip codes.</p>
+    <div class="quotes">
+      <div class="quote" data-r>
+        <div class="stars">★★★★★</div>
+        <p>AC died at 11 PM with a house full of kids in August. They were here by midnight, fixed by 1 AM. I don't even remember the tech's name — I remember my kids slept.</p>
+        <div class="who">Marisol R. <span>· Spring, TX</span></div>
+      </div>
+      <div class="quote" data-r>
+        <div class="stars">★★★★★</div>
+        <p>Two other companies quoted me a full replacement. Bayou Breeze found a $40 capacitor and had it running in twenty minutes. That's why they're the only number in my phone.</p>
+        <div class="who">James T. <span>· Tomball, TX</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer class="call">
-<a href="tel:+17135550392">Call (713) 555-0392 — Schedule your free energy audit</a>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick" data-r>Where we roll</div>
+    <h2 data-r>Serving the<br><span class="stroke">north side.</span></h2>
+    <div class="towns" data-r>
+      <span class="town">Houston</span><span class="town">Spring</span><span class="town">The Woodlands</span>
+      <span class="town">Tomball</span><span class="town">Cypress</span><span class="town">Klein</span>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="kick" data-r style="text-align:center">2 AM in August?</div>
+    <h2 data-r>We're <span class="hot">awake.</span></h2>
+    <p data-r>One call. A real human answers, day or night — and a truck rolls with the parts to fix it.</p>
+    <div data-r><a class="big-call" href="tel:+17135550392">(713) 555-0392</a></div>
+    <p data-r style="margin-top:26px;font-size:14px;color:var(--steel)">Free second opinions · No overtime gimmicks · Diagnostic waived with repair</p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div><strong>BAYOU BREEZE AIR</strong><br>Houston, TX · TACLA #000000 (fictional)</div>
+    <div>Sample preview by Kit — not a real business.<br>© 2026</div>
+  </div>
 </footer>
 
-<footer>
-  © 2026 Bayou Breeze Air Conditioning | Sample preview only | <a href="#">Privacy</a>
-</footer>
+<div class="stick">
+  <a class="call" href="tel:+17135550392">Call now</a>
+  <a class="txt" href="sms:+17135550392">Text us</a>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ticker */
+var items=["24/7 emergency service","Licensed & insured","Flat pricing, quoted up front","Free second opinions","45-min avg. response"];
+var half=items.map(function(t){return t+' <b>///</b> '}).join('');
+document.getElementById('tick').innerHTML=half+half;
+/* reveals */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('[data-r]').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>

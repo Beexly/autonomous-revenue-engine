@@ -1,150 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SAMPLE PREVIEW — fictional business, built by Kit (Garrett Baxley, The Woodlands TX).
+  Art direction: "IRON & OAK" — craftsman heritage, blueprint grid, copper on charcoal.
+  Zilla Slab display + Inter body. Single file, no build step.
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lone Star Roofing Co. — Roofing in Conroe, TX</title>
+<title>Ironclad Roofing Co. — Roofing in Conroe, TX</title>
+<meta name="description" content="Ironclad Roofing Co.: roof replacement, repairs, and storm restoration in Montgomery County. Free inspections. Replacements from $8,900.">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 :root{
-  --barn:#6b3a1e;
-  --deep:#3d2519;
-  --cream:#f8f4ee;
-  --copper:#b87333;
-  --ink:#2a2118;
-  --gray:#8a7d70;
+  --ink:#17130d; --ink2:#221c12; --panel:#241d11;
+  --paper:#f5efe2; --cream:#ece2cc; --dim:#b9a888; --faint:#8a7a5c;
+  --copper:#d07a2e; --copper-hi:#f0a24e; --rust:#a34d1c;
+  --line:rgba(245,239,226,.14); --linedark:rgba(23,19,13,.16);
+  --slab:'Zilla Slab',Georgia,'Times New Roman',serif;
+  --body:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
 }
-body{font-family:"Merriweather",serif,color:var(--ink);background:var(--deep);
-  line-height:1.6;-webkit-font-smoothing:antialiased}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--copper);color:#fff}
+a{color:inherit}
 
-/* ---------- Google Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Montserrat:wght@400;600;700&display=swap');
+/* blueprint grid */
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background-image:linear-gradient(rgba(208,122,46,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(208,122,46,.055) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(900px 600px at 50% 0%,#000 30%,transparent 75%)}
 
-/* ---------- Watermark ---------- */
-.watermark{background:#2a1c12;color:var(--cream);text-align:center;
-  font-family:"Montserrat",sans-serif;font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;padding:8px 0}
+.wm{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(23,19,13,.92);
+  border-bottom:1px solid var(--line);color:var(--dim);font-size:10px;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;text-align:center;padding:7px 10px;backdrop-filter:blur(8px)}
 
-/* ---------- Hero ---------- */
-.hero{position:relative;text-align:center;padding:60px 20px 40px;
-  background:linear-gradient(180deg,var(--barn) 0%,var(--deep) 100%)}
-.hero h1{font-family:"Merriweather",serif;font-size:42px;font-weight:900;
-  letter-spacing:-.04em;color:var(--cream);margin-bottom:12px;line-height:1.2}
-.hero h1 span{color:var(--copper);font-weight:700}
-.hero .tagline{font-family:"Montserrat",sans-serif;font-size:18px;color:var(--cream);
-  margin-bottom:24px;letter-spacing:.02em}
-.hero .city{font-family:"Montserrat",sans-serif;font-size:15px;opacity:.85;
-  margin-bottom:30px}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:120px 24px 0;overflow:hidden;z-index:2;
+  background:
+    radial-gradient(1000px 500px at 50% -10%,rgba(208,122,46,.16),transparent 60%),
+    linear-gradient(180deg,#1d1710 0%,var(--ink) 70%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 60%,var(--ink) 98%)}
+/* roofline silhouette */
+.roofline{position:absolute;bottom:-2px;left:0;right:0;line-height:0;opacity:.9}
+.hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%}
+.stamp{display:inline-flex;align-items:center;gap:12px;border:2px solid var(--copper);border-radius:8px;
+  padding:10px 20px;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--copper-hi);margin-bottom:28px;transform:rotate(-1.5deg);background:rgba(208,122,46,.07)}
+h1{font-family:var(--slab);font-weight:700;font-size:clamp(50px,10.5vw,148px);line-height:.98;
+  letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--copper-hi)}
+h1 .out{color:transparent;-webkit-text-stroke:2px var(--dim)}
+.hero-sub{max-width:56ch;color:var(--dim);font-size:clamp(15px,2vw,18px);margin:26px 0 34px}
+.hero-sub strong{color:var(--paper)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:10px;
+  padding:16px 32px;font-size:16px;transition:transform .15s,box-shadow .2s}
+.btn:active{transform:scale(.96)}
+.btn-copper{background:linear-gradient(180deg,var(--copper-hi),var(--copper));color:#241708;
+  box-shadow:0 10px 32px rgba(208,122,46,.35)}
+.btn-copper:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(208,122,46,.5)}
+.btn-ghost{border:1.5px solid var(--line);color:var(--paper);background:rgba(245,239,226,.04)}
+.btn-ghost:hover{border-color:var(--dim);transform:translateY(-2px)}
+.creed-row{display:flex;gap:12px 34px;flex-wrap:wrap;font-size:13px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-bottom:150px}
+.creed-row b{color:var(--cream)}
 
-/* ---------- Services ---------- */
-.services{max-width:620px;margin:0 auto 60px;padding:0 20px}
-.services h2{font-family:"Merriweather",serif;font-size:28px;font-weight:700;
-  letter-spacing:-.02em;margin-bottom:32px;padding-bottom:12px;
-  border-bottom:1px solid var(--gray);color:var(--cream)}
-.services-grid{display:grid;gap:24px;grid-template-columns:1fr}
-@media(min-width:480px){.services-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}
-
-/* ---------- Service Card ---------- */
-.service-card{background:var(--cream);border-radius:12px;padding:28px 24px;
-  position:relative;overflow:min(320px,100%);min-height:280px;display:flex;
-  flex-direction:column;justify-content:space-between;transition:transform .3s}
-.service-card:hover{transform:translateY(-4px)}
-.service-card::before{content:'';position:absolute;top:-40px;right:-40px;
-  width:120px;height:120px;border-radius:50%;background:rgba(184,115,51,.08)}
-.service-card .icon{width:48px;height:48px;margin:0 auto 20px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;color:var(--copper);background:rgba(184,115,51,.12)}
-.service-card h3{font-family:"Merriweather",serif;font-size:18px;font-weight:700;
-  letter-spacing:-.01em;margin-bottom:8px;text-align:center}
-.service-card p{font-family:"Montserrat",sans-serif;font-size:14px;
-  color:var(--ink);text-align:center;line-height:1.5}
-
-/* ---------- Proof Strip ---------- */
-.proof{background:var(--deep);color:var(--cream);padding:32px 24px;text-align:center}
-.proof h3{font-family:"Merriweather",serif;font-size:22px;font-weight:700;
-  margin-bottom:12px}
-.proof .stars{color:var(--copper);font-size:16px;margin-bottom:12px}
-.proof p{font-size:15px;max-width:460px;margin:0 auto;line-height:1.6}
-
-/* ---------- Service Area ---------- */
-.area{background:var(--cream);border-top:1px solid var(--gray);
-  border-bottom:1px solid var(--gray);padding:24px 20px;max-width:620px;margin:0 auto}
-.area h3{font-family:"Merriweather",serif;font-size:20px;font-weight:700;
+/* ---------- sections ---------- */
+section{padding:100px 24px;position:relative;z-index:2}
+.wrap{max-width:1120px;margin:0 auto}
+.kick{font-size:11px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--copper-hi);margin-bottom:18px}
+h2{font-family:var(--slab);font-weight:700;font-size:clamp(38px,6vw,72px);line-height:1.02;
   letter-spacing:-.01em;margin-bottom:16px}
-.area .towns{font-family:"Montserrat",sans-serif;color:var(--ink);opacity:.6;
-  font-size:14px}
-.area .towns span{margin-right:20px;margin-bottom:8px;display:inline-block}
+h2 em{font-style:normal;color:var(--copper-hi)}
+.lede{color:var(--dim);font-size:17px;max-width:58ch;margin-bottom:56px}
 
-/* ---------- Sticky Call Path ---------- */
-.call{position:fixed;bottom:0;left:0;right:0;background:var(--deep);
-  padding:16px 20px 16px calc(20px + env(safe-area-inset-bottom))}
-.call a{display:block;max-width:600px;margin:0 auto;background:var(--copper);
-  color:var(--cream);font-family:"Montserrat",sans-serif;font-size:22px;
-  font-weight:700;letter-spacing:-.02em;text-align:center;
-  text-decoration:none;padding:18px;border-radius:12px;transition:background .3s}
-.call a:hover{background:#9a5f2b}
+/* services — ledger cards */
+.svc{display:grid;gap:18px}
+@media(min-width:880px){.svc{grid-template-columns:repeat(3,1fr)}}
+.card{background:linear-gradient(180deg,var(--panel),#1d1710);border:1px solid var(--line);
+  border-radius:16px;padding:38px 32px;position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s}
+.card:hover{transform:translateY(-8px);border-color:rgba(208,122,46,.55)}
+.card .n{font-family:var(--slab);font-size:15px;color:var(--faint);letter-spacing:.24em;margin-bottom:20px}
+.card .rule{height:3px;width:54px;background:var(--copper);margin-bottom:22px;border-radius:2px}
+.card h3{font-family:var(--slab);font-size:27px;font-weight:600;margin-bottom:10px}
+.card p{color:var(--dim);font-size:15px;margin-bottom:26px}
+.price{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:20px}
+.price .from{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.price .amt{font-family:var(--slab);font-size:38px;color:var(--paper)}
+.price .note{font-size:13px;color:var(--faint)}
 
-/* ---------- Footer ---------- */
-footer{padding:24px 20px;text-align:center;font-size:12px;
-  color:var(--gray);font-family:"Montserrat",sans-serif;letter-spacing:.15em;
-  text-transform:uppercase}
-footer a{color:var(--copper);text-decoration:none}
+/* storm band */
+.storm{background:linear-gradient(135deg,#2b2113,#3a2a15 55%,#4a3418);border:1px solid rgba(208,122,46,.35);
+  border-radius:26px;padding:clamp(50px,7vw,90px) clamp(30px,6vw,80px);position:relative;overflow:hidden}
+.storm::before{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(rgba(240,162,78,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(240,162,78,.08) 1px,transparent 1px);
+  background-size:34px 34px}
+.storm h2{position:relative}.storm h2 em{color:var(--copper-hi)}
+.storm p{color:#d9c8a4;max-width:60ch;font-size:17px;margin-bottom:14px;position:relative}
+.storm ol{list-style:none;margin:34px 0;position:relative;display:grid;gap:12px}
+@media(min-width:800px){.storm ol{grid-template-columns:repeat(3,1fr)}}
+.storm li{background:rgba(23,19,13,.5);border:1px solid rgba(208,122,46,.3);border-radius:14px;padding:24px}
+.storm li .sn{font-family:var(--slab);font-size:30px;color:var(--copper-hi);margin-bottom:8px}
+.storm li h4{font-size:15px;margin-bottom:6px;color:var(--paper)}
+.storm li p{font-size:14px;color:#c4b28a;margin:0}
 
-@media (prefers-reduced-motion:reduce){*{-webkit-animation-duration:.01ms!important;
-  animation-duration:.01ms!important;-webkit-transition-duration:.01ms!important;
-  transition-duration:.01ms!important}}
+/* checklist proof */
+.proof-grid{display:grid;gap:18px}
+@media(min-width:880px){.proof-grid{grid-template-columns:1fr 1fr}}
+.check{background:rgba(245,239,226,.04);border:1px solid var(--line);border-radius:18px;padding:34px 32px}
+.check .stars{color:var(--copper-hi);letter-spacing:.3em;font-size:14px;margin-bottom:16px}
+.check p{font-size:16px;line-height:1.7;color:var(--paper);margin-bottom:18px}
+.check .who{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
+/* warranty strip */
+.warr{display:flex;gap:26px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:54px;
+  border:1px dashed rgba(208,122,46,.5);border-radius:18px;padding:28px 34px;text-align:center}
+.warr .big{font-family:var(--slab);font-size:clamp(40px,6vw,64px);color:var(--copper-hi);line-height:1}
+.warr .cap{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+
+/* area */
+.towns{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.town{border:1.5px solid var(--line);border-radius:8px;padding:12px 24px;font-weight:700;font-size:14px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--dim);transition:all .25s;background:rgba(245,239,226,.03)}
+.town:hover{border-color:var(--copper);color:var(--copper-hi);transform:translateY(-2px)}
+
+/* final */
+.final{text-align:center}
+.final h2{font-size:clamp(46px,8.8vw,106px)}
+.final p{color:var(--dim);font-size:18px;max-width:52ch;margin:18px auto 36px}
+.big-call{display:inline-block;font-family:var(--slab);font-weight:700;font-size:clamp(32px,6vw,60px);
+  color:var(--paper);text-decoration:none;border-bottom:4px solid var(--copper);padding-bottom:6px;transition:color .2s}
+.big-call:hover{color:var(--copper-hi)}
+
+.stick{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:250;display:flex;gap:10px}
+.stick a{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size:17px;border-radius:12px;
+  padding:17px 10px;box-shadow:0 14px 40px rgba(0,0,0,.55)}
+.stick .call{background:linear-gradient(180deg,var(--copper-hi),var(--copper));color:#241708}
+.stick .txt{background:rgba(36,29,17,.94);color:var(--paper);border:1.5px solid var(--line)}
+@media(min-width:760px){.stick{display:none}}
+
+footer.site{border-top:1px solid var(--line);padding:40px 24px 120px;color:var(--faint);font-size:13px;position:relative;z-index:2}
+@media(min-width:760px){footer.site{padding-bottom:44px}}
+footer.site .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer.site strong{font-family:var(--slab);color:var(--dim);font-size:17px}
+
+[data-r]{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+[data-r].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  [data-r]{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
-<div class="watermark">SAMPLE PREVIEW — NOT A REAL BUSINESS</div>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="wm">Sample preview — fictional business · built by Kit</div>
 
 <header class="hero">
-<h1>A Roof You Never <span>Worry About</span></h1>
-<div class="tagline">Texas-sized roofing service with a handshake and a warranty</div>
-<div class="city">Conroe, TX</div>
+  <div class="hero-inner">
+    <span class="stamp">Est. 2009 · Montgomery County</span>
+    <h1>Roofs built<br><span class="out">like they used</span><br><em>to build them.</em></h1>
+    <p class="hero-sub">Ironclad Roofing Co. replaces and repairs roofs across Montgomery County — <strong>hand-nailed, fully permitted, and backed by a warranty we actually honor.</strong> Free inspections, honest photos, no storm-chaser games.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-copper" href="tel:+19365550121">Free inspection — (936) 555-0121</a>
+      <a class="btn btn-ghost" href="#services">Services &amp; prices</a>
+    </div>
+    <div class="creed-row">
+      <span><b>GAF</b> certified</span><span><b>A+</b> BBB rating</span><span><b>1,400+</b> roofs done</span><span><b>Local</b> — not storm chasers</span>
+    </div>
+  </div>
+  <div class="roofline" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="width:100%;height:110px;display:block">
+      <path fill="#17130d" d="M0,120 L0,70 L180,20 L360,70 L540,15 L720,70 L900,25 L1080,70 L1260,20 L1440,70 L1440,120 Z"/>
+      <path fill="none" stroke="rgba(208,122,46,.4)" stroke-width="2" d="M0,70 L180,20 L360,70 M540,15 L720,70 M900,25 L1080,70 M1260,20 L1440,70"/>
+    </svg>
+  </div>
 </header>
 
-<section class="services">
-<h2>Our Services</h2>
-<div class="services-grid">
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20v-8l8-6 8 6v8"/></svg></div>
-    <h3>Roof Replacement</h3>
-    <p>Full tear-off and install in 1–2 days, with a workmanship warranty in writing.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-    <h3>Storm & Leak Repair</h3>
-    <p>Hail and wind damage patched fast — we handle the insurance photos too.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-    <h3>Free Roof Inspections</h3>
-    <p>Honest 21-point check with photos. No pressure, no upsell, just facts.</p>
-  </article>
-</div>
+<section id="services">
+  <div class="wrap">
+    <div class="kick" data-r>The ledger</div>
+    <h2 data-r>Honest work,<br><em>written down.</em></h2>
+    <p class="lede" data-r>Every job starts with a free 21-point inspection and photos of what we find. The price we quote is the price you pay.</p>
+    <div class="svc">
+      <div class="card" data-r>
+        <div class="n">№ 01</div><div class="rule"></div>
+        <h3>Roof Repairs</h3>
+        <p>Leaks, lifted shingles, flashing failures, rotten decking — fixed right, matched to your existing roof.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$250</span><span class="note">most repairs $250–$900</span></div>
+      </div>
+      <div class="card" data-r>
+        <div class="n">№ 02</div><div class="rule"></div>
+        <h3>Full Replacement</h3>
+        <p>Architectural shingles, hand-nailed, ice-and-water shield, full cleanup with magnetic nail sweep. Done in 1–2 days.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$8,900</span><span class="note">avg. home $11–$16k</span></div>
+      </div>
+      <div class="card" data-r>
+        <div class="n">№ 03</div><div class="rule"></div>
+        <h3>Storm &amp; Hail Restoration</h3>
+        <p>We document damage, meet your adjuster on the roof, and fight for the full scope — not the lowball one.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$0</span><span class="note">out of pocket with approved claim</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="proof">
-<h3>Trusted by Texas homeowners</h3>
-<div class="stars">★ ★ ★ ★ ★</div>
-<p>"They replaced our roof in one day after the hailstorm. Clean, honest, and exactly as quoted."</p>
-</div>
-
-<section class="area">
-<h3>Service Area</h3>
-<div class="towns">Serving <span>Conroe</span> <span>The Woodlands</span> <span>Magnolia</span> <span>Willis</span></div>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="storm" data-r>
+      <div class="kick">After the storm</div>
+      <h2>Hail hit?<br><em>Don't call your insurer first.</em></h2>
+      <p>Call us first. We inspect free, document everything with photos, and tell you straight whether you have a claim worth filing — before anything goes on your record. If the damage isn't there, we'll tell you that too.</p>
+      <ol>
+        <li><div class="sn">1.</div><h4>Free inspection</h4><p>21-point check with photos you keep, whether you hire us or not.</p></li>
+        <li><div class="sn">2.</div><h4>We meet the adjuster</h4><p>On your roof, with our documentation. Claims approved at 3× the solo rate.</p></li>
+        <li><div class="sn">3.</div><h4>Full restoration</h4><p>New roof, gutters checked, yard left cleaner than we found it.</p></li>
+      </ol>
+      <a class="btn btn-copper" href="tel:+19365550121">Get my free storm inspection</a>
+    </div>
+  </div>
 </section>
 
-<footer class="call">
-<a href="tel:+12815550176">Call (281) 555-0176 — Schedule your free roof inspection</a>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick" data-r>Word around the county</div>
+    <h2 data-r>Neighbors<br><em>under our roofs.</em></h2>
+    <div class="proof-grid" style="margin-top:44px">
+      <div class="check" data-r>
+        <div class="stars">★★★★★</div>
+        <p>Two storm chasers told me I needed a full replacement at $22k. Ironclad's inspection found a $600 flashing repair. They could have sold me the roof. They didn't.</p>
+        <div class="who">Bill H. · Montgomery, TX</div>
+      </div>
+      <div class="check" data-r>
+        <div class="stars">★★★★★</div>
+        <p>Hail claim approved, new roof in two days, and their crew ran a magnet over my yard three times — my kids go barefoot out there. That detail tells you everything.</p>
+        <div class="who">The Okafor Family · Spring, TX</div>
+      </div>
+    </div>
+    <div class="warr" data-r>
+      <div><div class="big">25-yr</div><div class="cap">Workmanship warranty</div></div>
+      <div><div class="big">50-yr</div><div class="cap">Shingle warranty</div></div>
+      <div><div class="big">100%</div><div class="cap">Cleanup guarantee</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick" data-r>Where we work</div>
+    <h2 data-r style="font-size:clamp(32px,5vw,58px)">Montgomery County born &amp; raised.</h2>
+    <div class="towns" data-r style="margin-top:26px">
+      <span class="town">Conroe</span><span class="town">The Woodlands</span><span class="town">Spring</span>
+      <span class="town">Montgomery</span><span class="town">Huntsville</span><span class="town">Magnolia</span>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="kick" data-r style="text-align:center">Free 21-point inspections</div>
+    <h2 data-r>Your roof is talking.<br><em>Listen free.</em></h2>
+    <p data-r>We'll climb up, photograph everything, and tell you the truth — even if the truth is "you're fine."</p>
+    <div data-r><a class="big-call" href="tel:+19365550121">(936) 555-0121</a></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div><strong>Ironclad Roofing Co.</strong><br>Conroe, TX · Licensed &amp; insured</div>
+    <div>Sample preview by Kit — not a real business.<br>© 2026</div>
+  </div>
 </footer>
 
-<footer>
-  © 2026 Lone Star Roofing Co. | Sample preview only | <a href="#">Privacy</a>
-</footer>
+<div class="stick">
+  <a class="call" href="tel:+19365550121">Call now</a>
+  <a class="txt" href="sms:+19365550121">Text us</a>
+</div>
+
+<script>
+(function(){
+"use strict";
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('[data-r]').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>

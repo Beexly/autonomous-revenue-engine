@@ -1,148 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SAMPLE PREVIEW — fictional business, built by Kit (Garrett Baxley, The Woodlands TX).
+  Art direction: "STILL WATER" — aquatic luxury, fluid waves, resort calm.
+  Cormorant Garamond display + Inter body. Single file, no build step.
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clear Creek Pool Service — Pool Care in Spring, TX</title>
+<title>Stillwater Pool Care — Pool Service in The Woodlands, TX</title>
+<meta name="description" content="Stillwater Pool Care: weekly pool cleaning, green-to-clean rescues, and equipment repair in The Woodlands area. Weekly plans from $149/mo.">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap');
 :root{
-  --water:#1a5276;
-  --deep:#0c3b52;
-  --light:#5dade2;
-  --foam:#d4f1f9;
-  --ink:#1a2530;
-  --cream:#fdfcf8;
+  --deep:#04263a; --abyss:#021724; --teal:#0e5a72; --aqua:#3ec6dd; --foam:#c9f0f7;
+  --mist:#eef9fb; --paper:#fbfefe;
+  --ink:#0b2e40; --inksoft:#4d6f80;
+  --line:rgba(14,90,114,.16);
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --body:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
 }
-body{font-family:"Montserrat",sans-serif;color:var(--ink);
-  background:var(--deep);line-height:1.5;-webkit-font-smoothing:antialiased}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-::selection{background:var(--light);color:#fff}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--aqua);color:var(--abyss)}
+a{color:inherit}
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+.wm{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(2,23,36,.88);
+  border-bottom:1px solid rgba(201,240,247,.16);color:#9fd8e4;font-size:10px;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;text-align:center;padding:7px 10px;backdrop-filter:blur(8px)}
 
-/* ---------- Watermark ---------- */
-.watermark{background:#06192b;color:var(--light);text-align:center;
-  font-family:"Montserrat",sans-serif;font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;padding:8px 0}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  color:#f2fbfd;overflow:hidden;
+  background:linear-gradient(180deg,#062c44 0%,#04304a 34%,#0a4a63 62%,#0e5a72 100%)}
+.hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(900px 480px at 50% -10%,rgba(62,198,221,.35),transparent 60%)}
+/* light rays */
+.rays{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.5}
+.rays i{position:absolute;top:-20%;width:90px;height:140%;transform:rotate(18deg);
+  background:linear-gradient(180deg,rgba(201,240,247,.14),transparent 70%);
+  animation:ray 9s ease-in-out infinite}
+@keyframes ray{50%{transform:rotate(14deg) translateX(-30px);opacity:.6}}
+.hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%;padding:130px 24px 0}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:11px;font-weight:700;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--foam);margin-bottom:28px}
+.eyebrow::before{content:"";width:46px;height:1px;background:var(--aqua)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(54px,10.5vw,150px);line-height:1;
+  letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--aqua);font-weight:400}
+.hero-sub{max-width:54ch;color:#c4e2ea;font-size:clamp(15px,2vw,18px);margin:26px 0 34px}
+.hero-sub strong{color:#fff}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;border-radius:999px;
+  padding:16px 34px;font-size:16px;transition:transform .15s,box-shadow .2s}
+.btn:active{transform:scale(.96)}
+.btn-aqua{background:var(--aqua);color:#02222e;box-shadow:0 10px 34px rgba(62,198,221,.4)}
+.btn-aqua:hover{transform:translateY(-2px);box-shadow:0 16px 46px rgba(62,198,221,.55)}
+.btn-ghost{border:1px solid rgba(201,240,247,.4);color:#f2fbfd;background:rgba(201,240,247,.06)}
+.btn-ghost:hover{background:rgba(201,240,247,.14);transform:translateY(-2px)}
+.hero-note{display:flex;gap:12px 30px;flex-wrap:wrap;font-size:13px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:#9fd8e4;padding-bottom:18px}
+/* waves */
+.waves{position:relative;z-index:2;line-height:0;margin-top:6px}
+.waves svg{display:block;width:100%;height:110px}
+.w1{animation:drift 11s ease-in-out infinite alternate}
+.w2{animation:drift 15s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
 
-/* ---------- Hero ---------- */
-.hero{position:relative;text-align:center;padding:60px 20px 40px;
-  background:linear-gradient(180deg,var(--water) 0%,var(--deep) 100%)}
-.hero h1{font-family:"Montserrat",sans-serif;font-size:42px;font-weight:900;
-  letter-spacing:-.04em;margin-bottom:12px;line-height:1.2;color:var(--cream)}
-.hero h1 span{color:var(--light);font-weight:600}
-.hero .tagline{font-family:"Montserrat",sans-serif;font-size:18px;
-  color:var(--foam);margin-bottom:24px;letter-spacing:.02em}
-.hero .city{font-family:"Montserrat",sans-serif;font-size:15px;
-  opacity:.9;margin-bottom:30px}
+/* ---------- sections ---------- */
+section{padding:100px 24px}
+.wrap{max-width:1120px;margin:0 auto}
+.kick{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:18px}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,74px);line-height:1.05;
+  letter-spacing:-.01em;color:var(--ink);margin-bottom:16px}
+h2 em{font-style:italic;color:var(--teal)}
+.lede{color:var(--inksoft);font-size:17px;max-width:58ch;margin-bottom:56px}
 
-/* ---------- Services ---------- */
-.services{max-width:620px;margin:0 auto 60px;padding:0 20px}
-.services h2{font-family:"Montserrat",sans-serif;font-size:28px;font-weight:700;
-  letter-spacing:-.02em;margin-bottom:32px;padding-bottom:12px;
-  border-bottom:1px solid var(--light);color:var(--cream)}
-.services-grid{display:grid;gap:24px;grid-template-columns:1fr}
-@media(min-width:480px){.services-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+/* services — floating cards */
+.svc{display:grid;gap:20px}
+@media(min-width:880px){.svc{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px 34px;
+  position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s;
+  box-shadow:0 10px 34px rgba(14,90,114,.07)}
+.card:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(14,90,114,.16)}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:120px;
+  background:linear-gradient(180deg,rgba(62,198,221,.14),transparent)}
+.card .drop{width:54px;height:54px;border-radius:50% 50% 50% 6px;transform:rotate(45deg);
+  background:linear-gradient(135deg,var(--aqua),var(--teal));margin-bottom:24px;position:relative;
+  box-shadow:0 8px 22px rgba(62,198,221,.4)}
+.card h3{font-family:var(--serif);font-size:29px;font-weight:600;color:var(--ink);margin-bottom:10px;position:relative}
+.card p{color:var(--inksoft);font-size:15px;margin-bottom:24px;position:relative}
+.price{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:20px;position:relative}
+.price .from{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--inksoft)}
+.price .amt{font-family:var(--serif);font-size:40px;color:var(--teal)}
+.price .note{font-size:13px;color:var(--inksoft)}
 
-/* ---------- Service Card ---------- */
-.service-card{background:var(--cream);border-radius:12px;padding:28px 24px;
-  position:relative;overflow:hidden;min-height:280px;display:flex;
-  flex-direction:column;justify-content:space-between;transition:transform .3s}
-.service-card:hover{transform:translateY(-4px)}
-.service-card::before{content:'';position:absolute;top:-40px;right:-40px;
-  width:120px;height:120px;border-radius:50%;background:rgba(93,173,226,.08)}
-.service-card .icon{width:48px;height:48px;margin:0 auto 20px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;color:var(--water)}
-.service-card h3{font-family:"Montserrat",sans-serif;font-size:18px;font-weight:700;
-  letter-spacing:-.01em;margin-bottom:8px;text-align:center}
-.service-card p{font-family:"Montserrat",sans-serif;font-size:14px;
-  color:var(--ink);opacity:.75;text-align:center;flex:1;line-height:1.5}
+/* rescue band */
+.rescue{background:linear-gradient(135deg,var(--abyss),var(--deep) 60%,var(--teal));color:#eaf7fa;
+  border-radius:34px;padding:clamp(54px,7vw,96px) clamp(30px,6vw,84px);position:relative;overflow:hidden}
+.rescue::after{content:"";position:absolute;inset:0;opacity:.5;
+  background:radial-gradient(700px 340px at 85% 10%,rgba(62,198,221,.35),transparent 60%)}
+.rescue .kick{color:var(--aqua)}
+.rescue h2{color:#fff}
+.rescue h2 em{color:var(--aqua)}
+.rescue p{color:#bcdfe8;max-width:58ch;font-size:17px;margin-bottom:14px;position:relative}
+.rescue .steps3{display:grid;gap:14px;margin:36px 0;position:relative}
+@media(min-width:800px){.rescue .steps3{grid-template-columns:repeat(3,1fr)}}
+.rescue .steps3>div{background:rgba(251,254,254,.07);border:1px solid rgba(201,240,247,.2);
+  border-radius:18px;padding:26px}
+.rescue .steps3 .n{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--aqua);margin-bottom:8px}
+.rescue .steps3 h4{font-size:16px;margin-bottom:6px;color:#fff}
+.rescue .steps3 p{font-size:14px;color:#a9cfd9;margin:0}
 
-/* ---------- Proof Strip ---------- */
-.proof{background:var(--water);color:var(--cream);padding:32px 24px;text-align:center}
-.proof h3{font-family:"Montserrat",sans-serif;font-size:22px;font-weight:700;margin-bottom:12px}
-.proof .stars{color:var(--foam);font-size:16px;margin-bottom:12px}
-.proof p{font-size:15px;max-width:460px;margin:0 auto;line-height:1.6}
+/* quotes */
+.quotes{display:grid;gap:20px}
+@media(min-width:880px){.quotes{grid-template-columns:1fr 1fr}}
+.quote{background:#fff;border:1px solid var(--line);border-radius:26px;padding:38px 36px;position:relative;
+  box-shadow:0 10px 34px rgba(14,90,114,.07)}
+.quote .stars{color:var(--teal);letter-spacing:.3em;font-size:14px;margin-bottom:16px}
+.quote p{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ink);margin-bottom:18px}
+.quote .who{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
 
-/* ---------- Service Area ---------- */
-.area{background:var(--cream);border-top:1px solid var(--light);
-  border-bottom:1px solid var(--light);padding:24px 20px;max-width:620px;margin:0 auto}
-.area h3{font-family:"Montserrat",sans-serif;font-size:20px;font-weight:700;
-  letter-spacing:-.01em;margin-bottom:16px}
-.area .towns{font-family:"Montserrat",sans-serif;color:var(--ink);opacity:.6;
-  font-size:14px}
-.area .towns span{margin-right:20px;margin-bottom:8px;display:inline-block}
+/* area */
+.towns{display:flex;flex-wrap:wrap;gap:12px}
+.town{background:#fff;border:1px solid var(--line);border-radius:999px;padding:12px 26px;
+  font-weight:600;font-size:15px;color:var(--teal);transition:all .25s;box-shadow:0 6px 18px rgba(14,90,114,.06)}
+.town:hover{background:var(--teal);color:#fff;transform:translateY(-2px)}
 
-/* ---------- Sticky Call Path ---------- */
-.call{position:fixed;bottom:0;left:0;right:0;background:var(--water);
-  padding:16px 20px 16px calc(20px + env(safe-area-inset-bottom))}
-.call a{display:block;max-width:600px;margin:0 auto;background:var(--light);
-  color:#fff;font-family:"Montserrat",sans-serif;font-size:22px;font-weight:700;
-  letter-spacing:-.02em;text-align:center;text-decoration:none;padding:18px;
-  border-radius:12px;transition:background .3s}
-.call a:hover{background:#4a9bd4}
+/* final */
+.final{text-align:center;background:linear-gradient(180deg,var(--paper),var(--mist))}
+.final h2{font-size:clamp(46px,8.4vw,100px)}
+.final p{color:var(--inksoft);font-size:18px;max-width:52ch;margin:20px auto 36px}
+.big-call{font-family:var(--serif);font-size:clamp(32px,6vw,58px);color:var(--teal);text-decoration:none;
+  border-bottom:3px solid var(--aqua);padding-bottom:4px;transition:color .2s}
+.big-call:hover{color:var(--ink)}
 
-/* ---------- Footer ---------- */
-footer{padding:24px 20px;text-align:center;font-size:12px;
-  color:var(--light);font-family:"Montserrat",sans-serif;letter-spacing:.15em;
-  text-transform:uppercase}
-footer a{color:var(--foam);text-decoration:none}
+.stick{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:250;display:flex;gap:10px}
+.stick a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:17px;border-radius:999px;
+  padding:17px 10px;box-shadow:0 14px 40px rgba(4,38,58,.35)}
+.stick .call{background:var(--teal);color:#fff}
+.stick .txt{background:rgba(255,255,255,.95);color:var(--teal);border:1.5px solid var(--teal)}
+@media(min-width:760px){.stick{display:none}}
 
-@media (prefers-reduced-motion:reduce){*{-webkit-animation-duration:.01ms!important;
-  animation-duration:.01ms!important;-webkit-transition-duration:.01ms!important;
-  transition-duration:.01ms!important}}
+footer.site{padding:44px 24px 120px;color:var(--inksoft);font-size:13px;border-top:1px solid var(--line)}
+@media(min-width:760px){footer.site{padding-bottom:44px}}
+footer.site .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer.site strong{font-family:var(--serif);color:var(--ink);font-size:18px;font-weight:600}
+
+[data-r]{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+[data-r].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  [data-r]{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
-<div class="watermark">SAMPLE PREVIEW — NOT A REAL BUSINESS</div>
+<div class="wm">Sample preview — fictional business · built by Kit</div>
 
 <header class="hero">
-<h1>Crystal-Clear <span>Swimming</span></h1>
-<div class="tagline">Professional pool maintenance for discerning homeowners in Spring</div>
-<div class="city">Spring, TX</div>
+  <div class="rays" aria-hidden="true"><i style="left:12%"></i><i style="left:34%;animation-delay:-3s"></i><i style="left:58%;animation-delay:-6s"></i><i style="left:78%;animation-delay:-2s"></i></div>
+  <div class="hero-inner">
+    <div class="eyebrow">The Woodlands · Texas</div>
+    <h1>Your pool,<br><em>perfect</em> every<br>single week.</h1>
+    <p class="hero-sub">Stillwater Pool Care keeps Woodlands-area pools <strong>swim-ready 52 weeks a year</strong> — chemistry balanced, baskets empty, equipment humming. You just swim.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-aqua" href="tel:+12815550163">Call (281) 555-0163</a>
+      <a class="btn btn-ghost" href="#services">Plans &amp; prices</a>
+    </div>
+    <div class="hero-note">
+      <span>Weekly plans from $149/mo</span><span>Chemistry tested every visit</span><span>Text updates with photos</span>
+    </div>
+  </div>
+  <div class="waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
+      <path class="w1" fill="rgba(201,240,247,.25)" d="M0,60 C240,110 480,10 720,50 C960,90 1200,30 1440,60 L1440,110 L0,110 Z"/>
+      <path class="w2" fill="#fbfefe" d="M0,75 C260,115 520,35 780,65 C1040,95 1240,45 1440,75 L1440,110 L0,110 Z"/>
+    </svg>
+  </div>
 </header>
 
-<section class="services">
-<h2>Our Services</h2>
-<div class="services-grid">
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10c6 0 9-2 10-2s3 2 3 2c2 0 2 2 2 4 0 2-1 4-1 4"/><path d="M12 18v4"/><path d="M16 22v-4"/></svg></div>
-    <h3>Weekly Pool Cleaning</h3>
-    <p>Chemicals balanced, baskets emptied, walls brushed — swim-ready all summer.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5 0 8-3 8-6v-2H4v2c0 3 3 6 8 6z"/><path d="M4 12V6c0-3 3-6 8-6s8 3 8 6v6"/></svg></div>
-    <h3>Green-to-Clean Rescue</h3>
-    <p>Swamp to sparkling in days, not weeks. One visit is all it takes to start.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-    <h3>Filter & Equipment Repair</h3>
-    <p>Pumps, filters, and chlorinators fixed fast by someone who knows pools.</p>
-  </article>
-</div>
+<section id="services">
+  <div class="wrap">
+    <div class="kick" data-r>What we handle</div>
+    <h2 data-r>Every ripple,<br><em>handled.</em></h2>
+    <p class="lede" data-r>One visit a week. Everything a pool needs, nothing it doesn't — quoted flat, done right.</p>
+    <div class="svc">
+      <div class="card" data-r>
+        <div class="drop"></div>
+        <h3>Weekly Cleaning</h3>
+        <p>Skim, brush, vacuum, baskets, chemistry balanced and logged — with a photo texted after every visit.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$149</span><span class="note">/ month · weekly visits</span></div>
+      </div>
+      <div class="card" data-r>
+        <div class="drop"></div>
+        <h3>Green-to-Clean Rescue</h3>
+        <p>Swamp to swim-ready in days, not weeks. Shock, scrub, filter marathon — one flat rescue price.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$299</span><span class="note">one-time · then weekly plan</span></div>
+      </div>
+      <div class="card" data-r>
+        <div class="drop"></div>
+        <h3>Equipment &amp; Repairs</h3>
+        <p>Pumps, filters, heaters, salt systems, automation — diagnosed honestly, fixed by certified techs.</p>
+        <div class="price"><span class="from">From</span><span class="amt">$120</span><span class="note">service call · parts quoted first</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="proof">
-<h3>Trusted by the neighborhood</h3>
-<div class="stars">★ ★ ★ ★ ★</div>
-<p>"Our pool sparkles all summer long — the maintenance schedule keeps everything running smoothly."</p>
-</div>
-
-<section class="area">
-<h3>Service Area</h3>
-<div class="towns">Serving <span>Spring</span> <span>The Woodlands</span> <span>Klein</span> <span>Cypress</span></div>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rescue" data-r>
+      <div class="kick">The rescue</div>
+      <h2>Green pool?<br><em>Don't drain it.</em></h2>
+      <p>Most "dead" pools don't need draining — they need chemistry done right. Our green-to-clean rescue has brought back 400+ pools across Montgomery County. If we can't clear it, you don't pay the rescue fee.</p>
+      <div class="steps3">
+        <div><div class="n">i.</div><h4>We test &amp; shock</h4><p>Full water analysis, then a calculated shock — not a bucket of guesswork.</p></div>
+        <div><div class="n">ii.</div><h4>We scrub &amp; filter</h4><p>Walls brushed, floors vacuumed, filter running around the clock.</p></div>
+        <div><div class="n">iii.</div><h4>You swim</h4><p>Most pools clear in 3–5 days. Then weekly care keeps it that way.</p></div>
+      </div>
+      <a class="btn btn-aqua" href="tel:+12815550163">Start my rescue — (281) 555-0163</a>
+    </div>
+  </div>
 </section>
 
-<footer class="call">
-<a href="tel:+18325550238">Call (832) 555-0238 — Schedule your free water test</a>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick" data-r>Neighbors talking</div>
+    <h2 data-r>Clear water,<br><em>clear reviews.</em></h2>
+    <div class="quotes" style="margin-top:44px">
+      <div class="quote" data-r>
+        <div class="stars">★★★★★</div>
+        <p>Our pool went from green soup to glass in four days. The before-and-after photos looked fake. They were not fake. My kids live in that pool now.</p>
+        <div class="who">Rachel D. · Conroe</div>
+      </div>
+      <div class="quote" data-r>
+        <div class="stars">★★★★★</div>
+        <p>Two years on the weekly plan and I have literally never thought about my pool. The chemistry log they text me is weirdly satisfying to read.</p>
+        <div class="who">Marcus L. · The Woodlands</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick" data-r>Where we swim by</div>
+    <h2 data-r style="font-size:clamp(32px,5vw,58px)">Serving Montgomery County.</h2>
+    <div class="towns" data-r style="margin-top:26px">
+      <span class="town">The Woodlands</span><span class="town">Spring</span><span class="town">Conroe</span>
+      <span class="town">Montgomery</span><span class="town">Magnolia</span>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="kick" data-r style="text-align:center">Free water test with any visit</div>
+    <h2 data-r>Dive in.<br><em>We've got the chemistry.</em></h2>
+    <p data-r>Call or text — we'll schedule your first visit this week and text you a photo when the water's perfect.</p>
+    <div data-r><a class="big-call" href="tel:+12815550163">(281) 555-0163</a></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div><strong>Stillwater Pool Care</strong><br>The Woodlands, TX</div>
+    <div>Sample preview by Kit — not a real business.<br>© 2026</div>
+  </div>
 </footer>
 
-<footer>
-  © 2026 Clear Creek Pool Service | Sample preview only | <a href="#">Privacy</a>
-</footer>
+<div class="stick">
+  <a class="call" href="tel:+12815550163">Call now</a>
+  <a class="txt" href="sms:+12815550163">Text us</a>
+</div>
+
+<script>
+(function(){
+"use strict";
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('[data-r]').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>

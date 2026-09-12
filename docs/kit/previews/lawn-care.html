@@ -1,151 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SAMPLE PREVIEW — fictional business, built by Kit (Garrett Baxley, The Woodlands TX).
+  Art direction: "SUNDAY MORNING" — organic editorial, warm paper, botanical greens.
+  Fraunces serif display + Inter body. Single file, no build step.
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Piney Woods Lawn Co. — Lawn Care in The Woodlands, TX</title>
-<meta name="description" content="Lawn care website preview - fictional business for design purposes only">
+<title>Live Oak Lawn Co. — Lawn Care in The Woodlands, TX</title>
+<meta name="description" content="Live Oak Lawn Co.: weekly mowing, fertilization, and garden beds for The Woodlands area. From $45 a visit. Free quotes.">
 <style>
-/* ---------- CSS reset & base ---------- */
-*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600;700&display=swap');
 :root{
-  --bg:#0a0804;
-  --paper:#fdf6ec;
-  --moss:#2d5a3c;
-  --sage:#6b8f6b;
-  --ink:#1b1b1b;
-  --cream:#f5ebe0;
-  --accent:#a84313;
-  --gold:#d4a853;
+  --paper:#f7f2e7; --paper2:#efe7d3; --card:#fffdf7;
+  --pine:#1d3a28; --pine2:#142a1e; --moss:#5c7a5e; --sage:#9db29a;
+  --sun:#d9a441; --sunsoft:#f3dfae;
+  --ink:#22301f; --inksoft:#5a6b57;
+  --line:rgba(29,58,40,.16);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
 }
-body{font-family:"Playfair Display",serif,"Source Sans Pro",sans-serif;color:var(--ink);
-  background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-::selection{background:var(--accent);color:#fff}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--sun);color:var(--pine2)}
+a{color:inherit}
 
-/* ---------- Google Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+Pro:wght@400;700&display=swap');
+/* paper grain */
+.grain{position:fixed;inset:-40%;width:180%;height:180%;pointer-events:none;z-index:200;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:gr 9s steps(8) infinite}
+@keyframes gr{0%,100%{transform:translate(0,0)}30%{transform:translate(-2%,2%)}60%{transform:translate(2%,-3%)}}
 
-/* ---------- Watermark ---------- */
-.watermark{background:#3d2519;color:#fff;text-align:center;font-family:"Playfair Display",serif;
-  font-style:italic;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 0}
+.wm{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(247,242,231,.92);
+  border-bottom:1px solid var(--line);color:var(--inksoft);font-size:10px;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;text-align:center;padding:7px 10px;backdrop-filter:blur(8px)}
 
-/* ---------- Hero ---------- */
-.hero{position:relative;text-align:center;padding:60px 20px 40px}
-.hero h1{font-family:"Playfair Display",serif;font-size:42px;font-weight:900;letter-spacing:-.04em;
-  margin-bottom:12px;line-height:1.2}
-.hero h1 span{color:var(--gold);font-weight:400}
-.hero .tagline{font-family:"Source Sans Pro",sans-serif;font-size:18px;color:var(--sage);
-  margin-bottom:24px;letter-spacing:.02em}
-.hero .city{font-family:"Source Sans Pro",sans-serif;font-size:15px;opacity:.85;
-  margin-bottom:30px}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:120px 24px 0;overflow:hidden;
+  background:
+    radial-gradient(1000px 480px at 80% -10%,rgba(217,164,65,.28),transparent 60%),
+    radial-gradient(760px 500px at 8% 100%,rgba(92,122,94,.25),transparent 60%),
+    linear-gradient(180deg,#fbf7ec 0%,var(--paper) 70%)}
+.sun{position:absolute;top:-140px;right:-100px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,164,65,.5),rgba(217,164,65,0) 65%);
+  animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.08);opacity:.85}}
+.leaf{position:absolute;color:var(--sage);opacity:.5;animation:sway 8s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(9deg) translateY(-8px)}}
+.hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--moss);margin-bottom:26px}
+.eyebrow::before{content:"";width:44px;height:1px;background:var(--moss)}
+h1{font-family:var(--serif);font-weight:560;font-size:clamp(52px,10.5vw,148px);line-height:.98;
+  letter-spacing:-.02em;color:var(--pine2)}
+h1 em{font-style:italic;font-weight:400;color:var(--moss)}
+.hero-sub{max-width:54ch;color:var(--inksoft);font-size:clamp(15px,2vw,18px);margin:26px 0 34px}
+.hero-sub strong{color:var(--pine)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;border-radius:999px;
+  padding:16px 32px;font-size:16px;transition:transform .15s,box-shadow .2s}
+.btn:active{transform:scale(.96)}
+.btn-pine{background:var(--pine);color:#fdfbf4;box-shadow:0 10px 30px rgba(29,58,40,.3)}
+.btn-pine:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(29,58,40,.4)}
+.btn-line{border:1.5px solid var(--pine);color:var(--pine);background:transparent}
+.btn-line:hover{background:rgba(29,58,40,.07);transform:translateY(-2px)}
+.hero-badges{display:flex;gap:10px 26px;flex-wrap:wrap;color:var(--inksoft);font-size:13px;
+  font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding-bottom:52px}
+.hero-badges b{color:var(--pine)}
+.strip{position:relative;z-index:2;background:var(--pine);color:#f3eddc;overflow:hidden;white-space:nowrap}
+.strip .track{display:inline-block;padding:12px 0;animation:tick 30s linear infinite;
+  font-family:var(--serif);font-style:italic;font-size:16px;letter-spacing:.06em}
+.strip .track i{font-style:normal;color:var(--sun);margin:0 16px}
+@keyframes tick{to{transform:translateX(-50%)}}
 
-/* ---------- Services Grid ---------- */
-.services{max-width:620px;margin:0 auto 60px;padding:0 20px}
-.services h2{font-family:"Playfair Display",serif;font-size:28px;letter-spacing:-.02em;
-  margin-bottom:32px;padding-bottom:12px;border-bottom:1px solid var(--sage);color:var(--cream)}
-.services-grid{display:grid;gap:24px;grid-template-columns:1fr}
-@media(min-width:480px){.services-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:768px){
-  .services-grid{grid-template-columns:repeat(3,1fr)}}}
+/* ---------- sections ---------- */
+section{padding:100px 24px}
+.wrap{max-width:1120px;margin:0 auto}
+.kick{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--moss);margin-bottom:18px}
+h2{font-family:var(--serif);font-weight:560;font-size:clamp(36px,5.6vw,68px);line-height:1.04;
+  letter-spacing:-.015em;color:var(--pine2);margin-bottom:16px}
+h2 em{font-style:italic;font-weight:400;color:var(--moss)}
+.lede{color:var(--inksoft);font-size:17px;max-width:58ch;margin-bottom:56px}
 
-/* ---------- Service Card ---------- */
-.service-card{background:var(--paper);border-radius:12px;padding:28px 24px;
-  position:relative;overflow:min(320px,100%);min-height:280px;display:flex;
-  flex-direction:column;justify-content:space-between;transition:background .3s}
-.service-card:hover{background:#fdf6ec}
-.service-card .icon{width:48px;height:48px;margin:0 auto 20px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;color:var(--accent);
-  font-size:24px;background:rgba(168,67,19,.08)}
-.service-card h3{font-family:"Playfair Display",serif;font-size:18px;letter-spacing:-.01em;
-  margin-bottom:8px;text-align:center}
-.service-card p{font-family:"Source Sans Pro",sans-serif;font-size:14px;color:var(--sage);
-  text-align:center;flex:1;line-height:1.5}
+/* services — editorial index */
+.svc{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;
+  padding:30px 6px;border-bottom:1px solid var(--line);transition:background .25s,padding .25s;position:relative}
+.row:hover{background:rgba(29,58,40,.045);padding-left:18px}
+.row .n{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--sage);width:44px}
+.row h3{font-family:var(--serif);font-size:clamp(22px,3.2vw,32px);font-weight:560;color:var(--pine2);letter-spacing:-.01em}
+.row h3 small{display:block;font-family:var(--body);font-size:14px;font-weight:400;color:var(--inksoft);margin-top:6px;letter-spacing:0}
+.row .p{text-align:right}
+.row .p .from{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sage)}
+.row .p .amt{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);color:var(--pine)}
+@media(max-width:640px){.row{grid-template-columns:auto 1fr}.row .p{grid-column:2;text-align:left;margin-top:4px}}
 
-/* Icon shapes (SVG, no emoji) */
-.mow-icon .path1{stroke:var(--accent);stroke-width:3;fill:none}
-.mow-icon .path2{stroke:var(--gold);stroke-width:2;fill:none;stroke-dasharray:8 4}
-.hedge-icon .path1{fill:var(--moss)}
-.region-icon .path1{fill:var(--accent);stroke:#fff;stroke-width:1.5}
+/* plans */
+.plans{display:grid;gap:18px;margin-top:26px}
+@media(min-width:860px){.plans{grid-template-columns:repeat(3,1fr)}}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:38px 32px;
+  position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
+.plan:hover{transform:translateY(-8px) rotate(-.4deg);box-shadow:0 26px 60px rgba(29,58,40,.14)}
+.plan.hot{border:2px solid var(--pine);box-shadow:0 20px 54px rgba(29,58,40,.16)}
+.plan .tag{position:absolute;top:-15px;left:32px;background:var(--sun);color:var(--pine2);font-size:11px;
+  font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px;border-radius:999px}
+.plan h3{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--pine2);margin-bottom:6px}
+.plan .per{color:var(--inksoft);font-size:14px;margin-bottom:20px}
+.plan .big{font-family:var(--serif);font-size:56px;color:var(--pine);line-height:1;margin-bottom:4px}
+.plan .big small{font-size:16px;font-family:var(--body);color:var(--inksoft)}
+.plan ul{list-style:none;margin:22px 0 28px}
+.plan li{padding:9px 0 9px 28px;position:relative;font-size:15px;color:var(--inksoft);border-bottom:1px dashed var(--line)}
+.plan li:last-child{border-bottom:0}
+.plan li::before{content:"";position:absolute;left:2px;top:15px;width:14px;height:8px;
+  border-left:2.5px solid var(--moss);border-bottom:2.5px solid var(--moss);transform:rotate(-45deg)}
 
-/* ---------- Proof Strip (reviews) ---------- */
-.proof{background:var(--moss);color:var(--paper);padding:32px 24px;text-align:center}
-.proof h3{font-family:"Playfair Display",serif;font-size:22px;margin-bottom:12px}
-.proof .stars{color:var(--gold);font-size:16px;margin-bottom:12px}
-.proof p{font-size:15px;max-width:460px;margin:0 auto;line-height:1.6}
+/* promise band */
+.band{background:var(--pine);color:#f3eddc;border-radius:34px;padding:clamp(50px,7vw,90px) clamp(28px,6vw,80px);
+  position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0;opacity:.14;
+  background:radial-gradient(600px 300px at 90% 0%,rgba(217,164,65,.7),transparent 60%)}
+.band h2{color:#fbf7ec}.band h2 em{color:var(--sunsoft)}
+.band p{color:#d8cfae;max-width:60ch;font-size:17px;margin-bottom:36px;position:relative}
+.trio{display:grid;gap:14px;position:relative}
+@media(min-width:800px){.trio{grid-template-columns:repeat(3,1fr)}}
+.trio div{background:rgba(251,247,236,.07);border:1px solid rgba(251,247,236,.16);border-radius:18px;padding:26px}
+.trio .k{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--sun);margin-bottom:8px}
+.trio h4{font-size:16px;margin-bottom:6px;color:#fbf7ec}
+.trio p{font-size:14px;color:#cfc49e;margin:0}
 
-/* ---------- Service Area ---------- */
-.area{background:var(--paper);border-top:1px solid var(--sage);border-bottom:1px solid var(--sage);
-  padding:24px 20px;max-width:620px;margin:0 auto}
-.area h3{font-family:"Playfair Display",serif;font-size:20px;letter-spacing:-.01em;margin-bottom:16px}
-.area .towns{font-family:"Source Sans Pro",sans-serif;color:var(--sage);font-size:14px}
-.area .towns span{margin-right:20px;margin-bottom:8px;display:inline-block}
+/* quotes */
+.quotes{display:grid;gap:18px}
+@media(min-width:860px){.quotes{grid-template-columns:1fr 1fr}}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px 34px;position:relative}
+.quote::before{content:"\201C";position:absolute;top:6px;left:24px;font-family:var(--serif);font-size:90px;
+  color:var(--sunsoft);line-height:1}
+.quote .stars{color:var(--sun);letter-spacing:.28em;font-size:14px;margin-bottom:14px;position:relative}
+.quote p{font-family:var(--serif);font-size:19px;line-height:1.55;color:var(--pine2);margin-bottom:18px;position:relative}
+.quote .who{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--moss)}
 
-/* ---------- Sticky Call Path ---------- */
-.call{position:fixed;bottom:0;left:0;right:0;background:var(--moss);padding:16px 20px 16px calc(20px + env(safe-area-inset-bottom))}
-.call a{display:block;max-width:600px;margin:0 auto;background:var(--gold);color:var(--ink);
-  font-family:"Playfair Display",serif;font-size:22px;font-weight:700;letter-spacing:-.02em;
-  text-align:center;text-decoration:none;padding:18px;border-radius:12px;
-  transition:background .3s}
-.call a:hover{background:#c98a3b}
+/* area */
+.towns{display:flex;flex-wrap:wrap;gap:12px}
+.town{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:12px 26px;
+  font-weight:600;font-size:15px;color:var(--pine);transition:all .25s}
+.town:hover{background:var(--pine);color:#fbf7ec;transform:translateY(-2px)}
 
-/* ---------- Footer ---------- */
-footer{padding:24px 20px;text-align:center;font-size:12px;color:var(--sage);
-  font-family:"Source Sans Pro",sans-serif;letter-spacing:.15em;text-transform:uppercase}
-footer a{color:var(--gold);text-decoration:none}
+/* final */
+.final{text-align:center;background:linear-gradient(180deg,var(--paper),var(--paper2));border-top:1px solid var(--line)}
+.final h2{font-size:clamp(44px,8vw,96px)}
+.final h2 em{color:var(--moss)}
+.final p{color:var(--inksoft);font-size:18px;max-width:50ch;margin:20px auto 36px}
+.big-call{font-family:var(--serif);font-size:clamp(30px,5.6vw,54px);color:var(--pine);text-decoration:none;
+  border-bottom:3px solid var(--sun);padding-bottom:4px;transition:color .2s}
+.big-call:hover{color:var(--moss)}
 
-/* ---------- Reduced Motion ---------- */
-@media (prefers-reduced-motion:reduce){*{-webkit-animation-duration:.01ms!important;
-  animation-duration:.01ms!important;-webkit-transition-duration:.01ms!important;
-  transition-duration:.01ms!important}}
+.stick{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:250;display:flex;gap:10px}
+.stick a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:17px;border-radius:999px;
+  padding:17px 10px;box-shadow:0 14px 40px rgba(29,58,40,.3)}
+.stick .call{background:var(--pine);color:#fdfbf4}
+.stick .txt{background:rgba(255,253,247,.94);color:var(--pine);border:1.5px solid var(--pine)}
+@media(min-width:760px){.stick{display:none}}
+
+footer.site{padding:44px 24px 120px;color:var(--inksoft);font-size:13px;border-top:1px solid var(--line)}
+@media(min-width:760px){footer.site{padding-bottom:44px}}
+footer.site .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer.site strong{font-family:var(--serif);color:var(--pine);font-size:17px;font-weight:600}
+
+[data-r]{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+[data-r].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  [data-r]{opacity:1;transform:none}.strip .track{animation:none}
+}
 </style>
 </head>
 <body>
-<div class="watermark">SAMPLE PREVIEW — NOT A REAL BUSINESS</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="wm">Sample preview — fictional business · built by Kit</div>
 
 <header class="hero">
-<h1>The Craft of <span>Lawn Care</span></h1>
-<div class="tagline">Hand-tended lawns for discriminating homeowners in The Woodlands</div>
-<div class="city">The Woodlands, TX</div>
+  <div class="sun" aria-hidden="true"></div>
+  <svg class="leaf" style="top:18%;left:6%;width:54px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21c-6 0-9-4-9-9 0-6 5-9 11-9 3 0 6 1 6 1s-1 17-8 17z"/><path d="M12 21c0-8 4-12 10-14"/></svg>
+  <svg class="leaf" style="top:64%;right:8%;width:40px;animation-delay:-3s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21c-6 0-9-4-9-9 0-6 5-9 11-9 3 0 6 1 6 1s-1 17-8 17z"/><path d="M12 21c0-8 4-12 10-14"/></svg>
+  <div class="hero-inner">
+    <div class="eyebrow">The Woodlands · Texas</div>
+    <h1>A yard that looks<br><em>loved,</em> not<br>maintained.</h1>
+    <p class="hero-sub">Live Oak Lawn Co. keeps Woodlands-area yards thick, edged, and green — <strong>weekly, on the same day, without you thinking about it.</strong> Real people, sharp blades, gates closed behind us.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-pine" href="tel:+12815550147">Call (281) 555-0147</a>
+      <a class="btn btn-line" href="#services">Services &amp; prices</a>
+    </div>
+    <div class="hero-badges">
+      <span><b>From $45</b> a visit</span><span><b>Same crew</b> every week</span><span><b>Free</b> quotes</span>
+    </div>
+  </div>
+  <div class="strip" aria-hidden="true"><div class="track" id="tick"></div></div>
 </header>
 
-<section class="services">
-<h2>Our Services</h2>
-<div class="services-grid">
-  <article class="service-card">
-    <div class="icon mow-icon"><svg viewBox="0 0 24 24" width="24" height="24"><path class="path1" d="M8 2v4h8v4L8 2zM2 8h4v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V8L2 8z"/><path class="path2" d="M20 2v2h2v2h2v2h-2v2h-2v2h-2v-2h-2v-2h-2v-2"/></svg></div>
-    <h3>Weekly Mowing & Edging</h3>
-    <p>Clean cuts and crisp edges on a schedule you never have to think about. Seasonal rhythm, professional results.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon hedge-icon"><svg viewBox="0 0 24 24" width="24" height="24"><path class="path1" d="M4 4h16c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1V5c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1vH4zm16 8H8c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h10c.55 0 1-.45 1-1v-6zm-8-4c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1h-2z"/></svg></div>
-    <h3>Hedge & Bush Trimming</h3>
-    <p>Shaped, healthy shrubs that make the whole property look cared for. Structural pruning for growth balance.</p>
-  </article>
-  <article class="service-card">
-    <div class="icon region-icon"><svg viewBox="0 0 24 24" width="24" height="24"><path class="path1" d="M3 3v2h2v18h2V5H3zm18 2v2h2v14l-2 3h-6l-2-3h-2v-2H5zM5 11h2v5h2v-5h2V11H5zm4 4h6c.55 0 1 .45 1 1v2c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1h-6c-.55 0-1-.45-1-1v-2zm4-12c1.1 0 2 1 2 2v2H7v-2c0-1 1-2 2-2zm-5 5c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1h2zm4 4c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1h2zm4-9c0-1.1.9-2 2-2h2c1.1 0 2 1 2v2h-2v-2zm6 7c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v2h2v-2zm-6 3c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v2h2v-2z"/></svg></div>
-    <h3>Mulch & Seasonal Cleanups</h3>
-    <p>Fresh mulch beds and storm-debris cleanup before the neighbors notice. Property-ready for every season.</p>
-  </article>
-</div>
+<section id="services">
+  <div class="wrap">
+    <div class="kick" data-r>The menu</div>
+    <h2 data-r>Everything green,<br><em>priced plainly.</em></h2>
+    <p class="lede" data-r>No packages designed to confuse you. Pick what your yard needs — the quote is free and it sticks.</p>
+    <div class="svc" data-r>
+      <div class="row"><span class="n">i.</span><h3>Mowing &amp; Edging<small>Cut, edge, blow — the full tidy, every visit.</small></h3><div class="p"><span class="from">From</span><span class="amt">$45</span></div></div>
+      <div class="row"><span class="n">ii.</span><h3>Fertilization &amp; Weed Control<small>Season-timed treatments for St. Augustine lawns.</small></h3><div class="p"><span class="from">From</span><span class="amt">$59</span></div></div>
+      <div class="row"><span class="n">iii.</span><h3>Mulch &amp; Flower Beds<small>Fresh beds, clean lines, weed barrier where it counts.</small></h3><div class="p"><span class="from">From</span><span class="amt">$120</span></div></div>
+      <div class="row"><span class="n">iv.</span><h3>Hedge &amp; Shrub Trimming<small>Shaped by hand, not hacked by machine.</small></h3><div class="p"><span class="from">From</span><span class="amt">$75</span></div></div>
+      <div class="row"><span class="n">v.</span><h3>Seasonal Cleanups<small>Spring wake-ups and fall leaf clearing, done in a day.</small></h3><div class="p"><span class="from">From</span><span class="amt">$149</span></div></div>
+    </div>
+
+    <div class="kick" data-r style="margin-top:80px">Set it and forget it</div>
+    <h2 data-r style="font-size:clamp(30px,4.6vw,54px)">Weekly plans,<br><em>one flat rate.</em></h2>
+    <div class="plans">
+      <div class="plan" data-r>
+        <h3>Tidy</h3><p class="per">Small yards · townhomes</p>
+        <div class="big">$45<small> / visit</small></div>
+        <ul><li>Weekly mow, edge &amp; blow</li><li>Same day every week</li><li>Gate always closed behind us</li></ul>
+        <a class="btn btn-line" href="tel:+12815550147" style="width:100%;text-align:center">Choose Tidy</a>
+      </div>
+      <div class="plan hot" data-r>
+        <div class="tag">Most loved</div>
+        <h3>Thrive</h3><p class="per">Most Woodlands homes</p>
+        <div class="big">$65<small> / visit</small></div>
+        <ul><li>Everything in Tidy</li><li>Seasonal fertilization included</li><li>Weed control, always</li><li>Free bed touch-up each spring</li></ul>
+        <a class="btn btn-pine" href="tel:+12815550147" style="width:100%;text-align:center">Choose Thrive</a>
+      </div>
+      <div class="plan" data-r>
+        <h3>Estate</h3><p class="per">Acreage &amp; large lots</p>
+        <div class="big">$110<small> / visit</small></div>
+        <ul><li>Everything in Thrive</li><li>Hedge trimming quarterly</li><li>Priority storm cleanup</li><li>Dedicated crew lead</li></ul>
+        <a class="btn btn-line" href="tel:+12815550147" style="width:100%;text-align:center">Choose Estate</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="proof">
-<h3>Trusted by the neighborhood</h3>
-<div class="stars">★ ★ ★ ★ ★</div>
-<p>"The best lawn on the block — and the neighborhood knows it. Our yard looks healthier than ever."</p>
-</div>
-
-<section class="area">
-<h3>Service Area</h3>
-<div class="towns">Serving <span>The Woodlands</span> <span>Spring</span> <span>Conroe</span> <span>Oak Ridge North</span></div>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="band" data-r>
+      <div class="kick" style="color:var(--sun)">The Live Oak promise</div>
+      <h2>We treat it like <em>our</em> yard.</h2>
+      <p>Anyone can cut grass. We show up on the same day every week, with sharp blades that don't tear your lawn, edges cut like they matter, and a text when we're done — with a photo, so you can see it from your desk.</p>
+      <div class="trio">
+        <div><div class="k">i.</div><h4>Same crew, every week</h4><p>You learn their names. They learn your gate code and your dog's name.</p></div>
+        <div><div class="k">ii.</div><h4>Photo after every visit</h4><p>A text with a photo of your finished yard. No wondering, ever.</p></div>
+        <div><div class="k">iii.</div><h4>Skip anytime</h4><p>Going on vacation? One text pauses your plan. No fees, no calls to make.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer class="call">
-<a href="tel:+12815550147">Call (281) 555-0147 — Schedule a consultation today</a>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick" data-r>Neighbors talking</div>
+    <h2 data-r>Loved on<br><em>every street.</em></h2>
+    <div class="quotes" style="margin-top:44px">
+      <div class="quote" data-r>
+        <div class="stars">★★★★★</div>
+        <p>Three services in six years. Live Oak is the first one where I never once had to call and ask "are you coming today?" They just come. The yard has never looked better.</p>
+        <div class="who">The Hendersons · The Woodlands</div>
+      </div>
+      <div class="quote" data-r>
+        <div class="stars">★★★★★</div>
+        <p>They sent a photo of my mom's yard after every visit so I could check from Dallas. You can't buy that kind of care — well, apparently $65 a week buys it.</p>
+        <div class="who">Priya S. · Spring</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick" data-r>Where we mow</div>
+    <h2 data-r style="font-size:clamp(30px,4.6vw,54px)">Proudly local.</h2>
+    <div class="towns" data-r style="margin-top:26px">
+      <span class="town">The Woodlands</span><span class="town">Spring</span><span class="town">Conroe</span>
+      <span class="town">Magnolia</span><span class="town">Oak Ridge</span>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="kick" data-r style="text-align:center">Free quotes · no pressure</div>
+    <h2 data-r>Your yard,<br><em>this weekend.</em></h2>
+    <p data-r>Text us your address and a photo of the yard. We'll reply with an exact price — usually within the hour.</p>
+    <div data-r><a class="big-call" href="tel:+12815550147">(281) 555-0147</a></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div><strong>Live Oak Lawn Co.</strong><br>The Woodlands, TX</div>
+    <div>Sample preview by Kit — not a real business.<br>© 2026</div>
+  </div>
 </footer>
 
-<footer>
-  © 2026 Piney Woods Lawn Co. | Sample preview only | <a href="#">Privacy</a>
-</footer>
+<div class="stick">
+  <a class="call" href="tel:+12815550147">Call now</a>
+  <a class="txt" href="sms:+12815550147">Text a photo</a>
+</div>
+
+<script>
+(function(){
+"use strict";
+var items=["Weekly mowing from $45","Same crew every visit","Photo after every cut","Free quotes","Skip anytime"];
+var half=items.map(function(t){return t+' <i>\u2733</i> '}).join('');
+document.getElementById('tick').innerHTML=half+half;
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('[data-r]').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
