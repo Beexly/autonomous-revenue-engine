@@ -1,6 +1,6 @@
 # First content batch — internal candidates only
 
-**Date:** 2026-08-24 (updated 2026-09-09 cycle 16)  
+**Date:** 2026-08-24 (updated 2026-09-12 cycle 17)  
 **Authorship:** Human-primary idea/angle/data. AI production only.  
 **Published:** 0. This file is not a publish queue.
 
@@ -45,5 +45,7 @@ Additional public bar: qi-check Hold ≥ 9.2 + adversarial Pass. Approved queue 
 **2026-09-08 cycle 15:** Re-confirmed SO-002/SO-005 Pass (no redo). Domain probes: most shortlist 000/fail; holdscore.com 200 (parked lander) — deprioritize. Publish path remains disabled.
 
 **2026-09-09 cycle 16:** Re-confirmed SO-002/SO-005 Pass (no redo). Domain probes: most shortlist 000/fail; holdscore.com 200 (parked lander) — deprioritize. Publish path remains disabled.
+
+**2026-09-12 cycle 17:** Re-confirmed SO-002/SO-005 Pass (no redo). Domain probes: most shortlist 000/fail; holdscore.com 200 (parked lander) — deprioritize. Publish path remains disabled.
 
 Kill patterns to avoid: numbered growth listicles with bait closers; alarmist unpublished-ban predictions with share-this closers.
