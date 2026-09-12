@@ -6,36 +6,145 @@
 <title>Bayou Breeze Air Conditioning — HVAC in Houston, TX</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#1f2430;background:#f2f5f9;line-height:1.5}
-.watermark{background:#c00;color:#fff;text-align:center;font-size:12px;font-weight:700;letter-spacing:1px;padding:8px}
-.hero{background:#16345c;color:#fff;text-align:center;padding:44px 20px 34px}
-.hero h1{font-size:30px;margin-bottom:6px}
-.hero .town{font-size:15px;opacity:.85;margin-bottom:12px}
-.hero .tag{font-size:18px;font-weight:600}
-.wrap{max-width:520px;margin:0 auto;padding:20px 16px 120px}
-.card{background:#fff;border-radius:12px;padding:18px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-.card h2{font-size:18px;color:#16345c;margin-bottom:4px}
-.card p{font-size:15px;color:#4c5566}
-.area{text-align:center;color:#5a6472;font-size:14px;margin:26px 0 6px}
-footer{text-align:center;font-size:12px;color:#8a93a0;padding:14px}
-.call{position:fixed;bottom:0;left:0;right:0;background:#16345c;padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
-.call a{display:block;max-width:520px;margin:0 auto;background:#fff;color:#16345c;text-align:center;font-size:20px;font-weight:800;text-decoration:none;padding:15px;border-radius:12px}
+:root{
+  --cool:#16345c;
+  --deep:#0e2643;
+  --ice:#e0f0ff;
+  --steel:#4a6b8a;
+  --charcoal:#222;
+  --white:#ffffff;
+  --gray:#555;
+}
+body{font-family:"Inter",sans-serif;color:var(--steel);background:var(--deep);
+  line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+::selection{background:var(--ice);color:var(--steel)}
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+/* ---------- Watermark ---------- */
+.watermark{background:#06192b;color:#fff;text-align:center;
+  font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;padding:8px 0}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;text-align:center;padding:60px 20px 40px;
+  background:linear-gradient(180deg,var(--cool) 0%,var(--deep) 100%)}
+.hero h1{font-family:"Inter",sans-serif;font-size:42px;font-weight:900;
+  letter-spacing:-.04em;color:var(--white);margin-bottom:12px;line-height:1.2}
+.hero h1 span{color:var(--ice);font-weight:600}
+.hero .tagline{font-family:"Inter",sans-serif;font-size:18px;color:var(--ice);
+  margin-bottom:24px;letter-spacing:.02em}
+.hero .city{font-family:"Inter",sans-serif;font-size:15px;opacity:.85;
+  margin-bottom:30px}
+
+/* ---------- Services ---------- */
+.services{max-width:620px;margin:0 auto 60px;padding:0 20px}
+.services h2{font-family:"Inter",sans-serif;font-size:28px;font-weight:700;
+  letter-spacing:-.02em;margin-bottom:32px;padding-bottom:12px;
+  border-bottom:1px solid var(--steel);color:var(--white)}
+.services-grid{display:grid;gap:24px;grid-template-columns:1fr}
+@media(min-width:480px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- Service Card ---------- */
+.service-card{background:var(--white);border-radius:12px;padding:28px 24px;
+  position:relative;overflow:min(320px,100%);min-height:280px;display:flex;
+  flex-direction:column;justify-content:space-between;transition:transform .3s}
+.service-card:hover{transform:translateY(-4px)}
+.service-card::before{content:'';position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;background:rgba(224,240,255,.08)}
+.service-card .icon{width:48px;height:48px;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:var(--ice);background:rgba(224,240,255,.12)}
+.service-card h3{font-family:"Inter",sans-serif;font-size:18px;font-weight:600;
+  letter-spacing:-.01em;margin-bottom:8px;text-align:center}
+.service-card p{font-family:"Inter",sans-serif;font-size:14px;
+  color:var(--steel);text-align:center;line-height:1.5}
+
+/* Icon shapes (SVG, no emoji) */
+.repair-icon .path1{fill:var(--ice);stroke:var(--steel);stroke-width:2}
+.air-icon .path1{fill:var(--ice);stroke:var(--steel);stroke-width:1.5}
+.emergency-icon .path1{fill:var(--ice);stroke:var(--ice);stroke-width:2}
+
+/* ---------- Proof Strip ---------- */
+.proof{background:var(--deep);color:var(--white);padding:32px 24px;text-align:center}
+.proof h3{font-family:"Inter",sans-serif;font-size:22px;font-weight:700;
+  margin-bottom:12px}
+.proof .stars{color:var(--ice);font-size:16px;margin-bottom:12px}
+.proof p{font-size:15px;max-width:460px;margin:0 auto;line-height:1.6}
+
+/* ---------- Service Area ---------- */
+.area{background:var(--white);border-top:1px solid var(--steel);
+  border-bottom:1px solid var(--steel);padding:24px 20px;max-width:620px;margin:0 auto}
+.area h3{font-family:"Inter",sans-serif;font-size:20px;font-weight:600;
+  letter-spacing:-.01em;margin-bottom:16px}
+.area .towns{font-family:"Inter",sans-serif;color:var(--steel);font-size:14px}
+.area .towns span{margin-right:20px;margin-bottom:8px;display:inline-block}
+
+/* ---------- Sticky Call Path ---------- */
+.call{position:fixed;bottom:0;left:0;right:0;background:var(--deep);
+  padding:16px 20px 16px calc(20px + env(safe-area-inset-bottom))}
+.call a{display:block;max-width:600px;margin:0 auto;background:var(--ice);
+  color:var(--steel);font-family:"Inter",sans-serif;font-size:22px;font-weight:700;
+  letter-spacing:-.02em;text-align:center;text-decoration:none;
+  padding:18px;border-radius:12px;transition:background .3s}
+.call a:hover{background:var(--gray)}
 </style>
 </head>
 <body>
 <div class="watermark">SAMPLE PREVIEW — NOT A REAL BUSINESS</div>
-<div class="hero">
-<h1>Bayou Breeze Air Conditioning</h1>
-<div class="town">Houston, TX</div>
-<div class="tag">Cold air. Fixed right. Today.</div>
+
+<header class="hero">
+<h1>Cool Air. Fixed Right. <span>Today.</span></h1>
+<div class="tagline">Fast, honest HVAC service for Houston-area homes</div>
+<div class="city">Houston, TX</div>
+</header>
+
+<section class="services">
+<h2>Our Services</h2>
+<div class="services-grid">
+  <article class="service-card">
+    <div class="icon repair-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16a4 4 0 0 0 0 8 4 4 0 0 0 0-8 4 4 0 0 0 0 8"/></svg></div>
+    <h3>AC Repair & Tune-Ups</h3>
+    <p>Fast diagnosis, honest pricing, and your house cooling before bedtime.</p>
+  </article>
+  <article class="service-card">
+    <div class="icon air-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a4 4 0 0 1-4 4 4 4 0 0 1-4 4 4 4 0 0 1 4 4"/></svg></div>
+    <h3>AC Repair & Tune-Ups</h3>
+    <p>Fast diagnosis, honest pricing, and your house cooling before bedtime.</p>
+  </article>
+  <article class="service-card">
+    <div class="icon air-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a4 4 0 0 1-4 4 4 4 0 0 1 4 4 4 4 0 0 1 4-4 4 4 0 0 1-4-4 4 4 0 0 1-4-4z"/></svg></div>
+    <h3>New System Installs</h3>
+    <p>High-efficiency systems sized for your home — installed in one day.</p>
+  </article>
+  <article class="service-card">
+    <div class="icon emergency-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17a5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5z"/><path d="M12 9l-8 8 18 8"/></svg></div>
+    <h3>24/7 Emergency Calls</h3>
+    <p>AC out at 2 AM in August? We answer, and we show up.</p>
+  </article>
 </div>
-<div class="wrap">
-<div class="card"><h2>❄️ AC Repair &amp; Tune-Ups</h2><p>Fast diagnosis, honest pricing, and your house cooling before bedtime.</p></div>
-<div class="card"><h2>🏠 New System Installs</h2><p>High-efficiency systems sized for your home — installed in one day.</p></div>
-<div class="card"><h2>🚨 24/7 Emergency Calls</h2><p>AC out at 2 AM in August? We answer, and we show up.</p></div>
-<div class="area">Serving Houston · Spring · The Woodlands · Tomball</div>
-<footer>SAMPLE PREVIEW — not a real business</footer>
+</section>
+
+<div class="proof">
+<h3>Trusted by Houston families</h3>
+<div class="stars">★ ★ ★ ★ ★</div>
+<p>"They came at 11 PM with a broken AC. Fixed it in 20 minutes and my kids slept through the night."</p>
 </div>
-<div class="call"><a href="tel:+17135550392">📞 Call (713) 555-0392</a></div>
+
+<section class="area">
+<h3>Service Area</h3>
+<div class="towns">Serving <span>Houston</span> <span>Spring</span> <span>The Woodlands</span> <span>Tomball</span></div>
+</section>
+
+<footer class="call">
+<a href="tel:+17135550392">Call (713) 555-0392 — Schedule your free energy audit</a>
+</footer>
+
+<footer>
+  © 2026 Bayou Breeze Air Conditioning | Sample preview only | <a href="#">Privacy</a>
+</footer>
 </body>
 </html>

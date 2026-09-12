@@ -6,36 +6,145 @@
 <title>Lone Star Roofing Co. — Roofing in Conroe, TX</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#2a2118;background:#f8f4ee;line-height:1.5}
-.watermark{background:#c00;color:#fff;text-align:center;font-size:12px;font-weight:700;letter-spacing:1px;padding:8px}
-.hero{background:#6b3a1e;color:#fff;text-align:center;padding:44px 20px 34px}
-.hero h1{font-size:30px;margin-bottom:6px}
-.hero .town{font-size:15px;opacity:.85;margin-bottom:12px}
-.hero .tag{font-size:18px;font-weight:600}
-.wrap{max-width:520px;margin:0 auto;padding:20px 16px 120px}
-.card{background:#fff;border-radius:12px;padding:18px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-.card h2{font-size:18px;color:#6b3a1e;margin-bottom:4px}
-.card p{font-size:15px;color:#5c5145}
-.area{text-align:center;color:#6a6055;font-size:14px;margin:26px 0 6px}
-footer{text-align:center;font-size:12px;color:#99908a;padding:14px}
-.call{position:fixed;bottom:0;left:0;right:0;background:#6b3a1e;padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
-.call a{display:block;max-width:520px;margin:0 auto;background:#fff;color:#6b3a1e;text-align:center;font-size:20px;font-weight:800;text-decoration:none;padding:15px;border-radius:12px}
+:root{
+  --barn:#6b3a1e;
+  --deep:#3d2519;
+  --cream:#f8f4ee;
+  --copper:#b87333;
+  --ink:#2a2118;
+  --gray:#8a7d70;
+}
+body{font-family:"Merriweather",serif,color:var(--ink);background:var(--deep);
+  line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+::selection{background:var(--copper);color:#fff}
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Montserrat:wght@400;600;700&display=swap');
+
+/* ---------- Watermark ---------- */
+.watermark{background:#2a1c12;color:var(--cream);text-align:center;
+  font-family:"Montserrat",sans-serif;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;padding:8px 0}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;text-align:center;padding:60px 20px 40px;
+  background:linear-gradient(180deg,var(--barn) 0%,var(--deep) 100%)}
+.hero h1{font-family:"Merriweather",serif;font-size:42px;font-weight:900;
+  letter-spacing:-.04em;color:var(--cream);margin-bottom:12px;line-height:1.2}
+.hero h1 span{color:var(--copper);font-weight:700}
+.hero .tagline{font-family:"Montserrat",sans-serif;font-size:18px;color:var(--cream);
+  margin-bottom:24px;letter-spacing:.02em}
+.hero .city{font-family:"Montserrat",sans-serif;font-size:15px;opacity:.85;
+  margin-bottom:30px}
+
+/* ---------- Services ---------- */
+.services{max-width:620px;margin:0 auto 60px;padding:0 20px}
+.services h2{font-family:"Merriweather",serif;font-size:28px;font-weight:700;
+  letter-spacing:-.02em;margin-bottom:32px;padding-bottom:12px;
+  border-bottom:1px solid var(--gray);color:var(--cream)}
+.services-grid{display:grid;gap:24px;grid-template-columns:1fr}
+@media(min-width:480px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- Service Card ---------- */
+.service-card{background:var(--cream);border-radius:12px;padding:28px 24px;
+  position:relative;overflow:min(320px,100%);min-height:280px;display:flex;
+  flex-direction:column;justify-content:space-between;transition:transform .3s}
+.service-card:hover{transform:translateY(-4px)}
+.service-card::before{content:'';position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;background:rgba(184,115,51,.08)}
+.service-card .icon{width:48px;height:48px;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:var(--copper);background:rgba(184,115,51,.12)}
+.service-card h3{font-family:"Merriweather",serif;font-size:18px;font-weight:700;
+  letter-spacing:-.01em;margin-bottom:8px;text-align:center}
+.service-card p{font-family:"Montserrat",sans-serif;font-size:14px;
+  color:var(--ink);text-align:center;line-height:1.5}
+
+/* ---------- Proof Strip ---------- */
+.proof{background:var(--deep);color:var(--cream);padding:32px 24px;text-align:center}
+.proof h3{font-family:"Merriweather",serif;font-size:22px;font-weight:700;
+  margin-bottom:12px}
+.proof .stars{color:var(--copper);font-size:16px;margin-bottom:12px}
+.proof p{font-size:15px;max-width:460px;margin:0 auto;line-height:1.6}
+
+/* ---------- Service Area ---------- */
+.area{background:var(--cream);border-top:1px solid var(--gray);
+  border-bottom:1px solid var(--gray);padding:24px 20px;max-width:620px;margin:0 auto}
+.area h3{font-family:"Merriweather",serif;font-size:20px;font-weight:700;
+  letter-spacing:-.01em;margin-bottom:16px}
+.area .towns{font-family:"Montserrat",sans-serif;color:var(--ink);opacity:.6;
+  font-size:14px}
+.area .towns span{margin-right:20px;margin-bottom:8px;display:inline-block}
+
+/* ---------- Sticky Call Path ---------- */
+.call{position:fixed;bottom:0;left:0;right:0;background:var(--deep);
+  padding:16px 20px 16px calc(20px + env(safe-area-inset-bottom))}
+.call a{display:block;max-width:600px;margin:0 auto;background:var(--copper);
+  color:var(--cream);font-family:"Montserrat",sans-serif;font-size:22px;
+  font-weight:700;letter-spacing:-.02em;text-align:center;
+  text-decoration:none;padding:18px;border-radius:12px;transition:background .3s}
+.call a:hover{background:#9a5f2b}
+
+/* ---------- Footer ---------- */
+footer{padding:24px 20px;text-align:center;font-size:12px;
+  color:var(--gray);font-family:"Montserrat",sans-serif;letter-spacing:.15em;
+  text-transform:uppercase}
+footer a{color:var(--copper);text-decoration:none}
+
+@media (prefers-reduced-motion:reduce){*{-webkit-animation-duration:.01ms!important;
+  animation-duration:.01ms!important;-webkit-transition-duration:.01ms!important;
+  transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 <div class="watermark">SAMPLE PREVIEW — NOT A REAL BUSINESS</div>
-<div class="hero">
-<h1>Lone Star Roofing Co.</h1>
-<div class="town">Conroe, TX</div>
-<div class="tag">A roof you never have to worry about.</div>
+
+<header class="hero">
+<h1>A Roof You Never <span>Worry About</span></h1>
+<div class="tagline">Texas-sized roofing service with a handshake and a warranty</div>
+<div class="city">Conroe, TX</div>
+</header>
+
+<section class="services">
+<h2>Our Services</h2>
+<div class="services-grid">
+  <article class="service-card">
+    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20v-8l8-6 8 6v8"/></svg></div>
+    <h3>Roof Replacement</h3>
+    <p>Full tear-off and install in 1–2 days, with a workmanship warranty in writing.</p>
+  </article>
+  <article class="service-card">
+    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+    <h3>Storm & Leak Repair</h3>
+    <p>Hail and wind damage patched fast — we handle the insurance photos too.</p>
+  </article>
+  <article class="service-card">
+    <div class="icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+    <h3>Free Roof Inspections</h3>
+    <p>Honest 21-point check with photos. No pressure, no upsell, just facts.</p>
+  </article>
 </div>
-<div class="wrap">
-<div class="card"><h2>🏠 Roof Replacement</h2><p>Full tear-off and install in 1–2 days, with a workmanship warranty in writing.</p></div>
-<div class="card"><h2>⛈️ Storm &amp; Leak Repair</h2><p>Hail and wind damage patched fast — we handle the insurance photos too.</p></div>
-<div class="card"><h2>🔍 Free Roof Inspections</h2><p>Honest 21-point check with photos. No pressure, no upsell, just facts.</p></div>
-<div class="area">Serving Conroe · The Woodlands · Magnolia · Willis</div>
-<footer>SAMPLE PREVIEW — not a real business</footer>
+</section>
+
+<div class="proof">
+<h3>Trusted by Texas homeowners</h3>
+<div class="stars">★ ★ ★ ★ ★</div>
+<p>"They replaced our roof in one day after the hailstorm. Clean, honest, and exactly as quoted."</p>
 </div>
-<div class="call"><a href="tel:+12815550176">📞 Call (281) 555-0176</a></div>
+
+<section class="area">
+<h3>Service Area</h3>
+<div class="towns">Serving <span>Conroe</span> <span>The Woodlands</span> <span>Magnolia</span> <span>Willis</span></div>
+</section>
+
+<footer class="call">
+<a href="tel:+12815550176">Call (281) 555-0176 — Schedule your free roof inspection</a>
+</footer>
+
+<footer>
+  © 2026 Lone Star Roofing Co. | Sample preview only | <a href="#">Privacy</a>
+</footer>
 </body>
 </html>
