@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workflows — Automation for Local Businesses</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1d130b;background:#f6efe0}
+h1,h2,h3,h4{font-family:Georgia,serif;color:#1d130b}
+a{color:#c2410c;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:800px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:60px 20px;background:#fff3e0}
+.hero h1{font-size:2.2rem;margin-bottom:10px}
+.hero p{font-size:1.2rem;color:#5a5a5a}
+.product{background:#fff;border-radius:16px;margin:30px 0;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.product-header{background:#c2410c;color:#fff;padding:20px;}
+.product-header h2{font-size:1.8rem;margin:0;}
+.product-body{padding:30px;}
+.demo{background:#f8f9fa;border-left:4px solid #c2410c;padding:20px;margin:20px 0;font-size:0.9rem;color:#5a5a5a}
+.demo h3{margin-top:0;}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:25px 0;}
+.spec{background:#f0f0f0;padding:15px;border-radius:10px;}
+.spec h4{margin-top:0;margin-bottom:10px;font-size:1.1rem;}
+.spec p{margin:5px 0;}
+.footer{text-align:center;padding:40px 20px;color:#666;font-size:0.9rem;border-top:1px solid #eee;margin-top:40px}
+.btn{display:inline-block;background:#c2410c;color:#fff;padding:12px 24px;border-radius:6px;font-weight:600;text-decoration:none;margin:10px 5px;transition:background 0.3s;}
+.btn:hover{background:#a3330c;}
+@media(max-width:600px){
+  .hero{h1{font-size:1.8rem;}p{font-size:1rem;}}
+  .product-header{h2{font-size:1.5rem;}}
+  .container{padding:10px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <section class="hero">
+    <h1>Workflows</h1>
+    <p>Turn chaos into calm with custom automation that runs itself.</p>
+  </section><section class="product">
+    <div class="product-header">
+      <h2>Lead Catcher</h2>
+    </div>
+    <div class="product-body">
+      <p>Never miss a lead after hours again. When a potential customer calls and you can't answer, the system sends an instant text-back and captures their details in your CRM.</p>
+      <div class="demo">
+        <h3>Demo: How it works</h3>
+        <p>This is a mock demonstration. Incoming call → SMS auto-reply with custom message → Lead added to Google Sheets/CRM → Notification sent to your phone.</p>
+      </div>
+      <div class="specs">
+        <div class="spec">
+          <h4>Deliverables</h4>
+          <p>Custom SMS auto-reply script, CRM integration (Google Sheets or Airtable), setup guide.</p>
+        </div>
+        <div class="spec">
+          <h4>$0 Stack</h4>
+          <p>n8n (self-hosted), Twilio free tier (or email SMS gateway), Google Sheets.</p>
+        </div>
+        <div class="spec">
+          <h4>Failure Handling</h4>
+          <p>If SMS fails, falls back to email. Webhook retries with exponential backoff. Admin notified via email after 3 failed attempts.</p>
+        </div>
+        <div class="spec">
+          <h4>Price</h4>
+          <p>Setup: $250 | Monthly: $0 (self-hosted)</p>
+        </div>
+      </div>
+      <a href="https://ig.me/m/gbeexly" class="btn">DM &ldquo;WORKFLOW&rdquo;</a>
+    </div>
+  </section>
+
+  <section class="product">
+    <div class="product-header">
+      <h2>Review Engine</h2>
+    </div>
+    <div class="product-body">
+      <p>Automatic review requests after jobs, with responses drafted for one-tap approval. Build your reputation on autopilot.</p>
+      <div class="demo">
+        <h3>Demo: How it works</h3>
+        <p>This is a mock demonstration. Job marked complete → Review request sent → Customer replies → Response drafted for your approval → One-tap post to Google/Facebook.</p>
+      </div>
+      <div class="specs">
+        <div class="spec">
+          <h4>Deliverables</h4>
+          <p>Automated review request workflow, response template library, approval interface.</p>
+        </div>
+        <div class="spec">
+          <h4>$0 Stack</h4>
+          <p>n8n (self-hosted), Gmail API, Google Sheets for tracking.</p>
+        </div>
+        <div class="spec">
+          <h4>Failure Handling</h4>
+          <p>If customer doesn't respond, follow-up after 3 days. If approval not given, draft expires after 24 hours. System logs all actions for review.</p>
+        </div>
+        <div class="spec">
+          <h4>Price</h4>
+          <p>Setup: $300 | Monthly: $0 (self-hosted)</p>
+        </div>
+      </div>
+      <a href="https://ig.me/m/gbeexly" class="btn">DM &ldquo;WORKFLOW&rdquo;</a>
+    </div>
+  </section>
+
+  <section class="product">
+    <div class="product-header">
+      <h2>Booking Flow</h2>
+    </div>
+    <div class="product-body">
+      <p>Quote → approve → schedule → reminder texts. No-shows die.</p>
+      <div class="demo">
+        <h3>Demo: How it works</h3>
+        <p>This is a mock demonstration. Customer requests quote → You send quote → Customer approves → System schedules job → Automated reminders sent 24h and 2h before.</p>
+      </div>
+      <div class="specs">
+        <div class="spec">
+          <h4>Deliverables</h4>
+          <p>Quote-to-booking workflow, calendar integration (Google Calendar), automated reminder system.</p>
+        </div>
+        <div class="spec">
+          <h4>$0 Stack</h4>
+          <p>n8n (self-hosted), Google Calendar, Twilio free tier (for SMS reminders).</p>
+        </div>
+        <div class="spec">
+          <h4>Failure Handling</h4>
+          <p>If calendar busy, suggests alternative times. If reminder fails, attempts via email. Customer can reschedule via link in reminder.</p>
+        </div>
+        <div class="spec">
+          <h4>Price</h4>
+          <p>Setup: $200 | Monthly: $0 (self-hosted)</p>
+        </div>
+      </div>
+      <a href="https://ig.me/m/gbeexly" class="btn">DM &ldquo;WORKFLOW&rdquo;</a>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>Workflows are built on n8n — an open-source, self-hostable workflow automation platform. All components use free tiers where possible. For high-volume usage, some services may incur costs beyond the free tier.</p>
+    <p>&copy; 2026 Beexly Autonomous Revenue Engine. All rights reserved.</p>
+  </div>
+</div>
+</body>
+</html>
