@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Origin desk — grade, approve, queue</title>
+<style>
+  :root { --bg:#0e1114; --panel:#171c21; --ink:#e8ece8; --dim:#8b9690; --line:#2a3230; --go:#c8f0a8; --kill:#e08a7a; --hold:#e6c07b; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font: 15px/1.45 "IBM Plex Sans", ui-sans-serif, system-ui; }
+  header { padding:16px 20px 8px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:12px; align-items:baseline; flex-wrap:wrap; }
+  header h1 { font-size:16px; font-weight:600; margin:0; }
+  header p { margin:0; color:var(--dim); font-size:13px; }
+  .tabs { display:flex; gap:8px; padding:10px 20px 0; }
+  .tabs button { background:transparent; color:var(--dim); border:1px solid var(--line); padding:6px 12px; cursor:pointer; }
+  .tabs button.on { color:var(--ink); border-color:var(--go); }
+  .grid { display:grid; grid-template-columns: 1fr 1.4fr 1fr; gap:12px; padding:12px 20px 24px; }
+  @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
+  .col { background:var(--panel); border:1px solid var(--line); min-height:70vh; display:flex; flex-direction:column; }
+  .col h2 { margin:0; padding:10px 12px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim); border-bottom:1px solid var(--line); }
+  .list { overflow:auto; flex:1; }
+  .card { padding:12px; border-bottom:1px solid var(--line); cursor:pointer; }
+  .card:hover, .card.on { background:#1e2522; }
+  .card .meta { color:var(--dim); font-size:12px; }
+  textarea { width:100%; min-height:220px; background:#10151a; color:var(--ink); border:1px solid var(--line); padding:10px; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; resize:vertical; }
+  .pad { padding:12px; display:flex; flex-direction:column; gap:10px; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; }
+  button.act { background:#243028; color:var(--ink); border:1px solid var(--line); padding:8px 12px; cursor:pointer; }
+  button.act.go { border-color:var(--go); color:var(--go); }
+  button.act.kill { border-color:var(--kill); color:var(--kill); }
+  .score { padding:10px; border:1px solid var(--line); font-size:13px; }
+  .score b { font-size:22px; }
+  .hold { color:var(--hold); }
+  .pass { color:var(--go); }
+  .fail { color:var(--kill); }
+  label { font-size:12px; color:var(--dim); }
+  input[type=text], input[type=password], select { background:#10151a; color:var(--ink); border:1px solid var(--line); padding:6px 8px; width:100%; }
+  .kills { color:var(--kill); font-size:13px; white-space:pre-wrap; }
+  footer { padding:0 20px 20px; color:var(--dim); font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Origin desk</h1>
+    <p>Grade in here. Approve moves it to ready. Scheduler owns the clock. Nothing posts to X from this page.</p>
+  </div>
+  <p>Hold floor 9.2 · Houston · no sports · no Stripe</p>
+</header>
+<div class="tabs">
+  <button class="on" id="tab-posts" type="button">Roots</button>
+  <button id="tab-engage" type="button">Engage</button>
+</div>
+<div class="grid">
+  <section class="col">
+    <h2>Drafts</h2>
+    <div class="list" id="drafts"></div>
+  </section>
+  <section class="col">
+    <h2>Grader</h2>
+    <div class="pad">
+      <textarea id="body" placeholder="Pick a draft."></textarea>
+      <div class="row">
+        <button class="act" id="btn-grade" type="button">Grade</button>
+        <button class="act" id="btn-rewrite" type="button">Rewrite via free model</button>
+        <button class="act go" id="btn-approve" type="button">Approve</button>
+        <button class="act kill" id="btn-kill" type="button">Kill</button>
+      </div>
+      <div class="score" id="score">No score yet.</div>
+      <div class="kills" id="kills"></div>
+      <label>Optional OpenRouter key (stays in this browser, never sent to us)
+        <input type="password" id="orkey" placeholder="sk-or-… blank = local grader only"/>
+      </label>
+    </div>
+  </section>
+  <section class="col">
+    <h2>Ready to post</h2>
+    <div class="list" id="ready"></div>
+  </section>
+</div>
+<footer>
+  Local scorer always runs. Free model rewrite only if you paste a key. Approve is the human gate. Distro researches X. Factory ships this file to the engine repo.
+</footer>
+<script>
+const SEED_POSTS = [
+  { id:"p1", kind:"post", title:"Tue root — kill log",
+    body:"Kill log 001 is three drafts that had already cleared Pass. qi-check never marked them Hold; the lead one scored 8.3. The 0.5-spread is why they still die: swap those lines onto any other operator account and the join would not show. qi-check still only scores; it does not write the post. The log is the part a scorer cannot do." },
+  { id:"p2", kind:"post", title:"Count it once",
+    body:"Checkout fired. Ads Manager did not. That is not a creative problem. Shop Pay skipped the thank-you pixel and CAPI never sent the order. You paid for the click. Houston. I write the event_id both sides or I do not take the work." },
+  { id:"p3", kind:"post", title:"Template is the tell",
+    body:"If the first sentence works on any other store, it is not a first sentence. I keep a kill list of those. It is longer than the send list. That is the job." }
+];
+const SEED_ENGAGE = [
+  { id:"e1", kind:"engage", title:"Dry — tracking thread",
+    body:"You do not have a Meta problem. You have two Metas. Pixel said 40. Shopify said 19. Pick one religion or stop optimizing." },
+  { id:"e2", kind:"engage", title:"Dark — agency flex",
+    body:"Love the dashboard screenshot. Shame the purchases in it never met the orders. Pretty lie, expensive one." }
+];
+const KILL = [
+  /I audit Meta ad tracking for DTC/i,
+  /Most accounts I check are over- or under-counting/i,
+  /Texans|NFL|DFS|GSE|sportsbook/i,
+  /buy\.stripe\.com/i,
+  /\u2014/,
+  /I'd be happy to/i,
+  /Great question/i,
+  /leverage synerg/i
+];
+let mode = "post";
+let selected = null;
+function store() {
+  const raw = localStorage.getItem("origin-desk-v1");
+  if (raw) return JSON.parse(raw);
+  return { drafts: [...SEED_POSTS, ...SEED_ENGAGE], ready: [], orkey: "" };
+}
+function save(s) { localStorage.setItem("origin-desk-v1", JSON.stringify(s)); }
+function state() { return store(); }
+function grade(text) {
+  const kills = [];
+  KILL.forEach(re => { if (re.test(text)) kills.push("kill: " + re.source); });
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  if (words.length < 12) kills.push("too thin");
+  if (words.length > 90) kills.push("too long for a first screen");
+  if (!/Houston|I |I'm |I keep |I write |I do /.test(text)) kills.push("no first person / no Houston ground");
+  const generic = /DTC brands|synergy|delve|landscape|robust|unlock/i.test(text);
+  if (generic) kills.push("consultant paste");
+  let score = 10 - kills.length * 1.4;
+  if (kills.length === 0) score = 9.4;
+  score = Math.max(0, Math.min(10, Math.round(score * 10) / 10));
+  const hold = score < 9.2 || kills.length > 0;
+  return { score, hold, kills };
+}
+function render() {
+  const s = state();
+  const drafts = s.drafts.filter(d => mode === "engage" ? d.kind === "engage" : d.kind === "post");
+  const ready = s.ready.filter(d => mode === "engage" ? d.kind === "engage" : d.kind === "post");
+  document.getElementById("drafts").innerHTML = drafts.map(d =>
+    `<div class="card ${selected&&selected.id===d.id?"on":""}" data-id="${d.id}"><div>${esc(d.title)}</div><div class="meta">${esc(d.body.slice(0,90))}…</div></div>`
+  ).join("") || `<div class="card"><div class="meta">Empty.</div></div>`;
+  document.getElementById("ready").innerHTML = ready.map(d =>
+    `<div class="card"><div>${esc(d.title)}</div><div class="meta">${esc(d.slot || "unslotted")} · ${esc(d.body.slice(0,80))}</div>
+     <div class="row" style="margin-top:8px">
+       <select data-slot="${d.id}">
+         <option ${d.slot==="weekday 8:00 CT"?"selected":""}>weekday 8:00 CT</option>
+         <option ${d.slot==="weekday 12:30 CT"?"selected":""}>weekday 12:30 CT</option>
+         <option ${d.slot==="weekday 17:00 CT"?"selected":""}>weekday 17:00 CT</option>
+       </select>
+     </div></div>`
+  ).join("") || `<div class="card"><div class="meta">Nothing approved.</div></div>`;
+  document.getElementById("drafts").onclick = e => {
+    const card = e.target.closest(".card[data-id]");
+    if (!card) return;
+    selected = s.drafts.find(d => d.id === card.dataset.id);
+    document.getElementById("body").value = selected.body;
+    showGrade(grade(selected.body));
+    render();
+  };
+  document.getElementById("ready").onchange = e => {
+    if (!e.target.dataset.slot) return;
+    const st = state();
+    const item = st.ready.find(d => d.id === e.target.dataset.slot);
+    if (item) { item.slot = e.target.value; save(st); }
+  };
+}
+function esc(t){ return String(t).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+function showGrade(g) {
+  document.getElementById("score").innerHTML = `<b class="${g.hold?"hold":"pass"}">${g.score}</b> ${g.hold?"HOLD":"PASS"} · floor 9.2`;
+  document.getElementById("kills").textContent = g.kills.join("\n");
+}
+document.getElementById("btn-grade").onclick = () => showGrade(grade(document.getElementById("body").value));
+document.getElementById("btn-kill").onclick = () => {
+  if (!selected) return;
+  const s = state();
+  s.drafts = s.drafts.filter(d => d.id !== selected.id);
+  save(s); selected = null; document.getElementById("body").value = ""; render();
+};
+document.getElementById("btn-approve").onclick = () => {
+  const text = document.getElementById("body").value.trim();
+  const g = grade(text);
+  showGrade(g);
+  if (g.hold) return;
+  const s = state();
+  const item = selected || { id: "n"+Date.now(), kind: mode==="engage"?"engage":"post", title: "untitled", body: text };
+  item.body = text;
+  item.slot = "weekday 8:00 CT";
+  s.drafts = s.drafts.filter(d => d.id !== item.id);
+  s.ready.push(item);
+  save(s); selected = null; document.getElementById("body").value = ""; render();
+};
+document.getElementById("btn-rewrite").onclick = async () => {
+  const key = document.getElementById("orkey").value.trim() || state().orkey;
+  const text = document.getElementById("body").value;
+  if (!key) { showGrade({score:0, hold:true, kills:["no key. local grade still works. paste a free OpenRouter key to rewrite."]}); return; }
+  const s = state(); s.orkey = key; save(s);
+  const sys = "Rewrite this Origin post. First person, short, specific, Houston, under pressure. Personality can be dry, sarcastic, or dark. No sports. No Stripe. No em dashes. No consultant template. Keep the facts. Return only the rewritten post.";
+  try {
+    const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method:"POST",
+      headers:{ "Authorization":"Bearer "+key, "Content-Type":"application/json" },
+      body: JSON.stringify({ model:"meta-llama/llama-3.1-8b-instruct:free", messages:[{role:"system",content:sys},{role:"user",content:text}] })
+    });
+    const j = await r.json();
+    const out = j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
+    if (!out) throw new Error("empty");
+    document.getElementById("body").value = out.trim();
+    showGrade(grade(out));
+  } catch (e) {
+    showGrade({score:0, hold:true, kills:["free model failed: "+e+". local grader still works."]});
+  }
+};
+document.getElementById("tab-posts").onclick = () => { mode="post"; document.getElementById("tab-posts").classList.add("on"); document.getElementById("tab-engage").classList.remove("on"); selected=null; render(); };
+document.getElementById("tab-engage").onclick = () => { mode="engage"; document.getElementById("tab-engage").classList.add("on"); document.getElementById("tab-posts").classList.remove("on"); selected=null; render(); };
+document.getElementById("orkey").value = store().orkey || "";
+render();
+</script>
+</body>
+</html>
