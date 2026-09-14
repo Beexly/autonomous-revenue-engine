@@ -20,3 +20,7 @@ Architect: Grok. Branch `grok/signal-origin-dm-plan-2026-09-14`. Docs only. Noth
 
 Canonical X handle: `@SignaL_OriginHQ`. Wrong: `@Signal_origin`.  
 Lane: AI/tech commentary. Sports excluded.
+
+| [KIT-AUTOPSY.md](./KIT-AUTOPSY.md) | Fake cinematics stripped from kit samples. |
+| [KEY-REVIEW.md](./KEY-REVIEW.md) | Supabase keys: still placeholders. Mailto is capture. |
+| [desk/](./desk/) | Pressure scorer, fixtures, desk copy. |

@@ -14,7 +14,7 @@
 //   - sign_type/style now reflect the mockup the visitor actually designed,
 //     instead of hardcoded placeholders
 
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
+import { SUPABASE_URL, SUPABASE_ANON_KEY, LEAD_MAILTO } from './config.js';
 
 (function () {
   'use strict';
@@ -53,7 +53,7 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
   var supabase = supabaseCreateClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // Find all "Get the full design package" buttons and upgrade them
-  var buttons = document.querySelectorAll('a.btn-ember[href="https://ig.me/m/gbeexly"]');
+  var buttons = document.querySelectorAll('a.btn-ember[href*="ig.me/m/gbeexly"]');
 
   buttons.forEach(function (btn) {
     // Don't double-wire
@@ -99,8 +99,8 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
           </div>
           <button type="submit" id="leadSubmit" class="btn btn-ember" style="font-size:18px;padding:16px 32px;width:100%">Submit — I want my mockup first</button>
         </form>
-        <p id="leadError" style="display:none;background:#fef3ec;border:2px solid #e8a06a;border-radius:12px;color:#8a3c10;font-size:14px;line-height:1.5;padding:14px 16px;margin-top:18px">Hmm — that didn't send. Your info is still here, so tap <strong>Submit</strong> to try again, or <a href="https://ig.me/m/gbeexly" style="color:#8a3c10;font-weight:800">DM us on Instagram</a> and we'll take it from there.</p>
-        <p id="leadConfirm" style="display:none;color:#2d5a3c;font-weight:700;font-size:16px;margin-top:18px;text-align:center">Thanks! We've got your details — we'll reach out shortly with your mockup.</p>
+        <p id="leadError" style="display:none;background:#fef3ec;border:2px solid #e8a06a;border-radius:12px;color:#8a3c10;font-size:14px;line-height:1.5;padding:14px 16px;margin-top:18px">That did not reach the database. Your info is still here. Tap <strong>Submit</strong> again, <a id="leadMailto" href="#" style="color:#8a3c10;font-weight:800">email it</a>, or <a href="https://ig.me/m/gbeexly" style="color:#8a3c10;font-weight:800">DM on Instagram</a>.</p>
+        <p id="leadConfirm" style="display:none;color:#2d5a3c;font-weight:700;font-size:16px;margin-top:18px;text-align:center">Thanks — the lead landed.</p>
         <button id="leadClose" style="margin-top:16px;background:none;border:none;color:#8a755a;font-size:13px;cursor:pointer;display:block;margin-left:auto;margin-right:auto">Close</button>
       </div>
     `;
@@ -135,10 +135,31 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
       document.getElementById('leadError').style.display = 'block';
     }
 
-    function showSuccess() {
-      document.getElementById('leadForm').style.display = 'none';
-      document.getElementById('leadError').style.display = 'none';
-      document.getElementById('leadConfirm').style.display = 'block';
+    function mailtoHref(name, contact, business) {
+      var body = [
+        'SignPreview lead',
+        'Name: ' + name,
+        'Contact: ' + contact,
+        'Business: ' + business,
+        'Sign: ' + (pillValue('typePills') || 'storefront'),
+        'Style: ' + (pillValue('stylePills') || 'modern'),
+      ].join('\n');
+      return 'mailto:' + encodeURIComponent(LEAD_MAILTO) +
+        '?subject=' + encodeURIComponent('SignPreview lead — ' + business) +
+        '&body=' + encodeURIComponent(body);
+    }
+
+    function openMailto(name, contact, business) {
+      var href = mailtoHref(name, contact, business);
+      var a = document.getElementById('leadMailto');
+      if (a) a.setAttribute('href', href);
+      window.location.href = href;
+    }
+
+    function showMailed() {
+      // Keep the form. Mail is the capture path; do not pretend a database row exists.
+      setSending(false);
+      document.getElementById('leadError').style.display = 'block';
     }
 
     // Form submission
@@ -165,17 +186,23 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
       }];
 
       if (!BACKEND_CONFIGURED) {
-        // No backend wired up yet — don't fake a network attempt, fail honestly.
-        console.warn('Lead capture: Supabase not configured (docs/js/config.js still has placeholders). Showing fallback.');
-        showFailure();
+        // No database. Do not fake a network. Mail is the capture path until keys exist.
+        console.warn('Lead capture: Supabase placeholders still in docs/js/config.js. Opening mailto.');
+        openMailto(name, contact, business);
+        showMailed();
+        setSending(false);
         return;
       }
 
       // Insert into Supabase
       supabase.from('leads').insert(payload).then(function () {
-        showSuccess();
+        document.getElementById('leadForm').style.display = 'none';
+        document.getElementById('leadError').style.display = 'none';
+        document.getElementById('leadConfirm').textContent = 'Thanks — the lead landed in the database.';
+        document.getElementById('leadConfirm').style.display = 'block';
       }).catch(function (err) {
         console.error('Lead capture error:', err);
+        openMailto(name, contact, business);
         showFailure();
       });
     });
