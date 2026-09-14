@@ -1,0 +1,40 @@
+{
+  "$id": "https://signalorigin.local/protocol/envelope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent bus envelope (MCP-shaped, git transport)",
+  "description": "Stolen from modelcontextprotocol tools + annotations. Git is the transport. Do not run an MCP server.",
+  "type": "object",
+  "required": ["id", "kind", "from", "to", "created", "name", "input", "annotations"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^TASK-[0-9]{3,}-[a-z0-9-]+$|^EP-[0-9]{4}-[0-9]{2}-[0-9]{2}-.+" },
+    "kind": { "enum": ["tool", "resource", "prompt", "episode"] },
+    "from": { "enum": ["motif", "opencode", "grok", "distro", "owner"] },
+    "to": { "enum": ["motif", "opencode", "grok", "distro", "owner", "bus"] },
+    "created": { "type": "string", "format": "date-time" },
+    "name": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "input": { "type": "object" },
+    "annotations": {
+      "type": "object",
+      "required": ["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint", "approvalRequired"],
+      "properties": {
+        "readOnlyHint": { "type": "boolean" },
+        "destructiveHint": { "type": "boolean", "description": "true if the action spends, sends, posts, merges, or deploys" },
+        "idempotentHint": { "type": "boolean" },
+        "openWorldHint": { "type": "boolean", "description": "true if it touches X, Gmail, ads, or a human" },
+        "approvalRequired": { "type": "boolean", "description": "must be true whenever destructiveHint or openWorldHint is true" }
+      }
+    },
+    "rail": {
+      "type": "object",
+      "description": "NeMo-style rails as data, not a runtime",
+      "properties": {
+        "neverSpend": { "const": true },
+        "neverPublish": { "type": "boolean" },
+        "neverSend": { "type": "boolean" },
+        "sportsIsolated": { "type": "boolean" }
+      }
+    }
+  }
+}

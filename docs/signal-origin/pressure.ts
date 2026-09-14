@@ -102,11 +102,12 @@ function sentences(text: string) {
     .filter(Boolean);
 }
 
-function paragraphs(text: string) {
-  return text
+export function paragraphWidths(text: string): number[] {
+  return String(text ?? "")
     .split(/\n{2,}/)
     .map((p) => p.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .map((p) => p.length);
 }
 
 function words(s: string) {
@@ -151,7 +152,7 @@ export function scorePressure(raw: string, mode: PressureMode = "original"): Pre
   }
 
   const ss = sentences(text);
-  const ps = paragraphs(text);
+  const pLens = paragraphWidths(text);
   const head = firstScreen(text);
   const flags: string[] = [];
   const fixes: string[] = [];
@@ -181,12 +182,11 @@ export function scorePressure(raw: string, mode: PressureMode = "original"): Pre
     fixes.push("Cut the brochure verbs. Name the object.");
   }
 
-  const pLens = ps.map((p) => p.length);
   const pCv = cv(pLens);
   // Uniform paragraph widths = even pressure (the zerohedge tell).
   let paragraphPressure = 8;
-  if (ps.length >= 3 && pCv < 0.12) paragraphPressure = 3.5;
-  else if (ps.length >= 2 && pCv < 0.2) paragraphPressure = 5.5;
+  if (pLens.length >= 3 && pCv < 0.12) paragraphPressure = 3.5;
+  else if (pLens.length >= 2 && pCv < 0.2) paragraphPressure = 5.5;
   else if (pCv > 0.45) paragraphPressure = 9;
   paragraphPressure = clamp(paragraphPressure);
   if (paragraphPressure < 6) {

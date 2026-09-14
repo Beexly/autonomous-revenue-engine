@@ -1,0 +1,87 @@
+{
+  "stolen_from": "getzep/graphiti episodes + letta-ai/letta core vs archival",
+  "core": "facts that change a decision this week",
+  "archival": "handoff/origin-2026-09-14/ (112 files) — grep, do not embed",
+  "episodes": [
+    {
+      "id": "ep-2026-08-25-zoho",
+      "valid_at": "2026-08-25T22:53:35Z",
+      "invalid_at": null,
+      "source": "gmail:signal.origin.hq SENT 1a03b2108c93a54c",
+      "fact": "Garrett emailed James Howard (JHoward@aeprelo.com) offering as-needed Zoho CRM help, 3-line plan before invoice. Sign-off Baxley.Garrett@gmail.com.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-08-25-howard-ooo",
+      "valid_at": "2026-08-25T22:53:48Z",
+      "invalid_at": null,
+      "source": "gmail from jhoward@aeprelo.com",
+      "fact": "James Howard OOO: back tomorrow morning. Urgent 800-204-1374. This is not a no. One bump then kill.",
+      "supersedes": ["silence-equals-dead-lead"]
+    },
+    {
+      "id": "ep-2026-08-25-craigslist",
+      "valid_at": "2026-08-25T22:51:13Z",
+      "invalid_at": null,
+      "source": "gmail SENT 1a03b1ee18014561",
+      "fact": "One Craigslist Post Oak gig relay. Not a pipeline.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-08-25-warm-unsent",
+      "valid_at": "2026-08-25T17:38:42Z",
+      "invalid_at": null,
+      "source": "gmail to baxley.garrett@gmail.com",
+      "fact": "Warm-network note drafted to self. in:sent of this mailbox is two messages total (Zoho + Craigslist). Warm 20 never left.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-08-26-outreach-csv",
+      "valid_at": "2026-08-26T00:00:00Z",
+      "invalid_at": "2026-09-14T00:00:00Z",
+      "source": "handoff/origin-2026-09-14/copy/OUTREACH_LOG.csv",
+      "fact": "~150 DTC brands marked SENT at $250. Not present in this Gmail. Invalid as a send record. Do not follow up.",
+      "supersedes": ["csv-is-pipeline"]
+    },
+    {
+      "id": "ep-2026-08-26-lane1-voice",
+      "valid_at": "2026-08-26T23:45:00Z",
+      "invalid_at": null,
+      "source": "copy/LANE1_VOICE.md",
+      "fact": "Garrett killed the template. Swap-test: if you can paste it on another brand by changing the name, rewrite. No em dashes. $250 diagnostic only after a real finding. EMAILS_2026-08-26-b.md fails this test (all open 'I audit Meta ad tracking for DTC').",
+      "supersedes": ["spray-templates"]
+    },
+    {
+      "id": "ep-2026-08-26-offer-identity",
+      "valid_at": "2026-08-26T00:00:00Z",
+      "invalid_at": null,
+      "source": "research/audit-parked-drafts-2026-08-26.md score 53/100",
+      "fact": "Live SKU is $19 Gumroad workbook. Parked pile still argues $19 + $250 + qi-check. One public offer. Stripe charges_enabled false as of that date.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-x-is-sports",
+      "valid_at": "2026-09-14T23:00:00Z",
+      "invalid_at": null,
+      "source": "owner message this session",
+      "fact": "Twitter on the phone is Galaxy Sports / Sports repo. Signal Origin replies stay paste-ready. Do not post SO from this X login.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-no-x-dm-connector",
+      "valid_at": "2026-09-14T00:00:00Z",
+      "invalid_at": null,
+      "source": "search_connected_tools",
+      "fact": "Readable X DM count = 0. No X/Twitter connector. Do not invent DMs. Gmail human layer is the three items above.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-dual-gate",
+      "valid_at": "2026-09-14T23:10:00Z",
+      "invalid_at": null,
+      "source": "pressure.ts 0.3 + arXiv:2507.10475",
+      "fact": "Original Hold floor 9.2. Reply gate ~7.5, fail on bait/slogan/stock phrases. Burstiness demoted (diffusion fakes it).",
+      "supersedes": ["9.2-on-replies"]
+    }
+  ]
+}

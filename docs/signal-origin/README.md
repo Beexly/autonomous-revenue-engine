@@ -12,7 +12,10 @@ Architect: Grok. Branch `grok/signal-origin-dm-plan-2026-09-14`. Docs only. Noth
 | [OVERNIGHT-OPS.md](./OVERNIGHT-OPS.md) | Reply SOP. |
 | [REPLY-BANK.md](./REPLY-BANK.md) | Tonight's paste-ready drafts. |
 | [overnight-ops.html](./overnight-ops.html) | Same drafts, copy buttons, offline. |
-| [THESES.md](./THESES.md) | Night-pass claims: burstiness, 150-row log, Howard OOO, dual-gate. |
+| [STACK.md](./STACK.md) | Keep / steal / kill for the 80-repo paste. Do not install LangGraph. |
+| [protocol/](./protocol/) | MCP-shaped envelope + MetaGPT role cards. Git is the transport. |
+| [memory/episodes.json](./memory/episodes.json) | Graphiti-shaped facts that change a decision this week. |
+| [eval/pressure.fixtures.json](./eval/pressure.fixtures.json) | promptfoo-shaped Hold/Hard cases. |
 
 Canonical X handle: `@SignaL_OriginHQ`. Wrong: `@Signal_origin`.  
 Lane: AI/tech commentary. Sports excluded.
