@@ -75,21 +75,21 @@ James — you auto-replied that you'd be back the next morning. Looping once in 
 
 ### Named hunt (public directories — not visited)
 
-Kit candidates (thin or no marketing site):
+Correction 2026-09-14 night: first pass listed Randy's as Kit. **Randy has a site** (randysmobiledetailing.com), a phone (832-689-0988), Yelp photos, Facebook. FindDetailer's "No photos yet" was a directory gap, not a missing business. Do not walk in with Kit.
 
-| Name | Area | Why Kit | Skip? |
-|---|---|---|---|
-| Randy's Mobile Detailing | Kingwood / Humble / Porter | FindDetailer: 82 reviews, "No photos yet." Owner-operator. | No |
-| D.C.S mobile detailing | Kingwood | HireDetailing, 44 reviews, no found marketing site this pass. | No |
-| CleanKiss Car Detailing | Kingwood cluster | 4 Google reviews, thin web. | No |
+| Name | Verdict | Why |
+|---|---|---|
+| Randy's Mobile Detailing | Skip Kit | Real site + 832-689-0988. 46 years. Armor Oaks Dr. |
+| Kings Mobile | Skip Kit | kingsmobilecardetailing.com |
+| Spring Woodlands Pools | Skip | real site |
+| Boone's Landscaping | Skip | real site |
+| SHWASH | Skip | real brand site |
+| Doorstep Detailing (Austin) | Skip | luxury site, wrong city. FindDetailer "DoorStepDetaling" was a collision. |
+| CleanKiss Car Detailing (Kingwood cluster, 4 Google reviews) | Possible | No site found this pass. Not confirmed. Do not invent a phone. |
 
-Already have real sites — **do not walk in with Kit**:
+The $350 page to walk in with is `docs/kit/one-screen.html` — name, three services, call button. Not the Obsidian cinematic sample (fake 900+ reviews, fake 555 number, cyan glow). That sample fails the pitch and the fake-testimonial ban.
 
-| Name | Why skip |
-|---|---|
-| Spring Woodlands Pools | springwoodlandspools.com exists |
-| Boone's Landscaping | booneslandscaping.com, design-build |
-| SHWASH | 4.9 Google, real brand site |
+If you cannot name a shop with a dead Google listing and no site by Thursday, walk a Kingwood plaza and take the photo yourself. Directories lied once.
 
 ### 150-brand DTC spray
 
