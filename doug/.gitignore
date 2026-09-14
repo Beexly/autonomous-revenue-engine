@@ -1,0 +1,126 @@
+# This repository is PUBLIC.
+#
+# Only generic, non-identifying design documentation belongs in this directory.
+# Operating data — contacts, accounts, company facts, client material — lives in
+# local storage on the operator's machine and must never be committed.
+#
+# This file is a mechanical backstop, not a substitute for judgment. If a file
+# would let a reader identify a person, an employer, or a client, it does not
+# belong here even if this file does not happen to match its name.
+
+# --- Contact and personal data ---
+contacts/
+contact*/
+*contact*.json
+*contact*.csv
+*contact*.md
+people/
+roster*
+*roster*
+directory/
+*.vcf
+
+# --- Accounts, clients, CRM and knowledge-base data ---
+accounts/
+clients/
+customers/
+crm/
+kb/
+knowledge-base/
+knowledgebase/
+notes/
+debriefs/
+meetings/
+transcripts/
+voice-memos/
+*debrief*
+*transcript*
+
+# --- Company-specific and internal business material ---
+company/
+internal/
+private/
+confidential/
+*prequal*
+*bonding*
+*insurance*
+*financial*
+*backlog*
+*pipeline-data*
+
+# --- Opportunity, bid and project data ---
+bids/
+opportunities/
+projects/
+pursuits/
+*itb*
+*bid-tab*
+
+# --- Exports and data dumps ---
+exports/
+export/
+dumps/
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.db
+*.sqlite
+*.sqlite3
+data/
+*-export.*
+*-dump.*
+
+# --- Credentials and secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*
+secrets*
+*secret*
+*token*
+*apikey*
+*api-key*
+*.credentials.json
+service-account*.json
+auth.json
+
+# --- Caches and build artifacts ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+node_modules/
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# --- OS and editor noise ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# --- Local scratch ---
+tmp/
+temp/
+scratch/
+local/
+*.local
+*.local.*
+*.bak
+*.orig
