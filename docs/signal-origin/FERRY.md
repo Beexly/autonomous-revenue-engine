@@ -6,8 +6,8 @@ Architect: Grok. Nothing merged, deployed, posted, sent, or spent.
 
 | Repo | Branch | File root |
 |---|---|---|
-| [Beexly/autonomous-revenue-engine](https://github.com/Beexly/autonomous-revenue-engine) | `grok/signal-origin-dm-plan-2026-09-14` | `docs/signal-origin/` |
-| [Beexly/agent-bus](https://github.com/Beexly/agent-bus) | `grok/signal-origin-dm-plan-2026-09-14` | `docs/signal-origin/` + `inbox/from-grok/` + STATUS/INDEX |
+| [Beexly/autonomous-revenue-engine#47](https://github.com/Beexly/autonomous-revenue-engine/pull/47) | `grok/signal-origin-dm-plan-2026-09-14` | `docs/signal-origin/` |
+| [Beexly/agent-bus#1](https://github.com/Beexly/agent-bus/pull/1) | `grok/signal-origin-dm-plan-2026-09-14` | `docs/signal-origin/` + `inbox/from-grok/` + STATUS/INDEX |
 
 ## Bundle
 

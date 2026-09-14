@@ -203,7 +203,8 @@ Defects found in round 1 drafts and killed: slogan stacks; repeating 17k tok/s; 
 
 **Pass 1 (write):** plan + intel + ops + bank + local cash.  
 **Pass 2 (cold read):** added OCR gate mechanics (replies excluded, 500/500k, $30 min, Stripe/X Money), Gumroad identity as a *block* not a build, dual-gate for replies vs originals, ARE PR triage, bus INDEX rule, identity rot, five hunting grounds instead of fake shop names, Zoho as one bump then kill.  
-**Pass 3 (Phase 7 audit):** see FERRY.md. Added overnight-ops.html (copy cards), TASK-016 on the bus, explicit "do not invent DMs" in the plan header, isolation of Sports.
+**Pass 3 (Phase 7 audit):** see FERRY.md. Added overnight-ops.html (copy cards), TASK-016 on the bus, explicit "do not invent DMs" in the plan header, isolation of Sports.  
+**Pass 4 (cold after PR open):** ARE #47 + bus #1. Fixed LOCAL-CASH table pipes. overnight-ops.html no longer names webfonts it does not load (offline system stack). PR URLs written into FERRY. NIGHT-LOG.md template added.
 
 The plan is done when a cold read adds nothing material. If a later session gets a real X DM tool, append to DM-INTEL and re-rank — do not pretend this file already read those DMs.
 

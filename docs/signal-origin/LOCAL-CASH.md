@@ -22,10 +22,10 @@ Not a scraped junk list (TASK-007 failed that way: gas stations and nail salons)
 | # | Type | Why they pay | Where to look Saturday |
 |---|---|---|---|
 | 1 | Lawn / landscape | Seasonal, phone-first, Google photo from 2018–2021, no site | FM 1488 / 2978, Grogan's Mill, Indian Springs |
-| 2 | Pool service | Repeat revenue, ugly GMB, owner is in a truck | Kuykendahl, Gosling, Rayford
-| 3 | HVAC / residential mechanical | High ticket, "call now" is the conversion | Kingwood Dr, Northpark, 59 feeder
-| 4 | Fence / iron / gates | Visual trade — Kit's "Iron & Oak" sample is the preview | Spring / Oak Ridge North contractor yards
-| 5 | Mobile detailing | No address, lives on Instagram + a dead GMB | Parking lots of Woodlands Mall / Market Street, Kingwood Town Center
+| 2 | Pool service | Repeat revenue, ugly GMB, owner is in a truck | Kuykendahl, Gosling, Rayford |
+| 3 | HVAC / residential mechanical | High ticket, "call now" is the conversion | Kingwood Dr, Northpark, 59 feeder |
+| 4 | Fence / iron / gates | Visual trade — Kit's "Iron & Oak" sample is the preview | Spring / Oak Ridge North contractor yards |
+| 5 | Mobile detailing | No address, lives on Instagram + a dead GMB | Parking lots of Woodlands Mall / Market Street, Kingwood Town Center |
 
 Carry: phone with kit.html, two sample pages (Iron & Oak + Midnight Service), Venmo/CashApp username on a card, a paper square with price. Do not carry a laptop.
 
