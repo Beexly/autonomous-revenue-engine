@@ -66,12 +66,34 @@ Hey [name] — quick one. I've gone independent doing Meta ads tracking repair: 
 Do **not** send a second pitch. One bump, then kill.
 
 ```
-James — bumping this once in case it landed under something else. Still available as-needed on the Zoho maintenance you posted, starting with a 3-line plan and no invoice until you want the work. If the seat filled, all good.
+James — you auto-replied that you'd be back the next morning. Looping once in case this never made the pile. Still available as-needed on the Zoho maintenance you posted, starting with a 3-line plan and no invoice until you want the work. If the seat filled, all good.
 
 — Garrett Baxley
 ```
 
 **Approval:** send. If still silent 7 days later, kill the lead.
+
+### Named hunt (public directories — not visited)
+
+Kit candidates (thin or no marketing site):
+
+| Name | Area | Why Kit | Skip? |
+|---|---|---|---|
+| Randy's Mobile Detailing | Kingwood / Humble / Porter | FindDetailer: 82 reviews, "No photos yet." Owner-operator. | No |
+| D.C.S mobile detailing | Kingwood | HireDetailing, 44 reviews, no found marketing site this pass. | No |
+| CleanKiss Car Detailing | Kingwood cluster | 4 Google reviews, thin web. | No |
+
+Already have real sites — **do not walk in with Kit**:
+
+| Name | Why skip |
+|---|---|
+| Spring Woodlands Pools | springwoodlandspools.com exists |
+| Boone's Landscaping | booneslandscaping.com, design-build |
+| SHWASH | 4.9 Google, real brand site |
+
+### 150-brand DTC spray
+
+Origin-box outreach log is **not** a send record for this mailbox. Do not follow up 150 brands we cannot prove left this account. Warm 20 only.
 
 ### Craigslist coding gig
 

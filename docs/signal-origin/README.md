@@ -12,7 +12,7 @@ Architect: Grok. Branch `grok/signal-origin-dm-plan-2026-09-14`. Docs only. Noth
 | [OVERNIGHT-OPS.md](./OVERNIGHT-OPS.md) | Reply SOP. |
 | [REPLY-BANK.md](./REPLY-BANK.md) | Tonight's paste-ready drafts. |
 | [overnight-ops.html](./overnight-ops.html) | Same drafts, copy buttons, offline. |
-| [NIGHT-LOG.md](./NIGHT-LOG.md) | After paste: mark posted/skipped. |
+| [THESES.md](./THESES.md) | Night-pass claims: burstiness, 150-row log, Howard OOO, dual-gate. |
 
 Canonical X handle: `@SignaL_OriginHQ`. Wrong: `@Signal_origin`.  
 Lane: AI/tech commentary. Sports excluded.

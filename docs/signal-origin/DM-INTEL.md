@@ -124,6 +124,10 @@ Paste-ready drafts live in `REPLY-BANK.md`. Nothing is posted.
 
 ---
 
+## 150-row outreach log (not DMs, not proven sends)
+
+Origin-box `copy/OUTREACH_LOG.csv` (2026-08-26) lists ~150 DTC brands as SENT at $250 (Clean Simple Eats, Equi London, LAY LO Pets, …). Search of this Gmail for those names, `event_id`, and CAPI returns **only** the unsent warm-network draft. Do not treat the CSV as a sent pipeline. Kill follow-up on that list.
+
 ## Privacy
 
 Raw DM bodies, if they ever appear, stay in this bundle. They are never quoted on a public page, in a public PR description that restates a private message, or in a factory HTML tool. This file contains **no** private X DM text because none was readable.
