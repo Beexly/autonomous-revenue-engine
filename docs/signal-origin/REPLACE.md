@@ -35,5 +35,18 @@ Kill is not a graveyard. If the runtime is a bill, the adjacent repo's *idea* st
 | lucaong/minisearch | TF-IDF in the client | `search.ts` is tf*idf now. Still no npm. |
 | ARE `hn-bait` | We ignored a live app | Ported. Pulse scores the first line. |
 | ARE `voice-delta` | Burstiness helper | `burst.ts` on Pulse. Full Delta still needs more Pass refs. |
-| Kit cinematic SKUs | one-screen.html | Five walk-in twins in `docs/kit/previews/*-walk.html`. Grain heroes stay samples, not the $350 page. |
+## Pass 3 — the rest of tonight, with an instead
+
+| Was a kill | Instead that runs |
+|---|---|
+| Pipecat / Cal.com / Chatwoot | `script.ts` — walk-in line, voicemail, three-line gold follow. Kit tab. |
+| conformal-lite parked | `interval.ts` — money set is {0} until a yes, then {350}. |
+| Supabase keys | `lead.ts` — row + mailto. Keys still owner. |
+| voice-delta CLI | `delta.ts` on Pulse. Corpus = three overnight replies. |
+| Fingent 2035 aisle | Gold email is the relationship. One letter. Not always-on. |
+| Higgsfield / Astorie / MiniMax / kids Shorts | `factory/` canvas + 9s card + VERIFY. Owner films. |
+| n8n sleep-YouTube | Cooking seven leftovers. No upload. |
+| Stripe starters | Venmo after live Friday. |
+| Temporal / Redis / vectors / Langfuse | durable / file / search / trace. Already pass 1. |
+
 
