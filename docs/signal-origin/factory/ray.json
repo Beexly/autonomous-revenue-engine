@@ -1,0 +1,32 @@
+{
+  "id": "ray-kingwood",
+  "surface": "kit-gallery",
+  "face": {
+    "display": "Ray, 44, Kingwood",
+    "body": "White F-150, dent on the rear passenger door, Stanley on the dash. Faded navy work shirt.",
+    "palette": ["#111111", "#f4f1ea", "#9a9588"],
+    "forbidden": ["bikini", "daybed", "cinematic", "drone", "new face"]
+  },
+  "motion": {
+    "cta": "Sets a trimmer in the bed. Looks once.",
+    "scroll": "none",
+    "reel-test": "If a stranger starts counting his fingers or staring at the dent, keep it. If it looks like an ad, throw it away."
+  },
+  "calendar": {
+    "next": "Episode 2 has to show the oak from episode 1.",
+    "owner-only": true
+  },
+  "kill": [
+    "New face",
+    "New truck",
+    "Music",
+    "Caption that says AI",
+    "Jack pottery-style 'AI' that is actually a real IG"
+  ],
+  "honesty": {
+    "bond_2040": "His screenshot. Not ours.",
+    "helper_22000": "His screenshot. Not ours.",
+    "jack_pottery": "Reply named instagram.com/maddie_mochi. VERIFY rejected the AI claim.",
+    "filmera": "ehuanglu 2099378215085277207. MCP canvas is spend. We stole the four nodes: character, product, env, motion."
+  }
+}
