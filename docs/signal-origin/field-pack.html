@@ -69,12 +69,10 @@
   <p id="askyes">When it's live on your phone Friday, who else here should get one? Two names.</p>
   <button type="button" data-copy="askyes">Copy</button>
 
-  <h2>If they push back</h2>
-  <ul>
-    <li>Already have a guy — Keep him. This is one screen, Friday. If you hate it you don't pay.</li>
-    <li>Send me something — That's the square.</li>
-    <li>Too much — Three-fifty after you see it. Not today.</li>
-  </ul>
+  <h2>If they push back · today's lane only</h2>
+  <p class="muted" id="lane">Loading lane…</p>
+  <ul id="abs"></ul>
+  <p class="muted">Don't mix A and B on this strip. Tomorrow gets the other lane.</p>
 
   <h2 class="noprint">Touch 2 · SMS in two days</h2>
   <p id="t2" class="noprint">Still have the square? I can have it live Friday. If you hate it you don't pay. Three-fifty after you see it.</p>
@@ -93,6 +91,32 @@
   <a class="btn noprint" href="mailto:signal.origin.hq@gmail.com?subject=Kit%20door&body=Shop%3A%20%0AYes%20or%20no%3A%20%0ANotes%3A%20">Mail this door</a>
 
   <script>
+    var LANES = {
+      "already have a guy": {
+        A: "Keep him. This is one screen, your number, Friday. If you hate it you don't pay.",
+        B: "Good. Don't fire him. I just need Friday and your listing photo."
+      },
+      "send me something": {
+        A: "That's the square. Your number is on it. I'll be back Friday if you want it live.",
+        B: "I don't email PDFs. The page is already built. This is it."
+      },
+      "too much": {
+        A: "Three-fifty after you see it on your phone. Not today.",
+        B: "You don't pay if you hate it. That's the whole pitch."
+      },
+      "what is this": {
+        A: "Your listing photo is old. I already built the page. Here's the paper.",
+        B: "One screen. Your three prices. Live Friday. That's all this is."
+      }
+    };
+    var lane = Math.floor(Date.now() / 86400000) % 2 === 0 ? "A" : "B";
+    document.getElementById("lane").textContent = "Lane " + lane;
+    var ul = document.getElementById("abs");
+    Object.keys(LANES).forEach(function (k) {
+      var li = document.createElement("li");
+      li.textContent = k + " — " + LANES[k][lane];
+      ul.appendChild(li);
+    });
     document.querySelectorAll("[data-copy]").forEach(function (b) {
       b.addEventListener("click", function () {
         var id = b.getAttribute("data-copy");
