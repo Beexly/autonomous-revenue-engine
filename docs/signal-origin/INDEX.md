@@ -6,7 +6,8 @@ Handle: `@SignaL_OriginHQ`. Sports is a different login. Adult is Beexly/XXX, lo
 
 You are not starting a new architecture. Git is the bus. Paste is send. $0.
 
-Owner has two jobs: [OWNER.md](./OWNER.md). Do not invent a third.
+Owner has two jobs: [OWNER.md](./OWNER.md). Do not invent a third.  
+Next Grok: [HANDOFF-EXPERT.md](./HANDOFF-EXPERT.md). $10k mix. First dollar this week. Do not restart the factory.
 
 ## Products that are finished (not concepts)
 
