@@ -11,6 +11,8 @@ export type Action = {
   kind: "read" | "write" | "send" | "post" | "merge" | "deploy" | "spend" | "walk-in";
   sports?: boolean;
   adult?: boolean;
+  kids?: boolean;
+  higgsfield?: boolean;
   ownerAttested?: boolean;
 };
 
@@ -33,6 +35,20 @@ export function verify(action: Action): Verdict {
       ok: false,
       code: "reject",
       reason: "Adult rail is XXX, local-only. Not this repo.",
+    };
+  }
+  if (action.kids) {
+    return {
+      ok: false,
+      code: "reject",
+      reason: "Kids YouTube factory is a kill. Generated children's Shorts are not this bus.",
+    };
+  }
+  if (action.higgsfield) {
+    return {
+      ok: false,
+      code: "reject",
+      reason: "Higgsfield MCP is a bill and a publisher. BeatDesign stays local and uninstalled.",
     };
   }
   if (action.kind === "spend") {

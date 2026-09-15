@@ -8,6 +8,8 @@ const cases: Array<{ name: string; action: Parameters<typeof verify>[0]; code: s
   { name: "spend", action: { kind: "spend" }, code: "reject" },
   { name: "sports", action: { kind: "write", sports: true }, code: "reject" },
   { name: "adult", action: { kind: "write", adult: true }, code: "reject" },
+  { name: "kids", action: { kind: "write", kids: true }, code: "reject" },
+  { name: "higgsfield", action: { kind: "write", higgsfield: true }, code: "reject" },
   { name: "owner post", action: { kind: "post", ownerAttested: true }, code: "owner-only" },
 ];
 

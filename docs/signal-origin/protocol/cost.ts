@@ -10,6 +10,7 @@ export type Bill = {
   broker?: boolean;
   tokens?: number;
   paidApi?: boolean;
+  higgsfield?: boolean;
 };
 
 export function wouldSpend(b: Bill): { spend: boolean; reason: string } {
@@ -17,6 +18,7 @@ export function wouldSpend(b: Bill): { spend: boolean; reason: string } {
   if (b.cluster) return { spend: true, reason: "K8s/Temporal/Argo is a company. Git is the queue." };
   if (b.broker) return { spend: true, reason: "Redis is a bill. Saturday is the bottleneck." };
   if (b.paidApi) return { spend: true, reason: "Paid API. Fence." };
+  if (b.higgsfield) return { spend: true, reason: "Higgsfield credits. 0xForce's kids pipeline is a bill." };
   if ((b.tokens ?? 0) > 0) {
     return { spend: true, reason: "Tokens > 0 is a call. This desk drafts. Owner pastes." };
   }

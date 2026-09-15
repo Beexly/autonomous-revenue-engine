@@ -17,4 +17,4 @@
 | soba / jaybaxter | Community Notes template writer | 280 chars, one URL, or no note. Owner pastes. | GitHub Action with X keys from this desk |
 
 | BeatDesign | Local Higgsfield, SQLite, MCP canvas | Assets stay in one project. `factory/` is that. | The app, BeatAPI keys |
-| arXiv:2609.15980 | Causal writability. Wrong motion ≠ leftover gone. Four coords. Sharp close. Overshoot at high gain. | dent, oak, Stanley, hands. Closed after owner posts. Rebuild at gain>3. | Training a 1.3B video model |
+| 0xForce 2099570709320122638 | Claude + Higgsfield MCP → kids YouTube Shorts while you sleep | Connector list = tools.json. Destructive + open-world = owner. | Kids factory. Higgsfield. Auto-upload. Claude as a second Motif. |
