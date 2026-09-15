@@ -19,4 +19,4 @@
 | BeatDesign | Local Higgsfield, SQLite, MCP canvas | Assets stay in one project. `factory/` is that. | The app, BeatAPI keys |
 | 2510.21575 SloPrag | Polyester girlfriends is an idiom in a Slovene pragmatics bench. Quality/Quantity/Relation/Manner. | Pulse: speech act + maxims. A leftover can flout a maxim and still Hold. | Girlfriend product |
 | 2007.08740 GSplit | Lesion vs procedural bias vs null. Don't optimize selection and prediction as one. | Even widths no longer eat a leftover. Split gate on Pulse. | Training on ADNI |
-| arXiv Autonomous size=200 | HypoEvolve, LongAgent, EvoOntology, NovaFabric, Safe to Stop | Mutate thesis, keep leftover. Recency search. Pack hash. Permission to stop on a yes. Four-node canvas on Kit. | Atria Dawn. Unbounded RSI. |
+| IG MatAnyone 2 | First-frame mask + MQE scores cleanup. Free, NTU S-Lab. | Assign on frame one. Hair/hands survive. Don't matte the oak. `matte.ts` | Comment-AI-for-link. GPU install this week. Green-screen Kingwood. |
