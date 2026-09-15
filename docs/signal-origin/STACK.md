@@ -79,9 +79,34 @@ Same rule. Stars are not a reason to nest a second Origin.
 | pipecat-ai/pipecat | 15k | PARK | Voice later. | Not this week. |
 | microsoft/agent-framework | 13k | STEAL | HITL, YAML agent, MCP annotations (already stolen). | pip install, Azure SSO, a third Microsoft runtime. |
 
-**This week, in code:** `protocol/handoff.ts` (OpenAI handoff, git folders). `protocol/skills.md` (superpowers without the stall). Eliza already lives in `factory/*.json`.
+---
+
+## 2.6 Infra that wants to replace git (same night)
+
+The pitch is "your markdown bus is ad-hoc." It isn't. Motif → TASK → OpenCode → outbox is a DAG you can grep. Checkpoints are commits. HITL is owner. Retries are a second commit.
+
+| Repo | Verdict | Steal | Kill |
+|---|---|---|---|
+| langchain-ai/langgraph | KILL | Explicit state. We have a packet. | Deterministic DAG server. |
+| python-poetry/poetry | PARK | conformal-lite is `numpy>=1.22`. Pin if it breaks. | Rewriting ARE as a Poetry monorepo. |
+| temporal-io/temporal | KILL | Retries, timeout, dead letter as words in STATUS.md | The cluster. Polling git is the product. |
+| opentelemetry/opentelemetry-python | STEAL | Count before a call. Log after. | A collector, a vendor, a dashboard company. |
+| pydantic/pydantic | STEAL | Schema or it doesn't ship. `envelope.ts` / packet. | pip install in a TypeScript desk. |
+| redis/redis | KILL | Sub-100ms is not the bottleneck. Saturday is. | Cache of LLM replies we don't send. |
+| argoproj/argo-workflows | KILL | — | Kubernetes for three pastes. |
+| prefix-dev/pixi | PARK | Same as Poetry. | Second env manager. |
+| anthropics/anthropic-sdk-python | STEAL | Pre-call token estimate. Don't fire if spend. | Claude as a second Motif. Grok is here. |
+| PrefectHQ/marvin | STEAL | Typed retryable function = envelope. | Another decorator runtime. |
+| airbytehq/airbyte | KILL | — | ELT platform. Leads.csv is a Saturday walk. |
+| litestar-org/litestar | KILL | — | Python API next to a static Kit page. |
+| tiangolo/sqlmodel | PARK | Supabase schema exists. Keys don't. Mailto until they do. | Replacing `.md` with SQL this week. |
+| huggingface/huggingface_hub | STEAL | Voice drift = swap-test + pressure field. | Embedding Motif into a vector store. |
+| reflex-dev/reflex | KILL | The desk is already the dashboard. | A second UI in Python. |
+
+`protocol/cost.ts`: if it would spend, it doesn't run.
 
 ---
+
 
 
 ## 3. Protocol (the one that actually upgrades the bus)
