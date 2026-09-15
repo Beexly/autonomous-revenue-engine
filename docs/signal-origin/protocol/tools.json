@@ -36,6 +36,36 @@
       "name": "walk_in_kit",
       "description": "Owner walks in with docs/kit/one-screen.html. Agents do not visit shops.",
       "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": true, "approvalRequired": true }
+    },
+    {
+      "name": "gate_policy",
+      "description": "pass/rewrite/kill. Originals 9.2. Replies 7.5. Stencil is kill.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "search_memory",
+      "description": "In-process search over episodes. No vector host.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "score_subject",
+      "description": "Email subject fold. Port of apps/subject-fold. Does not send.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "qc_shot",
+      "description": "Locked-set, occlusion, reset-tell, unpolished. Owner generates.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "transfer_to",
+      "description": "Handoff to an inbox folder. Post/send/spend still owner.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "would_spend",
+      "description": "If it would spend, it does not run.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
     }
   ]
 }
