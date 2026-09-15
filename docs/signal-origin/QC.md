@@ -17,4 +17,4 @@
 | soba / jaybaxter | Community Notes template writer | 280 chars, one URL, or no note. Owner pastes. | GitHub Action with X keys from this desk |
 
 | BeatDesign | Local Higgsfield, SQLite, MCP canvas | Assets stay in one project. `factory/` is that. | The app, BeatAPI keys |
-| arXiv Girlfriend search | Query is 3 hits. Real corpus is companion/Replika/parasocial. | Dual-risk. Face locked through the week (model-update = death). Mating-app retention ~3 visits/mo. | Girlfriend product on ARE/SO. Kids. Always-on disclosure as therapy. |
+| astorie_ai 2098214948577173742 | MiniMax H3 free week. Fake sports drink. 8–60s contest. Credits. | Product brief. Hands on the thing. Leftover on the label. 9s. | Sports drink. New faces. Astorie bill. Entering the contest. |
