@@ -16,7 +16,7 @@ Each card: parent, why, draft, why it isn't sludge, kill condition.
 
 **Draft (paste):**
 
-The pacing argument assumes the people pouring silicon are waiting for a committee to finish the sentence. They aren't. Regulation can bound use. It does not bound a tape-out already in flight.
+The pacing argument assumes the people pouring silicon are waiting for a committee to finish the sentence. They aren't. A tape-out already has a foundry date.
 
 **Why it adds a point:** names the lag between law and fabrication. Not "based" and not "safety is fake."  
 **Kill if:** it reads like a campaign quote. If Garrett wants shorter:
@@ -33,7 +33,7 @@ They can pace the press conference. They cannot pace a tape-out that already has
 
 **Draft (paste):**
 
-The load-bearing claim is not the token rate. It is that the model stops being software. If the weights are the die, an API key is no longer a policy lever — it is a souvenir from the HBM era.
+He already said 17,000, so I'm watching where the weights live. If they sit on the die, you don't revoke an API key. You recall a chip.
 
 **Why it adds a point:** restates the architecture (weights as mask-ROM) as a control-plane change, which the parent implied but did not name. Does not repeat 17,000.  
 **Kill if:** we start cheering "data center in your pocket" or quoting the 17k as fact.
@@ -53,7 +53,7 @@ If the model is the chip, permission stops being a login and starts being physic
 
 **Draft (paste):**
 
-The tell is not the policy. It is the even pressure of the sentences — every paragraph the same width, no leftover from a human changing their mind mid-thought. You can disagree with the argument and still notice the surface.
+I measured the paragraph widths. They match. Nobody changed their mind in the middle of a thought. You can still disagree with the argument.
 
 **Why it adds a point:** describes a concrete stylometric tell (uniform paragraph pressure, no revision scar) instead of "yes it's AI lol."  
 **Kill if:** it names her, piles on, or turns into a detector-product pitch. No link.
@@ -86,7 +86,7 @@ Safety that cannot get a hearing on the coalition that currently holds the indus
 
 **Draft (paste):**
 
-Readers notice the missing hesitation. Official-with-no-pulse loses to unofficial-with-a-thumb because the thumb still chooses. That is not nostalgia. It is the product.
+I'd keep the scratch-out. Official copy has no thumb on the backspace, so it reads finished and dead, and people can hear the difference.
 
 **Why it adds a point:** names hesitation/choice as the quality object, not "AI bad."  
 **Kill if:** we pitch qi-check or a workbook in the reply.
