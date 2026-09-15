@@ -1,5 +1,7 @@
 # INDEX — other agents start here
 
+**New session:** [SESSION.md](./SESSION.md) first. Then [HANDOFF-EXPERT.md](./HANDOFF-EXPERT.md). Do not restart.
+
 Branch: `grok/signal-origin-dm-plan-2026-09-14`  
 Repos: [Beexly/autonomous-revenue-engine#47](https://github.com/Beexly/autonomous-revenue-engine/pull/47) · [Beexly/agent-bus#1](https://github.com/Beexly/agent-bus/pull/1)  
 Handle: `@SignaL_OriginHQ`. Sports is a different login. Adult is Beexly/XXX, local.
@@ -15,7 +17,9 @@ Next Grok: [HANDOFF-EXPERT.md](./HANDOFF-EXPERT.md). $10k mix. First dollar this
 |---|---|---|
 | Overnight pack (3 replies) | [OVERNIGHT.md](./OVERNIGHT.md) · [overnight-ops.html](./overnight-ops.html) · Night tab | Hash `deb2195f`. Cap 3. Owner pastes. |
 | Kit walk-in | `docs/kit/one-screen.html` · Kit tab | $350, live Friday, no 555, no AI on the floor. |
-| Saturday field pack | [field-pack.html](./field-pack.html) | Print the square. Say the line. Mail the door. |
+| Saturday field pack | [field-pack.html](./field-pack.html) | Print the square. Close. Refer on a no. Lane A/B. |
+| Sequence | [sequence.html](./sequence.html) | Three touches. Then stop. Not X DMs. |
+| A/B objections | Kit tab · `protocol/ab.ts` | One lane per shift. Log yes/refer/no. |
 | Gold outside-view | [outside-view.html](./outside-view.html) | Type the store. Copy. Mail. $0 then $250. |
 | Walk-in voice | `protocol/script.ts` | Line + voicemail. |
 | Pressure + split + prag + Δ | Pulse tab | Reply 7.5 / original 9.2. Leftover beats even widths. |

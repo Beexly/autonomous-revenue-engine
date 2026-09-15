@@ -11,7 +11,7 @@ Repos (branch `grok/signal-origin-dm-plan-2026-09-14`, do not merge):
 - [ARE#47](https://github.com/Beexly/autonomous-revenue-engine/pull/47)
 - [bus#1](https://github.com/Beexly/agent-bus/pull/1)
 
-Start: [INDEX.md](./INDEX.md) · [OWNER.md](./OWNER.md) · [AGENTS.md](./AGENTS.md) · Line tab Shift board.
+Start: [SESSION.md](./SESSION.md) then [INDEX.md](./INDEX.md) · [OWNER.md](./OWNER.md) · [AGENTS.md](./AGENTS.md) · Line tab Shift board.
 
 Handle: `@SignaL_OriginHQ`. Sports is another login. Adult is XXX, local. Kids factory is VERIFY reject.
 
