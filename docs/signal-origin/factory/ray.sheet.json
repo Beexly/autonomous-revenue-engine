@@ -1,0 +1,41 @@
+{
+  "id": "ray-kingwood",
+  "stolen_from": "1banana2546 2099256817020817804 — reference sheet before prompt. Layout only. Not the girl.",
+  "beatdesign": "https://github.com/BeatAPI/BeatDesign — local Higgsfield. Don't install this week. factory/ is the project.",
+  "rail": "kit",
+  "age": "44. Don't de-age him.",
+  "views": {
+    "front": "White F-150 nose-in. He stands at the bed. Oak on 1488 left of frame.",
+    "side": "Passenger side. Dent on the rear door. That's the leftover.",
+    "back": "Tailgate down. Trimmer in the bed.",
+    "three-quarter": "Driver front. Work shirt. One hand on the bed rail.",
+    "three-quarter-back": "Dent still visible. Oak still in frame."
+  },
+  "face": {
+    "front": "44. Sun. Not a model. Grey at the temples.",
+    "profile": "Same nose. Same ear. Don't grow a jaw.",
+    "forty-five": "Squint optional. No smile for the camera."
+  },
+  "expressions": {
+    "rest": "Looking at the trimmer.",
+    "look": "One look at the phone. That's the clip.",
+    "squint": "Morning on 1488.",
+    "tired": "Day 5, rain, in the cab.",
+    "talking": "If a shop owner is in frame, he talks to them, not the lens.",
+    "load": "Sets the trimmer. One motion."
+  },
+  "parts": {
+    "eyes": "Narrow. Crow's feet. Not glass.",
+    "brow": "Unkept.",
+    "nose": "Same bump every day.",
+    "mouth": "Closed unless talking.",
+    "hands": "Inspectable. Dirt under a nail is a leftover."
+  },
+  "costume": {
+    "body": "Faded navy work shirt. Same one.",
+    "leftover": "Dent on the rear passenger door. Oak. Stanley.",
+    "prop": "Trimmer. Paper square $350 in the window if it's a shop page."
+  },
+  "palette": ["#111111", "#f4f1ea", "#9a9588", "#3d4a38"],
+  "kill": ["bikini sheet", "new face", "FANZA/Yahoo auctions lane", "BeatDesign install this week"]
+}

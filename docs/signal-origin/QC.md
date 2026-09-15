@@ -16,4 +16,4 @@
 | SDDFounder | JSON shot spec, beach bikini | Structured spec (meta, imperfections, no_cgi) on Ray | The bikini JSON |
 | soba / jaybaxter | Community Notes template writer | 280 chars, one URL, or no note. Owner pastes. | GitHub Action with X keys from this desk |
 
-Baxter: fork is [twitter/communitynotes](https://github.com/twitter/communitynotes) `template-api-note-writer`. Approval list if owner wants keys. Architect does not run it.
+| BeatDesign | Local Higgsfield, SQLite, MCP canvas | Assets stay in one project. `factory/` is that. | The app, BeatAPI keys |
