@@ -55,9 +55,34 @@ Installing LangGraph because we have two agents is how you get a third agent to 
 | microsoft/JARVIS | STEAL | LLM as controller over experts. Motif already routes. |
 | langroid/langroid | KILL | Extra Python chat runtime. |
 | letta-ai/letta | STEAL | Core memory vs archival. Desk Intel = core. Origin-box 112 files = archival. Do not host Letta. |
-| e2b-dev/awesome-ai-agents | STEAL | Reading list only. This file is the Origin filter on that list. |
+---
+
+## 2.5 Fifteen runtimes (2026-09-14 late)
+
+Same rule. Stars are not a reason to nest a second Origin.
+
+| Repo | Stars | Verdict | Steal | Kill |
+|---|---|---|---|---|
+| langchain-ai/langchain | 146k | KILL | Integrations list as reading | The framework. Two agents don't need LCEL. |
+| obra/superpowers | 286k | STEAL | Skills as markdown gates: TDD, verify-before-done, finish = PR not merge. | Their marketplace, MCP wrapper, "ask before every feature" (anti-stall). |
+| FoundationAgents/MetaGPT | 70k | STEAL | Role cards. Already `roles.json`. | The software-company sim. |
+| microsoft/autogen | 60k | KILL as runtime | Roles. | Maintenance mode. Successor is agent-framework. Don't migrate into Azure. |
+| crewAIInc/crewAI | 58k | STEAL | One crew per job. | The runtime. |
+| langchain-ai/langgraph | 41k | KILL | Explicit state. We have a packet. | Graph server. |
+| HKUDS/nanobot | 48k | KILL | One workspace per project (ARE / bus / XXX). | Telegram, cron, image gen, a second WebUI. The desk is the UI. |
+| AstrBotDevs/AstrBot | 40k | KILL | — | IM auto-send. Fence exists so we don't. |
+| openai/openai-agents-python | 29k | STEAL | Handoff as `transfer_to_*`. Swarm is dead; this is the successor. Git inbox is the handoff. Guardrails = VERIFY. | pip install. Sandbox agents. |
+| mastra-ai/mastra | 28k | STEAL | Zod in, Zod out. Suspend = owner. `.then()` is a task file. | npm create mastra. Supervisor agents. |
+| deepset-ai/haystack | 26k | KILL | — | RAG. git grep. |
+| elizaOS/eliza | 19k | STEAL | Character file = face/motion/calendar. One character per rail. | Booting a Linux distro for a $350 walk-in. |
+| agent0ai/agent-zero | 19k | KILL | — | Autonomous execute without a publish fence. |
+| pipecat-ai/pipecat | 15k | PARK | Voice later. | Not this week. |
+| microsoft/agent-framework | 13k | STEAL | HITL, YAML agent, MCP annotations (already stolen). | pip install, Azure SSO, a third Microsoft runtime. |
+
+**This week, in code:** `protocol/handoff.ts` (OpenAI handoff, git folders). `protocol/skills.md` (superpowers without the stall). Eliza already lives in `factory/*.json`.
 
 ---
+
 
 ## 3. Protocol (the one that actually upgrades the bus)
 
