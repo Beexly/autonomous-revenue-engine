@@ -1,17 +1,24 @@
 {
-  "stolen_from": "geekan/MetaGPT role cards + openai/swarm handoff + GROK_BOT motion 2 (one crew per post)",
-  "note": "Not a CrewAI runtime. Two agents plus Grok. Owner is the publish fence.",
+  "stolen_from": "GSE X Chat 2026-09-14 diagram (RoundtableSpace 2099464427678621839) + MetaGPT roles. We do not call DeepSeek or Astra. $0.",
+  "note": "Let think think. Let flash execute. Owner is the 'only if needed' high seat.",
+  "seats": {
+    "think": "Astra medium analog — plan, dual-gate, census. Actor: grok or motif.",
+    "flash": "Flash analog — bounded code, scrape, drafts. Actor: opencode or grok. No paid API.",
+    "high": "Astra high analog — merge, send, post, spend, sports. Actor: owner only."
+  },
   "roles": [
     {
       "id": "motif",
       "title": "Strategist + QC",
+      "seat": "think",
       "never_writes_code": true,
-      "owns": ["9.2 bar", "INDEX.md", "kill list"],
+      "owns": ["9.2 bar", "INDEX.md", "kill list", "integrate + verify"],
       "handoff_to": ["opencode", "grok"]
     },
     {
       "id": "opencode",
-      "title": "Builder",
+      "title": "Builder (flash worker)",
+      "seat": "flash",
       "never_publishes": true,
       "owns": ["ARE factory HTML", "Kit samples"],
       "handoff_to": ["motif"]
@@ -19,14 +26,16 @@
     {
       "id": "grok",
       "title": "Revenue + R&D",
+      "seat": ["think", "flash"],
       "never_publishes": true,
       "never_spends": true,
-      "owns": ["DM intel", "overnight desk", "Pressure", "this stack filter"],
+      "owns": ["DM intel", "overnight desk", "Pressure", "router"],
       "handoff_to": ["motif", "owner"]
     },
     {
       "id": "owner",
       "title": "Garrett",
+      "seat": "high",
       "only_one_who": ["sends", "posts", "merges", "deploys", "walks in"]
     }
   ]

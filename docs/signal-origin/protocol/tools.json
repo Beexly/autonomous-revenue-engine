@@ -13,6 +13,11 @@
       "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
     },
     {
+      "name": "route_task",
+      "description": "Assign think/flash/high. $0. Never selects a paid model.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
       "name": "draft_reply",
       "description": "Write a paste-ready X reply. Does not post.",
       "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false, "approvalRequired": false }
