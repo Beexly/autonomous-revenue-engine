@@ -24,4 +24,14 @@ Garrett
 
 ## Do not send
 
-Warm-20 is still the first human list. This form is for a store you have actually opened.
+## James Howard — bump (parked, do not send from here)
+
+Subject: Re: Zoho CRM assistance - Houston IT/CRM help
+
+James — bumping the 25 Aug note on Zoho maintenance. Still local, still as-needed. If the seat filled, ignore. If not, a 12-minute call and a 3-line plan is the whole next step.
+
+Garrett Baxley
+Kingwood
+
+One send. If silence, kill. Do not call 800-204-1374 from an agent.
+
