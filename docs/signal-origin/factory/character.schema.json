@@ -1,0 +1,45 @@
+{
+  "$id": "https://signalorigin.local/factory/character.schema.json",
+  "title": "One product, three files (stolen from Inspector 2093614760700850674 via GSE Chat)",
+  "description": "Not an AI-influencer farm. Kit trades and Hold voice use the same slots: face, motion, calendar. $0. No Flux/Kling/ElevenLabs.",
+  "type": "object",
+  "required": ["id", "surface", "face", "motion", "calendar", "kill"],
+  "properties": {
+    "id": { "type": "string" },
+    "surface": { "enum": ["kit-walk-in", "kit-gallery", "hold", "email"] },
+    "face": {
+      "type": "object",
+      "description": "What it looks like. Analog of face.json.",
+      "required": ["display", "body", "palette", "forbidden"],
+      "properties": {
+        "display": { "type": "string" },
+        "body": { "type": "string" },
+        "palette": { "type": "array", "items": { "type": "string" } },
+        "forbidden": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "description": "How it behaves. Analog of motion.md.",
+      "required": ["cta", "scroll", "reel-test"],
+      "properties": {
+        "cta": { "type": "string" },
+        "scroll": { "enum": ["none", "snap", "smooth"] },
+        "reel-test": { "type": "string" }
+      }
+    },
+    "calendar": {
+      "type": "object",
+      "description": "What ships when. Analog of calendar.md. Empty is honest.",
+      "properties": {
+        "next": { "type": "string" },
+        "owner-only": { "type": "boolean" }
+      }
+    },
+    "kill": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Looks-generated → delete. Inspector: do not post every generation."
+    }
+  }
+}
