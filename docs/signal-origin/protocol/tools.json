@@ -1,0 +1,71 @@
+{
+  "stolen_from": "MCP tools list + annotations",
+  "transport": "git / this repo. Not an MCP server.",
+  "tools": [
+    {
+      "name": "score_pressure",
+      "description": "Score a draft. Dual-gate: reply vs original.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "list_episodes",
+      "description": "Read memory/episodes.json core facts.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "route_task",
+      "description": "Assign think/flash/high. $0. Never selects a paid model.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "draft_reply",
+      "description": "Write a paste-ready X reply. Does not post.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "post_x",
+      "description": "Owner only. Grok never calls this.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": true, "idempotentHint": false, "openWorldHint": true, "approvalRequired": true }
+    },
+    {
+      "name": "send_email",
+      "description": "Owner only. Grok never calls this.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": true, "idempotentHint": false, "openWorldHint": true, "approvalRequired": true }
+    },
+    {
+      "name": "walk_in_kit",
+      "description": "Owner walks in with docs/kit/one-screen.html. Agents do not visit shops.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": true, "approvalRequired": true }
+    },
+    {
+      "name": "gate_policy",
+      "description": "pass/rewrite/kill. Originals 9.2. Replies 7.5. Stencil is kill.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "search_memory",
+      "description": "In-process search over episodes. No vector host.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "score_subject",
+      "description": "Email subject fold. Port of apps/subject-fold. Does not send.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "qc_shot",
+      "description": "Locked-set, occlusion, reset-tell, unpolished. Owner generates.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "transfer_to",
+      "description": "Handoff to an inbox folder. Post/send/spend still owner.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    },
+    {
+      "name": "would_spend",
+      "description": "If it would spend, it does not run.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false, "approvalRequired": false }
+    }
+  ]
+}

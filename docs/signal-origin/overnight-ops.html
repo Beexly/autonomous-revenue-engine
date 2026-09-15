@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Overnight pack — deb2195f</title>
+  <meta name="robots" content="noindex" />
+  <style>
+    :root { --bg:#0b0d0c; --fg:#d7e3d4; --dim:#7e8c7a; --line:#243027; --card:#121612; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    body { max-width: 40rem; margin: 0 auto; padding: 1.75rem 1.1rem 4rem; }
+    h1 { font: 600 1.4rem/1.2 ui-serif, Georgia, serif; }
+    .dim { color: var(--dim); font-size: .92rem; }
+    article { background: var(--card); border: 1px solid var(--line); padding: 1rem; margin: .75rem 0; }
+    .id { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+    p.draft { font: 400 1.05rem/1.4 ui-serif, Georgia, serif; }
+    button {
+      margin-top: .7rem; padding: .8rem 1rem; min-height: 44px;
+      border: 1px solid var(--fg); background: transparent; color: var(--fg);
+      font: 650 14px/1 ui-sans-serif, system-ui, sans-serif;
+    }
+    a { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <p class="dim">@SignaL_OriginHQ · cap 3 · hash deb2195f · not originals</p>
+  <h1>Overnight pack</h1>
+  <article>
+    <p class="id">RB-02 · @BrianRoemmele</p>
+    <p class="dim"><a href="https://x.com/BrianRoemmele/status/2099362543290687767">parent</a> · 58k. He already said 17k.</p>
+    <p class="draft" id="a">He already said 17,000, so I'm watching where the weights live. If they sit on the die, you don't revoke an API key. You recall a chip.</p>
+    <button type="button" data-copy="a">Copy</button>
+  </article>
+  <article>
+    <p class="id">RB-05 · @RogersBase</p>
+    <p class="dim"><a href="https://x.com/RogersBase/status/2099609904382423342">parent</a> · keep the scratch-out</p>
+    <p class="draft" id="b">I'd keep the scratch-out. Official copy has no thumb on the backspace, so it reads finished and dead, and people can hear the difference.</p>
+    <button type="button" data-copy="b">Copy</button>
+  </article>
+  <article>
+    <p class="id">RB-03 · @zerohedge</p>
+    <p class="dim"><a href="https://x.com/zerohedge/status/2099614759100219795">parent</a> · paragraph widths</p>
+    <p class="draft" id="c">I measured the paragraph widths. They match. Nobody changed their mind in the middle of a thought. You can still disagree with the argument.</p>
+    <button type="button" data-copy="c">Copy</button>
+  </article>
+  <script>
+    document.querySelectorAll("[data-copy]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var t = document.getElementById(b.getAttribute("data-copy")).textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
+        else window.prompt("Copy", t);
+        b.textContent = "On the clipboard";
+        setTimeout(function () { b.textContent = "Copy"; }, 1400);
+      });
+    });
+  </script>
+</body>
+</html>

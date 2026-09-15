@@ -1,0 +1,36 @@
+{
+  "stolen_from": "promptfoo/promptfoo tests[] + langchain-ai/openevals asserts",
+  "scorer": "docs/signal-origin/pressure.ts",
+  "tests": [
+    {
+      "id": "empty",
+      "mode": "original",
+      "input": "",
+      "assert": { "recommendation": "Hard rewrite" }
+    },
+    {
+      "id": "slogan-stack",
+      "mode": "reply",
+      "input": "Clean structure. Not policy. Quality. Let's go.",
+      "assert": { "flagContains": "slogan stack" }
+    },
+    {
+      "id": "brochure",
+      "mode": "original",
+      "input": "It's important to note that we must delve into this landscape to unlock the full potential and foster a holistic, seamless, cutting-edge tapestry.",
+      "assert": { "phraseDensityMax": 8 }
+    },
+    {
+      "id": "rb-02-reply",
+      "mode": "reply",
+      "input": "The load-bearing claim is not the token rate. It is that the model stops being software. If the weights are the die, an API key is no longer a policy lever — it is a souvenir from the HBM era.",
+      "assert": { "recommendation": "Hold" }
+    },
+    {
+      "id": "template-email-fails-swap",
+      "mode": "original",
+      "input": "I audit Meta ad tracking for DTC stores, and most accounts I check are over- or under-counting purchases without knowing it — the breakage hides in checkout events and Pixel/CAPI dedup, which you can't see from outside.",
+      "assert": { "recommendationNot": "Hold" }
+    }
+  ]
+}

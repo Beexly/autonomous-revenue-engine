@@ -1,0 +1,127 @@
+{
+  "stolen_from": "getzep/graphiti episodes + letta-ai/letta core vs archival",
+  "core": "facts that change a decision this week",
+  "archival": "handoff/origin-2026-09-14/ (112 files) — grep, do not embed",
+  "episodes": [
+    {
+      "id": "ep-2026-08-25-zoho",
+      "valid_at": "2026-08-25T22:53:35Z",
+      "invalid_at": null,
+      "source": "gmail:signal.origin.hq SENT 1a03b2108c93a54c",
+      "fact": "Garrett emailed James Howard (JHoward@aeprelo.com) offering as-needed Zoho CRM help, 3-line plan before invoice. Sign-off Baxley.Garrett@gmail.com.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-08-25-howard-ooo",
+      "valid_at": "2026-08-25T22:53:48Z",
+      "invalid_at": null,
+      "source": "gmail from jhoward@aeprelo.com",
+      "fact": "James Howard OOO: back tomorrow morning. Urgent 800-204-1374. This is not a no. One bump then kill.",
+      "supersedes": ["silence-equals-dead-lead"]
+    },
+    {
+      "id": "ep-2026-08-25-craigslist",
+      "valid_at": "2026-08-25T22:51:13Z",
+      "invalid_at": null,
+      "source": "gmail SENT 1a03b1ee18014561",
+      "fact": "One Craigslist Post Oak gig relay. Not a pipeline.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-08-25-warm-unsent",
+      "valid_at": "2026-08-25T17:38:42Z",
+      "invalid_at": null,
+      "source": "gmail to baxley.garrett@gmail.com",
+      "fact": "Warm-network note drafted to self. in:sent of this mailbox is two messages total (Zoho + Craigslist). Warm 20 never left.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-08-26-outreach-csv",
+      "valid_at": "2026-08-26T00:00:00Z",
+      "invalid_at": "2026-09-14T00:00:00Z",
+      "source": "handoff/origin-2026-09-14/copy/OUTREACH_LOG.csv",
+      "fact": "~150 DTC brands marked SENT at $250. Not present in this Gmail. Invalid as a send record. Do not follow up.",
+      "supersedes": ["csv-is-pipeline"]
+    },
+    {
+      "id": "ep-2026-08-26-lane1-voice",
+      "valid_at": "2026-08-26T23:45:00Z",
+      "invalid_at": null,
+      "source": "copy/LANE1_VOICE.md",
+      "fact": "Garrett killed the template. Swap-test: if you can paste it on another brand by changing the name, rewrite. No em dashes. $250 diagnostic only after a real finding. EMAILS_2026-08-26-b.md fails this test (all open 'I audit Meta ad tracking for DTC').",
+      "supersedes": ["spray-templates"]
+    },
+    {
+      "id": "ep-2026-08-26-offer-identity",
+      "valid_at": "2026-08-26T00:00:00Z",
+      "invalid_at": null,
+      "source": "research/audit-parked-drafts-2026-08-26.md score 53/100",
+      "fact": "Live SKU is $19 Gumroad workbook. Parked pile still argues $19 + $250 + qi-check. One public offer. Stripe charges_enabled false as of that date.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-x-is-sports",
+      "valid_at": "2026-09-14T23:00:00Z",
+      "invalid_at": null,
+      "source": "owner message this session",
+      "fact": "Twitter on the phone is Galaxy Sports / Sports repo. Signal Origin replies stay paste-ready. Do not post SO from this X login.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-no-x-dm-connector",
+      "valid_at": "2026-09-14T00:00:00Z",
+      "invalid_at": null,
+      "source": "search_connected_tools",
+      "fact": "Readable X DM count = 0. No X/Twitter connector. Do not invent DMs. Gmail human layer is the three items above.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-woodway",
+      "valid_at": "2026-09-15T01:28:10Z",
+      "invalid_at": null,
+      "source": "gmail SENT 1a0a23fdeec08cb9",
+      "fact": "Paint takeoff sent to Dad (dbax66). Woodway Collection, S Voss, Houston. A.S. Builders sign-off. Family lane. Not Kit, not SO, not GSE.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-gmail-four-faces",
+      "valid_at": "2026-09-14T19:32:50Z",
+      "invalid_at": null,
+      "source": "gmail notify@x.com",
+      "fact": "This Gmail is Auto X + GSE (+12816607639 on @GalaxySportsHQ) + Signal Origin welcome + A.S. Builders. One box, four faces.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-08-25-gumroad-ssn",
+      "valid_at": "2026-08-25T17:25:35Z",
+      "invalid_at": null,
+      "source": "gmail Gumroad support",
+      "fact": "$19 workbook cannot pay out until owner completes Gumroad SSN remediation. Do not store tax IDs in git.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-so013-stencil",
+      "valid_at": "2026-09-15T03:10:00Z",
+      "invalid_at": "2026-09-15T03:10:00Z",
+      "source": "ops/PASS_QUEUE.md",
+      "fact": "SO-013 opener 'We killed three posts' is a banned stencil. Invalid as a pass candidate.",
+      "supersedes": ["so-013-active"]
+    },
+    {
+      "id": "ep-2026-09-14-studio-seven",
+      "valid_at": "2026-09-15T02:50:00Z",
+      "invalid_at": null,
+      "source": "docs/signal-origin/STUDIO.md",
+      "fact": "Media studio is seven rails. Adult is XXX local. Only Kit is cash this week.",
+      "supersedes": ["xxx-is-the-product"]
+    },
+    {
+      "id": "ep-2026-09-14-task001-dead",
+      "valid_at": "2026-09-15T03:20:00Z",
+      "invalid_at": null,
+      "source": "durable.ts + bus STATUS.md",
+      "fact": "TASK-001 Hermes Kingwood list is dead-lettered after empty claims. Architect hunts streets, not a 225-row CSV.",
+      "supersedes": []
+    }
+  ]
+}

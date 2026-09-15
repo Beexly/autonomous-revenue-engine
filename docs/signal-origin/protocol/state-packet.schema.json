@@ -1,0 +1,15 @@
+{
+  "$id": "https://signalorigin.local/protocol/state-packet.schema.json",
+  "title": "Cognitive Relay state packet (stolen from de1lymoon 2099494941550321913)",
+  "description": "Compress every handoff. No giant chat history between Motif, Grok, opencode. Git is the packet.",
+  "type": "object",
+  "required": ["id", "goal", "evidence", "decisions", "failures", "next"],
+  "properties": {
+    "id": { "type": "string" },
+    "goal": { "type": "string" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "decisions": { "type": "array", "items": { "type": "string" } },
+    "failures": { "type": "array", "items": { "type": "string" } },
+    "next": { "type": "string" }
+  }
+}

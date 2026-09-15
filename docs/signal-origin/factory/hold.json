@@ -1,0 +1,24 @@
+{
+  "id": "hold-lane-1",
+  "surface": "hold",
+  "face": {
+    "display": "n/a — text",
+    "body": "dry, light sarcasm, human-first",
+    "palette": [],
+    "forbidden": ["hashtags", "We killed three posts", "em dash stacks", "delve", "it's important to note"]
+  },
+  "motion": {
+    "cta": "none. Replies do not ask for a follow.",
+    "scroll": "none",
+    "reel-test": "A stranger scrolls past without tagging it as generated. Swap-test must not be generic."
+  },
+  "calendar": {
+    "next": "RB-02 / RB-05 / RB-03 paste-ready. Owner posts from SO, never GSE.",
+    "owner-only": true
+  },
+  "kill": [
+    "GSE byline on SO doctrine",
+    "stencil opener We killed three posts",
+    "posting every draft"
+  ]
+}

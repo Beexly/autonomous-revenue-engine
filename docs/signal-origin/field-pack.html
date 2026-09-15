@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Saturday field pack</title>
+  <meta name="robots" content="noindex" />
+  <style>
+    :root { --bg:#111; --fg:#f4f1ea; --muted:#9a9588; --line:#2c2b26; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    body { max-width: 28rem; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+    h1 { font: 600 1.6rem/1.2 ui-serif, Georgia, serif; letter-spacing: -.03em; margin: 0 0 .5rem; }
+    h2 { font: 600 1.05rem/1.3 ui-serif, Georgia, serif; margin: 1.75rem 0 .4rem; }
+    .muted { color: var(--muted); font-size: .92rem; }
+    .paper {
+      margin: 1.25rem 0;
+      padding: 1.25rem;
+      border: 1px solid var(--fg);
+      min-height: 12rem;
+    }
+    .paper p { margin: 0 0 .6rem; }
+    .paper .big { font: 650 1.35rem/1.2 ui-serif, Georgia, serif; }
+    button, a.btn {
+      display: block; width: 100%; text-align: center; margin: .5rem 0;
+      padding: .9rem; min-height: 44px; text-decoration: none;
+      border: 1px solid var(--fg); color: var(--fg); background: transparent;
+      font: 650 15px/1 ui-sans-serif, system-ui, sans-serif;
+    }
+    ol { padding-left: 1.2rem; }
+    @media print {
+      body { background: #fff; color: #111; }
+      button, a.btn, .noprint { display: none; }
+      .paper { border-color: #111; }
+    }
+  </style>
+</head>
+<body>
+  <p class="muted">Kingwood · Saturday · hash the doors after</p>
+  <h1>Field pack</h1>
+  <p class="muted">Sample three. Take the next better door. Stop at eight nos or one yes. Money set is {0} until they pay.</p>
+
+  <div class="paper">
+    <p class="muted">Hand this over. Don't explain AI.</p>
+    <p class="big">One screen. Live Friday. $350.</p>
+    <p>Name, three prices, your number. If you hate it you don't pay.</p>
+    <p>Venmo on the back. No deposit today.</p>
+    <p>Who else on this strip still has a 2019 photo? Two names. That's the next door.</p>
+  </div>
+
+  <h2>At the desk</h2>
+  <p id="walk">I built you a one-screen. Three prices, your number, live Friday. If you hate it you don't pay. Three-fifty. Here's the paper.</p>
+  <button type="button" data-copy="walk">Copy the line</button>
+
+  <h2>If nobody's at the desk</h2>
+  <p id="vm">It's Garrett. I left a one-screen on paper at the desk. Your number, three prices, live Friday. If you hate it you don't pay. Three-fifty. I'll stop by Saturday.</p>
+  <button type="button" data-copy="vm">Copy voicemail</button>
+
+  <h2>Close</h2>
+  <p id="close">Friday work? If you hate it you don't pay.</p>
+  <button type="button" data-copy="close">Copy the close</button>
+  <p class="muted">Paper first. Then that question. Not a speech.</p>
+
+  <h2>They say no</h2>
+  <p id="askno">Who else on this strip still has a photo from 2019? I'll leave them a square.</p>
+  <button type="button" data-copy="askno">Copy</button>
+
+  <h2>They say yes</h2>
+  <p id="askyes">When it's live on your phone Friday, who else here should get one? Two names.</p>
+  <button type="button" data-copy="askyes">Copy</button>
+
+  <h2>If they push back · today's lane only</h2>
+  <p class="muted" id="lane">Loading lane…</p>
+  <ul id="abs"></ul>
+  <p class="muted">Don't mix A and B on this strip. Tomorrow gets the other lane.</p>
+
+  <h2 class="noprint">Touch 2 · SMS in two days</h2>
+  <p id="t2" class="noprint">Still have the square? I can have it live Friday. If you hate it you don't pay. Three-fifty after you see it.</p>
+  <a class="btn noprint" href="sms:?&body=Still%20have%20the%20square%3F%20I%20can%20have%20it%20live%20Friday.%20If%20you%20hate%20it%20you%20don't%20pay.%20Three-fifty%20after%20you%20see%20it.">Open SMS</a>
+  <p class="muted noprint">Touch 3 at +7d: Last note. Square still stands. I won't ping again. Then stop. Not an X DM to a stranger.</p>
+  <ol>
+    <li>First three doors set the bar. Don't take yet.</li>
+    <li>Take the first that's better: local, no site, phone on the window.</li>
+    <li>Eight nos: stop. Rewrite the line next week.</li>
+    <li>Weeknight 4–6pm, two doors, one strip. Saturday is not the only shift.</li>
+    <li>A yes names two neighbors. Write them on the back. That's the route.</li>
+  </ol>
+
+  <h2 class="noprint">Log the door</h2>
+  <p class="muted noprint">Mailto until keys exist. Subject is the shop name.</p>
+  <a class="btn noprint" href="mailto:signal.origin.hq@gmail.com?subject=Kit%20door&body=Shop%3A%20%0AYes%20or%20no%3A%20%0ANotes%3A%20">Mail this door</a>
+
+  <script>
+    var LANES = {
+      "already have a guy": {
+        A: "Keep him. This is one screen, your number, Friday. If you hate it you don't pay.",
+        B: "Good. Don't fire him. I just need Friday and your listing photo."
+      },
+      "send me something": {
+        A: "That's the square. Your number is on it. I'll be back Friday if you want it live.",
+        B: "I don't email PDFs. The page is already built. This is it."
+      },
+      "too much": {
+        A: "Three-fifty after you see it on your phone. Not today.",
+        B: "You don't pay if you hate it. That's the whole pitch."
+      },
+      "what is this": {
+        A: "Your listing photo is old. I already built the page. Here's the paper.",
+        B: "One screen. Your three prices. Live Friday. That's all this is."
+      }
+    };
+    var lane = Math.floor(Date.now() / 86400000) % 2 === 0 ? "A" : "B";
+    document.getElementById("lane").textContent = "Lane " + lane;
+    var ul = document.getElementById("abs");
+    Object.keys(LANES).forEach(function (k) {
+      var li = document.createElement("li");
+      li.textContent = k + " — " + LANES[k][lane];
+      ul.appendChild(li);
+    });
+    document.querySelectorAll("[data-copy]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var id = b.getAttribute("data-copy");
+        var t = document.getElementById(id).textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(t);
+        } else {
+          window.prompt("Copy", t);
+        }
+        b.textContent = "On the clipboard";
+        setTimeout(function () { b.textContent = "Copy"; }, 1400);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,46 +1,37 @@
 # Pass queue
 
 **Account:** @SignaL_OriginHQ  
-**Bar:** QUALITY_BAR + adversarial + **qi-check Hold ≥ 9.2**
+**Bar:** QUALITY_BAR + policy.ts + qi-check Hold ≥ 9.2 for originals. Replies use dual-gate floor 7.5.
 
-## Approved to publish
+Machine gate: `docs/signal-origin/protocol/policy.ts`. Publish is never a pass. Pass means the owner may paste.
 
-**None.**
+## Approved to publish (originals)
 
-Nothing clears 9.2 yet. Do not post.
+**None.** Original pressure on the desk still sits under 9.2. Do not post an original.
 
----
+## Overnight replies (owner paste, cap 3)
 
-## Soft rewrite / internal
+These cleared reply floor 8.2 on 2026-09-14. Dual-gate. Not originals.
 
-### SO-013 — active candidate (re-score in Build)
+1. Roemmele 2099198172862001153 — widths leftover. `REPLY-BANK` RB-02.
+2. RogersBase 2099006326483419386 — 17,000 leftover. RB-05.
+3. zerohedge 2099078835694174282 — sit 48h. RB-03.
+
+Do not post from Galaxy Sports Edge.
+
+## Killed in queue
+
+### SO-013 — killed (stencil)
 
 ```
 We killed three posts that had already cleared our own Pass gate.
-
-Each one was clean and structured enough that a hundred AI-operator accounts could have run the same lines. The swap would not have shown.
-
-We chose silence over a first impression that teaches people we are generic.
 ```
 
-**Why this version:**
-- Kill + number in sentence one (density)
-- Full sentences only — no “Clean structure.” / “Not policy. Quality.” staccato (voiceFit)
-- Lived cost: chose silence after an internal Pass
-- ~55 words (X band that actually holds)
-
-**Gate:** Paste into qi-check. Require composite ≥ 9.2 + recommendation Hold + adversarial Pass. Only then move to Approved.
+Banned opener. Policy `stencil: true` → kill. Copilot still listed it as an active candidate. It isn't.
 
 ### SO-012 — failed (7.9)
-Density 7, voiceFit 6 (one-word cadence). Soft rewrite. Superseded by SO-013.
-
 ### SO-010 — failed (8.3)
-Kill buried on line three. Soft rewrite under 9.2 floor.
 
----
-
-## Not approved
-- SO-009, SO-011, SO-001–008 — as before
-
-## Owner step when ready
-Draft shows **Hold ≥ 9.2** → listed under **Approved to publish** here → paste once on X → stop for the day.
+## Owner step
+Original Hold ≥ 9.2 → this file, Approved → paste once → stop for the day.
+Reply: paste from the bank, cap 3, then stop.

@@ -32,7 +32,7 @@
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 html,body{overflow-x:hidden}
 body{background:var(--night);color:var(--paper);font-family:var(--sans);line-height:1.6;
   -webkit-font-smoothing:antialiased}
@@ -511,32 +511,13 @@ var clamp=function(v,a,b){return Math.max(a,Math.min(b,v))};
 
 /* dock appears after hero */
 var dock=$('#dock');
-setTimeout(function(){ dock.classList.add('show'); }, 900);
+setTimeout(function(){ dock.classList.add('show'); }, 0);
 
 /* nav */
 var nav=$('#nav');
 addEventListener('scroll',function(){ nav.classList.toggle('scrolled',scrollY>40); },{passive:true});
 
-/* stars */
-(function(){
-  var cv=$('#stars'), ctx=cv.getContext('2d'), W,H,stars=[];
-  function size(){ var r=cv.parentElement.getBoundingClientRect(); W=cv.width=r.width; H=cv.height=r.height;
-    stars=[]; var n=Math.min(140,Math.floor(W*H/11000));
-    for(var i=0;i<n;i++) stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,
-      a:Math.random()*.7+.15,tw:Math.random()*Math.PI*2,ts:.004+Math.random()*.01,
-      ember:Math.random()<.22});
-  }
-  size(); addEventListener('resize',size);
-  (function draw(){
-    ctx.clearRect(0,0,W,H);
-    for(var i=0;i<stars.length;i++){ var s=stars[i]; s.tw+=s.ts;
-      var a=s.a*(0.6+0.4*Math.sin(s.tw));
-      ctx.fillStyle=s.ember?('rgba(194,65,12,'+a+')'):('rgba(246,239,224,'+a+')');
-      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill();
-    }
-    if(!reduced) requestAnimationFrame(draw);
-  })();
-})();
+/* stars canvas removed — gallery is work, not a night sky */
 
 /* reveals */
 var io=new IntersectionObserver(function(es){
@@ -555,24 +536,8 @@ var io2=new IntersectionObserver(function(es){
 },{threshold:.25});
 ['work','pricing','bench','contact'].forEach(function(id){ var s=document.getElementById(id); if(s) io2.observe(s); });
 
-/* cursor */
-if(finePtr&&!reduced){
-  document.body.classList.add('has-cursor');
-  var dot=$('#cdot'), ring=$('#cring'), mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-  addEventListener('mousemove',function(e){
-    mx=e.clientX; my=e.clientY;
-    dot.style.transform='translate('+(mx-4)+'px,'+(my-4)+'px)';
-  });
-  (function follow(){
-    rx+=(mx-rx)*0.16; ry+=(my-ry)*0.16;
-    ring.style.transform='translate('+(rx-ring.offsetWidth/2)+'px,'+(ry-ring.offsetHeight/2)+'px)';
-    requestAnimationFrame(follow);
-  })();
-  document.addEventListener('mouseover',function(e){
-    if(e.target.closest('a,button,summary')) ring.classList.add('big');
-    else ring.classList.remove('big');
-  });
-}
+/* custom cursor killed — hiding the pointer is theater, not a phone-ring */
+
 })();
 </script>
 </body>

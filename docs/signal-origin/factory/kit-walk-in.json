@@ -1,0 +1,26 @@
+{
+  "id": "kit-walk-in",
+  "surface": "kit-walk-in",
+  "face": {
+    "display": "Georgia, Times New Roman, serif",
+    "body": "ui-sans-serif, system-ui",
+    "palette": ["#120b06", "#f6efe0", "#c2410c"],
+    "forbidden": ["Google Fonts", "555 numbers", "invented neighbors", "sheen", "speed lines", "Most booked"]
+  },
+  "motion": {
+    "cta": "tel: of the real shop, sticky",
+    "scroll": "none",
+    "reel-test": "A shop owner does not think this was generated. Name, three prices, their number."
+  },
+  "calendar": {
+    "next": "CleanKiss only if plaza walk confirms no site. Owner walks. Agents do not.",
+    "owner-only": true
+  },
+  "kill": [
+    "any 555",
+    "any fake Google count",
+    "any slogan the car 'called' with",
+    "custom cursor",
+    "starfield"
+  ]
+}

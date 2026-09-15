@@ -11,28 +11,23 @@
 <title>Obsidian Auto Spa — Mobile Detailing in Houston, TX</title>
 <meta name="description" content="Obsidian Auto Spa: premium mobile detailing that comes to you. Interior from $129, full details from $199. Houston, Katy, Sugar Land.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
 :root{
   --bg:#060607; --bg2:#0c0d10; --panel:#111318;
   --chrome1:#f4f7fb; --chrome2:#9aa7b8; --steel:#5b6675;
   --cyan:#37e6ff; --cyan-dim:rgba(55,230,255,.14);
   --paper:#eef2f7; --dim:#a7b1bf;
   --line:rgba(238,242,247,.12);
-  --disp:'Archivo',Impact,'Arial Narrow',sans-serif;
-  --body:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
+  --disp:Impact,'Arial Narrow',sans-serif;
+  --body:ui-sans-serif,system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{background:var(--bg);color:var(--paper);font-family:var(--body);line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--cyan);color:#00181d}
 a{color:inherit}
 
-/* gloss sweep */
-.sheen{position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.5;
-  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.035) 45%,transparent 60%);
-  background-size:280% 280%;animation:sheen 11s ease-in-out infinite}
-@keyframes sheen{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
+/* gloss sweep — killed. Conversion pages do not sheen. */
 
 .wm{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(6,6,7,.88);
   border-bottom:1px solid var(--line);color:var(--dim);font-size:10px;font-weight:700;
@@ -45,11 +40,6 @@ a{color:inherit}
     radial-gradient(900px 420px at 50% 115%,rgba(55,230,255,.13),transparent 60%),
     radial-gradient(700px 380px at 85% -10%,rgba(154,167,184,.10),transparent 55%),
     linear-gradient(180deg,#0a0b0e 0%,var(--bg) 75%)}
-/* speed lines */
-.speed{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.speed i{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(55,230,255,.5),transparent);
-  animation:sp linear infinite}
-@keyframes sp{from{transform:translateX(-30vw)}to{transform:translateX(115vw)}}
 .hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%}
 .badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;
   padding:8px 18px;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
@@ -176,23 +166,21 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
 </style>
 </head>
 <body>
-<div class="sheen" aria-hidden="true"></div>
 <div class="wm">Sample preview — fictional business · built by Kit</div>
 
 <header class="hero">
-  <div class="speed" id="speed" aria-hidden="true"></div>
   <div class="hero-inner">
     <span class="badge"><i></i>Mobile — we come to you</span>
     <h1><span class="chrome">Showroom shine,</span><br><span class="cy">driveway delivered.</span></h1>
     <p class="hero-sub">Obsidian Auto Spa is Houston's mobile detailing studio. <strong>We bring the water, the power, and the obsession</strong> — you keep your keys and your Saturday.</p>
     <div class="hero-ctas">
-      <a class="btn btn-cy" href="tel:+18325550188">Book — (832) 555-0188</a>
+      <a class="btn btn-cy" href="#sample-call">Book — Your number</a>
       <a class="btn btn-ghost" href="#packages">Packages &amp; prices</a>
     </div>
     <div class="spec-row" data-r>
       <div class="spec"><div class="v">2<em>–</em>3<em>hr</em></div><div class="k">At your curb</div></div>
       <div class="spec"><div class="v">100<em>%</em></div><div class="k">Self-contained</div></div>
-      <div class="spec"><div class="v">4.9<em>★</em></div><div class="k">900+ reviews</div></div>
+      <div class="spec"><div class="v">Your<em> #</em></div><div class="k">On the call button</div></div>
     </div>
     <div class="hero-foot"></div>
   </div>
@@ -212,10 +200,9 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
           <li>Deep vacuum + compressed-air blowout</li><li>Shampoo seats &amp; carpets</li><li>Leather cleaned &amp; conditioned</li><li>Streak-free glass, inside</li><li>Odor neutralizing treatment</li>
         </ul>
         <div class="price"><span class="from">From</span><span class="amt">$129</span></div>
-        <a class="btn btn-ghost" href="tel:+18325550188">Book Interior</a>
+        <a class="btn btn-ghost" href="#sample-call">Book Interior</a>
       </div>
       <div class="pkg hot" data-r>
-        <div class="flag">Most booked</div>
         <div class="code">PKG—02</div>
         <h3>The Full Obsidian</h3>
         <p class="desc">Inside and out. The driveway showroom.</p>
@@ -223,7 +210,7 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
           <li>Everything in Interior Reset</li><li>Foam bath + hand wash</li><li>Wheels, tires &amp; wells detailed</li><li>Spray sealant — 3-month gloss</li><li>Trim &amp; chrome dressed</li>
         </ul>
         <div class="price"><span class="from">From</span><span class="amt">$199</span></div>
-        <a class="btn btn-cy" href="tel:+18325550188">Book Full Detail</a>
+        <a class="btn btn-cy" href="#sample-call">Book Full Detail</a>
       </div>
       <div class="pkg" data-r>
         <div class="code">PKG—03</div>
@@ -233,7 +220,7 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
           <li>Everything in Full Obsidian</li><li>Paint decontamination</li><li>One-step gloss enhancement</li><li>3-year ceramic coating</li><li>Free annual inspection</li>
         </ul>
         <div class="price"><span class="from">From</span><span class="amt">$499</span></div>
-        <a class="btn btn-ghost" href="tel:+18325550188">Book Ceramic</a>
+        <a class="btn btn-ghost" href="#sample-call">Book Ceramic</a>
       </div>
     </div>
     <div class="addons" data-r>
@@ -262,17 +249,17 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
 <section class="proof">
   <div class="wrap">
     <div class="kick" data-r>Receipts</div>
-    <h2 data-r>Houston keeps<br>rebooking.</h2>
-    <div class="quotes" style="margin-top:44px">
+    <h2 data-r>Proof lives<br>on Google.</h2>
+        <div class="quotes" style="margin-top:44px">
       <div class="quote" data-r>
         <div class="stars">★★★★★</div>
-        <p>My Tahoe had two kids, one labrador, and three years of road trips in it. It came back looking like the dealership. My wife thought I'd bought a new car.</p>
-        <div class="who">Derek W. <span>· Katy, TX</span></div>
+        <p>Reviews come from the shop's real Google listing. We do not invent names, stars, or stories to close a page.</p>
+        <div class="who">Your reviews · when they exist</div>
       </div>
       <div class="quote" data-r>
         <div class="stars">★★★★★</div>
-        <p>Booked at 9 AM from my office parking lot, car detailed by lunch, before/after photos in my texts. This is how every service should work.</p>
-        <div class="who">Alicia M. <span>· Sugar Land, TX</span></div>
+        <p>If the shop has no reviews yet, this block comes out. Empty is honest. A fake neighbor is not.</p>
+        <div class="who">Sample slot · not a person</div>
       </div>
     </div>
   </div>
@@ -292,9 +279,9 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
 <section class="final">
   <div class="wrap">
     <div class="kick" data-r style="text-align:center">Same-week slots</div>
-    <h2 data-r>Your car called.<br><span class="cy2">It wants this.</span></h2>
+    <h2 data-r>Text a photo.<br><span class="cy2">Get a price.</span></h2>
     <p data-r>Text a photo of your car for an exact quote — back within the hour, 7 days a week.</p>
-    <div data-r><a class="big-call" href="tel:+18325550188">(832) 555-0188</a></div>
+    <div data-r><a class="big-call" href="#sample-call">Your number</a></div>
   </div>
 </section>
 
@@ -306,21 +293,13 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
 </footer>
 
 <div class="stick">
-  <a class="call" href="tel:+18325550188">Call now</a>
-  <a class="txt" href="sms:+18325550188">Text a photo</a>
+  <a class="call" href="#sample-call">Call now</a>
+  <a class="txt" href="#sample-text">Text a photo</a>
 </div>
 
 <script>
 (function(){
 "use strict";
-/* speed lines */
-var sp=document.getElementById('speed');
-for(var i=0;i<14;i++){
-  var l=document.createElement('i');
-  var top=Math.random()*100, w=8+Math.random()*22, d=1.6+Math.random()*2.6, delay=-Math.random()*4;
-  l.style.cssText='top:'+top+'%;width:'+w+'vw;left:0;animation-duration:'+d+'s;animation-delay:'+delay+'s;opacity:'+(0.25+Math.random()*0.5);
-  sp.appendChild(l);
-}
 /* reveals */
 var io=new IntersectionObserver(function(es){
   es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });

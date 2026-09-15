@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Three touches. Then stop.</title>
+  <meta name="robots" content="noindex" />
+  <style>
+    :root { --bg:#111; --fg:#f4f1ea; --muted:#9a9588; --line:#2c2b26; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    body { max-width: 28rem; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+    h1 { font: 600 1.5rem/1.2 ui-serif, Georgia, serif; }
+    .muted { color: var(--muted); font-size: .92rem; }
+    label { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 1rem; }
+    input { width: 100%; margin-top: .35rem; padding: .7rem; border: 1px solid var(--line); background: #1a1a18; color: var(--fg); font: inherit; }
+    article { border: 1px solid var(--line); padding: 1rem; margin: .75rem 0; }
+    a.btn, button {
+      display: block; width: 100%; text-align: center; margin-top: .6rem;
+      padding: .85rem; min-height: 44px; border: 1px solid var(--fg);
+      background: transparent; color: var(--fg); text-decoration: none;
+      font: 650 14px/1 ui-sans-serif, system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <p class="muted">Not X DMs. Paper, then SMS to the shop you stood in, then stop.</p>
+  <h1>Sequence</h1>
+  <label>Shop
+    <input id="shop" value="CleanKiss" />
+  </label>
+  <label>Touches already sent (0–3)
+    <input id="n" type="number" min="0" max="3" value="1" />
+  </label>
+  <article>
+    <p class="muted" id="meta"></p>
+    <p id="body"></p>
+    <a class="btn" id="sms" href="#">Open SMS</a>
+    <button type="button" id="copy">Copy</button>
+  </article>
+  <p class="muted">A fourth touch is the 150-row log.</p>
+  <script>
+    var SEQ = [
+      { wait: "at the desk", text: "Paper in their hand. Ask Friday work. Ask two names even on a no." },
+      { wait: "+2 days", text: "Still have the square? I can have it live Friday. If you hate it you don't pay. Three-fifty after you see it." },
+      { wait: "+7 days", text: "Last note. Square still stands. I won't ping again." }
+    ];
+    function draw() {
+      var sent = Math.max(0, Math.min(3, parseInt(document.getElementById("n").value, 10) || 0));
+      var shop = document.getElementById("shop").value.trim();
+      if (sent >= 3) {
+        document.getElementById("meta").textContent = "Stop";
+        document.getElementById("body").textContent = "Three. Do not send a fourth.";
+        document.getElementById("sms").removeAttribute("href");
+        return;
+      }
+      var t = SEQ[sent];
+      document.getElementById("meta").textContent = "Touch " + (sent + 1) + " · " + t.wait;
+      document.getElementById("body").textContent = t.text;
+      document.getElementById("sms").href = "sms:?&body=" + encodeURIComponent((shop ? shop + " — " : "") + t.text);
+    }
+    document.getElementById("shop").oninput = draw;
+    document.getElementById("n").oninput = draw;
+    document.getElementById("copy").onclick = function () {
+      var t = document.getElementById("body").textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
+      else window.prompt("Copy", t);
+    };
+    draw();
+  </script>
+</body>
+</html>

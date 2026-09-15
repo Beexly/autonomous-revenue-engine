@@ -1,0 +1,6 @@
+log_id,timestamp,asset_id,disposition,qi_check_composite,published,real_premium_ht_imps,revenue_signal_usd,proxy_notes
+LOG-SO-2026-09-14-RB02,2026-09-14T21:00:00-05:00,RB-02,pass,8.2,false,,,"reply gate; leftover widths; owner paste"
+LOG-SO-2026-09-14-RB05,2026-09-14T21:00:00-05:00,RB-05,pass,8.2,false,,,"reply gate; leftover 17000; owner paste"
+LOG-SO-2026-09-14-RB03,2026-09-14T21:00:00-05:00,RB-03,pass,8.2,false,,,"reply gate; sit 48h; owner paste"
+LOG-SO-2026-09-14-SO013,2026-09-14T22:10:00-05:00,SO-013,kill,,,false,,,"stencil We killed three posts"
+LOG-KIT-2026-09-14,2026-09-14T22:10:00-05:00,kit-walk-in,pass,,,false,,"$350 page live on desk; 0 yes until Saturday"
