@@ -6,6 +6,8 @@ Handle: `@SignaL_OriginHQ`. Sports is a different login. Adult is Beexly/XXX, lo
 
 You are not starting a new architecture. Git is the bus. Paste is send. $0.
 
+Owner has two jobs: [OWNER.md](./OWNER.md). Do not invent a third.
+
 ## Products that are finished (not concepts)
 
 | Product | Where | Done means |
@@ -48,4 +50,4 @@ You are not starting a new architecture. Git is the bus. Paste is send. $0.
 
 ## What is not your job
 
-Paste on X. Walk into a shop. Fill Supabase keys. Merge these PRs. Gumroad SSN. Those sit on FERRY as owner. Do not open a TASK for them. Do not stall on them.
+[OWNER.md](./OWNER.md). Two jobs. Paste three. Walk Saturday. Do not open a TASK for those.
