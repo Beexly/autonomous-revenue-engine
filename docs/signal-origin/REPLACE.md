@@ -22,4 +22,18 @@ Kill is not a graveyard. If the runtime is a bill, the adjacent repo's *idea* st
 | OPA / cedar as a server | `protocol/policy.ts` | Already the replacement. |
 | MCP server zoo | `protocol/tools.json` + envelope | Git is the transport. |
 
-Re-open a KILL only when the neighbor cannot hold the load. First dollar, then a host.
+
+---
+
+## Pass 2 — names we had only as rows
+
+| Shallow / missing | Adjacent | Now |
+|---|---|---|
+| huggingface/smolagents | Code as the action, not JSON blobs | We already write the function. Sandbox = VERIFY. Don't pip. Don't E2B. |
+| pydantic-ai | Typed tool in, typed out, retry on bad schema | envelope + policy. Logfire stays killed. |
+| boundaryml/baml | Schema or it doesn't ship | packet / envelope. No DSL compile step. |
+| lucaong/minisearch | TF-IDF in the client | `search.ts` is tf*idf now. Still no npm. |
+| ARE `hn-bait` | We ignored a live app | Ported. Pulse scores the first line. |
+| ARE `voice-delta` | Burstiness helper | `burst.ts` on Pulse. Full Delta still needs more Pass refs. |
+| Kit cinematic SKUs | one-screen.html | Five walk-in twins in `docs/kit/previews/*-walk.html`. Grain heroes stay samples, not the $350 page. |
+

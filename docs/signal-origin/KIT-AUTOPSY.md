@@ -23,7 +23,20 @@ Craft that stays: package structure, sticky call, reduced-motion, per-trade art 
 - HVAC stats no longer invent volume. License is a blank, not TACLA #000000.
 - Detailing sheen + speed-line JS removed.
 - `scroll-behavior: auto` — conversion pages do not smooth-scroll.
-- Walk-in page remains `docs/kit/one-screen.html`.
+## Round 3 — walk-in SKU vs gallery
+
+The five cinematic previews are still in `previews/*.html` as art-direction samples. They are not what you walk in with.
+
+Walk-in twins (this hour):
+
+- `previews/hvac-walk.html`
+- `previews/lawn-care-walk.html`
+- `previews/pool-service-walk.html`
+- `previews/mobile-detailing-walk.html`
+- `previews/roofing-walk.html`
+
+Same contract as `one-screen.html`: name, three prices, call/text, no 555, no reviews, no grain, no 100svh hero.
+
 
 
 ## Round 2 — cinematic leftover (same night)
