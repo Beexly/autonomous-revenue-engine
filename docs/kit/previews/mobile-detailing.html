@@ -11,15 +11,14 @@
 <title>Obsidian Auto Spa — Mobile Detailing in Houston, TX</title>
 <meta name="description" content="Obsidian Auto Spa: premium mobile detailing that comes to you. Interior from $129, full details from $199. Houston, Katy, Sugar Land.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
 :root{
   --bg:#060607; --bg2:#0c0d10; --panel:#111318;
   --chrome1:#f4f7fb; --chrome2:#9aa7b8; --steel:#5b6675;
   --cyan:#37e6ff; --cyan-dim:rgba(55,230,255,.14);
   --paper:#eef2f7; --dim:#a7b1bf;
   --line:rgba(238,242,247,.12);
-  --disp:'Archivo',Impact,'Arial Narrow',sans-serif;
-  --body:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
+  --disp:Impact,'Arial Narrow',sans-serif;
+  --body:ui-sans-serif,system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:auto}
@@ -28,11 +27,7 @@ body{background:var(--bg);color:var(--paper);font-family:var(--body);line-height
 ::selection{background:var(--cyan);color:#00181d}
 a{color:inherit}
 
-/* gloss sweep */
-.sheen{position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.5;
-  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.035) 45%,transparent 60%);
-  background-size:280% 280%;animation:sheen 11s ease-in-out infinite}
-@keyframes sheen{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
+/* gloss sweep — killed. Conversion pages do not sheen. */
 
 .wm{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(6,6,7,.88);
   border-bottom:1px solid var(--line);color:var(--dim);font-size:10px;font-weight:700;
@@ -45,11 +40,6 @@ a{color:inherit}
     radial-gradient(900px 420px at 50% 115%,rgba(55,230,255,.13),transparent 60%),
     radial-gradient(700px 380px at 85% -10%,rgba(154,167,184,.10),transparent 55%),
     linear-gradient(180deg,#0a0b0e 0%,var(--bg) 75%)}
-/* speed lines */
-.speed{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.speed i{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(55,230,255,.5),transparent);
-  animation:sp linear infinite}
-@keyframes sp{from{transform:translateX(-30vw)}to{transform:translateX(115vw)}}
 .hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%}
 .badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;
   padding:8px 18px;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
@@ -213,7 +203,6 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
         <a class="btn btn-ghost" href="#sample-call">Book Interior</a>
       </div>
       <div class="pkg hot" data-r>
-        <div class="flag">Most booked</div>
         <div class="code">PKG—02</div>
         <h3>The Full Obsidian</h3>
         <p class="desc">Inside and out. The driveway showroom.</p>
@@ -290,7 +279,7 @@ footer.site strong{font-family:var(--disp);font-weight:800;color:var(--dim);lett
 <section class="final">
   <div class="wrap">
     <div class="kick" data-r style="text-align:center">Same-week slots</div>
-    <h2 data-r>Your car called.<br><span class="cy2">It wants this.</span></h2>
+    <h2 data-r>Text a photo.<br><span class="cy2">Get a price.</span></h2>
     <p data-r>Text a photo of your car for an exact quote — back within the hour, 7 days a week.</p>
     <div data-r><a class="big-call" href="#sample-call">Your number</a></div>
   </div>

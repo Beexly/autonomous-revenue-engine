@@ -25,4 +25,20 @@ Craft that stays: package structure, sticky call, reduced-motion, per-trade art 
 - `scroll-behavior: auto` — conversion pages do not smooth-scroll.
 - Walk-in page remains `docs/kit/one-screen.html`.
 
-Live page for a real shop: swap name, three prices, real number, real Google reviews or delete the block. Nothing else is invented to close.
+
+## Round 2 — cinematic leftover (same night)
+
+Fake people were round 1. Round 2 is the machinery that still *felt* like a fake product:
+
+| Thing | Why it was cinema | What we did |
+|---|---|---|
+| Google Fonts CDN on all five samples | Extra request, fails offline on a shop floor, Inter is the default AI face | System stacks. Impact/Georgia already on the device. |
+| Cyan sheen + speed-line CSS (detailing) | Loader theater. HTML was already gone; CSS was still there. | Deleted. |
+| "Your car called. It wants this." | Slogan stack. No leftover from a human. | "Text a photo. Get a price." |
+| "Your roof is talking. Listen free." | Same. | "We'll look at it. No pitch until you want one." |
+| "Most booked" flag | Unverified for a fictional shop. | Removed. |
+| HVAC grain crawl | Animated noise over the fold. | Static. |
+| Kit gallery starfield + custom cursor + 900ms dock | File header said no loader theater. The JS did it anyway. | Dock immediate. Cursor and stars off. Smooth-scroll off. |
+
+Still a sample, still art-directed per trade. The live job is `one-screen.html` plus the shop's real number. Do not walk in with the cinematic gallery on the phone.
+

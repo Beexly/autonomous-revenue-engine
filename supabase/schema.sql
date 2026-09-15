@@ -1,29 +1,29 @@
--- SignPreview v2 — leads table
--- Supabase free tier compatible. Runs clean on a fresh project.
+-- Canonical copy: docs/js/leads.sql
+-- Run in the Supabase SQL editor once. Then paste project URL + anon key
+-- into docs/js/config.js ON THE DEPLOY MACHINE. Do not commit keys.
+-- Until keys exist, lead-capture.js opens mailto:Baxley.Garrett@gmail.com.
 
-CREATE TABLE IF NOT EXISTS leads (
-  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  created_at  timestamptz DEFAULT now(),
-  name        text NOT NULL,
-  contact     text NOT NULL,
-  business_name text NOT NULL,
-  mockup_url  text,
-  sign_type   text DEFAULT 'storefront',
-  style       text DEFAULT 'modern',
-  source      text DEFAULT 'signpreview'
+create table if not exists public.leads (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  name text not null,
+  contact text not null,
+  business_name text not null,
+  mockup_url text,
+  sign_type text,
+  style text,
+  source text not null default 'signpreview'
 );
 
--- RLS: anon key can INSERT only; reads restricted to service role.
-ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
+alter table public.leads enable row level security;
 
-CREATE POLICY "anon can insert leads" ON leads
-  FOR INSERT TO anon WITH CHECK (true);
+drop policy if exists leads_anon_insert on public.leads;
+create policy leads_anon_insert
+  on public.leads
+  for insert
+  to anon
+  with check (true);
 
-CREATE POLICY "anon cannot read leads" ON leads
-  FOR SELECT TO anon USING (false);
-
-CREATE POLICY "anon cannot update leads" ON leads
-  FOR UPDATE TO anon USING (false);
-
-CREATE POLICY "anon cannot delete leads" ON leads
-  FOR DELETE TO anon USING (false);
+-- No SELECT / UPDATE / DELETE for anon. Read in the dashboard as owner.
+grant insert on public.leads to anon;
+revoke select, update, delete on public.leads from anon;
