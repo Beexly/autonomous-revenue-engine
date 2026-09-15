@@ -19,7 +19,7 @@ export type Run = {
 export function retry(run: Run, step: string): Run {
   if (run.status === "done") return run;
   const attempt = run.attempt + 1;
-  if (attempt > 3) {
+  if (attempt >= 3) {
     return {
       ...run,
       attempt,
