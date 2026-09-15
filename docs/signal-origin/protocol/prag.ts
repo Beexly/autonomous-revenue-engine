@@ -17,14 +17,15 @@ export function prag(text: string, parent = ""): { act: string; maxims: string[]
   const act = ACTS.find((a) => a.re.test(t))?.act ?? "none";
   const maxims: string[] = [];
   if (/\d/.test(t) || act !== "none") maxims.push("quality");
-  const bits = t.split(/[.!?]/).filter((s) => s.trim().length > 2);
-  if (bits.length >= 2 && bits.length <= 5) maxims.push("quantity");
+  const bits = t.split(/[.!?,]/).filter((s) => s.trim().length > 2);
+  if (bits.length >= 2 && bits.length <= 6) maxims.push("quantity");
   if (parent) {
-    const hit = parent
-      .toLowerCase()
-      .split(/\W+/)
-      .filter((w) => w.length > 4)
-      .some((w) => t.toLowerCase().includes(w));
+    const hit =
+      parent
+        .toLowerCase()
+        .split(/\W+/)
+        .filter((w) => w.length > 3)
+        .some((w) => t.toLowerCase().includes(w)) || (/\d/.test(parent) && /\d/.test(t));
     if (hit) maxims.push("relation");
   } else if (act !== "none") {
     maxims.push("relation");
