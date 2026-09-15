@@ -13,6 +13,7 @@
 
 export const HOLD_FLOOR = 9.2;
 export const SOFT_FLOOR = 7.0;
+export const REPLY_FLOOR = 7.5;
 
 const BAIT = [
   /\bhot take\b/i,
