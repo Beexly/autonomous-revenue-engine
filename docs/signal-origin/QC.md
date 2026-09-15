@@ -17,4 +17,6 @@
 | soba / jaybaxter | Community Notes template writer | 280 chars, one URL, or no note. Owner pastes. | GitHub Action with X keys from this desk |
 
 | BeatDesign | Local Higgsfield, SQLite, MCP canvas | Assets stay in one project. `factory/` is that. | The app, BeatAPI keys |
-| astorie_ai 2098214948577173742 | MiniMax H3 free week. Fake sports drink. 8–60s contest. Credits. | Product brief. Hands on the thing. Leftover on the label. 9s. | Sports drink. New faces. Astorie bill. Entering the contest. |
+| 2510.21575 SloPrag | Polyester girlfriends is an idiom in a Slovene pragmatics bench. Quality/Quantity/Relation/Manner. | Pulse: speech act + maxims. A leftover can flout a maxim and still Hold. | Girlfriend product |
+| 2007.08740 GSplit | Lesion vs procedural bias vs null. Don't optimize selection and prediction as one. | Even widths no longer eat a leftover. Split gate on Pulse. | Training on ADNI |
+| 1501.00637 secretary | Romantic options paper. Utility + n/e stopping. | Saturday hunt: sample 3, take the first better, hard stop at 8. Line logs doors. | A dating app |
