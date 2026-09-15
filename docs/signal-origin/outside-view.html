@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Outside view — $0 then $250</title>
+  <meta name="robots" content="noindex" />
+  <style>
+    :root { --bg:#f4f1ea; --fg:#1a1916; --muted:#6b665c; --line:#d4cfc4; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    body { max-width: 36rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    h1 { font: 600 1.7rem/1.2 ui-serif, Georgia, serif; letter-spacing: -.03em; }
+    h2 { font: 600 1.05rem/1.3 ui-serif, Georgia, serif; margin-top: 1.75rem; }
+    .muted { color: var(--muted); }
+    label { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 1rem; }
+    input { width: 100%; margin-top: .35rem; padding: .7rem; border: 1px solid var(--line); background: #fff; font: inherit; }
+    pre { white-space: pre-wrap; background: #fff; border: 1px solid var(--line); padding: 1rem; font: 15px/1.45 ui-serif, Georgia, serif; }
+    button, a.btn {
+      display: inline-block; margin-top: 1rem; padding: .85rem 1.1rem; min-height: 44px;
+      border: 1px solid var(--fg); background: var(--fg); color: var(--bg);
+      font: 650 15px/1 ui-sans-serif, system-ui, sans-serif; text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <p class="muted">Gold · not Kit · one letter then stop</p>
+  <h1>Outside view</h1>
+  <p>Two pixels on the same view. I can see that from outside. Checkout I cannot. The first letter is free. The written diagnostic is $250 and 48 hours.</p>
+  <label>Store
+    <input id="store" value="the store" />
+  </label>
+  <label>What you actually saw
+    <input id="combo" value="Shopify's Facebook pixel and a Google tag" />
+  </label>
+  <pre id="letter"></pre>
+  <button type="button" id="copy">Copy letter</button>
+  <a class="btn" id="mail" href="#">Mail it</a>
+  <h2>Three-line follow</h2>
+  <ol>
+    <li>Outside view of the two pixels, free.</li>
+    <li>If you want the written diagnostic: $250, 48 hours.</li>
+    <li>One bump. Then I stop.</li>
+  </ol>
+  <script>
+    function letter() {
+      var n = document.getElementById("store").value.trim() || "[Store]";
+      var t = document.getElementById("combo").value.trim();
+      return n + "'s product pages are firing " + t + " on the same view. That is two origins. If they do not share one event_id, Ads Manager will count the view twice and the purchase once, or the other way around. I cannot see checkout from outside. I can send the outside view, free. If you want the written diagnostic after that, it is $250 and 48 hours.\n\nGarrett";
+    }
+    function draw() {
+      var L = letter();
+      document.getElementById("letter").textContent = L;
+      document.getElementById("mail").href = "mailto:?subject=" + encodeURIComponent("Two pixels") + "&body=" + encodeURIComponent(L);
+    }
+    document.getElementById("store").oninput = draw;
+    document.getElementById("combo").oninput = draw;
+    document.getElementById("copy").onclick = function () {
+      var L = letter();
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(L);
+      else window.prompt("Copy", L);
+    };
+    draw();
+  </script>
+</body>
+</html>

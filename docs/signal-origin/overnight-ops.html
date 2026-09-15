@@ -3,151 +3,55 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Overnight ops — Signal Origin</title>
+  <title>Overnight pack — deb2195f</title>
   <meta name="robots" content="noindex" />
   <style>
-    :root {
-      --bg: #0b0d0c;
-      --fg: #d7e3d4;
-      --dim: #7e8c7a;
-      --line: #243027;
-      --phos: #b6f5a8;
-      --warn: #e3c27a;
-      --kill: #d9897a;
-      --card: #121612;
-    }
+    :root { --bg:#0b0d0c; --fg:#d7e3d4; --dim:#7e8c7a; --line:#243027; --card:#121612; }
     * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font: 16px/1.45 ui-sans-serif, system-ui, sans-serif;
+    html, body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    body { max-width: 40rem; margin: 0 auto; padding: 1.75rem 1.1rem 4rem; }
+    h1 { font: 600 1.4rem/1.2 ui-serif, Georgia, serif; }
+    .dim { color: var(--dim); font-size: .92rem; }
+    article { background: var(--card); border: 1px solid var(--line); padding: 1rem; margin: .75rem 0; }
+    .id { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+    p.draft { font: 400 1.05rem/1.4 ui-serif, Georgia, serif; }
+    button {
+      margin-top: .7rem; padding: .8rem 1rem; min-height: 44px;
+      border: 1px solid var(--fg); background: transparent; color: var(--fg);
+      font: 650 14px/1 ui-sans-serif, system-ui, sans-serif;
     }
-    body {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 28px 18px 80px;
-    }
-    h1 {
-      font: 600 22px/1.2 ui-serif, Georgia, serif;
-      letter-spacing: -0.02em;
-      margin: 0 0 6px;
-    }
-    .lede { color: var(--dim); margin: 0 0 22px; font-size: 14px; }
-    .meta {
-      display: flex; gap: 10px; flex-wrap: wrap;
-      font-size: 12px; color: var(--dim); margin-bottom: 28px;
-    }
-    .meta span { border: 1px solid var(--line); padding: 3px 8px; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      padding: 16px 16px 14px;
-      margin: 0 0 14px;
-    }
-    .card.skip { opacity: 0.72; }
-    .kicker {
-      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--phos); margin: 0 0 8px;
-    }
-    .kicker.warn { color: var(--warn); }
-    .parent { font-size: 13px; color: var(--dim); margin: 0 0 10px; }
-    .parent a { color: var(--fg); }
-    .draft {
-      white-space: pre-wrap;
-      font: 16px/1.5 ui-serif, Georgia, serif;
-      margin: 0 0 12px;
-    }
-    .why { font-size: 13px; color: var(--dim); margin: 0 0 12px; }
-    button.copy {
-      appearance: none;
-      background: transparent;
-      color: var(--phos);
-      border: 1px solid var(--phos);
-      padding: 6px 12px;
-      font: 13px ui-sans-serif, system-ui, sans-serif;
-      cursor: pointer;
-    }
-    button.copy:focus-visible { outline: 2px solid var(--phos); outline-offset: 2px; }
-    button.copy.done { color: var(--bg); background: var(--phos); }
-    .rules { font-size: 13px; color: var(--dim); margin-top: 28px; }
-    .rules strong { color: var(--fg); }
-    footer { margin-top: 36px; font-size: 12px; color: var(--dim); }
+    a { color: var(--fg); }
   </style>
 </head>
 <body>
-  <h1>Overnight ops</h1>
-  <p class="lede">Paste-ready replies for @SignaL_OriginHQ. Offline. Nothing here posts itself. Cap 3 tonight.</p>
-  <div class="meta">
-    <span>2026-09-14</span>
-    <span>Recommend RB-02 · RB-05 · RB-03</span>
-    <span>Skip RB-04 unless you like the steelman</span>
-  </div>
-
-  <article class="card" id="rb02">
-    <p class="kicker">RB-02 · post this</p>
-    <p class="parent">@BrianRoemmele — AMD × Taalas, model-as-silicon · <a href="https://x.com/BrianRoemmele/status/2099362543290687767">parent</a></p>
-    <p class="draft" id="d02">The load-bearing claim is not the token rate. It is that the model stops being software. If the weights are the die, an API key is no longer a policy lever — it is a souvenir from the HBM era.</p>
-    <p class="why">Adds the control-plane point. Does not repeat 17,000 tok/s.</p>
-    <button class="copy" type="button" data-target="d02">Copy draft</button>
+  <p class="dim">@SignaL_OriginHQ · cap 3 · hash deb2195f · not originals</p>
+  <h1>Overnight pack</h1>
+  <article>
+    <p class="id">RB-02 · @BrianRoemmele</p>
+    <p class="dim"><a href="https://x.com/BrianRoemmele/status/2099362543290687767">parent</a> · 58k. He already said 17k.</p>
+    <p class="draft" id="a">He already said 17,000, so I'm watching where the weights live. If they sit on the die, you don't revoke an API key. You recall a chip.</p>
+    <button type="button" data-copy="a">Copy</button>
   </article>
-
-  <article class="card" id="rb05">
-    <p class="kicker">RB-05 · post this</p>
-    <p class="parent">@RogersBase — official manga vs AI translation · <a href="https://x.com/RogersBase/status/2099609904382423342">parent</a></p>
-    <p class="draft" id="d05">Readers notice the missing hesitation. Official-with-no-pulse loses to unofficial-with-a-thumb because the thumb still chooses. That is not nostalgia. It is the product.</p>
-    <p class="why">Craft vs sludge. No detector pitch.</p>
-    <button class="copy" type="button" data-target="d05">Copy draft</button>
+  <article>
+    <p class="id">RB-05 · @RogersBase</p>
+    <p class="dim"><a href="https://x.com/RogersBase/status/2099609904382423342">parent</a> · keep the scratch-out</p>
+    <p class="draft" id="b">I'd keep the scratch-out. Official copy has no thumb on the backspace, so it reads finished and dead, and people can hear the difference.</p>
+    <button type="button" data-copy="b">Copy</button>
   </article>
-
-  <article class="card" id="rb03">
-    <p class="kicker">RB-03 · post this</p>
-    <p class="parent">@zerohedge quoting a pacing statement — “was this written by an AI chatbot?” · <a href="https://x.com/zerohedge/status/2099614759100219795">parent</a></p>
-    <p class="draft" id="d03">The tell is not the policy. It is the even pressure of the sentences — every paragraph the same width, no leftover from a human changing their mind mid-thought. You can disagree with the argument and still notice the surface.</p>
-    <p class="why">Names a stylometric tell. Does not dunk on the person.</p>
-    <button class="copy" type="button" data-target="d03">Copy draft</button>
+  <article>
+    <p class="id">RB-03 · @zerohedge</p>
+    <p class="dim"><a href="https://x.com/zerohedge/status/2099614759100219795">parent</a> · paragraph widths</p>
+    <p class="draft" id="c">I measured the paragraph widths. They match. Nobody changed their mind in the middle of a thought. You can still disagree with the argument.</p>
+    <button type="button" data-copy="c">Copy</button>
   </article>
-
-  <article class="card" id="rb01">
-    <p class="kicker warn">RB-01 · backup</p>
-    <p class="parent">@theallinpod — Trump calls Jensen, “doomerism is a hoax” · <a href="https://x.com/theallinpod/status/2099621431621607829">parent</a></p>
-    <p class="draft" id="d01">The pacing argument assumes the people pouring silicon are waiting for a committee to finish the sentence. They aren't. Regulation can bound use. It does not bound a tape-out already in flight.</p>
-    <p class="why">Industrial lag, not a team jersey.</p>
-    <button class="copy" type="button" data-target="d01">Copy draft</button>
-  </article>
-
-  <article class="card skip" id="rb04">
-    <p class="kicker warn">RB-04 · skip by default</p>
-    <p class="parent">@tszzl — safety vs the coalition that holds the levers · <a href="https://x.com/tszzl/status/2099612567073440071">parent</a></p>
-    <p class="draft" id="d04">Safety that cannot get a hearing on the coalition that currently holds the industrial levers is a seminar, not a bound. That is a distribution problem, not a proof that the risks are fake.</p>
-    <p class="why">Easy to become a jersey. Skip unless the steelman is what you meant to say.</p>
-    <button class="copy" type="button" data-target="d04">Copy draft</button>
-  </article>
-
-  <div class="rules">
-    <p><strong>Short gate.</strong> Mechanism the parent lacked. No hashtags, no CTA, no Kit/Gumroad/qi-check, no “we,” no slogan stack. Two is better than a fourth that is just attendance.</p>
-  </div>
-  <footer>Local file. No analytics. Signal Origin — docs/signal-origin/overnight-ops.html</footer>
   <script>
-    document.querySelectorAll("button.copy").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var el = document.getElementById(btn.getAttribute("data-target"));
-        var text = el ? el.textContent.trim() : "";
-        function done() {
-          btn.classList.add("done");
-          btn.textContent = "Copied";
-          setTimeout(function () {
-            btn.classList.remove("done");
-            btn.textContent = "Copy draft";
-          }, 1600);
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(done).catch(function () {
-            window.prompt("Copy:", text);
-          });
-        } else {
-          window.prompt("Copy:", text);
-        }
+    document.querySelectorAll("[data-copy]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var t = document.getElementById(b.getAttribute("data-copy")).textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
+        else window.prompt("Copy", t);
+        b.textContent = "On the clipboard";
+        setTimeout(function () { b.textContent = "Copy"; }, 1400);
       });
     });
   </script>

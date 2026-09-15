@@ -10,10 +10,11 @@ You are not starting a new architecture. Git is the bus. Paste is send. $0.
 
 | Product | Where | Done means |
 |---|---|---|
-| Overnight pack (3 replies) | [OVERNIGHT.md](./OVERNIGHT.md) · Night tab | Hash `deb2195f`. Cap 3. Owner pastes. |
+| Overnight pack (3 replies) | [OVERNIGHT.md](./OVERNIGHT.md) · [overnight-ops.html](./overnight-ops.html) · Night tab | Hash `deb2195f`. Cap 3. Owner pastes. |
 | Kit walk-in | `docs/kit/one-screen.html` · Kit tab | $350, live Friday, no 555, no AI on the floor. |
-| Walk-in voice | `protocol/script.ts` | Line + voicemail. Copy and say it. |
-| Gold email + subject | Kit tab · `protocol/fold.ts` | Swap-test as you type. Owner sends. |
+| Saturday field pack | [field-pack.html](./field-pack.html) | Print the square. Say the line. Mail the door. |
+| Gold outside-view | [outside-view.html](./outside-view.html) | Type the store. Copy. Mail. $0 then $250. |
+| Walk-in voice | `protocol/script.ts` | Line + voicemail. |
 | Pressure + split + prag + Δ | Pulse tab | Reply 7.5 / original 9.2. Leftover beats even widths. |
 | VERIFY + rebel + mint + acquire | Gate tab | Kids, Higgsfield, spend, sports, adult: reject. Instead is printed. |
 | Ray sheet + 7-day calendar | Kit → Face | Four coordinates: dent, oak, Stanley, hands. Closed after post. |
