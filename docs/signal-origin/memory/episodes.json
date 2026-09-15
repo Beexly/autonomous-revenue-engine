@@ -76,12 +76,28 @@
       "supersedes": []
     },
     {
-      "id": "ep-2026-09-14-dual-gate",
-      "valid_at": "2026-09-14T23:10:00Z",
+      "id": "ep-2026-09-14-woodway",
+      "valid_at": "2026-09-15T01:28:10Z",
       "invalid_at": null,
-      "source": "pressure.ts 0.3 + arXiv:2507.10475",
-      "fact": "Original Hold floor 9.2. Reply gate ~7.5, fail on bait/slogan/stock phrases. Burstiness demoted (diffusion fakes it).",
-      "supersedes": ["9.2-on-replies"]
+      "source": "gmail SENT 1a0a23fdeec08cb9",
+      "fact": "Paint takeoff sent to Dad (dbax66). Woodway Collection, S Voss, Houston. A.S. Builders sign-off. Family lane. Not Kit, not SO, not GSE.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-09-14-gmail-four-faces",
+      "valid_at": "2026-09-14T19:32:50Z",
+      "invalid_at": null,
+      "source": "gmail notify@x.com",
+      "fact": "This Gmail is Auto X + GSE (+12816607639 on @GalaxySportsHQ) + Signal Origin welcome + A.S. Builders. One box, four faces.",
+      "supersedes": []
+    },
+    {
+      "id": "ep-2026-08-25-gumroad-ssn",
+      "valid_at": "2026-08-25T17:25:35Z",
+      "invalid_at": null,
+      "source": "gmail Gumroad support",
+      "fact": "$19 workbook cannot pay out until owner completes Gumroad SSN remediation. Do not store tax IDs in git.",
+      "supersedes": []
     }
   ]
 }
