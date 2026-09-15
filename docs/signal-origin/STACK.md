@@ -213,5 +213,7 @@ The pitch is "your markdown bus is ad-hoc." It isn't. Motif → TASK → OpenCod
 4. MetaGPT role cards as JSON, not a new crew.
 5. 2D pressure field (three.js idea, canvas/SVG execution).
 6. Letta split: core (desk) vs archival (origin-box). Do not host Letta.
+7. **Replacements for every kill:** [REPLACE.md](./REPLACE.md). Durable runs, in-process search, local traces, Kit funnel. No cluster.
 
-Everything else stays in BUILD-BIBLE or the graveyard. Re-open a KILL only when it raises a dollar or a Hold score.
+Everything else stays in BUILD-BIBLE or gets a neighbor in REPLACE.md. Re-open a KILL only when the neighbor cannot hold the load.
+
