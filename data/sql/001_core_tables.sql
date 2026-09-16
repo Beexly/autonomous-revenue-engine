@@ -182,6 +182,7 @@ CREATE TABLE IF NOT EXISTS referrals (
   referral_code text NOT NULL UNIQUE,
   status referral_status NOT NULL DEFAULT 'sent',
   referrer_lead_id uuid NOT NULL REFERENCES leads(id) ON DELETE RESTRICT,
+  origin_booking_id uuid REFERENCES bookings(id) ON DELETE CASCADE,
   referred_lead_id uuid REFERENCES leads(id) ON DELETE SET NULL,
   referred_booking_id uuid REFERENCES bookings(id) ON DELETE SET NULL,
   landing_path text,
@@ -208,7 +209,8 @@ CREATE TABLE IF NOT EXISTS reviews (
   published_at timestamptz,
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now(),
-  CHECK (review_url IS NULL OR review_url ~ '^https?://')
+  CHECK (review_url IS NULL OR review_url ~ '^https?://'),
+  UNIQUE (booking_id, platform)
 );
 
 CREATE INDEX IF NOT EXISTS idx_leads_status_created_at ON leads (status, created_at DESC);
@@ -233,10 +235,12 @@ CREATE INDEX IF NOT EXISTS idx_content_assets_asset_type_channel ON content_asse
 CREATE INDEX IF NOT EXISTS idx_content_assets_source_asset_id ON content_assets (source_asset_id) WHERE source_asset_id IS NOT NULL;
 
 CREATE INDEX IF NOT EXISTS idx_referrals_referrer_status ON referrals (referrer_lead_id, status, created_at DESC);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_referrals_origin_booking_id_unique ON referrals (origin_booking_id) WHERE origin_booking_id IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_referrals_referred_lead_id ON referrals (referred_lead_id) WHERE referred_lead_id IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_referrals_converted_at ON referrals (converted_at) WHERE converted_at IS NOT NULL;
 
 CREATE INDEX IF NOT EXISTS idx_reviews_booking_id ON reviews (booking_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_reviews_external_review_id_unique ON reviews (external_review_id) WHERE external_review_id IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_reviews_platform_status ON reviews (platform, status, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_reviews_rating ON reviews (rating) WHERE rating IS NOT NULL;
 

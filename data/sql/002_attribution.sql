@@ -73,13 +73,13 @@ WITH booked_revenue AS (
 SELECT
   'first_touch'::text AS attribution_model,
   br.booking_month,
-  ft.channel_source,
-  ft.channel_medium,
-  ft.channel_campaign,
+  COALESCE(ft.channel_source, 'direct') AS channel_source,
+  COALESCE(ft.channel_medium, 'none') AS channel_medium,
+  COALESCE(ft.channel_campaign, 'unattributed') AS channel_campaign,
   COUNT(DISTINCT br.booking_id) AS booking_count,
   SUM(br.revenue_cents) AS revenue_cents
 FROM booked_revenue br
-JOIN analytics_first_touch_attribution_v ft
+LEFT JOIN analytics_first_touch_attribution_v ft
   ON ft.lead_id = br.lead_id
 GROUP BY 1, 2, 3, 4, 5
 
@@ -88,13 +88,13 @@ UNION ALL
 SELECT
   'last_touch'::text AS attribution_model,
   br.booking_month,
-  lt.channel_source,
-  lt.channel_medium,
-  lt.channel_campaign,
+  COALESCE(lt.channel_source, 'direct') AS channel_source,
+  COALESCE(lt.channel_medium, 'none') AS channel_medium,
+  COALESCE(lt.channel_campaign, 'unattributed') AS channel_campaign,
   COUNT(DISTINCT br.booking_id) AS booking_count,
   SUM(br.revenue_cents) AS revenue_cents
 FROM booked_revenue br
-JOIN analytics_last_touch_attribution_v lt
+LEFT JOIN analytics_last_touch_attribution_v lt
   ON lt.lead_id = br.lead_id
 GROUP BY 1, 2, 3, 4, 5;
 

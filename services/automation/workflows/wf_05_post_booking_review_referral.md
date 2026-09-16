@@ -42,7 +42,7 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 7. **PostgreSQL** - create `reviews` row on request and update on submission/publish callbacks.
 8. **If node** - continue to referral only when a review reaches `submitted` or `published`; otherwise stop after the reminder path and create a CRM follow-up task if needed.
 9. **Function** - generate unique referral code and reward terms.
-10. **PostgreSQL** - create `referrals` row and insert `referral_shared` event.
+10. **PostgreSQL** - create `referrals` row with `origin_booking_id = booking_id` and insert `referral_shared` event.
 11. **Email/SMS node** - send referral invite with tracked link.
 12. **HTTP Request / Twenty CRM** - log customer advocacy activity on the account.
 

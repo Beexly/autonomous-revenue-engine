@@ -25,7 +25,7 @@ References:
 ## Weekly checklist
 
 - [ ] Run the Monday metrics review from `docs/flywheel-90-day.md`.
-- [ ] Spot-check attribution views against raw tables using the validation SQL in `002_attribution.sql`.
+- [ ] Spot-check attribution views against raw tables using the validation SQL in `data/sql/002_attribution.sql`.
 - [ ] Review content pipeline status and approve/reject queued `content_assets`.
 - [ ] Audit one completed booking for review and referral workflow completion.
 - [ ] Verify Fider votes are triaged into content, offer, or product backlog buckets.
@@ -64,7 +64,7 @@ References:
 
 ### Triage
 1. Compare last 24 hours of `utm_sessions`, `lead_events`, and analytics events.
-2. Run the validation queries from `002_attribution.sql`.
+2. Run the validation queries from `data/sql/002_attribution.sql`.
 3. Check recent frontend deploys, middleware changes, and cookie/consent banner behavior.
 
 ### Immediate actions
