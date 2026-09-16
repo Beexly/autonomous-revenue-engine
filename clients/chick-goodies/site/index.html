@@ -4,196 +4,238 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Charcuterie Chick</title>
-<meta name="description" content="Grazing tables in Tomball. Reservations: 832-458-8180. Tricia Holfelder.">
+<meta name="description" content="Grazing tables in Tomball. Five looks. Live quote. Call Tricia, 832-458-8180.">
 <link rel="canonical" href="https://charcuterie-chick-showcase.vercel.app/">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#1a211c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Tokens: elevenmadisonpark.com getComputedStyle 2026-09-16 */
 :root {
-  --ink: rgb(0,0,0);
-  --paper: rgb(255,255,255);
-  --garamond: "EB Garamond", "Times New Roman", serif;
-  --nobel: Jost, "Helvetica Neue", sans-serif;
+  --ink: #1a211c;
+  --moss: #29382b;
+  --paper: #f4f0e6;
+  --mute: #f4f0e699;
+  --serif: Fraunces, Georgia, serif;
+  --sans: Outfit, sans-serif;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--nobel);
-  font-size: 16px;
-  line-height: normal;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-snap-type: y mandatory; background: var(--ink); }
+body { font-family: var(--serif); color: var(--paper); background: var(--ink); }
 a { color: inherit; text-decoration: none; }
-img { display: block; }
+img { display: block; max-width: 100%; height: auto; }
+button, input, select, textarea { font: inherit; color: inherit; background: transparent; border: 0; border-radius: 0; }
+button { cursor: pointer; }
+
+.plate {
+  width: 22px; height: 22px; border: 1.4px solid currentColor; border-radius: 50%;
+  display: inline-grid; place-items: center; flex: none;
+}
+.plate::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
 header {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: 4;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 28px 40px;
+  position: fixed; inset: 0 0 auto; z-index: 6;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 28px;
+  mix-blend-mode: difference;
 }
-.mark {
-  font-family: var(--garamond);
-  font-size: 21.04px;
-  letter-spacing: 0.4208px;
-  font-weight: 400;
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand .words { display: flex; flex-direction: column; line-height: 1; }
+.brand b { font-family: var(--sans); font-weight: 400; font-size: 9px; letter-spacing: .42em; text-transform: uppercase; }
+.brand i { font-style: italic; font-size: 18px; font-weight: 400; letter-spacing: .02em; }
+.dots { display: flex; gap: 8px; }
+.dots i { width: 6px; height: 6px; border-radius: 50%; border: 1px solid currentColor; display: block; }
+.dots i.on { background: currentColor; }
+.call { font-family: var(--sans); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; }
+
+.snap { min-height: 100svh; scroll-snap-align: start; position: relative; }
+
+.cover { display: grid; place-items: center; text-align: center; padding: 12vh 6vw; }
+.cover .lock {
+  display: flex; flex-direction: column; align-items: center; gap: 28px;
 }
-nav { display: flex; gap: 28px; }
-nav a {
-  font-family: var(--nobel);
-  font-size: 17.68px;
-  letter-spacing: 0.3536px;
-  text-transform: uppercase;
-  padding: 1.768px 0;
+.cover .plate { width: 56px; height: 56px; border-width: 1.5px; }
+.cover .plate::after { width: 14px; height: 14px; }
+.cover h1 {
+  font-size: clamp(3.2rem, 11vw, 9rem);
+  font-weight: 400; font-style: italic; line-height: .82;
+  letter-spacing: -.04em;
 }
-.stage {
-  position: relative;
-  height: 100svh;
-  background: #fff;
-  overflow: hidden;
+.cover h1 span { display: block; font-style: normal; font-family: var(--sans); font-size: .18em; letter-spacing: .48em; text-transform: uppercase; margin-bottom: 18px; }
+.heritage { width: min(280px, 70vw); height: auto; opacity: .85; margin-top: 8px; }
+.cue { position: absolute; bottom: 28px; left: 0; right: 0; text-align: center; font-family: var(--sans); font-size: 11px; letter-spacing: .32em; text-transform: uppercase; opacity: .55; }
+
+.spread { display: grid; min-height: 100svh; }
+@media (min-width: 900px) {
+  .spread.a { grid-template-columns: 1fr 1.15fr; }
+  .spread.b { grid-template-columns: 1.15fr 1fr; }
+  .spread.c { grid-template-columns: 1fr; place-items: center; }
+  .spread.d { grid-template-columns: .8fr 1.2fr; }
+  .spread.e { grid-template-columns: .7fr 1.3fr; }
 }
-.stage img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 1.2s ease;
+.copy { padding: 22vh 8vw 10vh; display: flex; flex-direction: column; justify-content: flex-end; }
+.n { font-size: clamp(5rem, 16vw, 12rem); font-weight: 500; letter-spacing: -.06em; line-height: .8; }
+.copy h2 { font-size: clamp(1.6rem, 3.2vw, 2.6rem); font-weight: 400; margin: 18px 0 10px; max-width: 10ch; line-height: 1.05; }
+.copy p { font-family: var(--sans); font-size: 15px; letter-spacing: .04em; opacity: .7; max-width: 32ch; line-height: 1.5; }
+.price { margin-top: 22px; font-size: 22px; font-style: italic; }
+.frame { display: grid; place-items: center; padding: 12vh 6vw; }
+.frame img { max-height: 72svh; width: auto; max-width: 100%; }
+.spread.c .n {
+  position: absolute; left: 6vw; top: 18vh; font-size: clamp(8rem, 28vw, 22rem);
+  opacity: .12; pointer-events: none;
 }
-.stage img.on { opacity: 1; }
-main { max-width: 640px; margin: 0 auto; padding: 96px 24px 120px; }
-h1 {
-  font-family: var(--garamond);
-  font-size: 37px;
-  font-weight: 500;
-  line-height: 37px;
-  margin: 0 0 28px;
+.spread.c .frame img { max-height: 64svh; }
+
+.quote {
+  background: var(--paper); color: var(--ink);
+  display: grid; gap: 40px; padding: 18vh 8vw 12vh;
 }
-p { font-family: var(--garamond); font-size: 21.04px; line-height: 1.45; margin: 0 0 18px; }
-.menu { list-style: none; margin: 48px 0; }
-.menu li {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 0.67px solid rgb(0,0,0);
-  font-family: var(--nobel);
-  font-size: 17.68px;
-  letter-spacing: 0.3536px;
-  text-transform: uppercase;
+@media (min-width: 960px) { .quote { grid-template-columns: 1.1fr .9fr; align-items: end; } }
+.quote .kicker { font-family: var(--sans); font-size: 11px; letter-spacing: .4em; text-transform: uppercase; }
+#big { font-size: clamp(3.5rem, 10vw, 8rem); font-style: italic; line-height: .85; letter-spacing: -.04em; margin: 12px 0 18px; }
+.quote .note { font-family: var(--sans); font-size: 14px; opacity: .55; max-width: 36ch; }
+form { display: grid; gap: 14px; }
+label { display: grid; gap: 4px; font-family: var(--sans); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; opacity: .5; }
+input, select, textarea { font-family: var(--serif); font-size: 18px; padding: 8px 0; border-bottom: .67px solid #1a211c55; }
+.go { display: flex; gap: 18px; margin-top: 8px; }
+.go button { font-size: 15px; padding: 14px 0; border-bottom: .67px solid currentColor; letter-spacing: .12em; text-transform: uppercase; font-family: var(--sans); }
+footer.tiny { padding: 28px 8vw 48px; font-family: var(--sans); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .45; background: var(--paper); color: var(--ink); }
+
+@media (max-width: 899px) {
+  .copy { padding: 18vh 8vw 4vh; }
+  .frame { padding: 0 8vw 10vh; }
+  .frame img { max-height: 48svh; }
+  header { mix-blend-mode: normal; }
 }
-.menu small {
-  display: block;
-  font-family: var(--garamond);
-  font-size: 16px;
-  text-transform: none;
-  letter-spacing: 0;
-  opacity: 0.55;
-  margin-top: 4px;
-}
-.reserve {
-  display: inline-block;
-  font-family: var(--nobel);
-  font-size: 17.68px;
-  letter-spacing: 0.3536px;
-  text-transform: uppercase;
-  border-bottom: 0.67px solid currentColor;
-  padding: 1.768px 0;
-}
-form { display: grid; gap: 18px; margin-top: 40px; }
-label {
-  display: grid; gap: 6px;
-  font-family: var(--nobel);
-  font-size: 12px;
-  letter-spacing: 0.3536px;
-  text-transform: uppercase;
-}
-input, select, textarea {
-  font-family: var(--garamond);
-  font-size: 21.04px;
-  padding: 8px 0;
-  border: 0;
-  border-bottom: 0.67px solid #000;
-  background: transparent;
-  border-radius: 0;
-}
-button {
-  font-family: var(--nobel);
-  font-size: 17.68px;
-  letter-spacing: 0.3536px;
-  text-transform: uppercase;
-  background: transparent;
-  border: 0;
-  border-bottom: 0.67px solid currentColor;
-  padding: 1.768px 0;
-  cursor: pointer;
-  justify-self: start;
-}
-.go { display: flex; gap: 28px; flex-wrap: wrap; }
-#est div { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 0.67px solid #0002; font-size: 17.68px; }
-footer {
-  padding: 40px 24px 80px;
-  text-align: center;
-  font-size: 17.68px;
-  letter-spacing: 0.3536px;
-  text-transform: uppercase;
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-snap-type: none; } }
 </style>
 </head>
 <body>
 <header>
-  <a class="mark" href="#">Charcuterie Chick</a>
-  <nav>
-    <a href="#menu">Menu</a>
-    <a href="tel:+18324588180">Reservations</a>
-    <a href="#ask">Enquire</a>
-  </nav>
+  <a class="brand" href="#top">
+    <span class="plate" aria-hidden="true"></span>
+    <span class="words"><b>Charcuterie</b><i>Chick</i></span>
+  </a>
+  <span class="dots" id="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  <a class="call" href="tel:+18324588180">Call</a>
 </header>
-<div class="stage" data-slides>
-  <img class="on" src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing">
-  <img src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze">
-  <img src="img/knot-3.jpg" width="945" height="720" alt="Super Graze">
-  <img src="img/knot-4.jpg" width="945" height="720" alt="Boards">
-</div>
-<main id="menu">
-  <h1>Join us at the table.</h1>
-  <p>Tricia Holfelder. More than 35 years in restaurants. Tomball, Texas. One party at a time.</p>
-  <ul class="menu">
-    <li><span>Holy Grail<small>75 or 150 guests</small></span><span>$2,000</span></li>
-    <li><span>Grand Graze<small>per person · 50 min</small></span><span>$38</span></li>
-    <li><span>Super Graze</span><span>$30</span></li>
-    <li><span>Grazing Standard</span><span>$26</span></li>
-    <li><span>Graze Me, Craze Me</span><span>$24</span></li>
-    <li><span>Taco cart</span><span>$26.95</span></li>
-    <li><span>Boards</span><span>ask</span></li>
-  </ul>
-  <a class="reserve" href="tel:+18324588180">Reservations 832-458-8180</a>
-  <form id="ask">
+
+<section class="snap cover" id="top" data-i="0">
+  <div class="lock">
+    <span class="plate" aria-hidden="true"></span>
+    <h1><span>The Chick Goodies</span>Charcuterie<br>Chick</h1>
+    <img class="heritage" src="img/logo-paper.png" width="1209" height="388" alt="Original wordmark, The Chick Goodies">
+  </div>
+  <p class="cue">Scroll the tables</p>
+</section>
+
+<section class="snap spread a" data-i="1">
+  <div class="copy">
+    <div class="n">01</div>
+    <h2>Holy Grail of Grazing</h2>
+    <p>Five cheeses. Five meats. Two sliders, fifty of each. Houston’s largest cart, one party at a time.</p>
+    <p class="price">$2,000 for 75 · $3,500 for 150</p>
+  </div>
+  <div class="frame"><img src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing"></div>
+</section>
+
+<section class="snap spread b" data-i="2">
+  <div class="frame"><img src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze"></div>
+  <div class="copy">
+    <div class="n">02</div>
+    <h2>Grand Graze</h2>
+    <p>Five sliders, four salads, pudding cups. The table that looks like a magazine and feeds like a kitchen.</p>
+    <p class="price">$38 a person · 50 minimum</p>
+  </div>
+</section>
+
+<section class="snap spread c" data-i="3">
+  <div class="n">03</div>
+  <div class="copy" style="position:absolute;left:8vw;bottom:10vh;z-index:1">
+    <h2>Super Graze</h2>
+    <p>Three sliders, three salads, the vegetable spread.</p>
+    <p class="price">$30 a person</p>
+  </div>
+  <div class="frame"><img src="img/knot-3.jpg" width="945" height="720" alt="Super Graze"></div>
+</section>
+
+<section class="snap spread d" data-i="4">
+  <div class="copy">
+    <div class="n">04</div>
+    <h2>Grazing Standard</h2>
+    <p>The house, plus pasta salad and chips. Same 90 minutes. Same $229 setup.</p>
+    <p class="price">$26 a person</p>
+  </div>
+  <div class="frame"><img src="img/knot-4.jpg" width="945" height="720" alt="Grazing Standard"></div>
+</section>
+
+<section class="snap spread e" data-i="5">
+  <div class="copy">
+    <div class="n">05</div>
+    <h2>Graze Me, Craze Me</h2>
+    <p>Where the list starts. Two sliders, meat and cheese, fruit, hummus, almonds.</p>
+    <p class="price">$24 a person</p>
+  </div>
+  <div class="frame"><img src="img/wide-640.jpg" width="640" height="452" alt="Graze Me, Craze Me"></div>
+</section>
+
+<section class="snap quote" data-i="6">
+  <div>
+    <p class="kicker">Your table</p>
+    <p id="big">$2,000</p>
+    <p class="note">Food, plus $229 setup, plus 18% tax. Opens a text to Tricia. Nothing sends itself.</p>
+  </div>
+  <form>
     <label>Name<input id="n" autocomplete="name"></label>
     <label>Phone<input id="p" type="tel"></label>
     <label>Date<input id="d" type="date"></label>
     <label>Guests<input id="g" type="number" min="50" value="75"></label>
-    <label>Table<select id="t"><option value="holy">Holy Grail</option><option value="grand">Grand</option><option value="super">Super</option><option value="standard">Standard</option><option value="graze">Graze Me</option></select></label>
+    <label>Table<select id="t">
+      <option value="holy">01 Holy Grail</option>
+      <option value="grand">02 Grand</option>
+      <option value="super">03 Super</option>
+      <option value="standard">04 Standard</option>
+      <option value="graze">05 Graze Me</option>
+    </select></label>
     <label>Notes<textarea id="m" rows="3"></textarea></label>
-    <div id="est"></div>
+    <div id="est" hidden></div>
     <div class="go">
-      <button type="button" id="smsBtn">Text</button>
+      <button type="button" id="smsBtn">Text this number</button>
       <button type="button" id="emailBtn">Email</button>
-      <button type="button" id="copyBtn">Copy</button>
     </div>
     <p id="hint"></p>
   </form>
-</main>
-<footer>11931 Brantley Haven Drive, Tomball, TX 77375</footer>
+</section>
+<footer class="tiny">11931 Brantley Haven Drive, Tomball · 832-458-8180 · The original wordmark stays hers. The plate is the site mark.</footer>
+
 <script src="engine.js"></script>
 <script src="quiet.js"></script>
+<script>
+(function () {
+  var dots = document.querySelectorAll("#dots i");
+  var secs = document.querySelectorAll("[data-i]");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = +e.target.getAttribute("data-i");
+        dots.forEach(function (d, n) { d.classList.toggle("on", n === Math.min(i, dots.length - 1)); });
+      });
+    }, { threshold: 0.55 });
+    secs.forEach(function (s) { io.observe(s); });
+  }
+  var t = document.getElementById("t");
+  var g = document.getElementById("g");
+  var big = document.getElementById("big");
+  function paint() {
+    if (!window.CHICK || !big) return;
+    var q = CHICK.compute(t.value, g.value);
+    big.textContent = q && q.ok ? "$" + Math.round(q.total).toLocaleString("en-US") : "—";
+  }
+  if (t) t.addEventListener("input", paint);
+  if (g) g.addEventListener("input", paint);
+  paint();
+})();
+</script>
 </body>
 </html>
