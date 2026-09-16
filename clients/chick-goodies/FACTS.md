@@ -17,6 +17,10 @@ If a value is not here, ask Tricia — do not infer it.
 | Email | charcuteriechick@outlook.com | /pages/contact (verified 2026-09-16; earlier scrape redacted it) |
 | Markets | Tomball · The Woodlands · Spring · Conroe | site copy |
 | Voice / taglines | "elegance without the cost"; "Where Flavor Takes The Lead"; "Deliciously crafted food & beverages made with passion and purpose" | site copy |
+| Instagram | @charcuteriechickhtx | public profile; Knot also lists instagram.com/ssminnow1970 (personal — do not put on the site unless she confirms) |
+| The Knot | The Chick Goodies · 5.0 · 13 reviews · Best of Weddings 2026 · starting $500 · couples usually spend $2,350 · travel 100 miles · 136 photos | theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771 |
+| WeddingWire | The Chick Goodies · 5.0 · 11 reviews · 100% recommend | weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html |
+| Her Knot bio (verbatim, usable) | "Houston's largest charcuterie cart"; scratch-made breads, jellies and jams; one party at a time; woman-owned; English and Spanish | Knot about |
 | Position | "Making high-quality catering affordable for every event" (blog title) | /blogs/news |
 
 ## Grazing tables

@@ -74,3 +74,16 @@ renderer.
 `pi install npm:pi-supergrok` then `/login supergrok`. Requires Pi ≥ 0.74.
 Hermes already has SuperGrok OAuth (`hermes auth` / xai provider). Installing
 this here does nothing. Use it if a **Pi** session needs grok-4.6.
+
+## 2026-09-16 paste — SSG / motion / study lists
+
+| Repo | Class | Call |
+|---|---|---|
+| [hugo](https://github.com/gohugoio/hugo) | (b) $600 stack candidate | Fastest SSG. Go binary. Overkill for the $150 one-pager. Shortlist vs Astro if she picks full site + blog. |
+| [astro](https://github.com/withastro/astro) | (b) **preferred $600 stack** | Zero-JS-by-default, content collections, sitemap/RSS, Vercel. Maps to her "SEO, high traffic, found by search". Do not rebuild the three samples in it until she picks one art direction. |
+| [docusaurus](https://github.com/facebook/docusaurus) | (c) trap here | Docs sites. Not a catering lookbook. |
+| [react-bits](https://github.com/DavidHDev/react-bits) | (a) motion vocabulary | Steal scroll-snap / split-text ideas. Do **not** drop Magnet, BlobCursor, particles, or a React runtime onto a static $150 page — that is the AI-junk look. CSS only, motion last. |
+| [Best-websites-a-programmer-should-visit](https://github.com/sdmg15/Best-websites-a-programmer-should-visit) | (a) study list | Archived Nov 2025. Bookmark, do not vendor into `clients/`. |
+| [30-Days-Of-JavaScript](https://github.com/Asabeneh/30-Days-Of-JavaScript) | (a) study list | Beginner curriculum. Not a site generator. |
+
+Rule: $150 ships the HTML samples. $600, if she wants location pages + blog, is **Astro** (Hugo if Garrett prefers no Node). Docusaurus never.
