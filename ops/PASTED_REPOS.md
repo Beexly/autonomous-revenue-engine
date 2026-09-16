@@ -66,3 +66,13 @@ Signal Origin, a client file, or Hermes itself.
 | [kingardor/Hermes-Deepstream](https://github.com/kingardor/Hermes-Deepstream) | (c) name collision | 2020 wildfire drone + NVIDIA Deepstream 5.1. Unrelated to Nous Hermes Agent. Do not install. |
 | [kaishi00/hermes-community-plugins](https://github.com/kaishi00/hermes-community-plugins) | (a) **highest Hermes leverage** | `native-vision` bypasses aux vision and sends images to a vision model — that is why IMG_7724 never got read. `async-delegate`, `heartbeat`, `kanban-context`. Zero core patches. Install only with Garrett's yes (monkey-patches). |
 | [prasanthsasikumar/hermes-glasses](https://github.com/prasanthsasikumar/hermes-glasses) | (a) later | Ray-Ban / AiSee bridge to Hermes. Needs glasses + iPhone. Not this PC, not this client. |
+
+## CV / media / more Hermes-named repos (2026-09-16)
+
+| Repo | Class | Call |
+|---|---|---|
+| [alexcu/hermes-bib-detect](https://github.com/alexcu/hermes-bib-detect) | (c) name collision | 2017 Keras marathon-bib OCR. Unrelated to Nous Hermes. Skip. |
+| [R2129487/hermes-xiaoxi](https://github.com/R2129487/hermes-xiaoxi) | (a) later | Real Hermes Agent + ESP32 voice/vision (Xiaoxi). Needs hardware. Same family as OpenLive/glasses — not this catering job. |
+| [quietvoid/dovi_tool](https://github.com/quietvoid/dovi_tool) | (b) media rail | Dolby Vision RPU CLI. Relevant if a video pipeline (OF/fanripper, Recordly) hits DV streams. Not a website tool. |
+| [zhengli97/Awesome-Prompt-Adapter-Learning-for-VLMs-CLIP](https://github.com/zhengli97/Awesome-Prompt-Adapter-Learning-for-VLMs-CLIP) | (a) study | CLIP paper list. GSN.Cards already uses CLIP. Bookmark, do not vendor. |
+| [open-edge-platform/datumaro](https://github.com/open-edge-platform/datumaro) | (b) later CV | Intel dataset manager. Useful if we ever train/scan (GSN.Cards), not a one-pager. |
