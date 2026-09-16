@@ -27,17 +27,13 @@ re-inventing. Read in this order:
 | `samples/` | Three complete builds of the same site in three art directions |
 | `tools/prep_assets.py` | Rebuilds `site/img/` from source photos and swaps the phone token |
 
-## Three samples, one content set
+## Current demo (owner: sample 3 only)
 
-The client was promised three samples and said only "elegant". All three are
-live, built from the same `FACTS.md` and the same photos, with no shared CSS:
+Live: https://charcuterie-chick-sample-3.vercel.app
+Showcase (same file, **no proposal**): https://charcuterie-chick-showcase.vercel.app
 
-1. **Warm editorial (cream)** — https://charcuterie-chick-sample-1.vercel.app
-2. **After dark (near-black + brass)** — https://charcuterie-chick-sample-2.vercel.app
-3. **Studio (white, numbered, tabular)** — https://charcuterie-chick-sample-3.vercel.app
-
-Stable demo, same build as sample 1: https://charcuterie-chick-showcase.vercel.app
-Details and the do-not-blend rules: `SAMPLES.md`.
+Samples 1 and 2 exist on Vercel as discarded experiments. Do not pitch them.
+Details, logo lockup, deploy: `SAMPLES.md`.
 
 ## The deal on the table
 
