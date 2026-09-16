@@ -154,7 +154,7 @@ flowchart LR
 
 ## Data contracts and naming conventions
 
-- Use snake_case table and column names across SQL, docs, and workflow payloads.
+- Use snake_case for persisted database table names, column names, and shared record identifiers in this package.
 - Use event names exactly as stored in `lead_events.event_type` for lifecycle events persisted in PostgreSQL: `session_started`, `quote_started`, `quote_submitted`, `quiz_completed`, `proposal_sent`, `booking_confirmed`, `booking_fulfilled`, `review_requested`, `review_submitted`, `referral_shared`, `referral_converted`, and `content_published`.
 - Keep workflow observability events such as `workflow_started`, `crm_sync_failed`, `publish_failed`, and `nurture_skipped_no_consent` in n8n logs, alerts, or an external telemetry sink; do not persist them into `lead_events.event_type` unless the enum is intentionally extended.
 - Use dedicated foreign-system ID fields such as `crm_contact_id`, `external_crm_deal_id`, `external_documenso_id`, and `external_review_id` instead of overloading primary keys.

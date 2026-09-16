@@ -43,7 +43,7 @@ Convert every approved content asset into a timed set of derivative assets and p
 
 ## Idempotency strategy
 
-- One repurpose run per `content_asset_id` + `publish_at`.
+- One repurpose run per `asset.content_asset_id` + `brief.publish_at`.
 - Child asset slugs must be deterministic and unique by parent asset + channel.
 - If rerun, update existing child assets rather than insert duplicates.
 

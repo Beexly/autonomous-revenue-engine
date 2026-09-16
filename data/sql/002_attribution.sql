@@ -45,7 +45,7 @@ SELECT
   us.id AS utm_session_id,
   ROW_NUMBER() OVER (
     PARTITION BY l.id
-    ORDER BY COALESCE(us.first_seen_at, us.created_at), us.id
+    ORDER BY COALESCE(us.converted_at, us.last_seen_at, us.first_seen_at, us.created_at), us.id
   ) AS touch_number,
   COUNT(us.id) OVER (PARTITION BY l.id) AS touch_count,
   COALESCE(NULLIF(us.utm_source, ''), 'direct') AS channel_source,
