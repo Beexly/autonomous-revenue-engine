@@ -62,7 +62,7 @@ JOIN utm_sessions us
 LEFT JOIN fulfilled_leads fl
   ON fl.lead_id = l.id;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS analytics_channel_revenue_mv AS
+CREATE MATERIALIZED VIEW analytics_channel_revenue_mv AS
 WITH fulfilled_revenue AS (
   SELECT
     b.id AS booking_id,

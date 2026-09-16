@@ -74,7 +74,7 @@ Convert every valid website quote submission into a tracked lead, a CRM record, 
 
 - Retry CRM, Listmonk, and messaging nodes 3 times with exponential backoff: 30s, 2m, 10m.
 - If database write fails, stop immediately and return non-2xx so the caller retries.
-- If CRM sync fails after DB success but before step 7, keep the lead in `status = 'new'`, move payload plus `lead_id` into `automation_dlq`, and alert Slack/email.
+- If CRM sync fails or times out after DB success but before step 7 confirmation, leave `leads.status` unchanged, move payload plus `lead_id` into `automation_dlq`, and alert Slack/email.
 - If Listmonk or messaging fails after step 7, preserve `status = 'qualified'`, dead-letter only the failed downstream task, and alert Slack/email.
 - Dead-letter items must be replayable with the original `idempotency_key`.
 
@@ -90,4 +90,4 @@ Convert every valid website quote submission into a tracked lead, a CRM record, 
 - Missing email but valid phone still upserts the lead and skips Listmonk enrollment.
 
 ### Edge case 3
-- CRM API timeout after DB success creates a DLQ item and leaves the lead in `new` until the CRM replay succeeds.
+- CRM API timeout after DB success creates a DLQ item and leaves the lead in its existing status until CRM replay succeeds.

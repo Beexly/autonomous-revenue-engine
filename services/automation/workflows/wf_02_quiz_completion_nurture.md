@@ -49,7 +49,7 @@ Turn quiz completions into segmented nurture entrants with a complete intent pro
 4. **PostgreSQL** - upsert `utm_sessions` by `session_key`.
 5. **PostgreSQL** - insert `lead_events` row with `event_type = 'quiz_completed'` and answer payload.
 6. **HTTP Request / Twenty CRM** - update lead profile fields and owner rules.
-7. **HTTP Request / Listmonk** - subscribe the lead to the mapped segment and trigger sequence 1.
+7. **If node** - if `consent_email = true`, subscribe the lead to the mapped Listmonk segment and trigger sequence 1; otherwise emit `nurture_skipped_no_consent`.
 8. **If node** - if `timeline_days <= 14`, create a task in CRM for same-day follow-up.
 9. **Respond to Webhook** - return segment, lead id, and follow-up priority.
 
