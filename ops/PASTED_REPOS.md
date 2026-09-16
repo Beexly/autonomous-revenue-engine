@@ -57,3 +57,12 @@ Signal Origin, a client file, or Hermes itself.
 2. Client folders (`clients/*`) get only the rows that change *that* job.
 3. Voice/avatar/Imagine never run on a no-AI client brief.
 4. $150 Kit/one-pager = static HTML. Frameworks wait for $600 or an engine product.
+
+## Hermes hardware / voice / plugins (2026-09-16)
+
+| Repo | Class | Call |
+|---|---|---|
+| [katipally/openlive](https://github.com/katipally/openlive) | (a) Hermes | On-device VAD/STT/TTS + ACP so you can *talk* to Hermes. Optional desktop. Has zero-shot voice clone — do not clone anyone but Garrett, and only if he asks. Not for Charcuterie Chick. |
+| [kingardor/Hermes-Deepstream](https://github.com/kingardor/Hermes-Deepstream) | (c) name collision | 2020 wildfire drone + NVIDIA Deepstream 5.1. Unrelated to Nous Hermes Agent. Do not install. |
+| [kaishi00/hermes-community-plugins](https://github.com/kaishi00/hermes-community-plugins) | (a) **highest Hermes leverage** | `native-vision` bypasses aux vision and sends images to a vision model — that is why IMG_7724 never got read. `async-delegate`, `heartbeat`, `kanban-context`. Zero core patches. Install only with Garrett's yes (monkey-patches). |
+| [prasanthsasikumar/hermes-glasses](https://github.com/prasanthsasikumar/hermes-glasses) | (a) later | Ray-Ban / AiSee bridge to Hermes. Needs glasses + iPhone. Not this PC, not this client. |
