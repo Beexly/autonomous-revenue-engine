@@ -1,46 +1,31 @@
-# SAMPLES — three art directions (revised 2026-09-16)
+# SAMPLES — three art directions (2026-09-16 overnight)
 
-Three complete builds of the same facts (`FACTS.md`) and the same photos. No
-fourth sample. The first pass was a template with a coat of paint — three-up
-quotes, monument 35/90/50/150, price-list menus, 480px photos stretched into
-stamp grids. This pass treats **every published menu item as a look** (49 of
-them) and walks them on a 3D snap-scroll runway.
+Three complete builds of the same facts (`FACTS.md`, `BIBLE.md`) and the same
+photos. No fourth sample. Do not blend.
 
 ## Live
 
-1. **Warm editorial (cream, Fraunces)** — https://charcuterie-chick-sample-1.vercel.app
-   Split-screen hero, collection as a horizontal lookbook, reviews as a
-   vertical reading list (not three cards).
-2. **After dark (near-black, Cormorant Garamond)** — https://charcuterie-chick-sample-2.vercel.app
-   Full-viewport film still, then the show. Brass accent only on the italic
-   word and the look numbers.
-3. **Studio (white, Archivo, sticky rail)** — https://charcuterie-chick-sample-3.vercel.app
-   Folio: left rail, one giant catering photo, then the same 49 looks with
-   pointer-tilt.
+1. **Cream** — https://charcuterie-chick-sample-1.vercel.app
+   Cream paper, Fraunces only. Split hero. Tables as magazine chapters.
+   Photos sit at native size as objects (480px files never cover-stretched).
+2. **After dark** — https://charcuterie-chick-sample-2.vercel.app
+   Near-black, Cormorant Garamond. One still per viewport. Brass only on
+   italic names. Scroll is the show. Remaining looks as a numbered cast list.
+3. **Studio** — https://charcuterie-chick-sample-3.vercel.app
+   White folio, Archivo. Sticky left index. One look at a time.
 
-Shared engine: `samples/shared/looks.js` (49 looks) + `runway.js` (CSS 3D
-pointer-tilt, snap-scroll, house filters). Copied into each sample so each
-Vercel project stays self-contained.
+Showcase (cream + proposal for the pitch, not a fourth art direction):
+https://charcuterie-chick-showcase.vercel.app
 
-## What changed vs the first pass
+Shared: `quote.js` (SMS + mailto + copy). No runway, no looks.js, no 49
+stamp cards.
 
-- Menu is no longer a price list. It is a collection of 49 looks: 5 tables, 6
-  carts, 4 sweets, 2 sips, 11 sliders, 11 dips, 6 salads, 4 meats.
-- Each look sits on a 3D stage. Pointer moves the figure. Horizontal snap
-  scroll. House filters (Tables / Carts / Sweets / Sips / Sliders / Dips /
-  Salads / Meats).
-- Photos stay native; they are not stretched into 400px-tall stamps. Ken Burns
-  is a slow scale, not a zoom punch.
-- Monument stats, three equal quote cards, and the gold "luxury" palette are
-  gone.
-- Real photos only. The four Grok Imagine hashes in `ASSETS.md` remain banned.
+## What changed vs the colour-swap pass
+
+The three URLs were the same HTML with different fonts. They are now three
+compositions. Knot reviews (Nicole M., Jake S.) replaced Shopify “(1 Reviews)”
+names. FAQ is on the page. Quote uses phone and Outlook.
 
 ## Do not blend
 
-If the client picks one, keep that sample's type, palette, and layout. Do not
-average the three. You may steal a mechanic (the runway) — not a colour.
-
-## Photography ceiling
-
-Public photos still max out at 480×640 (see `ASSETS.md`). The runway hides
-that better than a grid, but it does not replace a shoot.
+If she picks one, keep that sample’s type, palette, and layout.

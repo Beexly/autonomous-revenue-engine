@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://charcuterie-chick-sample-2.vercel.app/sitemap.xml

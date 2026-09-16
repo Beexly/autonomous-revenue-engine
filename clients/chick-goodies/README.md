@@ -63,9 +63,9 @@ Canonical currently points at the vercel demo URL. On the paid build, switch
    (`public/chick/{board,cart,cups,graze}.jpg`) and are byte-identical to
    `artifacts/imagine_images/*` — they are quarantined in `ASSETS.md` and must
    never appear in a client-facing build.
-2. **No AI-looking type.** Display = Fraunces, body = Source Sans 3. Do not
-   introduce Inter / Poppins / Montserrat / Space Grotesk, gradients, glass
-   cards, or emoji.
+2. **No AI-looking type.** One family per sample (Cream: Fraunces. After dark:
+   Cormorant Garamond. Studio: Archivo). Do not introduce Inter / Poppins /
+   Montserrat / Space Grotesk, gradients, glass cards, or emoji.
 3. **Real facts only.** Prices, minimums and copy come from `FACTS.md`.
 4. **Phone number is public** (it is on their site) — it is written into files by
    `tools/prep_assets.py` from the `832-458-8180` / `18324588180` tokens.
@@ -75,6 +75,6 @@ Canonical currently points at the vercel demo URL. On the paid build, switch
 - Real metrics for the stat block (events catered, repeat clients, guests served) —
   only Tricia has these. Template numbers are currently replaced with verified
   facts (35 years / 90 minutes / 50-guest minimum / 150-guest capacity).
-- Her email address for the quote form (form currently composes an SMS).
+- Confirm Outlook (`charcuteriechick@outlook.com`) as the public address. Form now composes SMS and mailto.
 - Confirmation that 832-458-8180 is the right line.
 - Whether `IMG_7724.jpeg` is the logo she means (see `ASSETS.md`).

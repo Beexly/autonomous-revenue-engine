@@ -54,9 +54,9 @@ sample URLs. Only items with evidence. Fix in this commit is marked **done**.
 
 ## Do next, in order
 
-1. Owner tops up Gemini (or pastes a key with credits) → OCR `IMG_7724.jpeg`.
-2. Client picks sample 1, 2, or 3.
-3. Wire `mailto:charcuteriechick@outlook.com` is already on the samples;
-   confirm she wants Outlook as the public address before the $600 goes live.
-4. Replace 480px photos with originals.
+1. Client picks sample 1 (cream), 2 (after dark), or 3 (studio). Overnight pass
+   made them three compositions, not colour swaps.
+2. Confirm Outlook as the public address before the $600 goes live.
+3. Replace 480px photos with originals.
+4. Owner tops up Gemini → OCR `IMG_7724.jpeg` (still unread).
 5. Leave PR #48 draft until she is live and paying.
