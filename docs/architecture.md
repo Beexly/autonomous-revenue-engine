@@ -156,7 +156,7 @@ flowchart LR
 
 - Use snake_case table and column names across SQL, docs, and workflow payloads.
 - Use event names exactly as stored in `lead_events.event_type`, including `session_started`, `quote_started`, `quote_submitted`, `quiz_completed`, `proposal_sent`, `booking_confirmed`, `booking_fulfilled`, `review_requested`, `review_submitted`, `referral_shared`, `referral_converted`, and `content_published`.
-- Use `external_*_id` fields for foreign system identifiers instead of overloading primary keys.
+- Use dedicated foreign-system ID fields such as `crm_contact_id`, `external_crm_deal_id`, `external_documenso_id`, and `external_review_id` instead of overloading primary keys.
 - Treat `utm_sessions.session_key` as the anonymous browser/session identity and `leads.id` as the known-person identity.
 
 ## Security and privacy controls
@@ -196,7 +196,6 @@ flowchart LR
 
 | Tool | Role | Self-host fit | SaaS fit | Recommendation now |
 | --- | --- | --- | --- | --- |
-| Next.js | Public site | Self-host for infra control and custom edge routing | Managed hosting for fastest deploys and previews | **SaaS-managed hosting** (Vercel or equivalent) |
 | PostgreSQL | Source of truth | Self-host if DB ops maturity and strict data residency exist | Managed PG for backups, patching, HA | **Managed PostgreSQL** |
 | n8n | Workflow orchestration | Best when you need custom credentials, cost control, and reusable workers | Good for fast setup with lower ops load | **Self-host** |
 | Typebot | Quiz funnel | Self-host if brand/domain control and lower variable cost matter | Great for speed and lower maintenance | **SaaS first** |
