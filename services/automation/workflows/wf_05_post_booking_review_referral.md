@@ -2,7 +2,7 @@
 
 ## Objective
 
-Turn fulfilled bookings into public reviews and trackable referrals without manual operator follow-up.
+Turn fulfilled bookings into public reviews and a single trackable referral-program entry per qualifying booking without manual operator follow-up.
 
 ## Trigger and example payload
 
@@ -42,13 +42,13 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 7. **PostgreSQL** - create `reviews` row on request and update on submission/publish callbacks.
 8. **If node** - continue to referral only when a review reaches `submitted` or `published` **and** the rating is `>= 4` or the mapped sentiment is `positive`; otherwise stop after the reminder path and create a CRM follow-up or service-recovery task if needed.
 9. **Function** - generate unique referral code and reward terms.
-10. **PostgreSQL** - create `referrals` row with `origin_booking_id = booking_id` and insert `referral_shared` event.
+10. **PostgreSQL** - create or update the single `referrals` row with `origin_booking_id = booking.booking_id` and insert `referral_shared` event.
 11. **Email/SMS node** - send referral invite with tracked link.
 12. **HTTP Request / Twenty CRM** - log customer advocacy activity on the account.
 
 ## Idempotency strategy
 
-- One review-request journey per `booking_id`.
+- One review-request journey and one referral-program row per `booking.booking_id`.
 - Review callback updates must upsert by `external_review_id` or `booking_id + platform`.
 - Referral code generation must be deterministic or uniqueness-checked before send.
 

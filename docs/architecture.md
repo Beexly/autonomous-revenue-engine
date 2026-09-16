@@ -95,7 +95,7 @@ flowchart LR
 
 | Component | Role | Writes to | Reads from |
 | --- | --- | --- | --- |
-| Next.js web app | SEO pages, quote forms, schema, media galleries, referral landing pages | `leads`, `lead_events`, `utm_sessions`, `content_assets` | PostgreSQL, CMS/object storage |
+| Next.js web app | SEO pages, quote forms, schema, media galleries, referral landing pages | server-side `utm_sessions` and signed webhook payloads only | PostgreSQL, CMS/object storage |
 | Typebot | Interactive quiz and pre-qualification | `leads`, `lead_events` via n8n | PostgreSQL |
 | PostgreSQL | System of record | All core tables | N/A |
 | n8n | Workflow execution, retries, dead-letter routing, enrichment | `lead_events`, `bookings`, `reviews`, `referrals`, `content_assets` | PostgreSQL, SaaS APIs |
@@ -115,8 +115,8 @@ flowchart LR
 2. Middleware captures UTM parameters, referrer, landing path, and a durable anonymous session key.
 3. Web app writes a `utm_sessions` row and emits `session_started` to PostHog and Umami.
 4. Visitor opens the quote form or Typebot assistant; the UI writes `quote_started`.
-5. Submission creates or upserts a `leads` row, writes `quote_submitted` to `lead_events`, and posts a signed webhook to n8n.
-6. n8n enriches the lead, syncs Twenty CRM, starts Listmonk nurture, and opens a quote SLA timer.
+5. Submission hits a signed intake endpoint that forwards the payload to n8n; the browser never writes directly to lead tables.
+6. n8n creates or upserts the `leads` row, writes `quote_submitted` to `lead_events`, syncs Twenty CRM, starts Listmonk nurture, and opens a quote SLA timer.
 
 ### 2. Quiz completion -> segmented nurture
 
@@ -163,7 +163,7 @@ flowchart LR
 
 - Terminate TLS at Cloudflare and force HTTPS end to end.
 - Use signed webhook secrets between web app, n8n, Listmonk, Documenso, and CRM.
-- Restrict database writes to app and workflow service roles; do not expose direct client write access beyond tightly scoped endpoints.
+- Restrict database writes to server-side app roles and workflow service roles; do not expose direct client write access beyond tightly scoped signed endpoints.
 - Store only required PII: name, email, phone, event context, consent flags, and attribution metadata.
 - Keep consent flags (`consent_email`, `consent_sms`) on the lead record and gate nurture sends on them.
 - Encrypt secrets in the deployment platform; never store provider API keys in repo or workflow markdown.
