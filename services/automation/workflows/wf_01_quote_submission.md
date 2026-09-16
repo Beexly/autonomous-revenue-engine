@@ -2,7 +2,7 @@
 
 ## Objective
 
-Convert every valid website quote submission into a tracked lead, a CRM record, and an immediate response sequence within the SLA defined in `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/docs/architecture.md`.
+Convert every valid website quote submission into a tracked lead, a CRM record, and an immediate response sequence within the SLA defined in `docs/architecture.md`.
 
 ## Trigger and example payload
 

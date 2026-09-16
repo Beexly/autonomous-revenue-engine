@@ -3,9 +3,9 @@
 Goal: launch a measurable loop where **content -> social clips -> lead capture -> nurture -> booking -> review -> referral -> more content** compounds every week.
 
 Related references:
-- Architecture: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/docs/architecture.md`
-- Data model: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/data/sql/001_core_tables.sql`
-- Workflow specs: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/services/automation/workflows/`
+- Architecture: `docs/architecture.md`
+- Data model: `data/sql/001_core_tables.sql`
+- Workflow specs: `services/automation/workflows/`
 
 ## Days 1-30: foundation and instrumentation
 

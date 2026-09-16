@@ -1,9 +1,9 @@
 # Growth Ops Runbook and Checklist
 
 References:
-- Architecture: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/docs/architecture.md`
-- 90-day plan: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/docs/flywheel-90-day.md`
-- Workflow specs: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/services/automation/workflows/`
+- Architecture: `docs/architecture.md`
+- 90-day plan: `docs/flywheel-90-day.md`
+- Workflow specs: `services/automation/workflows/`
 
 ## Severity levels
 
@@ -24,7 +24,7 @@ References:
 
 ## Weekly checklist
 
-- [ ] Run the Monday metrics review from `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/docs/flywheel-90-day.md`.
+- [ ] Run the Monday metrics review from `docs/flywheel-90-day.md`.
 - [ ] Spot-check attribution views against raw tables using the validation SQL in `002_attribution.sql`.
 - [ ] Review content pipeline status and approve/reject queued `content_assets`.
 - [ ] Audit one completed booking for review and referral workflow completion.

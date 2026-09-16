@@ -40,10 +40,11 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 5. **Wait node** - pause 72 hours for review callback or status sync.
 6. **If node** - if no review exists, send one reminder; otherwise continue.
 7. **PostgreSQL** - create `reviews` row on request and update on submission/publish callbacks.
-8. **Function** - generate unique referral code and reward terms.
-9. **PostgreSQL** - create `referrals` row and insert `referral_shared` event.
-10. **Email/SMS node** - send referral invite with tracked link.
-11. **HTTP Request / Twenty CRM** - log customer advocacy activity on the account.
+8. **If node** - continue to referral only when a review reaches `submitted` or `published`; otherwise stop after the reminder path and create a CRM follow-up task if needed.
+9. **Function** - generate unique referral code and reward terms.
+10. **PostgreSQL** - create `referrals` row and insert `referral_shared` event.
+11. **Email/SMS node** - send referral invite with tracked link.
+12. **HTTP Request / Twenty CRM** - log customer advocacy activity on the account.
 
 ## Idempotency strategy
 
@@ -57,7 +58,7 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 - `review_requested`
 - `review_reminder_sent`
 - `review_submitted`
-- `referral_created`
+- `referral_created` or `referral_skipped_no_review`
 - `referral_invite_sent`
 - `workflow_completed`
 
@@ -65,7 +66,7 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 
 - Retry send nodes 3 times with backoff: 15m, 2h, 12h.
 - If review provider callback fails validation, hold the payload in DLQ and require manual review before replay.
-- If referral creation fails after review success, alert the operator but do not resend the review request.
+- If referral creation fails after a qualifying review, alert the operator but do not resend the review request.
 
 ## Test cases
 
@@ -73,7 +74,7 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 - Fulfilled booking sends review request, records a published review, creates a referral code, and logs CRM activity.
 
 ### Edge case 1
-- Booking already has a published review; workflow skips request steps and creates referral invite only once.
+- Booking already has a published review; workflow skips request steps and creates one referral invite only once.
 
 ### Edge case 2
 - Messaging provider fails on the first attempt; retry succeeds without duplicate `reviews` rows.

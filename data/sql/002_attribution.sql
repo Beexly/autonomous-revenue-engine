@@ -77,7 +77,6 @@ SELECT
   ft.channel_medium,
   ft.channel_campaign,
   COUNT(DISTINCT br.booking_id) AS booking_count,
-  COUNT(DISTINCT br.lead_id) AS lead_count,
   SUM(br.revenue_cents) AS revenue_cents
 FROM booked_revenue br
 JOIN analytics_first_touch_attribution_v ft
@@ -93,7 +92,6 @@ SELECT
   lt.channel_medium,
   lt.channel_campaign,
   COUNT(DISTINCT br.booking_id) AS booking_count,
-  COUNT(DISTINCT br.lead_id) AS lead_count,
   SUM(br.revenue_cents) AS revenue_cents
 FROM booked_revenue br
 JOIN analytics_last_touch_attribution_v lt

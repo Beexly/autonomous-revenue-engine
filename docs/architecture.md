@@ -3,10 +3,10 @@
 Purpose: rebuild **charcuteriechick.ai** as a cinematic, SEO-first, high-conversion site with measurable acquisition, nurture, booking, review, and referral loops.
 
 Cross-references:
-- Data model: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/data/sql/001_core_tables.sql`
-- Attribution layer: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/data/sql/002_attribution.sql`
-- Automation specs: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/services/automation/workflows/`
-- Operating runbook: `/home/runner/work/autonomous-revenue-engine/autonomous-revenue-engine/docs/runbooks/ops-checklist.md`
+- Data model: `data/sql/001_core_tables.sql`
+- Attribution layer: `data/sql/002_attribution.sql`
+- Automation specs: `services/automation/workflows/`
+- Operating runbook: `docs/runbooks/ops-checklist.md`
 
 ## System scope
 
