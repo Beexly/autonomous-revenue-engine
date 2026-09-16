@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS referrals (
   referral_code text NOT NULL UNIQUE,
   status referral_status NOT NULL DEFAULT 'sent',
   referrer_lead_id uuid NOT NULL REFERENCES leads(id) ON DELETE RESTRICT,
-  origin_booking_id uuid REFERENCES bookings(id) ON DELETE CASCADE,
+  origin_booking_id uuid REFERENCES bookings(id) ON DELETE RESTRICT,
   referred_lead_id uuid REFERENCES leads(id) ON DELETE SET NULL,
   referred_booking_id uuid REFERENCES bookings(id) ON DELETE SET NULL,
   landing_path text,

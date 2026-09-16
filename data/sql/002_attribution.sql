@@ -62,14 +62,14 @@ JOIN utm_sessions us
 DROP MATERIALIZED VIEW IF EXISTS analytics_channel_revenue_mv;
 
 CREATE MATERIALIZED VIEW analytics_channel_revenue_mv AS
-WITH booked_revenue AS (
+WITH fulfilled_revenue AS (
   SELECT
     b.id AS booking_id,
     b.lead_id,
     date_trunc('month', COALESCE(b.fulfilled_at, b.scheduled_start_at, b.created_at)) AS booking_month,
     b.revenue_cents
   FROM bookings b
-  WHERE b.status IN ('booked', 'fulfilled')
+  WHERE b.status = 'fulfilled'
     AND b.revenue_cents > 0
 )
 SELECT
@@ -80,7 +80,7 @@ SELECT
   COALESCE(ft.channel_campaign, 'unattributed') AS channel_campaign,
   COUNT(DISTINCT br.booking_id) AS booking_count,
   SUM(br.revenue_cents) AS revenue_cents
-FROM booked_revenue br
+FROM fulfilled_revenue br
 LEFT JOIN analytics_first_touch_attribution_v ft
   ON ft.lead_id = br.lead_id
 GROUP BY 1, 2, 3, 4, 5
@@ -95,7 +95,7 @@ SELECT
   COALESCE(lt.channel_campaign, 'unattributed') AS channel_campaign,
   COUNT(DISTINCT br.booking_id) AS booking_count,
   SUM(br.revenue_cents) AS revenue_cents
-FROM booked_revenue br
+FROM fulfilled_revenue br
 LEFT JOIN analytics_last_touch_attribution_v lt
   ON lt.lead_id = br.lead_id
 GROUP BY 1, 2, 3, 4, 5;
@@ -133,4 +133,4 @@ CREATE INDEX IF NOT EXISTS idx_analytics_last_touch_lead_id
 -- 4) Revenue rollups should reconcile with booked revenue in base tables when filtered to one attribution model at a time.
 --    SELECT SUM(revenue_cents) FROM analytics_channel_revenue_mv WHERE attribution_model = 'first_touch';
 --    SELECT SUM(revenue_cents) FROM analytics_channel_revenue_mv WHERE attribution_model = 'last_touch';
---    SELECT SUM(revenue_cents) FROM bookings WHERE status IN ('booked', 'fulfilled');
+--    SELECT SUM(revenue_cents) FROM bookings WHERE status = 'fulfilled';

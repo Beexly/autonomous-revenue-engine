@@ -12,7 +12,7 @@ Recover high-intent visitors who started but did not submit a quote by re-engagi
 
 ```json
 {
-  "idempotency_key": "recover_2026-09-16T02:00:00Z_sess_9a1bd6c1",
+  "idempotency_key": "recover_sess_9a1bd6c1_2026-09-16",
   "lead": {
     "lead_id": "17f9ea06-e0fe-4c46-85c1-6b0d78781f57",
     "email": "jordan@example.com",
@@ -44,7 +44,7 @@ Recover high-intent visitors who started but did not submit a quote by re-engagi
 ## Idempotency strategy
 
 - One recovery attempt per `session_key` per 24-hour window.
-- Use the scan timestamp plus `session_key` as the idempotency key.
+- Use a stable key derived from `session.session_key` plus the UTC recovery-window date, for example `recover_<session_key>_<yyyy-mm-dd>`.
 - Track the last recovery attempt in event payload or CRM custom field before firing a new one.
 
 ## Observability events to emit

@@ -55,8 +55,9 @@ Turn quiz completions into segmented nurture entrants with a complete intent pro
 
 ## Idempotency strategy
 
-- Use `idempotency_key` as the sole idempotent execution token.
-- Permit lead profile updates on re-run but prevent duplicate `quiz_completed` events for the same key.
+- Use the sender-provided `idempotency_key`, and require the sender to persist and reuse it across retries.
+- If the key is missing or changes unexpectedly, fall back to deduping on `session.session_key + completed_at`.
+- Permit lead profile updates on re-run but prevent duplicate `quiz_completed` events for the same dedupe signature.
 - Segment assignment is deterministic from mapped answers to avoid drift.
 
 ## Observability events to emit
