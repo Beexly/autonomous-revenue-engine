@@ -1,0 +1,170 @@
+{
+  "viewports": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "title": 49,
+      "description": 151,
+      "images": [
+        {
+          "src": "img/logo.png",
+          "loaded": true,
+          "width": 145,
+          "native": 1209,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 601.171875,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 519.03125,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/tricia-662.jpg",
+          "loaded": true,
+          "width": 320,
+          "native": 662,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/logo-paper.png",
+          "loaded": true,
+          "width": 190,
+          "native": 1209,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "title": 49,
+      "description": 151,
+      "images": [
+        {
+          "src": "img/logo.png",
+          "loaded": true,
+          "width": 117.859375,
+          "native": 1209,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 343.21875,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 343.21875,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/tricia-662.jpg",
+          "loaded": true,
+          "width": 210,
+          "native": 662,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/logo-paper.png",
+          "loaded": true,
+          "width": 160,
+          "native": 1209,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "h1": 1,
+      "title": 49,
+      "description": 151,
+      "images": [
+        {
+          "src": "img/logo.png",
+          "loaded": true,
+          "width": 95.40625,
+          "native": 1209,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 281.625,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 281.609375,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/tricia-662.jpg",
+          "loaded": true,
+          "width": 210,
+          "native": 662,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/logo-paper.png",
+          "loaded": true,
+          "width": 160,
+          "native": 1209,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "overflow": []
+    }
+  ],
+  "checks": [
+    "holy / 75: 2630.22",
+    "holy / 150: 4400.22",
+    "grand / 50: 2512.22",
+    "super / 50: 2040.22",
+    "standard / 50: 1804.22",
+    "graze / 50: 1686.22",
+    "8 invalid quote boundaries rejected",
+    "menu selection, guest stepper, message composition and invalid custom enquiry passed; no messages sent",
+    "clipboard-denied manual fallback passed",
+    "reduced motion and keyboard skip link passed",
+    "8 referenced local assets HTTP 200 with nonzero bytes",
+    "no-JavaScript menu disclosure works; enquiry has direct contact fallback",
+    "sample/site exact byte parity for five build files"
+  ],
+  "page_errors": []
+}

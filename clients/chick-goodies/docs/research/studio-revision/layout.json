@@ -1,0 +1,199 @@
+{
+  "overlaps": [],
+  "plateBefore": "\"C\"",
+  "h1Lines": "Charcuterie\nChick",
+  "frauncesLoaded": false,
+  "egWidth": 24,
+  "heroNoOverlap": true,
+  "egOK": true,
+  "contrast": [
+    [
+      ".hero-copy",
+      "29382b",
+      "f9f9f3"
+    ],
+    [
+      ".eyebrow",
+      "f9f9f3",
+      "29382b"
+    ],
+    [
+      ".menu-detail p",
+      "f9f9f3",
+      "29382b"
+    ],
+    [
+      ".field-hint",
+      "29382b",
+      "f9f9f3"
+    ],
+    [
+      ".bill-note",
+      "29382b",
+      "f9f9f3"
+    ]
+  ],
+  "bodyFont": "18px / 32.4px \"EB Garamond\", Georgia, serif",
+  "menuGeometry": [
+    {
+      "text": "01Holy Grail of Grazing",
+      "visible": true,
+      "box": {
+        "x": 720.625,
+        "y": 1172.6875,
+        "width": 632.984375,
+        "height": 83.203125,
+        "top": 1172.6875,
+        "right": 1353.609375,
+        "bottom": 1255.890625,
+        "left": 720.625
+      },
+      "position": "static",
+      "margin": "0px"
+    },
+    {
+      "text": "$2,000 / 75 guests \u00b7 $3,500 / 150 guests",
+      "visible": true,
+      "box": {
+        "x": 764.625,
+        "y": 1255.890625,
+        "width": 553.984375,
+        "height": 43.1875,
+        "top": 1255.890625,
+        "right": 1318.609375,
+        "bottom": 1299.078125,
+        "left": 764.625
+      },
+      "position": "static",
+      "margin": "0px 0px 12px"
+    },
+    {
+      "text": "02Grand Graze",
+      "visible": true,
+      "box": {
+        "x": 720.625,
+        "y": 1495.078125,
+        "width": 632.984375,
+        "height": 83.203125,
+        "top": 1495.078125,
+        "right": 1353.609375,
+        "bottom": 1578.28125,
+        "left": 720.625
+      },
+      "position": "static",
+      "margin": "0px"
+    },
+    {
+      "text": "$38 per person",
+      "visible": false,
+      "box": {
+        "x": 764.625,
+        "y": 1578.28125,
+        "width": 553.984375,
+        "height": 43.1875,
+        "top": 1578.28125,
+        "right": 1318.609375,
+        "bottom": 1621.46875,
+        "left": 764.625
+      },
+      "position": "static",
+      "margin": "0px 0px 12px"
+    },
+    {
+      "text": "03Super Graze",
+      "visible": true,
+      "box": {
+        "x": 720.625,
+        "y": 1579.28125,
+        "width": 632.984375,
+        "height": 83.203125,
+        "top": 1579.28125,
+        "right": 1353.609375,
+        "bottom": 1662.484375,
+        "left": 720.625
+      },
+      "position": "static",
+      "margin": "0px"
+    },
+    {
+      "text": "$30 per person",
+      "visible": false,
+      "box": {
+        "x": 764.625,
+        "y": 1662.484375,
+        "width": 553.984375,
+        "height": 43.1875,
+        "top": 1662.484375,
+        "right": 1318.609375,
+        "bottom": 1705.671875,
+        "left": 764.625
+      },
+      "position": "static",
+      "margin": "0px 0px 12px"
+    },
+    {
+      "text": "04Grazing Standard",
+      "visible": true,
+      "box": {
+        "x": 720.625,
+        "y": 1663.484375,
+        "width": 632.984375,
+        "height": 83.203125,
+        "top": 1663.484375,
+        "right": 1353.609375,
+        "bottom": 1746.6875,
+        "left": 720.625
+      },
+      "position": "static",
+      "margin": "0px"
+    },
+    {
+      "text": "$26 per person",
+      "visible": false,
+      "box": {
+        "x": 764.625,
+        "y": 1746.6875,
+        "width": 553.984375,
+        "height": 43.1875,
+        "top": 1746.6875,
+        "right": 1318.609375,
+        "bottom": 1789.875,
+        "left": 764.625
+      },
+      "position": "static",
+      "margin": "0px 0px 12px"
+    },
+    {
+      "text": "05Graze Me, Craze Me",
+      "visible": true,
+      "box": {
+        "x": 720.625,
+        "y": 1747.6875,
+        "width": 632.984375,
+        "height": 83.203125,
+        "top": 1747.6875,
+        "right": 1353.609375,
+        "bottom": 1830.890625,
+        "left": 720.625
+      },
+      "position": "static",
+      "margin": "0px"
+    },
+    {
+      "text": "$24 per person",
+      "visible": false,
+      "box": {
+        "x": 764.625,
+        "y": 1830.890625,
+        "width": 553.984375,
+        "height": 43.1875,
+        "top": 1830.890625,
+        "right": 1318.609375,
+        "bottom": 1874.078125,
+        "left": 764.625
+      },
+      "position": "static",
+      "margin": "0px 0px 12px"
+    }
+  ]
+}

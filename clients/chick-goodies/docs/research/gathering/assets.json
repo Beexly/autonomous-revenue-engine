@@ -1,0 +1,19 @@
+{
+  "original_sha256": "c1e559e122c66aaed101fc73bd67d786e0af25a49229d10cba86ce3f1cd0e132",
+  "original_size": [
+    2384,
+    1792
+  ],
+  "crop": [
+    565,
+    680,
+    1820,
+    1113
+  ],
+  "crop_size": [
+    1255,
+    433
+  ],
+  "reference_card": "IMG_7724 (1).jpeg: local OCR identifies promotional card plus private chat; not published",
+  "three": "0.170.0, MIT, vendored locally"
+}

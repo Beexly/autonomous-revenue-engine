@@ -1,0 +1,560 @@
+{
+  "unseen": {
+    "title": "Unseen Studio\u00ae \u2013 Brand, Digital & Motion",
+    "canvases": [
+      {
+        "w": 1440,
+        "h": 1000
+      }
+    ],
+    "styles": [
+      {
+        "tag": "BODY",
+        "text": "\n\n@font-face{font-family:Neue Montreal;font-style:normal;font-weight:400;sr",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Enter without audio",
+        "font": "\"Neue Montreal\", sans-serif",
+        "size": "10.08px",
+        "line": "15.12px",
+        "spacing": "normal",
+        "position": "absolute",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "\n\n\n\n\nEnter\n\n\n\n\n\n\n\n\n\nEnter\n\n\n\n\n\n\n",
+        "font": "\"Neue Montreal\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "absolute",
+        "color": "rgb(66, 66, 66)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n\nIndex\nIndex\n\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n\nProjects\nProjects\n\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n\nContact\nContact\n\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "\nToggle Menu\n\n\n\n\n\n\n\n\n\n\n\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n01\n\nIndex\nIndex\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "90px",
+        "line": "90px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(214, 214, 214)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n02\n\nProjects\nProjects\n",
+        "font": "\"Saol Display\", Georgia, Cambria, \"Times New Roman\", Times, serif",
+        "size": "90px",
+        "line": "90px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n03\n\nContact\nContact\n",
+        "font": "\"Saol Display\", Georgia, Cambria, \"Times New Roman\", Times, serif",
+        "size": "90px",
+        "line": "90px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n04\n\nWorld\nWorld\n\n\n\n\n\n",
+        "font": "\"Saol Display\", Georgia, Cambria, \"Times New Roman\", Times, serif",
+        "size": "90px",
+        "line": "90px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\u2ba1\u00a0projects@unseen.co",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\u2ba1\u00a0(+44) 0117 922 6892",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\u2ba1\u00a0Twitter",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "10.08px",
+        "line": "15.12px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\u2ba1\u00a0Instagram",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "10.08px",
+        "line": "15.12px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\u2ba1\u00a0LinkedIn",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "10.08px",
+        "line": "15.12px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\u2ba1\u00a0Dribbble",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "10.08px",
+        "line": "15.12px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\u2ba1\u00a0Behance",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "10.08px",
+        "line": "15.12px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "\nToggle Sound\n\n\n\n\n\n\n\n\n\n\n\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "fixed",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n\n\n\n\nOur 2025 Wrapped\n\n\n\n\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n\n\n\n\n\n\n\n\n\n\n\nUnseen\n\n\nWorld\n\n\n\n",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "14.4px",
+        "line": "21.6px",
+        "spacing": "normal",
+        "position": "fixed",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "H1",
+        "text": "Home",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "28.8px",
+        "line": "43.2px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "H1",
+        "text": "Selected Projects",
+        "font": "\"Neue Montreal\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif",
+        "size": "57.6px",
+        "line": "69.12px",
+        "spacing": "-1.152px",
+        "position": "static",
+        "color": "rgb(33, 33, 33)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ]
+  },
+  "solare": {
+    "title": "Solare \u2014 Nikolas Type",
+    "canvases": [
+      {
+        "w": 1440,
+        "h": 1000
+      },
+      {
+        "w": 1080,
+        "h": 750
+      },
+      {
+        "w": 1440,
+        "h": 1000
+      }
+    ],
+    "styles": [
+      {
+        "tag": "BODY",
+        "text": "\n      IntroWeightsTestStory \n        Purchase Solare\n         \n        Pur",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "13.5px",
+        "line": "18.9px",
+        "spacing": "normal",
+        "position": "static",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Intro",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "10.5px",
+        "line": "14.7px",
+        "spacing": "-0.21px",
+        "position": "static",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Weights",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "10.5px",
+        "line": "14.7px",
+        "spacing": "-0.21px",
+        "position": "static",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Test",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "10.5px",
+        "line": "14.7px",
+        "spacing": "-0.21px",
+        "position": "static",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Story",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "10.5px",
+        "line": "14.7px",
+        "spacing": "-0.21px",
+        "position": "static",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n        Purchase Solare\n       ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "13.5px",
+        "line": "18.9px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "H1",
+        "text": "Solare",
+        "font": "solare-italic, serif",
+        "size": "375px",
+        "line": "375px",
+        "spacing": "-26.25px",
+        "position": "relative",
+        "color": "rgb(236, 228, 213)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "Nikolas Type",
+        "font": "solare, serif",
+        "size": "19.5px",
+        "line": "21.45px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(236, 228, 213)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n        Purchase the font\n       ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "13.5px",
+        "line": "18.9px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "\n        Generate new pangram\n       ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "13.5px",
+        "line": "18.9px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": " ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "13.5px",
+        "line": "18.9px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": " ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "13.5px",
+        "line": "18.9px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "H2",
+        "text": "  Start creating with Solare ",
+        "font": "solare-variable, serif",
+        "size": "90px",
+        "line": "90px",
+        "spacing": "-2.7px",
+        "position": "static",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n        Purchase Solare\n       ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "13.5px",
+        "line": "18.9px",
+        "spacing": "normal",
+        "position": "relative",
+        "color": "rgb(86, 62, 59)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                ciao@nikolastype.com\n                     ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                Twitter @NikolasType\n                     ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                instagram @nikolastype\n                   ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                Grand slang\n                            ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                Cosi azure\n                            ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                Cosi times\n                            ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                About\n                            ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                FAQ\n                            ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                EULA\n                            ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "tag": "A",
+        "text": "\n                                Privacy\n                            ",
+        "font": "helvetica-neue, helvetica, sans-serif",
+        "size": "9.75px",
+        "line": "15.6px",
+        "spacing": "-0.195px",
+        "position": "relative",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    ]
+  }
+}

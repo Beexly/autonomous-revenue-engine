@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://charcuterie-chick-sample-3.vercel.app/",
+    "status": 200,
+    "checked_assets": 7,
+    "mobile_overflow": false,
+    "quote_default": 2630.22,
+    "quote_graze_50": 1686.22,
+    "page_errors": []
+  },
+  {
+    "url": "https://charcuterie-chick-showcase.vercel.app/",
+    "status": 200,
+    "checked_assets": 7,
+    "mobile_overflow": false,
+    "quote_default": 2630.22,
+    "quote_graze_50": 1686.22,
+    "page_errors": []
+  }
+]
