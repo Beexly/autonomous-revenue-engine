@@ -10,6 +10,8 @@
 
 ## What this folder is
 
+**Cloud / new-model agents: read `HANDOFF.md` first.** Then FACTS.md.
+
 Everything an agent needs to work this client without re-scraping, re-guessing, or
 re-inventing. Read in this order:
 
