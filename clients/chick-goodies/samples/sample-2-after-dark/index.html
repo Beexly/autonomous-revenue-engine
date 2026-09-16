@@ -3,243 +3,225 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The long table — Charcuterie Chick</title>
-<meta name="description" content="A five-chapter show of Tricia Holfelder’s grazing tables in Tomball. Pick a table, send the quote. 35 years in restaurants.">
+<title>The Long Table — Charcuterie Chick</title>
+<meta name="description" content="Five cinematic chapters of Tricia’s grazing tables in Tomball. Hold to enter, hold to select, send the quote. 35 years.">
 <link rel="canonical" href="https://charcuterie-chick-sample-2.vercel.app/">
-<meta name="theme-color" content="#0A0908">
+<meta name="theme-color" content="#050505">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400;1,6..96,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root { --paper:#0A0908; --ink:#F4EFE6; --brass:#C4A574; }
-  * { box-sizing:border-box; }
-  html, body { margin:0; background:var(--paper); color:var(--ink); font-family:"Cormorant Garamond", Georgia, serif; }
-  button, input, select, textarea { font: inherit; color: inherit; }
-  a { color: var(--brass); }
-  .screen { min-height: 100vh; min-height: 100dvh; position: relative; }
-  #enter {
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 8vh 7vw 10vh; background: var(--paper);
+  :root { --void:#050505; --ivory:#F4EFE6; --brass:#C4A574; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background:var(--void); color:var(--ivory); font-family:"Bodoni Moda", Georgia, serif; }
+  button, input, select, textarea { font:inherit; color:inherit; background:none; border:0; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:var(--ivory); color:var(--void); }
+  .cur {
+    width:14px; height:14px; border:1px solid #F4EFE6; border-radius:50%;
+    position:fixed; top:0; left:0; margin:-7px 0 0 -7px; pointer-events:none; z-index:200;
+    mix-blend-mode:difference;
   }
-  #enter p.k { letter-spacing: .28em; text-transform: uppercase; font-size: 11px; opacity: .45; margin: 0 0 18px; }
-  #enter h1 { font-size: clamp(3.4rem, 11vw, 9rem); font-style: italic; font-weight: 500; line-height: .88; margin: 0 0 28px; max-width: 12ch; }
-  #enter .lede { max-width: 28rem; font-size: 1.25rem; line-height: 1.45; opacity: .72; margin: 0 0 36px; }
-  .go {
-    appearance: none; border: 0; background: var(--ink); color: var(--paper);
-    padding: 16px 28px; font-size: 1.05rem; cursor: pointer;
+  .cur.down { width:28px; height:28px; margin:-14px 0 0 -14px; }
+  html.has-cur, html.has-cur * { cursor:none !important; }
+  #gate {
+    position:fixed; inset:0; z-index:80; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:28px; text-align:center; background:var(--void);
   }
-  .go.ghost { background: transparent; color: var(--ink); border: 1px solid rgba(244,239,230,.35); margin-left: 10px; }
-  #show { display: none; }
-  #show.on { display: block; }
-  html.show-mode { scroll-snap-type: y mandatory; }
+  #gate.off { opacity:0; pointer-events:none; transition:opacity .8s ease; }
+  #gate .word { font-size:clamp(1.6rem,5vw,3rem); font-style:italic; letter-spacing:.46em; text-transform:uppercase; }
+  #gate .sub { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.32em; text-transform:uppercase; opacity:.45; }
+  .hold { width:88px; height:88px; border-radius:50%; display:grid; place-items:center; position:relative; }
+  .hold svg { position:absolute; inset:0; transform:rotate(-90deg); }
+  .hold circle { fill:none; stroke:rgba(244,239,230,.18); stroke-width:1; }
+  .hold [data-ring] { stroke:var(--ivory); stroke-dasharray:88; stroke-dashoffset:88; }
+  .hold span { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:9px; letter-spacing:.2em; text-transform:uppercase; }
+  html.show { scroll-snap-type: y mandatory; }
   .ch {
-    height: 100vh; height: 100dvh; scroll-snap-align: start; scroll-snap-stop: always;
-    position: relative; overflow: hidden;
+    height:100vh; height:100dvh; scroll-snap-align:start; scroll-snap-stop:always;
+    position:relative; overflow:hidden; display:flex; flex-direction:column;
   }
-  .ch img.bleed { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .ch .veil { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,9,8,.88) 100%); pointer-events: none; }
-  .ch .copy { position: absolute; left: 7vw; right: 7vw; bottom: 9vh; z-index: 2; max-width: 22rem; }
-  .ch .copy .n { color: var(--brass); letter-spacing: .22em; text-transform: uppercase; font-size: 12px; margin: 0 0 8px; }
-  .ch h2 { font-size: clamp(2.6rem, 7vw, 5.6rem); font-style: italic; font-weight: 500; line-height: .9; margin: 0 0 12px; }
-  .ch .price { font-size: 1.3rem; margin: 0 0 10px; }
-  .ch .inc { opacity: .75; margin: 0 0 22px; line-height: 1.4; }
-  .pick {
-    appearance: none; border: 1px solid var(--brass); background: transparent; color: var(--brass);
-    padding: 12px 20px; cursor: pointer;
+  .ch .num {
+    position:absolute; left:4vw; top:50%; transform:translateY(-50%);
+    font-size:clamp(6rem, 22vw, 18rem); font-style:italic; opacity:.07; line-height:.8; pointer-events:none;
   }
-  .pick.on { background: var(--brass); color: var(--paper); }
-  .dots {
-    position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 6;
-    display: none; flex-direction: column; gap: 10px;
+  .letterbox {
+    flex:1; display:flex; align-items:center; justify-content:center;
+    padding: 10vh 8vw 0;
   }
-  .dots.on { display: flex; }
-  .dots a {
-    width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--ink);
-    background: transparent; text-indent: -999px; overflow: hidden;
+  .letterbox img {
+    max-height: 62vh; max-width: 86vw; width:auto; height:auto; display:block;
   }
-  .dots a.on { background: var(--brass); border-color: var(--brass); }
+  .ch .copy { padding: 4vh 8vw 7vh; max-width: 40rem; }
+  .ch .k { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--brass); margin:0 0 10px; }
+  .ch h2 {
+    font-weight:400; font-style:italic; font-size:clamp(2rem, 6vw, 4.4rem);
+    letter-spacing:.08em; text-transform:uppercase; line-height:.95; margin:0 0 10px;
+  }
+  .ch .pr { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11px; letter-spacing:.12em; opacity:.65; margin:0 0 16px; }
+  .hold-mini { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.7; padding:0; }
+  .hold-mini.on { color:var(--brass); }
+  .nav {
+    position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:6;
+    display:none; flex-direction:column; gap:12px;
+  }
+  .nav.on { display:flex; }
+  .nav a {
+    width:7px; height:7px; border-radius:50%; border:1px solid rgba(244,239,230,.5);
+    text-indent:-99px; overflow:hidden;
+  }
+  .nav a.on { background:var(--brass); border-color:var(--brass); }
   .skip {
-    position: fixed; top: 18px; right: 22px; z-index: 6; display: none;
-    color: var(--ink); text-decoration: none; font-size: 14px; opacity: .7;
+    position:fixed; top:22px; right:28px; z-index:6; display:none;
+    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.5;
   }
-  .skip.on { display: block; }
-  #end { background: var(--paper); padding: 12vh 7vw 10vh; scroll-snap-align: start; }
-  #end h2 { font-size: clamp(2.8rem, 7vw, 5rem); font-style: italic; font-weight: 500; line-height: .92; margin: 0 0 12px; }
-  #end .sum { font-size: 1.4rem; margin: 0 0 28px; color: var(--brass); }
-  form { max-width: 28rem; display: grid; gap: 14px; }
-  label { display: grid; gap: 6px; font-size: 15px; opacity: .8; }
-  input, select, textarea {
-    background: transparent; border: 0; border-bottom: 1px solid rgba(244,239,230,.3);
-    padding: 8px 0; outline: none;
-  }
-  .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
-  .hint { font-size: 14px; opacity: .5; }
-  @media (prefers-reduced-motion: reduce) {
-    html.show-mode { scroll-snap-type: none; }
-    .ch img.bleed { object-fit: contain; background: #000; }
-  }
+  .skip.on { display:block; }
+  #end { min-height:100vh; scroll-snap-align:start; padding:14vh 8vw 10vh; }
+  #end h2 { font-size:clamp(2.4rem, 7vw, 5rem); font-style:italic; font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin:0 0 12px; }
+  #end .sum { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; letter-spacing:.14em; color:var(--brass); margin:0 0 32px; }
+  form { max-width:26rem; display:grid; gap:14px; }
+  label { display:grid; gap:6px; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; opacity:.55; }
+  input, select, textarea { border-bottom:1px solid rgba(244,239,230,.28); padding:8px 0; font-family:"Bodoni Moda", Georgia, serif; font-size:18px; opacity:1; }
+  .txt { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; padding:12px 0; border-bottom:1px solid var(--ivory); margin-right:16px; }
+  @media (prefers-reduced-motion: reduce) { html.show { scroll-snap-type: none; } }
+  @media (hover:none) { .cur { display:none !important; } html.has-cur, html.has-cur * { cursor:auto !important; } }
 </style>
 </head>
 <body>
-  <section id="enter" class="screen">
-    <p class="k">Tomball · The Woodlands · Spring · Conroe</p>
-    <h1>The long table.</h1>
-    <p class="lede">Five chapters. Tricia Holfelder’s grazing tables, as a show. Pick one. Send it to her phone.</p>
-    <div>
-      <button type="button" class="go" id="enterBtn">Enter the tables</button>
-      <a class="go ghost" href="tel:+18324588180">Call 832-458-8180</a>
-    </div>
-  </section>
+<div id="gate">
+  <h1 class="word" id="gateWord">The Long Table</h1>
+  <button type="button" class="hold" id="enter" aria-label="Click and hold to enter">
+    <svg viewBox="0 0 32 32" width="88" height="88"><circle cx="16" cy="16" r="14"/><circle data-ring cx="16" cy="16" r="14"></circle></svg>
+    <span>Hold</span>
+  </button>
+  <p class="sub">Click &amp; hold · five chapters</p>
+</div>
 
-  <a class="skip" id="skip" href="#end">Skip to quote</a>
-  <nav class="dots" id="dots" aria-label="Chapters"></nav>
+<a class="skip" id="skip" href="#end">Skip to quote</a>
+<nav class="nav" id="dots" aria-label="Chapters"></nav>
 
-  <div id="show">
-    <section class="ch" id="c-holy" data-id="holy">
-      <img class="bleed" src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing table" fetchpriority="high">
-      <div class="veil" aria-hidden="true"></div>
-      <div class="copy">
-        <p class="n">Chapter 01</p>
-        <h2>Holy Grail of Grazing</h2>
-        <p class="price">$2,000 for 75 · $3,500 for 150</p>
-        <p class="inc">Two sliders (50 of each), five cheeses, five meats. Houston’s largest charcuterie cart, her words.</p>
-        <button type="button" class="pick" data-pick="holy">Select this table</button>
-      </div>
-    </section>
-    <section class="ch" id="c-grand" data-id="grand">
-      <img class="bleed" src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze table">
-      <div class="veil" aria-hidden="true"></div>
-      <div class="copy">
-        <p class="n">Chapter 02</p>
-        <h2>Grand Graze</h2>
-        <p class="price">$38 a person · 50 guest minimum</p>
-        <p class="inc">Five sliders, four salads, pudding cups. The big wedding table.</p>
-        <button type="button" class="pick" data-pick="grand">Select this table</button>
-      </div>
-    </section>
-    <section class="ch" id="c-super" data-id="super">
-      <img class="bleed" src="img/knot-3.jpg" width="945" height="720" alt="Super Graze table">
-      <div class="veil" aria-hidden="true"></div>
-      <div class="copy">
-        <p class="n">Chapter 03</p>
-        <h2>Super Graze</h2>
-        <p class="price">$30 a person · 50 guest minimum</p>
-        <p class="inc">Three sliders, three salads, three dips. The middle.</p>
-        <button type="button" class="pick" data-pick="super">Select this table</button>
-      </div>
-    </section>
-    <section class="ch" id="c-cart" data-id="carts">
-      <img class="bleed" src="img/knot-4.jpg" width="945" height="720" alt="Charcuterie cart">
-      <div class="veil" aria-hidden="true"></div>
-      <div class="copy">
-        <p class="n">Chapter 04</p>
-        <h2>The cart</h2>
-        <p class="price">Taco Cart $26.95 · Carts $24.50</p>
-        <p class="inc">One party at a time. Travels 100 miles from Tomball.</p>
-        <button type="button" class="pick" data-pick="carts">Select the cart</button>
-      </div>
-    </section>
-    <section class="ch" id="c-graze" data-id="graze">
-      <img class="bleed" src="img/catering-1000.jpg" width="1000" height="560" alt="Graze Me, Craze Me">
-      <div class="veil" aria-hidden="true"></div>
-      <div class="copy">
-        <p class="n">Chapter 05</p>
-        <h2>Graze Me, Craze Me</h2>
-        <p class="price">$24 a person · Grazing Standard $26</p>
-        <p class="inc">Every table: 90 minutes, 18% tax, $229 setup.</p>
-        <button type="button" class="pick" data-pick="graze">Select this table</button>
-      </div>
-    </section>
-
-    <section id="end">
-      <p class="n" style="letter-spacing:.22em;text-transform:uppercase;font-size:12px;color:var(--brass)">The end · your quote</p>
-      <h2 id="endTitle">Tell her the date.</h2>
-      <p class="sum" id="sum">Nothing selected yet. Pick a chapter, or write it in.</p>
-      <form id="quote" aria-label="Quote">
-        <label>Your name<input id="n" name="name" autocomplete="name" required></label>
-        <label>Phone<input id="p" name="phone" type="tel" autocomplete="tel"></label>
-        <label>Event date<input id="d" name="date" type="date"></label>
-        <label>Guests<input id="g" name="guests" inputmode="numeric" value="75"></label>
-        <label>Table
-          <select id="t">
-            <option value="holy">Holy Grail of Grazing</option>
-            <option value="grand">Grand Graze</option>
-            <option value="super">Super Graze</option>
-            <option value="standard">Grazing Standard</option>
-            <option value="graze">Graze Me, Craze Me</option>
-            <option value="carts">Cart</option>
-          </select>
-        </label>
-        <label>Anything else<textarea id="m" rows="3"></textarea></label>
-        <div class="row">
-          <button type="button" class="go" id="smsBtn">Text this to Tricia</button>
-          <button type="button" class="go ghost" id="emailBtn">Email it</button>
-          <button type="button" class="go ghost" id="copyBtn">Copy</button>
-        </div>
-        <p class="hint" id="hint">Opens your messages. Nothing is sent until you tap send. 832-458-8180 · charcuteriechick@outlook.com</p>
-      </form>
-    </section>
+<section class="ch" id="c1">
+  <span class="num">01</span>
+  <div class="letterbox"><img src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing" fetchpriority="high"></div>
+  <div class="copy">
+    <p class="k">[ chapter 01 ]  [ table ]</p>
+    <h2 id="t1">Holy Grail</h2>
+    <p class="pr">$2,000 / 75 · $3,500 / 150 · 90 minutes</p>
+    <button type="button" class="hold-mini" data-pick="holy">Hold to select</button>
   </div>
+</section>
+<section class="ch" id="c2">
+  <span class="num">02</span>
+  <div class="letterbox"><img src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze"></div>
+  <div class="copy">
+    <p class="k">[ chapter 02 ]  [ table ]</p>
+    <h2 id="t2">Grand Graze</h2>
+    <p class="pr">$38 a person · 50 guest minimum</p>
+    <button type="button" class="hold-mini" data-pick="grand">Hold to select</button>
+  </div>
+</section>
+<section class="ch" id="c3">
+  <span class="num">03</span>
+  <div class="letterbox"><img src="img/knot-3.jpg" width="945" height="720" alt="Super Graze"></div>
+  <div class="copy">
+    <p class="k">[ chapter 03 ]  [ table ]</p>
+    <h2 id="t3">Super Graze</h2>
+    <p class="pr">$30 a person · 50 guest minimum</p>
+    <button type="button" class="hold-mini" data-pick="super">Hold to select</button>
+  </div>
+</section>
+<section class="ch" id="c4">
+  <span class="num">04</span>
+  <div class="letterbox"><img src="img/knot-4.jpg" width="945" height="720" alt="The cart"></div>
+  <div class="copy">
+    <p class="k">[ chapter 04 ]  [ cart ]</p>
+    <h2 id="t4">The Cart</h2>
+    <p class="pr">Taco $26.95 · Carts $24.50 · 100 miles</p>
+    <button type="button" class="hold-mini" data-pick="carts">Hold to select</button>
+  </div>
+</section>
+<section class="ch" id="c5">
+  <span class="num">05</span>
+  <div class="letterbox"><img src="img/catering-1000.jpg" width="1000" height="560" alt="Graze Me, Craze Me"></div>
+  <div class="copy">
+    <p class="k">[ chapter 05 ]  [ table ]</p>
+    <h2 id="t5">Graze Me</h2>
+    <p class="pr">$24 a person · Standard $26 · $229 setup · 18% tax</p>
+    <button type="button" class="hold-mini" data-pick="graze">Hold to select</button>
+  </div>
+</section>
+
+<section id="end">
+  <p class="k" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)">[ the end ]  [ quote ]</p>
+  <h2 id="endTitle">Your table</h2>
+  <p class="sum" id="sum">Select a chapter, or write it in.</p>
+  <form>
+    <label>Name<input id="n" autocomplete="name"></label>
+    <label>Phone<input id="p" type="tel"></label>
+    <label>Date<input id="d" type="date"></label>
+    <label>Guests<input id="g" value="75" inputmode="numeric"></label>
+    <label>Table
+      <select id="t">
+        <option value="holy">Holy Grail of Grazing</option>
+        <option value="grand">Grand Graze</option>
+        <option value="super">Super Graze</option>
+        <option value="standard">Grazing Standard</option>
+        <option value="graze">Graze Me, Craze Me</option>
+        <option value="carts">Cart</option>
+      </select>
+    </label>
+    <label>Notes<textarea id="m" rows="3"></textarea></label>
+    <div>
+      <button type="button" class="txt" id="smsBtn">Text Tricia</button>
+      <button type="button" class="txt" id="emailBtn">Email</button>
+      <button type="button" class="txt" id="copyBtn">Copy</button>
+    </div>
+    <p id="hint" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.4">832-458-8180 · charcuteriechick@outlook.com</p>
+  </form>
+</section>
+
 <script src="engine.js"></script>
+<script src="craft.js"></script>
 <script>
 (function(){
-  var selected = "holy";
-  var dots = document.getElementById("dots");
-  var ids = ["c-holy","c-grand","c-super","c-cart","c-graze","end"];
-  ids.forEach(function(id,i){
-    var a = document.createElement("a");
-    a.href = "#"+id;
-    a.textContent = String(i+1);
-    dots.appendChild(a);
-  });
+  ["gateWord","t1","t2","t3","t4","t5"].forEach(function(id){ CRAFT.space(document.getElementById(id)); });
+  CRAFT.cursor();
+  var ids=["c1","c2","c3","c4","c5","end"];
+  var dots=document.getElementById("dots");
+  ids.forEach(function(id,i){ var a=document.createElement("a"); a.href="#"+id; a.textContent=String(i+1); dots.appendChild(a); });
   function enter(){
-    document.getElementById("enter").style.display = "none";
-    document.getElementById("show").classList.add("on");
+    document.getElementById("gate").classList.add("off");
+    document.documentElement.classList.add("show");
     document.getElementById("skip").classList.add("on");
     dots.classList.add("on");
-    document.documentElement.classList.add("show-mode");
-    document.getElementById("c-holy").scrollIntoView();
+    setTimeout(function(){ document.getElementById("gate").style.display="none"; document.getElementById("c1").scrollIntoView(); }, 50);
   }
-  document.getElementById("enterBtn").addEventListener("click", enter);
-  document.querySelectorAll(".pick").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      selected = btn.getAttribute("data-pick");
-      document.querySelectorAll(".pick").forEach(function(b){ b.classList.toggle("on", b===btn); b.textContent = b===btn ? "Selected" : b.textContent.replace("Selected","Select this table").replace("Select the cart","Select the cart"); });
-      btn.textContent = "Selected";
-      document.getElementById("t").value = selected;
+  CRAFT.hold(document.getElementById("enter"), enter);
+  document.querySelectorAll(".hold-mini").forEach(function(btn){
+    function sel(){
+      document.getElementById("t").value = btn.getAttribute("data-pick");
+      document.querySelectorAll(".hold-mini").forEach(function(b){ b.classList.toggle("on", b===btn); b.textContent = b===btn ? "Selected" : "Hold to select"; });
       render();
       document.getElementById("end").scrollIntoView({behavior:"smooth"});
-    });
+    }
+    CRAFT.hold(btn, sel);
+    btn.addEventListener("click", function(){ if (CRAFT.preferReduce()) sel(); });
   });
   function state(){
-    return {
-      name: document.getElementById("n").value.trim(),
-      phone: document.getElementById("p").value.trim(),
-      date: document.getElementById("d").value,
-      guests: document.getElementById("g").value.trim(),
-      table: CHICK.byId(document.getElementById("t").value),
-      details: document.getElementById("m").value.trim()
-    };
+    return { name:n.value.trim(), phone:p.value.trim(), date:d.value, guests:g.value.trim(), table:CHICK.byId(t.value), details:m.value.trim() };
   }
   function render(){
-    var s = state();
-    var q = s.table ? CHICK.compute(s.table.id, s.guests) : null;
-    var el = document.getElementById("sum");
-    if (q && q.ok) el.textContent = s.table.name + " · " + CHICK.money(q.total) + " including setup and tax. Not a booking.";
-    else if (q) el.textContent = s.table.name + " · " + (q.note || s.table.priceLabel);
-    document.getElementById("endTitle").textContent = s.table ? s.table.name : "Tell her the date.";
+    var s=state(), q=s.table?CHICK.compute(s.table.id,s.guests):null;
+    document.getElementById("endTitle").textContent = s.table ? s.table.name : "Your table";
+    document.getElementById("sum").textContent = (q&&q.ok) ? CHICK.money(q.total)+" including setup and tax. Not a booking." : (q?q.note:"Select a chapter.");
   }
-  ["t","g"].forEach(function(id){ document.getElementById(id).addEventListener("input", render); document.getElementById(id).addEventListener("change", render); });
-  document.getElementById("smsBtn").onclick = function(){ CHICK.sms(state()); };
-  document.getElementById("emailBtn").onclick = function(){ CHICK.email(state()); };
-  document.getElementById("copyBtn").onclick = function(){ CHICK.copy(state(), document.getElementById("hint")); };
-  var obs = new IntersectionObserver(function(ents){
-    ents.forEach(function(e){
-      if (!e.isIntersecting) return;
-      var i = ids.indexOf(e.target.id);
-      dots.querySelectorAll("a").forEach(function(a,j){ a.classList.toggle("on", j===i); });
-    });
-  }, { threshold: 0.55 });
-  ids.forEach(function(id){ var n = document.getElementById(id); if (n) obs.observe(n); });
+  t.addEventListener("change", render); g.addEventListener("input", render);
+  smsBtn.onclick=function(){ CHICK.sms(state()); };
+  emailBtn.onclick=function(){ CHICK.email(state()); };
+  copyBtn.onclick=function(){ CHICK.copy(state(), hint); };
+  var obs=new IntersectionObserver(function(ents){
+    ents.forEach(function(e){ if(!e.isIntersecting) return; var i=ids.indexOf(e.target.id); dots.querySelectorAll("a").forEach(function(a,j){ a.classList.toggle("on", j===i); }); });
+  }, {threshold:.5});
+  ids.forEach(function(id){ var n=document.getElementById(id); if(n) obs.observe(n); });
   render();
 })();
 </script>

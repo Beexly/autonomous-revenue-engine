@@ -3,191 +3,209 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Book a table — Charcuterie Chick, Tomball</title>
-<meta name="description" content="Price a grazing table in Tomball. Guests, date, table. Food plus $229 setup plus 18 percent tax. Text Tricia. 50-guest minimum.">
+<title>Walk the Menu — Charcuterie Chick</title>
+<meta name="description" content="A horizontal walk through Tricia’s published tables in Tomball. Open a panel, price food plus setup plus tax, text the quote.">
 <link rel="canonical" href="https://charcuterie-chick-sample-3.vercel.app/">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#11110F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#fff; --ink:#111; --mute:#898989; --line:rgba(34,42,53,.1); --fill:#111; }
-  * { box-sizing: border-box; }
-  html, body { margin:0; height:100%; background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans", system-ui, sans-serif; }
-  button, input, select, textarea { font: inherit; }
-  a { color: inherit; }
-  .app {
-    display: grid;
-    grid-template-columns: minmax(320px, 420px) 1fr;
-    height: 100vh; height: 100dvh;
+  :root { --void:#11110F; --paper:#EDE7DB; --ink:#11110F; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; height:100%; background:var(--void); color:var(--paper); font-family:Syne, system-ui, sans-serif; }
+  button, input, textarea { font:inherit; color:inherit; background:none; border:0; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:var(--paper); color:var(--void); }
+  .cur {
+    width:14px; height:14px; border:1px solid #EDE7DB; border-radius:50%;
+    position:fixed; top:0; left:0; margin:-7px 0 0 -7px; pointer-events:none; z-index:200;
+    mix-blend-mode:difference;
   }
-  .pane {
-    border-right: 1px solid var(--line);
-    padding: 28px 28px 24px;
-    overflow: auto;
-    display: flex; flex-direction: column; gap: 18px;
+  .cur.down { width:28px; height:28px; margin:-14px 0 0 -14px; }
+  html.has-cur, html.has-cur * { cursor:none !important; }
+  #gate {
+    position:fixed; inset:0; z-index:80; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:28px; background:var(--void); text-align:center;
   }
-  .brand { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
-  .brand strong { font-weight: 600; letter-spacing: -.02em; }
-  .brand span { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--mute); }
-  h1 { font-size: 28px; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; margin: 0; }
-  .sub { color: var(--mute); font-size: 14px; line-height: 1.45; margin: 0; }
-  .field { display: grid; gap: 6px; }
-  .field span { font-size: 12px; color: var(--mute); font-family:"IBM Plex Mono", ui-monospace, monospace; }
-  input, select, textarea {
-    width: 100%; border: 0; box-shadow: 0 0 0 1px var(--line);
-    border-radius: 8px; padding: 10px 12px; background: #fff; outline: none;
+  #gate.off { opacity:0; pointer-events:none; transition:opacity .7s ease; }
+  #gate .word { font-size:clamp(1.4rem, 4.5vw, 2.6rem); letter-spacing:.4em; text-transform:uppercase; font-weight:500; }
+  #gate .sub { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.3em; text-transform:uppercase; opacity:.45; }
+  .hold { width:88px; height:88px; border-radius:50%; display:grid; place-items:center; position:relative; }
+  .hold svg { position:absolute; inset:0; transform:rotate(-90deg); }
+  .hold circle { fill:none; stroke:rgba(237,231,219,.2); stroke-width:1; }
+  .hold [data-ring] { stroke:var(--paper); stroke-dasharray:88; stroke-dashoffset:88; }
+  .hold span { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:9px; letter-spacing:.2em; text-transform:uppercase; }
+  .hud {
+    position:fixed; top:0; left:0; right:0; z-index:5;
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:20px 4vw; font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:10px; letter-spacing:.22em; text-transform:uppercase; mix-blend-mode:difference;
   }
-  input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 2px #111; }
-  .step { display: flex; align-items: center; gap: 8px; }
-  .step button {
-    width: 36px; height: 36px; border-radius: 8px; border: 0; box-shadow: 0 0 0 1px var(--line);
-    background: #fff; cursor: pointer;
+  .strip {
+    display:flex; height:100vh; height:100dvh; overflow-x:auto; overflow-y:hidden;
+    scroll-snap-type:x mandatory; scrollbar-width:none;
   }
-  .step input { text-align: center; }
-  .tables { display: grid; gap: 6px; }
-  .tables label {
-    display: grid; grid-template-columns: 16px 1fr auto; gap: 10px; align-items: center;
-    padding: 10px 12px; border-radius: 8px; box-shadow: 0 0 0 1px var(--line); cursor: pointer;
+  .strip::-webkit-scrollbar { display:none; }
+  .panel {
+    flex: 0 0 100vw; height:100%; scroll-snap-align:start; scroll-snap-stop:always;
+    display:grid; grid-template-columns: 42vw 58vw; align-items:stretch;
   }
-  .tables label.on { box-shadow: 0 0 0 2px #111; }
-  .tables em { font-style: normal; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--mute); }
-  .total {
-    margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line);
-    display: grid; gap: 6px;
+  .panel .txt {
+    padding: 18vh 6vw 10vh; display:flex; flex-direction:column; justify-content:flex-end; gap:14px;
   }
-  .total .big { font-size: 32px; font-weight: 600; letter-spacing: -.04em; }
-  .total small { color: var(--mute); font-size: 12px; line-height: 1.4; }
-  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
-  .btn {
-    appearance: none; border: 0; background: var(--fill); color: #fff;
-    padding: 12px 16px; border-radius: 8px; cursor: pointer; font-weight: 500;
+  .panel .k { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.28em; text-transform:uppercase; opacity:.45; }
+  .panel h2 {
+    margin:0; font-weight:500; font-size:clamp(2.2rem, 5.5vw, 5rem);
+    letter-spacing:-.04em; line-height:.92; max-width:9ch;
   }
-  .btn.ghost { background: #fff; color: #111; box-shadow: 0 0 0 1px var(--line); }
-  .stage { position: relative; background: #f5f5f5; overflow: hidden; }
-  .stage img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .stage .cap {
-    position: absolute; left: 24px; bottom: 24px; right: 24px;
-    background: #fff; padding: 16px 18px; border-radius: 12px;
-    box-shadow: rgba(19,19,22,.12) 0 8px 24px;
+  .panel .pr { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; letter-spacing:.12em; opacity:.7; }
+  .panel .inc { max-width:28rem; line-height:1.5; opacity:.62; font-size:14px; }
+  .open {
+    align-self:flex-start; font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    border-bottom:1px solid var(--paper); padding:8px 0;
   }
-  .stage .cap h2 { margin: 0 0 4px; font-size: 18px; letter-spacing: -.02em; }
-  .stage .cap p { margin: 0; color: var(--mute); font-size: 13px; }
+  .panel .media {
+    display:grid; place-items:center; background:#0A0908; padding:8vh 5vw;
+  }
+  .panel .media img { max-width:100%; max-height:76vh; width:auto; height:auto; }
+  .bar {
+    position:fixed; left:4vw; right:4vw; bottom:22px; height:1px; background:rgba(237,231,219,.18); z-index:5;
+  }
+  .bar i { display:block; height:1px; background:var(--paper); width:20%; }
+  #sheet {
+    position:fixed; inset:auto 0 0 0; z-index:30; background:var(--paper); color:var(--ink);
+    transform:translateY(110%); transition:transform .45s cubic-bezier(.22,1,.36,1);
+    padding:28px 6vw 36px; display:grid; grid-template-columns: 1fr 1fr; gap:24px;
+    max-height: 78vh; overflow:auto;
+  }
+  #sheet.on { transform:translateY(0); }
+  #sheet h3 { margin:0; font-size:clamp(1.8rem, 3vw, 2.8rem); letter-spacing:-.03em; }
+  #sheet .big { font-size:clamp(2rem, 4vw, 3.2rem); letter-spacing:-.04em; }
+  #sheet form { display:grid; gap:10px; }
+  #sheet label { display:grid; gap:4px; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; }
+  #sheet input, #sheet textarea { border-bottom:1px solid rgba(17,17,15,.25); padding:8px 0; font-family:Syne, sans-serif; font-size:16px; color:var(--ink); opacity:1; }
+  .txtb { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; padding:10px 0; border-bottom:1px solid var(--ink); margin-right:12px; color:var(--ink); }
+  .x { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; opacity:.5; }
   @media (max-width: 860px) {
-    .app { grid-template-columns: 1fr; grid-template-rows: 52vh 1fr; }
-    .pane { border-right: 0; border-top: 1px solid var(--line); order: 2; }
-    .stage { order: 1; min-height: 52vh; }
-    .stage img { object-fit: contain; background: #111; }
+    .panel { grid-template-columns:1fr; }
+    .panel .media { min-height:42vh; padding:6vh 8vw 0; }
+    .panel .txt { padding: 4vh 8vw 12vh; }
+    #sheet { grid-template-columns:1fr; }
   }
+  @media (hover:none) { .cur { display:none !important; } html.has-cur, html.has-cur * { cursor:auto !important; } }
 </style>
 </head>
 <body>
-<div class="app">
-  <aside class="pane">
-    <div class="brand">
-      <strong>Charcuterie Chick</strong>
-      <span>Tomball, TX</span>
-    </div>
-    <h1>Price a table.</h1>
-    <p class="sub">Food + $229 setup + 18% tax. 50-guest minimum on per-person tables. Tricia still confirms the date.</p>
-
-    <label class="field"><span>Your name</span><input id="n" autocomplete="name"></label>
-    <label class="field"><span>Phone</span><input id="p" type="tel" autocomplete="tel"></label>
-    <label class="field"><span>Event date</span><input id="d" type="date"></label>
-    <div class="field">
-      <span>Guests</span>
-      <div class="step">
-        <button type="button" id="minus" aria-label="Fewer">−</button>
-        <input id="g" inputmode="numeric" value="75">
-        <button type="button" id="plus" aria-label="More">+</button>
-      </div>
-    </div>
-
-    <div class="field">
-      <span>Table</span>
-      <div class="tables" id="tables"></div>
-    </div>
-
-    <label class="field"><span>Notes</span><textarea id="m" rows="2" placeholder="Dietary, venue, timing"></textarea></label>
-
-    <div class="total">
-      <div class="big" id="big">—</div>
-      <small id="note">Pick a table.</small>
-      <div class="actions">
-        <button type="button" class="btn" id="smsBtn">Text this quote</button>
-        <button type="button" class="btn ghost" id="emailBtn">Email</button>
-        <button type="button" class="btn ghost" id="copyBtn">Copy</button>
-      </div>
-      <small id="hint">832-458-8180 · charcuteriechick@outlook.com · nothing is sent until you tap send</small>
-    </div>
-  </aside>
-  <main class="stage">
-    <img id="photo" src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing">
-    <div class="cap">
-      <h2 id="capName">Holy Grail of Grazing</h2>
-      <p id="capInc"></p>
-    </div>
-  </main>
+<div id="gate">
+  <h1 class="word" id="gateWord">Walk the Menu</h1>
+  <button type="button" class="hold" id="enter" aria-label="Click and hold to enter">
+    <svg viewBox="0 0 32 32" width="88" height="88"><circle cx="16" cy="16" r="14"/><circle data-ring cx="16" cy="16" r="14"></circle></svg>
+    <span>Hold</span>
+  </button>
+  <p class="sub">Click &amp; hold · scroll sideways</p>
 </div>
+
+<div class="hud">
+  <span>Charcuterie Chick</span>
+  <span id="pos">01 / 05</span>
+  <span>Tomball, TX</span>
+</div>
+<div class="bar"><i id="fill"></i></div>
+<div class="strip" id="strip"></div>
+
+<div id="sheet">
+  <div>
+    <button type="button" class="x" id="close">Close ↙</button>
+    <p class="k" id="sk" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.45;margin:12px 0 8px"></p>
+    <h3 id="sname"></h3>
+    <p id="sinc" style="opacity:.65;line-height:1.5"></p>
+    <p class="big" id="big">—</p>
+    <p id="note" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;opacity:.55"></p>
+  </div>
+  <form>
+    <label>Guests<input id="g" value="75" inputmode="numeric"></label>
+    <label>Date<input id="d" type="date"></label>
+    <label>Name<input id="n" autocomplete="name"></label>
+    <label>Phone<input id="p" type="tel"></label>
+    <label>Notes<textarea id="m" rows="2"></textarea></label>
+    <div>
+      <button type="button" class="txtb" id="smsBtn">Text this quote</button>
+      <button type="button" class="txtb" id="emailBtn">Email</button>
+      <button type="button" class="txtb" id="copyBtn">Copy</button>
+    </div>
+    <p id="hint" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.4">Nothing is sent until you tap send.</p>
+  </form>
+</div>
+
 <script src="engine.js"></script>
+<script src="craft.js"></script>
 <script>
 (function(){
-  var ids = ["holy","grand","super","standard","graze"];
-  var wrap = document.getElementById("tables");
-  ids.forEach(function(id, i){
-    var t = CHICK.byId(id);
-    var lab = document.createElement("label");
-    lab.innerHTML = '<input type="radio" name="table" value="'+t.id+'"'+(i===0?' checked':'')+'> <span>'+t.name+'</span> <em>'+t.priceLabel+'</em>';
-    wrap.appendChild(lab);
+  CRAFT.space(document.getElementById("gateWord"));
+  CRAFT.cursor();
+  var ids=["holy","grand","super","standard","graze"];
+  var strip=document.getElementById("strip");
+  var openId="holy";
+  ids.forEach(function(id,i){
+    var t=CHICK.byId(id);
+    var p=document.createElement("article");
+    p.className="panel";
+    p.dataset.id=id;
+    p.innerHTML =
+      '<div class="txt">'+
+        '<p class="k">[ US_0'+(i+1)+' ]  [ table ]</p>'+
+        '<h2>'+t.name+'</h2>'+
+        '<p class="pr">'+t.priceLabel+(t.unit?'  ·  '+t.unit:'')+'</p>'+
+        '<p class="inc">'+t.include+'</p>'+
+        '<button type="button" class="open" data-open="'+t.id+'">Open  [+]</button>'+
+      '</div>'+
+      '<div class="media"><img src="'+t.img+'" width="'+t.w+'" height="'+t.h+'" alt="'+t.name+'"></div>';
+    strip.appendChild(p);
   });
-  function currentId(){
-    var r = document.querySelector('input[name="table"]:checked');
-    return r ? r.value : "holy";
+  function enter(){
+    document.getElementById("gate").classList.add("off");
+    setTimeout(function(){ document.getElementById("gate").style.display="none"; }, 700);
+  }
+  CRAFT.hold(document.getElementById("enter"), enter);
+  strip.addEventListener("wheel", function(e){
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      strip.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  }, { passive:false });
+  function tick(){
+    var max = strip.scrollWidth - strip.clientWidth;
+    var p = max ? strip.scrollLeft / max : 0;
+    document.getElementById("fill").style.width = (20 + p*80) + "%";
+    var i = Math.round(p * (ids.length-1));
+    document.getElementById("pos").textContent = String(i+1).padStart(2,"0")+" / 0"+ids.length;
+  }
+  strip.addEventListener("scroll", tick, { passive:true });
+  function render(){
+    var t=CHICK.byId(openId);
+    var q=CHICK.compute(openId, g.value);
+    document.getElementById("sk").textContent="[ quote ]  [ "+t.n+" ]";
+    document.getElementById("sname").textContent=t.name;
+    document.getElementById("sinc").textContent=t.include;
+    document.getElementById("big").textContent=(q&&q.ok)?CHICK.money(q.total):t.priceLabel;
+    document.getElementById("note").textContent=(q&&q.ok)?("Food "+CHICK.money(q.food)+" + setup "+CHICK.money(q.setup)+" + tax "+CHICK.money(q.tax)+". "+q.note): (q?q.note:"");
   }
   function state(){
-    return {
-      name: document.getElementById("n").value.trim(),
-      phone: document.getElementById("p").value.trim(),
-      date: document.getElementById("d").value,
-      guests: document.getElementById("g").value.trim(),
-      table: CHICK.byId(currentId()),
-      details: document.getElementById("m").value.trim()
-    };
+    return { name:n.value.trim(), phone:p.value.trim(), date:d.value, guests:g.value.trim(), table:CHICK.byId(openId), details:m.value.trim() };
   }
-  function render(){
-    var s = state();
-    document.querySelectorAll(".tables label").forEach(function(l){
-      l.classList.toggle("on", l.querySelector("input").checked);
-    });
-    var t = s.table;
-    var img = document.getElementById("photo");
-    img.src = t.img; img.alt = t.name; img.width = t.w; img.height = t.h;
-    document.getElementById("capName").textContent = t.name;
-    document.getElementById("capInc").textContent = t.include;
-    var q = CHICK.compute(t.id, s.guests);
-    var big = document.getElementById("big");
-    var note = document.getElementById("note");
-    if (q && q.ok) {
-      big.textContent = CHICK.money(q.total);
-      note.textContent = "Food "+CHICK.money(q.food)+" + setup "+CHICK.money(q.setup)+" + tax "+CHICK.money(q.tax)+". "+q.note+" Not a booking.";
-    } else {
-      big.textContent = t.priceLabel;
-      note.textContent = q ? q.note : "";
-    }
-  }
-  wrap.addEventListener("change", render);
-  document.getElementById("g").addEventListener("input", render);
-  document.getElementById("minus").onclick = function(){
-    var n = parseInt(document.getElementById("g").value,10)||0;
-    document.getElementById("g").value = Math.max(1, n-5); render();
-  };
-  document.getElementById("plus").onclick = function(){
-    var n = parseInt(document.getElementById("g").value,10)||0;
-    document.getElementById("g").value = n+5; render();
-  };
-  document.getElementById("smsBtn").onclick = function(){ CHICK.sms(state()); };
-  document.getElementById("emailBtn").onclick = function(){ CHICK.email(state()); };
-  document.getElementById("copyBtn").onclick = function(){ CHICK.copy(state(), document.getElementById("hint")); };
-  render();
+  strip.addEventListener("click", function(e){
+    var b=e.target.closest("[data-open]"); if(!b) return;
+    openId=b.getAttribute("data-open");
+    render();
+    document.getElementById("sheet").classList.add("on");
+  });
+  document.getElementById("close").onclick=function(){ document.getElementById("sheet").classList.remove("on"); };
+  g.addEventListener("input", render);
+  smsBtn.onclick=function(){ CHICK.sms(state()); };
+  emailBtn.onclick=function(){ CHICK.email(state()); };
+  copyBtn.onclick=function(){ CHICK.copy(state(), hint); };
+  tick();
 })();
 </script>
 </body>
