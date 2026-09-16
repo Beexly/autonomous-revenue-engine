@@ -62,6 +62,15 @@ JOIN utm_sessions us
 LEFT JOIN fulfilled_leads fl
   ON fl.lead_id = l.id;
 
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_matviews
+    WHERE schemaname = current_schema()
+      AND matviewname = 'analytics_channel_revenue_mv'
+  ) THEN
+    EXECUTE $mv$
 CREATE MATERIALIZED VIEW analytics_channel_revenue_mv AS
 WITH fulfilled_revenue AS (
   SELECT
@@ -100,6 +109,9 @@ FROM fulfilled_revenue br
 LEFT JOIN analytics_last_touch_attribution_v lt
   ON lt.lead_id = br.lead_id
 GROUP BY 1, 2, 3, 4, 5;
+$mv$;
+  END IF;
+END $$;
 
 -- Index guidance for fast dashboard queries and concurrent refresh.
 CREATE UNIQUE INDEX IF NOT EXISTS idx_analytics_channel_revenue_mv_key
