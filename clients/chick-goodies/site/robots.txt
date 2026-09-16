@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /img/brand-reference-1364.jpg
+
+Sitemap: https://charcuterie-chick-showcase.vercel.app/sitemap.xml
