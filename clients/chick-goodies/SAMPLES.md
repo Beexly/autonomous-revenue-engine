@@ -1,30 +1,27 @@
-# SAMPLES — three art directions (2026-09-16 overnight)
+# SAMPLES — three products (2026-09-16)
 
-Three complete builds of the same facts (`FACTS.md`, `BIBLE.md`) and the same
-photos. No fourth sample. Do not blend.
+Not three skins. Three different sites from the same facts (`FACTS.md`) and
+photos. Do not blend.
+
+Craft: Unseen Studio (index + filter, chaptered experience), Noma (photo is
+the page), Cal.com (scheduling tool). Content is Tricia’s. Do not impersonate
+those brands.
 
 ## Live
 
-1. **Cream** — https://charcuterie-chick-sample-1.vercel.app
-   Cream paper, Fraunces only. Split hero. Tables as magazine chapters.
-   Photos sit at native size as objects (480px files never cover-stretched).
-2. **After dark** — https://charcuterie-chick-sample-2.vercel.app
-   Near-black, Cormorant Garamond. One still per viewport. Brass only on
-   italic names. Scroll is the show. Remaining looks as a numbered cast list.
-3. **Studio** — https://charcuterie-chick-sample-3.vercel.app
-   White folio, Archivo. Sticky left index. One look at a time.
+1. **Cream · index** — https://charcuterie-chick-sample-1.vercel.app
+   Unseen-style selected-projects list. Filter Tables / Carts / Sweets / Sips /
+   Boards. Hover preview. Click a row → case study with live estimate.
+2. **After dark · the show** — https://charcuterie-chick-sample-2.vercel.app
+   Symphony-of-Vines interaction: Enter → five full-viewport chapters → quote.
+   No index, no filter, no two-column app.
+3. **Studio · the tool** — https://charcuterie-chick-sample-3.vercel.app
+   Cal.com-shaped booker. One screen: guests stepper, table radios, live total
+   (food + $229 setup + 18% tax). Photo follows the selection.
 
-Showcase (cream + proposal for the pitch, not a fourth art direction):
-https://charcuterie-chick-showcase.vercel.app
+Pitch page (cream + proposal): https://charcuterie-chick-showcase.vercel.app/#proposal
 
-Shared: `quote.js` (SMS + mailto + copy). No runway, no looks.js, no 49
-stamp cards.
-
-## What changed vs the colour-swap pass
-
-The three URLs were the same HTML with different fonts. They are now three
-compositions. Knot reviews (Nicole M., Jake S.) replaced Shopify “(1 Reviews)”
-names. FAQ is on the page. Quote uses phone and Outlook.
+Shared math only: `engine.js`. Layouts, type, IA, and chrome are not shared.
 
 ## Do not blend
 
