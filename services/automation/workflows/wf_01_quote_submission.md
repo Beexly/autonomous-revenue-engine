@@ -34,6 +34,9 @@ Convert every valid website quote submission into a tracked lead, a CRM record, 
     "utm_campaign": "fall_weddings",
     "landing_path": "/weddings"
   },
+  "events": {
+    "quote_started_at": "2026-09-16T00:57:00Z"
+  },
   "source_system": "web.quote_form"
 }
 ```
@@ -49,7 +52,7 @@ Convert every valid website quote submission into a tracked lead, a CRM record, 
 7. **PostgreSQL** - patch `leads.crm_contact_id` and `leads.status = 'qualified'`.
 8. **HTTP Request / Listmonk** - add lead to `quote_submitted` segment if `consent_email = true`.
 9. **Email/SMS node** - send confirmation message with expected response window.
-10. **PostgreSQL** - insert `lead_events` row with `event_type = 'quote_started'` only if missing **and** the frontend provides the original `occurred_at`; otherwise skip historical backfill.
+10. **PostgreSQL** - insert `lead_events` row with `event_type = 'quote_started'` only if missing, and set `occurred_at = events.quote_started_at`; otherwise skip historical backfill.
 11. **Respond to Webhook** - return `202 accepted` with `lead_id`, `crm_contact_id`, and workflow run id.
 
 ## Idempotency strategy

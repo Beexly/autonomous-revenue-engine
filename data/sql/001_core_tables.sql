@@ -157,7 +157,8 @@ CREATE TABLE IF NOT EXISTS bookings (
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now(),
   CHECK (scheduled_end_at IS NULL OR scheduled_start_at IS NULL OR scheduled_end_at >= scheduled_start_at),
-  CHECK (deposit_cents <= revenue_cents)
+  CHECK (deposit_cents <= revenue_cents),
+  UNIQUE (id, lead_id)
 );
 
 CREATE TABLE IF NOT EXISTS content_assets (
@@ -184,14 +185,16 @@ CREATE TABLE IF NOT EXISTS referrals (
   referrer_lead_id uuid NOT NULL REFERENCES leads(id) ON DELETE RESTRICT,
   origin_booking_id uuid REFERENCES bookings(id) ON DELETE RESTRICT,
   referred_lead_id uuid REFERENCES leads(id) ON DELETE SET NULL,
-  referred_booking_id uuid REFERENCES bookings(id) ON DELETE SET NULL,
+  referred_booking_id uuid,
   landing_path text,
   reward_type text,
   reward_value_cents integer CHECK (reward_value_cents IS NULL OR reward_value_cents >= 0),
   expires_at timestamptz,
   converted_at timestamptz,
   created_at timestamptz NOT NULL DEFAULT now(),
-  updated_at timestamptz NOT NULL DEFAULT now()
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  CHECK (referred_booking_id IS NULL OR referred_lead_id IS NOT NULL),
+  FOREIGN KEY (referred_booking_id, referred_lead_id) REFERENCES bookings (id, lead_id) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS reviews (

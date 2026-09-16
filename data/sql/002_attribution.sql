@@ -28,11 +28,11 @@ SELECT DISTINCT ON (l.id)
   COALESCE(NULLIF(us.utm_medium, ''), 'none') AS channel_medium,
   COALESCE(NULLIF(us.utm_campaign, ''), 'unattributed') AS channel_campaign,
   us.exit_path,
-  COALESCE(us.converted_at, us.last_seen_at, us.updated_at, us.created_at) AS touch_at
+  COALESCE(us.converted_at, us.last_seen_at, us.first_seen_at, us.created_at) AS touch_at
 FROM leads l
 LEFT JOIN utm_sessions us
   ON us.lead_id = l.id
-ORDER BY l.id, COALESCE(us.converted_at, us.last_seen_at, us.updated_at, us.created_at) DESC NULLS LAST, us.id DESC;
+ORDER BY l.id, COALESCE(us.converted_at, us.last_seen_at, us.first_seen_at, us.created_at) DESC NULLS LAST, us.id DESC;
 
 CREATE OR REPLACE VIEW analytics_multi_touch_path_v AS
 WITH fulfilled_leads AS (

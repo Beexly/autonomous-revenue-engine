@@ -37,16 +37,17 @@ Recover high-intent visitors who started but did not submit a quote by re-engagi
 2. **PostgreSQL** - select quote starters from the last 24 hours whose latest `quote_started` is at least 60 minutes old, still have no `quote_submitted`, and have no recovery attempt in the prior 24 hours.
 3. **Function** - score recovery priority based on event type, budget, and recency.
 4. **PostgreSQL** - re-check that no `quote_submitted` or recovery attempt has been recorded since the initial scan.
-5. **If node** - send SMS if consent exists; otherwise send email; otherwise create CRM task only.
-6. **HTTP Request / Listmonk** - add lead to `abandoned_quote_recovery` sequence when email consent exists.
-7. **HTTP Request / Twenty CRM** - create follow-up task with due time based on priority.
-8. **PostgreSQL** - insert a `lead_events` note in `event_payload` describing the recovery attempt.
+5. **Data Store / lock step** - atomically reserve the recovery window key before any outbound send; abort immediately if the key already exists.
+6. **If node** - send SMS if consent exists; otherwise send email; otherwise create CRM task only.
+7. **HTTP Request / Listmonk** - add lead to `abandoned_quote_recovery` sequence when email consent exists.
+8. **HTTP Request / Twenty CRM** - create follow-up task with due time based on priority.
+9. **PostgreSQL** - insert a `lead_events` note in `event_payload` describing the recovery attempt.
 
 ## Idempotency strategy
 
 - One recovery attempt per `session_key` per 24-hour window.
 - Use a stable key derived from `session.session_key` plus the UTC recovery-window date, for example `recover_<session_key>_<yyyy-mm-dd>`.
-- Track the last recovery attempt in event payload or CRM custom field before firing a new one.
+- Atomically reserve the 24-hour recovery window key before any outbound action, then record the attempt in `lead_events` after send.
 
 ## Observability events to emit
 
