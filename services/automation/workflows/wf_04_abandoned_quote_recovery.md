@@ -34,7 +34,7 @@ Recover high-intent visitors who started but did not submit a quote by re-engagi
 ## n8n-oriented nodes and actions
 
 1. **Cron** - run every 30 minutes.
-2. **PostgreSQL** - select quote starters without `quote_submitted` in the last 24 hours.
+2. **PostgreSQL** - select quote starters from the last 24 hours whose latest `quote_started` is at least 60 minutes old, still have no `quote_submitted`, and have no recovery attempt in the prior 24 hours.
 3. **Function** - score recovery priority based on event type, budget, and recency.
 4. **If node** - send SMS if consent exists; otherwise send email; otherwise create CRM task only.
 5. **HTTP Request / Listmonk** - add lead to `abandoned_quote_recovery` sequence when email consent exists.

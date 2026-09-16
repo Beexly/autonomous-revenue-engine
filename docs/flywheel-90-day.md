@@ -65,7 +65,7 @@ Related references:
 
 - Workflow 03 live for repurpose and distribution.
 - Minimum content operating tempo reached: 2 SEO posts, 4 short clips, 2 carousels, 1 email per week.
-- Referral landing page and post-booking workflow draft ready.
+- Referral landing page and interim manual referral ask process live; post-booking automation workflow draft ready.
 - Fider board launched with at least 3 active offer questions.
 - Metabase channel-to-revenue rollup reviewed weekly.
 
@@ -77,7 +77,7 @@ Related references:
 | Social-assisted lead share | >= 20% |
 | Email open rate on nurture sequence 1 | >= 45% |
 | Clip-to-site click-through rate | >= 1.5% |
-| Leads entering referral path | >= 10% |
+| Booked customers receiving a manual or automated referral ask | >= 10% |
 
 ### Risks and mitigations
 

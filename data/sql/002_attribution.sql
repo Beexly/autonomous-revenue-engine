@@ -3,6 +3,7 @@
 -- Refresh guidance:
 --   1. REFRESH MATERIALIZED VIEW analytics_channel_revenue_mv;
 --   2. For higher scale, create the unique index below first and use REFRESH MATERIALIZED VIEW CONCURRENTLY.
+--   3. This file bootstraps the materialized view with IF NOT EXISTS; future definition changes should use a dedicated versioned migration that recreates the view during a maintenance window.
 -- Validation examples are included at the bottom of this file.
 
 CREATE OR REPLACE VIEW analytics_first_touch_attribution_v AS
@@ -34,6 +35,11 @@ LEFT JOIN utm_sessions us
 ORDER BY l.id, COALESCE(us.converted_at, us.last_seen_at, us.updated_at, us.created_at) DESC NULLS LAST, us.id DESC;
 
 CREATE OR REPLACE VIEW analytics_multi_touch_path_v AS
+WITH fulfilled_leads AS (
+  SELECT DISTINCT b.lead_id
+  FROM bookings b
+  WHERE b.status = 'fulfilled'
+)
 SELECT
   l.id AS lead_id,
   us.id AS utm_session_id,
@@ -49,19 +55,14 @@ SELECT
   COALESCE(us.converted_at, us.last_seen_at, us.first_seen_at, us.created_at) AS touch_at,
   MAX(COALESCE(us.converted_at, us.last_seen_at, us.first_seen_at, us.created_at)) OVER (PARTITION BY l.id)
     = COALESCE(us.converted_at, us.last_seen_at, us.first_seen_at, us.created_at) AS is_last_touch,
-  EXISTS (
-    SELECT 1
-    FROM bookings b
-    WHERE b.lead_id = l.id
-      AND b.status IN ('booked', 'fulfilled')
-  ) AS has_booked_revenue
+  (fl.lead_id IS NOT NULL) AS has_booked_revenue
 FROM leads l
 JOIN utm_sessions us
-  ON us.lead_id = l.id;
+  ON us.lead_id = l.id
+LEFT JOIN fulfilled_leads fl
+  ON fl.lead_id = l.id;
 
-DROP MATERIALIZED VIEW IF EXISTS analytics_channel_revenue_mv;
-
-CREATE MATERIALIZED VIEW analytics_channel_revenue_mv AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS analytics_channel_revenue_mv AS
 WITH fulfilled_revenue AS (
   SELECT
     b.id AS booking_id,
