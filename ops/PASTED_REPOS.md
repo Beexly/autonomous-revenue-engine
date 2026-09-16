@@ -76,3 +76,25 @@ Signal Origin, a client file, or Hermes itself.
 | [quietvoid/dovi_tool](https://github.com/quietvoid/dovi_tool) | (b) media rail | Dolby Vision RPU CLI. Relevant if a video pipeline (OF/fanripper, Recordly) hits DV streams. Not a website tool. |
 | [zhengli97/Awesome-Prompt-Adapter-Learning-for-VLMs-CLIP](https://github.com/zhengli97/Awesome-Prompt-Adapter-Learning-for-VLMs-CLIP) | (a) study | CLIP paper list. GSN.Cards already uses CLIP. Bookmark, do not vendor. |
 | [open-edge-platform/datumaro](https://github.com/open-edge-platform/datumaro) | (b) later CV | Intel dataset manager. Useful if we ever train/scan (GSN.Cards), not a one-pager. |
+
+## Agent / browser / RE paste (2026-09-15)
+
+Do not confuse `ocr` (Alibaba OpenCodeReview CLI) with X Original Content Rewards in `ops/OCR_ALIGNMENT.md`.
+
+| Repo | Class | Call |
+|---|---|---|
+| [alibaba/open-code-review](https://github.com/alibaba/open-code-review) | (a) Hermes | Hermes skill `open-code-review`. Complements `requesting-code-review` + `diff-review` plugin. `ocr review --audience agent -b "..."`. Not a GitHub Action on Kit/chick. |
+| [affaan-m/ECC](https://github.com/affaan-m/ECC) | (a) Hermes later | Already on disk at `.claude/plugins/cache/ecc`. Pointer skill only. Do not run `install.sh --target hermes` until Garrett says yes (copies a huge skill tree). Not a Factory app. |
+| [openai/plugins](https://github.com/openai/plugins) | (c) | Codex marketplace examples. Not Hermes-native. Skip. |
+| [h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura) | (a) Hermes opt-in | Skill only. First-party plugin `SGavrl/hermes-plugin-obscura` exists. Do **not** enable until `obscura` is on PATH. Complements chrome-devtools. Not Kit. |
+| [browser-use/browser-harness](https://github.com/browser-use/browser-harness) | (a) Hermes | Skill. CDP self-healing vs existing chrome-devtools MCP. Do not dump `interaction-skills`. Cloud needs `BROWSER_USE_API_KEY`. |
+| [seleniumbase/SeleniumBase](https://github.com/seleniumbase/SeleniumBase) | (c) | Duplicate stealth browser. Hermes already has chrome-devtools + browser-use + Obscura path. Skip. |
+| [NationalSecurityAgency/ghidra](https://github.com/NationalSecurityAgency/ghidra) | (c) | Full SRE GUI. Not Hermes, not Factory. Skip install. |
+| [zhaoxuya520/reverse-skill](https://github.com/zhaoxuya520/reverse-skill) | (c) | Pentest/RE pack. Hermes already has Strix + `local-pentest-cli-ops`. Skip dump. |
+| [rizinorg/cutter](https://github.com/rizinorg/cutter) | (c) | Rizin GUI. Same as Ghidra. Skip. |
+| [zzzprojects/html-agility-pack](https://github.com/zzzprojects/html-agility-pack) | (c) | .NET HTML parser. ARE is HTML/JS/Vercel. Hermes is Python. Wrong language. |
+| [mlt131220/Astral3D](https://github.com/mlt131220/Astral3D) | (c) | Vue3+Three.js editor. Not a one-pager, not Hermes. |
+| [OpenBMB/VisRAG](https://github.com/OpenBMB/VisRAG) | (c) | GPU VLM RAG. Factory filter: GPU apps blocked until cash. |
+| [OpenHands/OpenHands](https://github.com/OpenHands/OpenHands) | (c) | Competing agent OS. Local clone already at `OpenHands`. Do not fork into ARE. |
+| [OpenHands/software-agent-sdk](https://github.com/OpenHands/software-agent-sdk) | (c) | Python agent-builder SDK. ARE architect is Grok; Hermes is the operator shell. Skip. |
+| [Paca-AI/paca](https://github.com/Paca-AI/paca) | (c) | Scrum platform + running instance. Not cash, not Hermes. |
