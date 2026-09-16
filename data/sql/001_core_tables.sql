@@ -244,36 +244,43 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_reviews_external_review_id_unique ON revie
 CREATE INDEX IF NOT EXISTS idx_reviews_platform_status ON reviews (platform, status, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_reviews_rating ON reviews (rating) WHERE rating IS NOT NULL;
 
+DROP TRIGGER IF EXISTS set_leads_updated_at ON leads;
 CREATE TRIGGER set_leads_updated_at
 BEFORE UPDATE ON leads
 FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
 
+DROP TRIGGER IF EXISTS set_utm_sessions_updated_at ON utm_sessions;
 CREATE TRIGGER set_utm_sessions_updated_at
 BEFORE UPDATE ON utm_sessions
 FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
 
+DROP TRIGGER IF EXISTS set_lead_events_updated_at ON lead_events;
 CREATE TRIGGER set_lead_events_updated_at
 BEFORE UPDATE ON lead_events
 FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
 
+DROP TRIGGER IF EXISTS set_bookings_updated_at ON bookings;
 CREATE TRIGGER set_bookings_updated_at
 BEFORE UPDATE ON bookings
 FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
 
+DROP TRIGGER IF EXISTS set_content_assets_updated_at ON content_assets;
 CREATE TRIGGER set_content_assets_updated_at
 BEFORE UPDATE ON content_assets
 FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
 
+DROP TRIGGER IF EXISTS set_referrals_updated_at ON referrals;
 CREATE TRIGGER set_referrals_updated_at
 BEFORE UPDATE ON referrals
 FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
 
+DROP TRIGGER IF EXISTS set_reviews_updated_at ON reviews;
 CREATE TRIGGER set_reviews_updated_at
 BEFORE UPDATE ON reviews
 FOR EACH ROW

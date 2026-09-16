@@ -66,6 +66,7 @@ Turn quiz completions into segmented nurture entrants with a complete intent pro
 - `quiz_segment_assigned`
 - `crm_sync_succeeded` or `crm_sync_failed`
 - `nurture_enrolled`
+- `nurture_skipped_no_consent`
 - `workflow_completed`
 
 ## Failure handling and dead-letter strategy

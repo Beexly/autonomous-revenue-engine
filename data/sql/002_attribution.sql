@@ -130,6 +130,7 @@ CREATE INDEX IF NOT EXISTS idx_analytics_last_touch_lead_id
 --    ORDER BY 1
 --    LIMIT 20;
 --
--- 4) Revenue rollups should reconcile with booked revenue in base tables.
+-- 4) Revenue rollups should reconcile with booked revenue in base tables when filtered to one attribution model at a time.
+--    SELECT SUM(revenue_cents) FROM analytics_channel_revenue_mv WHERE attribution_model = 'first_touch';
 --    SELECT SUM(revenue_cents) FROM analytics_channel_revenue_mv WHERE attribution_model = 'last_touch';
 --    SELECT SUM(revenue_cents) FROM bookings WHERE status IN ('booked', 'fulfilled');

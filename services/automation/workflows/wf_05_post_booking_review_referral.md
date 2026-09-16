@@ -40,7 +40,7 @@ Turn fulfilled bookings into public reviews and a single trackable referral-prog
 5. **Wait node** - pause 72 hours for review callback or status sync.
 6. **If node** - if no review exists, send one reminder; otherwise continue.
 7. **PostgreSQL** - create `reviews` row on request and update on submission/publish callbacks.
-8. **If node** - continue to referral only when a review reaches `submitted` or `published` **and** the rating is `>= 4` or the mapped sentiment is `positive`; otherwise stop after the reminder path and create a CRM follow-up or service-recovery task if needed.
+8. **If node** - continue to referral only when `(review_status IN ['submitted', 'published']) AND (rating >= 4 OR mapped_sentiment = 'positive')`; otherwise stop after the reminder path and create a CRM follow-up or service-recovery task if needed.
 9. **Function** - generate unique referral code and reward terms.
 10. **PostgreSQL** - create or update the single `referrals` row with `origin_booking_id = booking.booking_id` and insert `referral_shared` event.
 11. **Email/SMS node** - send referral invite with tracked link.
