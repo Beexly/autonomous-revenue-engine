@@ -1,53 +1,46 @@
-# SAMPLES — three art directions
+# SAMPLES — three art directions (revised 2026-09-16)
 
-Three complete builds of the same site, same facts (`FACTS.md`), same photos, no
-shared CSS. The client asked for "elegant" and nothing else, so the three differ
-in art direction, layout system and typography — not in content. Present all
-three, let them pick, then merge the winner.
+Three complete builds of the same facts (`FACTS.md`) and the same photos. No
+fourth sample. The first pass was a template with a coat of paint — three-up
+quotes, monument 35/90/50/150, price-list menus, 480px photos stretched into
+stamp grids. This pass treats **every published menu item as a look** (49 of
+them) and walks them on a 3D snap-scroll runway.
 
-| # | Folder | Live | Direction | Type |
-|---|---|---|---|---|
-| 1 | `sample-1-editorial/` | https://charcuterie-chick-sample-1.vercel.app | Warm editorial on cream — magazine columns, cards, hints of olive and gold, full proposal page at the end | Fraunces + Source Sans 3 |
-| 2 | `sample-2-after-dark/` | https://charcuterie-chick-sample-2.vercel.app | After dark — near-black room, brass hairlines, restaurant-menu dotted leaders, filmstrip gallery, drop cap | Cormorant Garamond + Karla |
-| 3 | `sample-3-studio/` | https://charcuterie-chick-sample-3.vercel.app | Studio — white, numbered sections, sticky left rail, tabular price table, uneven photo grid | Archivo (single family) |
+## Live
 
-Old stable demo URL (sample 1, still live): https://charcuterie-chick-showcase.vercel.app
+1. **Warm editorial (cream, Fraunces)** — https://charcuterie-chick-sample-1.vercel.app
+   Split-screen hero, collection as a horizontal lookbook, reviews as a
+   vertical reading list (not three cards).
+2. **After dark (near-black, Cormorant Garamond)** — https://charcuterie-chick-sample-2.vercel.app
+   Full-viewport film still, then the show. Brass accent only on the italic
+   word and the look numbers.
+3. **Studio (white, Archivo, sticky rail)** — https://charcuterie-chick-sample-3.vercel.app
+   Folio: left rail, one giant catering photo, then the same 49 looks with
+   pointer-tilt.
 
-## What is shared by all three
+Shared engine: `samples/shared/looks.js` (49 looks) + `runway.js` (CSS 3D
+pointer-tilt, snap-scroll, house filters). Copied into each sample so each
+Vercel project stays self-contained.
 
-- Content: `FACTS.md` only. Same prices, tiers, reviews, FAQ, NAP.
-- Photos: her own, from `site/img/` — no AI imagery, no stock.
-- SEO: unique title, meta description, canonical, OG/Twitter, JSON-LD
-  (CateringService + Menu + FAQPage), descriptive alt text, image dimensions,
-  `robots.txt`, `sitemap.xml`.
-- CTAs: `tel:` call, an SMS quote composer (message built from the form fields,
-  copy-to-clipboard fallback), anchors. No dead buttons.
-- No AI-flavoured type (no Inter / Poppins / Montserrat / Space Grotesk), no
-  gradients, no glass, no drop shadows, no emoji, no rounded "card" clutter.
+## What changed vs the first pass
 
-## Building and deploying one
+- Menu is no longer a price list. It is a collection of 49 looks: 5 tables, 6
+  carts, 4 sweets, 2 sips, 11 sliders, 11 dips, 6 salads, 4 meats.
+- Each look sits on a 3D stage. Pointer moves the figure. Horizontal snap
+  scroll. House filters (Tables / Carts / Sweets / Sips / Sliders / Dips /
+  Salads / Meats).
+- Photos stay native; they are not stretched into 400px-tall stamps. Ken Burns
+  is a slow scale, not a zoom punch.
+- Monument stats, three equal quote cards, and the gold "luxury" palette are
+  gone.
+- Real photos only. The four Grok Imagine hashes in `ASSETS.md` remain banned.
 
-Images are not duplicated per sample in git. They live in `site/img/` and are
-rebuilt from source photos by `tools/prep_assets.py`. To deploy a sample:
+## Do not blend
 
-```bash
-# from a scratch dir, assemble index.html + img/
-mkdir -p /tmp/sample && cp clients/chick-goodies/samples/sample-2-after-dark/index.html /tmp/sample/
-cp -r <path-to-built-img> /tmp/sample/img      # site/img/ as built by prep_assets.py
-cd /tmp/sample && vercel deploy --prod --yes --name charcuterie-chick-sample-2
-```
+If the client picks one, keep that sample's type, palette, and layout. Do not
+average the three. You may steal a mechanic (the runway) — not a colour.
 
-Local working copies with images already in place:
-`C:/Users/Garrett/chick-samples/{sample-1-editorial,sample-2-after-dark,sample-3-studio}/`
+## Photography ceiling
 
-## Rules when editing a sample
-
-1. **Do not blend the directions.** If you are editing sample 3, it stays
-   Archivo-only with hairlines and no serif. Each one has to look like a
-   different studio made it, or the client sees three versions of the same page.
-2. Sample 1 carries the proposal page (`#proposal`) — samples 2 and 3 are pure
-   site samples, deliberately.
-3. Keep the type families exactly as listed in the table above; the client's
-   complaint was that the earlier build "looks like AI", and generic UI faces
-   are the fastest way back there.
-4. If you change a price, change `FACTS.md` first, then all three samples.
+Public photos still max out at 480×640 (see `ASSETS.md`). The runway hides
+that better than a grid, but it does not replace a shoot.
