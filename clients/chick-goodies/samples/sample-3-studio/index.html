@@ -1,90 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-  Craft: Floema numbered chapters + Verde cinematic catering + The Platter calculator.
-  Dark. Full-bleed. 01–05. Live total. No WebGL.
--->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>01 — Charcuterie Chick</title>
-<meta name="description" content="Five tables. Live quote. Grazing in Tomball from $24 a person. Call 832-458-8180.">
+<meta name="description" content="Five tables. Live quote. Book 832-458-8180.">
 <link rel="canonical" href="https://charcuterie-chick-sample-3.vercel.app/">
-<meta name="theme-color" content="#0c0b0a">
+<meta name="theme-color" content="#29382b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Outfit:wght@400&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-snap-type:y mandatory}
-body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0a;color:#efece6;line-height:1.45}
-a{color:inherit;text-decoration:none}
-.bar{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;padding:1.2rem 1.5rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
-.ch{min-height:100svh;scroll-snap-align:start;position:relative;display:grid;place-items:end start;padding:18vh 6vw 8vh}
-.ch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
-.ch .n{position:relative;font-size:clamp(4rem,14vw,12rem);font-weight:500;line-height:.8;letter-spacing:-.04em}
-.ch h2{position:relative;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400;margin-top:.6rem;max-width:16ch}
-.ch p{position:relative;margin-top:.8rem;opacity:.7;max-width:36ch}
-.calc{scroll-snap-align:start;min-height:100svh;padding:18vh 6vw 8vh;display:grid;gap:2rem;align-content:center}
-@media(min-width:900px){.calc{grid-template-columns:1fr 1fr;align-items:center}}
-.calc h1{font-size:clamp(2.4rem,6vw,4.5rem);font-weight:500;letter-spacing:-.04em;line-height:.95}
-form{display:grid;gap:.8rem}
-label{display:grid;gap:.3rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;opacity:.5}
-input,select,textarea{font:inherit;padding:.7rem .2rem;border:0;border-bottom:1px solid #efece633;background:transparent;color:inherit}
-button{font:inherit;background:#efece6;color:#0c0b0a;border:0;padding:.9rem 1.2rem;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem;justify-self:start}
-.go{display:flex;gap:.6rem;flex-wrap:wrap}
-#est{font-size:1.15rem}
-#est div{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #efece622}
-.hint{opacity:.4;font-size:.8rem}
+/* Noma color + type, EMP contain photos, Floema 01–05, Platter calculator */
+:root {
+  --ink: rgb(41, 56, 43);
+  --paper: rgb(249, 249, 243);
+  --reckless: Fraunces, Georgia, serif;
+  --roobert: Outfit, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; }
+body { background: var(--ink); color: var(--paper); font-family: var(--reckless); font-size: 18px; line-height: 27px; }
+a { color: inherit; text-decoration: none; }
+.bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 4;
+  display: flex; justify-content: space-between;
+  padding: 24px 40px;
+  font-family: var(--roobert);
+  font-size: 16px;
+  letter-spacing: 0.18px;
+}
+.ch {
+  min-height: 100svh;
+  scroll-snap-align: start;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+}
+.ch img {
+  width: min(1298px, 92vw);
+  height: min(745.5px, 70svh);
+  object-fit: contain;
+}
+.ch .meta {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+}
+.ch .n {
+  font-size: 72px;
+  font-weight: 500;
+  letter-spacing: -1.44px;
+  line-height: 0.9;
+}
+.ch h2 { font-size: 30px; font-weight: 400; margin-top: 8px; }
+.ch p { font-family: var(--roobert); font-size: 16px; letter-spacing: 0.18px; opacity: 0.8; }
+.calc {
+  scroll-snap-align: start;
+  min-height: 100svh;
+  padding: 120px 40px 80px;
+  display: grid;
+  gap: 40px;
+  background: var(--paper);
+  color: var(--ink);
+}
+@media (min-width: 900px) { .calc { grid-template-columns: 1fr 1fr; align-items: center; } }
+.calc h1 { font-size: 72px; font-weight: 500; letter-spacing: -1.44px; line-height: 0.9; }
+form { display: grid; gap: 14px; }
+label { display: grid; gap: 4px; font-family: var(--roobert); font-size: 16px; letter-spacing: 0.18px; }
+input, select, textarea {
+  font-family: var(--reckless);
+  font-size: 18px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 0.67px solid var(--ink);
+  background: transparent;
+  border-radius: 0;
+  color: inherit;
+}
+button {
+  font-family: var(--reckless);
+  font-size: 30px;
+  padding: 19.5px 42px 19.5px 30px;
+  border: 0.67px solid var(--ink);
+  background: transparent;
+  border-radius: 0;
+  cursor: pointer;
+  justify-self: start;
+}
+.go { display: flex; gap: 12px; flex-wrap: wrap; }
+#est div { display: flex; justify-content: space-between; padding: 6px 0; }
 </style>
 </head>
 <body>
-<div class="bar"><span>Charcuterie Chick</span><a href="tel:+18324588180">Call</a></div>
+<div class="bar"><span>Charcuterie Chick</span><a href="tel:+18324588180">Book a table</a></div>
 <section class="ch">
   <img src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing">
-  <div>
-    <div class="n">01</div>
-    <h2>Holy Grail of Grazing</h2>
-    <p>$2,000 for 75 · $3,500 for 150. Five cheeses, five meats.</p>
-  </div>
+  <div class="meta"><div class="n">01</div><h2>Holy Grail of Grazing</h2><p>$2,000 / $3,500</p></div>
 </section>
 <section class="ch">
   <img src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze">
-  <div>
-    <div class="n">02</div>
-    <h2>Grand Graze</h2>
-    <p>$38 a person. Fifty minimum. Five sliders.</p>
-  </div>
+  <div class="meta"><div class="n">02</div><h2>Grand Graze</h2><p>$38 a person</p></div>
 </section>
 <section class="ch">
   <img src="img/knot-3.jpg" width="945" height="720" alt="Super Graze">
-  <div>
-    <div class="n">03</div>
-    <h2>Super Graze</h2>
-    <p>$30 a person. Three sliders, three salads.</p>
-  </div>
+  <div class="meta"><div class="n">03</div><h2>Super Graze</h2><p>$30 a person</p></div>
 </section>
 <section class="ch">
   <img src="img/knot-4.jpg" width="945" height="720" alt="Grazing Standard">
-  <div>
-    <div class="n">04</div>
-    <h2>Grazing Standard</h2>
-    <p>$26 a person. The house plus pasta salad and chips.</p>
-  </div>
+  <div class="meta"><div class="n">04</div><h2>Grazing Standard</h2><p>$26 a person</p></div>
 </section>
 <section class="ch">
   <img src="img/wide-640.jpg" width="640" height="452" alt="Graze Me, Craze Me">
-  <div>
-    <div class="n">05</div>
-    <h2>Graze Me, Craze Me</h2>
-    <p>$24 a person. Where the list starts.</p>
-  </div>
+  <div class="meta"><div class="n">05</div><h2>Graze Me, Craze Me</h2><p>$24 a person</p></div>
 </section>
-<section class="calc" id="ask">
-  <div>
-    <h1>See the number.</h1>
-    <p style="opacity:.6;margin-top:1rem;max-width:36ch">Food plus $229 setup plus 18% tax. Then it becomes a text to Tricia. Nothing sends itself.</p>
-  </div>
+<section class="calc">
+  <h1>Book a table</h1>
   <form>
     <label>Name<input id="n"></label>
     <label>Phone<input id="p" type="tel"></label>
@@ -94,11 +126,10 @@ button{font:inherit;background:#efece6;color:#0c0b0a;border:0;padding:.9rem 1.2r
     <label>Notes<textarea id="m" rows="3"></textarea></label>
     <div id="est"></div>
     <div class="go">
-      <button type="button" id="smsBtn">Text the quote</button>
-      <button type="button" id="emailBtn" style="background:transparent;color:#efece6;border:1px solid #efece655">Email</button>
-      <button type="button" id="copyBtn" style="background:transparent;color:#efece6;border:1px solid #efece655">Copy</button>
+      <button type="button" id="smsBtn">Text</button>
+      <button type="button" id="emailBtn">Email</button>
     </div>
-    <p class="hint" id="hint">832-458-8180 · charcuteriechick@outlook.com · 11931 Brantley Haven Drive, Tomball</p>
+    <p id="hint"></p>
   </form>
 </section>
 <script src="engine.js"></script>

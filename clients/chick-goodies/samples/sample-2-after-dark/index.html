@@ -1,78 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-  Craft: noma.dk — a letter, then photographs. Not a marketing site.
--->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tomball — Charcuterie Chick</title>
-<meta name="description" content="A letter from Tricia Holfelder. Grazing tables in Tomball. Call 832-458-8180.">
+<meta name="description" content="A letter from Tricia Holfelder. Book a table: 832-458-8180.">
 <link rel="canonical" href="https://charcuterie-chick-sample-2.vercel.app/">
-<meta name="theme-color" content="#ece7dc">
+<meta name="theme-color" content="#f9f9f3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Outfit:wght@400&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Source Serif 4",Georgia,serif;background:#ece7dc;color:#1a1814;line-height:1.65;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-img{display:block;width:100%;height:auto}
-.top{padding:1.5rem 6vw;display:flex;justify-content:space-between;font-size:.9rem}
-.hero img{width:100%;height:auto;max-height:88vh;object-fit:contain;background:#ddd4c4}
-.letter{max-width:38rem;margin:0 auto;padding:4.5rem 1.5rem 3rem}
-.letter h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;margin:0 0 2rem}
-.letter p{font-size:1.2rem;margin:0 0 1.15rem}
-.letter p.sign{margin-top:2rem}
-.book{display:inline-block;margin-top:1.5rem;padding:.7rem 1.2rem;border:1px solid #1a1814;text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
-.block{margin:0 0 3rem}
-.block figcaption{padding:1rem 6vw 0;font-size:.95rem;max-width:40rem}
-.menu{max-width:38rem;margin:0 auto;padding:2rem 1.5rem 5rem;list-style:none}
-.menu li{display:flex;justify-content:space-between;padding:.85rem 0;border-bottom:1px solid #1a181422;font-size:1.15rem}
-form{max-width:38rem;margin:0 auto;padding:0 1.5rem 5rem;display:grid;gap:.8rem}
-label{display:grid;gap:.3rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
-input,select,textarea{font:inherit;padding:.6rem 0;border:0;border-bottom:1px solid #1a181433;background:transparent}
-button{font:inherit;background:transparent;border:1px solid #1a1814;padding:.6rem 1rem;cursor:pointer}
-.go{display:flex;gap:.8rem;flex-wrap:wrap}
-#est div{display:flex;justify-content:space-between;padding:.3rem 0}
-footer{padding:2rem 6vw 4rem;font-size:.85rem;opacity:.55}
+/* Tokens: noma.dk getComputedStyle 2026-09-16 */
+:root {
+  --paper: rgb(249, 249, 243);
+  --ink: rgb(41, 56, 43);
+  --reckless: Fraunces, Georgia, serif;
+  --roobert: Outfit, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--reckless);
+  font-size: 18px;
+  line-height: 32.4px;
+}
+a { color: inherit; }
+img { display: block; width: 100%; height: auto; }
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 6vw;
+  font-family: var(--roobert);
+  font-size: 16px;
+  letter-spacing: 0.18px;
+}
+.hero { position: relative; background: #1a241c; }
+.hero img {
+  width: 100%;
+  height: 745.5px;
+  max-height: 88svh;
+  object-fit: cover;
+}
+.hero h1 {
+  position: absolute;
+  left: 6vw;
+  bottom: 8vh;
+  font-family: var(--reckless);
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -1.44px;
+  color: rgb(255,255,255);
+}
+.book {
+  display: inline-block;
+  font-family: var(--reckless);
+  font-size: 30px;
+  letter-spacing: 0.18px;
+  font-weight: 400;
+  color: #fff;
+  padding: 19.5px 42px 19.5px 30px;
+  border: 0.67px solid rgb(255,255,255);
+  border-radius: 0;
+  text-decoration: none;
+  position: absolute;
+  right: 6vw;
+  bottom: 8vh;
+}
+.letter { max-width: 38rem; margin: 0 auto; padding: 72px 24px 48px; }
+.letter p { font-size: 18px; line-height: 27px; margin: 0 0 18px; }
+.block { margin: 0 0 48px; }
+.block img { width: 100%; max-height: 745.5px; object-fit: cover; }
+.block figcaption {
+  padding: 16px 6vw 0;
+  font-family: var(--roobert);
+  font-size: 16px;
+  letter-spacing: 0.18px;
+  line-height: 1.45;
+}
+form { max-width: 38rem; margin: 0 auto; padding: 0 24px 96px; display: grid; gap: 14px; }
+label { display: grid; gap: 4px; font-family: var(--roobert); font-size: 16px; letter-spacing: 0.18px; }
+input, select, textarea {
+  font-family: var(--reckless);
+  font-size: 18px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 0.67px solid var(--ink);
+  background: transparent;
+  border-radius: 0;
+  color: inherit;
+}
+button {
+  font-family: var(--reckless);
+  font-size: 30px;
+  padding: 19.5px 42px 19.5px 30px;
+  border: 0.67px solid var(--ink);
+  background: transparent;
+  border-radius: 0;
+  cursor: pointer;
+  justify-self: start;
+}
+.go { display: flex; gap: 12px; flex-wrap: wrap; }
+#est div { display: flex; justify-content: space-between; }
+footer { padding: 24px 6vw 64px; font-family: var(--roobert); font-size: 16px; letter-spacing: 0.18px; }
+@media (max-width: 800px) {
+  .hero h1 { font-size: 40px; letter-spacing: -0.8px; }
+  .book { position: static; display: inline-block; margin: 16px 6vw; color: var(--ink); border-color: var(--ink); }
+}
 </style>
 </head>
 <body>
 <div class="top"><span>Charcuterie Chick</span><a href="tel:+18324588180">Book a table</a></div>
 <figure class="hero">
   <img src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing">
+  <h1>Tomball</h1>
+  <a class="book" href="tel:+18324588180">Book a table</a>
 </figure>
 <article class="letter">
-  <h1>Tomball</h1>
   <p>Friends,</p>
-  <p>I have spent more than thirty-five years in restaurants — front of house and back. The work now is one party at a time: scratch breads, jellies and jams, Houston’s largest charcuterie cart, a table that looks like it belongs to the people who hired it.</p>
-  <p>The live shop still publishes four things at $0.00 and asks you to call. This page is the menu as it actually is. Grazing tables from $24 a person, fifty guests minimum, ninety minutes on site. The Holy Grail is $2,000 for seventy-five or $3,500 for one hundred fifty.</p>
-  <p>If you are planning something in Tomball, The Woodlands, Spring, or Conroe, write or call. I cook in English and Spanish. I do not take two rooms at once.</p>
-  <p class="sign">Tricia Holfelder</p>
-  <a class="book" href="tel:+18324588180">Call 832-458-8180</a>
+  <p>I have spent more than thirty-five years in restaurants — front of house and back. The work now is one party at a time: scratch breads, jellies and jams, Houston’s largest charcuterie cart.</p>
+  <p>Grazing tables from $24 a person, fifty guests minimum, ninety minutes. The Holy Grail is $2,000 for seventy-five or $3,500 for one hundred fifty.</p>
+  <p>If you are planning something in Tomball, The Woodlands, Spring, or Conroe, call. I cook in English and Spanish. I do not take two rooms at once.</p>
+  <p>Tricia Holfelder</p>
 </article>
 <figure class="block">
   <img src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze">
-  <figcaption>Grand Graze — $38 a person. Five sliders, four salads, pudding cups.</figcaption>
+  <figcaption>Grand Graze — $38 a person.</figcaption>
 </figure>
 <figure class="block">
   <img src="img/tricia-662.jpg" width="662" height="823" alt="Tricia Holfelder">
-  <figcaption>Tricia. 11931 Brantley Haven Drive, Tomball, TX 77375.</figcaption>
+  <figcaption>11931 Brantley Haven Drive, Tomball, TX 77375</figcaption>
 </figure>
-<figure class="block">
-  <img src="img/knot-3.jpg" width="945" height="720" alt="Super Graze">
-  <figcaption>Super Graze — $30 a person.</figcaption>
-</figure>
-<ul class="menu">
-  <li><span>Holy Grail</span><span>$2,000 / $3,500</span></li>
-  <li><span>Grand Graze</span><span>$38</span></li>
-  <li><span>Super Graze</span><span>$30</span></li>
-  <li><span>Grazing Standard</span><span>$26</span></li>
-  <li><span>Graze Me, Craze Me</span><span>$24</span></li>
-  <li><span>Taco cart / Carts</span><span>$26.95 / $24.50</span></li>
-</ul>
-<form id="ask">
+<form>
   <label>Name<input id="n"></label>
   <label>Phone<input id="p" type="tel"></label>
   <label>Date<input id="d" type="date"></label>
@@ -81,13 +143,12 @@ footer{padding:2rem 6vw 4rem;font-size:.85rem;opacity:.55}
   <label>Notes<textarea id="m" rows="3"></textarea></label>
   <div id="est"></div>
   <div class="go">
-    <button type="button" id="smsBtn">Text this</button>
+    <button type="button" id="smsBtn">Text</button>
     <button type="button" id="emailBtn">Email</button>
-    <button type="button" id="copyBtn">Copy</button>
   </div>
   <p id="hint"></p>
 </form>
-<footer>charcuteriechick@outlook.com · @charcuteriechickhtx</footer>
+<footer>832-458-8180 · charcuteriechick@outlook.com</footer>
 <script src="engine.js"></script>
 <script src="quiet.js"></script>
 </body>
