@@ -113,6 +113,11 @@
     $("smsBtn").addEventListener("click", function () {
       window.location.href = "sms:" + TEL + "?&body=" + encodeURIComponent(build());
     });
+    if ($("emailBtn")) {
+      $("emailBtn").addEventListener("click", function () {
+        window.location.href = "mailto:charcuteriechick@outlook.com?subject=" + encodeURIComponent("Quote request") + "&body=" + encodeURIComponent(build());
+      });
+    }
     $("copyBtn").addEventListener("click", function () {
       var txt = build();
       var done = function () { $("hint").textContent = "Copied — paste it into a text or email."; };

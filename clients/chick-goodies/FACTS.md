@@ -14,6 +14,7 @@ If a value is not here, ask Tricia — do not infer it.
 | Experience | "more than 35 years in the restaurant industry"; worked front-of-house and back-of-house | /pages/about-us |
 | Address | 11931 Brantley Haven Drive, Tomball, TX 77375 | /pages/contact |
 | Phone | 832-458-8180 | footer + /pages/contact |
+| Email | charcuteriechick@outlook.com | /pages/contact (verified 2026-09-16; earlier scrape redacted it) |
 | Markets | Tomball · The Woodlands · Spring · Conroe | site copy |
 | Voice / taglines | "elegance without the cost"; "Where Flavor Takes The Lead"; "Deliciously crafted food & beverages made with passion and purpose" | site copy |
 | Position | "Making high-quality catering affordable for every event" (blog title) | /blogs/news |
@@ -64,7 +65,7 @@ Also published: Sarah Mitchell, Daniel Ross.
 
 ## Not verified — do not print
 
-- Email address (redacted in our scrape; needed for the form).
-- Opening hours (the JSON-LD carries a placeholder Mon–Sat 9–7; confirm or drop).
+- Opening hours (the JSON-LD on her Shopify carries a placeholder Mon–Sat 9–7; confirm or drop).
 - Geo coordinates (city centroid of Tomball 77375, not the exact kitchen pin).
 - Any rating total ("4.9 stars", "200 events") — Tricia has to supply it.
+- Contents of `Downloads/IMG_7724.jpeg` and `Downloads/The Chick Goodies.jpg` — vision blocked (Gemini credits depleted 2026-09-16).

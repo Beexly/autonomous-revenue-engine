@@ -1,767 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-  Charcuterie Chick — one-page catering site (working build)
-  Owner of this file: Garrett / Beexly. Client: Tricia Holfelder, Charcuterie Chick, Tomball TX.
-  Rules for anyone editing this file:
-    1. REAL photos only. No AI-generated imagery, no stock. Photos have small source files
-       (480x640 max) — never upscale them past ~1.2x, use them at or below their real size.
-    2. No AI-looking typography. Display = Fraunces. Body = Source Sans 3. Do NOT swap in
-       Inter / Poppins / Montserrat / Space Grotesk. No gradients, no glass cards, no emoji.
-    3. Every number, price and claim on this page must be traceable to FACTS.md.
-       If it is not in FACTS.md, do not print it.
-    4. Phone number is written by tools/prep_assets.py from the 832-458-8180 token.
-  Copy source of truth: clients/chick-goodies/FACTS.md
--->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Charcuterie Catering in Tomball, TX | Charcuterie Chick</title>
-<meta name="description" content="Grazing tables and charcuterie catering in Tomball, TX — boards, carts and cups for 50–150 guests. 35 years in restaurants. Tables from $24 a person.">
+<meta name="description" content="Grazing tables and charcuterie catering in Tomball, TX. 49 looks. Tables from $24 a person.">
 <link rel="canonical" href="https://charcuterie-chick-sample-1.vercel.app/">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="author" content="Tricia Holfelder — Charcuterie Chick">
-<meta name="theme-color" content="#FAF5EB">
-<meta name="geo.region" content="US-TX">
-<meta name="geo.placename" content="Tomball, Texas">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Charcuterie Chick">
-<meta property="og:title" content="Charcuterie Catering &amp; Grazing Tables in Tomball, TX">
-<meta property="og:description" content="Grazing tables, carts and boards for weddings, showers and corporate events. 35 years in restaurants. Tomball · The Woodlands · Spring · Conroe.">
+<meta property="og:title" content="Charcuterie Catering in Tomball, TX | Charcuterie Chick">
+<meta property="og:description" content="Grazing tables and charcuterie catering in Tomball, TX. 49 looks. Tables from $24 a person.">
 <meta property="og:url" content="https://charcuterie-chick-sample-1.vercel.app/">
 <meta property="og:image" content="https://charcuterie-chick-sample-1.vercel.app/img/table-01.jpg">
-<meta property="og:image:alt" content="Grazing table set for an event by Charcuterie Chick">
-<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Charcuterie Catering &amp; Grazing Tables in Tomball, TX">
-<meta name="twitter:description" content="Grazing tables, carts and boards. Tomball · The Woodlands · Spring · Conroe.">
-<meta name="twitter:image" content="https://charcuterie-chick-sample-1.vercel.app/img/table-01.jpg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="img/wide-640.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <link rel="icon" href="img/logo.png">
-
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["CateringService", "FoodEstablishment"],
-      "@id": "https://charcuterie-chick-sample-1.vercel.app/#business",
-      "name": "Charcuterie Chick",
-      "alternateName": "The Chick Goodies",
-      "description": "Grazing tables, charcuterie carts, boards and cups for weddings, showers and corporate events in Tomball, The Woodlands, Spring and Conroe, Texas. Owned by Tricia Holfelder, 35 years in the restaurant industry.",
-      "founder": { "@type": "Person", "name": "Tricia Holfelder" },
-      "telephone": "+18324588180",
-      "url": "https://charcuterie-chick-sample-1.vercel.app/",
-      "image": "https://charcuterie-chick-sample-1.vercel.app/img/table-01.jpg",
-      "priceRange": "$$",
-      "servesCuisine": ["Charcuterie", "Grazing tables", "American", "Catering"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "11931 Brantley Haven Drive",
-        "addressLocality": "Tomball",
-        "addressRegion": "TX",
-        "postalCode": "77375",
-        "addressCountry": "US"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": 30.0971, "longitude": -95.6161 },
-      "areaServed": [
-        { "@type": "City", "name": "Tomball" },
-        { "@type": "City", "name": "The Woodlands" },
-        { "@type": "City", "name": "Spring" },
-        { "@type": "City", "name": "Conroe" },
-        { "@type": "City", "name": "Magnolia" },
-        { "@type": "City", "name": "Cypress" }
-      ],
-      "openingHoursSpecification": [{
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "opens": "09:00", "closes": "19:00"
-      }],
-      "hasMenu": {
-        "@type": "Menu",
-        "name": "Grazing tables and catering menu",
-        "hasMenuSection": [
-          {
-            "@type": "MenuSection",
-            "name": "Grazing tables (per person, 50 guest minimum)",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "The Graze Me, Craze Me Table", "offers": { "@type": "Offer", "price": "24.00", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "The Grazing Standard Table", "offers": { "@type": "Offer", "price": "26.00", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "The Super Graze Table", "offers": { "@type": "Offer", "price": "30.00", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "The Grand Graze Table", "offers": { "@type": "Offer", "price": "38.00", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "The Holy Grail of Grazing — 75 guests", "offers": { "@type": "Offer", "price": "2000.00", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "The Holy Grail of Grazing — 150 guests", "offers": { "@type": "Offer", "price": "3500.00", "priceCurrency": "USD" } }
-            ]
-          },
-          {
-            "@type": "MenuSection",
-            "name": "Carts, stations and sweets",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Taco Cart", "offers": { "@type": "Offer", "price": "26.95", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Carts", "offers": { "@type": "Offer", "price": "24.50", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Cakes and Shakes", "offers": { "@type": "Offer", "price": "9.50", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Bloody Mary Chick", "offers": { "@type": "Offer", "price": "6.50", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Candy Bar Chick", "offers": { "@type": "Offer", "price": "5.00", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Zeppole Beignet Chick", "offers": { "@type": "Offer", "price": "4.50", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Mimosa Chick", "offers": { "@type": "Offer", "price": "4.00", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Slider Menu", "offers": { "@type": "Offer", "price": "2.95", "priceCurrency": "USD" } }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://charcuterie-chick-sample-1.vercel.app/#faq",
-      "mainEntity": [
-        { "@type": "Question", "name": "What is the minimum guest count for a grazing table?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Fifty guests for the per-person tables ($24 to $38 a person). The Holy Grail of Grazing is priced by the table instead: $2,000 feeds 75 guests and $3,500 feeds 150." } },
-        { "@type": "Question", "name": "Are there setup fees or tax on top of the table price?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every grazing table carries 18% tax and a $229 flat setup fee, and each table service runs 90 minutes. Extra time can be added for $3 per person per half hour." } },
-        { "@type": "Question", "name": "Where does Charcuterie Chick deliver and set up?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Tomball, The Woodlands, Spring and Conroe, Texas, out of the kitchen at 11931 Brantley Haven Drive, Tomball TX 77375." } },
-        { "@type": "Question", "name": "How far ahead should I book catering?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Two weeks is comfortable for most events. Call or text to ask about sooner — dates do open up." } },
-        { "@type": "Question", "name": "Who is behind Charcuterie Chick?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Tricia Holfelder, with more than 35 years in the restaurant industry. She built her career from front-of-house to back-of-house before starting Charcuterie Chick." } }
-      ]
-    }
-  ]
-}
+{"@context":"https://schema.org","@graph":[
+{"@type":["CateringService","FoodEstablishment"],"name":"Charcuterie Chick","founder":{"@type":"Person","name":"Tricia Holfelder"},"telephone":"+18324588180","url":"https://charcuterie-chick-sample-1.vercel.app/","address":{"@type":"PostalAddress","streetAddress":"11931 Brantley Haven Drive","addressLocality":"Tomball","addressRegion":"TX","postalCode":"77375","addressCountry":"US"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the minimum guest count?","acceptedAnswer":{"@type":"Answer","text":"Fifty guests for per-person tables, $24 to $38. Holy Grail is $2,000 for 75 guests and $3,500 for 150."}},
+{"@type":"Question","name":"Are there setup fees or tax?","acceptedAnswer":{"@type":"Answer","text":"18% tax and a $229 flat setup fee. Service runs 90 minutes. Extra time $3 per person per half hour."}}
+]}]}
 </script>
-
 <style>
-:root{
-  --paper:#FAF5EB; --paper-2:#F2E8D7; --white:#fff;
-  --ink:#191512; --ink-soft:#4C443B; --mute:#7B7166;
-  --olive:#3C4A2E; --gold:#9C6E28; --clay:#A9502C; --line:rgba(25,21,18,.14);
-  --disp:Fraunces,Georgia,'Times New Roman',serif;
-  --body:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.62 var(--body);font-weight:400}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-h1,h2,h3,h4{font-family:var(--disp);font-weight:400;letter-spacing:-.015em;margin:0;line-height:1.08}
-em{font-style:italic}
+
+:root{--bg:#F4EFE4;--ink:#1A1612;--mute:#6A6258;--line:rgba(26,22,18,.14);--accent:#6B2E24;
+  --disp:Fraunces,Georgia,serif;--sans:'Source Serif 4',Georgia,serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.55 var(--sans)}
+img{max-width:100%;display:block}a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:400;margin:0;line-height:1.05;letter-spacing:-.02em}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-.kick{font:600 11.5px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0}
-.rule{border:0;height:1px;background:var(--line);margin:0}
-.skip{position:absolute;left:-9999px}
-
-/* header */
-header{position:sticky;top:0;z-index:40;background:rgba(250,245,235,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 0}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo img{height:44px;width:auto;mix-blend-mode:multiply}
-nav{display:none;gap:24px;font-size:15px;color:var(--ink-soft)}
-nav a{text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
-@media(min-width:960px){nav{display:flex}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:3px;background:var(--ink);color:var(--paper);text-decoration:none;font:600 14.5px/1 var(--body);letter-spacing:.01em;border:1px solid var(--ink);cursor:pointer}
-.btn.gold{background:var(--gold);border-color:var(--gold);color:#fff}
+.eyebrow{font:11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line)}
+header.top img{height:36px;width:auto;mix-blend-mode:multiply}
+.hero{display:grid;min-height:88vh}
+@media(min-width:900px){.hero{grid-template-columns:1fr 1.15fr}}
+.hero .copy{padding:48px 24px;display:flex;flex-direction:column;justify-content:flex-end}
+.hero h1{font-size:clamp(2.8rem,7vw,5.6rem);max-width:12ch}
+.hero p{max-width:38ch;color:var(--mute);margin:22px 0 0}
+.hero .acts{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.hero figure{margin:0;min-height:50vh}
+.hero figure img{width:100%;height:100%;object-fit:cover;min-height:50vh}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;background:var(--ink);color:var(--bg);text-decoration:none;border:1px solid var(--ink);font:13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
 .btn.ghost{background:transparent;color:var(--ink)}
-.btn.onDark{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.btn:hover{opacity:.9}
+#show{padding:40px 0 20px;border-top:1px solid var(--line)}
+#show .wrap-title{padding:0 24px 8px}
+#show h2{font-size:clamp(2rem,4vw,3.2rem);margin-top:10px}
+.runway{color:var(--ink)}
+.about{display:grid;gap:40px;padding:80px 24px;border-top:1px solid var(--line)}
+@media(min-width:900px){.about{grid-template-columns:.7fr 1.3fr;max-width:1180px;margin:0 auto}}
+.about img{width:100%}
+.about p{color:var(--mute)}
+.quotes{padding:60px 24px;max-width:900px}
+.quotes blockquote{margin:0 0 36px;font-family:var(--disp);font-size:1.4rem;font-style:italic;line-height:1.35}
+.quotes cite{display:block;margin-top:10px;font:11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;font-style:normal;color:var(--mute)}
+.faq{padding:40px 24px 80px;max-width:800px}
+.faq details{border-top:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-family:var(--disp);font-size:1.3rem;list-style:none}
+.faq p{color:var(--mute)}
+.contact{background:var(--ink);color:var(--bg);padding:72px 0}
+.contact .eyebrow{color:#C9A27A}
+.contact-grid{display:grid;gap:40px;margin-top:32px}
+@media(min-width:900px){.contact-grid{grid-template-columns:1fr 1.1fr}}
+.contact dt{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.55}
+.contact dd{margin:6px 0 18px;font-family:var(--disp);font-size:1.2rem}
+form{border:1px solid rgba(244,239,228,.2);padding:24px}
+label{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin:16px 0 6px}
+input,select,textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(244,239,228,.3);color:var(--bg);font:16px/1.4 var(--sans);padding:10px 0}
+.two{display:grid;gap:12px}@media(min-width:640px){.two{grid-template-columns:1fr 1fr}}
+.go{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.contact .btn{background:var(--bg);color:var(--ink)}
+.contact .btn.ghost{background:transparent;color:var(--bg);border-color:rgba(244,239,228,.4)}
+.hint{font-size:13px;opacity:.6}
+footer{padding:22px 24px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);border-top:1px solid var(--line)}
 
-/* hero */
-.hero{padding:56px 0 64px;border-bottom:1px solid var(--line)}
-.hero .grid{display:grid;gap:44px;align-items:center}
-@media(min-width:920px){.hero .grid{grid-template-columns:1.05fr .95fr;gap:64px}}
-.hero h1{font-size:clamp(2.3rem,5.4vw,4.1rem);margin:18px 0 0;max-width:17ch}
-.hero h1 em{color:var(--olive)}
-.hero p.lede{margin:20px 0 0;font-size:1.1rem;color:var(--ink-soft);max-width:52ch}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.hero .mini{margin-top:26px;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
-.collage{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.collage img{width:100%;object-fit:cover;border-radius:2px}
-.collage .big{grid-column:span 2;height:290px}
-.collage .sm{height:216px}
-.stack{display:grid;gap:14px}
-.stack img{width:100%;object-fit:cover;border:1px solid var(--line)}
-.stack img:first-child{height:300px}
-.stack img:last-child{height:420px}
-.credit{margin-top:8px;font-size:12px;color:var(--mute);grid-column:span 2}
+.look-bar{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0 8px}
+.look-count{font-variant-numeric:tabular-nums;letter-spacing:.18em;text-transform:uppercase;font-size:12px;margin:0}
+.look-houses{display:flex;flex-wrap:wrap;gap:8px}
+.look-houses button{background:transparent;border:0;border-bottom:1px solid transparent;color:inherit;font:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:8px 2px;cursor:pointer;opacity:.55}
+.look-houses button:hover{opacity:1;border-bottom-color:currentColor}
+.runway{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:28px 4vw 60px;perspective:1400px}
+.runway::-webkit-scrollbar{height:4px}
+.look{flex:0 0 min(78vw,420px);scroll-snap-align:center;scroll-snap-stop:always}
+.stage{position:relative;height:520px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.2,1);transform-origin:center 70%}
+.stage figure{margin:0;position:absolute;inset:0 8% 18%;overflow:hidden}
+.stage img{width:100%;height:100%;object-fit:cover}
+.plinth{display:none}
+.look .meta{padding:18px 8px 0}
+.look-n{margin:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.55}
+.look h3{margin:8px 0 0;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;font-weight:400}
+.look .price{margin:10px 0 0;font-size:1.15rem}
+.look .price small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:4px}
+.look .note{margin:10px 0 0;font-size:14px;line-height:1.55;opacity:.72}
+@keyframes ken{from{transform:scale(1)}to{transform:scale(1.08)}}
 
-/* strip */
-.strip{background:var(--ink);color:var(--paper)}
-.strip .wrap{display:flex;flex-wrap:wrap;gap:8px 34px;justify-content:center;padding:14px 24px;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase}
-
-section{padding:76px 0}
-.sec-head{max-width:60ch}
-.sec-head h2{font-size:clamp(1.75rem,3.6vw,2.7rem);margin:14px 0 0}
-.sec-head p{margin:16px 0 0;color:var(--ink-soft)}
-
-.cards{display:grid;gap:26px;margin-top:44px}
-@media(min-width:860px){.cards{grid-template-columns:repeat(3,1fr)}}
-.card{display:flex;flex-direction:column}
-.card img{height:300px;object-fit:cover;border-radius:2px}
-.card h3{font-size:1.4rem;margin:18px 0 0}
-.card p{margin:10px 0 0;color:var(--ink-soft);font-size:15.5px}
-.card .price{margin-top:auto;padding-top:16px;font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-
-.tiers{margin-top:40px;border-top:2px solid var(--ink)}
-.tier{display:grid;gap:8px;padding:24px 0;border-bottom:1px solid var(--line)}
-@media(min-width:860px){.tier{grid-template-columns:minmax(210px,.9fr) 1.7fr auto;align-items:center;gap:30px}}
-.tier h3{font-size:1.24rem}
-.tier p{margin:0;font-size:15px;color:var(--ink-soft)}
-.tier .amt{font-family:var(--disp);font-size:1.55rem;white-space:nowrap;text-align:left}
-@media(min-width:860px){.tier .amt{text-align:right}}
-.tier .amt small{display:block;font:600 10.5px/1.4 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.tier.top{background:var(--paper-2)}
-.tier.top h3 em{color:var(--gold)}
-.terms{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px 34px;font-size:14.5px;color:var(--mute)}
-.terms b{color:var(--ink);font-weight:600}
-
-.menu{display:grid;gap:40px;margin-top:44px}
-@media(min-width:860px){.menu{grid-template-columns:repeat(3,1fr)}}
-.menu h3{font-size:1.3rem;padding-bottom:12px;border-bottom:2px solid var(--ink)}
-.menu ul{list-style:none;margin:0;padding:0}
-.menu li{display:flex;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px}
-.menu li .nm{flex:1}
-.menu li .pr{font-family:var(--disp);font-size:1.05rem;color:var(--olive);white-space:nowrap}
-.menu li .pr.ask{font:600 10.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.menu .sub{margin:14px 0 0;font-size:14px;color:var(--mute)}
-.build{margin-top:48px;display:grid;gap:24px}
-@media(min-width:860px){.build{grid-template-columns:repeat(3,1fr)}}
-.build div{border:1px solid var(--line);border-radius:2px;padding:22px;background:var(--white)}
-.build h4{font:600 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
-.build p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.75}
-
-.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:40px}
-@media(min-width:780px){.gal{grid-template-columns:repeat(4,1fr)}}
-.gal figure{margin:0}
-.gal img{width:100%;height:250px;object-fit:cover;border-radius:2px;background:var(--paper-2)}
-@media(min-width:780px){
-  .gal img{height:236px}
-  .gal figure:nth-child(3n) img{height:330px}
-  .gal figure:nth-child(7) img{height:400px}
-  .gal figure:nth-child(11) img{height:300px}
-}
-.gal figcaption{font-size:12.5px;color:var(--mute);padding-top:7px}
-
-.about{background:var(--paper-2)}
-.about .grid{display:grid;gap:44px;align-items:center}
-@media(min-width:920px){.about .grid{grid-template-columns:.85fr 1.15fr;gap:64px}}
-.about img{border-radius:2px;width:100%;height:auto}
-.about p{color:var(--ink-soft)}
-.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:32px}
-.facts div{border-top:1px solid var(--line);padding-top:14px}
-.facts b{display:block;font-family:var(--disp);font-size:1.95rem;line-height:1}
-.facts span{font-size:13.5px;color:var(--mute)}
-.posts{margin-top:34px}
-.posts a{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:15.5px}
-.posts a:hover{color:var(--gold)}
-.posts small{color:var(--mute);white-space:nowrap}
-
-.revs{display:grid;gap:24px;margin-top:44px}
-@media(min-width:860px){.revs{grid-template-columns:repeat(3,1fr)}}
-.rev{border-top:2px solid var(--gold);padding-top:20px}
-.rev h3{font-size:1.16rem;margin:0 0 10px}
-.rev p{margin:0;font-size:15.5px;color:var(--ink-soft)}
-.rev cite{display:block;margin-top:14px;font:600 13.5px/1 var(--body);font-style:normal}
-
-.faq{margin-top:40px;border-top:2px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--line);padding:20px 0}
-.faq summary{cursor:pointer;font-family:var(--disp);font-size:1.22rem;list-style:none;display:flex;justify-content:space-between;gap:20px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary:after{content:"+";color:var(--gold);font-family:var(--body)}
-.faq details[open] summary:after{content:"–"}
-.faq p{margin:14px 0 0;color:var(--ink-soft);max-width:70ch}
-
-.contact{background:var(--ink);color:var(--paper)}
-.contact .kick{color:#E4C489}
-.contact h2{color:var(--paper)}
-.contact .grid{display:grid;gap:44px;margin-top:36px}
-@media(min-width:920px){.contact .grid{grid-template-columns:1fr 1fr;gap:64px}}
-.contact a{color:#E9CF9C;text-decoration:none}
-.contact dl{margin:0;display:grid;gap:20px}
-.contact dt{font:600 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:rgba(250,245,235,.55)}
-.contact dd{margin:8px 0 0;font-family:var(--disp);font-size:1.15rem}
-form{border:1px solid rgba(250,245,235,.2);border-radius:2px;padding:26px}
-label{display:block;font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:rgba(250,245,235,.62);margin:18px 0 8px}
-label:first-of-type{margin-top:0}
-input,select,textarea{width:100%;background:rgba(0,0,0,.25);border:1px solid rgba(250,245,235,.24);border-radius:2px;color:var(--paper);font:400 16px/1.4 var(--body);padding:12px 13px;min-height:48px}
-textarea{min-height:108px;resize:vertical}
-select option{color:#111}
-form .row{display:grid;gap:0 16px}
-@media(min-width:640px){form .row{grid-template-columns:1fr 1fr}}
-form .go{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-form .hint{margin:16px 0 0;font-size:13px;color:rgba(250,245,235,.6)}
-
-.area{padding:56px 0;border-top:1px solid var(--line)}
-.area h2{font-size:clamp(1.4rem,2.6vw,1.9rem)}
-.area p{color:var(--ink-soft);margin:14px 0 0;max-width:78ch}
-footer{background:var(--ink);color:rgba(250,245,235,.68);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between;padding:28px 24px}
-footer a{text-decoration:none}
-footer a:hover{color:var(--paper)}
-
-/* proposal page */
-.proposal{background:#100E0C;color:#F2EBDD;padding-bottom:80px}
-.pbar{background:var(--gold);color:#fff;text-align:center;font:600 11.5px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;padding:14px 24px}
-.proposal .wrap{padding-top:64px}
-.proposal h2{font-size:clamp(1.8rem,3.6vw,2.9rem)}
-.proposal h3{font-size:1.45rem;margin:0}
-.proposal .kick{color:#E4C489}
-.proposal p{color:rgba(242,235,221,.78)}
-.proposal .muted{color:rgba(242,235,221,.6)}
-.audit{margin-top:34px;border-top:1px solid rgba(242,235,221,.22)}
-.audit .row{display:grid;gap:8px;padding:18px 0;border-bottom:1px solid rgba(242,235,221,.14)}
-@media(min-width:860px){.audit .row{grid-template-columns:36px 1fr;gap:18px}}
-.audit .n{font-family:var(--disp);font-size:1.25rem;color:#E4C489}
-.audit b{display:block;color:#fff;font-weight:600;margin-bottom:5px}
-.audit .ev{display:block;margin-top:7px;font-size:13px;color:rgba(242,235,221,.55);font-family:ui-monospace,Menlo,Consolas,monospace}
-.plans{display:grid;gap:22px;margin-top:38px}
-@media(min-width:880px){.plans{grid-template-columns:1fr 1fr;gap:26px}}
-.plan{border:1px solid rgba(242,235,221,.2);border-radius:2px;padding:26px}
-.plan.pick{border-color:var(--gold);background:rgba(156,110,40,.14)}
-.plan .tag{font:600 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:#E4C489}
-.plan .big{font-family:var(--disp);font-size:2.9rem;line-height:1;margin:14px 0 6px}
-.plan ul{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:11px;font-size:15px;color:rgba(242,235,221,.82)}
-.plan li:before{content:"—";color:#E4C489;margin-right:10px}
-.terms3{margin-top:40px;display:grid;gap:20px}
-@media(min-width:860px){.terms3{grid-template-columns:repeat(3,1fr)}}
-.terms3 div{border-top:1px solid rgba(242,235,221,.22);padding-top:16px}
-.terms3 b{display:block;font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:#E4C489;margin-bottom:9px}
-.terms3 p{margin:0;font-size:15px}
-.sign{margin-top:48px;border:1px solid rgba(242,235,221,.2);border-radius:2px;padding:30px}
-.sign .go{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-.disc{margin-top:26px;font-size:12.5px;color:rgba(242,235,221,.45)}
-@media print{
-  header,.hero .cta,form .go,nav{display:none}
-  body{background:#fff}
-  .proposal,.contact{background:#fff;color:#000}
-  .proposal p,.proposal .muted,.audit .ev{color:#2b2b2b}
-  .proposal{page-break-before:always}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .runway { scroll-snap-type: none; }
 }
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
 
-<header>
-  <div class="wrap bar">
-    <a class="logo" href="#top" aria-label="Charcuterie Chick home">
-      <img src="img/logo.png" alt="Charcuterie Chick — The Chick Goodies" width="180" height="44" decoding="async">
-    </a>
-    <nav aria-label="Main">
-      <a href="#tables">Grazing tables</a>
-      <a href="#menu">Menu</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#about">About Tricia</a>
-      <a href="#faq">Questions</a>
-      <a href="#contact">Get a quote</a>
-    </nav>
-    <a class="btn gold" href="tel:+18324588180">Call 832-458-8180</a>
-  </div>
+<header class="top">
+  <a href="#top"><img src="img/logo.png" alt="Charcuterie Chick" width="160" height="36"></a>
+  <a class="btn ghost" href="tel:+18324588180">832-458-8180</a>
 </header>
-
-<main id="main">
-
 <div class="hero" id="top">
-  <div class="wrap grid">
-    <div>
-      <p class="kick">elegance without the cost</p>
-      <h1>Grazing tables and charcuterie catering in <em>Tomball, Texas.</em></h1>
-      <p class="lede">Grazing tables, carts, boards and cups built by Tricia Holfelder — 35 years in restaurants, now feeding Tomball, The Woodlands, Spring and Conroe. Priced per person, styled on site, served for 90 minutes.</p>
-      <div class="cta">
-        <a class="btn gold" href="#contact">Get a quote for your date</a>
-        <a class="btn ghost" href="#tables">See table prices</a>
-      </div>
-      <div class="mini"><span>Weddings</span><span>Showers</span><span>Corporate</span><span>Holidays</span><span>50–150 guests</span></div>
-    </div>
-    <div>
-      <div class="stack">
-        <img src="img/wide-640.jpg" alt="Charcuterie spread set out for guests at a Tomball event" width="640" height="452" fetchpriority="high" decoding="async">
-        <img src="img/table-01.jpg" alt="Grazing table laid out for a wedding in Tomball, Texas" width="480" height="640" loading="lazy" decoding="async">
-      </div>
+  <div class="copy">
+    <p class="eyebrow">Elegance without the cost</p>
+    <h1>The table, as if it were a collection.</h1>
+    <p>Grazing tables, carts, boards and cups by Tricia Holfelder — 35 years in restaurants. Tomball, The Woodlands, Spring and Conroe. Forty-nine looks. One kitchen.</p>
+    <div class="acts">
+      <a class="btn" href="#show">Enter the collection</a>
+      <a class="btn ghost" href="#quote">Get a quote</a>
     </div>
   </div>
+  <figure><img src="img/wide-640.jpg" alt="Charcuterie spread at a Tomball event" width="640" height="452" fetchpriority="high"></figure>
 </div>
-
-<div class="strip">
-  <div class="wrap"><span>Tomball</span><span>The Woodlands</span><span>Spring</span><span>Conroe</span><span>18% tax · $229 setup</span></div>
-</div>
-
-<section id="tables">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kick">Grazing tables</p>
-      <h2>Pick your table. Pick your guests.</h2>
-      <p>Per-person tables carry a 50-guest minimum. The Holy Grail is priced by the table instead. Every table is built fresh, styled on site, and served for 90 minutes.</p>
-    </div>
-
-    <div class="tiers">
-      <div class="tier">
-        <h3>The "Graze Me, Craze Me"</h3>
-        <p>2 sliders (30 of each), meat &amp; cheese, seasonal fruit, hummus, almonds, 2 salads, roasted &amp; raw vegetables, 1 dip</p>
-        <p class="amt">$24 <small>per person</small></p>
-      </div>
-      <div class="tier">
-        <h3>The "Grazing Standard"</h3>
-        <p>Everything above, plus a second hummus, 2 dips, pasta salad, potato chips, sweet potato chips and tortilla chips</p>
-        <p class="amt">$26 <small>per person</small></p>
-      </div>
-      <div class="tier">
-        <h3>The "Super Graze"</h3>
-        <p>3 sliders (25 of each), 3 salads, 3 dips, 2 hummus, nuts, chips and the full vegetable spread</p>
-        <p class="amt">$30 <small>per person</small></p>
-      </div>
-      <div class="tier">
-        <h3>The "Grand Graze"</h3>
-        <p>5 sliders, 4 salads, 3 dips, 2 hummus, 2 nuts, chips and mini pudding cups — Oreo, butterscotch or banana</p>
-        <p class="amt">$38 <small>per person</small></p>
-      </div>
-      <div class="tier top">
-        <h3>The "Holy Grail of Grazing" <em>— the signature table</em></h3>
-        <p>2 sliders (50 of each), 5 cheeses, 5 meats, 2 salads, 3 dips, 2 hummus, 2 nuts, guacamole, pico de gallo, seasonal fruit, chips</p>
-        <p class="amt">$2,000 <small>75 guests · $3,500 for 150</small></p>
-      </div>
-    </div>
-    <p class="terms">
-      <span><b>18%</b> tax on every table</span>
-      <span><b>$229</b> flat setup fee</span>
-      <span><b>90 minutes</b> of service</span>
-      <span><b>$3</b> per person per extra half hour</span>
-    </p>
+<section id="show">
+  <div class="wrap-title">
+    <p class="eyebrow">Autumn collection · 49 looks</p>
+    <h2>Every item on the menu, shown as a look.</h2>
   </div>
 </section>
-
-<hr class="rule">
-
-<section id="menu">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kick">Menu</p>
-      <h2>Carts, sweets and the small stuff.</h2>
-      <p>Stations and add-ons priced per person. Anything marked "ask" depends on your date and guest count — call or text and you'll have a number the same day.</p>
-    </div>
-    <div class="menu">
-      <div>
-        <h3>Carts &amp; stations</h3>
-        <ul>
-          <li><span class="nm">Taco Cart</span><span class="pr">$26.95</span></li>
-          <li><span class="nm">Carts</span><span class="pr">$24.50</span></li>
-          <li><span class="nm">Slider Menu</span><span class="pr">$2.95</span></li>
-          <li><span class="nm">Easy order boards</span><span class="pr ask">ask</span></li>
-          <li><span class="nm">Charcuterie Chick board</span><span class="pr ask">ask</span></li>
-          <li><span class="nm">Catering Menu</span><span class="pr ask">ask</span></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Sweets</h3>
-        <ul>
-          <li><span class="nm">Cakes and Shakes</span><span class="pr">$9.50</span></li>
-          <li><span class="nm">Candy Bar Chick</span><span class="pr">$5.00</span></li>
-          <li><span class="nm">Zeppole Beignet Chick</span><span class="pr">$4.50</span></li>
-          <li><span class="nm">Apple Pie</span><span class="pr ask">ask</span></li>
-        </ul>
-        <p class="sub">Sweets can be plated on the cart or boxed as favors.</p>
-      </div>
-      <div>
-        <h3>Sips</h3>
-        <ul>
-          <li><span class="nm">Bloody Mary Chick</span><span class="pr">$6.50</span></li>
-          <li><span class="nm">Mimosa Chick</span><span class="pr">$4.00</span></li>
-        </ul>
-        <p class="sub">Sips are styled and served from the cart. Alcohol is handled to your venue's rules — ask what works for yours.</p>
-      </div>
-    </div>
-
-    <div class="build">
-      <div>
-        <h4>Sliders — choose any</h4>
-        <p>Tuna salad · deviled chicken salad · chicken salad · BLT · turkey &amp; gouda · Italian · ham &amp; fontina · chicken &amp; waffles · caprese · muffuletta · roasted vegetable</p>
-      </div>
-      <div>
-        <h4>Dips — choose any</h4>
-        <p>Tricia's corn dip · tzatziki · bruschetta · ground mustard · cold spinach · fig jam · pico de gallo · 7-layer Mexican · guacamole · Texas caviar · French onion</p>
-      </div>
-      <div>
-        <h4>Salads &amp; meats</h4>
-        <p>Caprese · Mom's macaroni · Uncle Trey's potato · tomato &amp; bleu cheese · cucumber · loaded baked potato. Meats: turkey, ham, salami or pepperoni.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<section id="gallery">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kick">Gallery</p>
-      <h2>Real tables. Real rooms.</h2>
-      <p>Photographed at events across Tomball, The Woodlands, Spring and Conroe.</p>
-    </div>
-    <div class="gal">
-      <figure><img src="img/table-01.jpg" alt="Grazing table for a Tomball wedding" width="480" height="640" loading="lazy" decoding="async"><figcaption>Wedding grazing table</figcaption></figure>
-      <figure><img src="img/table-02.jpg" alt="Charcuterie table styling at a private event" width="480" height="640" loading="lazy" decoding="async"><figcaption>Private event</figcaption></figure>
-      <figure><img src="img/table-03.jpg" alt="Catering table set with meats, cheeses and fruit" width="480" height="640" loading="lazy" decoding="async"><figcaption>Meats, cheeses, fruit</figcaption></figure>
-      <figure><img src="img/graze-02.jpg" alt="Close-up of a charcuterie spread by Charcuterie Chick" width="480" height="640" loading="lazy" decoding="async"><figcaption>Graze detail</figcaption></figure>
-      <figure><img src="img/board-02.jpg" alt="Arranged charcuterie board ready for guests" width="480" height="640" loading="lazy" decoding="async"><figcaption>Board service</figcaption></figure>
-      <figure><img src="img/graze-03.jpg" alt="Individual servings from a grazing table" width="480" height="640" loading="lazy" decoding="async"><figcaption>Individual servings</figcaption></figure>
-      <figure><img src="img/candy-01.jpg" alt="Candy bar station set up by Charcuterie Chick" width="480" height="640" loading="lazy" decoding="async"><figcaption>Candy bar cart</figcaption></figure>
-      <figure><img src="img/sips-01.jpg" alt="Mimosa and Bloody Mary cart for a morning event" width="480" height="640" loading="lazy" decoding="async"><figcaption>Sips cart</figcaption></figure>
-      <figure><img src="img/sweets-01.jpg" alt="Sweets and desserts plated for an event" width="480" height="640" loading="lazy" decoding="async"><figcaption>Sweets</figcaption></figure>
-      <figure><img src="img/boards-01.jpg" alt="Order-ahead charcuterie board ready for pickup" width="480" height="640" loading="lazy" decoding="async"><figcaption>Order-ahead boards</figcaption></figure>
-      <figure><img src="img/catering-1000.jpg" alt="Catering spread laid out for a large group" width="1000" height="560" loading="lazy" decoding="async"><figcaption>Full catering spread</figcaption></figure>
-      <figure><img src="img/cart-640.jpg" alt="Charcuterie cart at a Houston-area event" width="640" height="480" loading="lazy" decoding="async"><figcaption>The cart</figcaption></figure>
-    </div>
-  </div>
-</section>
-
 <section class="about" id="about">
-  <div class="wrap grid">
-    <img src="img/tricia-662.jpg" alt="Tricia Holfelder, owner of Charcuterie Chick in Tomball, Texas" width="662" height="823" loading="lazy" decoding="async">
-    <div>
-      <p class="kick">About Tricia Holfelder</p>
-      <h2 style="font-size:clamp(1.7rem,3.4vw,2.6rem);margin:14px 0 0">From kitchen dreams to your table.</h2>
-      <p>With more than 35 years in the restaurant industry, Tricia Holfelder is known for her passion, precision and unwavering commitment to hospitality. She started in the fast-paced world of restaurants and rose through the ranks — mastering everything from front-of-house operations to back-of-house logistics — before building Charcuterie Chick around the part she loves most: feeding a room full of people who came to celebrate something.</p>
-      <p>Every table is hers. Sourced, styled and served by the same hands that have been doing this for three and a half decades.</p>
-      <div class="facts">
-        <div><b>35</b><span>Years in the restaurant industry</span></div>
-        <div><b>90</b><span>Minutes of table service</span></div>
-        <div><b>50</b><span>Guest minimum, per-person tables</span></div>
-        <div><b>150</b><span>Guests fed by the Holy Grail</span></div>
-      </div>
-      <div class="posts">
-        <a href="https://www.charcuteriechick.ai/blogs/news/celebrating-35-years-of-flavor-and-hospitality-with-tricia-holfelder"><span>Celebrating 35 years of flavor and hospitality</span><small>Aug 30, 2025</small></a>
-        <a href="https://www.charcuteriechick.ai/blogs/news/charcuterie-carts-and-candy-bars-shaping-today-s-event-catering-trends"><span>Carts and candy bars shaping event catering</span><small>Aug 30, 2025</small></a>
-        <a href="https://www.charcuteriechick.ai/blogs/news/making-high-quality-catering-affordable-for-every-event"><span>Making high-quality catering affordable</span><small>Aug 30, 2025</small></a>
-      </div>
-    </div>
+  <img src="img/tricia-662.jpg" alt="Tricia Holfelder, owner of Charcuterie Chick" width="662" height="823" loading="lazy">
+  <div>
+    <p class="eyebrow">About Tricia Holfelder</p>
+    <h2>From kitchen dreams to your table.</h2>
+    <p>With more than 35 years in the restaurant industry, Tricia Holfelder is known for her passion, precision and unwavering commitment to hospitality. She started in restaurants and rose through the ranks — front-of-house to back-of-house — before building Charcuterie Chick around the part she loves most: feeding a room full of people who came to celebrate something.</p>
+    <p>Every table is hers. Sourced, styled and served by the same hands that have been doing this for three and a half decades.</p>
   </div>
 </section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kick">Reviews</p>
-      <h2>What hosts say after.</h2>
-    </div>
-    <div class="revs">
-      <div class="rev"><h3>"Beautifully presented meals"</h3><p>"The charcuterie board was fresh, well-balanced, and beautifully arranged."</p><cite>Lucas Willis</cite></div>
-      <div class="rev"><h3>"Charcuterie perfection"</h3><p>"Beautifully balanced, incredibly fresh, and full of rich flavors that stood out immediately."</p><cite>Jacob Hernandez</cite></div>
-      <div class="rev"><h3>"Perfectly seasoned meals"</h3><p>"Wonderfully seasoned, warm, and comforting — a satisfying taste experience from start to finish."</p><cite>Amina Khalid</cite></div>
-    </div>
-  </div>
+<section class="quotes wrap">
+  <blockquote>“The charcuterie board was fresh, well-balanced, and beautifully arranged.”<cite>Lucas Willis</cite></blockquote>
+  <blockquote>“Beautifully balanced, incredibly fresh, and full of rich flavors that stood out immediately.”<cite>Jacob Hernandez</cite></blockquote>
+  <blockquote>“Wonderfully seasoned, warm, and comforting.”<cite>Amina Khalid</cite></blockquote>
+</section>
+<section class="faq wrap" id="faq">
+  <details open><summary>What is the minimum guest count?</summary><p>Fifty guests for the per-person tables, $24 to $38 a person. The Holy Grail is $2,000 for 75 guests and $3,500 for 150.</p></details>
+  <details><summary>Are there setup fees or tax?</summary><p>18% tax and a $229 flat setup fee. Ninety minutes of service. Extra time $3 per person per half hour.</p></details>
+  <details><summary>Where do you set up?</summary><p>Tomball, The Woodlands, Spring and Conroe, out of 11931 Brantley Haven Drive, Tomball TX 77375.</p></details>
 </section>
 
-<hr class="rule">
-
-<section id="faq">
+<section class="contact" id="quote">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="kick">Questions</p>
-      <h2>What people ask before booking.</h2>
-    </div>
-    <div class="faq">
-      <details open>
-        <summary>What is the minimum guest count for a grazing table?</summary>
-        <p>Fifty guests for the per-person tables ($24 to $38 a person). The Holy Grail of Grazing is priced by the table instead — $2,000 feeds 75 guests, $3,500 feeds 150.</p>
-      </details>
-      <details>
-        <summary>Are there setup fees or tax on top of the table price?</summary>
-        <p>Yes. Every grazing table carries 18% tax and a $229 flat setup fee. Each table service runs 90 minutes, and extra time can be added for $3 per person per half hour.</p>
-      </details>
-      <details>
-        <summary>Where do you deliver and set up?</summary>
-        <p>Tomball, The Woodlands, Spring and Conroe, out of the kitchen at 11931 Brantley Haven Drive, Tomball TX 77375.</p>
-      </details>
-      <details>
-        <summary>How far ahead should I book?</summary>
-        <p>Two weeks is comfortable for most events. Call or text to ask about sooner — dates do open up.</p>
-      </details>
-      <details>
-        <summary>Can you match a theme or handle dietary needs?</summary>
-        <p>Yes. Colors, seasonal fruit and styling can be matched to your event, and swaps are worked out when you book — call or text with the details.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kick">Get a quote</p>
-      <h2>Tell me the date and the guest count.</h2>
-      <p style="color:rgba(250,245,235,.75)">The form builds a text you can send straight to Tricia's phone — no account, no waiting on email. Or just call.</p>
-    </div>
-    <div class="grid">
-      <div>
-        <dl>
-          <dt>Call or text</dt>
-          <dd><a href="tel:+18324588180">832-458-8180</a></dd>
-          <dt>Kitchen</dt>
-          <dd>11931 Brantley Haven Drive<br>Tomball, TX 77375</dd>
-          <dt>Service area</dt>
-          <dd>Tomball · The Woodlands · Spring · Conroe</dd>
-          <dt>Lead time</dt>
-          <dd>Two weeks is comfortable. Ask about sooner.</dd>
-        </dl>
-      </div>
+    <p class="eyebrow">Tell us the date</p>
+    <h2>Ask about your event.</h2>
+    <div class="contact-grid">
+      <dl>
+        <dt>Call or text</dt><dd><a href="tel:+18324588180">832-458-8180</a></dd>
+        <dt>Email</dt><dd><a href="mailto:charcuteriechick@outlook.com">charcuteriechick@outlook.com</a></dd>
+        <dt>Kitchen</dt><dd>11931 Brantley Haven Drive<br>Tomball, TX 77375</dd>
+        <dt>Service area</dt><dd>Tomball · The Woodlands · Spring · Conroe</dd>
+      </dl>
       <form id="quoteForm" novalidate>
-        <div class="row">
-          <div><label for="n">Your name</label><input id="n" name="name" autocomplete="name" placeholder="First and last"></div>
-          <div><label for="p">Phone</label><input id="p" name="phone" autocomplete="tel" inputmode="tel" placeholder="(281) 555-0142"></div>
+        <div class="two">
+          <div><label for="n">Your name</label><input id="n" name="name" autocomplete="name"></div>
+          <div><label for="p">Phone</label><input id="p" name="phone" autocomplete="tel" inputmode="tel"></div>
         </div>
-        <div class="row">
+        <div class="two">
           <div><label for="d">Event date</label><input id="d" name="date" type="date"></div>
-          <div><label for="g">Guests</label><input id="g" name="guests" inputmode="numeric" placeholder="75"></div>
+          <div><label for="g">Guests</label><input id="g" name="guests" inputmode="numeric"></div>
         </div>
         <label for="t">What are you thinking?</label>
         <select id="t" name="type">
-          <option>Grazing table</option>
-          <option>Cart or station</option>
-          <option>Cups &amp; passed bites</option>
-          <option>Boards only</option>
+          <option>Grazing table</option><option>Cart or station</option>
+          <option>Cups &amp; passed bites</option><option>Boards only</option>
           <option>Not sure yet — help me pick</option>
         </select>
         <label for="m">Anything else</label>
         <textarea id="m" name="message" placeholder="Venue, timing, colours, dietary needs…"></textarea>
         <div class="go">
-          <button class="btn gold" id="smsBtn" type="button">Text this to Tricia</button>
-          <button class="btn onDark" id="copyBtn" type="button">Copy the message</button>
+          <button class="btn" id="smsBtn" type="button">Text this to Tricia</button>
+          <button class="btn ghost" id="emailBtn" type="button">Email this to Tricia</button>
+          <button class="btn ghost" id="copyBtn" type="button">Copy the message</button>
         </div>
-        <p class="hint" id="hint" role="status">Opens your messages app with everything filled in. On a computer, use Copy and paste it into a text or email.</p>
+        <p class="hint" id="hint" role="status">Opens your messages app with everything filled in.</p>
       </form>
     </div>
   </div>
 </section>
 
-<section class="area">
-  <div class="wrap">
-    <h2>Charcuterie catering across northwest Houston</h2>
-    <p>Charcuterie Chick is based in Tomball and sets up grazing tables, charcuterie carts and boards across the northwest Houston area — Tomball, The Woodlands, Spring, Conroe, Magnolia, Cypress and Klein. Weddings and receptions, bridal and baby showers, corporate lunches, holiday parties, open houses and birthdays, from 50-guest per-person tables up to the 150-guest Holy Grail. If you are planning something in Montgomery or Harris County and want the table people photograph before they eat, call or text 832-458-8180 with your date.</p>
-  </div>
-</section>
-
-</main>
-
 <footer>
-  <div class="wrap">
-    <span>Charcuterie Chick · 11931 Brantley Haven Drive, Tomball, TX 77375 · <a href="tel:+18324588180">832-458-8180</a></span>
-    <span>Grazing tables · Carts · Boards · Cups</span>
-  </div>
+  <span>Charcuterie Chick · Tomball, TX</span>
+  <a href="tel:+18324588180">832-458-8180</a>
+  <span>Grazing tables · Carts · Boards</span>
 </footer>
 
-<div class="proposal" id="proposal">
-  <div class="pbar">Proposal — page 2</div>
-  <div class="wrap">
-    <p class="kick">Prepared for Tricia Holfelder · Charcuterie Chick</p>
-    <h2 style="margin-top:14px">What I found on charcuteriechick.ai — and what I'd do about it.</h2>
-    <p style="max-width:72ch;margin-top:18px">Page one is a working build with your photos, your prices and your words. Below is the honest audit behind it: what is costing you orders right now, what it costs to fix, and how fast it can be live. Checked by hand on 15 September 2026.</p>
-
-    <div class="audit">
-      <div class="row"><div class="n">01</div><div><b>Four products show $0.00 on your live site.</b> Easy order boards, Apple Pie, Charcuterie Chick and the Catering Menu all read $0.00 — a price of free reads as a broken shop.
-        <span class="ev">Evidence: product tiles on / and /pages/menu, all four at $0.00</span></div></div>
-      <div class="row"><div class="n">02</div><div><b>Fifteen "Gallery Title / Category" placeholders are live.</b> Six on the homepage, nine on the gallery page — template default text where your captions should be.
-        <span class="ev">Evidence: "Gallery Title" x6 on /, x9 on /pages/gallery</span></div></div>
-      <div class="row"><div class="n">03</div><div><b>The stat block is another business's numbers.</b> "532+ Popular Testy Foods Menu", "6534+ Satisfied Our Global Customers", "432+ Foods Items Online Orders" — and "25+ Years Of Experience" sitting next to your own 35 years.
-        <span class="ev">Evidence: homepage and /pages/about-us stat block</span></div></div>
-      <div class="row"><div class="n">04</div><div><b>The homepage repeats the same twelve products three times.</b> Thirty-six tiles, every one labelled "(1 Reviews)".
-        <span class="ev">Evidence: 12 items x 3 blocks on /</span></div></div>
-      <div class="row"><div class="n">05</div><div><b>Your own photos are not being used.</b> The homepage gallery pulls stock files while nine of your event photos sit on the gallery page. Page one uses your photos only.
-        <span class="ev">Evidence: image filenames Shrimp_Food_Prawns, Link_5 … Link_10 on /</span></div></div>
-      <div class="row"><div class="n">06</div><div><b>A footer link is broken.</b> "Faqs" points at /pages/faqs, which returns a 404 today.
-        <span class="ev">Evidence: HTTP 404 on /pages/faqs, checked 2026-09-15</span></div></div>
-      <div class="row"><div class="n">07</div><div><b>The blog shows a template error to visitors.</b> The pager renders "NaN / of-Infinity", all three posts are dated Aug 30 2025, and each is listed twice.
-        <span class="ev">Evidence: /blogs/news</span></div></div>
-      <div class="row"><div class="n">08</div><div><b>Your biggest ticket has no way to enquire.</b> The Holy Grail is $2,000–$3,500 and the only route to booking is "Call for order" — no date, no guest count, no form. That is the order I would chase first.
-        <span class="ev">Evidence: /pages/grazing-table has no enquiry form</span></div></div>
-      <div class="row"><div class="n">09</div><div><b>Small things that read unpolished to a search engine and a bride.</b> The phone number renders as "Call For Order832-458-8180" with no space, page titles carry stray line breaks, and the footer links to a "Menu Fastfood" collection.
-        <span class="ev">Evidence: homepage footer and title tags</span></div></div>
-    </div>
-
-    <h3 style="margin-top:52px">Two ways to work together</h3>
-    <div class="plans">
-      <div class="plan">
-        <span class="tag">The one-pager</span>
-        <p class="big">$150</p>
-        <p class="muted" style="font-size:15px">This page. Delivered live in two days.</p>
-        <ul>
-          <li>Your logo, your about, your real prices</li>
-          <li>Your own photos, no stock and no AI imagery</li>
-          <li>Call, text and quote CTAs wired to your phone</li>
-          <li>Standalone page — your current site stays as it is</li>
-        </ul>
-      </div>
-      <div class="plan pick">
-        <span class="tag">The full site</span>
-        <p class="big">$600</p>
-        <p class="muted" style="font-size:15px">Live on charcuteriechick.ai in seven days.</p>
-        <ul>
-          <li>Everything in the one-pager, on your own domain</li>
-          <li>Built for search: local SEO, structured data, page speed, Google Business Profile</li>
-          <li>Instagram, Facebook and Pinterest set up to drive traffic to it</li>
-          <li>Your $0.00 prices, placeholder galleries and broken links fixed</li>
-          <li>Enquiry form on the $2,000 grazing table so bookings start online</li>
-          <li>Photo clean-up and a shot list for new high-resolution photos</li>
-          <li>Simple workflow so enquiries get answered and reviewed</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="terms3">
-      <div><b>Timeline</b><p>One-pager: two days. Full site: seven days. Nothing changes on your domain until you say go.</p></div>
-      <div><b>What I need from you</b><p>Your real numbers for the stat block, room for photography, and the email address quotes should reach.</p></div>
-      <div><b>What stays yours</b><p>Your domain, your logo, your photos, your words. You own everything I build for you.</p></div>
-    </div>
-
-    <div class="sign">
-      <h3>Start with the $150 page — you have already seen it.</h3>
-      <p style="margin-top:12px">It is live at this link and it is yours if you want it. Reply to the message this came in on and tell me what to change — same day.</p>
-      <div class="go">
-        <a class="btn gold" href="#contact">Get a quote</a>
-        <a class="btn onDark" href="#top">Look at the page again</a>
-      </div>
-    </div>
-    <p class="disc">Demo page built by Garrett (The Woodlands) using Charcuterie Chick's own photos, prices and menu copy, published for review only. Not affiliated with or endorsed by Charcuterie Chick. Prices copied from charcuteriechick.ai on 15 September 2026 — confirm before publishing.</p>
-  </div>
-</div>
-
-<script>
-(function () {
-  var $ = function (id) { return document.getElementById(id); };
-  var TEL = ["+1", "", "", "", "", "", "", "", "", "", "", ""].join(""); // replaced at build time below
-  TEL = "18324588180";
-  function build() {
-    var parts = ["Hi Tricia — quote request from the Charcuterie Chick website."];
-    var n = $("n").value.trim(), p = $("p").value.trim(), d = $("d").value, g = $("g").value.trim(),
-        t = $("t").value, m = $("m").value.trim();
-    if (n) parts.push("Name: " + n);
-    if (p) parts.push("Phone: " + p);
-    if (d) parts.push("Event date: " + d);
-    if (g) parts.push("Guests: " + g);
-    if (t) parts.push("Looking at: " + t);
-    if (m) parts.push("Details: " + m);
-    return parts.join("\n");
-  }
-  $("smsBtn").addEventListener("click", function () {
-    window.location.href = "sms:" + TEL + "?&body=" + encodeURIComponent(build());
-  });
-  $("copyBtn").addEventListener("click", function () {
-    var txt = build();
-    var done = function () { $("hint").textContent = "Copied — paste it into a text or email."; };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt).then(done, function () { fallback(txt, done); });
-    } else { fallback(txt, done); }
-  });
-  function fallback(txt, done) {
-    var ta = document.createElement("textarea");
-    ta.value = txt; document.body.appendChild(ta); ta.select();
-    try { document.execCommand("copy"); done(); } catch (e) {}
-    ta.remove();
-  }
-})();
-</script>
-</body>
-</html>
+<script src="looks.js"></script>
+<script src="runway.js"></script>
+<script>mountRunway("#show"); wireQuote();</script>
+</body></html>

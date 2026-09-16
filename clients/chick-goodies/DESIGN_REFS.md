@@ -57,3 +57,22 @@ sample.
 After this file landed: Ken Burns and the fake 3D plinth came off the
 runway (they were the remaining "AI motion" tell). Look names got bigger;
 chrome got smaller. Monkeytype rule, not Monkeytype theme.
+
+## Grok-Imagine-Cinematic-Studio — https://github.com/FineComputer14451/Grok-Imagine-Cinematic-Studio
+
+**Banned on this client.** Multi-agent Grok Imagine / Video pipeline (Image 2.0,
+Video 1.0/1.5). We already quarantined four byte-identical Imagine outputs in
+`ASSETS.md`. The brief is "NO AI FEEL, NO AI JUNK". Running this studio to
+"cinematic-ize" her menu is the defect that started the rebuild.
+
+Useful elsewhere: Kit / SignPreview demo video, not Charcuterie Chick's public
+site.
+
+## pi-supergrok — https://github.com/dvcrn/pi-supergrok
+
+**Not this job.** Pi coding-agent extension: SuperGrok/xAI OAuth for grok-4.6 /
+4.5 / composer. Hermes already talks to Grok. Installing it does not build a
+catering page, does not read `IMG_7724.jpeg`, and does not add email to a form.
+
+If the owner wants Pi as a second agent runtime, that is a Hermes config task
+— separate from `clients/chick-goodies/`.
