@@ -92,11 +92,11 @@ footer{padding:20px 22px 32px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-
 .look{flex:0 0 min(78vw,420px);scroll-snap-align:center;scroll-snap-stop:always}
 .stage{position:relative;height:520px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.2,1);transform-origin:center 70%}
 .stage figure{margin:0;position:absolute;inset:0 8% 18%;overflow:hidden}
-.stage img{width:100%;height:100%;object-fit:cover;animation:ken 22s ease-in-out infinite alternate}
-.plinth{position:absolute;left:6%;right:6%;bottom:4%;height:70px;background:currentColor;opacity:.12;transform:rotateX(78deg) translateZ(-40px);filter:blur(8px)}
+.stage img{width:100%;height:100%;object-fit:cover}
+.plinth{display:none}
 .look .meta{padding:18px 8px 0}
 .look-n{margin:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.55}
-.look h3{margin:8px 0 0;font-size:1.55rem;line-height:1.1;font-weight:400}
+.look h3{margin:8px 0 0;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;font-weight:700}
 .look .price{margin:10px 0 0;font-size:1.15rem}
 .look .price small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:4px}
 .look .note{margin:10px 0 0;font-size:14px;line-height:1.55;opacity:.72}
