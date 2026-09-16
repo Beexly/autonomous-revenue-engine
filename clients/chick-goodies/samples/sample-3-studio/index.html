@@ -1,212 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SAMPLE — Charcuterie Chick, Tomball TX.
+  Art direction: "IRON & OAK" — craftsman heritage, blueprint grid, copper on charcoal.
+  Stolen craft: Kit roofing preview (docs/kit/previews/roofing.html).
+  Zilla Slab + Inter. Dual cursor from docs/kit/index.html.
+  No AI images.
+-->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Walk the Menu — Charcuterie Chick</title>
-<meta name="description" content="A horizontal walk through Tricia’s published tables in Tomball. Open a panel, price food plus setup plus tax, text the quote.">
+<title>Built like they used to cook — Charcuterie Chick</title>
+<meta name="description" content="Scratch breads, jellies and jams. Grazing tables in Tomball from $24 a person. 35 years. Call Tricia, 832-458-8180.">
 <link rel="canonical" href="https://charcuterie-chick-sample-3.vercel.app/">
-<meta name="theme-color" content="#11110F">
+<meta name="theme-color" content="#17130d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --void:#11110F; --paper:#EDE7DB; --ink:#11110F; }
-  * { box-sizing:border-box; }
-  html, body { margin:0; height:100%; background:var(--void); color:var(--paper); font-family:Syne, system-ui, sans-serif; }
-  button, input, textarea { font:inherit; color:inherit; background:none; border:0; }
-  a { color:inherit; text-decoration:none; }
-  ::selection { background:var(--paper); color:var(--void); }
-  .cur {
-    width:14px; height:14px; border:1px solid #EDE7DB; border-radius:50%;
-    position:fixed; top:0; left:0; margin:-7px 0 0 -7px; pointer-events:none; z-index:200;
-    mix-blend-mode:difference;
-  }
-  .cur.down { width:28px; height:28px; margin:-14px 0 0 -14px; }
-  html.has-cur, html.has-cur * { cursor:none !important; }
-  #gate {
-    position:fixed; inset:0; z-index:80; display:flex; flex-direction:column;
-    align-items:center; justify-content:center; gap:28px; background:var(--void); text-align:center;
-  }
-  #gate.off { opacity:0; pointer-events:none; transition:opacity .7s ease; }
-  #gate .word { font-size:clamp(1.4rem, 4.5vw, 2.6rem); letter-spacing:.4em; text-transform:uppercase; font-weight:500; }
-  #gate .sub { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.3em; text-transform:uppercase; opacity:.45; }
-  .hold { width:88px; height:88px; border-radius:50%; display:grid; place-items:center; position:relative; }
-  .hold svg { position:absolute; inset:0; transform:rotate(-90deg); }
-  .hold circle { fill:none; stroke:rgba(237,231,219,.2); stroke-width:1; }
-  .hold [data-ring] { stroke:var(--paper); stroke-dasharray:88; stroke-dashoffset:88; }
-  .hold span { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:9px; letter-spacing:.2em; text-transform:uppercase; }
-  .hud {
-    position:fixed; top:0; left:0; right:0; z-index:5;
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding:20px 4vw; font-family:"IBM Plex Mono", ui-monospace, monospace;
-    font-size:10px; letter-spacing:.22em; text-transform:uppercase; mix-blend-mode:difference;
-  }
-  .strip {
-    display:flex; height:100vh; height:100dvh; overflow-x:auto; overflow-y:hidden;
-    scroll-snap-type:x mandatory; scrollbar-width:none;
-  }
-  .strip::-webkit-scrollbar { display:none; }
-  .panel {
-    flex: 0 0 100vw; height:100%; scroll-snap-align:start; scroll-snap-stop:always;
-    display:grid; grid-template-columns: 42vw 58vw; align-items:stretch;
-  }
-  .panel .txt {
-    padding: 18vh 6vw 10vh; display:flex; flex-direction:column; justify-content:flex-end; gap:14px;
-  }
-  .panel .k { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.28em; text-transform:uppercase; opacity:.45; }
-  .panel h2 {
-    margin:0; font-weight:500; font-size:clamp(2.2rem, 5.5vw, 5rem);
-    letter-spacing:-.04em; line-height:.92; max-width:9ch;
-  }
-  .panel .pr { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; letter-spacing:.12em; opacity:.7; }
-  .panel .inc { max-width:28rem; line-height:1.5; opacity:.62; font-size:14px; }
-  .open {
-    align-self:flex-start; font-family:"IBM Plex Mono", ui-monospace, monospace;
-    font-size:11px; letter-spacing:.2em; text-transform:uppercase;
-    border-bottom:1px solid var(--paper); padding:8px 0;
-  }
-  .panel .media {
-    display:grid; place-items:center; background:#0A0908; padding:8vh 5vw;
-  }
-  .panel .media img { max-width:100%; max-height:76vh; width:auto; height:auto; }
-  .bar {
-    position:fixed; left:4vw; right:4vw; bottom:22px; height:1px; background:rgba(237,231,219,.18); z-index:5;
-  }
-  .bar i { display:block; height:1px; background:var(--paper); width:20%; }
-  #sheet {
-    position:fixed; inset:auto 0 0 0; z-index:30; background:var(--paper); color:var(--ink);
-    transform:translateY(110%); transition:transform .45s cubic-bezier(.22,1,.36,1);
-    padding:28px 6vw 36px; display:grid; grid-template-columns: 1fr 1fr; gap:24px;
-    max-height: 78vh; overflow:auto;
-  }
-  #sheet.on { transform:translateY(0); }
-  #sheet h3 { margin:0; font-size:clamp(1.8rem, 3vw, 2.8rem); letter-spacing:-.03em; }
-  #sheet .big { font-size:clamp(2rem, 4vw, 3.2rem); letter-spacing:-.04em; }
-  #sheet form { display:grid; gap:10px; }
-  #sheet label { display:grid; gap:4px; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.5; }
-  #sheet input, #sheet textarea { border-bottom:1px solid rgba(17,17,15,.25); padding:8px 0; font-family:Syne, sans-serif; font-size:16px; color:var(--ink); opacity:1; }
-  .txtb { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; padding:10px 0; border-bottom:1px solid var(--ink); margin-right:12px; color:var(--ink); }
-  .x { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; opacity:.5; }
-  @media (max-width: 860px) {
-    .panel { grid-template-columns:1fr; }
-    .panel .media { min-height:42vh; padding:6vh 8vw 0; }
-    .panel .txt { padding: 4vh 8vw 12vh; }
-    #sheet { grid-template-columns:1fr; }
-  }
-  @media (hover:none) { .cur { display:none !important; } html.has-cur, html.has-cur * { cursor:auto !important; } }
+:root{
+  --ink:#17130d; --ink2:#221c12; --panel:#241d11;
+  --paper:#f5efe2; --cream:#ece2cc; --dim:#b9a888; --faint:#8a7a5c;
+  --copper:#d07a2e; --copper-hi:#f0a24e; --rust:#a34d1c;
+  --line:rgba(245,239,226,.14);
+  --slab:'Zilla Slab',Georgia,serif;
+  --body:'Inter',-apple-system,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--copper);color:#fff}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background-image:linear-gradient(rgba(208,122,46,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(208,122,46,.055) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(900px 600px at 50% 0%,#000 30%,transparent 75%)}
+#cdot,#cring{position:fixed;top:0;left:0;pointer-events:none;z-index:900;mix-blend-mode:difference;display:none}
+@media(pointer:fine){body.has-cursor,body.has-cursor a,body.has-cursor button{cursor:none}#cdot,#cring{display:block}}
+#cdot{width:8px;height:8px;border-radius:50%;background:#fff}
+#cring{width:38px;height:38px;border-radius:50%;border:1px solid #fff;transition:width .25s,height .25s}
+#cring.big{width:74px;height:74px}
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s}
+[data-reveal].in{opacity:1;transform:none}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 24px 0;overflow:hidden;z-index:2;
+  background:radial-gradient(1000px 500px at 50% -10%,rgba(208,122,46,.16),transparent 60%),linear-gradient(180deg,#1d1710 0%,var(--ink) 70%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 60%,var(--ink) 98%)}
+.hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%}
+.stamp{display:inline-flex;align-items:center;gap:12px;border:2px solid var(--copper);border-radius:8px;padding:10px 20px;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--copper-hi);margin-bottom:28px;transform:rotate(-1.5deg);background:rgba(208,122,46,.07)}
+h1{font-family:var(--slab);font-weight:700;font-size:clamp(50px,10.5vw,128px);line-height:.98;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--copper-hi)}
+h1 .out{color:transparent;-webkit-text-stroke:2px var(--dim)}
+.hero-sub{max-width:56ch;color:var(--dim);font-size:clamp(15px,2vw,18px);margin:26px 0 34px}
+.hero-sub strong{color:var(--paper)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:10px;padding:16px 32px;font-size:16px;border:0;font-family:inherit;cursor:pointer}
+.btn-copper{background:linear-gradient(180deg,var(--copper-hi),var(--copper));color:#241708;box-shadow:0 10px 32px rgba(208,122,46,.35)}
+.btn-ghost{border:1.5px solid var(--line);color:var(--paper);background:rgba(245,239,226,.04)}
+.creed-row{display:flex;gap:12px 34px;flex-wrap:wrap;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-bottom:80px}
+.creed-row b{color:var(--cream)}
+.hero-photo{margin:0 24px 40px;position:relative;z-index:2;max-width:1120px;margin-left:auto;margin-right:auto}
+.hero-photo img{width:100%;height:auto;border:1px solid var(--line)}
+section{padding:100px 24px;position:relative;z-index:2}
+.wrap{max-width:1120px;margin:0 auto}
+.kick{font-size:11px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--copper-hi);margin-bottom:18px}
+h2{font-family:var(--slab);font-weight:700;font-size:clamp(38px,6vw,72px);line-height:1.02;letter-spacing:-.01em;margin-bottom:16px}
+h2 em{font-style:normal;color:var(--copper-hi)}
+.lede{color:var(--dim);font-size:17px;max-width:58ch;margin-bottom:56px}
+.svc{display:grid;gap:18px}
+@media(min-width:880px){.svc{grid-template-columns:repeat(3,1fr)}}
+.card{background:linear-gradient(180deg,var(--panel),#1d1710);border:1px solid var(--line);border-radius:16px;padding:38px 32px;transition:transform .35s,border-color .35s}
+.card:hover{transform:translateY(-8px);border-color:rgba(208,122,46,.55)}
+.card .n{font-family:var(--slab);font-size:15px;color:var(--faint);letter-spacing:.24em;margin-bottom:20px}
+.card .rule{height:3px;width:54px;background:var(--copper);margin-bottom:22px}
+.card h3{font-family:var(--slab);font-size:27px;font-weight:600;margin-bottom:10px}
+.card p{color:var(--dim);font-size:15px;margin-bottom:26px}
+.price{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:20px}
+.price .from{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.price .amt{font-family:var(--slab);font-size:38px}
+.storm{background:linear-gradient(135deg,#2b2113,#3a2a15 55%,#4a3418);border:1px solid rgba(208,122,46,.35);border-radius:26px;padding:clamp(50px,7vw,90px) clamp(30px,6vw,80px);position:relative;overflow:hidden}
+.storm::before{content:"";position:absolute;inset:0;opacity:.35;background-image:linear-gradient(rgba(240,162,78,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(240,162,78,.08) 1px,transparent 1px);background-size:34px 34px}
+.storm h2,.storm p,.storm ol{position:relative}
+.storm p{color:#d9c8a4;max-width:60ch;font-size:17px;margin-bottom:14px}
+.storm ol{list-style:none;margin:34px 0;display:grid;gap:12px}
+@media(min-width:800px){.storm ol{grid-template-columns:repeat(3,1fr)}}
+.storm li{background:rgba(23,19,13,.5);border:1px solid rgba(208,122,46,.3);border-radius:14px;padding:24px}
+.storm li .sn{font-family:var(--slab);font-size:30px;color:var(--copper-hi);margin-bottom:8px}
+.storm li h4{font-size:15px;margin-bottom:6px}
+.storm li p{font-size:14px;color:#c4b28a;margin:0}
+.proof-grid{display:grid;gap:18px}
+@media(min-width:880px){.proof-grid{grid-template-columns:1fr 1fr}}
+.check{background:rgba(245,239,226,.04);border:1px solid var(--line);border-radius:18px;padding:34px 32px}
+.check p{font-size:16px;margin-bottom:18px}
+.check .who{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.warr{display:flex;gap:26px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:54px;border:1px dashed rgba(208,122,46,.5);border-radius:18px;padding:28px 34px;text-align:center}
+.warr .big{font-family:var(--slab);font-size:clamp(40px,6vw,64px);color:var(--copper-hi);line-height:1}
+.warr .cap{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.towns{display:flex;flex-wrap:wrap;gap:12px}
+.town{border:1.5px solid var(--line);border-radius:8px;padding:12px 24px;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.final{text-align:center}
+.final h2{font-size:clamp(46px,8.8vw,96px)}
+.final p{color:var(--dim);font-size:18px;max-width:52ch;margin:18px auto 36px}
+.big-call{display:inline-block;font-family:var(--slab);font-weight:700;font-size:clamp(32px,6vw,60px);color:var(--paper);text-decoration:none;border-bottom:4px solid var(--copper);padding-bottom:6px}
+form{display:grid;gap:12px;max-width:480px;margin:0 auto;text-align:left}
+label{display:grid;gap:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+input,select,textarea{font:inherit;padding:12px;border:1px solid var(--line);background:var(--panel);color:var(--paper);border-radius:8px}
+#est div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0}
+.go{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.hint{color:var(--faint);font-size:13px}
+footer{padding:40px 24px 100px;font-size:13px;color:var(--faint);text-align:center;position:relative;z-index:2}
+.stick{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:250;display:flex;gap:8px}
+.stick a{flex:1;text-align:center;background:var(--copper);color:#241708;padding:14px;border-radius:10px;text-decoration:none;font-weight:800}
+.stick a.ghost{background:var(--panel);color:var(--paper);border:1px solid var(--line)}
+@media(min-width:800px){.stick{display:none}}
 </style>
 </head>
 <body>
-<div id="gate">
-  <h1 class="word" id="gateWord">Walk the Menu</h1>
-  <button type="button" class="hold" id="enter" aria-label="Click and hold to enter">
-    <svg viewBox="0 0 32 32" width="88" height="88"><circle cx="16" cy="16" r="14"/><circle data-ring cx="16" cy="16" r="14"></circle></svg>
-    <span>Hold</span>
-  </button>
-  <p class="sub">Click &amp; hold · scroll sideways</p>
-</div>
-
-<div class="hud">
-  <span>Charcuterie Chick</span>
-  <span id="pos">01 / 05</span>
-  <span>Tomball, TX</span>
-</div>
-<div class="bar"><i id="fill"></i></div>
-<div class="strip" id="strip"></div>
-
-<div id="sheet">
-  <div>
-    <button type="button" class="x" id="close">Close ↙</button>
-    <p class="k" id="sk" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.45;margin:12px 0 8px"></p>
-    <h3 id="sname"></h3>
-    <p id="sinc" style="opacity:.65;line-height:1.5"></p>
-    <p class="big" id="big">—</p>
-    <p id="note" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;opacity:.55"></p>
-  </div>
-  <form>
-    <label>Guests<input id="g" value="75" inputmode="numeric"></label>
-    <label>Date<input id="d" type="date"></label>
-    <label>Name<input id="n" autocomplete="name"></label>
-    <label>Phone<input id="p" type="tel"></label>
-    <label>Notes<textarea id="m" rows="2"></textarea></label>
-    <div>
-      <button type="button" class="txtb" id="smsBtn">Text this quote</button>
-      <button type="button" class="txtb" id="emailBtn">Email</button>
-      <button type="button" class="txtb" id="copyBtn">Copy</button>
+<div class="grid-bg" aria-hidden="true"></div>
+<div id="cdot"></div><div id="cring"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="stamp">Est. 35 years · Tomball</div>
+    <h1>Tables built<br>like they <em>used</em><br><span class="out">to cook.</span></h1>
+    <p class="hero-sub">Scratch-made breads, jellies and jams. Houston’s largest charcuterie cart. <strong>One party at a time.</strong> Woman-owned. English and Spanish.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-copper" href="tel:+18324588180">Call 832-458-8180</a>
+      <a class="btn btn-ghost" href="#ask">Ask for a quote</a>
     </div>
-    <p id="hint" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.4">Nothing is sent until you tap send.</p>
-  </form>
-</div>
+    <div class="creed-row"><span><b>50</b> guest min</span><span><b>90</b> minutes</span><span><b>$229</b> setup</span><span><b>100</b> miles</span></div>
+  </div>
+</section>
+<figure class="hero-photo">
+  <img src="img/knot-3.jpg" width="945" height="720" alt="Super Graze table">
+</figure>
 
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>The ledger</p>
+    <h2 data-reveal>Five tables. <em>Priced.</em></h2>
+    <p class="lede" data-reveal>Per-person tables, 50-guest minimum. Holy Grail is a flat 75 or 150.</p>
+    <div class="svc">
+      <article class="card" data-reveal><div class="n">01</div><div class="rule"></div><h3>Holy Grail</h3><p>Five cheeses, five meats, two sliders × 50.</p><div class="price"><span class="from">75 / 150</span><span class="amt">$2,000</span></div></article>
+      <article class="card" data-reveal><div class="n">02</div><div class="rule"></div><h3>Grand Graze</h3><p>Five sliders, four salads, pudding cups.</p><div class="price"><span class="from">pp</span><span class="amt">$38</span></div></article>
+      <article class="card" data-reveal><div class="n">03</div><div class="rule"></div><h3>Super Graze</h3><p>Three sliders, three salads, vegetables.</p><div class="price"><span class="from">pp</span><span class="amt">$30</span></div></article>
+      <article class="card" data-reveal><div class="n">04</div><div class="rule"></div><h3>Standard</h3><p>Second hummus, pasta salad, chips.</p><div class="price"><span class="from">pp</span><span class="amt">$26</span></div></article>
+      <article class="card" data-reveal><div class="n">05</div><div class="rule"></div><h3>Graze Me</h3><p>Two sliders, meat, cheese, fruit.</p><div class="price"><span class="from">pp</span><span class="amt">$24</span></div></article>
+      <article class="card" data-reveal><div class="n">06</div><div class="rule"></div><h3>Taco cart</h3><p>Carts $24.50. Boards on request.</p><div class="price"><span class="from">pp</span><span class="amt">$26.95</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="storm" data-reveal>
+      <h2>How a booking <em>runs.</em></h2>
+      <p>Nothing on this page promises a step that does not happen.</p>
+      <ol>
+        <li><div class="sn">01</div><h4>You text</h4><p>Name, date, guests, table. Lands on her phone.</p></li>
+        <li><div class="sn">02</div><h4>She prices</h4><p>By hand. Deposit her way. No calendar widget.</p></li>
+        <li><div class="sn">03</div><h4>Event day</h4><p>Table styled on site. 90 minutes of service.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>Couples</p>
+    <h2 data-reveal>On The <em>Knot.</em></h2>
+    <div class="proof-grid">
+      <div class="check" data-reveal><p>Everything was fresh, delicious, and thoughtfully prepared, and it brought comfort to our family as we gathered to remember my papa’s life.</p><div class="who">Nicole M.</div></div>
+      <div class="check" data-reveal><p>Breakfast buffet and ice cream sundae bar for our wedding. Endless compliments from guests about the food, as well as the service.</p><div class="who">Jake S.</div></div>
+    </div>
+    <div class="warr" data-reveal>
+      <div><div class="big">5.0</div><div class="cap">The Knot · 13 reviews</div></div>
+      <div><div class="big">2026</div><div class="cap">Best of Weddings</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>Shop</p>
+    <h2 data-reveal>Northwest <em>Houston.</em></h2>
+    <div class="towns" data-reveal><span class="town">Tomball</span><span class="town">The Woodlands</span><span class="town">Spring</span><span class="town">Conroe</span></div>
+  </div>
+</section>
+
+<section class="final" id="ask">
+  <div class="wrap">
+    <h2>Ask for<br><em>the table.</em></h2>
+    <p>Food + $229 setup + 18% tax, computed here. You send the text.</p>
+    <form aria-label="Quote">
+      <label>Name<input id="n"></label>
+      <label>Phone<input id="p" type="tel"></label>
+      <label>Date<input id="d" type="date"></label>
+      <label>Guests<input id="g" type="number" min="50" value="75"></label>
+      <label>Table<select id="t"><option value="holy">Holy Grail</option><option value="grand">Grand $38</option><option value="super">Super $30</option><option value="standard">Standard $26</option><option value="graze">Graze Me $24</option></select></label>
+      <label>Notes<textarea id="m" rows="3"></textarea></label>
+      <div id="est"></div>
+      <div class="go">
+        <button type="button" class="btn btn-copper" id="smsBtn">Text Tricia</button>
+        <button type="button" class="btn btn-ghost" id="emailBtn">Email</button>
+        <button type="button" class="btn btn-ghost" id="copyBtn">Copy</button>
+      </div>
+      <p class="hint" id="hint">832-458-8180 · charcuteriechick@outlook.com</p>
+    </form>
+    <p style="margin-top:48px"><a class="big-call" href="tel:+18324588180">832-458-8180</a></p>
+  </div>
+</section>
+<footer>
+  <p>Charcuterie Chick · Tricia Holfelder · 11931 Brantley Haven Drive, Tomball, TX 77375</p>
+</footer>
+<nav class="stick"><a href="tel:+18324588180">Call</a><a class="ghost" href="#ask">Quote</a></nav>
 <script src="engine.js"></script>
-<script src="craft.js"></script>
-<script>
-(function(){
-  CRAFT.space(document.getElementById("gateWord"));
-  CRAFT.cursor();
-  var ids=["holy","grand","super","standard","graze"];
-  var strip=document.getElementById("strip");
-  var openId="holy";
-  ids.forEach(function(id,i){
-    var t=CHICK.byId(id);
-    var p=document.createElement("article");
-    p.className="panel";
-    p.dataset.id=id;
-    p.innerHTML =
-      '<div class="txt">'+
-        '<p class="k">[ US_0'+(i+1)+' ]  [ table ]</p>'+
-        '<h2>'+t.name+'</h2>'+
-        '<p class="pr">'+t.priceLabel+(t.unit?'  ·  '+t.unit:'')+'</p>'+
-        '<p class="inc">'+t.include+'</p>'+
-        '<button type="button" class="open" data-open="'+t.id+'">Open  [+]</button>'+
-      '</div>'+
-      '<div class="media"><img src="'+t.img+'" width="'+t.w+'" height="'+t.h+'" alt="'+t.name+'"></div>';
-    strip.appendChild(p);
-  });
-  function enter(){
-    document.getElementById("gate").classList.add("off");
-    setTimeout(function(){ document.getElementById("gate").style.display="none"; }, 700);
-  }
-  CRAFT.hold(document.getElementById("enter"), enter);
-  strip.addEventListener("wheel", function(e){
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      strip.scrollLeft += e.deltaY;
-      e.preventDefault();
-    }
-  }, { passive:false });
-  function tick(){
-    var max = strip.scrollWidth - strip.clientWidth;
-    var p = max ? strip.scrollLeft / max : 0;
-    document.getElementById("fill").style.width = (20 + p*80) + "%";
-    var i = Math.round(p * (ids.length-1));
-    document.getElementById("pos").textContent = String(i+1).padStart(2,"0")+" / 0"+ids.length;
-  }
-  strip.addEventListener("scroll", tick, { passive:true });
-  function render(){
-    var t=CHICK.byId(openId);
-    var q=CHICK.compute(openId, g.value);
-    document.getElementById("sk").textContent="[ quote ]  [ "+t.n+" ]";
-    document.getElementById("sname").textContent=t.name;
-    document.getElementById("sinc").textContent=t.include;
-    document.getElementById("big").textContent=(q&&q.ok)?CHICK.money(q.total):t.priceLabel;
-    document.getElementById("note").textContent=(q&&q.ok)?("Food "+CHICK.money(q.food)+" + setup "+CHICK.money(q.setup)+" + tax "+CHICK.money(q.tax)+". "+q.note): (q?q.note:"");
-  }
-  function state(){
-    return { name:n.value.trim(), phone:p.value.trim(), date:d.value, guests:g.value.trim(), table:CHICK.byId(openId), details:m.value.trim() };
-  }
-  strip.addEventListener("click", function(e){
-    var b=e.target.closest("[data-open]"); if(!b) return;
-    openId=b.getAttribute("data-open");
-    render();
-    document.getElementById("sheet").classList.add("on");
-  });
-  document.getElementById("close").onclick=function(){ document.getElementById("sheet").classList.remove("on"); };
-  g.addEventListener("input", render);
-  smsBtn.onclick=function(){ CHICK.sms(state()); };
-  emailBtn.onclick=function(){ CHICK.email(state()); };
-  copyBtn.onclick=function(){ CHICK.copy(state(), hint); };
-  tick();
-})();
-</script>
+<script src="kit.js"></script>
 </body>
 </html>

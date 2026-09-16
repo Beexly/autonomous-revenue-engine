@@ -1,287 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SAMPLE — Charcuterie Chick, Tomball TX.
+  Art direction: "THE LONG TABLE" — organic editorial, warm paper, botanical wine.
+  Stolen craft: Kit lawn-care "SUNDAY MORNING" (docs/kit/previews/lawn-care.html).
+  Fraunces display + Inter body. Dual cursor from docs/kit/index.html Motif.
+  Single file + engine.js + kit.js. No AI images.
+-->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Selected Tables — Charcuterie Chick</title>
-<meta name="description" content="Selected grazing tables in Tomball. Hold to enter. Open a table, price it, text Tricia. 50-guest minimum, 35 years.">
+<title>The long table — Charcuterie Chick, Tomball</title>
+<meta name="description" content="Grazing tables in Tomball from $24 a person. Carts, boards, 35 years in restaurants. Call Tricia, 832-458-8180. 50-guest minimum.">
 <link rel="canonical" href="https://charcuterie-chick-sample-1.vercel.app/">
-<meta name="theme-color" content="#0A0908">
+<meta name="theme-color" content="#f7f2e7">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Syne:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --void: #0A0908;
-    --ivory: #F4EFE6;
-    --ink: #0A0908;
-    --mute: rgba(10,9,8,.48);
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; background: var(--void); color: var(--ivory); }
-  body { font-family: Syne, system-ui, sans-serif; }
-  button, input, select, textarea { font: inherit; color: inherit; background: none; border: 0; }
-  a { color: inherit; text-decoration: none; }
-  ::selection { background: var(--ivory); color: var(--void); }
-  .cur {
-    width: 14px; height: 14px; border: 1px solid #F4EFE6; border-radius: 50%;
-    position: fixed; top: 0; left: 0; margin: -7px 0 0 -7px; pointer-events: none;
-    z-index: 200; mix-blend-mode: difference; transition: transform .08s linear, width .2s, height .2s, margin .2s;
-  }
-  .cur.down { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
-  html.has-cur, html.has-cur * { cursor: none !important; }
-  #gate {
-    position: fixed; inset: 0; z-index: 80; background: var(--void);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 36px; text-align: center;
-  }
-  #gate.off { opacity: 0; pointer-events: none; transition: opacity .7s ease; }
-  #gate .word { font-family: "Bodoni Moda", Georgia, serif; font-size: clamp(1.4rem, 4vw, 2.4rem); font-style: italic; letter-spacing: .42em; text-transform: uppercase; }
-  #gate .sub { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; opacity: .5; }
-  .hold {
-    width: 88px; height: 88px; border-radius: 50%; position: relative;
-    display: grid; place-items: center; color: var(--ivory);
-  }
-  .hold svg { position: absolute; inset: 0; transform: rotate(-90deg); }
-  .hold circle { fill: none; stroke: rgba(244,239,230,.2); stroke-width: 1; }
-  .hold [data-ring] { stroke: var(--ivory); stroke-dasharray: 88; stroke-dashoffset: 88; }
-  .hold span { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; }
-  #app { min-height: 100vh; background: var(--ivory); color: var(--ink); }
-  .top {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 22px 4vw; position: sticky; top: 0; z-index: 5;
-    background: var(--ivory);
-  }
-  .top .mark { font-family: "Bodoni Moda", Georgia, serif; font-style: italic; font-size: 18px; }
-  .top .meta { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--mute); }
-  .intro { padding: 8vh 4vw 6vh; }
-  .intro .k { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .32em; text-transform: uppercase; color: var(--mute); margin: 0 0 18px; }
-  .intro h1 {
-    font-family: "Bodoni Moda", Georgia, serif; font-weight: 400;
-    font-size: clamp(2.2rem, 8vw, 7.2rem); line-height: .9; letter-spacing: .12em;
-    text-transform: uppercase; margin: 0 0 20px; max-width: 14ch;
-  }
-  .intro h1 .sp { letter-spacing: .4em; }
-  .intro p { max-width: 28rem; font-size: 15px; line-height: 1.55; color: var(--mute); margin: 0; }
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 4vw 18px; }
-  .filters button {
-    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px;
-    letter-spacing: .2em; text-transform: uppercase; padding: 8px 10px;
-    color: var(--mute);
-  }
-  .filters button.on { color: var(--ink); }
-  .filters button small { opacity: .45; margin-left: 6px; }
-  .stage { position: relative; padding: 0 4vw 12vh; min-height: 70vh; }
-  .index { list-style: none; margin: 0; padding: 0; max-width: 52vw; }
-  .index li {
-    display: grid; grid-template-columns: 3.2rem 1fr auto;
-    gap: 1.2rem; align-items: baseline;
-    padding: 1.15rem 0; border-top: 1px solid rgba(10,9,8,.12);
-  }
-  .index .n { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .18em; color: var(--mute); }
-  .index h2 {
-    margin: 0; font-family: "Bodoni Moda", Georgia, serif; font-weight: 400;
-    font-size: clamp(1.6rem, 3.4vw, 3.1rem); line-height: .95; font-style: italic;
-  }
-  .index .pr { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .08em; }
-  .float {
-    position: fixed; right: 6vw; top: 28vh; width: min(38vw, 520px); pointer-events: none;
-    z-index: 3; opacity: 0; transition: opacity .35s ease;
-  }
-  .float.on { opacity: 1; }
-  .float .frame {
-    background: var(--void); padding: 18px 18px 22px;
-  }
-  .float img { width: 100%; height: auto; display: block; }
-  .float figcaption {
-    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px;
-    letter-spacing: .18em; text-transform: uppercase; color: var(--ivory);
-    margin-top: 10px; opacity: .7;
-  }
-  #study {
-    position: fixed; inset: 0; z-index: 40; background: var(--void); color: var(--ivory);
-    display: none; overflow: auto;
-  }
-  #study.on { display: grid; grid-template-columns: 1.05fr .95fr; }
-  #study .pic { min-height: 100vh; display: grid; place-items: center; padding: 8vh 4vw; background: #050505; }
-  #study .pic img { max-width: min(100%, 720px); max-height: 78vh; width: auto; height: auto; }
-  #study .copy { padding: 10vh 6vw 8vh; display: flex; flex-direction: column; gap: 14px; }
-  #study .k { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; opacity: .45; }
-  #study h3 {
-    font-family: "Bodoni Moda", Georgia, serif; font-weight: 400; font-style: italic;
-    font-size: clamp(2.4rem, 5vw, 4.6rem); line-height: .92; margin: 0;
-  }
-  #study .rail { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin: 10px 0 8px; }
-  #study .rail div span { display: block; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 9px; letter-spacing: .22em; text-transform: uppercase; opacity: .4; margin-bottom: 4px; }
-  #study .est { font-family: "Bodoni Moda", Georgia, serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-style: italic; }
-  #study form { display: grid; gap: 10px; margin-top: 8px; max-width: 22rem; }
-  #study label { display: grid; gap: 4px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; opacity: .65; }
-  #study input {
-    border-bottom: 1px solid rgba(244,239,230,.28); padding: 8px 0; font-family: Syne, sans-serif; font-size: 16px; opacity: 1; color: var(--ivory);
-  }
-  .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
-  .txt {
-    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
-    padding: 12px 0; border-bottom: 1px solid var(--ivory);
-  }
-  .back {
-    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
-    opacity: .5; text-align: left; padding: 0;
-  }
-  footer.site { padding: 24px 4vw 40px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
-  @media (max-width: 900px) {
-    .index { max-width: 100%; }
-    .float { display: none; }
-    #study.on { grid-template-columns: 1fr; }
-    #study .pic { min-height: 42vh; padding: 4vh 6vw; }
-    #study .pic img { max-height: 38vh; }
-  }
-  @media (hover: none) { .cur { display: none !important; } html.has-cur, html.has-cur * { cursor: auto !important; } }
+:root{
+  --paper:#f7f2e7; --paper2:#efe7d3; --card:#fffdf7;
+  --pine:#3a1d18; --pine2:#24110e; --moss:#6b2e24; --sage:#b08978;
+  --sun:#c4a574; --sunsoft:#e8d5b0;
+  --ink:#22301f; --inksoft:#5a4a42;
+  --line:rgba(58,29,24,.16);
+  --serif:'Fraunces',Georgia,serif;
+  --body:'Inter',-apple-system,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--sun);color:var(--pine2)}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+.grain{position:fixed;inset:-40%;width:180%;height:180%;pointer-events:none;z-index:200;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:gr 9s steps(8) infinite}
+@keyframes gr{0%,100%{transform:translate(0,0)}30%{transform:translate(-2%,2%)}60%{transform:translate(2%,-3%)}}
+@media (prefers-reduced-motion:reduce){.grain{animation:none}}
+#cdot,#cring{position:fixed;top:0;left:0;pointer-events:none;z-index:900;mix-blend-mode:difference;display:none}
+@media(pointer:fine){
+  body.has-cursor,body.has-cursor a,body.has-cursor button{cursor:none}
+  #cdot,#cring{display:block}
+}
+#cdot{width:8px;height:8px;border-radius:50%;background:#fff;transform:translate(-50%,-50%)}
+#cring{width:38px;height:38px;border-radius:50%;border:1px solid #fff;transform:translate(-50%,-50%);transition:width .25s,height .25s,opacity .25s}
+#cring.big{width:74px;height:74px}
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+[data-reveal].in{opacity:1;transform:none}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:88px 24px 0;overflow:hidden;
+  background:radial-gradient(1000px 480px at 80% -10%,rgba(196,165,116,.28),transparent 60%),radial-gradient(760px 500px at 8% 100%,rgba(107,46,36,.18),transparent 60%),linear-gradient(180deg,#fbf7ec 0%,var(--paper) 70%)}
+.hero-grid{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%;display:grid;gap:32px;align-items:end}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.1fr .9fr}}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--moss);margin-bottom:26px}
+.eyebrow::before{content:"";width:44px;height:1px;background:var(--moss)}
+h1{font-family:var(--serif);font-weight:560;font-size:clamp(52px,10.5vw,128px);line-height:.98;letter-spacing:-.02em;color:var(--pine2)}
+h1 em{font-style:italic;font-weight:400;color:var(--moss)}
+.hero-sub{max-width:54ch;color:var(--inksoft);font-size:clamp(15px,2vw,18px);margin:26px 0 34px}
+.hero-sub strong{color:var(--pine)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;border-radius:999px;padding:16px 32px;font-size:16px;transition:transform .15s,box-shadow .2s;border:0;font-family:inherit;cursor:pointer}
+.btn:active{transform:scale(.96)}
+.btn-pine{background:var(--pine);color:#fdfbf4;box-shadow:0 10px 30px rgba(58,29,24,.3)}
+.btn-pine:hover{transform:translateY(-2px)}
+.btn-line{border:1.5px solid var(--pine);color:var(--pine);background:transparent}
+.hero-badges{display:flex;gap:10px 26px;flex-wrap:wrap;color:var(--inksoft);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding-bottom:28px}
+.hero-badges b{color:var(--pine)}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;height:auto;border-radius:8px}
+.hero-photo figcaption{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-top:10px}
+.strip{position:relative;z-index:2;background:var(--pine);color:#f3eddc;overflow:hidden;white-space:nowrap}
+.strip .track{display:inline-block;padding:12px 0;animation:tick 32s linear infinite;font-family:var(--serif);font-style:italic;font-size:16px}
+.strip .track i{font-style:normal;color:var(--sun);margin:0 16px}
+@keyframes tick{to{transform:translateX(-50%)}}
+section{padding:100px 24px}
+.wrap{max-width:1120px;margin:0 auto}
+.kick{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--moss);margin-bottom:18px}
+h2{font-family:var(--serif);font-weight:560;font-size:clamp(36px,5.6vw,68px);line-height:1.04;letter-spacing:-.015em;color:var(--pine2);margin-bottom:16px}
+h2 em{font-style:italic;font-weight:400;color:var(--moss)}
+.lede{color:var(--inksoft);font-size:17px;max-width:58ch;margin-bottom:56px}
+.svc{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:30px 6px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .25s,padding .25s}
+.row:hover{background:rgba(58,29,24,.045);padding-left:18px}
+.row .n{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--sage);width:44px}
+.row h3{font-family:var(--serif);font-size:clamp(22px,3.2vw,32px);font-weight:560;color:var(--pine2)}
+.row h3 small{display:block;font-family:var(--body);font-size:14px;font-weight:400;color:var(--inksoft);margin-top:6px}
+.row .p{text-align:right}
+.row .p .from{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sage)}
+.row .p .amt{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);color:var(--pine)}
+@media(max-width:640px){.row{grid-template-columns:auto 1fr}.row .p{grid-column:2;text-align:left}}
+.gallery{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:800px){.gallery{grid-template-columns:repeat(4,1fr)}}
+.gallery figure{margin:0}
+.gallery img{width:100%;height:auto;background:#e8dcc8}
+.gallery figcaption{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-top:8px}
+.band{background:var(--pine);color:#f3eddc;border-radius:34px;padding:clamp(50px,7vw,90px) clamp(28px,6vw,80px);position:relative;overflow:hidden}
+.band h2{color:#fbf7ec}.band h2 em{color:var(--sunsoft)}
+.band p{color:#d8cfae;max-width:60ch;font-size:17px;margin-bottom:36px}
+.trio{display:grid;gap:14px}
+@media(min-width:800px){.trio{grid-template-columns:repeat(3,1fr)}}
+.trio div{background:rgba(251,247,236,.07);border:1px solid rgba(251,247,236,.16);border-radius:18px;padding:26px}
+.trio .k{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--sun);margin-bottom:8px}
+.trio h4{font-size:16px;margin-bottom:6px;color:#fbf7ec}
+.trio p{font-size:14px;color:#cfc49e;margin:0}
+.about{display:grid;gap:40px;align-items:center}
+@media(min-width:860px){.about{grid-template-columns:.7fr 1fr}}
+.about img{width:min(100%,662px);height:auto}
+.quotes{display:grid;gap:18px}
+@media(min-width:860px){.quotes{grid-template-columns:1fr 1fr}}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px 34px;position:relative}
+.quote::before{content:"“";position:absolute;top:6px;left:24px;font-family:var(--serif);font-size:90px;color:var(--sunsoft);line-height:1}
+.quote p{font-family:var(--serif);font-size:19px;line-height:1.55;color:var(--pine2);margin:28px 0 18px;position:relative}
+.quote .who{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--moss)}
+.towns{display:flex;flex-wrap:wrap;gap:12px}
+.town{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:12px 26px;font-weight:600;font-size:15px;color:var(--pine)}
+form{display:grid;gap:14px;max-width:520px}
+label{display:grid;gap:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss)}
+input,select,textarea{font:inherit;padding:12px 14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px}
+.go{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+#est{font-family:var(--serif);font-size:18px}
+#est div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:6px 0}
+.hint{font-size:13px;color:var(--inksoft)}
+footer{padding:40px 24px 100px;font-size:14px;color:var(--inksoft)}
+.stick{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:250;display:flex;gap:8px}
+.stick a{flex:1;text-align:center;background:var(--pine);color:#fdfbf4;padding:14px;border-radius:999px;text-decoration:none;font-weight:700;font-size:14px}
+.stick a.ghost{background:var(--card);color:var(--pine);border:1px solid var(--line)}
+@media(min-width:800px){.stick{display:none}}
+@media print{.stick,.grain,#cdot,#cring{display:none!important}}
 </style>
 </head>
 <body>
-<div id="gate">
-  <p class="word" id="gateWord">Charcuterie</p>
-  <button type="button" class="hold" id="enter" aria-label="Click and hold to enter">
-    <svg viewBox="0 0 32 32" width="88" height="88"><circle cx="16" cy="16" r="14"/><circle cx="16" cy="16" r="14" data-ring></circle></svg>
-    <span>Hold</span>
-  </button>
-  <p class="sub">Click &amp; hold · Tomball</p>
-</div>
+<div class="grain" aria-hidden="true"></div>
+<div id="cdot"></div><div id="cring"></div>
 
-<div id="app">
-  <header class="top">
-    <span class="mark">The Chick Goodies</span>
-    <span class="meta">Tomball · The Woodlands · Spring · Conroe</span>
-  </header>
-  <section class="intro">
-    <p class="k">[selected] [tables]</p>
-    <h1 id="h1">Selected Tables</h1>
-    <p>Tricia Holfelder. Thirty-five years in restaurants. One party at a time. Houston’s largest charcuterie cart — her words.</p>
-  </section>
-  <div class="filters" id="filters"></div>
-  <div class="stage">
-    <ul class="index" id="list"></ul>
-  </div>
-  <figure class="float" id="float" aria-hidden="true">
-    <div class="frame">
-      <img id="fimg" src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing">
-      <figcaption id="fcap"></figcaption>
-    </div>
-  </figure>
-  <footer class="site">11931 Brantley Haven Drive · 832-458-8180 · charcuteriechick@outlook.com · @charcuteriechickhtx</footer>
-</div>
-
-<div id="study">
-  <div class="pic"><img id="simg" src="img/knot-hero.jpg" width="945" height="720" alt="Selected table"></div>
-  <div class="copy">
-    <button type="button" class="back" id="close">Close ↙</button>
-    <p class="k" id="sk"></p>
-    <h3 id="sname"></h3>
-    <div class="rail">
-      <div><span>Client</span>Tricia Holfelder</div>
-      <div><span>Location</span>Tomball, TX</div>
-      <div><span>Service</span id="sunit"></div>
-      <div><span>Published</span id="sprice"></div>
-    </div>
-    <p id="sinc" style="line-height:1.5;opacity:.75;max-width:32rem"></p>
-    <p class="est" id="sest"></p>
-    <form>
-      <label>Guests<input id="g" inputmode="numeric" value="75"></label>
-      <label>Event date<input id="d" type="date"></label>
-      <label>Your name<input id="n" autocomplete="name"></label>
-      <label>Phone<input id="p" type="tel" autocomplete="tel"></label>
-      <div class="acts">
-        <button type="button" class="txt" id="smsBtn">Text this table</button>
-        <button type="button" class="txt" id="emailBtn">Email</button>
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Tomball · The Woodlands · Spring · Conroe</p>
+      <h1>A table that looks <em>loved,</em> not catered.</h1>
+      <p class="hero-sub">Tricia Holfelder. More than 35 years in restaurants. Houston’s largest charcuterie cart. One party at a time. Grazing tables from <strong>$24 a person</strong>, 50-guest minimum.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-pine" href="tel:+18324588180">Call 832-458-8180</a>
+        <a class="btn btn-line" href="#ask">Price a table</a>
       </div>
-      <p id="hint" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.4">Opens your messages. Nothing is sent until you tap send.</p>
+      <div class="hero-badges"><span><b>90</b> min service</span><span><b>$229</b> setup</span><span><b>18%</b> tax</span><span><b>100</b> miles</span></div>
+    </div>
+    <figure class="hero-photo">
+      <img src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing, The Chick Goodies">
+      <figcaption>Holy Grail · 75 or 150 guests</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true"><div class="track">Tomball <i>✦</i> The Woodlands <i>✦</i> Spring <i>✦</i> Conroe <i>✦</i> scratch breads, jellies and jams <i>✦</i> one party at a time <i>✦</i> Tomball <i>✦</i> The Woodlands <i>✦</i> Spring <i>✦</i> Conroe <i>✦</i> scratch breads, jellies and jams <i>✦</i> one party at a time <i>✦</i></div></div>
+
+<section id="tables">
+  <div class="wrap">
+    <p class="kick" data-reveal>The tables</p>
+    <h2 data-reveal>Pick the <em>spread.</em></h2>
+    <p class="lede" data-reveal>Per-person tables, 50-guest minimum, 90 minutes on site. Extra time is $3 per person per half hour. Setup $229. Tax 18%.</p>
+    <div class="svc">
+      <a class="row" href="#ask">
+        <span class="n">01</span>
+        <h3>Holy Grail of Grazing<small>Two sliders (50 each), five cheeses, five meats, two salads, three dips, guacamole, pico, fruit, chips.</small></h3>
+        <div class="p"><span class="from">75 or 150</span><span class="amt">$2,000</span></div>
+      </a>
+      <a class="row" href="#ask">
+        <span class="n">02</span>
+        <h3>Grand Graze<small>Five sliders, four salads, three dips, mini pudding cups.</small></h3>
+        <div class="p"><span class="from">per person</span><span class="amt">$38</span></div>
+      </a>
+      <a class="row" href="#ask">
+        <span class="n">03</span>
+        <h3>Super Graze<small>Three sliders, three salads, three dips, full vegetable spread.</small></h3>
+        <div class="p"><span class="from">per person</span><span class="amt">$30</span></div>
+      </a>
+      <a class="row" href="#ask">
+        <span class="n">04</span>
+        <h3>Grazing Standard<small>Second hummus, two dips, pasta salad, chips.</small></h3>
+        <div class="p"><span class="from">per person</span><span class="amt">$26</span></div>
+      </a>
+      <a class="row" href="#ask">
+        <span class="n">05</span>
+        <h3>Graze Me, Craze Me<small>Two sliders, meat and cheese, fruit, hummus, two salads, one dip.</small></h3>
+        <div class="p"><span class="from">per person</span><span class="amt">$24</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>The house</p>
+    <h2 data-reveal>Carts, sweets, <em>sips.</em></h2>
+    <div class="gallery" data-reveal>
+      <figure><img src="img/cart-640.jpg" width="640" height="480" alt="Charcuterie cart"><figcaption>Taco cart $26.95 · Carts $24.50</figcaption></figure>
+      <figure><img src="img/knot-4.jpg" width="945" height="720" alt="Boards"><figcaption>Boards — ask</figcaption></figure>
+      <figure><img src="img/candy-01.jpg" width="480" height="640" alt="Candy bar"><figcaption>Candy $5 · Cakes $9.50 · Zeppole $4.50</figcaption></figure>
+      <figure><img src="img/sips-01.jpg" width="480" height="640" alt="Mimosa cart"><figcaption>Bloody Mary $6.50 · Mimosa $4</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="band" data-reveal>
+      <h2>Elegance without <em>the cost.</em></h2>
+      <p>Making high-quality catering affordable for every event. Woman-owned. English and Spanish. Scratch-made breads, jellies and jams. One party at a time.</p>
+      <div class="trio">
+        <div><div class="k">35</div><h4>Years in restaurants</h4><p>Front of house and back. Her words, not a template.</p></div>
+        <div><div class="k">90</div><h4>Minutes on the table</h4><p>Then $3 per person per extra half hour.</p></div>
+        <div><div class="k">100</div><h4>Miles of travel</h4><p>Tomball kitchen. Northwest Houston.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about">
+    <img src="img/tricia-662.jpg" width="662" height="823" alt="Tricia Holfelder" data-reveal>
+    <div data-reveal>
+      <p class="kick">The cook</p>
+      <h2>Tricia <em>Holfelder.</em></h2>
+      <p class="lede">More than 35 years in the restaurant industry. Houston’s largest charcuterie cart. Best of Weddings 2026 on The Knot. 5.0 from couples who actually hired her.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>On file</p>
+    <h2 data-reveal>What hosts <em>wrote.</em></h2>
+    <div class="quotes">
+      <blockquote class="quote" data-reveal><p>Everything was fresh, delicious, and thoughtfully prepared, and it brought comfort to our family as we gathered together to remember and celebrate my papa’s life.</p><div class="who">Nicole M. · The Knot</div></blockquote>
+      <blockquote class="quote" data-reveal><p>We had a breakfast buffet and ice cream sundae bar for our wedding. It was absolutely delish. Endless compliments from guests about the food, as well as the service.</p><div class="who">Jake S. · The Knot</div></blockquote>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>Where</p>
+    <h2 data-reveal>Northwest <em>Houston.</em></h2>
+    <div class="towns" data-reveal>
+      <span class="town">Tomball</span><span class="town">The Woodlands</span><span class="town">Spring</span><span class="town">Conroe</span>
+    </div>
+  </div>
+</section>
+
+<section id="ask">
+  <div class="wrap">
+    <p class="kick" data-reveal>The quote</p>
+    <h2 data-reveal>Price it. <em>Text it.</em></h2>
+    <p class="lede" data-reveal>Opens your messages with the numbers filled in. Nothing is sent until you tap send.</p>
+    <form data-reveal aria-label="Quote">
+      <label>Name<input id="n" autocomplete="name"></label>
+      <label>Phone<input id="p" type="tel" autocomplete="tel"></label>
+      <label>Date<input id="d" type="date"></label>
+      <label>Guests<input id="g" type="number" min="50" value="75"></label>
+      <label>Table
+        <select id="t">
+          <option value="holy">Holy Grail</option>
+          <option value="grand">Grand Graze $38</option>
+          <option value="super">Super Graze $30</option>
+          <option value="standard">Grazing Standard $26</option>
+          <option value="graze">Graze Me $24</option>
+        </select>
+      </label>
+      <label>Notes<textarea id="m" rows="3"></textarea></label>
+      <div id="est"></div>
+      <div class="go">
+        <button type="button" class="btn btn-pine" id="smsBtn">Text this to Tricia</button>
+        <button type="button" class="btn btn-line" id="emailBtn">Email</button>
+        <button type="button" class="btn btn-line" id="copyBtn">Copy</button>
+      </div>
+      <p class="hint" id="hint">SMS · charcuteriechick@outlook.com · 832-458-8180</p>
     </form>
   </div>
-</div>
+</section>
 
+<footer class="wrap">
+  <p><strong>Charcuterie Chick</strong> · Tricia Holfelder · 11931 Brantley Haven Drive, Tomball, TX 77375 · 832-458-8180 · charcuteriechick@outlook.com</p>
+  <p>@charcuteriechickhtx</p>
+</footer>
+<nav class="stick" aria-label="Call">
+  <a href="tel:+18324588180">Call</a>
+  <a class="ghost" href="#ask">Quote</a>
+</nav>
 <script src="engine.js"></script>
-<script src="craft.js"></script>
-<script>
-(function(){
-  CRAFT.space(document.getElementById("gateWord"));
-  CRAFT.space(document.getElementById("h1"));
-  CRAFT.cursor();
-  function openApp(){
-    document.getElementById("gate").classList.add("off");
-    setTimeout(function(){ document.getElementById("gate").style.display="none"; }, 700);
-  }
-  CRAFT.hold(document.getElementById("enter"), openApp);
-
-  var kind = "all";
-  var openId = "holy";
-  var kinds = [
-    ["all","All"],["table","Tables"],["cart","Carts"],["sweet","Sweets"],["sip","Sips"],["board","Boards"]
-  ];
-  var fil = document.getElementById("filters");
-  kinds.forEach(function(k,i){
-    var n = CHICK.TABLES.filter(function(t){ return k[0]==="all" || t.kind===k[0]; }).length;
-    var b = document.createElement("button");
-    b.type="button"; if(i===0) b.className="on";
-    b.dataset.kind=k[0];
-    b.innerHTML = k[1]+"<small>"+n+"</small>";
-    fil.appendChild(b);
-  });
-  function rows(){ return CHICK.TABLES.filter(function(t){ return kind==="all"||t.kind===kind; }); }
-  var list = document.getElementById("list");
-  var fl = document.getElementById("float");
-  function preview(t){
-    var img = document.getElementById("fimg");
-    img.src=t.img; img.width=t.w; img.height=t.h; img.alt=t.name;
-    document.getElementById("fcap").textContent = t.n+"  "+t.name;
-    fl.classList.add("on");
-  }
-  function paint(){
-    list.innerHTML="";
-    rows().forEach(function(t){
-      var li=document.createElement("li");
-      li.innerHTML='<span class="n">'+t.n+'</span><h2>'+t.name+'</h2><span class="pr">'+t.priceLabel+'</span>';
-      li.addEventListener("mouseenter", function(){ preview(t); });
-      li.addEventListener("click", function(){ openStudy(t.id); });
-      list.appendChild(li);
-    });
-  }
-  fil.addEventListener("click", function(e){
-    var b=e.target.closest("button"); if(!b) return;
-    kind=b.dataset.kind;
-    fil.querySelectorAll("button").forEach(function(x){ x.classList.toggle("on", x===b); });
-    paint();
-    if(rows()[0]) preview(rows()[0]);
-  });
-  function openStudy(id){
-    openId=id;
-    var t=CHICK.byId(id);
-    document.getElementById("simg").src=t.img;
-    document.getElementById("simg").alt=t.name;
-    document.getElementById("simg").width=t.w;
-    document.getElementById("simg").height=t.h;
-    document.getElementById("sk").textContent="[ "+t.kind+" ]  [ "+t.n+" ]";
-    document.getElementById("sname").textContent=t.name;
-    document.getElementById("sunit").textContent=t.unit||"—";
-    document.getElementById("sprice").textContent=t.priceLabel;
-    document.getElementById("sinc").textContent=t.include;
-    renderEst();
-    document.getElementById("study").classList.add("on");
-  }
-  function renderEst(){
-    var t=CHICK.byId(openId);
-    var q=CHICK.compute(openId, document.getElementById("g").value);
-    document.getElementById("sest").textContent = (q&&q.ok) ? CHICK.money(q.total)+"  with setup and tax" : (t.priceLabel+(q&&q.note?"  —  "+q.note:""));
-  }
-  function state(){
-    return { name:n.value.trim(), phone:p.value.trim(), date:d.value, guests:g.value.trim(), table:CHICK.byId(openId), details:"" };
-  }
-  document.getElementById("g").addEventListener("input", renderEst);
-  document.getElementById("close").onclick=function(){ document.getElementById("study").classList.remove("on"); };
-  document.getElementById("smsBtn").onclick=function(){ CHICK.sms(state()); };
-  document.getElementById("emailBtn").onclick=function(){ CHICK.email(state()); };
-  paint();
-  preview(CHICK.byId("holy"));
-})();
-</script>
+<script src="kit.js"></script>
 </body>
 </html>

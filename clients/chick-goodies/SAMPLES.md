@@ -1,20 +1,16 @@
-# SAMPLES — three products (Unseen consensus)
+# SAMPLES — Kit-grade (repo craft)
 
-Craft consensus from unseen.co, Asaro, Crosswire, Symphony of Vines, and
-2025.unseen.co: click-and-hold to enter, tracked-out type, numbered scenes,
-cursor follower, photos as objects in a void, Open [+]. Not Cal.com. Not a
-theme pack. Content is Tricia’s. Do not impersonate Unseen.
+These are not Unseen clones. They are built at the density of the five
+Kit sample sites in `docs/kit/previews/` (named art direction, ~16–20k
+HTML, full page, dual cursor from `docs/kit/index.html`).
 
-## Live
-
-1. **Index** — https://charcuterie-chick-sample-1.vercel.app
-   Ivory after the gate. Selected-projects list, counted filters, floating
-   frame on hover, full takeover case study.
-2. **Film** — https://charcuterie-chick-sample-2.vercel.app
-   Letterboxed chapters, giant 01–05, hold to select, credits quote at the end.
-3. **Walk** — https://charcuterie-chick-sample-3.vercel.app
-   Horizontal scroll. Wheel maps to sideways. Open [+] slides up the quote.
+1. **THE LONG TABLE** — https://charcuterie-chick-sample-1.vercel.app
+   Craft: lawn-care.html "SUNDAY MORNING". Fraunces, warm paper, grain, marquee, editorial rows.
+2. **MIDNIGHT GRAZE** — https://charcuterie-chick-sample-2.vercel.app
+   Craft: hvac.html "MIDNIGHT SERVICE". Anton, stroke type, ice/hot, ticker, stat band.
+3. **IRON & OAK** — https://charcuterie-chick-sample-3.vercel.app
+   Craft: roofing.html. Zilla Slab, copper, blueprint grid, stamp, ledger cards.
 
 Pitch: https://charcuterie-chick-showcase.vercel.app/#proposal
 
-Shared: `engine.js` (math) + `craft.js` (cursor, hold, tracked type).
+Shared: `engine.js` (math) + `kit.js` (cursor, reveal, form).

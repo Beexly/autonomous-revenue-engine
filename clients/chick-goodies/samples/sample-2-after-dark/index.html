@@ -1,229 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  SAMPLE — Charcuterie Chick, Tomball TX.
+  Art direction: "MIDNIGHT GRAZE" — industrial, urgent, after-dark service.
+  Stolen craft: Kit HVAC "MIDNIGHT SERVICE" (docs/kit/previews/hvac.html).
+  Anton condensed + Inter. Dual cursor from docs/kit/index.html.
+  No AI images.
+-->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Long Table — Charcuterie Chick</title>
-<meta name="description" content="Five cinematic chapters of Tricia’s grazing tables in Tomball. Hold to enter, hold to select, send the quote. 35 years.">
+<title>Midnight graze — Charcuterie Chick, Tomball</title>
+<meta name="description" content="After-dark grazing tables in Tomball. From $24 a person. Call Tricia now, 832-458-8180. 50-guest minimum, 90 minutes on site.">
 <link rel="canonical" href="https://charcuterie-chick-sample-2.vercel.app/">
-<meta name="theme-color" content="#050505">
+<meta name="theme-color" content="#05080f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400;1,6..96,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --void:#050505; --ivory:#F4EFE6; --brass:#C4A574; }
-  * { box-sizing: border-box; }
-  html, body { margin:0; background:var(--void); color:var(--ivory); font-family:"Bodoni Moda", Georgia, serif; }
-  button, input, select, textarea { font:inherit; color:inherit; background:none; border:0; }
-  a { color:inherit; text-decoration:none; }
-  ::selection { background:var(--ivory); color:var(--void); }
-  .cur {
-    width:14px; height:14px; border:1px solid #F4EFE6; border-radius:50%;
-    position:fixed; top:0; left:0; margin:-7px 0 0 -7px; pointer-events:none; z-index:200;
-    mix-blend-mode:difference;
-  }
-  .cur.down { width:28px; height:28px; margin:-14px 0 0 -14px; }
-  html.has-cur, html.has-cur * { cursor:none !important; }
-  #gate {
-    position:fixed; inset:0; z-index:80; display:flex; flex-direction:column;
-    align-items:center; justify-content:center; gap:28px; text-align:center; background:var(--void);
-  }
-  #gate.off { opacity:0; pointer-events:none; transition:opacity .8s ease; }
-  #gate .word { font-size:clamp(1.6rem,5vw,3rem); font-style:italic; letter-spacing:.46em; text-transform:uppercase; }
-  #gate .sub { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.32em; text-transform:uppercase; opacity:.45; }
-  .hold { width:88px; height:88px; border-radius:50%; display:grid; place-items:center; position:relative; }
-  .hold svg { position:absolute; inset:0; transform:rotate(-90deg); }
-  .hold circle { fill:none; stroke:rgba(244,239,230,.18); stroke-width:1; }
-  .hold [data-ring] { stroke:var(--ivory); stroke-dasharray:88; stroke-dashoffset:88; }
-  .hold span { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:9px; letter-spacing:.2em; text-transform:uppercase; }
-  html.show { scroll-snap-type: y mandatory; }
-  .ch {
-    height:100vh; height:100dvh; scroll-snap-align:start; scroll-snap-stop:always;
-    position:relative; overflow:hidden; display:flex; flex-direction:column;
-  }
-  .ch .num {
-    position:absolute; left:4vw; top:50%; transform:translateY(-50%);
-    font-size:clamp(6rem, 22vw, 18rem); font-style:italic; opacity:.07; line-height:.8; pointer-events:none;
-  }
-  .letterbox {
-    flex:1; display:flex; align-items:center; justify-content:center;
-    padding: 10vh 8vw 0;
-  }
-  .letterbox img {
-    max-height: 62vh; max-width: 86vw; width:auto; height:auto; display:block;
-  }
-  .ch .copy { padding: 4vh 8vw 7vh; max-width: 40rem; }
-  .ch .k { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--brass); margin:0 0 10px; }
-  .ch h2 {
-    font-weight:400; font-style:italic; font-size:clamp(2rem, 6vw, 4.4rem);
-    letter-spacing:.08em; text-transform:uppercase; line-height:.95; margin:0 0 10px;
-  }
-  .ch .pr { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11px; letter-spacing:.12em; opacity:.65; margin:0 0 16px; }
-  .hold-mini { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.7; padding:0; }
-  .hold-mini.on { color:var(--brass); }
-  .nav {
-    position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:6;
-    display:none; flex-direction:column; gap:12px;
-  }
-  .nav.on { display:flex; }
-  .nav a {
-    width:7px; height:7px; border-radius:50%; border:1px solid rgba(244,239,230,.5);
-    text-indent:-99px; overflow:hidden;
-  }
-  .nav a.on { background:var(--brass); border-color:var(--brass); }
-  .skip {
-    position:fixed; top:22px; right:28px; z-index:6; display:none;
-    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.5;
-  }
-  .skip.on { display:block; }
-  #end { min-height:100vh; scroll-snap-align:start; padding:14vh 8vw 10vh; }
-  #end h2 { font-size:clamp(2.4rem, 7vw, 5rem); font-style:italic; font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin:0 0 12px; }
-  #end .sum { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12px; letter-spacing:.14em; color:var(--brass); margin:0 0 32px; }
-  form { max-width:26rem; display:grid; gap:14px; }
-  label { display:grid; gap:6px; font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; opacity:.55; }
-  input, select, textarea { border-bottom:1px solid rgba(244,239,230,.28); padding:8px 0; font-family:"Bodoni Moda", Georgia, serif; font-size:18px; opacity:1; }
-  .txt { font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; padding:12px 0; border-bottom:1px solid var(--ivory); margin-right:16px; }
-  @media (prefers-reduced-motion: reduce) { html.show { scroll-snap-type: none; } }
-  @media (hover:none) { .cur { display:none !important; } html.has-cur, html.has-cur * { cursor:auto !important; } }
+:root{
+  --bg:#05080f; --bg2:#0a1220; --panel:#0d1626;
+  --ice:#f3eee4; --ice-dim:#c4b8a8; --steel:#8a7a6a;
+  --hot:#c45c2a; --hot-deep:#8a3a12;
+  --paper:#f2f7fd; --line:rgba(243,238,228,.14);
+  --disp:'Anton',Impact,'Arial Narrow',sans-serif;
+  --body:'Inter',-apple-system,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--paper);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--hot);color:#fff}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+.grain{position:fixed;inset:-40%;width:180%;height:180%;pointer-events:none;z-index:200;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:gr 7s steps(8) infinite}
+@keyframes gr{0%,100%{transform:translate(0,0)}25%{transform:translate(-2%,3%)}50%{transform:translate(3%,-2%)}}
+#cdot,#cring{position:fixed;top:0;left:0;pointer-events:none;z-index:900;mix-blend-mode:difference;display:none}
+@media(pointer:fine){body.has-cursor,body.has-cursor a,body.has-cursor button{cursor:none}#cdot,#cring{display:block}}
+#cdot{width:8px;height:8px;border-radius:50%;background:#fff}
+#cring{width:38px;height:38px;border-radius:50%;border:1px solid #fff;transition:width .25s,height .25s}
+#cring.big{width:74px;height:74px}
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s}
+[data-reveal].in{opacity:1;transform:none}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:110px 24px 0;overflow:hidden;
+  background:radial-gradient(1100px 520px at 85% -10%,rgba(196,92,42,.18),transparent 60%),radial-gradient(900px 600px at 10% 110%,rgba(243,238,228,.08),transparent 55%),linear-gradient(180deg,#070d18 0%,var(--bg) 70%)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;background:repeating-linear-gradient(-55deg,transparent 0 46px,rgba(243,238,228,.04) 46px 48px)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 55%,var(--bg) 98%)}
+.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%}
+.live{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(196,92,42,.5);border-radius:999px;padding:8px 18px;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#ffb59a;background:rgba(196,92,42,.08);margin-bottom:26px}
+.live i{width:9px;height:9px;border-radius:50%;background:var(--hot);box-shadow:0 0 12px var(--hot);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{font-family:var(--disp);font-size:clamp(58px,12.5vw,148px);line-height:.92;letter-spacing:.005em;text-transform:uppercase;color:var(--paper)}
+h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--ice-dim)}
+h1 .hot{color:var(--hot)}
+.temp{display:flex;gap:34px;margin:30px 0 8px;flex-wrap:wrap}
+.temp div{font-family:var(--disp);font-size:clamp(22px,3.4vw,34px);color:var(--ice-dim);text-transform:uppercase}
+.temp div b{color:var(--paper);font-weight:400}
+.hero-sub{max-width:56ch;color:var(--ice-dim);font-size:clamp(15px,2vw,18px);margin:14px 0 34px}
+.hero-sub strong{color:var(--paper)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:14px;padding:17px 32px;font-size:16px;border:0;font-family:inherit;cursor:pointer}
+.btn-hot{background:linear-gradient(180deg,#d46a32,var(--hot-deep));color:#fff;box-shadow:0 10px 34px rgba(196,92,42,.4)}
+.btn-ghost{border:1px solid var(--line);color:var(--ice);background:rgba(243,238,228,.05)}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;color:var(--steel);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding-bottom:44px}
+.ticker{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(196,92,42,.06);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-block;padding:13px 0;animation:tick 26s linear infinite;font-family:var(--disp);font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:var(--ice)}
+.ticker .track b{color:var(--hot);font-weight:400;margin:0 18px}
+@keyframes tick{to{transform:translateX(-50%)}}
+section{padding:96px 24px;position:relative}
+.wrap{max-width:1100px;margin:0 auto}
+.kick{font-size:11px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--hot);margin-bottom:16px}
+h2{font-family:var(--disp);font-size:clamp(38px,6.5vw,72px);line-height:.95;text-transform:uppercase;letter-spacing:.01em;margin-bottom:14px}
+h2 .stroke{color:transparent;-webkit-text-stroke:1.5px var(--ice-dim)}
+.lede{color:var(--ice-dim);font-size:17px;max-width:60ch;margin-bottom:54px}
+.svc{display:grid;gap:16px}
+@media(min-width:820px){.svc{grid-template-columns:repeat(3,1fr)}}
+.card{background:linear-gradient(180deg,var(--panel),#0a1220);border:1px solid var(--line);border-radius:20px;padding:34px 30px 30px;display:flex;flex-direction:column;transition:transform .35s,border-color .35s}
+.card:hover{transform:translateY(-8px);border-color:rgba(196,92,42,.45)}
+.card .idx{font-family:var(--disp);font-size:15px;color:var(--steel);letter-spacing:.2em;margin-bottom:18px}
+.card h3{font-size:20px;font-weight:800;margin-bottom:10px}
+.card p{color:var(--ice-dim);font-size:15px;flex:1;margin-bottom:22px}
+.price{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:18px}
+.price .from{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--steel)}
+.price .amt{font-family:var(--disp);font-size:34px;color:var(--paper)}
+.still{margin:40px 0}
+.still img{width:100%;height:auto;filter:saturate(.9) contrast(1.05)}
+.still figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-top:10px}
+.stats{background:linear-gradient(180deg,#0a1220,#070d18);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;text-align:center}
+@media(min-width:760px){.stats .wrap{grid-template-columns:repeat(4,1fr)}}
+.stat .n{font-family:var(--disp);font-size:clamp(40px,5.5vw,62px)}
+.stat .n em{font-style:normal;color:var(--hot)}
+.stat .l{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);margin-top:6px}
+.quotes{display:grid;gap:16px}
+@media(min-width:820px){.quotes{grid-template-columns:1fr 1fr}}
+.quote{background:rgba(243,238,228,.04);border:1px solid var(--line);border-radius:20px;padding:32px 30px}
+.quote p{font-size:17px;margin-bottom:18px}
+.quote .who{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-dim)}
+.towns{display:flex;flex-wrap:wrap;gap:12px}
+.town{border:1px solid var(--line);border-radius:999px;padding:12px 24px;font-weight:700;font-size:15px;color:var(--ice)}
+.final{background:radial-gradient(800px 420px at 50% 120%,rgba(196,92,42,.22),transparent 65%),linear-gradient(180deg,var(--bg),#0a1220);text-align:center}
+.final h2{font-size:clamp(46px,9vw,96px)}
+.final h2 .hot{color:var(--hot)}
+.final p{color:var(--ice-dim);font-size:18px;max-width:52ch;margin:18px auto 36px}
+.big-call{display:inline-block;font-family:var(--disp);font-size:clamp(30px,6vw,58px);color:var(--paper);text-decoration:none;letter-spacing:.02em;border-bottom:4px solid var(--hot);padding-bottom:6px}
+form{display:grid;gap:12px;max-width:480px;margin:0 auto;text-align:left}
+label{display:grid;gap:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel)}
+input,select,textarea{font:inherit;padding:12px;border:1px solid var(--line);background:var(--panel);color:var(--paper);border-radius:8px}
+#est{text-align:left}
+#est div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0}
+.go{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.hint{color:var(--steel);font-size:13px}
+footer{padding:40px 24px 100px;font-size:13px;color:var(--steel);text-align:center}
+.stick{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:250;display:flex;gap:8px}
+.stick a{flex:1;text-align:center;background:var(--hot);color:#fff;padding:14px;border-radius:14px;text-decoration:none;font-weight:800;font-size:14px}
+.stick a.ghost{background:var(--panel);color:var(--ice);border:1px solid var(--line)}
+@media(min-width:800px){.stick{display:none}}
 </style>
 </head>
 <body>
-<div id="gate">
-  <h1 class="word" id="gateWord">The Long Table</h1>
-  <button type="button" class="hold" id="enter" aria-label="Click and hold to enter">
-    <svg viewBox="0 0 32 32" width="88" height="88"><circle cx="16" cy="16" r="14"/><circle data-ring cx="16" cy="16" r="14"></circle></svg>
-    <span>Hold</span>
-  </button>
-  <p class="sub">Click &amp; hold · five chapters</p>
-</div>
-
-<a class="skip" id="skip" href="#end">Skip to quote</a>
-<nav class="nav" id="dots" aria-label="Chapters"></nav>
-
-<section class="ch" id="c1">
-  <span class="num">01</span>
-  <div class="letterbox"><img src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing" fetchpriority="high"></div>
-  <div class="copy">
-    <p class="k">[ chapter 01 ]  [ table ]</p>
-    <h2 id="t1">Holy Grail</h2>
-    <p class="pr">$2,000 / 75 · $3,500 / 150 · 90 minutes</p>
-    <button type="button" class="hold-mini" data-pick="holy">Hold to select</button>
-  </div>
-</section>
-<section class="ch" id="c2">
-  <span class="num">02</span>
-  <div class="letterbox"><img src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze"></div>
-  <div class="copy">
-    <p class="k">[ chapter 02 ]  [ table ]</p>
-    <h2 id="t2">Grand Graze</h2>
-    <p class="pr">$38 a person · 50 guest minimum</p>
-    <button type="button" class="hold-mini" data-pick="grand">Hold to select</button>
-  </div>
-</section>
-<section class="ch" id="c3">
-  <span class="num">03</span>
-  <div class="letterbox"><img src="img/knot-3.jpg" width="945" height="720" alt="Super Graze"></div>
-  <div class="copy">
-    <p class="k">[ chapter 03 ]  [ table ]</p>
-    <h2 id="t3">Super Graze</h2>
-    <p class="pr">$30 a person · 50 guest minimum</p>
-    <button type="button" class="hold-mini" data-pick="super">Hold to select</button>
-  </div>
-</section>
-<section class="ch" id="c4">
-  <span class="num">04</span>
-  <div class="letterbox"><img src="img/knot-4.jpg" width="945" height="720" alt="The cart"></div>
-  <div class="copy">
-    <p class="k">[ chapter 04 ]  [ cart ]</p>
-    <h2 id="t4">The Cart</h2>
-    <p class="pr">Taco $26.95 · Carts $24.50 · 100 miles</p>
-    <button type="button" class="hold-mini" data-pick="carts">Hold to select</button>
-  </div>
-</section>
-<section class="ch" id="c5">
-  <span class="num">05</span>
-  <div class="letterbox"><img src="img/catering-1000.jpg" width="1000" height="560" alt="Graze Me, Craze Me"></div>
-  <div class="copy">
-    <p class="k">[ chapter 05 ]  [ table ]</p>
-    <h2 id="t5">Graze Me</h2>
-    <p class="pr">$24 a person · Standard $26 · $229 setup · 18% tax</p>
-    <button type="button" class="hold-mini" data-pick="graze">Hold to select</button>
-  </div>
-</section>
-
-<section id="end">
-  <p class="k" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)">[ the end ]  [ quote ]</p>
-  <h2 id="endTitle">Your table</h2>
-  <p class="sum" id="sum">Select a chapter, or write it in.</p>
-  <form>
-    <label>Name<input id="n" autocomplete="name"></label>
-    <label>Phone<input id="p" type="tel"></label>
-    <label>Date<input id="d" type="date"></label>
-    <label>Guests<input id="g" value="75" inputmode="numeric"></label>
-    <label>Table
-      <select id="t">
-        <option value="holy">Holy Grail of Grazing</option>
-        <option value="grand">Grand Graze</option>
-        <option value="super">Super Graze</option>
-        <option value="standard">Grazing Standard</option>
-        <option value="graze">Graze Me, Craze Me</option>
-        <option value="carts">Cart</option>
-      </select>
-    </label>
-    <label>Notes<textarea id="m" rows="3"></textarea></label>
-    <div>
-      <button type="button" class="txt" id="smsBtn">Text Tricia</button>
-      <button type="button" class="txt" id="emailBtn">Email</button>
-      <button type="button" class="txt" id="copyBtn">Copy</button>
+<div class="grain" aria-hidden="true"></div>
+<div id="cdot"></div><div id="cring"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="live"><i></i> One party at a time</div>
+    <h1>The table<br><span class="stroke">is the</span> <span class="hot">event.</span></h1>
+    <div class="temp">
+      <div>From <b>$24</b></div>
+      <div>Min <b>50</b></div>
+      <div>On site <b>90m</b></div>
     </div>
-    <p id="hint" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.4">832-458-8180 · charcuteriechick@outlook.com</p>
-  </form>
+    <p class="hero-sub">Tricia Holfelder. 35 years in restaurants. Houston’s largest charcuterie cart. Call now — the $2,000 table has no enquiry path on her live shop. This one does.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-hot" href="tel:+18324588180">Call 832-458-8180</a>
+      <a class="btn btn-ghost" href="#ask">Price it</a>
+    </div>
+    <div class="hero-meta"><span>Tomball TX</span><span>Setup $229</span><span>Tax 18%</span></div>
+  </div>
+</section>
+<div class="ticker" aria-hidden="true"><div class="track">Holy Grail $2,000 <b>/</b> Grand $38 <b>/</b> Super $30 <b>/</b> Standard $26 <b>/</b> Graze Me $24 <b>/</b> Taco cart $26.95 <b>/</b> Holy Grail $2,000 <b>/</b> Grand $38 <b>/</b> Super $30 <b>/</b> Standard $26 <b>/</b> Graze Me $24 <b>/</b> Taco cart $26.95 <b>/</b></div></div>
+
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>Dispatch</p>
+    <h2 data-reveal>Five <span class="stroke">tables.</span></h2>
+    <p class="lede" data-reveal>50-guest minimum on per-person tables. Extra half hour $3 a head.</p>
+    <div class="svc">
+      <article class="card" data-reveal><div class="idx">01</div><h3>Holy Grail</h3><p>Five cheeses, five meats, two sliders × 50, guacamole, pico. 75 or 150 guests.</p><div class="price"><span class="from">flat</span><span class="amt">$2,000</span></div></article>
+      <article class="card" data-reveal><div class="idx">02</div><h3>Grand Graze</h3><p>Five sliders, four salads, pudding cups.</p><div class="price"><span class="from">pp</span><span class="amt">$38</span></div></article>
+      <article class="card" data-reveal><div class="idx">03</div><h3>Super Graze</h3><p>Three sliders, three salads, full vegetable spread.</p><div class="price"><span class="from">pp</span><span class="amt">$30</span></div></article>
+      <article class="card" data-reveal><div class="idx">04</div><h3>Standard</h3><p>Second hummus, pasta salad, chips.</p><div class="price"><span class="from">pp</span><span class="amt">$26</span></div></article>
+      <article class="card" data-reveal><div class="idx">05</div><h3>Graze Me</h3><p>Two sliders, meat and cheese, fruit, one dip.</p><div class="price"><span class="from">pp</span><span class="amt">$24</span></div></article>
+      <article class="card" data-reveal><div class="idx">06</div><h3>Taco cart</h3><p>The other house. Carts $24.50. Slider $2.95.</p><div class="price"><span class="from">pp</span><span class="amt">$26.95</span></div></article>
+    </div>
+    <figure class="still" data-reveal>
+      <img src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze table">
+      <figcaption>Still · Grand Graze</figcaption>
+    </figure>
+  </div>
 </section>
 
+<section class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">35<em>+</em></div><div class="l">Years</div></div>
+    <div class="stat"><div class="n">90</div><div class="l">Minutes</div></div>
+    <div class="stat"><div class="n">50</div><div class="l">Minimum</div></div>
+    <div class="stat"><div class="n">100</div><div class="l">Miles</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>Proof</p>
+    <h2 data-reveal>Hosts <span class="stroke">talked.</span></h2>
+    <div class="quotes">
+      <blockquote class="quote" data-reveal><p>Everything was fresh, delicious, and thoughtfully prepared, and it brought comfort to our family as we gathered to remember my papa’s life.</p><div class="who">Nicole M. · The Knot</div></blockquote>
+      <blockquote class="quote" data-reveal><p>Breakfast buffet and ice cream sundae bar for our wedding. Endless compliments on the food and the service.</p><div class="who">Jake S. · The Knot</div></blockquote>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kick" data-reveal>Zone</p>
+    <h2 data-reveal>Northwest <span class="stroke">Houston.</span></h2>
+    <div class="towns" data-reveal><span class="town">Tomball</span><span class="town">The Woodlands</span><span class="town">Spring</span><span class="town">Conroe</span></div>
+  </div>
+</section>
+
+<section class="final" id="ask">
+  <div class="wrap">
+    <h2>Price it.<br><span class="hot">Text it.</span></h2>
+    <p>Live total: food + $229 setup + 18% tax. Opens your messages. You send.</p>
+    <form aria-label="Quote">
+      <label>Name<input id="n"></label>
+      <label>Phone<input id="p" type="tel"></label>
+      <label>Date<input id="d" type="date"></label>
+      <label>Guests<input id="g" type="number" min="50" value="75"></label>
+      <label>Table<select id="t"><option value="holy">Holy Grail</option><option value="grand">Grand $38</option><option value="super">Super $30</option><option value="standard">Standard $26</option><option value="graze">Graze Me $24</option></select></label>
+      <label>Notes<textarea id="m" rows="3"></textarea></label>
+      <div id="est"></div>
+      <div class="go">
+        <button type="button" class="btn btn-hot" id="smsBtn">Text Tricia</button>
+        <button type="button" class="btn btn-ghost" id="emailBtn">Email</button>
+        <button type="button" class="btn btn-ghost" id="copyBtn">Copy</button>
+      </div>
+      <p class="hint" id="hint">832-458-8180 · charcuteriechick@outlook.com</p>
+    </form>
+    <p style="margin-top:48px"><a class="big-call" href="tel:+18324588180">832-458-8180</a></p>
+  </div>
+</section>
+<footer>
+  <p>Charcuterie Chick · Tricia Holfelder · 11931 Brantley Haven Drive, Tomball, TX 77375</p>
+</footer>
+<nav class="stick"><a href="tel:+18324588180">Call</a><a class="ghost" href="#ask">Quote</a></nav>
 <script src="engine.js"></script>
-<script src="craft.js"></script>
-<script>
-(function(){
-  ["gateWord","t1","t2","t3","t4","t5"].forEach(function(id){ CRAFT.space(document.getElementById(id)); });
-  CRAFT.cursor();
-  var ids=["c1","c2","c3","c4","c5","end"];
-  var dots=document.getElementById("dots");
-  ids.forEach(function(id,i){ var a=document.createElement("a"); a.href="#"+id; a.textContent=String(i+1); dots.appendChild(a); });
-  function enter(){
-    document.getElementById("gate").classList.add("off");
-    document.documentElement.classList.add("show");
-    document.getElementById("skip").classList.add("on");
-    dots.classList.add("on");
-    setTimeout(function(){ document.getElementById("gate").style.display="none"; document.getElementById("c1").scrollIntoView(); }, 50);
-  }
-  CRAFT.hold(document.getElementById("enter"), enter);
-  document.querySelectorAll(".hold-mini").forEach(function(btn){
-    function sel(){
-      document.getElementById("t").value = btn.getAttribute("data-pick");
-      document.querySelectorAll(".hold-mini").forEach(function(b){ b.classList.toggle("on", b===btn); b.textContent = b===btn ? "Selected" : "Hold to select"; });
-      render();
-      document.getElementById("end").scrollIntoView({behavior:"smooth"});
-    }
-    CRAFT.hold(btn, sel);
-    btn.addEventListener("click", function(){ if (CRAFT.preferReduce()) sel(); });
-  });
-  function state(){
-    return { name:n.value.trim(), phone:p.value.trim(), date:d.value, guests:g.value.trim(), table:CHICK.byId(t.value), details:m.value.trim() };
-  }
-  function render(){
-    var s=state(), q=s.table?CHICK.compute(s.table.id,s.guests):null;
-    document.getElementById("endTitle").textContent = s.table ? s.table.name : "Your table";
-    document.getElementById("sum").textContent = (q&&q.ok) ? CHICK.money(q.total)+" including setup and tax. Not a booking." : (q?q.note:"Select a chapter.");
-  }
-  t.addEventListener("change", render); g.addEventListener("input", render);
-  smsBtn.onclick=function(){ CHICK.sms(state()); };
-  emailBtn.onclick=function(){ CHICK.email(state()); };
-  copyBtn.onclick=function(){ CHICK.copy(state(), hint); };
-  var obs=new IntersectionObserver(function(ents){
-    ents.forEach(function(e){ if(!e.isIntersecting) return; var i=ids.indexOf(e.target.id); dots.querySelectorAll("a").forEach(function(a,j){ a.classList.toggle("on", j===i); }); });
-  }, {threshold:.5});
-  ids.forEach(function(id){ var n=document.getElementById(id); if(n) obs.observe(n); });
-  render();
-})();
-</script>
+<script src="kit.js"></script>
 </body>
 </html>
