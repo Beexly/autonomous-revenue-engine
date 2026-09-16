@@ -19,11 +19,25 @@ re-inventing. Read in this order:
 | `FACTS.md` | **Single source of truth** for every number, price and claim. If a value is not here, do not print it |
 | `AUDIT.md` | Findings against their live Shopify site, with evidence lines |
 | `QUOTE.md` | What was quoted and what each number includes |
+| `SAMPLES.md` | The three art directions, live URLs, and the rules that keep them distinct |
 | `SEO.md` | The discovery plan: local SEO, schema, Google Business Profile, social |
 | `WORKFLOWS.md` | The enquiry → quote → booking workflow the site is supposed to feed |
 | `ASSETS.md` | Every image we hold: provenance, real resolution, what is banned |
 | `site/` | The working build (plain HTML + real photos), deployable as-is |
+| `samples/` | Three complete builds of the same site in three art directions |
 | `tools/prep_assets.py` | Rebuilds `site/img/` from source photos and swaps the phone token |
+
+## Three samples, one content set
+
+The client was promised three samples and said only "elegant". All three are
+live, built from the same `FACTS.md` and the same photos, with no shared CSS:
+
+1. **Warm editorial (cream)** — https://charcuterie-chick-sample-1.vercel.app
+2. **After dark (near-black + brass)** — https://charcuterie-chick-sample-2.vercel.app
+3. **Studio (white, numbered, tabular)** — https://charcuterie-chick-sample-3.vercel.app
+
+Stable demo, same build as sample 1: https://charcuterie-chick-showcase.vercel.app
+Details and the do-not-blend rules: `SAMPLES.md`.
 
 ## The deal on the table
 
