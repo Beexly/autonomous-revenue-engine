@@ -40,7 +40,7 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 5. **Wait node** - pause 72 hours for review callback or status sync.
 6. **If node** - if no review exists, send one reminder; otherwise continue.
 7. **PostgreSQL** - create `reviews` row on request and update on submission/publish callbacks.
-8. **If node** - continue to referral only when a review reaches `submitted` or `published`; otherwise stop after the reminder path and create a CRM follow-up task if needed.
+8. **If node** - continue to referral only when a review reaches `submitted` or `published` **and** the rating is `>= 4` or the mapped sentiment is `positive`; otherwise stop after the reminder path and create a CRM follow-up or service-recovery task if needed.
 9. **Function** - generate unique referral code and reward terms.
 10. **PostgreSQL** - create `referrals` row with `origin_booking_id = booking_id` and insert `referral_shared` event.
 11. **Email/SMS node** - send referral invite with tracked link.
@@ -58,7 +58,7 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 - `review_requested`
 - `review_reminder_sent`
 - `review_submitted`
-- `referral_created` or `referral_skipped_no_review`
+- `referral_created`, `referral_skipped_no_review`, or `referral_skipped_low_rating`
 - `referral_invite_sent`
 - `workflow_completed`
 
@@ -77,7 +77,7 @@ Turn fulfilled bookings into public reviews and trackable referrals without manu
 - Booking already has a published review; workflow skips request steps and creates one referral invite only once.
 
 ### Edge case 2
-- Messaging provider fails on the first attempt; retry succeeds without duplicate `reviews` rows.
+- Review is submitted with rating 2; workflow logs the review, skips referral creation, and opens a service-recovery follow-up instead.
 
 ### Edge case 3
 - Review provider callback arrives before the wait period ends; workflow resumes, marks review submitted, and avoids reminder send.

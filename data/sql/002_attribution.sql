@@ -59,7 +59,9 @@ FROM leads l
 JOIN utm_sessions us
   ON us.lead_id = l.id;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS analytics_channel_revenue_mv AS
+DROP MATERIALIZED VIEW IF EXISTS analytics_channel_revenue_mv;
+
+CREATE MATERIALIZED VIEW analytics_channel_revenue_mv AS
 WITH booked_revenue AS (
   SELECT
     b.id AS booking_id,

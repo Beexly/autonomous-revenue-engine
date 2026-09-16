@@ -70,6 +70,8 @@ Convert every valid website quote submission into a tracked lead, a CRM record, 
 
 ## Failure handling and dead-letter strategy
 
+`automation_dlq` storage contract: use an n8n Data Store named `automation_dlq` with keys `workflow_name`, `idempotency_key`, `lead_id`, `error_code`, `payload_json`, `first_failed_at`, `retry_after`, and `retry_count`.
+
 - Retry CRM, Listmonk, and messaging nodes 3 times with exponential backoff: 30s, 2m, 10m.
 - If database write fails, stop immediately and return non-2xx so the caller retries.
 - If downstream sync fails after DB success, keep the lead in `status = 'new'`, move payload plus `lead_id` into an `automation_dlq` store, and alert Slack/email.

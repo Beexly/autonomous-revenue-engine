@@ -214,8 +214,8 @@ CREATE TABLE IF NOT EXISTS reviews (
 );
 
 CREATE INDEX IF NOT EXISTS idx_leads_status_created_at ON leads (status, created_at DESC);
-CREATE INDEX IF NOT EXISTS idx_leads_email ON leads (lower(email));
-CREATE INDEX IF NOT EXISTS idx_leads_phone ON leads (phone);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_leads_email_unique ON leads (lower(email)) WHERE email IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_leads_phone_unique ON leads (phone) WHERE phone IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_leads_crm_contact_id ON leads (crm_contact_id) WHERE crm_contact_id IS NOT NULL;
 
 CREATE INDEX IF NOT EXISTS idx_utm_sessions_lead_id ON utm_sessions (lead_id, first_seen_at);
