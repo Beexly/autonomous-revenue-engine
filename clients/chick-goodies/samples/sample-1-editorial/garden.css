@@ -65,7 +65,7 @@ h2{font-family:var(--garden-serif);font-size:clamp(1.7rem,3.6vw,2.5rem);font-wei
 .text-link:hover,.text-link:focus-visible{border-bottom-style:solid}
 
 /* Hero table vignette */
-.hero{display:grid;grid-template-columns:1.2fr .9fr;gap:40px;align-items:start;padding-top:100px}
+.hero{display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:56px;align-items:start;max-width:1200px;margin:0 auto;padding:100px 28px 0}
 .hero-copy{padding-top:40px}
 .hero .eyebrow{background:var(--garden-pistachio);display:inline-block;padding:4px 10px;border-radius:3px}
 .hero h1{margin:14px 0}
