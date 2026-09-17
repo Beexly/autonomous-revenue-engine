@@ -9,20 +9,49 @@
 
   function createCursor() {
     const cursor = document.getElementById('cursor');
+    if (!cursor) return;
     const grow = document.createElement('span');
     grow.className = 'cursor-grow';
-    grow.style.cssText = 'position:absolute;top:0;left:0;width:32px;height:32px;border:1px solid var(--garden-ink);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) scale(0);mix-blend-mode:multiply;opacity:.55;transition:transform .22s ease,opacity .14s ease';
+    grow.style.cssText = 'position:absolute;top:50%;left:50%;width:32px;height:32px;border:1px solid var(--garden-ink);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) scale(0);mix-blend-mode:multiply;opacity:0;transition:opacity .2s ease';
     cursor.appendChild(grow);
 
-    let x = 0, y = 0, vx = 0, vy = 0, ticking = false;
-    const onMove = (ev) => {
-      const pt = { x: x + (ev.clientX - x) * 0.15, y: y + (ev.clientY - y) * 0.15 };
-      x = pt.x; y = pt.y;
-      cursor.style.transform = `translate(${x}px, ${y}px)`;
-      grow.style.transform = `translate(${x}px, ${y}px) scale(3.6)`;
-      if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; }); }
+    // The native pointer is never hidden, so the ring has to sit ON it --
+    // easing the ring reads as a fault, not as polish. Only the halo trails,
+    // and it is driven by rAF rather than by mousemove: the previous
+    // per-event easing advanced 15% of the remaining gap per event, so it
+    // froze wherever the last event left it and never caught up.
+    // Both transforms end in translate(-50%,-50%) because writing
+    // element.style.transform replaces the rule in garden.css that centred
+    // them -- without it the ring hangs 11px down and right of the pointer.
+    // The halo sits inside #cursor, which is already at the pointer, so it
+    // gets the trailing DELTA; absolute coordinates there doubled the offset.
+    let px = 0, py = 0;   // pointer, exact
+    let hx = 0, hy = 0;   // halo, trailing
+    let placed = false, running = false;
+
+    const place = (el, x, y, scale) =>
+      el.style.transform =
+        'translate(' + x + 'px, ' + y + 'px) translate(-50%, -50%)' +
+        (scale ? ' scale(' + scale + ')' : '');
+
+    const frame = () => {
+      const ease = isReducedMotion() ? 1 : 0.3;
+      const dx = px - hx, dy = py - hy;
+      hx += dx * ease; hy += dy * ease;
+      if (Math.abs(px - hx) < 0.1 && Math.abs(py - hy) < 0.1) {
+        hx = px; hy = py; running = false;
+      }
+      place(grow, hx - px, hy - py, 3.6);
+      if (running) requestAnimationFrame(frame);
     };
-    document.addEventListener('mousemove', onMove, { passive: true });
+
+    document.addEventListener('mousemove', (ev) => {
+      px = ev.clientX; py = ev.clientY;
+      if (!placed) { hx = px; hy = py; placed = true; grow.style.opacity = '.55'; }
+      place(cursor, px, py);
+      if (!running) { running = true; requestAnimationFrame(frame); }
+    }, { passive: true });
+
     document.addEventListener('mouseenter', () => document.documentElement.classList.add('cursor-on'));
     document.addEventListener('mouseleave', () => document.documentElement.classList.remove('cursor-on'));
   }
