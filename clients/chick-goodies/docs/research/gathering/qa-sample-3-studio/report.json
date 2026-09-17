@@ -31,6 +31,12 @@
           "sized": true
         },
         {
+          "src": "img/tricia-662.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/brand.webp",
           "ok": true,
           "alt": true,
@@ -51,7 +57,10 @@
         "menu.html",
         "enquire.html?occasion=Wedding",
         "story.html",
+        "enquire.html",
+        "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -59,7 +68,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -74,24 +83,32 @@
           "bytes": 241345
         },
         {
-          "name": "table-scene.js",
-          "bytes": 6876
-        },
-        {
           "name": "cart-640.jpg",
           "bytes": 90485
         },
         {
+          "name": "table-scene.js",
+          "bytes": 6876
+        },
+        {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
         },
         {
+          "name": "content.css",
+          "bytes": 1396
+        },
+        {
           "name": "three.module.js",
           "bytes": 1314681
+        },
+        {
+          "name": "tricia-662.jpg",
+          "bytes": 81401
         }
       ],
       "route": "index.html",
@@ -138,7 +155,10 @@
         "enquire.html?table=standard",
         "enquire.html?table=graze",
         "enquire.html",
+        "enquire.html",
+        "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -146,7 +166,11 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
+        },
+        {
+          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
+          "bytes": 7610
         },
         {
           "name": "brand.webp",
@@ -157,16 +181,16 @@
           "bytes": 177882
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
-        },
-        {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -261,7 +285,10 @@
         "img/sips-01.jpg",
         "img/knot-3.jpg",
         "img/sweets-01.jpg",
+        "enquire.html",
+        "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -269,7 +296,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -296,20 +323,24 @@
           "bytes": 55668
         },
         {
-          "name": "knot-3.jpg",
-          "bytes": 228333
-        },
-        {
           "name": "sweets-01.jpg",
           "bytes": 111688
         },
         {
+          "name": "knot-3.jpg",
+          "bytes": 228333
+        },
+        {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -363,7 +394,10 @@
         "story.html",
         "enquire.html",
         "enquire.html",
+        "enquire.html",
+        "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -371,7 +405,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -387,11 +421,15 @@
         },
         {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -438,10 +476,13 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "mailto:charcuteriechick@outlook.com?subject=A%20gathering%20with%20Charcuterie%20Chick&body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20to%20plan%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0A%0A90-minute%20estimate%3A%20%242%2C630.22%20including%20food%2C%20%24229%20setup%20and%2018%25%20tax%20assumed%20on%20food%20%2B%20setup.%20Extra%20time%20excluded.%0APlease%20confirm%20availability%2C%20tax%20basis%20and%20the%20final%20quote.%20This%20is%20an%20enquiry%2C%20not%20a%20booking.",
-        "sms:+18324588180?body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20to%20plan%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0A%0A90-minute%20estimate%3A%20%242%2C630.22%20including%20food%2C%20%24229%20setup%20and%2018%25%20tax%20assumed%20on%20food%20%2B%20setup.%20Extra%20time%20excluded.%0APlease%20confirm%20availability%2C%20tax%20basis%20and%20the%20final%20quote.%20This%20is%20an%20enquiry%2C%20not%20a%20booking.",
+        "mailto:charcuteriechick@outlook.com?subject=A%20quote%20from%20Charcuterie%20Chick&body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20a%20quote%20for%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0AVenue%3A%20To%20be%20decided%0AName%3A%20Not%20provided%0A%0APublished%20estimate%3A%20%242%2C630.22%2C%20which%20is%20food%20at%20the%20published%20rate%20plus%20the%20%24229%20setup%20and%2018%25%20tax%20estimated%20on%20both.%20Extra%20time%20at%20%243%20a%20person%20per%20half%20hour%20is%20not%20included.%0APlease%20confirm%20the%20date%2C%20the%20tax%20and%20the%20final%20quote.%20This%20is%20a%20quote%20request%2C%20not%20a%20booking.",
+        "sms:+18324588180?body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20a%20quote%20for%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0AVenue%3A%20To%20be%20decided%0AName%3A%20Not%20provided%0A%0APublished%20estimate%3A%20%242%2C630.22%2C%20which%20is%20food%20at%20the%20published%20rate%20plus%20the%20%24229%20setup%20and%2018%25%20tax%20estimated%20on%20both.%20Extra%20time%20at%20%243%20a%20person%20per%20half%20hour%20is%20not%20included.%0APlease%20confirm%20the%20date%2C%20the%20tax%20and%20the%20final%20quote.%20This%20is%20a%20quote%20request%2C%20not%20a%20booking.",
+        "tel:+18324588180",
+        "enquire.html",
         "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -449,7 +490,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -461,11 +502,15 @@
         },
         {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -516,6 +561,12 @@
           "sized": true
         },
         {
+          "src": "img/tricia-662.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/brand.webp",
           "ok": true,
           "alt": true,
@@ -536,7 +587,10 @@
         "menu.html",
         "enquire.html?occasion=Wedding",
         "story.html",
+        "enquire.html",
+        "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -544,7 +598,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -568,11 +622,19 @@
         },
         {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
+        },
+        {
+          "name": "tricia-662.jpg",
+          "bytes": 81401
         },
         {
           "name": "three.module.js",
@@ -635,7 +697,10 @@
         "enquire.html?table=standard",
         "enquire.html?table=graze",
         "enquire.html",
+        "enquire.html",
+        "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -643,7 +708,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -659,11 +724,15 @@
         },
         {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -758,7 +827,10 @@
         "img/sips-01.jpg",
         "img/knot-3.jpg",
         "img/sweets-01.jpg",
+        "enquire.html",
+        "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -766,7 +838,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -777,12 +849,12 @@
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
-        },
-        {
           "name": "board-01.jpg",
           "bytes": 115720
+        },
+        {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
         },
         {
           "name": "cart-640.jpg",
@@ -802,11 +874,15 @@
         },
         {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -860,7 +936,10 @@
         "story.html",
         "enquire.html",
         "enquire.html",
+        "enquire.html",
+        "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -868,7 +947,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -884,11 +963,15 @@
         },
         {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -935,10 +1018,13 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "mailto:charcuteriechick@outlook.com?subject=A%20gathering%20with%20Charcuterie%20Chick&body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20to%20plan%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0A%0A90-minute%20estimate%3A%20%242%2C630.22%20including%20food%2C%20%24229%20setup%20and%2018%25%20tax%20assumed%20on%20food%20%2B%20setup.%20Extra%20time%20excluded.%0APlease%20confirm%20availability%2C%20tax%20basis%20and%20the%20final%20quote.%20This%20is%20an%20enquiry%2C%20not%20a%20booking.",
-        "sms:+18324588180?body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20to%20plan%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0A%0A90-minute%20estimate%3A%20%242%2C630.22%20including%20food%2C%20%24229%20setup%20and%2018%25%20tax%20assumed%20on%20food%20%2B%20setup.%20Extra%20time%20excluded.%0APlease%20confirm%20availability%2C%20tax%20basis%20and%20the%20final%20quote.%20This%20is%20an%20enquiry%2C%20not%20a%20booking.",
+        "mailto:charcuteriechick@outlook.com?subject=A%20quote%20from%20Charcuterie%20Chick&body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20a%20quote%20for%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0AVenue%3A%20To%20be%20decided%0AName%3A%20Not%20provided%0A%0APublished%20estimate%3A%20%242%2C630.22%2C%20which%20is%20food%20at%20the%20published%20rate%20plus%20the%20%24229%20setup%20and%2018%25%20tax%20estimated%20on%20both.%20Extra%20time%20at%20%243%20a%20person%20per%20half%20hour%20is%20not%20included.%0APlease%20confirm%20the%20date%2C%20the%20tax%20and%20the%20final%20quote.%20This%20is%20a%20quote%20request%2C%20not%20a%20booking.",
+        "sms:+18324588180?body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20a%20quote%20for%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0AVenue%3A%20To%20be%20decided%0AName%3A%20Not%20provided%0A%0APublished%20estimate%3A%20%242%2C630.22%2C%20which%20is%20food%20at%20the%20published%20rate%20plus%20the%20%24229%20setup%20and%2018%25%20tax%20estimated%20on%20both.%20Extra%20time%20at%20%243%20a%20person%20per%20half%20hour%20is%20not%20included.%0APlease%20confirm%20the%20date%2C%20the%20tax%20and%20the%20final%20quote.%20This%20is%20a%20quote%20request%2C%20not%20a%20booking.",
+        "tel:+18324588180",
+        "enquire.html",
         "tel:+18324588180",
         "index.html",
+        "https://www.instagram.com/charcuteriechickhtx/",
         "enquire.html",
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com"
@@ -946,7 +1032,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10578
+          "bytes": 10606
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -958,11 +1044,15 @@
         },
         {
           "name": "gathering.js",
-          "bytes": 4612
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
           "bytes": 1565
+        },
+        {
+          "name": "content.css",
+          "bytes": 1396
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -992,7 +1082,7 @@
   ],
   "scene": {
     "ready": true,
-    "frames": 32,
+    "frames": 42,
     "paused": false,
     "drawCalls": 23,
     "quality": 1.5,
