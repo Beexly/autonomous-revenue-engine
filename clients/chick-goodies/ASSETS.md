@@ -62,6 +62,36 @@ Her Shopify homepage gallery currently serves stock files: `Shrimp_Food_Prawns`,
 `healthy-simple-mexican-tacos-meat-600nw-…`, `cafe-drink-cake-…`). Part of the
 $600 job is deleting these from the storefront.
 
+### `catering-1000.jpg` — suspected stock, and it is load-bearing
+
+**Flagged 2026-09-17. Needs a yes or no from Tricia before the samples go out.**
+
+Evidence it is not her work:
+
+- What is in the frame — tiered silver stands, shrimp canapés, salmon blinis,
+  a bright banquet room — is not on her menu. Her menu is cheeses, meats,
+  eleven sliders, dips.
+- It stands in for three unrelated products at once: the Holy Grail table, the
+  Muffuletta slider and Pepperoni. One photo doing three jobs is filler
+  behaviour, not a photograph of a specific item.
+- Its source name is `72155`, the numeric pattern of the stock files in §3.
+- 1000×560 is a 16:9 crop. Nothing else she owns is 16:9.
+
+Where it currently ships:
+
+| File | Presented as |
+|---|---|
+| `samples/shared/looks.js:8` | Holy Grail of Grazing — **$2,000 / 75 guests**, her most expensive item |
+| `samples/shared/looks.js:30` | Muffuletta slider |
+| `samples/shared/looks.js:52` | Pepperoni |
+| `samples/sample-2-after-dark/story.html` | captioned "FROM THE KITCHEN TO YOUR TABLE" |
+| `samples/sample-1-editorial/gallery.html` | item 08, alt "…from Tricia's collection" |
+
+If it is stock, every one of those is presenting someone else's catering as
+hers, the worst of them attached to her highest price. Do not restore it
+either way — restoring stock spends credits to make a misrepresentation
+sharper.
+
 ## 4. Open question for the owner
 
 `IMG_7724.jpeg` was supplied with "THIS IS THE CORRECT INFO". It is a 1320×947
