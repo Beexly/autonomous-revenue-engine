@@ -1,0 +1,18 @@
+/* Content additions retain the paper/cobalt visual language. */
+.hero h1 {font-size:clamp(50px,7.5vw,110px);max-width:12ch}
+.hero h1 em {display:inline;margin-left:0}
+.hero-copy > p {max-width:46ch}
+.intro h2 {font-size:clamp(36px,4.4vw,66px);max-width:20ch}
+.content-block,.content-cta,.proof-block {padding:clamp(38px,7vw,100px) 6%;border-top:1px solid #243bc144}
+.content-block h2,.content-cta h2,.proof-block h2 {font-size:clamp(32px,4.5vw,64px);max-width:22ch;margin-bottom:30px}
+.content-block p,.proof-block p {margin:18px 0;max-width:72ch}
+.faq-item {padding:20px 0;border-top:1px solid #243bc133;max-width:75ch}
+.faq-item h3 {font-size:21px;margin:0}
+.content-cta .pill {display:inline-block;margin:0 25px 15px 0}
+.owner-portrait {width:230px;max-width:70%;margin:35px auto 0;border-radius:48% 48% 0 0}
+.table-note {font-style:italic;margin:14px 0}
+.proof-block blockquote {margin:32px 0;padding-left:20px;border-left:2px solid;font-family:var(--serif);font-size:24px;max-width:48ch}
+.proof-block cite {display:block;font:14px var(--sans);margin-top:10px}
+.proof-block a {text-decoration:underline;text-underline-offset:4px}
+footer .footer-invite {font-size:clamp(28px,3.2vw,50px)}
+@media(max-width:650px){.hero{height:auto;max-height:none;min-height:980px}.hero-copy > p{max-width:34ch}.hero h1{font-size:57px}.hero-bottom{position:relative;margin-top:auto}.closing p{max-width:100%}}
