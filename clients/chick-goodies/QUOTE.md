@@ -77,7 +77,7 @@ Edge LLC (Garrett Baxley).
 
 | Item | Price | Notes |
 |---|---|---|
-| Workflows package | $500 | On record in STATE.md. Enquiry log with a nudge, thank-you and review ask, day-30 return, templates, monthly one-screen report. Texts from her phone, no automated replies, no paid SMS service. |
+| Workflows package | $500 | On record in STATE.md. Six routines (revised 2026-09-17, evening, at Garrett's request: three felt steep at $500): never miss a quote (enquiry log with a nudge), the quiet quote (follow-up three days after a quote goes unanswered), confirmed and counted (confirmation two days before the event with the final headcount), turn every event into a review (day-2 thank-you, day-3 review link), bring the host back (day-30 note with an offer she sets), the season ahead (a reminder and a ready note to past hosts six weeks before each busy season). Templates in her voice, the log, the monthly one-screen report. Texts from her phone, no automated replies, no paid SMS service. |
 | Photo enhancement | $250 | All current photos (21 on file) cleaned, color-corrected, sharpened, sized for site, Google, Instagram, Pinterest. Originals kept. Never say "AI" to the client. |
 | Photo recreation | $450 | Twelve new hero and social images produced from her own photographs. She approves each. No stock, no invented food. |
 | Both photography services | $600 | |
