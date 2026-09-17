@@ -10,7 +10,8 @@ show. Every number below traces to `FACTS.md` (her prices, her reviews) or
 
 Wording rules for this document: "Revenue Engine" is only ever the package
 name; no sentence has "the engine" doing anything. Never "AI" in front of the
-client. No price on page 1.
+client. No package price or recommendation on page 1; the agreed $600 stays
+there as a fact tile.
 
 **Prepared for** Tricia Holfelder, Charcuterie Chick (The Chick Goodies), Tomball, Texas
 **Prepared by** Garrett Baxley, Galaxy Sports Edge LLC
@@ -151,14 +152,14 @@ What we need from her, by when:
 |---|---|
 | Day 0, to start (the day she approves) | Half of the website and workflows. For a package, half of the package price. |
 | At launch (day 7, or day 21 for The Table) | The other half. |
-| When she approves the set (photography and creative add-ons) | In full, after she has approved every image, file or video. |
+| When she approves the set (photography bought on its own, and creative add-ons) | In full, after she has approved every image, file or video. Photography inside a package is covered by the package payments. |
 | On delivery (one-page site only) | $150. If she does not like it, she does not pay. |
 | From day 91, monthly (only if she chooses a plan) | Care $69 or Growth $149, billed monthly in advance. Cancel any time with thirty days' notice. |
 
 Ownership: her domain, logo, photos and words stay hers; the site files are
 hers at launch; nothing on her current site changes until she says go.
-Revisions: two rounds before launch, then the included 90 days, then the care
-plan. Not included: ad spend, a paid photographer, printed menus beyond the
+Revisions: two rounds before launch on the full or immersive site, one round on
+the one-page site; then the included 90 days, then the care plan. Not included: ad spend, a paid photographer, printed menus beyond the
 marketing kit, online payments, a booking calendar, automated replies (the last
 three on purpose). Prices in US dollars, valid through October 1, 2026; every
 invoice references this proposal.
