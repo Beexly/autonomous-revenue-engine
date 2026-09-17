@@ -1,5 +1,5 @@
 {
-  "sample": "sample-3-studio",
+  "sample": "sample-2-after-dark",
   "pages": [
     {
       "h1": 1,
@@ -19,12 +19,6 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
-          "ok": true,
-          "alt": true,
-          "sized": true
-        },
-        {
           "src": "img/cart-640.jpg",
           "ok": true,
           "alt": true,
@@ -45,25 +39,25 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "enquire.html",
         "menu.html",
-        "#coming-together",
-        "menu.html",
-        "enquire.html?occasion=Wedding",
+        "#opening",
         "story.html",
-        "index.html",
+        "menu.html",
+        "gallery.html",
         "enquire.html",
+        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
@@ -74,24 +68,12 @@
           "bytes": 241345
         },
         {
-          "name": "table-scene.js",
-          "bytes": 6876
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
         },
         {
           "name": "cart-640.jpg",
           "bytes": 90485
-        },
-        {
-          "name": "gathering.js",
-          "bytes": 4612
-        },
-        {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "three.module.js",
-          "bytes": 1314681
         }
       ],
       "route": "index.html",
@@ -112,7 +94,31 @@
           "sized": true
         },
         {
+          "src": "img/knot-hero.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/knot-2.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
+          "src": "img/knot-3.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
+          "src": "img/table-01.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
+          "src": "img/wide-640.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -132,53 +138,58 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "enquire.html?table=holy",
-        "enquire.html?table=grand",
-        "enquire.html?table=super",
-        "enquire.html?table=standard",
-        "enquire.html?table=graze",
+        "#holy",
+        "#grand",
+        "#super",
+        "#standard",
+        "#graze",
+        "enquire.html?menu=holy",
+        "enquire.html?menu=grand",
+        "enquire.html?menu=super",
+        "enquire.html?menu=standard",
+        "enquire.html?menu=graze",
         "enquire.html",
         "index.html",
-        "enquire.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
+        },
+        {
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
+        },
+        {
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
+        },
+        {
           "name": "knot-2.jpg",
           "bytes": 177882
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "knot-3.jpg",
+          "bytes": 228333
         },
         {
-          "name": "gathering.js",
-          "bytes": 4612
+          "name": "table-01.jpg",
+          "bytes": 119185
         },
         {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "name": "wide-640.jpg",
+          "bytes": 85941
         }
       ],
       "route": "menu.html",
@@ -199,19 +210,19 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
+          "src": "img/knot-4.jpg",
           "ok": true,
           "alt": true,
           "sized": true
         },
         {
-          "src": "img/board-01.jpg",
+          "src": "img/graze-01.jpg",
           "ok": true,
           "alt": true,
           "sized": true
         },
         {
-          "src": "img/cart-640.jpg",
+          "src": "img/table-02.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -223,7 +234,7 @@
           "sized": true
         },
         {
-          "src": "img/knot-3.jpg",
+          "src": "img/board-02.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -235,7 +246,7 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
+          "src": "img/knot-4.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -255,73 +266,59 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "img/knot-hero.jpg",
-        "img/board-01.jpg",
-        "img/cart-640.jpg",
+        "img/knot-4.jpg",
+        "img/graze-01.jpg",
+        "img/table-02.jpg",
         "img/sips-01.jpg",
-        "img/knot-3.jpg",
+        "img/board-02.jpg",
         "img/sweets-01.jpg",
-        "index.html",
         "enquire.html",
+        "enquire.html",
+        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
+          "name": "knot-4.jpg",
+          "bytes": 208555
         },
         {
-          "name": "board-01.jpg",
-          "bytes": 115720
+          "name": "graze-01.jpg",
+          "bytes": 112020
         },
         {
-          "name": "cart-640.jpg",
-          "bytes": 90485
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
+        },
+        {
+          "name": "table-02.jpg",
+          "bytes": 50948
         },
         {
           "name": "sips-01.jpg",
           "bytes": 55668
         },
         {
-          "name": "knot-3.jpg",
-          "bytes": 228333
+          "name": "board-02.jpg",
+          "bytes": 76199
         },
         {
           "name": "sweets-01.jpg",
           "bytes": 111688
-        },
-        {
-          "name": "gathering.js",
-          "bytes": 4612
-        },
-        {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
         }
       ],
       "route": "gallery.html",
@@ -348,6 +345,12 @@
           "sized": true
         },
         {
+          "src": "img/catering-1000.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/brand.webp",
           "ok": true,
           "alt": true,
@@ -363,19 +366,20 @@
         "story.html",
         "enquire.html",
         "enquire.html",
-        "index.html",
         "enquire.html",
+        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
@@ -386,24 +390,12 @@
           "bytes": 81401
         },
         {
-          "name": "gathering.js",
-          "bytes": 4612
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
         },
         {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "name": "catering-1000.jpg",
+          "bytes": 128701
         }
       ],
       "route": "story.html",
@@ -438,46 +430,31 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "mailto:charcuteriechick@outlook.com?subject=A%20gathering%20with%20Charcuterie%20Chick&body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20to%20plan%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0A%0A90-minute%20estimate%3A%20%242%2C630.22%20including%20food%2C%20%24229%20setup%20and%2018%25%20tax%20assumed%20on%20food%20%2B%20setup.%20Extra%20time%20excluded.%0APlease%20confirm%20availability%2C%20tax%20basis%20and%20the%20final%20quote.%20This%20is%20an%20enquiry%2C%20not%20a%20booking.",
-        "sms:+18324588180?body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20to%20plan%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0A%0A90-minute%20estimate%3A%20%242%2C630.22%20including%20food%2C%20%24229%20setup%20and%2018%25%20tax%20assumed%20on%20food%20%2B%20setup.%20Extra%20time%20excluded.%0APlease%20confirm%20availability%2C%20tax%20basis%20and%20the%20final%20quote.%20This%20is%20an%20enquiry%2C%20not%20a%20booking.",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "enquire.html",
+        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "gathering.js",
-          "bytes": 4612
-        },
-        {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
         }
       ],
       "route": "enquire.html",
@@ -504,12 +481,6 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
-          "ok": true,
-          "alt": true,
-          "sized": true
-        },
-        {
           "src": "img/cart-640.jpg",
           "ok": true,
           "alt": true,
@@ -530,25 +501,25 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "enquire.html",
         "menu.html",
-        "#coming-together",
-        "menu.html",
-        "enquire.html?occasion=Wedding",
+        "#opening",
         "story.html",
-        "index.html",
+        "menu.html",
+        "gallery.html",
         "enquire.html",
+        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
@@ -559,36 +530,12 @@
           "bytes": 241345
         },
         {
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
+        },
+        {
           "name": "cart-640.jpg",
           "bytes": 90485
-        },
-        {
-          "name": "table-scene.js",
-          "bytes": 6876
-        },
-        {
-          "name": "gathering.js",
-          "bytes": 4612
-        },
-        {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "three.module.js",
-          "bytes": 1314681
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
         }
       ],
       "route": "index.html",
@@ -609,7 +556,31 @@
           "sized": true
         },
         {
+          "src": "img/knot-hero.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/knot-2.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
+          "src": "img/knot-3.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
+          "src": "img/table-01.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
+          "src": "img/wide-640.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -629,53 +600,58 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "enquire.html?table=holy",
-        "enquire.html?table=grand",
-        "enquire.html?table=super",
-        "enquire.html?table=standard",
-        "enquire.html?table=graze",
+        "#holy",
+        "#grand",
+        "#super",
+        "#standard",
+        "#graze",
+        "enquire.html?menu=holy",
+        "enquire.html?menu=grand",
+        "enquire.html?menu=super",
+        "enquire.html?menu=standard",
+        "enquire.html?menu=graze",
         "enquire.html",
         "index.html",
-        "enquire.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
+        },
+        {
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
+        },
+        {
           "name": "knot-2.jpg",
           "bytes": 177882
         },
         {
-          "name": "gathering.js",
-          "bytes": 4612
+          "name": "knot-3.jpg",
+          "bytes": 228333
         },
         {
-          "name": "gathering-polish.css",
-          "bytes": 1565
+          "name": "table-01.jpg",
+          "bytes": 119185
         },
         {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "name": "wide-640.jpg",
+          "bytes": 85941
         }
       ],
       "route": "menu.html",
@@ -696,19 +672,19 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
+          "src": "img/knot-4.jpg",
           "ok": true,
           "alt": true,
           "sized": true
         },
         {
-          "src": "img/board-01.jpg",
+          "src": "img/graze-01.jpg",
           "ok": true,
           "alt": true,
           "sized": true
         },
         {
-          "src": "img/cart-640.jpg",
+          "src": "img/table-02.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -720,7 +696,7 @@
           "sized": true
         },
         {
-          "src": "img/knot-3.jpg",
+          "src": "img/board-02.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -732,7 +708,7 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
+          "src": "img/knot-4.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -752,73 +728,59 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "img/knot-hero.jpg",
-        "img/board-01.jpg",
-        "img/cart-640.jpg",
+        "img/knot-4.jpg",
+        "img/graze-01.jpg",
+        "img/table-02.jpg",
         "img/sips-01.jpg",
-        "img/knot-3.jpg",
+        "img/board-02.jpg",
         "img/sweets-01.jpg",
-        "index.html",
         "enquire.html",
+        "enquire.html",
+        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
+          "name": "knot-4.jpg",
+          "bytes": 208555
         },
         {
-          "name": "board-01.jpg",
-          "bytes": 115720
+          "name": "graze-01.jpg",
+          "bytes": 112020
         },
         {
-          "name": "cart-640.jpg",
-          "bytes": 90485
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
+        },
+        {
+          "name": "table-02.jpg",
+          "bytes": 50948
         },
         {
           "name": "sips-01.jpg",
           "bytes": 55668
         },
         {
-          "name": "knot-3.jpg",
-          "bytes": 228333
+          "name": "board-02.jpg",
+          "bytes": 76199
         },
         {
           "name": "sweets-01.jpg",
           "bytes": 111688
-        },
-        {
-          "name": "gathering.js",
-          "bytes": 4612
-        },
-        {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
         }
       ],
       "route": "gallery.html",
@@ -845,6 +807,12 @@
           "sized": true
         },
         {
+          "src": "img/catering-1000.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/brand.webp",
           "ok": true,
           "alt": true,
@@ -860,19 +828,20 @@
         "story.html",
         "enquire.html",
         "enquire.html",
-        "index.html",
         "enquire.html",
+        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
@@ -883,24 +852,12 @@
           "bytes": 81401
         },
         {
-          "name": "gathering.js",
-          "bytes": 4612
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
         },
         {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "name": "catering-1000.jpg",
+          "bytes": 128701
         }
       ],
       "route": "story.html",
@@ -935,46 +892,31 @@
         "gallery.html",
         "story.html",
         "enquire.html",
-        "mailto:charcuteriechick@outlook.com?subject=A%20gathering%20with%20Charcuterie%20Chick&body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20to%20plan%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0A%0A90-minute%20estimate%3A%20%242%2C630.22%20including%20food%2C%20%24229%20setup%20and%2018%25%20tax%20assumed%20on%20food%20%2B%20setup.%20Extra%20time%20excluded.%0APlease%20confirm%20availability%2C%20tax%20basis%20and%20the%20final%20quote.%20This%20is%20an%20enquiry%2C%20not%20a%20booking.",
-        "sms:+18324588180?body=Hi%20Tricia%2C%20I%E2%80%99d%20like%20to%20plan%20a%20wedding.%0ATable%3A%20Holy%20Grail%20of%20Grazing%0AGuests%20requested%3A%2075%0ADate%3A%20To%20be%20decided%0A%0A90-minute%20estimate%3A%20%242%2C630.22%20including%20food%2C%20%24229%20setup%20and%2018%25%20tax%20assumed%20on%20food%20%2B%20setup.%20Extra%20time%20excluded.%0APlease%20confirm%20availability%2C%20tax%20basis%20and%20the%20final%20quote.%20This%20is%20an%20enquiry%2C%20not%20a%20booking.",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "enquire.html",
+        "index.html",
+        "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "mailto:charcuteriechick@outlook.com"
+        "menu.html"
       ],
       "resources": [
         {
-          "name": "gathering.css",
-          "bytes": 10578
+          "name": "midnight.css",
+          "bytes": 18830
         },
         {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "name": "midnight.js",
+          "bytes": 10722
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "gathering.js",
-          "bytes": 4612
-        },
-        {
-          "name": "gathering-polish.css",
-          "bytes": 1565
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
         }
       ],
       "route": "enquire.html",
@@ -985,26 +927,5 @@
     }
   ],
   "failures": [],
-  "interactions": [
-    "scene render/pointer/pause/reduced-motion",
-    "gallery open/next/escape",
-    "six quote totals and four invalid boundaries"
-  ],
-  "scene": {
-    "ready": true,
-    "frames": 32,
-    "paused": false,
-    "drawCalls": 23,
-    "quality": 1.5,
-    "camera": [
-      0,
-      7.7,
-      9.5
-    ],
-    "pointer": [
-      0,
-      0
-    ]
-  },
   "passed": true
 }
