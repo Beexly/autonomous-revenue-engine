@@ -407,16 +407,34 @@ pixels** behind each text box. On `table.html` every box clears AA, tightest
 ## A live defect found while gating, and fixed
 
 **Sample 3's gallery: "See it larger" was cream on cream, 1:1, eleven
-instances.** Invisible. The rule that fixes it exists in
-`gathering-polish.css` — but **no page links that stylesheet**. It is a whole
-file that never shipped. The one-line fix went into `gathering.css`, the sheet
-that actually loads; the affordance is now 8.09:1.
+instances.** Invisible on every photograph in the wall.
 
-`gathering-polish.css` is worse than dead: it still contains
-`.hero-photo{position:absolute;left:50%;transform:translateX(-50%)}`, the exact
-sample-3 hero bug round one fixed. Linking it would reintroduce that bug. It was
-left in place rather than deleted, because deleting it is outside this brief —
-**but it should be deleted.**
+The cause is a cascade-order interaction, and getting to it took one wrong
+answer first. `gathering-polish.css` carries the rule that would fix it —
+`.gallery-wall a span{background:var(--ink);color:var(--paper)}` — and my first
+reading was that no page loads that stylesheet, because none of the six HTML
+files `<link>` it. **That was wrong.** `gathering.css` line 1 is
+`@import url('gathering-polish.css')`, so it loads on every page. A
+`document.styleSheets` walk does not list an `@import`ed sheet as a top-level
+entry, and neither does a grep for `<link>`, which is how it was missed twice.
+
+What actually happens: `@import` rules come *first* in the cascade, so
+`gathering.css`'s own later `.gallery-wall a span{…background:var(--paper)}`
+overrides the imported `background:var(--ink)` — while the imported
+`color:var(--paper)` survives, because the later rule never set a colour.
+Cream text, cream pill. Neither rule is wrong alone; the pair is.
+
+Fixed by setting both properties in the later rule. The affordance is now
+**8.09:1**.
+
+**`gathering-polish.css` must not be deleted.** It supplies live rules: 44px
+nav tap targets, the pressed occasion-button state, the planner border. It does
+still contain `.hero-photo{position:absolute;left:50%;transform:translateX(-50%)}`,
+but that is already neutralised — `gathering.css` later sets
+`.hero-photo{left:auto;right:4%;transform:none}`, which is round one's fix, and
+G1 confirms no overlap. The real lesson is that this file is load-bearing and
+invisible to the obvious checks, so **`@import` is the thing to grep for here**,
+not `<link>`.
 
 ## Decision log — round two
 
@@ -454,8 +472,11 @@ left in place rather than deleted, because deleting it is outside this brief —
 4. **Item 1 is partly done** — see the reasoning above. The paid build needs
    separate dark inner pages, which Option C already prices.
 
-5. **`gathering-polish.css` should be deleted.** Dead, unlinked, and carrying a
-   regression.
+5. **`gathering-polish.css` is loaded by `@import`, not by `<link>`.** It is
+   load-bearing and must not be deleted. Anyone auditing this sample should
+   grep for `@import` as well as `<link>`; two passes here missed it. Flattening
+   the two stylesheets into one, so the cascade is readable in a single file,
+   is worth doing at paid-build time.
 
 6. **Two credentials pasted into chat still need rotating**: the Higgsfield key
    id and the Firecrawl key. Neither was used, stored or transmitted.
