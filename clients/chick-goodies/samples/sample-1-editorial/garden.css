@@ -80,7 +80,7 @@ h2{font-family:var(--garden-serif);font-size:clamp(1.7rem,3.6vw,2.5rem);font-wei
 .ceramic-two{width:46px;height:46px;top:90px;right:20px}
 .hero-photo{border:1px solid var(--garden-ink);border-radius:8px;box-shadow:0 6px 18px rgba(43,27,61,.12)}
 .hero-photo figcaption{font-family:var(--garden-serif);font-size:13px;font-style:italic;margin-top:10px;text-align:center;opacity:.8}
-.vignette-label{position:absolute;top:-26px;right:0;font-family:var(--garden-serif);font-size:12px;font-style:italic;opacity:.55;text-transform:uppercase}
+.vignette-label{position:absolute;top:-26px;right:0;font-family:var(--garden-serif);font-size:12px;font-style:italic;opacity:.68;text-transform:uppercase}
 .stem{position:absolute;width:2px;background:var(--garden-ink);opacity:.35}
 .stem-one{height:140px;top:260px;left:50%;transform:rotate(12deg)}
 .scroll-note{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);font-family:var(--garden-serif);font-size:13px;font-style:italic;text-align:center}
@@ -99,10 +99,10 @@ h2{font-family:var(--garden-serif);font-size:clamp(1.7rem,3.6vw,2.5rem);font-wei
 .menu-panel{display:none;grid-template-columns:.55fr 1fr;gap:28px;align-items:start}
 .menu-panel.active{display:grid}
 .menu-image img{border:1px solid var(--garden-ink);border-radius:6px;box-shadow:0 6px 18px rgba(43,27,61,.09)}
-.photo-note{font-family:var(--garden-serif);font-size:12px;font-style:italic;margin-top:8px;display:block;opacity:.6}
+.photo-note{font-family:var(--garden-serif);font-size:12px;font-style:italic;margin-top:8px;display:block;opacity:.68}
 .menu-detail h2{margin-bottom:6px}
 .price{font-family:var(--garden-serif);font-size:2rem;font-style:italic}
-.price small{font-family:var(--garden-sans);font-size:.5em;text-transform:uppercase;opacity:.5}
+.price small{font-family:var(--garden-sans);font-size:.5em;text-transform:uppercase;opacity:.68}
 .menu-min{font-family:var(--garden-serif);font-style:italic;font-size:.9rem}
 .service-note,.extras,.choices,.menu-tease,.closing-note{background:var(--garden-cream);border-top:1px solid var(--garden-soft)}
 .service-note,.extras,.choices{padding:46px 28px;margin:0}
@@ -138,7 +138,7 @@ h2{font-family:var(--garden-serif);font-size:clamp(1.7rem,3.6vw,2.5rem);font-wei
 .story-hero figure{border:1px solid var(--garden-ink);border-radius:6px;overflow:hidden}
 .story-body h2{margin-top:8px}
 .story-sign{font-family:var(--garden-serif);font-size:1.15rem;font-style:italic}
-.story-sign span{display:block;font-family:var(--garden-sans);font-size:.75em;text-transform:uppercase;opacity:.6}
+.story-sign span{display:block;font-family:var(--garden-sans);font-size:.75em;text-transform:uppercase;opacity:.68}
 .story-still figure{order:1}
 .story-still .eyebrow,.story-still h2,.story-still p,.story-still .pill{border:none}
 
@@ -174,11 +174,11 @@ footer{font-family:var(--garden-serif);font-size:15px}
 .footer-bottom .brand{width:130px}
 .footer-bottom .contact{font-family:var(--garden-serif);font-style:italic;font-size:14px}
 .footer-bottom a:hover{color:var(--garden-accent)}
-.footer-bottom small{font-family:var(--garden-sans);text-transform:none;font-size:12px;opacity:.6;display:block;margin-top:6px}
+.footer-bottom small{font-family:var(--garden-sans);text-transform:none;font-size:12px;opacity:.68;display:block;margin-top:6px}
 .colophon{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-top:1px solid var(--garden-soft);padding:16px 0;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
 .botanical-vert{display:inline-block;margin:8px 0}
 .extras dl{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.extras dt{font-family:var(--garden-sans);font-size:14px;text-transform:uppercase;opacity:.6}
+.extras dt{font-family:var(--garden-sans);font-size:14px;text-transform:uppercase;opacity:.68}
 .extras dd{font-family:var(--garden-serif);font-size:1.1rem;font-style:italic}
 
 /* Responsive */
