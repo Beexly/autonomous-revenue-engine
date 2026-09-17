@@ -2,9 +2,10 @@
  *
  * Five "pages" are five camera stations inside one scene. Scroll and the nav
  * both drive the same station value; the camera eases between them. Nothing
- * here is a photograph of invented food: the room, the table, the linen and
- * the ceramics are geometry and procedural shading. Tricia's real photographs
- * appear as prints lying on the table.
+ * here is a picture of invented food and nothing is a model of food either:
+ * the room, the table, the linen, the glass and the candles are geometry and
+ * procedural shading. The food is Tricia's real photographs, lying on the
+ * table as prints.
  *
  * Built on the three r170 already vendored here. No new dependency, no build
  * step, no network beyond the page's own fonts.
@@ -173,23 +174,9 @@ linen.rotation.x = -Math.PI/2; linen.position.y = .176;
 linen.receiveShadow = true; linen.castShadow = true;
 scene.add(linen);
 
-/* ---------- ceramics and glass, dressed procedurally ---------- */
+/* ---------- glass, brass and candlelight, dressed procedurally ---------- */
 const rnd = seeded(20260917);
-const ceramic = new T.MeshMatcapMaterial({ matcap: matcap('#2a2119','#fff0d6','#5d4a33', true) });
-const slate   = new T.MeshMatcapMaterial({ matcap: matcap('#171310','#8d7a63','#2b2118', false) });
-const brass   = new T.MeshMatcapMaterial({ matcap: matcap('#3a2a12','#ffd98f','#7a5520', true) });
-/* What sits on the plates, in the colours that are actually on her tables:
-   cheese, cured meat, berries, olives, honey. Forms, never a picture of food. */
-const FOOD = [
-  new T.MeshMatcapMaterial({ matcap: matcap('#6b5a22','#ffe9a3','#8a6f2a', false) }), // cheese
-  new T.MeshMatcapMaterial({ matcap: matcap('#6d2a26','#d4736a','#3d1512', false) }), // cured meat
-  new T.MeshMatcapMaterial({ matcap: matcap('#4a1226','#c2415f','#25060f', true ) }), // berries
-  new T.MeshMatcapMaterial({ matcap: matcap('#2f3a1c','#7d9143','#151c0c', false) }), // olives, herbs
-  new T.MeshMatcapMaterial({ matcap: matcap('#6a4416','#ffbe5e','#3a2208', true ) }), // honey, jam
-  new T.MeshMatcapMaterial({ matcap: matcap('#5c4a30','#e8d3ad','#2e2317', false) }), // bread, crackers
-];
-const food = () => FOOD[(rnd() * FOOD.length) | 0];
-const board   = new T.MeshStandardMaterial({ color:0x6b4426, roughness:.72 });
+const brass = new T.MeshMatcapMaterial({ matcap: matcap('#3a2a12','#ffd98f','#7a5520', true) });
 
 // Glass: the "shader art" route — no built-in refract(), just a normal-driven
 // UV push against what is behind, plus a rim that catches the candle.
@@ -216,53 +203,20 @@ const glassMat = new T.ShaderMaterial({
     }`
 });
 
-const plateGeo = new T.CylinderGeometry(.30, .23, .035, 40);
-const bowlGeo  = new T.SphereGeometry(.17, 20, 14, 0, Math.PI*2, 0, Math.PI/2);
-const cupGeo   = new T.CylinderGeometry(.085, .058, .23, 18, 1, true);
-const flames = [];
-
-// Settings run the length of the table. Rules, not hand placement.
-for (let i = 0; i < 34; i++){
-  const x = -11.6 + i * .70 + (rnd()-.5) * .13;
-  const z = (rnd()-.5) * 1.34;
-  const kind = rnd();
+/* Nothing on this table pretends to be food. The food is in her photographs,
+ * which lie on the linen as prints (below). What sits with them is candlelight,
+ * and a few glasses at the far ends of the table, where they catch the room
+ * from a distance and never sit in front of a close camera. */
+const cupGeo  = new T.CylinderGeometry(.085, .058, .23, 18, 1, true);
+const stemGeo = new T.CylinderGeometry(.06, .06, .012, 14);
+for (const [x, z] of [[-12.4, 1.3], [-11.0, -1.3], [12.0, 1.3], [12.6, -1.2]]){
   const g = new T.Group();
-  g.position.set(x, .20, z);
-  g.rotation.y = rnd() * Math.PI * 2;
-
-  if (kind < .34){
-    const p = new T.Mesh(plateGeo, rnd() < .5 ? ceramic : slate);
-    p.position.y = .018; g.add(p);
-    // what is on the plate: small forms, never a picture of food
-    const n = 3 + Math.floor(rnd()*4);
-    for (let k = 0; k < n; k++){
-      const a = (k/n) * Math.PI*2 + rnd();
-      const bit = new T.Mesh(bowlGeo, food());
-      bit.scale.setScalar(.34 + rnd()*.34);
-      bit.position.set(Math.cos(a)*.15, .04, Math.sin(a)*.15);
-      g.add(bit);
-    }
-  } else if (kind < .58){
-    const b = new T.Mesh(new T.BoxGeometry(.78, .045, .46), board);
-    b.position.y = .022; g.add(b);
-    for (let k = 0; k < 5; k++){
-      const bit = new T.Mesh(bowlGeo, food());
-      bit.scale.set(.5, .30, .5);
-      bit.position.set(-.28 + k*.14, .05, (rnd()-.5)*.20);
-      g.add(bit);
-    }
-  } else if (kind < .80){
-    const c = new T.Mesh(cupGeo, glassMat);
-    c.position.y = .115; g.add(c);
-    const stem = new T.Mesh(new T.CylinderGeometry(.06,.06,.012,14), glassMat);
-    g.add(stem);
-  } else {
-    const bowl = new T.Mesh(bowlGeo, rnd() < .5 ? ceramic : slate);
-    bowl.scale.setScalar(.95 + rnd()*.5);
-    bowl.position.y = .01; g.add(bowl);
-  }
+  g.position.set(x + (rnd()-.5) * .3, .17, z);
+  const c = new T.Mesh(cupGeo, glassMat); c.position.y = .115; g.add(c);
+  g.add(new T.Mesh(stemGeo, glassMat));
   scene.add(g);
 }
+const flames = [];
 
 // candlesticks, the light the room is actually lit by
 for (const x of [1.2, -4.6, 6.9]){
@@ -274,14 +228,18 @@ for (const x of [1.2, -4.6, 6.9]){
 }
 
 /* ---------- her photographs, as prints lying on the table ---------- */
-/* Real event photos. Angled, small, lit by the room — which is why 480px
- * files read as objects here instead of as soft wallpaper. */
+/* Real event photos as prints, between the objects. Angled, modest in size and
+ * lit by the room, which is why 480px files read as objects here instead of as
+ * soft wallpaper. */
 const loader = new T.TextureLoader();
 const prints = [
-  { f:'knot-3.jpg',    x:-8.4, w:1.55 },
-  { f:'graze-02.jpg',  x:-2.4, w:1.05 },
-  { f:'knot-2.jpg',    x: 3.6, w:1.50 },
-  { f:'board-02.jpg',  x: 8.9, w:1.05 },
+  { f:'table-03.jpg',  x:-11.4, w:1.05 },
+  { f:'knot-3.jpg',    x: -5.9, w:1.45 },
+  { f:'board-02.jpg',  x: -3.4, w:1.00 },
+  { f:'table-01.jpg',  x: -2.2, w:1.05 },
+  { f:'boards-01.jpg', x:  0.4, w:1.05 },
+  { f:'candy-01.jpg',  x:  2.6, w:1.05 },
+  { f:'board-01.jpg',  x:  5.9, w:1.05 },
 ];
 for (const p of prints){
   loader.load('img/' + p.f, tex => {
@@ -299,8 +257,8 @@ for (const p of prints){
     geo.computeVertexNormals();
     const m = new T.Mesh(geo, new T.MeshStandardMaterial({ map:tex, roughness:.86, metalness:0 }));
     m.rotation.x = -Math.PI/2;
-    m.rotation.z = (rnd()-.5) * .5;
-    m.position.set(p.x, .205, .28 + (rnd()-.5)*.5);
+    m.rotation.z = (rnd()-.5) * .7;
+    m.position.set(p.x, .205, (rnd()-.5)*.56);
     m.castShadow = true; m.receiveShadow = true;
     scene.add(m);
     // a paper border, so it reads as a print on a table
@@ -310,6 +268,63 @@ for (const p of prints){
     edge.position.y -= .004; edge.receiveShadow = true;
     scene.add(edge);
   });
+}
+
+/* ---------- her food, cut out of her photographs and stood on the table ---------- */
+/* No models. Each object is one of her own photographs with the background
+ * removed, on an upright plane that turns to face the camera (around the
+ * vertical axis only, so it stays standing), casting its own silhouette as
+ * shadow. One sits under every camera station, the way a product site puts
+ * one real object in the middle of the frame. The cart stands on the floor
+ * behind the table. Three boards lie flat on the runner. */
+const standing = [];
+const cutouts = [
+  { f:'knot-2.webp',    x: -1.6, z:-.15, h:1.10 },  // cones, seen from the door
+  { f:'table-02.webp',  x: -4.0, z: .15, h: .95 },  // bloody marys
+  { f:'knot-4.webp',    x: -7.4, z:-.10, h:1.25 },  // station 2: the cones on their riser
+  { f:'sips-02.webp',   x:  4.7, z: .25, h:1.00 },  // station 3: bloody marys
+  { f:'cart-640.webp',  x:  4.2, z:-3.1, h:2.55, floor:true },  // station 3: the cart itself
+  { f:'graze-03.webp',  x:  7.7, z:-.20, h: .90 },  // jars
+  { f:'sips-01.webp',   x:  9.0, z: .10, h: .95 },  // station 4: mimosas
+  { f:'graze-02.webp',  x:  2.45,z:-.35, h: .75 },  // station 5: one cone past the candle, out of the close lens
+];
+const flats = [
+  { f:'wide-640.webp',  x: -9.0, w:1.50 },  // the board, from above
+  { f:'sweets-01.webp', x:  3.4, w:1.10 },  // the skillet
+  { f:'graze-01.webp',  x:10.0, w:1.30 },   // candy trays
+];
+const cutMaterial = tex => new T.MeshStandardMaterial({ map:tex, transparent:true, alphaTest:.35, roughness:.9, metalness:0, side:T.DoubleSide });
+const cutDepth = tex => new T.MeshDepthMaterial({ depthPacking:T.RGBADepthPacking, map:tex, alphaTest:.35 });
+for (const c of cutouts){
+  loader.load('img/cut/' + c.f, tex => {
+    tex.colorSpace = T.SRGBColorSpace;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const ratio = (tex.image && tex.image.width / tex.image.height) || 1;
+    const m = new T.Mesh(new T.PlaneGeometry(c.h * ratio, c.h), cutMaterial(tex));
+    const base = c.floor ? -1.32 : .176;
+    m.position.set(c.x, base + c.h / 2, c.z);
+    m.castShadow = true;
+    m.customDepthMaterial = cutDepth(tex);
+    scene.add(m); standing.push(m);
+    faceCamera();
+  });
+}
+for (const c of flats){
+  loader.load('img/cut/' + c.f, tex => {
+    tex.colorSpace = T.SRGBColorSpace;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const ratio = (tex.image && tex.image.height / tex.image.width) || 1;
+    const m = new T.Mesh(new T.PlaneGeometry(c.w, c.w * ratio), cutMaterial(tex));
+    m.rotation.x = -Math.PI/2;
+    m.rotation.z = (rnd()-.5) * .5;
+    m.position.set(c.x, .21, (rnd()-.5) * .3);
+    m.castShadow = true; m.receiveShadow = true;
+    m.customDepthMaterial = cutDepth(tex);
+    scene.add(m);
+  });
+}
+function faceCamera(){
+  for (const m of standing) m.rotation.y = Math.atan2(camera.position.x - m.position.x, camera.position.z - m.position.z);
 }
 
 /* ---------- the five stations: this is the navigation ---------- */
@@ -342,6 +357,7 @@ function applyCamera(){
   // the head moves a little with the cursor; never enough to break the frame
   camera.position.set(camPos.x + pointer.x * .55, camPos.y + pointer.y * .26, camPos.z);
   camera.lookAt(camTgt);
+  faceCamera();
   const s = Math.round(station) + 1;
   if (s !== metrics.station){
     metrics.station = s;

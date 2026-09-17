@@ -771,6 +771,7 @@ A Three.js WebGL one-page experience served under sample 3 at `/table.html`: a l
 6. The 390 nav overflow and the 24px desktop overflow fixed, then the six gates from 9.5 run on table.html at every width.
 7. H1 back to her verbatim tagline: "Elegance without the cost." The added "All the" is not hers. `[F: taglines]`
 8. Photo restoration for the cards under the owner's rule. The cards are small, so 480px sources are fine.
+9. Decision, 2026-09-17 evening: the modeled food (matcap spheres on plates and boards) is gone. Garrett saw it up close in stations 01 and 02 and called it cartoonish, which it was: flat-painted primitives beside real photographs. The table now dresses with her photographs: eleven cut-outs of her own food and cart (`img/cut/*.webp`, backgrounds removed with a local model, nothing generated), of which eight stand upright and turn to face the camera, one under every station, and three boards lie flat on the runner; plus seven prints, candles and four glasses at the far ends. Garrett's reference for the target feel is oryzo.ai (Lusion): one real object large in the frame, dark warm air, big type. The phone and loading stills were re-rendered from the new scene. No food geometry comes back; if the table needs more life, it gets more of her photographs, not models.
 
 ### 11.4 Price and positioning (recommendation; Garrett says the final number to the client)
 
