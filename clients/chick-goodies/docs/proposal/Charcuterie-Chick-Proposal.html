@@ -41,7 +41,7 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .meta { display: flex; gap: 28pt; margin-top: 16pt; font-size: 9.2pt; }
 .meta span { color: var(--mute); display: block; }
 .meta b { display: block; font-weight: 500; }
-.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin: 24pt 0 26pt; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin: 20pt 0 20pt; }
 .tile { background: var(--card); border: 1px solid var(--rule); padding: 14pt 16pt 13pt; border-radius: 2pt; }
 .tile .num { font-size: 32pt; line-height: 1; color: var(--wine); letter-spacing: -.02em; }
 .tile .num small { font-size: 13pt; letter-spacing: 0; margin-left: 4pt; }
@@ -52,12 +52,18 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .dot { width: 26pt; height: 26pt; border-radius: 50%; background: var(--paper); border: 1px solid var(--gold); color: var(--wine); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 11pt; }
 .step h3 { margin-top: 9pt; font-size: 14pt; }
 .step p { font-size: 8.8pt; line-height: 1.4; color: var(--mute); margin-top: 4pt; }
-.proof { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 26pt; }
+.proof { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 20pt; }
 .stat { display: flex; gap: 12pt; align-items: center; border-top: 1px solid var(--rule); padding-top: 10pt; }
 .stat .big { font-size: 30pt; line-height: 1; }
 .stat .star { width: 14pt; height: 14pt; fill: var(--gold); flex: none; }
 .stat .t { font-size: 9.3pt; line-height: 1.35; }
 .stat .t b { font-weight: 500; display: block; }
+
+.p1-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14pt; margin-top: 10pt; }
+.p1-steps > div { border-top: 2px solid var(--gold); padding-top: 8pt; }
+.p1-steps .num { font-size: 24pt; line-height: 1; color: var(--wine); }
+.p1-steps b { display: block; font-weight: 500; font-size: 10.5pt; margin-top: 6pt; }
+.p1-steps span { display: block; font-size: 8.8pt; color: var(--mute); line-height: 1.4; margin-top: 3pt; }
 
 /* page 2 */
 .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10pt; margin-top: 14pt; }
@@ -197,10 +203,10 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 <section class="page">
   <div class="top"><span class="label">Proposal · September 17, 2026</span><span class="label">Valid through October 1, 2026</span></div>
   <h1>Three sites to choose from.<br>Built to get you booked.</h1>
-  <p class="lede" style="margin-top:14pt">Every page uses your real prices, your own photos and your reviews from The Knot and WeddingWire. Behind the site sits the system that turns a visitor into a booked table.</p>
+  <p class="lede" style="margin-top:12pt">Every page uses your real prices, your own photos and your reviews from The Knot and WeddingWire. Behind the site sits the system that turns a visitor into a booked table.</p>
   <div class="meta">
     <div><span>Prepared for</span><b>Tricia Holfelder · Charcuterie Chick · Tomball, Texas</b></div>
-    <div><span>From</span><b>Garrett Baxley · Galaxy Sports Edge LLC</b></div>
+    <div><span>From</span><b>Garrett Baxley · Galaxy Sports Network LLC</b></div>
   </div>
 
   <div class="tiles">
@@ -223,8 +229,13 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
   </div>
   <p class="small mute" style="margin-top:8pt">What every page is built on: the reputation you already have.</p>
 
-  <p class="small mute" style="margin-top:22pt;border-top:1px solid var(--rule);padding-top:8pt">Our recommendation, the Revenue Engine package, is on page 4. Pick the site first. Everything else can be added later.</p>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 1 of 7</span></div>
+  <div class="sec" style="margin-top:18pt"><span class="label wine">How this works</span><span class="label">Three decisions, in order</span></div>
+  <div class="p1-steps">
+    <div><div class="num">1</div><b>Pick a site</b><span>Page 2. Three to choose from, and The Table as its own package.</span></div>
+    <div><div class="num">2</div><b>Say yes to what you want</b><span>Page 4. The website alone, or the Revenue Engine with it.</span></div>
+    <div><div class="num">3</div><b>Live in seven days</b><span>Then ninety days of care, included. The Table takes three weeks.</span></div>
+  </div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 1 of 7</span></div>
 </section>
 
 <!-- 2 · choose a site, timeline -->
@@ -280,7 +291,7 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     </g>
     <text x="285" y="112" text-anchor="middle" font-size="7.5" fill="#7b6c5f" letter-spacing="1.6">INCLUDED CARE AND SMALL CHANGES · DAYS 1 TO 90</text>
   </svg></div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 2 of 7</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 2 of 7</span></div>
 </section>
 
 <!-- 3 · the workflows -->
@@ -339,7 +350,7 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     <div><b>The log</b><span>Every quote request with its date, headcount and table, and whether it has been answered.</span></div>
     <div><b>One screen a month</b><span>Calls, quotes, bookings and the best photo of the month. No dashboard to learn.</span></div>
   </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 3 of 7</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 3 of 7</span></div>
 </section>
 
 <!-- 4 · investment -->
@@ -382,7 +393,7 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     <div class="klegend"><span><i></i>This proposal</span><span><i class="g"></i>Your published price list</span></div>
     <p class="cap">One Holy Grail table at 75 guests pays for the whole Revenue Engine package. One at 150 pays for the immersive one.</p>
   </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 4 of 7</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 4 of 7</span></div>
 </section>
 
 <!-- 5 · creative add-ons -->
@@ -407,7 +418,7 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     <div><b>3 · You approve</b><span>Change anything. Nothing goes on the site or into print before you say so.</span></div>
     <div><b>4 · Files delivered</b><span>Yours to keep, at every size you will need.</span></div>
   </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 5 of 7</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 5 of 7</span></div>
 </section>
 
 <!-- 6 · after launch, what we need and when -->
@@ -443,7 +454,7 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
       <li>A few phone photos from one event, for the Google posts</li>
       <li>Ten minutes on the one-screen report, if you want to talk it through</li></ul></div>
   </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 6 of 7</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 6 of 7</span></div>
 </section>
 
 <!-- 7 · payment and terms -->
@@ -466,13 +477,13 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     <p><b>Prices.</b> US dollars. These prices hold through October 1, 2026. Every invoice references this proposal.</p>
   </div>
 
-  <div class="pay"><span class="label">Payable to</span><div><b>Galaxy Sports Edge LLC</b> (Garrett Baxley)<br><span class="small">By card: <a href="https://buy.stripe.com/8x23cxb6FanJail8JT14405">buy.stripe.com/8x23cxb6FanJail8JT14405</a> · Check, Zelle or bank transfer: details on your invoice.</span></div></div>
+  <div class="pay"><span class="label">Payable to</span><div><b>Galaxy Sports Network LLC</b> (Garrett Baxley)<br><span class="small">By card: <a href="https://buy.stripe.com/8x23cxb6FanJail8JT14405">buy.stripe.com/8x23cxb6FanJail8JT14405</a> · Check, Zelle or bank transfer: details on your invoice.</span></div></div>
   <p class="small" style="margin-top:12pt">Reply "approved" with the design you picked and the items you want, or sign below.</p>
   <div class="sig">
     <div><div class="line"><b>Tricia Holfelder, Charcuterie Chick</b><span>Date</span></div></div>
-    <div><div class="line"><b>Garrett Baxley, Galaxy Sports Edge LLC</b><span>Date</span></div></div>
+    <div><div class="line"><b>Garrett Baxley, Galaxy Sports Network LLC</b><span>Date</span></div></div>
   </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 7 of 7</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 7 of 7</span></div>
 </section>
 </body>
 </html>
