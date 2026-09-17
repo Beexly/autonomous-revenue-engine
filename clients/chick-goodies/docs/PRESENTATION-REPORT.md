@@ -306,15 +306,31 @@ The plan's "1.3 MB unminified" is the raw file size. What crossed the wire was
 
 | | raw | gzip |
 |---|---|---|
-| upstream ES module build | 1,283.9 KB | 258.8 KB |
-| **minified, as vendored now** | **672.4 KB** | **171.6 KB** |
-| bundled + tree-shaken (**not taken**) | 485.4 KB | 123.6 KB |
+| **as vendored now** | **1,283.9 KB** | **258.8 KB** |
+| minified (done, verified, then reverted) | 672.4 KB | 171.6 KB |
+| bundled + tree-shaken (**refused**) | 485.4 KB | 123.6 KB |
 
 Bundling measured best and was deliberately refused: it couples the vendored
 artifact to application code, so every edit to `table-cinematic.js` would need
 a bundler run before the page worked. That is a build step, and rule 2 forbids
-one. Minifying a library in place keeps the artifact independent. Reproduction
-command and licence in `samples/sample-3-studio/vendor/README.md`.
+one.
+
+**The minification was taken, and then given back.** SonarCloud failed the pull
+request on "C Security Rating on New Code". The cause is mechanical rather than
+a defect: minifying rewrites all 58,190 lines of the library, so an upstream
+dependency counts *in full* as new code and its findings land against the
+change. PR #55, which touched none of it, passed.
+
+`.sonarcloud.properties` now excludes `**/vendor/**` — the correct fix, since a
+third-party library is not ours to fix and analysing it as ours buries real
+findings. But this repository has no `.github/workflows`, so SonarCloud runs
+**Automatic Analysis**, which reads its configuration from the **default
+branch**. The exclusion cannot take effect from a feature branch, so the
+34% saving is real, measured, and **deferred**: re-apply it once
+`.sonarcloud.properties` reaches `main`. Command in
+`samples/sample-3-studio/vendor/README.md`.
+
+The phone figure is unaffected — a phone never fetches the renderer at all.
 
 ### Item 4 — one home for the arithmetic
 
