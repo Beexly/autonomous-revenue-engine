@@ -295,8 +295,12 @@ def main():
         base = a.base.rstrip('/')
         def url_for(p):
             return f'{base}/{p}'
-        if not base.startswith('https://'):
-            sys.exit(f'--base must be an https URL, got: {base}')
+        # https on the wire; loopback is allowed so a filtered deploy can be
+        # dry-run locally before it is pushed to a host.
+        if not (base.startswith('https://')
+                or base.startswith('http://localhost')
+                or base.startswith('http://127.0.0.1')):
+            sys.exit(f'--base must be https (or loopback), got: {base}')
 
         def fetch(p):
             with urllib.request.urlopen(f'{base}/{p}', timeout=30) as r:  # nosec B310 - https pinned above

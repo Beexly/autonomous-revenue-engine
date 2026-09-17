@@ -1,0 +1,9 @@
+# QA evidence and build tooling. None of this belongs on a client-facing host,
+# and with the project git-connected it would otherwise all be served.
+*.py
+__pycache__
+*.md
+test-output
+qa-evidence
+qa-runtime
+qa1.json
