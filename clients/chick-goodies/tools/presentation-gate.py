@@ -21,6 +21,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ['index.html', 'menu.html', 'gallery.html', 'story.html', 'enquire.html']
+# G1 can also sweep the immersive one-pager. It is named here rather than taken
+# from the command line so that nothing from argv ever reaches a fetched URL.
+EXTRA_PAGES = ('table.html',)
 WIDTHS = [390, 768, 1440, 1920]
 
 # Case-sensitive on purpose: "a closer look" inside a sentence is ordinary
@@ -266,7 +269,7 @@ CLIP_JS = """() => [...document.querySelectorAll('h1,h2,h3,p,figcaption,li,butto
 
 
 def visible_text(html_str):
-    s = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', html_str, flags=re.S | re.I)
+    s = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', html_str, flags=re.DOTALL | re.IGNORECASE)
     return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', s))
 
 
@@ -275,14 +278,14 @@ def gate_g2_g3(sample, fetch):
     for page in PAGES:
         html_str = fetch(page)
         vis = visible_text(html_str)
-        t = re.search(r'<title>(.*?)</title>', html_str, re.S | re.I)
+        t = re.search(r'<title>(.*?)</title>', html_str, re.DOTALL | re.IGNORECASE)
         titles.add(H.unescape(t.group(1).strip()) if t else f'NONE:{page}')
-        m = re.search(r'<meta[^>]*name="description"[^>]*>', html_str, re.I)
+        m = re.search(r'<meta[^>]*name="description"[^>]*>', html_str, re.IGNORECASE)
         c = re.search(r'content="([^"]*)"', m.group(0)) if m else None
         metas.add(H.unescape(c.group(1)) if c else f'NONE:{page}')
         kill_hits += [f'{page}: {k}' for k in KILL if k in vis]
-        gathers += len(re.findall(r'\bgather\w*', vis, re.I))
-        enquirs += len(re.findall(r'\benquir\w*', vis, re.I))
+        gathers += len(re.findall(r'\bgather\w*', vis, re.IGNORECASE))
+        enquirs += len(re.findall(r'\benquir\w*', vis, re.IGNORECASE))
     want = METAS[sample]
     meta_ok = all(want[p.replace('.html', '')] in metas for p in PAGES)
     g2 = not kill_hits and gathers <= 1 and enquirs == 0
@@ -310,15 +313,17 @@ def _sweep_page(pg, page_name, w, problems):
         problems.append(f'{page_name} @{w}: pseudo decoration over text, {ps}')
 
 
-def gate_g1_g5(url_for, shots=None):
+def gate_g1_g5(url_for, shots=None, extra_pages=()):
     from playwright.sync_api import sync_playwright
     problems, quote = [], {}
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
-        for page_name in PAGES:
+        for page_name in list(PAGES) + list(extra_pages):
             for w in WIDTHS:
                 pg = browser.new_page(viewport={'width': w, 'height': 900})
                 pg.goto(url_for(page_name), wait_until='load')
+                # a WebGL station page needs its first frames before anything is measured
+                pg.wait_for_timeout(1200 if page_name not in PAGES else 0)
                 # smooth scrolling makes a hit-test race the scroll animation
                 pg.add_style_tag(content='html,body{scroll-behavior:auto !important}')
                 pg.wait_for_timeout(450)
@@ -356,22 +361,45 @@ def main():
     ap.add_argument('--sample', required=True)
     ap.add_argument('--base', help='live base URL; omit to test local files')
     ap.add_argument('--shots', help='directory for 390/1440 screenshots')
+    ap.add_argument('--with-table', action='store_true',
+                    help='also run G1 over table.html, the immersive one-pager')
     a = ap.parse_args()
-    d = ROOT / 'samples' / a.sample
-    if a.base:
-        import urllib.request
-        base = a.base.rstrip('/')
-        def url_for(p):
-            return f'{base}/{p}'
-        # https on the wire; loopback is allowed so a filtered deploy can be
-        # dry-run locally before it is pushed to a host.
-        if not (base.startswith('https://')
-                or base.startswith('http://localhost')
-                or base.startswith('http://127.0.0.1')):
-            sys.exit(f'--base must be https (or loopback), got: {base}')
 
-        def fetch(p):
-            with urllib.request.urlopen(f'{base}/{p}', timeout=30) as r:  # nosec B310 - https pinned above
+    # --sample is chosen from the directories that exist, not concatenated onto a
+    # path. Both forms reject '../..'; picking from a known set also means nothing
+    # from argv is ever joined into a filesystem path.
+    known = sorted(x.name for x in (ROOT / 'samples').iterdir() if x.is_dir())
+    if a.sample not in known:
+        sys.exit(f'--sample must be one of {known}, got: {a.sample}')
+    d = ROOT / 'samples' / known[known.index(a.sample)]
+
+    if a.base:
+        import urllib.parse
+        import urllib.request
+
+        # The URL handed to urlopen is REBUILT from validated parts rather than
+        # interpolated from input: scheme and host are checked against fixed
+        # allowlists, and the path comes from PAGES/EXTRA_PAGES, which are
+        # literals in this file. (bandit's # nosec does not reach SonarCloud,
+        # so the guard has to be structural rather than a suppression.)
+        parts = urllib.parse.urlsplit(a.base.rstrip('/'))
+        host = (parts.hostname or '').lower()
+        if parts.scheme == 'https' or parts.scheme == 'http' and host in ('localhost', '127.0.0.1', '::1'):
+            pass
+        else:
+            sys.exit(f'--base must be https (or http on loopback), got: {a.base}')
+        if parts.username or parts.password or parts.query or parts.fragment:
+            sys.exit('--base must be a plain scheme://host[:port][/path]')
+        netloc = host + (f':{parts.port}' if parts.port else '')
+        root_path = parts.path.rstrip('/')
+        scheme = parts.scheme
+
+        def url_for(page):
+            return urllib.parse.urlunsplit(
+                (scheme, netloc, f'{root_path}/{page}', '', ''))
+
+        def fetch(page):
+            with urllib.request.urlopen(url_for(page), timeout=30) as r:
                 return r.read().decode('utf-8', 'replace')
     else:
         def url_for(p):
@@ -381,7 +409,8 @@ def main():
             return (d / p).read_text(encoding='utf-8', errors='replace')
 
     (g2, g2d), (g3, g3d) = gate_g2_g3(a.sample, fetch)
-    problems, quote = gate_g1_g5(url_for, a.shots)
+    extra = EXTRA_PAGES if a.with_table else ()
+    problems, quote = gate_g1_g5(url_for, a.shots, extra)
     g1 = not problems
     g5 = all(quote.values())
 

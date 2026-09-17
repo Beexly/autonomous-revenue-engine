@@ -17,6 +17,7 @@
 
 <!-- One persistent scene. Every "page" below is a camera position inside it. -->
 <div id="stage" aria-hidden="true">
+  <picture id="stage-picture"><source media="(max-width:899px)" srcset="img/table-still-tall.jpg" width="1215" height="2160"><img id="stage-still" src="img/table-still.jpg" alt="" width="2160" height="1350" fetchpriority="high" decoding="async"></picture>
   <canvas id="table-canvas"></canvas>
   <div id="stage-fallback"></div>
 </div>
@@ -41,10 +42,10 @@
 <section class="station" id="s1" data-station="1">
   <div class="plate">
     <p class="eyebrow">Charcuterie Chick · Tomball, Texas</p>
-    <h1>All the elegance<br><i>without the cost.</i></h1>
+    <h1>Elegance<br><i>without the cost.</i></h1>
     <p class="lede">Grazing tables from $24 a person. Houston's largest charcuterie cart. Breads, jellies and jams made from scratch.</p>
     <div class="acts">
-      <a class="pill" href="enquire.html">Price your party</a>
+      <a class="pill" href="#s5">Price your party</a>
       <a class="line" href="#s2">See the tables</a>
     </div>
     <p class="proof">5.0 on The Knot from 13 reviews · Best of Weddings 2026<br>5.0 on WeddingWire from 11 reviews · 100% would recommend</p>
@@ -67,16 +68,37 @@
   </div>
 </section>
 
-<section class="station" id="s3" data-station="3">
+<section class="station station-wide" id="s3" data-station="3">
   <div class="plate">
     <p class="eyebrow">02 · The cart</p>
     <h2>Houston's largest<br><i>charcuterie cart.</i></h2>
     <p>It arrives built. Taco cart, candy bar, Bloody Mary and mimosa stations on the side. Under fifty guests, this is what you want.</p>
-    <a class="line" href="menu.html">Carts, sweets and sips</a>
+    <ol class="tables sides">
+      <li><b>Taco Cart</b><em>$26.95</em></li>
+      <li><b>Carts</b><em>$24.50</em></li>
+      <li><b>Slider Menu</b><em>$2.95</em></li>
+      <li><b>Cakes and Shakes</b><em>$9.50</em></li>
+      <li><b>Candy Bar Chick</b><em>$5.00</em></li>
+      <li><b>Zeppole Beignet Chick</b><em>$4.50</em></li>
+      <li><b>Bloody Mary Chick</b><em>$6.50</em></li>
+      <li><b>Mimosa Chick</b><em>$4.00</em></li>
+    </ol>
+    <p class="terms">Easy order boards, the Charcuterie Chick board, apple pie and the full catering menu: ask me for a price.</p>
+  </div>
+  <div class="photo-band">
+    <p class="band-label">Photographs from her own events</p>
+    <ul>
+      <li><figure><img src="img/cart-640.jpg" alt="The cart, logo on the front, candy jars on top, set up outside before guests arrive." width="640" height="480" loading="lazy" decoding="async"><figcaption>The cart, candy jars on top</figcaption></figure></li>
+      <li><figure><img src="img/knot-4.jpg" alt="Charcuterie cones in cups on a wooden riser: cheese, vegetables and crackers." width="945" height="720" loading="lazy" decoding="async"><figcaption>Vegetarian cones</figcaption></figure></li>
+      <li><figure><img src="img/sips-02.jpg" alt="Bloody Marys in tall glasses garnished with celery and olives." width="480" height="640" loading="lazy" decoding="async"><figcaption>Bloody Marys with celery and olives</figcaption></figure></li>
+      <li><figure><img src="img/sweets-01.jpg" alt="A skillet dessert topped with chopped nuts." width="480" height="640" loading="lazy" decoding="async"><figcaption>A skillet dessert with chopped nuts</figcaption></figure></li>
+      <li><figure><img src="img/table-01.jpg" alt="Waffles, breads and sliced fruit arranged along a grazing table." width="480" height="640" loading="lazy" decoding="async"><figcaption>Waffles, breads and fruit</figcaption></figure></li>
+    </ul>
+    <a class="line" href="gallery.html">All the photographs</a>
   </div>
 </section>
 
-<section class="station" id="s4" data-station="4">
+<section class="station station-aside" id="s4" data-station="4">
   <div class="plate">
     <p class="eyebrow">03 · Tricia</p>
     <h2>I've worked the floor<br><i>and I've worked the line.</i></h2>
@@ -84,23 +106,89 @@
     <p>Woman-owned. English and Spanish. Tomball, The Woodlands, Spring and Conroe.</p>
     <a class="line" href="story.html">More about me</a>
   </div>
+  <figure class="portrait-print">
+    <img src="img/tricia-portrait-471.jpg" alt="Tricia Holfelder, owner of Charcuterie Chick." width="471" height="589" loading="lazy" decoding="async">
+    <figcaption>Tricia Holfelder</figcaption>
+  </figure>
 </section>
 
-<section class="station" id="s5" data-station="5">
+<section class="station station-wide" id="s5" data-station="5">
   <div class="plate">
     <p class="eyebrow">04 · The number</p>
     <h2>Send me the date<br><i>and the headcount.</i></h2>
     <p>I'll check the date and reply with a real quote. Nothing here books anything and nothing holds a date.</p>
-    <div class="acts">
-      <a class="pill" href="enquire.html">Price your party</a>
-      <a class="line" href="tel:+18324588180">Or call 832-458-8180</a>
-    </div>
-    <p class="terms">Charcuterie Chick · Tricia Holfelder · Tomball, TX · <a href="mailto:charcuteriechick@outlook.com">charcuteriechick@outlook.com</a></p>
   </div>
+
+  <!-- 11.3 item 4. The same estimator as enquire.html: identical element ids, so
+       gathering.js drives it and the arithmetic cannot drift between the two. -->
+  <div class="counter">
+    <div class="counter-inputs">
+      <label for="table">Which table?</label>
+      <select id="table">
+        <option value="holy">Holy Grail of Grazing</option>
+        <option value="grand">Grand Graze</option>
+        <option value="super">Super Graze</option>
+        <option value="standard">Grazing Standard</option>
+        <option value="graze">Graze Me, Craze Me</option>
+        <option value="unsure">Not sure, tell me what fits</option>
+        <option value="other">Boards, the cart, sweets or sips</option>
+      </select>
+
+      <label for="guests">How many guests?</label>
+      <div class="stepper">
+        <button type="button" id="fewer" aria-label="Fewer guests">−</button>
+        <input id="guests" type="number" min="50" max="1000" step="1" value="75">
+        <button type="button" id="more" aria-label="More guests">+</button>
+      </div>
+      <p id="guest-hint">Holy Grail: published packages for 75 or 150 guests.</p>
+
+      <label for="occasion">What's the party?</label>
+      <select id="occasion">
+        <option value="Wedding">A wedding</option>
+        <option value="Celebration">A party</option>
+        <option value="Work gathering">A work event</option>
+        <option value="Something else">Something else</option>
+      </select>
+
+      <label for="date">When? (optional)</label>
+      <input id="date" type="date">
+
+      <label for="venue">Where? (optional)</label>
+      <input id="venue" type="text" maxlength="200" autocomplete="off" placeholder="Town or venue">
+
+      <label for="notes">Anything I should know? (optional)</label>
+      <textarea id="notes" rows="2" maxlength="1500" placeholder="Venue, timing, allergies."></textarea>
+
+      <label for="name">Your name (optional)</label>
+      <input id="name" type="text" maxlength="100" autocomplete="name">
+    </div>
+
+    <div class="counter-total">
+      <p class="eyebrow">Estimate from published prices · 90 minutes</p>
+      <output id="total" aria-live="polite">Ask Tricia</output>
+      <p id="quote-error" role="status"></p>
+      <div aria-hidden="true" id="seats"></div>
+      <dl>
+        <div><dt>Food</dt><dd id="food">—</dd></div>
+        <div><dt>Setup</dt><dd>$229.00</dd></div>
+        <div><dt>18% tax estimate</dt><dd id="tax">—</dd></div>
+      </dl>
+      <p class="terms">This number comes from my published prices. It isn't your quote and it doesn't hold a date. In it: food for your guests, the $229 setup, and 18% tax estimated on both. Not in it: extra time at $3 a person per half hour, the cart, sweets, sips or boards. Next: you send me the note. I check the date and reply with a real quote.</p>
+      <div class="acts">
+        <a class="pill" id="email-enquiry" href="mailto:charcuteriechick@outlook.com">Email me this</a>
+        <a class="line" id="text-enquiry" href="sms:+18324588180">Text me this</a>
+        <a class="line" href="tel:+18324588180">Or call 832-458-8180</a>
+      </div>
+      <noscript><p class="terms">The estimate needs JavaScript. Call or email Tricia above; every published price is on this page.</p></noscript>
+    </div>
+  </div>
+
+  <p class="terms colophon">Charcuterie Chick · Tricia Holfelder · Tomball, TX · <a href="mailto:charcuteriechick@outlook.com">charcuteriechick@outlook.com</a></p>
 </section>
 
 </main>
 
-<script type="module" src="table-cinematic.js"></script>
+<script defer src="gathering.js"></script>
+<script src="table-boot.js"></script>
 </body>
 </html>

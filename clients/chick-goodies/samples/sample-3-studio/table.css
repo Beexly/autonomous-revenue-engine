@@ -26,6 +26,15 @@ body{
 /* ---- the persistent scene sits behind everything, fixed ---- */
 #stage{position:fixed;inset:0;z-index:0}
 #stage canvas{width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s ease}
+/* a real render of this same scene, shown when the renderer will not run and
+   while it is still starting, so the room is never an empty black rectangle */
+#stage-picture{position:absolute;inset:0;display:block}
+#stage-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:64% 52%;opacity:1;transition:opacity 1.2s ease}
+@media(max-width:899px){#stage-still{object-position:50% 50%}}
+#stage.lit #stage-still{opacity:0}
+/* with no scene there is no motion to pause */
+html.scene-still #motion{display:none}
 #stage.lit canvas{opacity:1}
 /* If WebGL never starts, the page is still a dark room with a warm source. */
 #stage-fallback{
@@ -72,7 +81,7 @@ body{
 
 /* ---- stations ---- */
 main{position:relative;z-index:2}
-.station{
+.station{overflow-x:clip;
   min-height:100svh;display:flex;
   /* `safe` refuses to overflow the start edge when the plate is taller than the
      viewport. Where it is unsupported the declaration drops to stretch, which
@@ -143,10 +152,11 @@ p{margin:0 0 20px;color:var(--dim)}
   #chrome{gap:10px;padding:10px 14px 6px;flex-wrap:wrap}
   #chrome .mark{width:92px;padding:6px 8px}
   #motion{margin-left:auto}
+  /* the row wraps rather than hiding in a scrollbar-less rail: every station
+     is reachable without a horizontal drag nobody can see */
   #stations{order:3;width:100%;margin:0;justify-content:flex-start;
-    flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  #stations::-webkit-scrollbar{display:none}
-  #stations button{padding:10px 10px;font-size:11px;white-space:nowrap;flex:none;min-height:40px}
+    flex-wrap:wrap;overflow-x:visible;gap:2px 4px}
+  #stations button{padding:9px 10px;font-size:11px;white-space:nowrap;flex:none;min-height:40px}
   .station,.station:nth-child(even){justify-content:flex-start;padding:172px 20px 80px}
   .station:nth-child(even) .plate{text-align:left}
   .station:nth-child(even) .acts{justify-content:flex-start}
@@ -155,4 +165,89 @@ p{margin:0 0 20px;color:var(--dim)}
   /* on a phone the plate needs its own ground to stay legible over the scene */
   .plate{background:linear-gradient(#120d0aee,#120d0aee);
     box-shadow:0 0 0 22px #120d0aee;border-radius:2px}
+}
+
+/* ---- 11.3 item 3: her photographs as photographs ----
+   The prints on the table are textures; a search engine, a screen reader and a
+   phone that never starts WebGL all need real <img> elements as well. */
+.station-wide{flex-direction:column;align-items:flex-start;gap:var(--band-gap,56px)}
+.station-wide .plate{max-width:min(46ch,620px)}
+.photo-band{width:100%;max-width:1180px;position:relative}
+.photo-band::before{content:"";position:absolute;inset:-34px -40px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,#120d0af2 0%,#120d0ae0 52%,transparent 82%)}
+.band-label{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ember);margin:0 0 20px}
+.photo-band ul{list-style:none;margin:0 0 22px;padding:0;
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.photo-band figure{margin:0}
+.photo-band img{width:100%;height:clamp(150px,13vw,200px);object-fit:cover;display:block;
+  border:1px solid #f4ece026;border-radius:3px;background:#1a120c}
+.photo-band figcaption{font-size:12px;line-height:1.45;color:#f4ece08c;padding-top:9px}
+
+.station-aside{flex-wrap:wrap;gap:56px;align-items:center}
+.portrait-print{margin:0;flex:0 0 clamp(190px,20vw,260px)}
+.portrait-print img{width:100%;height:auto;display:block;
+  border:1px solid #f4ece026;border-radius:3px}
+.portrait-print figcaption{font-size:12px;color:#f4ece08c;padding-top:9px}
+
+@media(max-width:900px){
+  .station-wide,.station-aside{gap:38px}
+  .photo-band ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .photo-band img{height:clamp(120px,34vw,170px)}
+  .photo-band::before{inset:-20px -22px}
+  .portrait-print{flex:0 0 auto;max-width:220px}
+}
+
+/* ---- 11.3 item 4: the number, in the room ----
+   Same ids as enquire.html so gathering.js is the single source of the
+   arithmetic. Only the skin is new. */
+.counter{width:100%;max-width:1180px;position:relative;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.counter::before{content:"";position:absolute;inset:-40px -44px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,#120d0af7 0%,#120d0ae8 55%,transparent 84%)}
+.counter label{display:block;font:500 11px/1 var(--sans);letter-spacing:.16em;
+  text-transform:uppercase;color:#f4ece0a6;margin:18px 0 7px}
+.counter label:first-child{margin-top:0}
+.counter select,.counter input,.counter textarea{
+  width:100%;background:#1c1410;color:var(--ink);border:1px solid #f4ece029;
+  border-radius:3px;padding:12px 13px;font:400 15px/1.4 var(--sans);min-height:46px}
+.counter textarea{resize:vertical}
+.counter select:focus-visible,.counter input:focus-visible,.counter textarea:focus-visible{
+  outline:2px solid var(--ember);outline-offset:2px}
+.stepper{display:flex;gap:8px;align-items:stretch}
+.stepper input{text-align:center}
+.stepper button{flex:0 0 46px;min-height:46px;background:#1c1410;color:var(--ink);
+  border:1px solid #f4ece029;border-radius:3px;font-size:19px;cursor:pointer}
+.stepper button:hover:not(:disabled){border-color:var(--ember);color:var(--ember)}
+.stepper button:disabled{opacity:.35;cursor:default}
+#guest-hint{font-size:12.5px;color:#f4ece080;margin:8px 0 0}
+
+/* the total is the biggest thing on the station */
+.counter-total{border-left:1px solid #f4ece01f;padding-left:44px}
+.counter-total .eyebrow{margin-bottom:14px}
+#total{display:block;font-family:var(--serif);font-weight:300;font-optical-sizing:auto;
+  font-size:clamp(46px,6vw,88px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+#quote-error{font-size:13.5px;color:var(--ember);margin:12px 0 0;min-height:0}
+#quote-error:empty{display:none}
+#seats{display:flex;flex-wrap:wrap;gap:5px;margin:20px 0 4px}
+#seats i{width:9px;height:9px;border-radius:50%;background:#e8a33d80;display:block}
+.counter-total dl{margin:22px 0 0;padding:0}
+.counter-total dl>div{display:flex;justify-content:space-between;gap:20px;
+  padding:11px 0;border-top:1px solid #f4ece01f;font-size:14px}
+.counter-total dt{color:#f4ece0a6}
+.counter-total dd{margin:0;color:var(--ink)}
+.counter-total .terms{margin-top:22px}
+.counter-total .acts{margin-top:26px}
+.colophon{width:100%;max-width:1180px;margin:0}
+
+@media(max-width:900px){
+  .counter{grid-template-columns:1fr;gap:38px}
+  .counter-total{border-left:0;border-top:1px solid #f4ece01f;padding-left:0;padding-top:30px}
+}
+
+/* the sides list is the same price list, denser: two columns where there is room */
+.tables.sides{margin-top:26px}
+@media(min-width:760px){
+  .tables.sides{display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
+  .tables.sides li{margin:0}
 }
