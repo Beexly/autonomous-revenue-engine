@@ -1,0 +1,414 @@
+#!/usr/bin/env python3
+"""Restore Tricia's photographs through a generative image API.
+
+An operator tool. One person runs it from a machine that holds the credentials.
+Nothing here runs on a server, and nothing it produces reaches a client page on
+its own: every output lands in `restored/` to be looked at first, because
+ASSETS.md section 2 makes shipping an unreviewed generated image a defect.
+
+The pipeline owns the work; the provider is a swappable adapter. Higgsfield is
+implemented because that is what we have keys for. A second adapter (OpenRouter,
+OmniRouter, anything reachable over HTTPS) only has to satisfy `Provider`:
+submit a source image plus a prompt, return image bytes.
+
+Docs followed, read 2026-09-17:
+  authentication  /docs/authentication
+  file uploads    /docs/concepts/file-uploads
+  lifecycle       /docs/concepts/requests
+  polling         /docs/concepts/polling
+  errors          /docs/concepts/errors
+
+Usage
+  python3 tools/restore-photos.py                      # dry run; costs nothing
+  python3 tools/restore-photos.py --apply              # spends credits
+  python3 tools/restore-photos.py --apply --only knot-3.jpg
+  python3 tools/restore-photos.py --apply --model reve
+
+Credentials come from the environment or from tools/.env (gitignored).
+Never pass them on a command line; they end up in shell history.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import mimetypes
+import os
+import random
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+SRC = ROOT / "site" / "img"          # default; --src overrides
+OUT = ROOT / "restored"
+MANIFEST = OUT / "manifest.jsonl"
+
+API = "https://api.higgsfield.ai"
+TERMINAL = {"completed", "failed", "nsfw", "canceled"}
+
+# Priority order. Her originals top out at 480x640 (ASSETS.md section 1); the
+# ones that carry the most page are worth the credits first.
+QUEUE = [
+    "knot-3.jpg", "knot-2.jpg", "graze-02.jpg", "board-02.jpg",
+    "catering-1000.jpg", "tricia-662.jpg", "knot-4.jpg",
+    "cart-640.jpg", "wide-640.jpg",
+]
+
+# Restoration, not reinterpretation. The brief is "make her real food look the
+# way it looked in the room", so the prompt forbids invention explicitly.
+BASE_PROMPT = (
+    "Restore this photograph of real catering work. Recover fine detail and "
+    "natural texture in the food, linen and wood. Correct softness, sensor "
+    "noise and JPEG artefacts. Neutral white balance, natural daylight, "
+    "true-to-life colour. Keep the exact composition, framing, aspect ratio "
+    "and every object exactly where it is. Do not add, remove, move or "
+    "substitute any food, prop or person. Do not stylise, do not smooth skin "
+    "or surfaces into plastic, do not add bokeh, glow or vignette. "
+    "Photographic result, not an illustration."
+)
+
+# One override where a generic prompt would do damage.
+PROMPTS = {
+    "tricia-662.jpg": BASE_PROMPT + (
+        " This is a portrait of a real person. Be conservative: keep her face, "
+        "expression, hair and body exactly as photographed. Reduce noise and "
+        "recover detail only. Do not retouch, slim, smooth or alter features."
+    ),
+}
+
+# Verified against the live docs on 2026-09-17. `resolution`/`quality` values
+# are the ones the model's own documentation prints; the console is the place
+# to confirm what this account is entitled to before changing them.
+MODELS = {
+    "grok": {
+        "endpoint": "/xai/grok-imagine-image-2.0",
+        "args": lambda url, prompt: {
+            "prompt": prompt,
+            "image_urls": [url],
+            "resolution": "1k",
+            "aspect_ratio": "auto",
+            "quality": "high",
+        },
+    },
+    "reve": {
+        "endpoint": "/reve/edit",
+        "args": lambda url, prompt: {
+            "prompt": prompt,
+            "image_url": url,
+            "num_images": 1,
+        },
+    },
+}
+
+
+# --------------------------------------------------------------------------- env
+
+def load_env() -> None:
+    """Read tools/.env into os.environ without overwriting a real export."""
+    path = Path(__file__).resolve().parent / ".env"
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        os.environ.setdefault(key.strip(), value.strip().strip("'\""))
+
+
+def credentials() -> str:
+    key_id = os.environ.get("HF_API_KEY_ID", "")
+    secret = os.environ.get("HF_API_KEY_SECRET", "")
+    if not key_id or not secret:
+        sys.exit(
+            "Missing credentials. Set HF_API_KEY_ID and HF_API_KEY_SECRET in the\n"
+            "environment or in tools/.env — see tools/.env.example.\n"
+            "Create them at https://console.higgsfield.ai"
+        )
+    return f"Key {key_id}:{secret}"
+
+
+# ------------------------------------------------------------------------- http
+
+def request(url, *, method="GET", body=None, headers=None, timeout=60):
+    """One HTTP call. Returns (status, headers, bytes). Never raises on 4xx/5xx."""
+    data = None
+    headers = dict(headers or {})
+    if body is not None:
+        data = json.dumps(body).encode("utf-8")
+        headers["Content-Type"] = "application/json"
+    req = urllib.request.Request(url, data=data, headers=headers, method=method)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            return response.status, dict(response.headers), response.read()
+    except urllib.error.HTTPError as exc:
+        return exc.code, dict(exc.headers or {}), exc.read()
+
+
+def as_json(payload: bytes):
+    try:
+        return json.loads(payload.decode("utf-8"))
+    except Exception:
+        return {"detail": payload[:400].decode("utf-8", "replace")}
+
+
+class Fatal(Exception):
+    """Do not retry, do not continue to the next photo."""
+
+
+class Skip(Exception):
+    """This photo failed; the others are still worth attempting."""
+
+
+def check(status: int, payload) -> None:
+    """Map the documented status codes onto retry vs stop."""
+    if status < 400:
+        return
+    detail = payload.get("detail") if isinstance(payload, dict) else payload
+    if status == 401:
+        raise Fatal(f"401 invalid credentials — {detail}")
+    if status == 403:
+        raise Fatal(f"403 insufficient credits — {detail}")
+    if status in (404, 422):
+        raise Skip(f"{status} request rejected — {detail}")
+    if status in (423, 503):
+        raise Fatal(f"{status} model unavailable, try later — {detail}")
+    raise Skip(f"{status} — {detail}")
+
+
+# --------------------------------------------------------------------- provider
+
+class Higgsfield:
+    """Upload -> submit -> poll -> fetch bytes."""
+
+    name = "higgsfield"
+
+    def __init__(self, auth: str, model: str, timeout: int):
+        self.auth = auth
+        self.model = MODELS[model]
+        self.model_name = model
+        self.timeout = timeout
+
+    def _auth_headers(self) -> dict:
+        return {"Authorization": self.auth}
+
+    def submit(self, image_url: str, prompt: str):
+        status, headers, payload = request(
+            API + self.model["endpoint"],
+            method="POST",
+            body=self.model["args"](image_url, prompt),
+            headers=self._auth_headers(),
+        )
+        data = as_json(payload)
+        check(status, data)
+        # Submissions accept no idempotency key, so an ambiguous timeout must
+        # never be retried automatically — it would bill twice.
+        return data, headers.get("X-Correlation-ID", "")
+
+    def poll(self, status_url: str) -> dict:
+        delay, deadline = 2.0, time.monotonic() + self.timeout
+        while True:
+            if time.monotonic() > deadline:
+                raise Skip(f"timed out after {self.timeout}s")
+            status, _, payload = request(status_url, headers=self._auth_headers())
+            if status >= 500:
+                time.sleep(delay + random.uniform(0, 0.5))
+                delay = min(delay * 1.5, 10.0)
+                continue
+            data = as_json(payload)
+            check(status, data)
+            state = data.get("status")
+            if state in TERMINAL:
+                return data
+            time.sleep(delay + random.uniform(0, 0.5))
+            delay = min(delay * 1.5, 10.0)
+
+
+def put_file(url: str, path: Path, headers: dict, timeout: int) -> int:
+    """A presigned PUT needs the file as the body; urlopen wants bytes."""
+    req = urllib.request.Request(
+        url, data=path.read_bytes(), headers=headers, method="PUT"
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            return response.status
+    except urllib.error.HTTPError as exc:
+        return exc.code
+
+
+# ------------------------------------------------------------------------ record
+
+def read_manifest() -> dict:
+    """Completed (file, model, prompt) triples, so a rerun does not rebill."""
+    done = {}
+    if not MANIFEST.exists():
+        return done
+    for line in MANIFEST.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if row.get("status") == "completed":
+            done[(row["source"], row["model"], row["prompt_sha"])] = row
+    return done
+
+
+def record(row: dict) -> None:
+    OUT.mkdir(parents=True, exist_ok=True)
+    with MANIFEST.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(row, sort_keys=True) + "\n")
+
+
+# -------------------------------------------------------------------------- main
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--apply", action="store_true",
+                        help="actually submit. Without it nothing is sent and nothing is billed.")
+    parser.add_argument("--model", choices=sorted(MODELS), default="grok")
+    parser.add_argument("--src", type=Path, default=SRC,
+                        help="directory to read from. Point this at a classical "
+                             "restore pass (denoised, correctly resized) rather "
+                             "than at site/img — a generative model holds onto "
+                             "real structure and hallucinates into mush.")
+    parser.add_argument("--only", action="append", default=[],
+                        help="restrict to these filenames; repeatable")
+    parser.add_argument("--limit", type=int, default=0, help="stop after N photos")
+    parser.add_argument("--timeout", type=int, default=600,
+                        help="per-photo ceiling in seconds")
+    args = parser.parse_args()
+
+    load_env()
+
+    src = args.src.resolve()
+    if not src.is_dir():
+        sys.exit(f"--src is not a directory: {src}")
+
+    # A classical pass usually renames its outputs. If the queue names are not
+    # there, fall back to every image in the directory, sorted.
+    names = args.only or QUEUE
+    queue = [src / n for n in names if (src / n).exists()]
+    if not queue and not args.only:
+        queue = sorted(
+            p for p in src.iterdir()
+            if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")
+        )
+        if queue:
+            print(f"  (no queue names in {src}; taking all {len(queue)} images)")
+            # PROMPTS is keyed by filename. Renamed files silently lose their
+            # override, and one of those overrides is the only thing stopping a
+            # model from retouching a real person's face.
+            print("  ! renamed files cannot match a per-file prompt override.")
+            print("  ! " + ", ".join(sorted(PROMPTS)) + " must be passed via --only,")
+            print("  ! or renamed back, or its restore will use the generic prompt.")
+    for name in names:
+        if not (src / name).exists() and args.only:
+            print(f"  ! {name}: not in {src}, skipped")
+    if args.limit:
+        queue = queue[: args.limit]
+    if not queue:
+        print("Nothing to do.")
+        return 1
+
+    done = read_manifest()
+    print(f"{len(queue)} photo(s) from {src}, model {args.model}, "
+          f"output {OUT.relative_to(ROOT)}/")
+
+    if not args.apply:
+        for path in queue:
+            prompt = PROMPTS.get(path.name, BASE_PROMPT)
+            sha = hashlib.sha256(prompt.encode()).hexdigest()[:12]
+            seen = (path.name, args.model, sha) in done
+            size = path.stat().st_size
+            print(f"  {'skip' if seen else 'send'}  {path.name:<20} "
+                  f"{size/1024:6.1f} KB  prompt {sha}")
+        print("\nDry run. Nothing was sent and nothing was billed. "
+              "Re-run with --apply.")
+        return 0
+
+    auth = credentials()
+    provider = Higgsfield(auth, args.model, args.timeout)
+    OUT.mkdir(parents=True, exist_ok=True)
+    ok = failed = skipped = 0
+
+    for path in queue:
+        prompt = PROMPTS.get(path.name, BASE_PROMPT)
+        sha = hashlib.sha256(prompt.encode()).hexdigest()[:12]
+        if (path.name, args.model, sha) in done:
+            print(f"  = {path.name}: already restored with this prompt")
+            skipped += 1
+            continue
+
+        print(f"  > {path.name}", flush=True)
+        try:
+            content_type = mimetypes.guess_type(path.name)[0] or "image/jpeg"
+            status, _, payload = request(
+                f"{API}/files/generate-upload-url", method="POST",
+                body={"content_type": content_type},
+                headers={"Authorization": auth},
+            )
+            upload = as_json(payload)
+            check(status, upload)
+            headers = dict(upload.get("upload_headers") or {})
+            headers.setdefault("Content-Type", content_type)
+            code = put_file(upload["upload_url"], path, headers, args.timeout)
+            if code >= 400:
+                raise Skip(f"presigned upload returned {code}")
+
+            accepted, correlation = provider.submit(upload["public_url"], prompt)
+            request_id = accepted.get("request_id", "")
+            print(f"    request {request_id}")
+            result = provider.poll(accepted["status_url"])
+
+            state = result.get("status")
+            if state != "completed":
+                raise Skip(f"{state}: {result.get('error', 'no detail')}")
+
+            images = result.get("images") or []
+            if not images:
+                raise Skip("completed with no image")
+
+            code, _, blob = request(images[0]["url"], timeout=args.timeout)
+            if code >= 400 or not blob:
+                raise Skip(f"could not download output ({code})")
+
+            target = OUT / path.name
+            target.write_bytes(blob)
+            digest = hashlib.md5(blob).hexdigest()
+            record({
+                "source": path.name, "model": args.model,
+                "endpoint": MODELS[args.model]["endpoint"],
+                "prompt_sha": sha, "prompt": prompt,
+                "request_id": request_id, "correlation_id": correlation,
+                "status": "completed", "md5": digest, "bytes": len(blob),
+                "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            })
+            print(f"    ok  {len(blob)/1024:.1f} KB  md5 {digest}")
+            ok += 1
+
+        except Skip as exc:
+            print(f"    failed: {exc}")
+            record({
+                "source": path.name, "model": args.model, "prompt_sha": sha,
+                "status": "failed", "error": str(exc),
+                "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            })
+            failed += 1
+        except Fatal as exc:
+            print(f"    stopping: {exc}")
+            return 2
+
+    print(f"\n{ok} restored, {failed} failed, {skipped} already done.")
+    print(f"Outputs are in {OUT.relative_to(ROOT)}/ and are NOT on any page.")
+    print("Look at every one before copying it into site/img/.")
+    return 0 if failed == 0 else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
