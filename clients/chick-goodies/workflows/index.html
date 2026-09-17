@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Workflows — Charcuterie Chick</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="What the workflow package does for Charcuterie Chick: enquiry tracking, the review ask, and the return visit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workflows.css">
+</head>
+<body>
+
+<header class="top">
+  <p class="kicker">Charcuterie Chick · Tomball, Texas</p>
+  <h1>The three things that<br>happen <i>after</i> the party.</h1>
+  <p class="sub">Your website answers the question "who caters this?". None of it answers "did that enquiry ever get a reply?" or "did that host ever leave a review?" Those two questions are where the next bookings come from, and right now nothing is asking them.</p>
+  <p class="note">This page is for Tricia and Garrett. It is not part of the website and is not linked from it.</p>
+</header>
+
+<main>
+<!-- ------------------------------------------------ 1. today -->
+<section class="band">
+  <p class="eyebrow">01 · Where it stands today</p>
+  <h2>The money path works.<br>It just stops at the party.</h2>
+
+  <div class="path" id="path">
+    <ol>
+      <li class="on"><b>A host finds the site</b><span>Search, The Knot, or a friend.</span></li>
+      <li class="on"><b>They send the quote</b><span>Opens a text or an email to Tricia with the date, headcount and table already written in.</span></li>
+      <li class="on"><b>Tricia replies</b><span>Price and availability, from her phone.</span></li>
+      <li class="on"><b>The event</b><span>Table styled on site, ninety minutes of service.</span></li>
+      <li class="off" id="gap">
+        <b>Then nothing</b>
+        <span>No thank-you. No review asked for. No reason to come back. And no record anywhere of whether that first enquiry ever got answered.</span>
+      </li>
+    </ol>
+  </div>
+
+  <p class="pull">Every event that finishes without a review ask is a ranking signal she never gets back. She has <b>13 reviews on The Knot</b> and <b>11 on WeddingWire</b>, both 5.0. On Google — the one people actually search — her profile still needs claiming, so none of that 5.0 is doing any work.</p>
+</section>
+
+<!-- ------------------------------------------------ 2. the simulation -->
+<section class="band alt">
+  <p class="eyebrow">02 · What gets added</p>
+  <h2>Three workflows. One event.</h2>
+  <p class="lede">Press play. This is one real booking moving through the system, day by day. Nothing here sends itself without Tricia — every message opens on her phone with the words already written, and she presses send.</p>
+
+  <div class="sim">
+    <div class="sim-controls">
+      <button type="button" id="play" class="pill">Play the timeline</button>
+      <button type="button" id="reset" class="ghost">Reset</button>
+      <p class="day" id="dayLabel">Day 0 — the enquiry arrives</p>
+    </div>
+    <div class="track" role="img" aria-label="Timeline of an event from enquiry to repeat booking">
+      <div class="track-fill" id="trackFill"></div>
+    </div>
+    <ol class="events" id="events">
+      <li data-at="0"   data-wf="1"><em>Day 0</em><b>Enquiry lands</b><span>Date, headcount, table and town arrive on her phone in a fixed order. It is logged, with a clock running on it.</span></li>
+      <li data-at="4"   data-wf="1"><em>Day 0 + 4h</em><b>Unanswered check</b><span>If it has not been replied to, Tricia gets one nudge. This is the whole of "did that enquiry get an answer?" — and it is the cheapest booking she will ever make.</span></li>
+      <li data-at="20"  data-wf="0"><em>Day 2–40</em><b>Quote, booking, the event</b><span>Unchanged. She prices by hand and takes payment her own way.</span></li>
+      <li data-at="58"  data-wf="2"><em>Event + 2 days</em><b>Thank-you, with a photo</b><span>One message, one photo from their table. It costs nothing and it is the reason the next one works.</span></li>
+      <li data-at="70"  data-wf="2"><em>Event + 3 days</em><b>The review ask</b><span>One tap, straight to her Google review form. This is the single highest-value line on this page.</span></li>
+      <li data-at="86"  data-wf="3"><em>Event + 30 days</em><b>The return</b><span>A seasonal note to a host who already knows the food is good. The cheapest customer is one who has already paid you once.</span></li>
+    </ol>
+  </div>
+
+  <div class="cards">
+    <article><p class="tag">Workflow one</p><h3>Nothing falls in a hole</h3><p>An enquiry is logged the second it is sent, and it stays open until it is answered. One nudge at four hours.</p><p class="why"><b>What it changes:</b> the enquiries she has already earned stop leaking. No new traffic required.</p></article>
+    <article><p class="tag">Workflow two</p><h3>Every event asks for a review</h3><p>Thank-you at day two with a photo, the Google review link at day three. One tap for the host.</p><p class="why"><b>What it changes:</b> Google's local results lean hard on review count and how recently they arrived. This is the lever for "charcuterie catering near me".</p></article>
+    <article><p class="tag">Workflow three</p><h3>Past hosts come back</h3><p>A seasonal note at day thirty to someone who has already tasted the food.</p><p class="why"><b>What it changes:</b> repeat and referral work, which cost nothing to reach, instead of only chasing strangers.</p></article>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ 3. the arithmetic -->
+<section class="band">
+  <p class="eyebrow">03 · What it is worth</p>
+  <h2>Your numbers, not our promise.</h2>
+  <p class="lede">We will not invent a conversion rate for you. Move these to whatever is true for the business and the arithmetic follows. Everything in blue is a real figure from Tricia's own listings; everything you can drag is an assumption.</p>
+
+  <div class="calc">
+    <div class="inputs">
+      <label>Events a month
+        <input type="range" id="evts" min="1" max="20" value="6">
+        <output id="evtsOut">6</output>
+      </label>
+      <label>Hosts who leave a review when asked once
+        <input type="range" id="rate" min="5" max="80" value="30">
+        <output id="rateOut">30%</output>
+      </label>
+      <label>Enquiries a month that currently go unanswered
+        <input type="range" id="lost" min="0" max="10" value="2">
+        <output id="lostOut">2</output>
+      </label>
+      <label>Of those, how many would have booked
+        <input type="range" id="conv" min="5" max="60" value="25">
+        <output id="convOut">25%</output>
+      </label>
+    </div>
+
+    <div class="outs">
+      <div class="out">
+        <p class="out-k" id="revYear">—</p>
+        <p class="out-l">Google reviews in the first year</p>
+        <p class="out-n">Today nothing asks, so this number does not move on its own.</p>
+      </div>
+      <div class="out">
+        <p class="out-k" id="recovered">—</p>
+        <p class="out-l">Bookings a year recovered from enquiries that already exist</p>
+        <p class="out-n">No extra traffic, no ad spend. These are hosts who already contacted her.</p>
+      </div>
+      <div class="out accent">
+        <p class="out-k" id="value">—</p>
+        <p class="out-l">Value of those recovered bookings, a year</p>
+        <p class="out-n">At <b class="fact">$2,350</b>, the average a couple spends with her — her own figure, published on The Knot.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="pull small">The review number is the one to watch. Reviews are the part of local search a caterer can actually control, and they compound: the profile that ranks gets seen, gets called, gets another review. Starting from zero is the expensive part, and it only gets more expensive the longer nothing asks.</p>
+</section>
+
+<!-- ------------------------------------------------ 4. honesty -->
+<section class="band alt">
+  <p class="eyebrow">04 · Scope</p>
+  <h2>What this is, and what it is not.</h2>
+  <div class="two">
+    <div>
+      <h3>Included</h3>
+      <ul class="tick">
+        <li>Enquiry logged and tracked to an answer, with one nudge</li>
+        <li>Thank-you and review-ask messages, written, on her phone, one tap</li>
+        <li>Google review link that goes straight to the form</li>
+        <li>The day-thirty return note</li>
+        <li>A one-screen monthly report: calls, quotes, bookings, best photo</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Deliberately not included</h3>
+      <ul class="cross">
+        <li>No chatbot and no automated replies. Every message is hers, and she presses send.</li>
+        <li>No online payment, no deposits, no booking calendar. She prices by hand and takes payment her own way.</li>
+        <li>No paid SMS service. It opens the app already on her phone.</li>
+        <li>No AI writing to her customers.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="price-line">Workflows are <b>$500</b>, separate from the site. The one-pager is <b>$150</b>. The full site is <b>$600</b>.</p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>Charcuterie Chick · Tricia Holfelder · Tomball, TX · 832-458-8180</p>
+  <p class="tiny">Review counts and average spend are taken from her live listings on The Knot and WeddingWire. Everything adjustable on this page is an assumption, shown so it can be argued with.</p>
+</footer>
+
+<script src="workflows.js" defer></script>
+</body>
+</html>
