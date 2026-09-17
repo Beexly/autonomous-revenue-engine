@@ -14,7 +14,7 @@ client. No package price or recommendation on page 1; the agreed $600 stays
 there as a fact tile.
 
 **Prepared for** Tricia Holfelder, Charcuterie Chick (The Chick Goodies), Tomball, Texas
-**Prepared by** Garrett Baxley, Galaxy Sports Edge LLC
+**Prepared by** Garrett Baxley, Galaxy Sports Network LLC
 **Date** September 17, 2026 · **Valid through** October 1, 2026
 
 ## Page 1. At a glance
@@ -164,7 +164,7 @@ marketing kit, online payments, a booking calendar, automated replies (the last
 three on purpose). Prices in US dollars, valid through October 1, 2026; every
 invoice references this proposal.
 
-**Payable to** Galaxy Sports Edge LLC (Garrett Baxley). Card:
+**Payable to** Galaxy Sports Network LLC (Garrett Baxley). Card:
 https://buy.stripe.com/8x23cxb6FanJail8JT14405. Check, Zelle or bank transfer:
 details on the invoice.
 

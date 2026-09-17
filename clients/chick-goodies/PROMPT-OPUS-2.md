@@ -31,7 +31,7 @@ Work in `sample-3-studio`. It deploys with the branch. Order, by plan 11.3 item 
 8. Item 8: restore the card photos under the owner's rule; commit originals first.
 9. Gates G1 to G6 on `table.html` and the restyled pages, at 390, 768, 1440, 1920.
 
-No modeled food on the table, abstract or otherwise: Garrett rejected the sphere-and-board dressing as cartoonish on 2026-09-17. The food is her photographs: eleven cut-outs (`img/cut/*.webp`, her boards, cones, drinks, the skillet and the cart, backgrounds removed locally, nothing generated) stand upright on the table and turn to face the camera, one under every station, with three boards lying flat and seven prints between them. The reference Garrett set for the feel is oryzo.ai by Lusion: one real object large in the frame, dark warm air around it, big type. `table-cinematic.js` and the two stills in `img/` carry this already. Never photoreal models, never generated food, never bring the props back.
+No modeled food on the table, abstract or otherwise: Garrett rejected the sphere-and-board dressing as cartoonish on 2026-09-17. The food is her photographs: eleven cut-outs (`img/cut/*.webp`, her boards, cones, drinks, the skillet and the cart, backgrounds removed locally, nothing generated). Eight stand upright and turn to face the camera, one under every station; three boards lie flat on the runner; seven prints sit between them. The reference Garrett set for the feel is oryzo.ai by Lusion: one real object large in the frame, dark warm air around it, big type. `table-cinematic.js` and the two stills in `img/` carry this already. Never photoreal models, never generated food, never bring the props back.
 
 ## Workstream C: send-ready checklist
 
