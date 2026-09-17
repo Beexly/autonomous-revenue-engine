@@ -152,11 +152,12 @@ DECOR_JS = """() => {
   });
   for (const f of floats) {
     if (f.querySelector('img')) continue;              // a frame holding the photo is not decoration
-    if (f.closest('a,button')) continue;               // an affordance (enlarge, ↗) is UI, not decoration
+    const own = f.closest('a,button,figure');           // an affordance belongs to its own figure
     const fr = f.getBoundingClientRect();
     const fArea = fr.width * fr.height;
     for (const im of imgs) {
       if (f.contains(im) || im.contains(f)) continue;
+      if (own && own.contains(im)) continue;            // this photo's own affordance is UI
       const ir = im.getBoundingClientRect();
       const iw = Math.min(fr.right, ir.right) - Math.max(fr.left, ir.left);
       const ih = Math.min(fr.bottom, ir.bottom) - Math.max(fr.top, ir.top);

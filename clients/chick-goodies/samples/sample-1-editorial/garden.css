@@ -74,16 +74,16 @@ h2{font-family:var(--garden-serif);font-size:clamp(1.7rem,3.6vw,2.5rem);font-wei
 .round-link{display:inline-flex;flex-direction:column;font-family:var(--garden-serif);font-style:italic;font-size:1.1rem;border-bottom:1px solid var(--garden-ink);padding-bottom:4px}
 .round-link:hover,.round-link:focus-visible{border-bottom-style:dashed}
 .table-vignette{position:relative;width:100%;max-width:420px}
-.table-rim{position:absolute;inset:0;border:8px solid var(--garden-accent);border-radius:50%;top:18px;left:25px;box-sizing:border-box}
-.ceramic{position:absolute;background:var(--garden-paper);border:1px solid var(--garden-ink);border-radius:50% 50% 46% 54%}
-.ceramic-one{width:70px;height:22px;top:40px;left:30px}
-.ceramic-two{width:46px;height:46px;top:90px;right:20px}
+
+
+
+
 .hero-photo{border:1px solid var(--garden-ink);border-radius:8px;box-shadow:0 6px 18px rgba(43,27,61,.12)}
 .hero-photo figcaption{font-family:var(--garden-serif);font-size:13px;font-style:italic;margin-top:10px;text-align:center;opacity:.8}
 .vignette-label{position:absolute;top:-26px;right:0;font-family:var(--garden-serif);font-size:12px;font-style:italic;opacity:.68;text-transform:uppercase}
-.stem{position:absolute;width:2px;background:var(--garden-ink);opacity:.35}
-.stem-one{height:140px;top:260px;left:50%;transform:rotate(12deg)}
-.scroll-note{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);font-family:var(--garden-serif);font-size:13px;font-style:italic;text-align:center}
+
+
+.scroll-note{grid-column:1;justify-self:start;margin-top:30px;font-family:var(--garden-serif);font-size:13px;font-style:italic}
 .welcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .oval-photo{border:1px solid var(--garden-ink);border-radius:53% 47%;overflow:hidden;box-shadow:0 8px 22px rgba(43,27,61,.1)}
 .oval-photo img{border-radius:inherit}
@@ -113,12 +113,13 @@ h2{font-family:var(--garden-serif);font-size:clamp(1.7rem,3.6vw,2.5rem);font-wei
 .specimen-wall{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
 .specimen-wall.chapter{max-width:1200px}
 .specimen{position:relative;margin:0}
-.specimen.oval{grid-column:span 4;border-radius:50% 48%;overflow:hidden}
+.specimen.oval{grid-column:span 4}
+.specimen.oval img{border-radius:50% 48%;overflow:hidden}
 .specimen.oval img{border-radius:inherit}
 .specimen.tall{grid-column:span 6}
 .specimen.wide{grid-column:span 8}
 .specimen.landscape{grid-column:span 6}
-.specimen figcaption{position:absolute;left:0;right:0;bottom:0;background:rgba(245,243,236,.92);backdrop-filter:blur(2px);font-family:var(--garden-serif);font-size:12px;font-style:italic;padding:6px 8px}
+.specimen figcaption{font-family:var(--garden-serif);font-size:12px;font-style:italic;padding:8px 2px 0;color:var(--garden-ink)}
 .specimen .image-open{position:absolute;top:6px;right:6px;font-size:16px;opacity:.7}
 
 /* Lightbox */
@@ -144,7 +145,7 @@ h2{font-family:var(--garden-serif);font-size:clamp(1.7rem,3.6vw,2.5rem);font-wei
 .story-still .eyebrow,.story-still h2,.story-still p,.story-still .pill{border:none}
 
 /* Enquire */
-.enquire-intro{padding-top:90px}
+.enquire-intro{max-width:1000px;margin:0 auto;padding:90px 28px 0}
 .enquiry-layout{display:grid;grid-template-columns:1.05fr 1.3fr;gap:40px;align-items:start}
 .enquiry-aside{background:var(--garden-cream);padding:34px;border:1px solid var(--garden-soft);border-radius:8px;position:sticky;top:28px}
 .enquiry-aside h2{margin-top:8px}
