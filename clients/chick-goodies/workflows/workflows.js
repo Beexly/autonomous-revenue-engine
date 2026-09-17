@@ -5,12 +5,17 @@
   'use strict';
 
   /* ---------------- the timeline ---------------- */
-  var track  = document.getElementById('trackFill');
+  var $ = function(id){ return document.getElementById(id); };
+  var track  = $('trackFill');
   var items  = [].slice.call(document.querySelectorAll('#events li'));
-  var play   = document.getElementById('play');
-  var reset  = document.getElementById('reset');
-  var label  = document.getElementById('dayLabel');
+  var play   = $('play');
+  var reset  = $('reset');
+  var label  = $('dayLabel');
   var reduced = matchMedia('(prefers-reduced-motion: reduce)');
+
+  // This page is presented to a client. If the markup ever drifts, it should
+  // degrade to a static page rather than throw on the first click.
+  if (!track || !play || !reset || !label || !items.length) return;
 
   var LABELS = [
     'Day 0 — the enquiry arrives',
@@ -68,19 +73,15 @@
      comes off a slider, so the page argues with its own assumptions. */
   var AVG_COUPLE_SPEND = 2350;   // The Knot, "couples usually spend" — FACTS.md
 
-  var evts = document.getElementById('evts');
-  var rate = document.getElementById('rate');
-  var lost = document.getElementById('lost');
-  var conv = document.getElementById('conv');
+  var evts = $('evts'), rate = $('rate'), lost = $('lost'), conv = $('conv');
+  var evtsOut = $('evtsOut'), rateOut = $('rateOut');
+  var lostOut = $('lostOut'), convOut = $('convOut');
+  var revYear = $('revYear'), recovered = $('recovered'), value = $('value');
+  if (!evts || !rate || !lost || !conv || !evtsOut || !rateOut || !lostOut ||
+      !convOut || !revYear || !recovered || !value) return;
 
-  var evtsOut = document.getElementById('evtsOut');
-  var rateOut = document.getElementById('rateOut');
-  var lostOut = document.getElementById('lostOut');
-  var convOut = document.getElementById('convOut');
-
-  var revYear   = document.getElementById('revYear');
-  var recovered = document.getElementById('recovered');
-  var value     = document.getElementById('value');
+  // resolved once, not on every input event
+  var recoveredLabel = recovered.nextElementSibling;
 
   var money = new Intl.NumberFormat('en-US', {
     style:'currency', currency:'USD', maximumFractionDigits:0
@@ -102,9 +103,10 @@
     value.textContent     = money.format(books * AVG_COUPLE_SPEND);
 
     // a recovered booking is a real booking; say so in the singular when it is one
-    document.querySelector('#recovered + .out-l').textContent =
-      (books === 1 ? 'Booking' : 'Bookings') +
-      ' a year recovered from enquiries that already exist';
+    if (recoveredLabel){
+      recoveredLabel.textContent = (books === 1 ? 'Booking' : 'Bookings') +
+        ' a year recovered from enquiries that already exist';
+    }
   }
 
   [evts, rate, lost, conv].forEach(function(el){

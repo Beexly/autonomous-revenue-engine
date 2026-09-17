@@ -216,7 +216,7 @@ const glassMat = new T.ShaderMaterial({
 const plateGeo = new T.CylinderGeometry(.30, .23, .035, 40);
 const bowlGeo  = new T.SphereGeometry(.17, 20, 14, 0, Math.PI*2, 0, Math.PI/2);
 const cupGeo   = new T.CylinderGeometry(.085, .058, .23, 18, 1, true);
-const dressing = [];
+const dressing = [], flames = [];
 
 // Settings run the length of the table. Rules, not hand placement.
 for (let i = 0; i < 34; i++){
@@ -267,7 +267,7 @@ for (const x of [1.2, -4.6, 6.9]){
   stick.position.set(x, .50, .05); stick.castShadow = true; scene.add(stick);
   const flame = new T.Mesh(new T.SphereGeometry(.035,10,8), new T.MeshBasicMaterial({ color:0xffcf8a }));
   flame.position.set(x, .84, .05); flame.scale.y = 1.9; scene.add(flame);
-  dressing.push(flame);
+  flames.push(flame);
 }
 
 /* ---------- her photographs, as prints lying on the table ---------- */
@@ -363,10 +363,8 @@ function frame(now){
 
   if (linenMat.userData.sh) linenMat.userData.sh.uniforms.uT.value = clock;
   candle.intensity = 9 + Math.sin(clock * 7.3) * .9 + Math.sin(clock * 2.1) * .5; // flicker
-  for (let i = 0; i < dressing.length; i++){
-    const d = dressing[i];
-    if (d.geometry && d.geometry.type === 'SphereGeometry' && d.material.type === 'MeshBasicMaterial')
-      d.scale.set(1, 1.9 + Math.sin(clock*9 + i)*.22, 1);   // flames
+  for (let i = 0; i < flames.length; i++){
+    flames[i].scale.set(1, 1.9 + Math.sin(clock * 9 + i) * .22, 1);
   }
 
   renderer.render(scene, camera);
