@@ -81,10 +81,32 @@ Edge LLC (Garrett Baxley).
 | Photo enhancement | $250 | All current photos (21 on file) cleaned, color-corrected, sharpened, sized for site, Google, Instagram, Pinterest. Originals kept. Never say "AI" to the client. |
 | Photo recreation | $450 | Twelve new hero and social images produced from her own photographs. She approves each. No stock, no invented food. |
 | Both photography services | $600 | |
-| Care plan | $89 per month | From day 91. Hosting, monitoring, monthly page check, security, backups, one hour of changes, quarterly search check. Cancel with 30 days' notice. |
-| Growth plan | $199 per month | Care plan plus two GBP posts a month, review workflow upkeep, monthly search and leads report, three hours of changes. |
+| Care plan | $69 per month | From day 91. Hosting, monitoring, monthly page check, security, backups, one hour of changes, quarterly search check. Cancel with 30 days' notice. |
+| Growth plan | $149 per month | Care plan plus two GBP posts a month, review workflow upkeep, monthly search and leads report, three hours of changes. |
 | The Revenue Engine package | $1,600 | Full website + workflows + both photography services (separately $1,800). |
 | The Revenue Engine, Immersive | $2,450 | Immersive website + workflows + both photography services (separately $2,700). |
 
 Included with any website: 90 days of monitoring and small changes after launch.
 This supersedes the "30 days of small tweaks" line in Option B.
+
+Revised 2026-09-17, evening, at Garrett's request: care lowered from $89 to
+$69 and growth from $199 to $149.
+
+## Creative add-ons (set 2026-09-17, evening, at Garrett's request)
+
+Add-ons to any package, including Option C. Every piece starts from her own
+logo and photographs, and she approves each one before it is used. Never say
+"AI" to the client; the created images are described as made to order from her
+photos or from a description.
+
+| Add-on | Price | Notes |
+|---|---|---|
+| Logo restore | $150 | Her current logo rebuilt as clean files at every size. Nothing redrawn. |
+| Logo redesign | $450 | A refreshed mark that keeps her chick. Three directions, two rounds, every file. |
+| Photo restoration | $25 per photo | Old prints, damaged or blurry photos restored. |
+| Created images | $300 per set of ten | New images made to order from her photos or from a description. She approves each. |
+| Marketing kit | $400 | Printed menu and price card, one-page flyer, business card, Instagram and Facebook templates. Print-ready files. |
+| Short videos | $300 each, three for $750 | 30 to 60 seconds for Instagram, Facebook and the site, from her photos and clips, with music and captions. |
+| The Creative Bundle | $1,250 | Logo redesign, marketing kit, ten created images, one short video (separately $1,450). |
+
+Payment for add-ons: in full when she approves the delivered set.
