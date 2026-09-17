@@ -139,7 +139,7 @@
     if (quote.error) {
       const error = document.createElement('p'); error.className = 'invalid'; error.textContent = quote.error; estimate.append(error);
     } else {
-      const label = document.createElement('p'); label.className='eyebrow'; label.textContent='Estimated published costs';
+      const label = document.createElement('p'); label.className='eyebrow'; label.textContent='Estimate from published prices';
       const total = document.createElement('p'); total.className='estimate-total'; total.textContent=money(quote.total);
       const rows = document.createElement('dl');
       [['Food',quote.food],['Setup',quote.setup],['Extra time',quote.extra],['18% tax · assumed base',quote.tax]].forEach(([name,value]) => {
@@ -150,7 +150,13 @@
     }
     return quote;
   }
-  const requested = new URLSearchParams(location.search).get('menu');
+  const params = new URLSearchParams(location.search);
+  const requested = params.get('menu') || params.get('table');
+  const occasionMap = {wedding:'A wedding', party:'A party', work:'A work event'};
+  if (occasionMap[params.get('occasion')]) $('#occasion').value = occasionMap[params.get('occasion')];
+  $('#occasion').addEventListener('change', () => {
+    if ($('#occasion').value === 'A wedding') { menu.value = 'holy'; guests.value = '75'; updateEstimate(); }
+  });
   if ([...menu.options].some(option => option.value === requested)) { menu.value = requested; if(requested !== 'holy') guests.value='50'; }
   [menu, guests, time].forEach(input => input.addEventListener('input', updateEstimate));
   planner.addEventListener('submit', event => event.preventDefault());
@@ -163,12 +169,14 @@
   $('.draft-button').hidden = false;
   $('.draft-button').addEventListener('click', () => {
     const quote = updateEstimate();
-    const lines = ['Hello Tricia,', '', 'I would like to enquire about an occasion.', `Starting menu: ${menu.selectedOptions[0].textContent}`, `Guests: ${guests.value || 'To discuss'}`, `Extra service time: ${time.selectedOptions[0].textContent}`];
+    const lines = ['Hello Tricia,', '', "I'd like a quote for my party.", `Starting menu: ${menu.selectedOptions[0].textContent}`, `Guests: ${guests.value || 'To discuss'}`, `Extra service time: ${time.selectedOptions[0].textContent}`];
     if ($('#event-date').value) lines.push(`Date: ${$('#event-date').value}`);
     if ($('#occasion').value) lines.push(`Occasion: ${$('#occasion').value}`);
     if (quote.error) lines.push('Please provide a custom quote. '+quote.error);
     else lines.push(`Estimated published costs: ${money(quote.total)} (food ${money(quote.food)}, setup ${money(quote.setup)}, extra time ${money(quote.extra)}, assumed tax ${money(quote.tax)}).`);
-    lines.push('The estimate assumes the published 18% tax applies to food, setup and extra time. Please confirm the tax base, final pricing, contents, dietary requirements and availability. This is an enquiry, not a booking.');
+    lines.push('The estimate assumes the published 18% tax applies to food, setup and extra time. Please confirm the tax base, final pricing, contents, dietary requirements and availability. This is a quote request, not a booking.');
+    if ($('#venue').value.trim()) lines.push('Venue: '+$('#venue').value.trim());
+    if ($('#event-name').value.trim()) lines.push('Name: '+$('#event-name').value.trim());
     if ($('#event-notes').value.trim()) lines.push('', 'My ideas: '+$('#event-notes').value.trim());
     draft.value = lines.join('\n'); emailLink();
     $('#draft-review').hidden = false;

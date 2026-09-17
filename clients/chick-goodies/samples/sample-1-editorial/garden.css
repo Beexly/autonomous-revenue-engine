@@ -203,3 +203,13 @@ footer{font-family:var(--garden-serif);font-size:15px}
   .masthead .brand{width:125px}
   #cursor{width:16px;height:16px}
 }
+
+/* Content strategy: retain the botanical palette and serif rhythm. */
+.content-block{max-width:1000px;margin:0 auto;padding:70px 28px;border-top:1px solid var(--garden-soft)}
+.content-block p{line-height:1.65;margin:0 0 18px}.content-block a{text-decoration:underline;text-underline-offset:4px}
+.proof h2,.choices h2{max-width:680px}.rating-lines{margin:24px 0}.review-quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.review-quotes blockquote{font:italic 1.45rem/1.4 var(--garden-serif);margin:0 0 14px}.review-quotes figcaption{font:14px var(--garden-sans)}
+.choice-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 35px}.home-tricia{display:grid;grid-template-columns:minmax(0,220px) 1fr;gap:35px;align-items:center}.home-tricia img{border-radius:6px}
+.faq-item{border-top:1px solid var(--garden-soft);padding:18px 0}.faq-item summary{cursor:pointer;font-size:1.1rem}.faq-item p{margin-top:16px}
+footer{padding:0 28px 25px}.cta-heading{max-width:720px;margin:20px auto}.cta-actions{display:flex;justify-content:center;align-items:center;gap:24px}.footer-identity{margin-top:15px}.proof-line{font-family:var(--garden-serif);margin-top:20px}
+#enquiry-form>label{margin-top:18px}.enquiry-layout>*{min-width:0}.draft-actions{flex-wrap:wrap}.menu-panel{display:grid}.menu-panels:has(.active) .menu-panel:not(.active){display:none}
+@media(max-width:768px){.masthead{flex-wrap:wrap;gap:18px;padding:16px}.masthead nav{width:100%;gap:12px;justify-content:space-between;font-size:12px;letter-spacing:0;flex-wrap:wrap}.review-quotes,.choice-list,.home-tricia{grid-template-columns:1fr}.home-tricia img{max-width:220px}.content-block{padding:45px 22px}.menu-panel{grid-template-columns:1fr}.menu-image img{max-height:320px;width:auto}.cta-actions{flex-wrap:wrap}.form-pair{grid-template-columns:1fr}}

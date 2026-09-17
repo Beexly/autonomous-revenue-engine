@@ -25,6 +25,12 @@
           "sized": true
         },
         {
+          "src": "img/tricia-662.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/brand.webp",
           "ok": true,
           "alt": true,
@@ -42,22 +48,28 @@
         "menu.html",
         "#opening",
         "story.html",
+        "https://www.theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771",
+        "https://www.weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html",
+        "https://www.charcuteriechick.ai/#testimonials",
         "menu.html",
         "gallery.html",
+        "story.html",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
+          "bytes": 11295
         },
         {
           "name": "brand.webp",
@@ -74,6 +86,10 @@
         {
           "name": "cart-640.jpg",
           "bytes": 90485
+        },
+        {
+          "name": "tricia-662.jpg",
+          "bytes": 81401
         }
       ],
       "route": "index.html",
@@ -149,19 +165,21 @@
         "enquire.html?menu=standard",
         "enquire.html?menu=graze",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
+          "bytes": 11295
         },
         {
           "name": "brand.webp",
@@ -184,12 +202,12 @@
           "bytes": 228333
         },
         {
-          "name": "table-01.jpg",
-          "bytes": 119185
-        },
-        {
           "name": "wide-640.jpg",
           "bytes": 85941
+        },
+        {
+          "name": "table-01.jpg",
+          "bytes": 119185
         }
       ],
       "route": "menu.html",
@@ -274,19 +292,21 @@
         "img/sweets-01.jpg",
         "enquire.html",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
+          "bytes": 11295
         },
         {
           "name": "brand.webp",
@@ -309,16 +329,16 @@
           "bytes": 50948
         },
         {
-          "name": "sips-01.jpg",
-          "bytes": 55668
+          "name": "sweets-01.jpg",
+          "bytes": 111688
         },
         {
           "name": "board-02.jpg",
           "bytes": 76199
         },
         {
-          "name": "sweets-01.jpg",
-          "bytes": 111688
+          "name": "sips-01.jpg",
+          "bytes": 55668
         }
       ],
       "route": "gallery.html",
@@ -366,20 +386,25 @@
         "story.html",
         "enquire.html",
         "enquire.html",
+        "https://www.theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771",
+        "https://www.weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html",
+        "https://www.charcuteriechick.ai/#testimonials",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
+          "bytes": 11295
         },
         {
           "name": "brand.webp",
@@ -434,19 +459,21 @@
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
+          "bytes": 11295
         },
         {
           "name": "brand.webp",
@@ -487,6 +514,12 @@
           "sized": true
         },
         {
+          "src": "img/tricia-662.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/brand.webp",
           "ok": true,
           "alt": true,
@@ -504,30 +537,40 @@
         "menu.html",
         "#opening",
         "story.html",
+        "https://www.theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771",
+        "https://www.weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html",
+        "https://www.charcuteriechick.ai/#testimonials",
         "menu.html",
         "gallery.html",
+        "story.html",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
+          "bytes": 11295
+        },
+        {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
+          "name": "tricia-662.jpg",
+          "bytes": 81401
         },
         {
           "name": "barlow-condensed-700.ttf",
@@ -611,19 +654,21 @@
         "enquire.html?menu=standard",
         "enquire.html?menu=graze",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
+          "bytes": 11295
         },
         {
           "name": "brand.webp",
@@ -736,27 +781,29 @@
         "img/sweets-01.jpg",
         "enquire.html",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
-        },
-        {
-          "name": "midnight.js",
-          "bytes": 10722
-        },
-        {
-          "name": "brand.webp",
-          "bytes": 79442
+          "bytes": 20753
         },
         {
           "name": "knot-4.jpg",
           "bytes": 208555
+        },
+        {
+          "name": "midnight.js",
+          "bytes": 11295
+        },
+        {
+          "name": "brand.webp",
+          "bytes": 79442
         },
         {
           "name": "graze-01.jpg",
@@ -828,28 +875,33 @@
         "story.html",
         "enquire.html",
         "enquire.html",
+        "https://www.theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771",
+        "https://www.weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html",
+        "https://www.charcuteriechick.ai/#testimonials",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
-        },
-        {
-          "name": "brand.webp",
-          "bytes": 79442
+          "bytes": 11295
         },
         {
           "name": "tricia-662.jpg",
           "bytes": 81401
+        },
+        {
+          "name": "brand.webp",
+          "bytes": 79442
         },
         {
           "name": "barlow-condensed-700.ttf",
@@ -896,19 +948,21 @@
         "tel:+18324588180",
         "mailto:charcuteriechick@outlook.com",
         "enquire.html",
+        "tel:+18324588180",
         "index.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
-        "menu.html"
+        "menu.html",
+        "https://www.instagram.com/charcuteriechickhtx/"
       ],
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 18830
+          "bytes": 20753
         },
         {
           "name": "midnight.js",
-          "bytes": 10722
+          "bytes": 11295
         },
         {
           "name": "brand.webp",

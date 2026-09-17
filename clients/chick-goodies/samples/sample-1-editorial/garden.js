@@ -207,19 +207,30 @@
     const form = document.getElementById('enquiry-form');
     if (!form) return;
     form.hidden = false;
-    const menuNames = { holy:'Holy Grail', grand:'Grand Graze', super:'Super Graze', standard:'Grazing Standard', graze:'Graze Me, Craze Me', other:'Carts/boards/sweets/catering' };
+    const params = new URLSearchParams(location.search);
+    const menu = form.elements.menu, occasion = form.elements.occasion;
+    const occasionMap = {wedding:'A wedding', party:'A party', work:'A work event'};
+    const requested = params.get('menu') || params.get('table');
+    if (occasionMap[params.get('occasion')]) occasion.value = occasionMap[params.get('occasion')];
+    if ([...menu.options].some(option => option.value === requested)) menu.value = requested;
+    else if (params.get('occasion') === 'wedding') menu.value = 'holy';
+    else menu.value = 'undecided';
+    occasion.addEventListener('change', () => {
+      if (occasion.value === 'A wedding' && menu.value === 'undecided') menu.value = 'holy';
+    });
+    const menuNames = { holy:'Holy Grail of Grazing', grand:'Grand Graze', super:'Super Graze', standard:'Grazing Standard', graze:'Graze Me, Craze Me', other:'Carts/boards/sweets/catering' };
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const d = new FormData(form);
       const lines = [
         'Hi Tricia,', '',
-        `I’m reaching about a ${d.get('occasion').toLowerCase()} on ${d.get('date') || 'a date I’d like to confirm'}.`,
-        `We’re expecting around ${d.get('guests') || '—'} guests, and we’re gathering in ${d.get('location') || '—'}.`,
+        `I'd like a quote for ${d.get('occasion').toLowerCase()} on ${d.get('date') || 'a date to be decided'}.`,
+        `Guests: ${d.get('guests') || 'to be decided'}. Venue: ${d.get('location') || 'to be decided'}.`,
         `Menu interest: ${menuNames[d.get('menu')] || d.get('menu')}.`, ''
       ];
       const notes = d.get('notes');
       if (notes) lines.push(`Notes: ${notes}`,'');
-      lines.push('Looking forward to hearing from you.', '', '- ' + (d.get('name') || 'a friend'), '');
+      lines.push('Please confirm the date, tax and final price. This is a quote request, not a booking.', '', d.get('name') || '');
       const text = lines.join('\n');
       const email = form.dataset.email;
       const phone = form.dataset.phone;
