@@ -269,7 +269,7 @@ CLIP_JS = """() => [...document.querySelectorAll('h1,h2,h3,p,figcaption,li,butto
 
 
 def visible_text(html_str):
-    s = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', html_str, flags=re.S | re.I)
+    s = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', html_str, flags=re.DOTALL | re.IGNORECASE)
     return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', s))
 
 
@@ -278,14 +278,14 @@ def gate_g2_g3(sample, fetch):
     for page in PAGES:
         html_str = fetch(page)
         vis = visible_text(html_str)
-        t = re.search(r'<title>(.*?)</title>', html_str, re.S | re.I)
+        t = re.search(r'<title>(.*?)</title>', html_str, re.DOTALL | re.IGNORECASE)
         titles.add(H.unescape(t.group(1).strip()) if t else f'NONE:{page}')
-        m = re.search(r'<meta[^>]*name="description"[^>]*>', html_str, re.I)
+        m = re.search(r'<meta[^>]*name="description"[^>]*>', html_str, re.IGNORECASE)
         c = re.search(r'content="([^"]*)"', m.group(0)) if m else None
         metas.add(H.unescape(c.group(1)) if c else f'NONE:{page}')
         kill_hits += [f'{page}: {k}' for k in KILL if k in vis]
-        gathers += len(re.findall(r'\bgather\w*', vis, re.I))
-        enquirs += len(re.findall(r'\benquir\w*', vis, re.I))
+        gathers += len(re.findall(r'\bgather\w*', vis, re.IGNORECASE))
+        enquirs += len(re.findall(r'\benquir\w*', vis, re.IGNORECASE))
     want = METAS[sample]
     meta_ok = all(want[p.replace('.html', '')] in metas for p in PAGES)
     g2 = not kill_hits and gathers <= 1 and enquirs == 0
@@ -364,21 +364,42 @@ def main():
     ap.add_argument('--with-table', action='store_true',
                     help='also run G1 over table.html, the immersive one-pager')
     a = ap.parse_args()
-    d = ROOT / 'samples' / a.sample
-    if a.base:
-        import urllib.request
-        base = a.base.rstrip('/')
-        def url_for(p):
-            return f'{base}/{p}'
-        # https on the wire; loopback is allowed so a filtered deploy can be
-        # dry-run locally before it is pushed to a host.
-        if not (base.startswith('https://')
-                or base.startswith('http://localhost')
-                or base.startswith('http://127.0.0.1')):
-            sys.exit(f'--base must be https (or loopback), got: {base}')
 
-        def fetch(p):
-            with urllib.request.urlopen(f'{base}/{p}', timeout=30) as r:  # nosec B310 - https pinned above
+    # --sample is chosen from the directories that exist, not concatenated onto a
+    # path. Both forms reject '../..'; picking from a known set also means nothing
+    # from argv is ever joined into a filesystem path.
+    known = sorted(x.name for x in (ROOT / 'samples').iterdir() if x.is_dir())
+    if a.sample not in known:
+        sys.exit(f'--sample must be one of {known}, got: {a.sample}')
+    d = ROOT / 'samples' / known[known.index(a.sample)]
+
+    if a.base:
+        import urllib.parse
+        import urllib.request
+
+        # The URL handed to urlopen is REBUILT from validated parts rather than
+        # interpolated from input: scheme and host are checked against fixed
+        # allowlists, and the path comes from PAGES/EXTRA_PAGES, which are
+        # literals in this file. (bandit's # nosec does not reach SonarCloud,
+        # so the guard has to be structural rather than a suppression.)
+        parts = urllib.parse.urlsplit(a.base.rstrip('/'))
+        host = (parts.hostname or '').lower()
+        if parts.scheme == 'https' or parts.scheme == 'http' and host in ('localhost', '127.0.0.1', '::1'):
+            pass
+        else:
+            sys.exit(f'--base must be https (or http on loopback), got: {a.base}')
+        if parts.username or parts.password or parts.query or parts.fragment:
+            sys.exit('--base must be a plain scheme://host[:port][/path]')
+        netloc = host + (f':{parts.port}' if parts.port else '')
+        root_path = parts.path.rstrip('/')
+        scheme = parts.scheme
+
+        def url_for(page):
+            return urllib.parse.urlunsplit(
+                (scheme, netloc, f'{root_path}/{page}', '', ''))
+
+        def fetch(page):
+            with urllib.request.urlopen(url_for(page), timeout=30) as r:
                 return r.read().decode('utf-8', 'replace')
     else:
         def url_for(p):
