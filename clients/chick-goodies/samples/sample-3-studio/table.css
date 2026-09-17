@@ -74,7 +74,10 @@ body{
 main{position:relative;z-index:2}
 .station{
   min-height:100svh;display:flex;
-  align-items:center;align-items:safe center;
+  /* `safe` refuses to overflow the start edge when the plate is taller than the
+     viewport. Where it is unsupported the declaration drops to stretch, which
+     also starts the content at the top — so no fallback pair is needed. */
+  align-items:safe center;
   padding:132px clamp(16px,6vw,90px) 96px;
 }
 .station:nth-child(even){justify-content:flex-end}

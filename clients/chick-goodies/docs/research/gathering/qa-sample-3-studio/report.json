@@ -89,16 +89,20 @@
           "bytes": 241345
         },
         {
-          "name": "table-scene.js",
-          "bytes": 8534
-        },
-        {
           "name": "cart-640.jpg",
           "bytes": 90485
         },
         {
+          "name": "table-scene.js",
+          "bytes": 8534
+        },
+        {
           "name": "gathering.js",
           "bytes": 5237
+        },
+        {
+          "name": "three.module.js",
+          "bytes": 1314681
         },
         {
           "name": "gathering-polish.css",
@@ -107,10 +111,6 @@
         {
           "name": "content.css",
           "bytes": 1445
-        },
-        {
-          "name": "three.module.js",
-          "bytes": 1314681
         },
         {
           "name": "tricia-662.jpg",
@@ -313,12 +313,12 @@
           "bytes": 90485
         },
         {
-          "name": "sips-01.jpg",
-          "bytes": 55668
-        },
-        {
           "name": "knot-3.jpg",
           "bytes": 228333
+        },
+        {
+          "name": "sips-01.jpg",
+          "bytes": 55668
         },
         {
           "name": "sweets-01.jpg",
