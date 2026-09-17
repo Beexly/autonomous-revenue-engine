@@ -44,7 +44,7 @@ html.cursor-on .cursor-grow{transform:translate(-50%,-50%) scale(5.5)}
 
 .masthead{position:sticky;top:0;left:0;right:0;z-index:12;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:linear-gradient(to bottom,rgba(245,243,236,.92),rgba(245,243,236,0));backdrop-filter:blur(4px)}
 header .brand img,.footer-bottom .brand img{pointer-events:none;user-select:none}
-header .brand{width:155px;height:auto}
+header .brand{width:155px;height:auto;flex-shrink:0}
 .masthead nav{display:flex;gap:20px;font-family:var(--garden-serif);font-size:15.5px;text-transform:uppercase;letter-spacing:.04em}
 .masthead nav a{position:relative;padding:.3rem 0}
 .masthead nav a[aria-current="page"]::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1.2px;background:var(--garden-ink);transform:scaleX(1);transform-origin:right}

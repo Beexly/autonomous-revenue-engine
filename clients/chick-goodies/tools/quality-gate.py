@@ -21,7 +21,7 @@ with sync_playwright() as p:
  for width in [390,1440]:
   page.set_viewport_size({'width':width,'height':900})
   for route in ['index.html','menu.html','gallery.html','story.html','enquire.html']:
-   errors.clear();response=page.goto(base+route,wait_until='networkidle');page.evaluate('Promise.all([...document.images].map(i=>i.decode().catch(()=>{})))')
+   errors.clear();response=page.goto(base+route,wait_until='networkidle');page.evaluate('''async()=>{await Promise.all([...document.images].map(i=>{i.loading="eager";return Promise.race([i.decode().catch(()=>{}),new Promise(r=>setTimeout(r,8000))])}))}''')
    m=page.evaluate('''()=>({h1:document.querySelectorAll('h1').length,width:innerWidth,scroll:document.documentElement.scrollWidth,images:[...document.images].map(i=>({src:i.getAttribute('src'),ok:i.complete&&i.naturalWidth>0,alt:i.hasAttribute('alt'),sized:i.hasAttribute('width')&&i.hasAttribute('height')})),links:[...document.querySelectorAll('a[href]')].map(a=>a.getAttribute('href')),resources:performance.getEntriesByType('resource').map(r=>({name:r.name.split('/').pop(),bytes:r.decodedBodySize}))})''')
    m.update({'route':route,'viewport':width,'status':response.status,'errors':list(errors)})
    check(response.status==200,f'{route}: HTTP {response.status}');check(m['h1']==1,f'{route}: h1 count');check(m['scroll']<=width,f'{route}@{width}: overflow');check(not errors,f'{route}: {errors}')

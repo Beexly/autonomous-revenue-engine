@@ -1,0 +1,142 @@
+{
+  "pages": [
+    {
+      "width": 390,
+      "nav": [
+        {
+          "text": "Gather",
+          "height": 44
+        },
+        {
+          "text": "The menu",
+          "height": 44
+        },
+        {
+          "text": "In good company",
+          "height": 44
+        },
+        {
+          "text": "Meet Tricia",
+          "height": 44
+        },
+        {
+          "text": "Make it yours",
+          "height": 44
+        }
+      ],
+      "food": {
+        "x": 27.390625,
+        "y": 758.71875,
+        "width": 335.21875,
+        "height": 255.390625,
+        "top": 758.71875,
+        "right": 362.609375,
+        "bottom": 1014.109375,
+        "left": 27.390625
+      },
+      "action": {
+        "x": 23.390625,
+        "y": 513.671875,
+        "width": 343.21875,
+        "height": 61.25,
+        "top": 513.671875,
+        "right": 366.609375,
+        "bottom": 574.921875,
+        "left": 23.390625
+      },
+      "scene": {
+        "x": -175.5,
+        "y": 432.703125,
+        "width": 741,
+        "height": 400,
+        "top": 432.703125,
+        "right": 565.5,
+        "bottom": 832.703125,
+        "left": -175.5
+      }
+    },
+    {
+      "width": 1440,
+      "nav": [
+        {
+          "text": "Gather",
+          "height": 44
+        },
+        {
+          "text": "The menu",
+          "height": 44
+        },
+        {
+          "text": "In good company",
+          "height": 44
+        },
+        {
+          "text": "Meet Tricia",
+          "height": 44
+        },
+        {
+          "text": "Make it yours",
+          "height": 44
+        }
+      ],
+      "food": {
+        "x": 372,
+        "y": 526.171875,
+        "width": 696,
+        "height": 530.28125,
+        "top": 526.171875,
+        "right": 1068,
+        "bottom": 1056.453125,
+        "left": 372
+      },
+      "action": {
+        "x": 57.59375,
+        "y": 689.296875,
+        "width": 227.9375,
+        "height": 61.25,
+        "top": 689.296875,
+        "right": 285.53125,
+        "bottom": 750.546875,
+        "left": 57.59375
+      },
+      "scene": {
+        "x": 0,
+        "y": 274.171875,
+        "width": 1440,
+        "height": 645,
+        "top": 274.171875,
+        "right": 1440,
+        "bottom": 919.171875,
+        "left": 0
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "390: navigation touch targets >=44px",
+      "passed": true
+    },
+    {
+      "name": "390: real food begins in initial viewport",
+      "passed": true
+    },
+    {
+      "name": "390: hero enquiry action in initial viewport",
+      "passed": true
+    },
+    {
+      "name": "1440: navigation touch targets >=44px",
+      "passed": true
+    },
+    {
+      "name": "1440: real food begins in initial viewport",
+      "passed": true
+    },
+    {
+      "name": "1440: hero enquiry action in initial viewport",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "passed": true
+}

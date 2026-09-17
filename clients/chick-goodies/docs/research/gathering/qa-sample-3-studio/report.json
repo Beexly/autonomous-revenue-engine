@@ -19,6 +19,12 @@
           "sized": true
         },
         {
+          "src": "img/knot-hero.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/cart-640.jpg",
           "ok": true,
           "alt": true,
@@ -41,6 +47,8 @@
         "enquire.html",
         "enquire.html",
         "menu.html",
+        "#coming-together",
+        "menu.html",
         "enquire.html?occasion=Wedding",
         "story.html",
         "index.html",
@@ -51,7 +59,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10541
+          "bytes": 10578
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -71,11 +79,15 @@
         },
         {
           "name": "table-scene.js",
-          "bytes": 6081
+          "bytes": 6876
         },
         {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "three.module.js",
@@ -134,7 +146,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
+          "bytes": 10578
         },
         {
           "name": "brand.webp",
@@ -151,6 +163,10 @@
         {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -253,7 +269,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
+          "bytes": 10578
         },
         {
           "name": "brand.webp",
@@ -290,6 +306,10 @@
         {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -351,7 +371,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
+          "bytes": 10578
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -368,6 +388,10 @@
         {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -425,19 +449,23 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
-        },
-        {
-          "name": "brand.webp",
-          "bytes": 79442
+          "bytes": 10578
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
           "bytes": 7610
         },
         {
+          "name": "brand.webp",
+          "bytes": 79442
+        },
+        {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -476,6 +504,12 @@
           "sized": true
         },
         {
+          "src": "img/knot-hero.jpg",
+          "ok": true,
+          "alt": true,
+          "sized": true
+        },
+        {
           "src": "img/cart-640.jpg",
           "ok": true,
           "alt": true,
@@ -498,6 +532,8 @@
         "enquire.html",
         "enquire.html",
         "menu.html",
+        "#coming-together",
+        "menu.html",
         "enquire.html?occasion=Wedding",
         "story.html",
         "index.html",
@@ -508,7 +544,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
+          "bytes": 10578
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -528,11 +564,15 @@
         },
         {
           "name": "table-scene.js",
-          "bytes": 6081
+          "bytes": 6876
         },
         {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "three.module.js",
@@ -603,15 +643,15 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
-        },
-        {
-          "name": "brand.webp",
-          "bytes": 79442
+          "bytes": 10578
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
           "bytes": 7610
+        },
+        {
+          "name": "brand.webp",
+          "bytes": 79442
         },
         {
           "name": "knot-2.jpg",
@@ -620,6 +660,10 @@
         {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -722,7 +766,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
+          "bytes": 10578
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -759,6 +803,10 @@
         {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -820,7 +868,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
+          "bytes": 10578
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -837,6 +885,10 @@
         {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -894,19 +946,23 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 0
-        },
-        {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 10578
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
+          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
+          "bytes": 7610
+        },
+        {
           "name": "gathering.js",
           "bytes": 4612
+        },
+        {
+          "name": "gathering-polish.css",
+          "bytes": 1565
         },
         {
           "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
@@ -936,9 +992,9 @@
   ],
   "scene": {
     "ready": true,
-    "frames": 62,
+    "frames": 61,
     "paused": false,
-    "drawCalls": 67,
+    "drawCalls": 23,
     "quality": 1.5,
     "camera": [
       0,

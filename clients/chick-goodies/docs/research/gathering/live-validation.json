@@ -5,9 +5,7 @@
     {
       "url": "https://charcuterie-chick-sample-1.vercel.app/index.html",
       "status": 200,
-      "console_errors": [
-        "Cannot read properties of undefined (reading 'map')"
-      ],
+      "console_errors": [],
       "h1": 1,
       "overflow": true,
       "missingImageAlt": 0,
@@ -17,64 +15,109 @@
     },
     {
       "url": "https://charcuterie-chick-sample-1.vercel.app/menu.html",
-      "status": 404,
+      "status": 200,
       "console_errors": [],
+      "h1": 1,
+      "overflow": true,
+      "missingImageAlt": 0,
+      "brokenImages": [
+        "https://charcuterie-chick-sample-1.vercel.app/img/graze-01.jpg",
+        "https://charcuterie-chick-sample-1.vercel.app/img/graze-03.jpg",
+        "https://charcuterie-chick-sample-1.vercel.app/img/knot-2.jpg",
+        "https://charcuterie-chick-sample-1.vercel.app/img/knot-3.jpg"
+      ],
+      "unlabelledInputs": [],
       "passed": false
     },
     {
       "url": "https://charcuterie-chick-sample-1.vercel.app/gallery.html",
-      "status": 404,
-      "console_errors": [],
-      "passed": false
-    },
-    {
-      "url": "https://charcuterie-chick-sample-1.vercel.app/story.html",
-      "status": 404,
-      "console_errors": [],
-      "passed": false
-    },
-    {
-      "url": "https://charcuterie-chick-sample-1.vercel.app/enquire.html",
-      "status": 404,
-      "console_errors": [],
-      "passed": false
-    },
-    {
-      "url": "https://charcuterie-chick-sample-2.vercel.app/index.html",
       "status": 200,
-      "console_errors": [
-        "Cannot read properties of undefined (reading 'map')"
-      ],
+      "console_errors": [],
       "h1": 1,
-      "overflow": false,
+      "overflow": true,
       "missingImageAlt": 0,
       "brokenImages": [],
       "unlabelledInputs": [],
       "passed": false
     },
     {
-      "url": "https://charcuterie-chick-sample-2.vercel.app/menu.html",
-      "status": 404,
+      "url": "https://charcuterie-chick-sample-1.vercel.app/story.html",
+      "status": 200,
       "console_errors": [],
+      "h1": 1,
+      "overflow": true,
+      "missingImageAlt": 0,
+      "brokenImages": [],
+      "unlabelledInputs": [],
+      "passed": false
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/enquire.html",
+      "status": 200,
+      "console_errors": [],
+      "h1": 1,
+      "overflow": true,
+      "missingImageAlt": 0,
+      "brokenImages": [],
+      "unlabelledInputs": [],
+      "passed": false
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/index.html",
+      "status": 200,
+      "console_errors": [],
+      "h1": 1,
+      "overflow": false,
+      "missingImageAlt": 0,
+      "brokenImages": [],
+      "unlabelledInputs": [],
+      "passed": true
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/menu.html",
+      "status": 200,
+      "console_errors": [],
+      "h1": 1,
+      "overflow": false,
+      "missingImageAlt": 0,
+      "brokenImages": [
+        "https://charcuterie-chick-sample-2.vercel.app/img/wide-640.jpg"
+      ],
+      "unlabelledInputs": [],
       "passed": false
     },
     {
       "url": "https://charcuterie-chick-sample-2.vercel.app/gallery.html",
-      "status": 404,
+      "status": 200,
       "console_errors": [],
-      "passed": false
+      "h1": 1,
+      "overflow": false,
+      "missingImageAlt": 0,
+      "brokenImages": [],
+      "unlabelledInputs": [],
+      "passed": true
     },
     {
       "url": "https://charcuterie-chick-sample-2.vercel.app/story.html",
-      "status": 404,
+      "status": 200,
       "console_errors": [],
-      "passed": false
+      "h1": 1,
+      "overflow": false,
+      "missingImageAlt": 0,
+      "brokenImages": [],
+      "unlabelledInputs": [],
+      "passed": true
     },
     {
       "url": "https://charcuterie-chick-sample-2.vercel.app/enquire.html",
-      "status": 404,
+      "status": 200,
       "console_errors": [],
-      "passed": false
+      "h1": 1,
+      "overflow": false,
+      "missingImageAlt": 0,
+      "brokenImages": [],
+      "unlabelledInputs": [],
+      "passed": true
     },
     {
       "url": "https://charcuterie-chick-sample-3.vercel.app/index.html",
