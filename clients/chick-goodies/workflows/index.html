@@ -82,22 +82,26 @@
 
   <div class="calc">
     <div class="inputs">
-      <label>Events a month
+      <div class="field">
+        <label for="evts">Events a month</label>
         <input type="range" id="evts" min="1" max="20" value="6">
-        <output id="evtsOut">6</output>
-      </label>
-      <label>Hosts who leave a review when asked once
+        <output id="evtsOut" for="evts">6</output>
+      </div>
+      <div class="field">
+        <label for="rate">Hosts who leave a review when asked once</label>
         <input type="range" id="rate" min="5" max="80" value="30">
-        <output id="rateOut">30%</output>
-      </label>
-      <label>Enquiries a month that currently go unanswered
+        <output id="rateOut" for="rate">30%</output>
+      </div>
+      <div class="field">
+        <label for="lost">Enquiries a month that currently go unanswered</label>
         <input type="range" id="lost" min="0" max="10" value="2">
-        <output id="lostOut">2</output>
-      </label>
-      <label>Of those, how many would have booked
+        <output id="lostOut" for="lost">2</output>
+      </div>
+      <div class="field">
+        <label for="conv">Of those, how many would have booked</label>
         <input type="range" id="conv" min="5" max="60" value="25">
-        <output id="convOut">25%</output>
-      </label>
+        <output id="convOut" for="conv">25%</output>
+      </div>
     </div>
 
     <div class="outs">

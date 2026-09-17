@@ -93,7 +93,8 @@ h3{font-size:21px;margin-bottom:12px}
 .calc{display:grid;grid-template-columns:minmax(260px,1fr) minmax(300px,1.25fr);gap:2px;
   border:1px solid var(--line);background:var(--line)}
 .inputs{background:#fff;padding:clamp(20px,2.6vw,32px);display:grid;gap:26px;align-content:start}
-.inputs label{display:grid;gap:10px;font:500 13.5px/1.4 var(--sans)}
+.inputs .field{display:grid;gap:10px}
+.inputs label{font:500 13.5px/1.4 var(--sans)}
 .inputs input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;
   background:var(--soft);border-radius:3px;outline-offset:6px}
 .inputs input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;
