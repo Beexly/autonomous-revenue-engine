@@ -21,8 +21,11 @@ const shots = {
   'sample-1': 'https://charcuterie-chick-sample-1.vercel.app/',
   'sample-2': 'https://charcuterie-chick-sample-2.vercel.app/',
   'sample-3': 'https://charcuterie-chick-sample-3.vercel.app/',
-  'table': 'https://charcuterie-chick-sample-3.vercel.app/table.html',
 };
+// img/table.jpg is not a screenshot: it is the scene still from
+// samples/sample-3-studio/img/table-still.jpg, resized to 1600x1000, so the
+// proposal shows the room without the page chrome. Copy it again when that
+// still is re-rendered.
 
 async function proxied(page) {
   if (!process.env.HTTPS_PROXY) return;
