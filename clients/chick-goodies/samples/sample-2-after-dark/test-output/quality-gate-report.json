@@ -72,12 +72,12 @@
           "bytes": 11295
         },
         {
-          "name": "brand.webp",
-          "bytes": 79442
-        },
-        {
           "name": "knot-hero.jpg",
           "bytes": 241345
+        },
+        {
+          "name": "brand.webp",
+          "bytes": 79442
         },
         {
           "name": "barlow-condensed-700.ttf",
@@ -202,12 +202,12 @@
           "bytes": 228333
         },
         {
-          "name": "wide-640.jpg",
-          "bytes": 85941
-        },
-        {
           "name": "table-01.jpg",
           "bytes": 119185
+        },
+        {
+          "name": "wide-640.jpg",
+          "bytes": 85941
         }
       ],
       "route": "menu.html",
@@ -329,16 +329,16 @@
           "bytes": 50948
         },
         {
-          "name": "sweets-01.jpg",
-          "bytes": 111688
+          "name": "sips-01.jpg",
+          "bytes": 55668
         },
         {
           "name": "board-02.jpg",
           "bytes": 76199
         },
         {
-          "name": "sips-01.jpg",
-          "bytes": 55668
+          "name": "sweets-01.jpg",
+          "bytes": 111688
         }
       ],
       "route": "gallery.html",
@@ -561,12 +561,12 @@
           "bytes": 11295
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
-        },
-        {
           "name": "brand.webp",
           "bytes": 79442
+        },
+        {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
         },
         {
           "name": "tricia-662.jpg",
@@ -794,16 +794,16 @@
           "bytes": 20753
         },
         {
-          "name": "knot-4.jpg",
-          "bytes": 208555
-        },
-        {
           "name": "midnight.js",
           "bytes": 11295
         },
         {
           "name": "brand.webp",
           "bytes": 79442
+        },
+        {
+          "name": "knot-4.jpg",
+          "bytes": 208555
         },
         {
           "name": "graze-01.jpg",
@@ -896,20 +896,20 @@
           "bytes": 11295
         },
         {
-          "name": "tricia-662.jpg",
-          "bytes": 81401
-        },
-        {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "barlow-condensed-700.ttf",
-          "bytes": 87120
+          "name": "tricia-662.jpg",
+          "bytes": 81401
         },
         {
           "name": "catering-1000.jpg",
           "bytes": 128701
+        },
+        {
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
         }
       ],
       "route": "story.html",
