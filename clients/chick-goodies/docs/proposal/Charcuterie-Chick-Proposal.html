@@ -58,13 +58,6 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .stat .star { width: 14pt; height: 14pt; fill: var(--gold); flex: none; }
 .stat .t { font-size: 9.3pt; line-height: 1.35; }
 .stat .t b { font-weight: 500; display: block; }
-.reco { margin-top: 26pt; background: var(--wine); color: #f7f1e6; padding: 14pt 18pt; display: flex; align-items: center; gap: 18pt; border-radius: 2pt; }
-.reco .label { color: #e6cfa7; white-space: nowrap; }
-.reco .what { flex: 1; font-size: 10.5pt; line-height: 1.35; }
-.reco .what b { font-weight: 500; }
-.reco .price { text-align: right; }
-.reco .price .num { font-size: 26pt; line-height: 1; }
-.reco .price .small { color: #e6cfa7; }
 
 /* page 2 */
 .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10pt; margin-top: 14pt; }
@@ -90,28 +83,56 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .tl svg { width: 100%; height: auto; display: block; }
 
 /* page 3 */
-.legend { display: flex; gap: 18pt; margin-top: 12pt; font-size: 8.6pt; color: var(--mute); align-items: center; }
-.legend i { display: inline-block; width: 9pt; height: 9pt; border-radius: 50%; margin-right: 5pt; vertical-align: -1pt; }
-.legend .e { background: var(--wine); }
-.legend .y { border: 1px solid var(--mute); }
-.flow { margin-top: 12pt; display: grid; grid-template-columns: .6in 1fr; row-gap: 9pt; column-gap: 6pt; }
-.lane { font-size: 7.2pt; letter-spacing: .16em; text-transform: uppercase; color: var(--mute); padding-top: 11pt; font-weight: 500; }
-.nodes { display: grid; grid-template-columns: 1fr 14pt 1fr 14pt 1fr 14pt 1fr; column-gap: 2pt; }
-.node { background: var(--card); border: 1px solid var(--rule); border-left: 3px solid var(--wine); border-radius: 2pt; padding: 8pt 9pt; min-height: .95in; }
-.node.y { border-left-color: var(--rule); background: transparent; }
-.node .who { font-size: 6.6pt; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; color: var(--wine); }
-.node.y .who { color: var(--mute); }
-.node b { display: block; font-family: 'Fraunces', serif; font-weight: 500; font-size: 10.8pt; line-height: 1.15; margin-top: 3pt; }
-.node span { font-size: 8pt; line-height: 1.35; color: var(--mute); margin-top: 3pt; display: block; }
+.wf-head { display: grid; grid-template-columns: 1.7in 1fr; column-gap: 16pt; margin-top: 12pt; }
+.wf-head .k { font-size: 7pt; letter-spacing: .16em; text-transform: uppercase; color: var(--mute); font-weight: 500; padding-bottom: 5pt; }
+.wf { display: grid; grid-template-columns: 1.7in 1fr; column-gap: 16pt; padding: 9pt 0 10pt; border-top: 1px solid var(--rule); }
+.wf.last { border-bottom: 1px solid var(--rule); }
+.wf .n { font-family: 'Fraunces', serif; font-size: 20pt; color: var(--gold); line-height: 1; }
+.wf h3 { font-size: 13.5pt; margin-top: 4pt; }
+.wf .tag { font-size: 8.6pt; color: var(--mute); margin-top: 3pt; line-height: 1.35; }
+.steps { display: grid; grid-template-columns: 1fr 14pt 1fr 14pt 1fr; column-gap: 3pt; align-items: stretch; }
+.st { background: var(--card); border: 1px solid var(--rule); border-radius: 2pt; padding: 6pt 8pt 7pt; }
+.st.you { background: transparent; border-style: dashed; }
+.st b { display: block; font-weight: 500; font-size: 9.4pt; line-height: 1.25; }
+.st span { display: block; font-size: 8pt; color: var(--mute); line-height: 1.35; margin-top: 2pt; }
 .arr { width: 14pt; height: 14pt; color: var(--gold); align-self: center; }
-.ex { display: grid; grid-template-columns: 1fr 1fr; gap: 16pt; margin-top: 16pt; }
-.bubble { background: var(--card); border: 1px solid var(--rule); border-radius: 10pt 10pt 10pt 2pt; padding: 9pt 12pt; font-size: 9.4pt; line-height: 1.45; margin-top: 6pt; }
-.bubble.right { border-radius: 10pt 10pt 2pt 10pt; }
-.bubble b { font-weight: 500; }
-.ex .small { margin-top: 5pt; }
-.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12pt; margin-top: 16pt; border-top: 1px solid var(--rule); padding-top: 12pt; }
-.metrics .num { font-size: 26pt; line-height: 1; color: var(--wine); }
-.metrics span { display: block; font-size: 8.8pt; color: var(--mute); margin-top: 3pt; line-height: 1.3; }
+.why { margin-top: 7pt; font-size: 8.8pt; line-height: 1.4; padding-left: 8pt; border-left: 2px solid var(--gold); }
+.why b { font-weight: 500; }
+.get { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin-top: 14pt; }
+.get div { border-top: 2px solid var(--gold); padding-top: 6pt; }
+.get b { display: block; font-weight: 500; font-size: 9.4pt; }
+.get span { display: block; font-size: 8.3pt; color: var(--mute); line-height: 1.35; margin-top: 2pt; }
+
+/* page 5 · creative add-ons */
+.addons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10pt; margin-top: 16pt; }
+.ad { background: var(--card); border: 1px solid var(--rule); border-radius: 2pt; padding: 12pt 13pt 11pt; display: flex; flex-direction: column; min-height: 1.7in; }
+.ad h3 { font-size: 13.5pt; }
+.ad p { font-size: 8.8pt; color: var(--mute); line-height: 1.4; margin-top: 4pt; flex: 1; }
+.ad .pr { margin-top: 9pt; border-top: 1px solid var(--rule-2); padding-top: 6pt; font-family: 'Fraunces', serif; font-size: 14pt; color: var(--wine); }
+.ad .pr small { font-family: 'DM Sans', sans-serif; font-size: 8.2pt; color: var(--mute); margin-left: 5pt; }
+.bundle { margin-top: 14pt; border: 1px solid var(--gold); box-shadow: inset 0 0 0 1px var(--gold); padding: 12pt 16pt; display: flex; align-items: center; gap: 16pt; background: var(--card); border-radius: 2pt; }
+.bundle .label { white-space: nowrap; }
+.bundle .what { flex: 1; font-size: 10pt; line-height: 1.35; }
+.bundle .price { text-align: right; }
+.bundle .price .num { font-size: 24pt; line-height: 1; color: var(--wine); }
+
+/* page 6 · when */
+.when { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12pt; margin-top: 12pt; }
+.when > div { border-top: 2px solid var(--gold); padding-top: 6pt; }
+.when b { display: block; font-weight: 500; font-size: 9.6pt; }
+.when i { display: block; font-style: normal; font-size: 7.2pt; color: var(--mute); letter-spacing: .1em; text-transform: uppercase; margin-top: 1pt; }
+.when ul { list-style: none; margin: 7pt 0 0; padding: 0; font-size: 8.5pt; line-height: 1.38; }
+.when li { display: flex; gap: 6pt; margin-bottom: 5pt; }
+.when li::before { content: ""; width: 7.5pt; height: 7.5pt; border: 1px solid var(--mute); flex: none; margin-top: 2.5pt; border-radius: 1pt; }
+
+/* page 7 · payment */
+.payt { width: 100%; border-collapse: collapse; font-size: 9.2pt; margin-top: 14pt; }
+.payt th { text-align: left; font-size: 7.4pt; letter-spacing: .17em; text-transform: uppercase; color: var(--wine); font-weight: 500; padding: 0 0 5pt; border-bottom: 1px solid var(--ink); }
+.payt td { padding: 7pt 0; border-bottom: 1px solid var(--rule-2); vertical-align: top; line-height: 1.4; }
+.payt td:first-child { width: 2.3in; font-weight: 500; padding-right: 14pt; }
+.payt td:first-child span { display: block; font-weight: 400; color: var(--mute); font-size: 8.2pt; }
+.terms2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6pt 20pt; margin-top: 14pt; font-size: 8.6pt; line-height: 1.45; }
+.terms2 b { font-weight: 500; }
 
 /* page 4 */
 .inv { display: grid; grid-template-columns: 1.15fr .95fr; gap: 20pt; margin-top: 14pt; }
@@ -175,7 +196,7 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 <!-- 1 · cover and the offer at a glance -->
 <section class="page">
   <div class="top"><span class="label">Proposal · September 17, 2026</span><span class="label">Valid through October 1, 2026</span></div>
-  <h1>Three sites to choose from.<br>One engine behind them.</h1>
+  <h1>Three sites to choose from.<br>Built to get you booked.</h1>
   <p class="lede" style="margin-top:14pt">Every page uses your real prices, your own photos and your reviews from The Knot and WeddingWire. Behind the site sits the system that turns a visitor into a booked table.</p>
   <div class="meta">
     <div><span>Prepared for</span><b>Tricia Holfelder · Charcuterie Chick · Tomball, Texas</b></div>
@@ -202,12 +223,8 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
   </div>
   <p class="small mute" style="margin-top:8pt">What every page is built on: the reputation you already have.</p>
 
-  <div class="reco">
-    <span class="label">Our recommendation</span>
-    <div class="what"><b>The Revenue Engine.</b> Full website, workflows and photography.<br><span style="opacity:.8">Page 4 has the numbers.</span></div>
-    <div class="price"><div class="num">$1,600</div><div class="small">separately $1,800</div></div>
-  </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 1 of 5</span></div>
+  <p class="small mute" style="margin-top:22pt;border-top:1px solid var(--rule);padding-top:8pt">Our recommendation, the Revenue Engine package, is on page 4. Pick the site first. Everything else can be added later.</p>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 1 of 7</span></div>
 </section>
 
 <!-- 2 · choose a site, timeline -->
@@ -263,71 +280,72 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     </g>
     <text x="285" y="112" text-anchor="middle" font-size="7.5" fill="#7b6c5f" letter-spacing="1.6">INCLUDED CARE AND SMALL CHANGES · DAYS 1 TO 90</text>
   </svg></div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 2 of 5</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 2 of 7</span></div>
 </section>
 
-<!-- 3 · the workflows, drawn -->
+<!-- 3 · the workflows -->
 <section class="page">
-  <div class="top"><span class="label">02 · The workflows, drawn</span><span class="label">Workflows package · $500</span></div>
-  <h2>From "how much for 75?" to a five-star review.</h2>
-  <p class="lede" style="margin-top:10pt">The engine writes it and reminds you. You tap send. Your customers only ever hear from you.</p>
-  <div class="legend"><span><i class="e"></i>The engine prepares it</span><span><i class="y"></i>Yours, exactly as today</span></div>
+  <div class="top"><span class="label">02 · The workflows</span><span class="label">Workflows package · $500 · set up once, yours for good</span></div>
+  <h2>Every quote answered.<br>Every event followed up.</h2>
+  <p class="lede" style="margin-top:10pt">Three routines built around how you already work. We write every message in your voice and remind you when it is time. You tap send, so your customers only ever hear from you. No chatbot, no auto-reply, no paid texting service.</p>
 
-  <div class="flow">
-    <div class="lane">Before</div>
-    <div class="nodes">
-      <div class="node"><span class="who">Engine</span><b>A host asks</b><span>Quote form, call or text button on every page.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node"><span class="who">Engine</span><b>On your phone in seconds</b><span>Date, guests, table, name and number, in a fixed order.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node"><span class="who">Engine</span><b>Logged</b><span>If it sits unanswered for a day, you get a nudge.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node y"><span class="who">You</span><b>You quote and book</b><span>Your price, your deposit, your way.</span></div>
-    </div>
-    <div class="lane">The day</div>
-    <div class="nodes">
-      <div class="node y"><span class="who">You</span><b>You shop</b><span>Your suppliers, your list.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node y"><span class="who">You</span><b>You bake and prep</b><span>Scratch-made breads, jellies and jams.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node y"><span class="who">You</span><b>You style the table</b><span>On site, one party at a time.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node y"><span class="who">You</span><b>90 minutes of service</b><span>Extra time at $3 a guest per half hour.</span></div>
-    </div>
-    <div class="lane">After</div>
-    <div class="nodes">
-      <div class="node"><span class="who">Engine · Day 2</span><b>Thank-you</b><span>A text with one photo from the table. You tap send.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node"><span class="who">Engine · Day 3</span><b>Review ask</b><span>A one-tap link to your Google reviews.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node"><span class="who">Engine · Day 30</span><b>A note back</b><span>To the same host, with a seasonal offer you set.</span></div>
-      <svg class="arr"><use href="#arrow"/></svg>
-      <div class="node"><span class="who">Engine · Monthly</span><b>One screen</b><span>Calls, quotes, bookings, best photo.</span></div>
+  <div class="wf-head"><div></div><div class="steps"><div class="k">Trigger</div><div></div><div class="k">Ready for you</div><div></div><div class="k">You do</div></div></div>
+
+  <div class="wf">
+    <div><div class="n">01</div><h3>Never miss a quote</h3><p class="tag">The grazing table is your biggest order. This keeps every request in view until it is booked.</p></div>
+    <div>
+      <div class="steps">
+        <div class="st"><b>A host asks</b><span>Quote form, call or text button on every page of the site.</span></div>
+        <svg class="arr"><use href="#arrow"/></svg>
+        <div class="st"><b>On your phone in seconds</b><span>Date, guests, table, name and number, in a fixed order, and logged.</span></div>
+        <svg class="arr"><use href="#arrow"/></svg>
+        <div class="st you"><b>Reply and book</b><span>Your price, your deposit, your way. If a day passes with no reply, you get a reminder.</span></div>
+      </div>
+      <p class="why"><b>Why it matters.</b> A grazing table is a $1,200 to $3,500 order. The host who does not hear back books someone else.</p>
     </div>
   </div>
 
-  <div class="ex">
-    <div><span class="label">What lands on your phone</span>
-      <div class="bubble"><b>Quote request</b><br>Sat, Oct 24 · 75 guests · Grand Graze<br>Backyard wedding · The Woodlands</div>
-      <p class="small mute">Her name and number follow, ready to tap.</p></div>
-    <div><span class="label">What the host gets on day 3</span>
-      <div class="bubble right">Thank you for having us Saturday. If you have one minute, a Google review helps a small business more than you know. <span class="mute">[your review link]</span></div>
-      <p class="small mute">Written in your voice, sent from your phone.</p></div>
+  <div class="wf">
+    <div><div class="n">02</div><h3>Turn every event into a review</h3><p class="tag">Two texts after each event, written and timed for you.</p></div>
+    <div>
+      <div class="steps">
+        <div class="st"><b>The event ends</b><span>You pack up the table. The follow-up is already scheduled.</span></div>
+        <svg class="arr"><use href="#arrow"/></svg>
+        <div class="st"><b>Two texts, ready on time</b><span>Day 2: a thank-you with one photo from their table. Day 3: one line and a one-tap link to your Google reviews.</span></div>
+        <svg class="arr"><use href="#arrow"/></svg>
+        <div class="st you"><b>Tap send, twice</b><span>Your words, your phone. Nothing goes out that you did not send.</span></div>
+      </div>
+      <p class="why"><b>Why it matters.</b> You have 24 five-star reviews on The Knot and WeddingWire. Reviews are the cheapest source of new bookings and of search rank, and this builds the same proof on Google, one event at a time.</p>
+    </div>
   </div>
 
-  <div class="metrics">
-    <div><div class="num">12</div><span>steps in every booking</span></div>
-    <div><div class="num">7</div><span>prepared by the engine</span></div>
-    <div><div class="num">5</div><span>stay exactly yours</span></div>
-    <div><div class="num">0</div><span>automated replies to your customers</span></div>
+  <div class="wf last">
+    <div><div class="n">03</div><h3>Bring the host back</h3><p class="tag">The next party, the office lunch, the holiday table.</p></div>
+    <div>
+      <div class="steps">
+        <div class="st"><b>Thirty days later</b><span>A month after the event, while the table is still talked about.</span></div>
+        <svg class="arr"><use href="#arrow"/></svg>
+        <div class="st"><b>A note to the same host</b><span>With a seasonal offer you set. Written with you once, filled in for each host.</span></div>
+        <svg class="arr"><use href="#arrow"/></svg>
+        <div class="st you"><b>Tap send</b><span>And you are first in mind when they plan the next one.</span></div>
+      </div>
+      <p class="why"><b>Why it matters.</b> A host who has seen your table needs no convincing. One note, a month later, is the cheapest booking you will ever get.</p>
+    </div>
   </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 3 of 5</span></div>
+
+
+  <div class="get">
+    <div><b>Every message in your voice</b><span>Written with you before anything goes live. Edit them whenever you like.</span></div>
+    <div><b>The log</b><span>Every quote request with its date, headcount and table, and whether it has been answered.</span></div>
+    <div><b>One screen a month</b><span>Calls, quotes, bookings and the best photo of the month. No dashboard to learn.</span></div>
+  </div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 3 of 7</span></div>
 </section>
 
 <!-- 4 · investment -->
 <section class="page">
   <div class="top"><span class="label">03 · Investment</span><span class="label">US dollars · valid through October 1, 2026</span></div>
-  <h2>Pick a site. Add the engine.<br>One booking covers it.</h2>
+  <h2>Pick a site. Add what you want.<br>One booking covers it.</h2>
   <div class="inv">
     <div>
       <table class="pl">
@@ -335,11 +353,12 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
         <tr><td><b>One-page site</b><span>Live in 2 days, on our address. Your current site stays untouched.</span></td><td class="p">$150</td></tr>
         <tr><td><b>Full website</b><span>Your pick of the three. Live on charcuteriechick.ai in 7 days.</span></td><td class="p">$600</td></tr>
         <tr><td><b>Immersive website</b><span>The Table, finished as your site. Live in 3 weeks.</span></td><td class="p">$1,500</td></tr>
-        <tr><td><b>Workflows</b><span>The steps on page 3. Live within a week of the site.</span></td><td class="p">$500</td></tr>
+        <tr><td><b>Workflows</b><span>The three routines on page 3. Live within a week of the site.</span></td><td class="p">$500</td></tr>
         <tr><td><b>Photo enhancement</b><span>All 21 current photos cleaned, corrected and sized for the site, Google, Instagram and Pinterest. Originals kept.</span></td><td class="p">$250</td></tr>
         <tr><td><b>Photo recreation</b><span>Twelve new hero and social images made from your own photographs. You approve each one.</span></td><td class="p">$450</td></tr>
         <tr><td><b>Both photography services</b><span>Enhancement and recreation together.</span></td><td class="p">$600</td></tr>
       </table>
+      <p class="small mute" style="margin-top:8pt">Creative add-ons are on page 5. The care and growth plans are on page 6.</p>
     </div>
     <div>
       <span class="label wine">Or the package</span>
@@ -361,17 +380,42 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     <div class="bar"><div class="lab">The Revenue Engine, Immersive</div><div class="track"><div class="fill" style="width:70%"></div></div><div class="v">$2,450</div></div>
     <div class="bar her"><div class="lab">Holy Grail of Grazing<small>150 guests</small></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="v">$3,500</div></div>
     <div class="klegend"><span><i></i>This proposal</span><span><i class="g"></i>Your published price list</span></div>
-    <p class="cap">One Holy Grail table at 75 guests pays for the whole engine. One at 150 pays for the immersive one.</p>
+    <p class="cap">One Holy Grail table at 75 guests pays for the whole Revenue Engine package. One at 150 pays for the immersive one.</p>
   </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 4 of 5</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 4 of 7</span></div>
 </section>
 
-<!-- 5 · after launch, terms, payment -->
+<!-- 5 · creative add-ons -->
 <section class="page">
-  <div class="top"><span class="label">04 · After launch</span><span class="label">Optional · cancel any time with thirty days' notice</span></div>
+  <div class="top"><span class="label">04 · Creative add-ons</span><span class="label">Add any of these to any package, including The Table</span></div>
+  <h2>One look, from your logo<br>to your last post.</h2>
+  <p class="lede" style="margin-top:10pt">Everything here starts from what you already have: your logo, your photographs, your food. You approve every piece before it is used anywhere.</p>
+  <div class="addons">
+    <div class="ad"><h3>Logo restore</h3><p>Your current logo rebuilt as crisp files at every size, for the site, print, signage and social. Nothing redrawn, nothing lost.</p><div class="pr">$150</div></div>
+    <div class="ad"><h3>Logo redesign</h3><p>A refreshed mark that keeps your chick. Three directions, two rounds of changes, and every file you will ever need.</p><div class="pr">$450</div></div>
+    <div class="ad"><h3>Photo restoration</h3><p>Old prints and damaged or blurry photos brought back: the family picture for the About page, the first cart, the early tables.</p><div class="pr">$25<small>per photo</small></div></div>
+    <div class="ad"><h3>Created images</h3><p>New pictures made to order, from your photos or from a description: a holiday table, a seasonal board, a menu item you have not shot yet.</p><div class="pr">$300<small>set of ten</small></div></div>
+    <div class="ad"><h3>Marketing kit</h3><p>Printed menu and price card, a one-page flyer, a business card, and Instagram and Facebook templates in your look. Print-ready files.</p><div class="pr">$400</div></div>
+    <div class="ad"><h3>Short videos</h3><p>Thirty to sixty seconds for Instagram, Facebook and the site, cut from your photos and clips, with music and captions.</p><div class="pr">$300<small>each · three for $750</small></div></div>
+  </div>
+  <div class="bundle"><span class="label wine">The Creative Bundle</span><div class="what">Logo redesign, marketing kit, ten created images and one short video.<br><span class="small mute">Photo enhancement ($250) and photo recreation ($450) are on page 4 and combine with any of these.</span></div><div class="price"><div class="num">$1,250</div><div class="small mute">separately $1,450</div></div></div>
+
+  <div class="sec" style="margin-top:26pt"><span class="label wine">How add-ons work</span><span class="label">Nothing is used until you say yes</span></div>
+  <div class="incl" style="grid-template-columns:repeat(4,1fr)">
+    <div><b>1 · Tell us what you need</b><span>A text or a call is enough.</span></div>
+    <div><b>2 · Options within a week</b><span>Two or three directions to react to, not a blank page.</span></div>
+    <div><b>3 · You approve</b><span>Change anything. Nothing goes on the site or into print before you say so.</span></div>
+    <div><b>4 · Files delivered</b><span>Yours to keep, at every size you will need.</span></div>
+  </div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 5 of 7</span></div>
+</section>
+
+<!-- 6 · after launch, what we need and when -->
+<section class="page">
+  <div class="top"><span class="label">05 · After launch</span><span class="label">Optional · cancel any time with thirty days' notice</span></div>
   <h2>Ninety days on us.<br>Then, if you want, we keep going.</h2>
   <table class="plans">
-    <tr><th>From day 91</th><th class="c"><span class="num">$89</span>a month · Care</th><th class="c"><span class="num">$199</span>a month · Growth</th></tr>
+    <tr><th>From day 91</th><th class="c"><span class="num">$69</span>a month · Care</th><th class="c"><span class="num">$149</span>a month · Growth</th></tr>
     <tr><td>Hosting, domain and uptime monitoring</td><td class="c"><svg class="ck"><use href="#check"/></svg></td><td class="c"><svg class="ck"><use href="#check"/></svg></td></tr>
     <tr><td>Monthly check of every page, form and link</td><td class="c"><svg class="ck"><use href="#check"/></svg></td><td class="c"><svg class="ck"><use href="#check"/></svg></td></tr>
     <tr><td>Security updates and backups</td><td class="c"><svg class="ck"><use href="#check"/></svg></td><td class="c"><svg class="ck"><use href="#check"/></svg></td></tr>
@@ -381,32 +425,54 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     <tr><td>Review workflow kept running</td><td class="c">–</td><td class="c"><svg class="ck"><use href="#check"/></svg></td></tr>
   </table>
 
-  <div class="cols">
-    <div><span class="label wine">What we need from you</span>
-      <ul class="need">
-        <li>Domain settings for charcuteriechick.ai, or thirty minutes together to point it at the new site</li>
-        <li>Admin access to your current site</li>
-        <li>Your logo files and the camera-roll originals of your photos</li>
-        <li>Google Business Profile ownership, or we claim it together</li>
-        <li>A yes or no on: the street address on the site, the Spanish line, the About photo, how the cart, sweets and sips are charged, any dietary notes</li>
-        <li>Two listing fixes: WeddingWire's "The Catering Chick" and "$150 per person for stations"</li>
-      </ul></div>
-    <div><span class="label wine">Terms</span>
-      <div class="terms">
-        <p><b>Payment.</b> Websites and workflows: half to start, half at launch. One-page site: on delivery. Photography: when you approve the set. Plans: monthly from day 91.</p>
-        <p><b>Ownership.</b> Your domain, logo, photos and words stay yours. The site files are yours at launch. Nothing on your current site changes until you say go.</p>
-        <p><b>Revisions.</b> Two rounds before launch. After that, the included 90 days, then the care plan.</p>
-        <p><b>Not included.</b> Ad spend, a paid photographer, printed menus, online payments, a booking calendar, automated replies. The last three are left out on purpose: you price by hand, you take payment your way, and your customers hear from you.</p>
-      </div></div>
+  <div class="sec" style="margin-top:24pt"><span class="label wine">What we need from you, and when</span><span class="label">Most of it is a one-time yes</span></div>
+  <div class="when">
+    <div><b>Before we start</b><i>Day 0</i><ul>
+      <li>This proposal approved, with the design you picked</li>
+      <li>Your logo files</li>
+      <li>The camera-roll originals of your photos</li>
+      <li>A yes or no on five details: the street address on the site, the Spanish line, the About photo, how the cart, sweets and sips are charged, dietary notes</li></ul></div>
+    <div><b>Before launch</b><i>By day 7</i><ul>
+      <li>Domain settings for charcuteriechick.ai, or thirty minutes together to point it at the new site</li>
+      <li>Admin access to your current site</li>
+      <li>Google Business Profile ownership, or we claim it together</li></ul></div>
+    <div><b>After launch</b><i>Once</i><ul>
+      <li>Ten minutes to approve the three message templates in your voice</li>
+      <li>Two listing fixes on WeddingWire, "The Catering Chick" and "$150 per person for stations". We do them with you.</li></ul></div>
+    <div><b>Each month</b><i>Growth plan only</i><ul>
+      <li>A few phone photos from one event, for the Google posts</li>
+      <li>Ten minutes on the one-screen report, if you want to talk it through</li></ul></div>
+  </div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 6 of 7</span></div>
+</section>
+
+<!-- 7 · payment and terms -->
+<section class="page">
+  <div class="top"><span class="label">06 · Payment and terms</span><span class="label">US dollars · valid through October 1, 2026</span></div>
+  <h2>How payment works.</h2>
+  <table class="payt">
+    <tr><th>When</th><th>What is due</th></tr>
+    <tr><td>Day 0, to start<span>The day you approve</span></td><td>Half of the website and workflows. For a package, half of the package price.</td></tr>
+    <tr><td>At launch<span>Day 7, or day 21 for The Table</span></td><td>The other half.</td></tr>
+    <tr><td>When you approve the set<span>Photography bought on its own, and creative add-ons</span></td><td>In full, after you have approved every image, file or video. Photography inside a package is covered by the package payments.</td></tr>
+    <tr><td>On delivery<span>One-page site only</span></td><td>$150. If you do not like it, you do not pay.</td></tr>
+    <tr><td>From day 91, monthly<span>Only if you choose a plan</span></td><td>Care $69 or Growth $149, billed monthly in advance. Cancel any time with thirty days' notice.</td></tr>
+  </table>
+
+  <div class="terms2">
+    <p><b>Ownership.</b> Your domain, logo, photos and words stay yours. The site files are yours at launch. Nothing on your current site changes until you say go.</p>
+    <p><b>Revisions.</b> Two rounds before launch on the full or immersive site, one round on the one-page site. After that, the included 90 days, then the care plan.</p>
+    <p><b>Not included.</b> Ad spend, a paid photographer, printed menus beyond the marketing kit, online payments, a booking calendar, automated replies. The last three are left out on purpose: you price by hand, you take payment your way, and your customers hear from you.</p>
+    <p><b>Prices.</b> US dollars. These prices hold through October 1, 2026. Every invoice references this proposal.</p>
   </div>
 
-  <div class="pay"><span class="label">Payable to</span><div><b>Galaxy Sports Edge LLC</b> (Garrett Baxley)<br><span class="small">By card: <a href="https://buy.stripe.com/8x23cxb6FanJail8JT14405">buy.stripe.com/8x23cxb6FanJail8JT14405</a> · Check, Zelle or bank transfer: details on your invoice. Every invoice references this proposal.</span></div></div>
+  <div class="pay"><span class="label">Payable to</span><div><b>Galaxy Sports Edge LLC</b> (Garrett Baxley)<br><span class="small">By card: <a href="https://buy.stripe.com/8x23cxb6FanJail8JT14405">buy.stripe.com/8x23cxb6FanJail8JT14405</a> · Check, Zelle or bank transfer: details on your invoice.</span></div></div>
   <p class="small" style="margin-top:12pt">Reply "approved" with the design you picked and the items you want, or sign below.</p>
   <div class="sig">
     <div><div class="line"><b>Tricia Holfelder, Charcuterie Chick</b><span>Date</span></div></div>
     <div><div class="line"><b>Garrett Baxley, Galaxy Sports Edge LLC</b><span>Date</span></div></div>
   </div>
-  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 5 of 5</span></div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Edge LLC</span><span>Page 7 of 7</span></div>
 </section>
 </body>
 </html>
