@@ -187,6 +187,72 @@ DECOR_JS = """() => {
   return [...new Set(out)].slice(0, 6);
 }"""
 
+# A ::before/::after is not an element, so document.elementFromPoint returns the
+# ORIGINATING element for its pixels. A hit-test therefore cannot see pseudo
+# decoration at all. This check measures the pseudo box from its resolved
+# geometry instead. Found because a deliberately broken guest-book quote mark
+# painted over three review quotes and G1 stayed green.
+PSEUDO_JS = """(minAlpha) => {
+  const out = [];
+  const boxOf = el => {                       // padding box of the containing block
+    const r = el.getBoundingClientRect(), s = getComputedStyle(el);
+    return {left: r.left + parseFloat(s.borderLeftWidth),
+            top: r.top + parseFloat(s.borderTopWidth),
+            width: r.width - parseFloat(s.borderLeftWidth) - parseFloat(s.borderRightWidth),
+            height: r.height - parseFloat(s.borderTopWidth) - parseFloat(s.borderBottomWidth)};
+  };
+  const alphaOf = c => {
+    const m = /rgba?\\(([^)]+)\\)/.exec(c || '');
+    if (!m) return 1;
+    const parts = m[1].split(',').map(v => parseFloat(v));
+    return parts.length > 3 ? parts[3] : 1;
+  };
+  const textRects = [...document.querySelectorAll('h1,h2,h3,p,figcaption,li,blockquote,cite,dt,dd,a,button,span')]
+    .filter(e => e.offsetParent !== null)
+    .filter(e => [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()))
+    .map(e => { const rg = document.createRange(); rg.selectNodeContents(e);
+                const r = rg.getBoundingClientRect(); rg.detach && rg.detach();
+                return {el: e, r, t: e.textContent.trim().slice(0, 40)}; })
+    .filter(x => x.r.width > 4 && x.r.height > 4);
+
+  for (const host of document.querySelectorAll('body *')) {
+    for (const which of ['::before', '::after']) {
+      const s = getComputedStyle(host, which);
+      if (!s.content || s.content === 'none' || s.content === 'normal') continue;
+      if (!['absolute', 'fixed'].includes(s.position)) continue;
+      if (s.visibility === 'hidden' || s.display === 'none') continue;
+      const z = s.zIndex === 'auto' ? 0 : parseInt(s.zIndex, 10);
+      if (z < 0) continue;                                  // deliberately behind the text
+      const alpha = (+s.opacity) * Math.max(alphaOf(s.color), alphaOf(s.backgroundColor));
+      if (alpha <= minAlpha) continue;                      // a faint watermark does not obscure
+      const w = parseFloat(s.width), h = parseFloat(s.height);
+      if (!(w > 8 && h > 8)) continue;
+      // the pseudo is a CHILD of the host, so whenever the host is positioned at
+      // all -- relative included -- the host's padding box is the containing block
+      const hostPos = getComputedStyle(host).position;
+      const anchor = s.position === 'fixed'
+        ? {left: 0, top: 0}
+        : (hostPos !== 'static' ? boxOf(host) : boxOf(host.offsetParent || document.body));
+      const left = anchor.left + (s.left === 'auto' ? 0 : parseFloat(s.left));
+      const top  = anchor.top  + (s.top  === 'auto' ? 0 : parseFloat(s.top));
+      const pr = {left, top, right: left + w, bottom: top + h};
+      for (const t of textRects) {
+        if (host === t.el) continue;
+        const ow = Math.min(pr.right, t.r.right) - Math.max(pr.left, t.r.left);
+        const oh = Math.min(pr.bottom, t.r.bottom) - Math.max(pr.top, t.r.top);
+        if (ow > 4 && oh > 4) {
+          const cls = typeof host.className === 'string' && host.className
+            ? '.' + host.className.trim().split(/\\s+/)[0] : '';
+          out.push(host.tagName + cls + which + ' (alpha ' + alpha.toFixed(2) +
+                   ') over "' + t.t + '"');
+          break;
+        }
+      }
+    }
+  }
+  return [...new Set(out)].slice(0, 6);
+}"""
+
 CLIP_JS = """() => [...document.querySelectorAll('h1,h2,h3,p,figcaption,li,button,a,dt,dd')]
   .filter(e => e.offsetParent !== null && e.textContent.trim() && !e.closest('[hidden]'))
   .filter(e => { // skip links and visually-hidden helpers are parked off-screen on purpose
@@ -240,6 +306,8 @@ def _sweep_page(pg, page_name, w, problems):
         problems.append(f'{page_name} @{w}: collapsed figure, {c}')
     for dec in pg.evaluate(DECOR_JS):
         problems.append(f'{page_name} @{w}: decoration on photo, {dec}')
+    for ps in pg.evaluate(PSEUDO_JS, 0.25):
+        problems.append(f'{page_name} @{w}: pseudo decoration over text, {ps}')
 
 
 def gate_g1_g5(url_for, shots=None):

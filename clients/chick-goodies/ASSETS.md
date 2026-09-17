@@ -120,6 +120,28 @@ so it came out of a design file rather than a camera roll.
 TABLE". **Left in place pending a yes or no from Tricia** — if it is not her,
 her About page carries a stranger's face under her name.
 
+### `tricia-portrait-471.jpg` — the grid removed by crop (2026-09-17, round two)
+
+Plan 10.2 rule 4 asks for the drawn grid gone, a 4:5 frame and monochrome.
+Measured first: the grid is a **border** graphic, not an overlay. Columns 0–140
+and 622–661 and rows 722–822 are white paper carrying the black strokes; the
+photograph's grey studio backdrop occupies columns 228–621 and rows 0–718. So a
+crop removes it and **no generative work was needed**.
+
+| | |
+|---|---|
+| Source | `tricia-662.jpg`, 662×823, md5 `4af53f3e9055d3e61f473c30e10f4200` |
+| Crop box | `(150, 0, 621, 589)` → 471×589, ratio 0.7996 ≈ 4:5 |
+| Conversion | greyscale in the file, not `filter:` in CSS |
+| Result | `tricia-portrait-471.jpg`, md5 `976ef989eceb27fa61e288c22ea4b4e3` |
+| Used by | `sample-1-editorial/index.html`, `story.html` |
+
+The original is untouched and still in git. Samples 2 and 3 still use
+`tricia-662.jpg`; only concept 1 was in the round-two brief.
+
+**The open question above is unchanged.** Cropping the grid out does not
+establish that the woman is Tricia. That still needs a yes or no from her.
+
 ## 4. Open question for the owner
 
 `IMG_7724.jpeg` was supplied with "THIS IS THE CORRECT INFO". It is a 1320×947
