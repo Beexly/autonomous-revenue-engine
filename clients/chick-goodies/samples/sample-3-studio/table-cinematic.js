@@ -228,27 +228,18 @@ for (const x of [1.2, -4.6, 6.9]){
 }
 
 /* ---------- her photographs, as prints lying on the table ---------- */
-/* Real event photos, sixteen of them, the length of the table, with a pair
- * under every camera station. Angled, modest in size and lit by the room,
- * which is why 480px files read as objects here instead of as soft wallpaper. */
+/* Real event photos as prints, between the objects. Angled, modest in size and
+ * lit by the room, which is why 480px files read as objects here instead of as
+ * soft wallpaper. */
 const loader = new T.TextureLoader();
 const prints = [
-  { f:'table-03.jpg',  x:-11.2, w:1.05 },  // 480x640
-  { f:'knot-4.jpg',    x: -9.7, w:1.45 },  // 945x720
-  { f:'graze-01.jpg',  x: -8.3, w:1.05 },  // 480x640
-  { f:'knot-3.jpg',    x: -7.0, w:1.45 },  // 945x720
-  { f:'board-02.jpg',  x: -5.6, w:1.05 },  // 480x640
-  { f:'table-01.jpg',  x: -3.7, w:1.05 },  // 480x640
-  { f:'graze-02.jpg',  x: -2.3, w:1.05 },  // 480x640
-  { f:'cart-640.jpg',  x: -0.9, w:1.45 },  // 640x480
-  { f:'sweets-01.jpg', x:  0.5, w:1.05 },  // 480x640
-  { f:'knot-2.jpg',    x:  2.2, w:1.45 },  // 945x720
-  { f:'table-02.jpg',  x:  3.6, w:1.05 },  // 480x640
-  { f:'boards-01.jpg', x:  4.9, w:1.05 },  // 480x640
-  { f:'sips-02.jpg',   x:  6.2, w:1.05 },  // 480x640
-  { f:'graze-03.jpg',  x:  7.8, w:1.05 },  // 480x640
-  { f:'board-01.jpg',  x:  9.2, w:1.05 },  // 480x640
-  { f:'wide-640.jpg',  x: 10.7, w:1.45 },  // 640x452
+  { f:'table-03.jpg',  x:-11.4, w:1.05 },
+  { f:'knot-3.jpg',    x: -5.9, w:1.45 },
+  { f:'board-02.jpg',  x: -3.4, w:1.00 },
+  { f:'table-01.jpg',  x: -2.2, w:1.05 },
+  { f:'boards-01.jpg', x:  0.4, w:1.05 },
+  { f:'candy-01.jpg',  x:  2.6, w:1.05 },
+  { f:'board-01.jpg',  x:  5.9, w:1.05 },
 ];
 for (const p of prints){
   loader.load('img/' + p.f, tex => {
@@ -277,6 +268,63 @@ for (const p of prints){
     edge.position.y -= .004; edge.receiveShadow = true;
     scene.add(edge);
   });
+}
+
+/* ---------- her food, cut out of her photographs and stood on the table ---------- */
+/* No models. Each object is one of her own photographs with the background
+ * removed, on an upright plane that turns to face the camera (around the
+ * vertical axis only, so it stays standing), casting its own silhouette as
+ * shadow. One sits under every camera station, the way a product site puts
+ * one real object in the middle of the frame. The cart stands on the floor
+ * behind the table. Three boards lie flat on the runner. */
+const standing = [];
+const cutouts = [
+  { f:'knot-2.webp',    x: -1.6, z:-.15, h:1.10 },  // cones, seen from the door
+  { f:'table-02.webp',  x: -4.0, z: .15, h: .95 },  // bloody marys
+  { f:'knot-4.webp',    x: -7.4, z:-.10, h:1.25 },  // station 2: the cones on their riser
+  { f:'sips-02.webp',   x:  4.7, z: .25, h:1.00 },  // station 3: bloody marys
+  { f:'cart-640.webp',  x:  4.2, z:-3.1, h:2.55, floor:true },  // station 3: the cart itself
+  { f:'graze-03.webp',  x:  7.7, z:-.20, h: .90 },  // jars
+  { f:'sips-01.webp',   x:  9.0, z: .10, h: .95 },  // station 4: mimosas
+  { f:'graze-02.webp',  x:  2.45,z:-.35, h: .75 },  // station 5: one cone past the candle, out of the close lens
+];
+const flats = [
+  { f:'wide-640.webp',  x: -9.0, w:1.50 },  // the board, from above
+  { f:'sweets-01.webp', x:  3.4, w:1.10 },  // the skillet
+  { f:'graze-01.webp',  x:10.0, w:1.30 },   // candy trays
+];
+const cutMaterial = tex => new T.MeshStandardMaterial({ map:tex, transparent:true, alphaTest:.35, roughness:.9, metalness:0, side:T.DoubleSide });
+const cutDepth = tex => new T.MeshDepthMaterial({ depthPacking:T.RGBADepthPacking, map:tex, alphaTest:.35 });
+for (const c of cutouts){
+  loader.load('img/cut/' + c.f, tex => {
+    tex.colorSpace = T.SRGBColorSpace;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const ratio = (tex.image && tex.image.width / tex.image.height) || 1;
+    const m = new T.Mesh(new T.PlaneGeometry(c.h * ratio, c.h), cutMaterial(tex));
+    const base = c.floor ? -1.32 : .176;
+    m.position.set(c.x, base + c.h / 2, c.z);
+    m.castShadow = true;
+    m.customDepthMaterial = cutDepth(tex);
+    scene.add(m); standing.push(m);
+    faceCamera();
+  });
+}
+for (const c of flats){
+  loader.load('img/cut/' + c.f, tex => {
+    tex.colorSpace = T.SRGBColorSpace;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const ratio = (tex.image && tex.image.height / tex.image.width) || 1;
+    const m = new T.Mesh(new T.PlaneGeometry(c.w, c.w * ratio), cutMaterial(tex));
+    m.rotation.x = -Math.PI/2;
+    m.rotation.z = (rnd()-.5) * .5;
+    m.position.set(c.x, .21, (rnd()-.5) * .3);
+    m.castShadow = true; m.receiveShadow = true;
+    m.customDepthMaterial = cutDepth(tex);
+    scene.add(m);
+  });
+}
+function faceCamera(){
+  for (const m of standing) m.rotation.y = Math.atan2(camera.position.x - m.position.x, camera.position.z - m.position.z);
 }
 
 /* ---------- the five stations: this is the navigation ---------- */
@@ -309,6 +357,7 @@ function applyCamera(){
   // the head moves a little with the cursor; never enough to break the frame
   camera.position.set(camPos.x + pointer.x * .55, camPos.y + pointer.y * .26, camPos.z);
   camera.lookAt(camTgt);
+  faceCamera();
   const s = Math.round(station) + 1;
   if (s !== metrics.station){
     metrics.station = s;
