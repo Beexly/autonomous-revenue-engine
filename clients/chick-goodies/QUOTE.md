@@ -51,3 +51,20 @@ The one-pager is priced at the cost of the first hour of the second job: it buys
 the relationship and the Option B upgrade, and it is the only version we can
 honestly deliver without her domain or new photos. Do not discount it — cut
 scope instead (drop the gallery, drop the FAQ, keep the prices and the CTAs).
+
+## Option C — The immersive site · **$1,500** (set 2026-09-17 at Garrett's request; Garrett says the number to the client)
+
+Live on **charcuteriechick.ai** in **3 weeks** after she picks.
+
+Everything in Option B, plus the 3D table home (`sample-3-studio/table.html`)
+finished: a designed phone version, inner pages restyled to match, the live quote
+total set in the scene's type, performance and device testing, photo restoration
+for the table cards. Scope and verified state: `PLAN-CONTENT-STRATEGY.md` section 11.
+
+Terms: half at start, half at launch. Ownership terms as Option B.
+
+Floor if she balks: **$1,200** for the one-page immersive without restyled inner
+pages. Never below. The $600 options do not move.
+
+Not included: WebGL on the other three concepts, video, photography beyond the
+Option B session.
