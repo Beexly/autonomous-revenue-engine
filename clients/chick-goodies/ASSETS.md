@@ -62,9 +62,13 @@ Her Shopify homepage gallery currently serves stock files: `Shrimp_Food_Prawns`,
 `healthy-simple-mexican-tacos-meat-600nw-…`, `cafe-drink-cake-…`). Part of the
 $600 job is deleting these from the storefront.
 
-### `catering-1000.jpg` — suspected stock, and it is load-bearing
+### `catering-1000.jpg` — stock. Removed 2026-09-17.
 
-**Flagged 2026-09-17. Needs a yes or no from Tricia before the samples go out.**
+**Confirmed and pulled from the build.** At 2000px there is not one piece of
+charcuterie in the frame: shrimp canapés in ceramic spoons, salmon-and-caviar
+blinis, quinoa-cucumber squares, tiered silver stands, a glass conservatory.
+That is a hotel canapé reception, not her work. The file is deleted from
+`site/img/` and all three sample `img/` directories; git history keeps it.
 
 Evidence it is not her work:
 
@@ -87,10 +91,34 @@ Where it currently ships:
 | `samples/sample-2-after-dark/story.html` | captioned "FROM THE KITCHEN TO YOUR TABLE" |
 | `samples/sample-1-editorial/gallery.html` | item 08, alt "…from Tricia's collection" |
 
-If it is stock, every one of those is presenting someone else's catering as
-hers, the worst of them attached to her highest price. Do not restore it
-either way — restoring stock spends credits to make a misrepresentation
-sharper.
+Two of those five were live. `looks.js` is not loaded by any page yet
+(`runway.js` reads `CHICK_LOOKS`, but nothing includes either), so its three
+entries were latent rather than shipping. All five are repointed anyway.
+
+**What replaced it**
+
+Tricia's own slider photographs, which were not previously in the build:
+`slider-01.jpg` and `slider-02.jpg` (2000×1333) — turkey sliders on a red
+lacquer tray, orchid garnish, gold-bead picks, real event light. She has
+eleven sliders on the menu and had no slider photograph anywhere in the build,
+while a stock canapé shot stood in for Muffuletta and Pepperoni.
+
+| Was | Now |
+|---|---|
+| `gallery.html` item 08 "Company, beautifully kept" | `slider-01.jpg`, "Something to hold" |
+| `story.html` `.story-wide` | `slider-01.jpg`, caption unchanged |
+| `looks.js` 05 Holy Grail of Grazing | `table-02.jpg` — a real grazing table |
+| `looks.js` 27 Muffuletta | `slider-01.jpg` |
+| `looks.js` 49 Pepperoni | `board-01.jpg` |
+
+### `tricia-662.jpg` — still open
+
+Studio seamless backdrop, fashion-catalog pose, a hand-drawn grid graphic laid
+over it. Its source name `Group_49_1_7ab96cd7-…` is design-tool layer naming,
+so it came out of a design file rather than a camera roll.
+`sample-2/story.html` captions it "TRICIA HOLFELDER / THE WOMAN BEHIND THE
+TABLE". **Left in place pending a yes or no from Tricia** — if it is not her,
+her About page carries a stranger's face under her name.
 
 ## 4. Open question for the owner
 
