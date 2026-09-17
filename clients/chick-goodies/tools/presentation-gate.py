@@ -12,7 +12,11 @@ Usage:
   python3 tools/presentation-gate.py --sample sample-1-editorial            # local files
   python3 tools/presentation-gate.py --sample sample-1-editorial --base URL # live host
 """
-import argparse, html as H, json, re, sys
+import argparse
+import html as H
+import json
+import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,7 +33,8 @@ KILL = ["Gathered around the table", "The small details", "An occasion on wheels
         "Good things on wheels", "Raise a glass", "A generous welcome",
         "Something sweet", "From Tricia's table", "Gallery Title", "$0.00", "25+"]
 
-METAS = json.loads((ROOT / 'tools' / 'plan-4-1-metas.json').read_text(encoding='utf-8'))
+METAS = json.loads(
+    (ROOT / 'tools' / 'plan-4-1-metas.json').read_text(encoding='utf-8'))
 
 TOTALS = {'holy75': 2630.22, 'holy150': 4400.22, 'grand50': 2512.22,
           'super50': 2040.22, 'standard50': 1804.22, 'graze50': 1686.22}
@@ -39,7 +44,8 @@ OVERLAP_JS = """() => {
   // points. Whatever the browser reports at a point is what the eye sees
   // there, so this respects paint order instead of guessing from z-index.
   const out = [];
-  const els = [...document.querySelectorAll('h1,h2,h3,h4,p,li,figcaption,a,button,label,dt,dd,output,blockquote')]
+  const els = [...document.querySelectorAll(
+    'h1,h2,h3,h4,p,li,figcaption,a,button,label,dt,dd,output,blockquote')]
     .filter(e => e.textContent.trim().length > 1 && e.offsetParent !== null && !e.closest('[hidden]'))
     .filter(e => { const s = getComputedStyle(e);
       return s.visibility !== 'hidden' && s.display !== 'none' && +s.opacity > 0.05; });
@@ -171,7 +177,8 @@ DECOR_JS = """() => {
         const hasText = f.textContent.trim().length > 0;
         // an ambient field at least as large as the photo is lighting, not an object
         if (!hasText && fArea >= iArea * 0.9) continue;
-        const cls = typeof f.className === 'string' && f.className ? '.' + f.className.trim().split(/\\s+/)[0] : '';
+        const cls = typeof f.className === 'string' && f.className
+          ? '.' + f.className.trim().split(/\\s+/)[0] : '';
         out.push(f.tagName + cls + ' sits on ' + (im.getAttribute('src')||'').split('/').pop());
         break;
       }
@@ -218,7 +225,24 @@ def gate_g2_g3(sample, fetch):
            (g3, {'titles': len(titles), 'metas': len(metas), 'match_4_1': meta_ok})
 
 
-def gate_g1_g5(sample, url_for, shots=None):
+def _sweep_page(pg, page_name, w, problems):
+    """Every G1 assertion for one page at one width."""
+    if pg.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1"):
+        sw = pg.evaluate("document.documentElement.scrollWidth")
+        problems.append(f'{page_name} @{w}: horizontal scroll ({sw}px > {w}px)')
+    for c in pg.evaluate(CLIP_JS):
+        problems.append(f'{page_name} @{w}: clipped {c}')
+    for o in pg.evaluate(OVERLAP_JS):
+        problems.append(f"{page_name} @{w}: {o['over']} covers {o['points']} of {o['text']}")
+    for g in pg.evaluate(GUTTER_JS, 12 if w <= 420 else 20):
+        problems.append(f'{page_name} @{w}: touches edge, {g}')
+    for c in pg.evaluate(COLLAPSE_JS):
+        problems.append(f'{page_name} @{w}: collapsed figure, {c}')
+    for dec in pg.evaluate(DECOR_JS):
+        problems.append(f'{page_name} @{w}: decoration on photo, {dec}')
+
+
+def gate_g1_g5(url_for, shots=None):
     from playwright.sync_api import sync_playwright
     problems, quote = [], {}
     with sync_playwright() as pw:
@@ -235,20 +259,7 @@ def gate_g1_g5(sample, url_for, shots=None):
                 pg.evaluate("window.scrollTo(0, 0)")
                 pg.wait_for_function("window.scrollY === 0", timeout=5000)
                 pg.wait_for_timeout(350)
-                if pg.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1"):
-                    sw = pg.evaluate("document.documentElement.scrollWidth")
-                    problems.append(f'{page_name} @{w}: horizontal scroll ({sw}px > {w}px)')
-                for c in pg.evaluate(CLIP_JS):
-                    problems.append(f'{page_name} @{w}: clipped {c}')
-                for o in pg.evaluate(OVERLAP_JS):
-                    problems.append(f"{page_name} @{w}: {o['over']} covers {o['points']} of {o['text']}")
-                min_pad = 12 if w <= 420 else 20
-                for g in pg.evaluate(GUTTER_JS, min_pad):
-                    problems.append(f'{page_name} @{w}: touches edge, {g}')
-                for c in pg.evaluate(COLLAPSE_JS):
-                    problems.append(f'{page_name} @{w}: collapsed figure, {c}')
-                for dec in pg.evaluate(DECOR_JS):
-                    problems.append(f'{page_name} @{w}: decoration on photo, {dec}')
+                _sweep_page(pg, page_name, w, problems)
                 if shots and w in (390, 1440):
                     Path(shots).mkdir(parents=True, exist_ok=True)
                     pg.screenshot(path=f'{shots}/{page_name}-{w}.png', full_page=True)
@@ -282,16 +293,23 @@ def main():
     if a.base:
         import urllib.request
         base = a.base.rstrip('/')
-        url_for = lambda p: f'{base}/{p}'
+        def url_for(p):
+            return f'{base}/{p}'
+        if not base.startswith('https://'):
+            sys.exit(f'--base must be an https URL, got: {base}')
+
         def fetch(p):
-            with urllib.request.urlopen(f'{base}/{p}', timeout=30) as r:
+            with urllib.request.urlopen(f'{base}/{p}', timeout=30) as r:  # nosec B310 - https pinned above
                 return r.read().decode('utf-8', 'replace')
     else:
-        url_for = lambda p: (d / p).resolve().as_uri()
-        fetch = lambda p: (d / p).read_text(encoding='utf-8', errors='replace')
+        def url_for(p):
+            return (d / p).resolve().as_uri()
+
+        def fetch(p):
+            return (d / p).read_text(encoding='utf-8', errors='replace')
 
     (g2, g2d), (g3, g3d) = gate_g2_g3(a.sample, fetch)
-    problems, quote = gate_g1_g5(a.sample, url_for, a.shots)
+    problems, quote = gate_g1_g5(url_for, a.shots)
     g1 = not problems
     g5 = all(quote.values())
 
