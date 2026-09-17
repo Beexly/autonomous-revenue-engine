@@ -497,12 +497,25 @@ not `<link>`.
 6. **Two credentials pasted into chat still need rotating**: the Higgsfield key
    id and the Firecrawl key. Neither was used, stored or transmitted.
 
-7. **PR #57 is blocked by SonarCloud and I cannot see why.** The gate fails on
-   "C Security Rating on New Code". The project is not readable
-   unauthenticated, the check run carries no annotations, and there are no
-   inline comments, so there is no route from here to the finding itself.
+7. **PR #57 is blocked by SonarCloud, and the gate is failing repo-wide.**
 
-   **What bisection did establish**, with two throwaway probe PRs:
+   The check fails on "C Security Rating on New Code". Garrett opened the
+   dashboard, which this session cannot reach, and it reframes the whole thing:
+
+   | `main`, overall code | |
+   |---|---|
+   | Quality gate | **Failed** |
+   | Security | **E** — 27 open issues |
+   | Reliability | D — 357 open issues |
+   | Maintainability | A — 439 open issues |
+   | Duplications | 16.1% |
+
+   **The default branch does not pass this gate.** Security issues are up
+   2,600% since 24 Aug, so this is accumulated debt across the repository, not
+   something round two introduced. Holding this PR to a standard `main` itself
+   does not meet would block the deploy indefinitely.
+
+   **What bisection established**, with two throwaway probe PRs:
 
    | probe | contents | SonarCloud |
    |---|---|---|
@@ -510,29 +523,35 @@ not `<link>`.
    | #60 | web files + the two new Python tools | **PASS** |
    | #57 | the above + edits to `presentation-gate.py`, `contrast-audit.py` | **FAIL** |
 
-   So **nothing that ships to Tricia is implicated.** The finding is in
-   developer tooling under `clients/chick-goodies/tools/`, which is excluded
-   from deploy by `.vercelignore` and never reaches a browser of hers.
+   So **nothing that ships to Tricia is implicated.** The finding sits in
+   developer tooling under `clients/chick-goodies/tools/`, which `.vercelignore`
+   keeps off the deployed hosts entirely.
 
-   Five fixes were attempted and none cleared it. Each is recorded because the
-   wrong ones cost cycles:
+   Six attempts, recorded because the wrong ones cost cycles:
 
    | attempt | outcome |
    |---|---|
    | exclude `**/vendor/**` via `.sonarcloud.properties` | no effect — Automatic Analysis reads config from the **default branch** |
-   | revert the three.js minification | no effect, and the 34% saving was given back |
+   | revert the three.js minification | no effect; the 34% saving was given back for nothing |
    | add a URL guard to `contrast-audit.py` | no effect — that file shipped in #55, which passed |
    | drop `tempfile.mkdtemp()` from `pixel-contrast.py` | no effect — probe #60 passes *with* that file |
-   | replace `--also` with `--with-table`, removing the argv-to-URL path | no effect |
+   | replace `--also` with `--with-table`, removing an argv-to-URL path | no effect |
+   | close two argv-to-sink paths in the gate (path injection on `--sample`, URL rebuilt from validated parts) | no effect on the gate, but **kept** — it is correct hardening on its own |
 
-   **What is needed:** one look at
-   `https://sonarcloud.io/dashboard?id=Beexly_autonomous-revenue-engine&pullRequest=57`,
-   which Garrett can open and I cannot. The rule id and file will make the fix
-   a minute's work.
+   The last one is worth keeping regardless of the gate: `--sample` was being
+   joined straight into a filesystem path and read, and `--base` was
+   interpolated into a `urlopen` whose only protection was bandit's `# nosec`,
+   which SonarCloud does not read.
 
-   Until then **Workstream B is committed and gated but not deployed.** Link 4
-   is live at its round-one state: the 90px overflow at 390 and the altered
-   "All the elegance" headline are both still on it.
+   **What is still needed:** the PR-scoped issue list at
+   `https://sonarcloud.io/project/issues?id=Beexly_autonomous-revenue-engine&pullRequest=57&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true`.
+   A rule id and a file name make the remaining fix a minute's work. Until
+   then **Workstream B is committed and gated but not deployed**, and link 4 is
+   live at its round-one state — the 90px overflow at 390 and the altered "All
+   the elegance" headline are both still on it.
+
+   Separately, and outside this brief: 27 security and 357 reliability issues
+   on `main` are worth a pass of their own.
 
 ## What Garrett needs to do — round two
 
