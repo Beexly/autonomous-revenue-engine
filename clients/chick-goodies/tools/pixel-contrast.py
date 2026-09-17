@@ -42,13 +42,11 @@ def main():
     base, page, widths = sys.argv[1], sys.argv[2], [int(x) for x in sys.argv[3].split(',')]
     if not base.startswith(('https://', 'http://localhost', 'http://127.0.0.1')):
         sys.exit(f'base must be https or loopback, got: {base}')
-    import pathlib
-    import tempfile
+    import io
 
     from PIL import Image
     from playwright.sync_api import sync_playwright
     worst, failures = [], 0
-    tmp = pathlib.Path(tempfile.mkdtemp())
     with sync_playwright() as pw:
         br = pw.chromium.launch(args=['--use-gl=swiftshader', '--enable-unsafe-swiftshader'])
         for w in widths:
@@ -60,9 +58,9 @@ def main():
             # hide the text only; every background layer keeps painting
             pg.add_style_tag(content='h1,h2,h3,p,a,button,li,figcaption,output,span,b,em,i,dt,dd,label{color:transparent !important}')
             pg.wait_for_timeout(500)
-            shot = tmp / f'bg-{w}.png'
-            pg.screenshot(path=str(shot))
-            im = Image.open(shot).convert('RGB')
+            # kept in memory: the background frame is an intermediate, and writing
+            # it to a world-writable temp directory buys nothing
+            im = Image.open(io.BytesIO(pg.screenshot())).convert('RGB')
             sx = im.size[0] / w
             for b in boxes:
                 x0, y0 = int(b['x'] * sx), int(b['y'] * sx)
