@@ -94,15 +94,15 @@ h2{font-family:var(--garden-serif);font-size:clamp(1.7rem,3.6vw,2.5rem);font-wei
 /* Menu book */
 .menu-book{padding-top:90px}
 .menu-tabs{display:flex;gap:4px;overflow-x:auto;padding-bottom:6px;border-bottom:1px solid var(--garden-soft);font-family:var(--garden-serif);font-size:14px}
-.menu-tabs a{white-space:nowrap;padding:10px 6px;border:1px solid transparent;border-bottom:none;border-radius:6px 6px 0 0;cursor:pointer}
-.menu-tabs a[data-current="true"]{background:var(--garden-cream);border-color:var(--garden-soft)}
+.menu-tabs a{white-space:nowrap;padding:10px 14px 10px 0;border-bottom:1px solid transparent}
+.menu-tabs a[data-current="true"]{border-bottom-color:var(--garden-ink)}
 .menu-panel{display:none;grid-template-columns:.55fr 1fr;gap:28px;align-items:start}
 .menu-panel.active{display:grid}
 .menu-image img{border:1px solid var(--garden-ink);border-radius:6px;box-shadow:0 6px 18px rgba(43,27,61,.09)}
 .photo-note{font-family:var(--garden-serif);font-size:12px;font-style:italic;margin-top:8px;display:block;opacity:.68}
 .menu-detail h2{margin-bottom:6px}
 .price{font-family:var(--garden-serif);font-size:2rem;font-style:italic}
-.price small{font-family:var(--garden-sans);font-size:.5em;text-transform:uppercase;opacity:.68}
+.price small{display:block;margin-bottom:4px;font-family:var(--garden-sans);font-size:.5em;letter-spacing:.08em;text-transform:uppercase;opacity:.68}
 .menu-min{font-family:var(--garden-serif);font-style:italic;font-size:.9rem}
 .service-note,.extras,.choices,.menu-tease,.closing-note{background:var(--garden-cream);border-top:1px solid var(--garden-soft)}
 .service-note,.extras,.choices{padding:46px 28px;margin:0}
@@ -217,3 +217,5 @@ footer{padding:0 28px 25px}.cta-heading{max-width:720px;margin:20px auto}.cta-ac
 @media(max-width:768px){.masthead{flex-wrap:wrap;gap:18px;padding:16px}.masthead nav{width:100%;gap:12px;justify-content:space-between;font-size:12px;letter-spacing:0;flex-wrap:wrap}.review-quotes,.choice-list,.home-tricia{grid-template-columns:1fr}.home-tricia img{max-width:220px}.content-block{padding:45px 22px}.menu-panel{grid-template-columns:1fr}.menu-image img{max-height:320px;width:auto}.cta-actions{flex-wrap:wrap}.form-pair{grid-template-columns:1fr}}
 
 .specimen img{height:clamp(200px,24vw,340px);object-fit:contain;background:var(--garden-cream)}
+
+@media(max-width:480px){.masthead{padding:14px 20px}.masthead nav{display:grid;grid-template-columns:repeat(3,auto);gap:10px 16px;justify-content:start;font-size:13px}}

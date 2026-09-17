@@ -19,12 +19,6 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
-          "ok": true,
-          "alt": true,
-          "sized": true
-        },
-        {
           "src": "img/cart-640.jpg",
           "ok": true,
           "alt": true,
@@ -70,7 +64,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -81,20 +75,16 @@
           "bytes": 79442
         },
         {
-          "name": "knot-3.jpg",
-          "bytes": 228333
-        },
-        {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
+          "name": "table-scene.js",
+          "bytes": 8594
         },
         {
           "name": "cart-640.jpg",
           "bytes": 90485
         },
         {
-          "name": "table-scene.js",
-          "bytes": 8534
+          "name": "knot-3.jpg",
+          "bytes": 228333
         },
         {
           "name": "gathering.js",
@@ -172,23 +162,23 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
-        },
-        {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 0
+          "bytes": 10894
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "gathering.js",
-          "bytes": 5237
+          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
+          "bytes": 0
         },
         {
           "name": "knot-2.jpg",
           "bytes": 177882
+        },
+        {
+          "name": "gathering.js",
+          "bytes": 5237
         },
         {
           "name": "gathering-polish.css",
@@ -290,7 +280,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -301,24 +291,24 @@
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
-        },
-        {
           "name": "board-01.jpg",
           "bytes": 115720
+        },
+        {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
         },
         {
           "name": "cart-640.jpg",
           "bytes": 90485
         },
         {
-          "name": "sips-01.jpg",
-          "bytes": 55668
-        },
-        {
           "name": "knot-3.jpg",
           "bytes": 228333
+        },
+        {
+          "name": "sips-01.jpg",
+          "bytes": 55668
         },
         {
           "name": "gathering.js",
@@ -389,7 +379,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -462,7 +452,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -509,12 +499,6 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
-          "ok": true,
-          "alt": true,
-          "sized": true
-        },
-        {
           "src": "img/cart-640.jpg",
           "ok": true,
           "alt": true,
@@ -560,7 +544,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -579,12 +563,8 @@
           "bytes": 90485
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
-        },
-        {
           "name": "table-scene.js",
-          "bytes": 8534
+          "bytes": 8594
         },
         {
           "name": "gathering.js",
@@ -599,12 +579,12 @@
           "bytes": 1445
         },
         {
-          "name": "three.module.js",
-          "bytes": 1314681
-        },
-        {
           "name": "tricia-662.jpg",
           "bytes": 81401
+        },
+        {
+          "name": "three.module.js",
+          "bytes": 1314681
         }
       ],
       "route": "index.html",
@@ -662,19 +642,19 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
           "bytes": 0
         },
         {
-          "name": "knot-2.jpg",
-          "bytes": 177882
-        },
-        {
           "name": "brand.webp",
           "bytes": 79442
+        },
+        {
+          "name": "knot-2.jpg",
+          "bytes": 177882
         },
         {
           "name": "gathering.js",
@@ -780,7 +760,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -791,24 +771,24 @@
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
-        },
-        {
           "name": "board-01.jpg",
           "bytes": 115720
+        },
+        {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
         },
         {
           "name": "cart-640.jpg",
           "bytes": 90485
         },
         {
-          "name": "sips-01.jpg",
-          "bytes": 55668
-        },
-        {
           "name": "knot-3.jpg",
           "bytes": 228333
+        },
+        {
+          "name": "sips-01.jpg",
+          "bytes": 55668
         },
         {
           "name": "sweets-01.jpg",
@@ -879,7 +859,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -952,7 +932,7 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 11081
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
@@ -990,14 +970,14 @@
   ],
   "scene": {
     "ready": true,
-    "frames": 4,
+    "frames": 17,
     "paused": false,
     "drawCalls": 23,
     "quality": 1.5,
     "camera": [
       0,
-      7.7,
-      9.5
+      7.049865677810434,
+      10.050113657237326
     ],
     "pointer": [
       0,
