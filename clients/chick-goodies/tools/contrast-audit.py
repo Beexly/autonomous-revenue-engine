@@ -95,6 +95,13 @@ JS = """() => {
 }"""
 
 base, pages, widths = sys.argv[1], sys.argv[2].split(','), [int(x) for x in sys.argv[3].split(',')]
+# Same guard as the other tools: this drives a real browser at whatever URL it
+# is handed, so it is restricted to https or loopback and never an arbitrary
+# scheme (file:, data:, an internal host).
+if not base.startswith(('https://', 'http://localhost', 'http://127.0.0.1')):
+    sys.exit(f'base must be https or loopback, got: {base}')
+if any('/' in p or '\\' in p or '..' in p for p in pages):
+    sys.exit('page names are bare stems, not paths')
 bad = 0
 with sync_playwright() as pw:
     b = pw.chromium.launch()
