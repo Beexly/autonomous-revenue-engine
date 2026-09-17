@@ -124,9 +124,10 @@ h2{font-family:var(--garden-serif);font-size:var(--t5);font-weight:400;font-styl
 
 /* Menu book */
 .menu-book{padding-top:90px}
-.menu-tabs{display:flex;gap:4px;overflow-x:auto;padding-bottom:6px;border-bottom:var(--hair) solid var(--garden-gold);font-family:var(--garden-serif);font-size:14px}
-.menu-tabs a{white-space:nowrap;padding:10px 14px 10px 0;border-bottom:1px solid transparent}
-.menu-tabs a[data-current="true"]{border-bottom-color:var(--garden-ink)}
+.menu-tabs{display:flex;gap:28px;flex-wrap:wrap;padding-bottom:14px;border-bottom:var(--hair) solid var(--garden-gold);font-family:var(--garden-sans);font-size:var(--t0);text-transform:uppercase;letter-spacing:.14em}
+.menu-tabs a{white-space:nowrap;padding:8px 0;border-bottom:2px solid transparent;color:var(--garden-muted)}
+.menu-tabs a[data-current="true"]{border-bottom-color:var(--garden-accent);color:var(--garden-ink)}
+.menu-tabs a span{color:var(--garden-gold-ink)}
 .menu-panel{display:none;grid-template-columns:.55fr 1fr;gap:28px;align-items:start}
 .menu-panel.active{display:grid}
 .menu-image img{border:var(--hair) solid var(--garden-gold);border-radius:var(--radius)}
@@ -211,7 +212,7 @@ footer{font-family:var(--garden-sans);font-size:var(--t2)}
   .footer-bottom{flex-direction:column;text-align:center}
   .footer-bottom .contact{text-align:left}
   .extras dl{grid-template-columns:1fr}
-  .menu-tabs{font-size:13px}
+  .menu-tabs{gap:16px}
   .specimen-wall{grid-template-columns:repeat(6,1fr)}
   .specimen.tall,.specimen.wide,.specimen.landscape{grid-column:span 6}
   .specimen.oval{border-radius:0}
