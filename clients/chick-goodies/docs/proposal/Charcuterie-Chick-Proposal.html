@@ -22,12 +22,11 @@ a { color: var(--accent); text-decoration: none; }
 .cover { border-bottom: 2px solid var(--accent); padding-bottom: 12pt; margin-bottom: 6pt; }
 .cover p { font-size: 10.5pt; margin: 0 0 4pt; color: var(--muted); }
 .cover p strong { color: var(--ink); }
-table.sig { margin-top: 26pt; font-size: 10pt; }
-table.sig td { border-bottom: none; padding: 0 12pt 22pt 0; }
-table.sig td:nth-child(2), table.sig td:nth-child(3) { border-bottom: 1px solid var(--ink); color: var(--muted); font-size: 8pt; vertical-align: bottom; padding-bottom: 2pt; }
-table.sig td:nth-child(1) { width: 44%; vertical-align: bottom; padding-bottom: 2pt; }
-table.sig td:nth-child(3) { width: 18%; }
-table.sig tr + tr td { padding-top: 30pt; }
+.sig { margin-top: 26pt; font-size: 10pt; }
+.sig-row { display: flex; align-items: flex-end; gap: 14pt; margin-bottom: 30pt; }
+.sig-row .who { flex: 0 0 44%; }
+.sig-row .line { flex: 1 1 auto; border-bottom: 1px solid var(--ink); color: var(--muted); font-size: 8pt; padding-bottom: 2pt; }
+.sig-row .date { flex: 0 0 18%; }
 </style></head><body><div class="cover"><h1>Proposal: website, workflows and photography for Charcuterie Chick</h1>
 <p><strong>Prepared for</strong> Tricia Holfelder, Charcuterie Chick (The Chick Goodies), Tomball, Texas<br />
 <strong>Prepared by</strong> Garrett Baxley, Galaxy Sports Edge LLC<br />
@@ -235,4 +234,4 @@ table.sig tr + tr td { padding-top: 30pt; }
 <p><strong>Validity.</strong> These prices hold through October 1, 2026.</p>
 <h2>Acceptance</h2>
 <p>Reply "approved" with the direction you picked and the items you want, or sign below.</p>
-<table class="sig"><tr><td>Tricia Holfelder, Charcuterie Chick</td><td>Signature</td><td>Date</td></tr><tr><td>Garrett Baxley, Galaxy Sports Edge LLC</td><td>Signature</td><td>Date</td></tr></table></body></html>
+<div class="sig"><div class="sig-row"><span class="who">Tricia Holfelder, Charcuterie Chick</span><span class="line">Signature</span><span class="line date">Date</span></div><div class="sig-row"><span class="who">Garrett Baxley, Galaxy Sports Edge LLC</span><span class="line">Signature</span><span class="line date">Date</span></div></div></body></html>

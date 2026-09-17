@@ -120,4 +120,4 @@ The first 90 days of monitoring and small changes are included with any website.
 
 Reply "approved" with the direction you picked and the items you want, or sign below.
 
-<table class="sig"><tr><td>Tricia Holfelder, Charcuterie Chick</td><td>Signature</td><td>Date</td></tr><tr><td>Garrett Baxley, Galaxy Sports Edge LLC</td><td>Signature</td><td>Date</td></tr></table>
+<div class="sig"><div class="sig-row"><span class="who">Tricia Holfelder, Charcuterie Chick</span><span class="line">Signature</span><span class="line date">Date</span></div><div class="sig-row"><span class="who">Garrett Baxley, Galaxy Sports Edge LLC</span><span class="line">Signature</span><span class="line date">Date</span></div></div>
