@@ -101,16 +101,16 @@
           "bytes": 5237
         },
         {
-          "name": "three.module.js",
-          "bytes": 1314681
-        },
-        {
           "name": "gathering-polish.css",
           "bytes": 1565
         },
         {
           "name": "content.css",
           "bytes": 1445
+        },
+        {
+          "name": "three.module.js",
+          "bytes": 1314681
         },
         {
           "name": "tricia-662.jpg",
@@ -183,12 +183,12 @@
           "bytes": 79442
         },
         {
-          "name": "knot-2.jpg",
-          "bytes": 177882
-        },
-        {
           "name": "gathering.js",
           "bytes": 5237
+        },
+        {
+          "name": "knot-2.jpg",
+          "bytes": 177882
         },
         {
           "name": "gathering-polish.css",
@@ -313,20 +313,20 @@
           "bytes": 90485
         },
         {
-          "name": "knot-3.jpg",
-          "bytes": 228333
-        },
-        {
           "name": "sips-01.jpg",
           "bytes": 55668
         },
         {
-          "name": "sweets-01.jpg",
-          "bytes": 111688
+          "name": "knot-3.jpg",
+          "bytes": 228333
         },
         {
           "name": "gathering.js",
           "bytes": 5237
+        },
+        {
+          "name": "sweets-01.jpg",
+          "bytes": 111688
         },
         {
           "name": "gathering-polish.css",
@@ -575,12 +575,12 @@
           "bytes": 228333
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
-        },
-        {
           "name": "cart-640.jpg",
           "bytes": 90485
+        },
+        {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
         },
         {
           "name": "table-scene.js",
@@ -599,12 +599,12 @@
           "bytes": 1445
         },
         {
-          "name": "tricia-662.jpg",
-          "bytes": 81401
-        },
-        {
           "name": "three.module.js",
           "bytes": 1314681
+        },
+        {
+          "name": "tricia-662.jpg",
+          "bytes": 81401
         }
       ],
       "route": "index.html",
@@ -669,12 +669,12 @@
           "bytes": 0
         },
         {
-          "name": "brand.webp",
-          "bytes": 79442
-        },
-        {
           "name": "knot-2.jpg",
           "bytes": 177882
+        },
+        {
+          "name": "brand.webp",
+          "bytes": 79442
         },
         {
           "name": "gathering.js",

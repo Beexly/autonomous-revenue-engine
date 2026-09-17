@@ -22,7 +22,7 @@ const metrics = { ready:false, frames:0, paused:reduced.matches, station:1, draw
 window.TableScene = metrics;
 
 /* ---------- small helpers, written here rather than pulled in ---------- */
-const clamp = (v,a,b) => v < a ? a : v > b ? b : v;
+const clamp = (v,a,b) => Math.min(Math.max(v, a), b);
 // cubic ease, the only easing curve this site needs
 const ease  = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
 const lerp  = (a,b,t) => a + (b-a)*t;
@@ -60,7 +60,10 @@ function matcap(base, key, rim, gloss){
 /* Deterministic noise so the table dresses the same way on every load. */
 function seeded(seed){
   let s = seed >>> 0;
-  return () => (s = (s*1664525 + 1013904223) >>> 0) / 4294967296;
+  return () => {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
 }
 
 try {
@@ -216,7 +219,7 @@ const glassMat = new T.ShaderMaterial({
 const plateGeo = new T.CylinderGeometry(.30, .23, .035, 40);
 const bowlGeo  = new T.SphereGeometry(.17, 20, 14, 0, Math.PI*2, 0, Math.PI/2);
 const cupGeo   = new T.CylinderGeometry(.085, .058, .23, 18, 1, true);
-const dressing = [], flames = [];
+const flames = [];
 
 // Settings run the length of the table. Rules, not hand placement.
 for (let i = 0; i < 34; i++){
@@ -258,7 +261,7 @@ for (let i = 0; i < 34; i++){
     bowl.scale.setScalar(.95 + rnd()*.5);
     bowl.position.y = .01; g.add(bowl);
   }
-  scene.add(g); dressing.push(g);
+  scene.add(g);
 }
 
 // candlesticks, the light the room is actually lit by
