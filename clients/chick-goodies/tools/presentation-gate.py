@@ -384,7 +384,16 @@ def main():
             return (d / p).read_text(encoding='utf-8', errors='replace')
 
     (g2, g2d), (g3, g3d) = gate_g2_g3(a.sample, fetch)
-    extra = tuple(x.strip() for x in a.also.split(',') if x.strip())
+    # --also is command-line input that ends up in a URL this tool navigates to,
+    # so it is restricted to bare page stems: no separators, no scheme, no '..'.
+    extra = []
+    for x in (y.strip() for y in a.also.split(',')):
+        if not x:
+            continue
+        if not re.fullmatch(r'[A-Za-z0-9._-]+\.html', x) or '..' in x:
+            sys.exit(f'--also takes bare page names like table.html, got: {x}')
+        extra.append(x)
+    extra = tuple(extra)
     problems, quote = gate_g1_g5(url_for, a.shots, extra)
     g1 = not problems
     g5 = all(quote.values())
