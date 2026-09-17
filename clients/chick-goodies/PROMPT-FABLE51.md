@@ -78,6 +78,9 @@ The plan must contain, in this order:
    say why it reads synthetic and what replaces it.
 
 ## Rules for your writing
+- Photography rule (owner-confirmed): AI recreation/enhancement of HER OWN
+  photos is permitted — upscale, clean, restore, recompose. Never generic or
+  invented AI food imagery. Your plan may direct image work under that rule.
 - Your plan text itself must pass the same bar: no AI tells, no filler, no
   "in today's landscape". You are writing for a client-facing bar.
 - Every price, review count, and claim you write must appear in FACTS.md. If

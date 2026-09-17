@@ -18,7 +18,9 @@ One-pagers ($150) are a separate product — do not touch `site/` or showcase.
 
 ## Hard rules (from owner, non-negotiable)
 - Facts only. No invented prices, reviews, ratings, or testimonials.
-- No AI images. Her real photos only (max 480×640 public, Knot shots 945×720).
+- Her real photos are the only source material. AI recreation/enhancement of
+  HER OWN photos is permitted (upscale, clean, restore, recompose) — but never
+  invented/generic AI food imagery. Originals stay in git history.
 - No proposal/pitch content on her pages. No Beexly branding.
 - $150 / $600 / $500 only. No invented third price.
 - Print 35 years (not 25). Never print $0.00. Never print "Gallery Title".
