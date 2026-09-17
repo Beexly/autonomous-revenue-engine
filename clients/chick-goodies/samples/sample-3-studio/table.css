@@ -197,3 +197,50 @@ p{margin:0 0 20px;color:var(--dim)}
   .photo-band::before{inset:-20px -22px}
   .portrait-print{flex:0 0 auto;max-width:220px}
 }
+
+/* ---- 11.3 item 4: the number, in the room ----
+   Same ids as enquire.html so gathering.js is the single source of the
+   arithmetic. Only the skin is new. */
+.counter{width:100%;max-width:1180px;position:relative;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.counter::before{content:"";position:absolute;inset:-40px -44px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,#120d0af7 0%,#120d0ae8 55%,transparent 84%)}
+.counter label{display:block;font:500 11px/1 var(--sans);letter-spacing:.16em;
+  text-transform:uppercase;color:#f4ece0a6;margin:18px 0 7px}
+.counter label:first-child{margin-top:0}
+.counter select,.counter input,.counter textarea{
+  width:100%;background:#1c1410;color:var(--ink);border:1px solid #f4ece029;
+  border-radius:3px;padding:12px 13px;font:400 15px/1.4 var(--sans);min-height:46px}
+.counter textarea{resize:vertical}
+.counter select:focus-visible,.counter input:focus-visible,.counter textarea:focus-visible{
+  outline:2px solid var(--ember);outline-offset:2px}
+.stepper{display:flex;gap:8px;align-items:stretch}
+.stepper input{text-align:center}
+.stepper button{flex:0 0 46px;min-height:46px;background:#1c1410;color:var(--ink);
+  border:1px solid #f4ece029;border-radius:3px;font-size:19px;cursor:pointer}
+.stepper button:hover:not(:disabled){border-color:var(--ember);color:var(--ember)}
+.stepper button:disabled{opacity:.35;cursor:default}
+#guest-hint{font-size:12.5px;color:#f4ece080;margin:8px 0 0}
+
+/* the total is the biggest thing on the station */
+.counter-total{border-left:1px solid #f4ece01f;padding-left:44px}
+.counter-total .eyebrow{margin-bottom:14px}
+#total{display:block;font-family:var(--serif);font-weight:300;font-optical-sizing:auto;
+  font-size:clamp(46px,6vw,88px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+#quote-error{font-size:13.5px;color:var(--ember);margin:12px 0 0;min-height:0}
+#quote-error:empty{display:none}
+#seats{display:flex;flex-wrap:wrap;gap:5px;margin:20px 0 4px}
+#seats i{width:9px;height:9px;border-radius:50%;background:#e8a33d80;display:block}
+.counter-total dl{margin:22px 0 0;padding:0}
+.counter-total dl>div{display:flex;justify-content:space-between;gap:20px;
+  padding:11px 0;border-top:1px solid #f4ece01f;font-size:14px}
+.counter-total dt{color:#f4ece0a6}
+.counter-total dd{margin:0;color:var(--ink)}
+.counter-total .terms{margin-top:22px}
+.counter-total .acts{margin-top:26px}
+.colophon{width:100%;max-width:1180px;margin:0}
+
+@media(max-width:900px){
+  .counter{grid-template-columns:1fr;gap:38px}
+  .counter-total{border-left:0;border-top:1px solid #f4ece01f;padding-left:0;padding-top:30px}
+}
