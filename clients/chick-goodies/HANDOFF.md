@@ -1,5 +1,7 @@
 # HANDOFF — Charcuterie Chick (read this first)
 
+> **Superseded 2026-09-17 on one point:** Garrett presents all three samples and Tricia picks. Do not read the "sample 3 only" lines below as current. The current handoff is `STATE.md`, then `PROMPT-BUILDERS.md`, then `PLAN-CONTENT-STRATEGY.md`. The owner verdicts, design bans and photography ceiling below still apply.
+
 You are taking over from grok-4.6 on Garrett’s machine. He is switching to
 OpenRouter `stealth/union-alpha`. Do not recap this file back to him. Open
 the live URL, then work.
