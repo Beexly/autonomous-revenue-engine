@@ -106,7 +106,7 @@ The first 90 days of monitoring and small changes are included with any website.
 
 **Payment.** One-page site: due on delivery. Full or immersive website: half to start, half at launch. Workflows: half to start, half when live. Photography: due when you approve the delivered set. Care and growth plans: billed monthly in advance from day 91, cancel any time with thirty days' notice. Prices in US dollars.
 
-**Payable to** Galaxy Sports Edge LLC (Garrett Baxley). Pay by card through our secure payment link [GARRETT: Stripe link], or by check, Zelle or bank transfer [GARRETT: details]. Every invoice references this proposal.
+**Payable to** Galaxy Sports Edge LLC (Garrett Baxley). Pay by card or by bank through the secure payment link on your invoice, or by check or Zelle to Galaxy Sports Edge LLC. Every invoice references this proposal.
 
 **Ownership.** Your domain, logo, photos and words stay yours. The website files are yours at launch. Nothing on your current site changes until you say go.
 
