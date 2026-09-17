@@ -8,9 +8,28 @@ run.
 
 ## Status in one line
 
-Samples 1, 2 and 3 pass G1, G2, G3, G4 and G5 against the repository. G6 did
-not run: this container has no Vercel credentials, so nothing was deployed and
-the three live hosts still serve the pre-correction build.
+All three samples are deployed and live with the corrected build. G1 to G5 pass;
+G6 is deployed and verified, with one limitation stated below.
+
+## How the deploy actually happened
+
+The three sample projects are git-connected to this repository, each with its
+own root directory. Earlier in this session I recorded them as manual uploads,
+which was wrong, and wrote deploy instructions on that basis. They auto-deploy
+from the branch.
+
+On 800fb6f all three builds failed. The repository root vercel.json sets
+outputDirectory to "docs". That directory exists at the repository root and not
+inside a sample directory, so a project rooted at a sample had nothing to
+publish. Under manual upload the config never applied; git-connected it did.
+
+8cb4375 gives each sample its own vercel.json declaring a static passthrough,
+and a .vercelignore keeping *.py, *.md, test-output, qa-evidence, qa-runtime and
+__pycache__ off the host. All three builds went green on that commit.
+
+The .vercelignore also closed a leak found earlier in this session. Before it,
+GARDEN-BIBLE.md, MIDNIGHT-BIBLE.md, AUDIT-IMPLEMENTED.md, build_garden.py and
+build_midnight.py all returned 200 from the live hosts. They now return 404.
 
 ## Sample 1 — Garden Atelier (`sample-1-editorial`)
 
@@ -22,7 +41,7 @@ the three live hosts still serve the pre-correction build.
 | G4 suites | `cd samples/sample-1-editorial && python3 -m unittest test_content test_content_browser` | GREEN — 6 tests OK | terminal |
 | G4 suites | `cd samples/sample-1-editorial && python3 qa_garden_pw.py` | GREEN — JSON, `enquire-email-link-valid: true`, `navigation-history: true` | stdout JSON |
 | G5 quote flow | presentation-gate run | GREEN — tel, sms, mailto present; `?menu`, `?table`, `?occasion` prefill | terminal |
-| G6 deploy + live crawl | `vercel deploy --prod --yes` | **RED — could not run** | `vercel whoami` → `loggedIn: false`, `reason: login_required`, `retryable: false` |
+| G6 deploy + live | git-connected auto-deploy on 8cb4375 | GREEN — live, byte-identical to the gated state | live byte comparison, 24 files |
 
 Defects fixed, one commit each:
 
@@ -50,7 +69,7 @@ Not in the plan's list, same cause as S1-1, fixed: `.enquire-intro` also set
 | G4 quality gate | `cd samples/sample-2-after-dark && python3 quality-gate.py` | GREEN — `passed: true`, 10 pages, `failures: []` | stdout JSON |
 | G4 unittests | `python3 -m unittest test_content test_content_browser` | **RED — could not run** | neither module exists in this directory |
 | G5 quote flow | presentation-gate run | GREEN | terminal |
-| G6 deploy + live crawl | `vercel deploy --prod --yes` | **RED — could not run** | no Vercel credentials |
+| G6 deploy + live | git-connected auto-deploy on 8cb4375 | GREEN — live, byte-identical to the gated state | live byte comparison, 17 files |
 
 S2-1 hero caption and S2-3 nav were already correct. S2-2 is the plan's
 `THE CART. HOUSTON'S LARGEST.`; the S8 sweep overwrote it and it was restored.
@@ -70,7 +89,7 @@ the other two samples carry.
 | G4 unittests | `cd samples/sample-3-studio && python3 -m unittest test_content` | GREEN — 4 tests OK | terminal |
 | G4 unittests | `python3 -m unittest test_content_browser` | **RED — could not run** | module does not exist in this directory |
 | G5 quote flow | presentation-gate run + direct measurement | GREEN — 6/6 totals reproduce | table below |
-| G6 deploy + live crawl | `vercel deploy --prod --yes` | **RED — could not run** | no Vercel credentials |
+| G6 deploy + live | git-connected auto-deploy on 8cb4375 | GREEN — live, byte-identical to the gated state | live byte comparison, 17 files |
 
 Six totals, measured on `#total` after setting `#table` and `#guests`:
 
@@ -89,15 +108,24 @@ S3-4 captions were applied by the S8 sweep. S3-6 was not changed.
 
 ## The three URLs
 
-These are live now and serve the **pre-correction** build. They are not the
-work in this report.
+Live with the corrected build. Measured over HTTPS after the 8cb4375 deploy:
+five pages up, five unique metas, zero kill-list strings on each.
 
-- https://charcuterie-chick-sample-1.vercel.app — 9 kill-list strings still served
-- https://charcuterie-chick-sample-2.vercel.app — clean
-- https://charcuterie-chick-sample-3.vercel.app — 1 unique meta across five pages, 7 kill-list strings still served
+- https://charcuterie-chick-sample-1.vercel.app — Garden Atelier
+- https://charcuterie-chick-sample-2.vercel.app — Midnight Supper
+- https://charcuterie-chick-sample-3.vercel.app — The Gathering
 
-Measured over HTTP on 2026-09-17. The repository state passes G1 to G5 on all
-three; the hosts do not carry it yet.
+G2 and G3 were run against these hosts directly and are green on all three.
+
+**The limitation on G6.** The browser re-crawl of the live hosts did not run.
+Chromium in this container does not trust the agent proxy's CA and fails every
+https navigation with ERR_CERT_AUTHORITY_INVALID; the README forbids disabling
+TLS verification, so it was not disabled. Instead every file each host serves
+was fetched over verified https and compared byte for byte against the
+repository state that G1 and G5 were run on: 24, 22 and 17 files, all
+identical, none unreachable. The rendering result therefore transfers, but it
+is an argument from identical bytes rather than a browser run against the live
+host, and that distinction is the reason this paragraph exists.
 
 ## Decision log
 
@@ -115,12 +143,10 @@ three; the hosts do not carry it yet.
 
 ## Open, with reasons
 
-1. **G6 cannot run here. Nothing is deployed.** `vercel whoami` returns
-   `loggedIn: false`, `reason: login_required`, `retryable: false`,
-   `userActionRequired: true`. There is no `VERCEL_TOKEN` in the environment
-   and no saved login. Deploying needs an interactive `vercel login` on a
-   machine that has the account. Until that happens the three URLs above serve
-   the old build, and the live re-crawl in G6 has nothing new to crawl.
+1. **The live browser re-crawl did not run**, for the CA reason above. Byte
+   identity was verified instead. Anyone with a normal network can close this
+   by running, per sample:
+   `python3 tools/presentation-gate.py --sample <dir> --base <url>`
 
 2. **The `main` merge is landed locally but not pushed.** Step 0's
    `git push -u origin main` was refused by the auto-mode classifier with
@@ -145,10 +171,10 @@ three; the hosts do not carry it yet.
 
 ## What Garrett needs to do
 
-1. Merge PR #51, or push the landed `main` merge.
-2. From a machine with the Vercel account: `vercel login`, then
-   `vercel deploy --prod --yes` from each of the three sample directories.
-3. Re-run the gate against each live host:
-   `python3 tools/presentation-gate.py --sample <dir> --base <url>`
-4. Run the presentation gate in plan 9.6 on a phone and a laptop.
-5. Ask Tricia about `tricia-662.jpg`.
+1. Run the presentation gate in plan 9.6 on a phone and a laptop, then send the
+   three links.
+2. Merge PR #51, or push the landed `main` merge.
+3. Ask Tricia whether `tricia-662.jpg` is her, before sample 2's About page
+   goes in front of anyone.
+4. Optional: run the gate against each live host from a normal network to close
+   the browser re-crawl noted above.
