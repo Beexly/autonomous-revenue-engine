@@ -619,3 +619,88 @@ From WeddingWire (vendor description and FAQ):
 - Reviewers as published: Abigail, Crystal, Lauren, Tiffni, Darrell, Stacey, Shelby. One calls her "Trish". `[NEEDS TRICIA: does she go by Trish?]`
 
 Action for Garrett: ask Tricia which of these are true today, add the confirmed ones to FACTS.md, and have her fix the two listing errors. "Your budget, your taste, your way" is the best line she has written and belongs on the site the day it is in FACTS.md.
+
+## 8. Design bar (added 2026-09-17, second pass)
+
+The owner's bar is EMP, Noma and Floema: restaurant sites where one photograph carries the screen, one typeface family does all the work, the air is the design, and the reservation is the only loud thing. The 48-site corpus Garrett supplied (Lusion, Unseen, Locomotive, North Kingdom and the rest) is a motion-agency corpus. It is used here for discipline and pacing, never for effects. Tokens already extracted from EMP and Noma live in `docs/research/emp-noma/PLAN.md` and still apply.
+
+### 8.1 Rules (each one is testable)
+
+1. One display face and one text face per concept. No third family anywhere. The italic emphasis word is allowed once per screen.
+2. One accent color per concept. Backgrounds are fields, not accents. A second accent is a bug.
+3. Photographs are objects. `object-fit: contain` on a void, at or under native pixels, in a frame that belongs to the grid. Never absolutely positioned over copy. Never cover-stretched to fill a viewport. Never upscaled until the restore pass under the owner's photo rule.
+4. One spacing scale per concept, applied to every section. Desktop 120/80/48, mobile 72/48/32, or the concept's own scale used everywhere. No section chooses its own padding.
+5. Air, not objects. The hero holds one headline, one line, one primary action, one photograph. Rings, threads, botanical glyphs, rotated labels and 3D plates are allowed only where they never touch text or a photo at 360, 390, 768, 1024, 1440 and 1920. If a decoration touches anything at any width, it goes.
+6. Hairlines at 0.67 to 1px. No box-shadow, no gradients, no glass, no grain, no marquee, no custom cursor, no Ken Burns. (Owner verdicts in HANDOFF.md and DESIGN_REFS.md.)
+7. Chrome small and quiet. Nav 14 to 16px, one row at 390 or a menu button. One button style per concept. No candy buttons.
+8. The number is the design. On the quote page the total is set in the display face and the breakdown is small.
+9. Numbered sequencing 01 to 05 (Floema) only where the concept already uses it (2 and 3), in one numeral style across the site.
+10. Motion: one reveal per section, opacity plus a translate of 12px or less, 400ms or less, `prefers-reduced-motion` honored. Nothing else moves on scroll. No parallax on photos.
+11. Captions are literal (S8) and set in one style per concept.
+12. Type sizes come from a scale, not from the element. Body copy measures 60 to 75 characters per line.
+13. Every page at every width: no horizontal scroll, nothing clipped, nothing overlapping, every button reachable, axe WCAG AA clean.
+
+### 8.2 From the corpus: take and refuse
+
+Take: the hero states the proposition before any effect; all content stays in semantic HTML; mobile and reduced-motion degrade cleanly; payload and frame rate are measured, not assumed; at most one signature element, and only in the hero.
+
+Refuse for this quote: WebGL heroes, shaders, particle scenes and food-film video. There is no footage, her photos top out at 945px, and STATE.md bans WebGL on 480px photos. Adding any of it would be the AI feel the client named in BRIEF.md. Revisit on the winner only, with original photography in hand.
+
+### 8.3 What each hero must be
+
+- Concept 1 (EMP register). The photograph as an object with air around it. Headline in the serif at display size, set in three lines in a copy column wide enough for seven words a line. The pistachio eyebrow. One link. The proof line on its own row with 24px above it. No ring, no thread, no rotated label in the hero.
+- Concept 2 (Noma dark). Already closest to the bar. Keep the composition. Fix the caption leftovers only.
+- Concept 3 (Floema plus The Platter). A two-column hero grid: copy left, about 55%; photo right, about 45%, as a framed in-flow object. The 3D table scene sits under the photo column only, never under copy or buttons, and drops below the action row or hides at 768px and under. Both proof lines upright in the copy column under the sub copy.
+
+## 9. Correction pass: verified defects on the live builds (2026-09-17 evening)
+
+Method: all 15 live pages rendered in headless Chromium at 390, 1440 and 1920, copy dumped in DOM order, screenshots inspected, assets checked for HTTP 200. Only defects that reproduce are listed. Garrett's two screenshots (sample 1 gallery, sample 3 home at about 2000px) match what is below.
+
+### 9.1 Cross-site
+
+- C1. Meta descriptions from 4.1 were not applied on any page. Repo and live carry the old text on all 15 pages, and sample 3 still repeats one meta across its five pages. The new text went into `og:description` instead. Fix: replace the `description` meta on all 15 pages from the 4.1 tables. Sample 3's tag has a different attribute order, so match by attribute name, not by string.
+- C2. Kill-list copy still live. Sample 1: all eight gallery captions ("Gathered around the table", "The small details", "An occasion on wheels", "Room for a little more", "Something to share", "A toast to together", "A sweet ending", "Company, beautifully kept"), the hero label "THE ART OF GATHERING · TEXAS", the hero caption "Food for company. Made with care.", the oval caption "From a cart to a full table." Sample 2: the hero caption "01 / THE GATHERING Real food. Real occasions." and the cart caption with "CENTREPIECE". Sample 3: the hero caption "Real food. A reason to gather.", the six gallery captions ("The gathering table", "A closer look", "Good things on wheels", "Raise a glass", "A generous welcome", "Something sweet"), and "gather" 14 times plus "occasion" 8 times across the five pages, mostly in captions, labels and option text. Fix: S8 captions everywhere, then a string sweep per kill-list item 15.
+- C3. "enquiry" survives in visible text (sample 1 twice, sample 2 once, sample 3 twice). Fix per voice rule 14.
+- C4. The builders omitted the street address from the footer pending approval. Correct. It stays out until Tricia confirms.
+
+### 9.2 Sample 1, Garden Atelier (the most work)
+
+- S1-1. Page intros have no horizontal padding. `.page-intro` sets only `padding-top`, so the gallery and menu H1s sit at x=0 at 1440 and 1920, and at about 2000px the eyebrow clips to "HOTOS". Fix: put every page intro inside the same centered container (max-width and side padding) as `.content-block`.
+- S1-2. The gallery wall collapses. `.specimen-wall` is a 12-track grid; wide, tall and landscape figures span 8, 5 and 9 tracks, but `.specimen.oval` has no span, so both ovals fall into one 1/12 track and render 30 to 40px wide with captions wrapping letter by letter. The wall's parent panel is also only about 450px wide at 1440, so even spanned figures are thumbnails. Fix: give the wall the full content width, give the oval a span of 4 or 5, cap figure heights, and let the eight photos read as a wall.
+- S1-3. Masthead nav wraps at 390 into two rows with "GET A QUOTE" orphaned. Fix: two even rows or a menu button at 480px and under.
+- S1-4. `.scroll-note` is `position: fixed` and prints "Menus and prices ↓" over the hero photo on phones. Fix: static under the hero copy, or hidden under 768px.
+- S1-5. The hero copy column is too narrow at 1440: the seven-word H1 breaks into six lines in a column of about 240px, and the proof line collides with the scroll note. Fix: copy column at about 560px so the H1 sets in three lines, proof line on its own row.
+- S1-6. The purple ring sits over the hero photo (with white blobs inside it) and the diagonal thread runs through content on phones. Fix: remove both from the hero, or keep one as a hairline in empty space only (rule 5).
+- S1-7. The oval cart photo on the home page clips its own caption. Fix: caption outside the oval, or a rectangular frame with the literal caption.
+- S1-8. Menu page: to cure the hidden-on-load bug the builder set every table panel to display, so all five now stack under a tab row that still looks like tabs. Also "PUBLISHED PRICE$24 per person" has no space between label and price. Fix: either make the tabs switch panels without hiding content before JS runs, or drop the tab row; put the label on its own line.
+- S1-9. Menu page intro paragraph sits at x=0 (same cause as S1-1).
+
+### 9.3 Sample 2, Midnight Supper (closest to presentable)
+
+- S2-1. Hero caption "01 / THE GATHERING Real food. Real occasions." becomes the S8 caption for knot-hero.jpg.
+- S2-2. Cart caption "THE CART / A DIFFERENT KIND OF CENTREPIECE" becomes "THE CART. HOUSTON'S LARGEST." (2.2).
+- S2-3. Nav at 390: "Menus and prices" wraps under its numeral. Low priority: shorten to "Menus" under 480px.
+- S2-4. C1 and C3 apply. Nothing else blocks the presentation.
+
+### 9.4 Sample 3, The Gathering
+
+- S3-1. Hero at 1440 and 1920: the photo frame overlaps the sub copy and the "Menus and prices" link. The proof line lives in `.scene-label` (absolute, rotated -8°, bottom 20%, right 5%) and `.hero{overflow:hidden}` clips it to "not · Best of Weddings 2026". Fix per 8.3: two-column grid, photo in flow, proof line upright in the copy column, no rotation.
+- S3-2. Hero at 390: `.scene-fallback` (the butter table with plate rings, absolute inset 18% 15%) sits behind the "Get a quote" button and the "Menus and prices" link. Fix: scene below the action row or hidden at 768px and under. Nothing decorative under a button.
+- S3-3. "5.0 on WeddingWire. 100% would recommend." floats at the bottom left of the hero, detached from the Knot line. Fix: both proof lines together under the sub copy.
+- S3-4. Hero caption "Real food. A reason to gather." and block 01 caption "From Tricia's table, to yours." become S8 captions.
+- S3-5. Gallery: the "See it larger" pill on every photo renders as a blank white pill because the label has no contrast against it. Fix: ink text on the pill, or drop the pill and keep the caption as the link. Captions 01 to 06 become S8 captions.
+- S3-6. Menu page: each table shows the italic one-line note and then the full contents, which repeat each other. Low priority: keep the note as the lede and set the contents smaller.
+- S3-7. The builder changed "Five tables" to "Four tables from $24 to $38 a person, or the Holy Grail". That is correct (four per-person tables plus the Holy Grail). Keep.
+
+### 9.5 Gates: what "presentable" means, per site
+
+- G1. All 15 pages at 390, 768, 1440 and 1920: no horizontal scroll, no element overlapping another element's text box, no clipped text, no decoration touching a photo or text.
+- G2. Zero kill-list strings from C2 on any page. "gather" at most once per site. "enquire" and "enquiry" absent from visible text.
+- G3. 15 unique titles and 15 unique metas, matching 4.1.
+- G4. Existing gates green: `tools/quality-gate.py` (samples 2 and 3), `samples/sample-1-editorial/qa_garden_pw.py`, the `test_content.py` and `test_content_browser.py` suites, and a live crawl extended from `tools/e2e-live-sample3.py` to all three hosts.
+- G5. Quote flow: prefill links work, the draft carries table, guests and date, the six verified totals in STATE.md reproduce, and tel, sms and mailto links open.
+- G6. Deployed, then re-crawled live after deploy. Screenshots at 390 and 1440 for all 15 pages committed under each sample's `test-output/`.
+
+### 9.6 Presentation gate for Garrett (five minutes per site, phone and laptop)
+
+Open the five pages. Read the hero aloud; it should sound like Tricia. Tap Get a quote and run one estimate. Confirm nothing overlaps and nothing is clipped. Confirm the Photos captions name food. If any of that fails, the site is not ready to send, whatever the reports say.
