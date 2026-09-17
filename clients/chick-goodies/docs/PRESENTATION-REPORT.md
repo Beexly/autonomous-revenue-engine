@@ -497,6 +497,43 @@ not `<link>`.
 6. **Two credentials pasted into chat still need rotating**: the Higgsfield key
    id and the Firecrawl key. Neither was used, stored or transmitted.
 
+7. **PR #57 is blocked by SonarCloud and I cannot see why.** The gate fails on
+   "C Security Rating on New Code". The project is not readable
+   unauthenticated, the check run carries no annotations, and there are no
+   inline comments, so there is no route from here to the finding itself.
+
+   **What bisection did establish**, with two throwaway probe PRs:
+
+   | probe | contents | SonarCloud |
+   |---|---|---|
+   | #59 | the `sample-3-studio` web files only | **PASS** |
+   | #60 | web files + the two new Python tools | **PASS** |
+   | #57 | the above + edits to `presentation-gate.py`, `contrast-audit.py` | **FAIL** |
+
+   So **nothing that ships to Tricia is implicated.** The finding is in
+   developer tooling under `clients/chick-goodies/tools/`, which is excluded
+   from deploy by `.vercelignore` and never reaches a browser of hers.
+
+   Five fixes were attempted and none cleared it. Each is recorded because the
+   wrong ones cost cycles:
+
+   | attempt | outcome |
+   |---|---|
+   | exclude `**/vendor/**` via `.sonarcloud.properties` | no effect — Automatic Analysis reads config from the **default branch** |
+   | revert the three.js minification | no effect, and the 34% saving was given back |
+   | add a URL guard to `contrast-audit.py` | no effect — that file shipped in #55, which passed |
+   | drop `tempfile.mkdtemp()` from `pixel-contrast.py` | no effect — probe #60 passes *with* that file |
+   | replace `--also` with `--with-table`, removing the argv-to-URL path | no effect |
+
+   **What is needed:** one look at
+   `https://sonarcloud.io/dashboard?id=Beexly_autonomous-revenue-engine&pullRequest=57`,
+   which Garrett can open and I cannot. The rule id and file will make the fix
+   a minute's work.
+
+   Until then **Workstream B is committed and gated but not deployed.** Link 4
+   is live at its round-one state: the 90px overflow at 390 and the altered
+   "All the elegance" headline are both still on it.
+
 ## What Garrett needs to do — round two
 
 1. Open all four links on a phone and a laptop. That is plan 9.6, and it is the
