@@ -21,6 +21,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ['index.html', 'menu.html', 'gallery.html', 'story.html', 'enquire.html']
+# G1 can also sweep the immersive one-pager. It is named here rather than taken
+# from the command line so that nothing from argv ever reaches a fetched URL.
+EXTRA_PAGES = ('table.html',)
 WIDTHS = [390, 768, 1440, 1920]
 
 # Case-sensitive on purpose: "a closer look" inside a sentence is ordinary
@@ -358,7 +361,8 @@ def main():
     ap.add_argument('--sample', required=True)
     ap.add_argument('--base', help='live base URL; omit to test local files')
     ap.add_argument('--shots', help='directory for 390/1440 screenshots')
-    ap.add_argument('--also', default='', help='extra pages for G1 only, comma separated (e.g. table.html)')
+    ap.add_argument('--with-table', action='store_true',
+                    help='also run G1 over table.html, the immersive one-pager')
     a = ap.parse_args()
     d = ROOT / 'samples' / a.sample
     if a.base:
@@ -384,16 +388,7 @@ def main():
             return (d / p).read_text(encoding='utf-8', errors='replace')
 
     (g2, g2d), (g3, g3d) = gate_g2_g3(a.sample, fetch)
-    # --also is command-line input that ends up in a URL this tool navigates to,
-    # so it is restricted to bare page stems: no separators, no scheme, no '..'.
-    extra = []
-    for x in (y.strip() for y in a.also.split(',')):
-        if not x:
-            continue
-        if not re.fullmatch(r'[A-Za-z0-9._-]+\.html', x) or '..' in x:
-            sys.exit(f'--also takes bare page names like table.html, got: {x}')
-        extra.append(x)
-    extra = tuple(extra)
+    extra = EXTRA_PAGES if a.with_table else ()
     problems, quote = gate_g1_g5(url_for, a.shots, extra)
     g1 = not problems
     g5 = all(quote.values())

@@ -378,7 +378,7 @@ Recorded as a finding, not skipped.
 
 | Gate | Result | Evidence |
 |---|---|---|
-| G1 layout | **GREEN**, 0 problems at 390/768/1440/1920 across five pages **plus `table.html`** | `tools/presentation-gate.py --sample sample-3-studio --also table.html` |
+| G1 layout | **GREEN**, 0 problems at 390/768/1440/1920 across five pages **plus `table.html`** | `tools/presentation-gate.py --sample sample-3-studio --with-table` |
 | G2 copy | **GREEN** | same run |
 | G3 titles/metas | **GREEN** — 5 unique, matching plan 4.1 | same run |
 | G4 suites | **GREEN** — 4 unit tests OK | `python3 -m unittest test_content` |
