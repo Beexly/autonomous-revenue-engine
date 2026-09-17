@@ -68,3 +68,23 @@ pages. Never below. The $600 options do not move.
 
 Not included: WebGL on the other three concepts, video, photography beyond the
 Option B session.
+
+## Proposal prices (set 2026-09-17 at Garrett's request; the proposal is `PROPOSAL.md`)
+
+Garrett confirms these before they are quoted. Once he does, they are the only
+numbers, alongside A, B and C above. The proposal is payable to Galaxy Sports
+Edge LLC (Garrett Baxley).
+
+| Item | Price | Notes |
+|---|---|---|
+| Workflows package | $500 | On record in STATE.md. Enquiry log with a nudge, thank-you and review ask, day-30 return, templates, monthly one-screen report. Texts from her phone, no automated replies, no paid SMS service. |
+| Photo enhancement | $250 | All current photos (21 on file) cleaned, color-corrected, sharpened, sized for site, Google, Instagram, Pinterest. Originals kept. Never say "AI" to the client. |
+| Photo recreation | $450 | Twelve new hero and social images produced from her own photographs. She approves each. No stock, no invented food. |
+| Both photography services | $600 | |
+| Care plan | $89 per month | From day 91. Hosting, monitoring, monthly page check, security, backups, one hour of changes, quarterly search check. Cancel with 30 days' notice. |
+| Growth plan | $199 per month | Care plan plus two GBP posts a month, review workflow upkeep, monthly search and leads report, three hours of changes. |
+| The Revenue Engine package | $1,600 | Full website + workflows + both photography services (separately $1,800). |
+| The Revenue Engine, Immersive | $2,450 | Immersive website + workflows + both photography services (separately $2,700). |
+
+Included with any website: 90 days of monitoring and small changes after launch.
+This supersedes the "30 days of small tweaks" line in Option B.
