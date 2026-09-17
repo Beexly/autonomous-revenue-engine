@@ -152,7 +152,7 @@ def request(url, *, method="GET", body=None, headers=None, timeout=60):
 def as_json(payload: bytes):
     try:
         return json.loads(payload.decode("utf-8"))
-    except Exception:
+    except (json.JSONDecodeError, UnicodeDecodeError):
         return {"detail": payload[:400].decode("utf-8", "replace")}
 
 
@@ -242,6 +242,10 @@ def put_file(url: str, path: Path, headers: dict, timeout: int) -> int:
 
 # ------------------------------------------------------------------------ record
 
+def prompt_sha(prompt: str) -> str:
+    return hashlib.sha256(prompt.encode()).hexdigest()[:12]
+
+
 def read_manifest() -> dict:
     """Completed (file, model, prompt) triples, so a rerun does not rebill."""
     done = {}
@@ -267,6 +271,82 @@ def record(row: dict) -> None:
 
 # -------------------------------------------------------------------------- main
 
+def build_queue(src: Path, only: list, limit: int) -> list:
+    """Which files to send: `only` names them, else the priority queue,
+    else everything in the directory."""
+    if not src.is_dir():
+        sys.exit(f"--src is not a directory: {src}")
+
+    names = only or QUEUE
+    queue = [src / n for n in names if (src / n).exists()]
+
+    if only:
+        for name in names:
+            if not (src / name).exists():
+                print(f"  ! {name}: not in {src}, skipped")
+    elif not queue:
+        # A classical pass usually renames its outputs.
+        queue = sorted(f for f in src.iterdir()
+                       if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"))
+        if queue:
+            print(f"  (no queue names in {src}; taking all {len(queue)} images)")
+            # PROMPTS is keyed by filename. A renamed file silently loses its
+            # override, and one of those overrides is the only thing stopping a
+            # model from retouching a real person's face.
+            print("  ! renamed files cannot match a per-file prompt override.")
+            print("  ! " + ", ".join(sorted(PROMPTS)) + " must be passed via --only,")
+            print("  ! or renamed back, or its restore will use the generic prompt.")
+
+    return queue[:limit] if limit else queue
+
+
+def report_dry_run(queue: list, model: str, done: dict) -> None:
+    for path in queue:
+        sha = prompt_sha(PROMPTS.get(path.name, BASE_PROMPT))
+        seen = (path.name, model, sha) in done
+        print(f"  {'skip' if seen else 'send'}  {path.name:<20} "
+              f"{path.stat().st_size/1024:6.1f} KB  prompt {sha}")
+    print("\nDry run. Nothing was sent and nothing was billed. "
+          "Re-run with --apply.")
+
+
+def restore_one(auth: str, provider: "Higgsfield", path: Path, prompt: str,
+                timeout: int):
+    """Upload, submit, poll, fetch. Raises Skip or Fatal."""
+    content_type = mimetypes.guess_type(path.name)[0] or "image/jpeg"
+    status, _, payload = request(
+        f"{API}/files/generate-upload-url", method="POST",
+        body={"content_type": content_type},
+        headers={"Authorization": auth},
+    )
+    upload = as_json(payload)
+    check(status, upload)
+
+    headers = dict(upload.get("upload_headers") or {})
+    headers.setdefault("Content-Type", content_type)
+    code = put_file(upload["upload_url"], path, headers, timeout)
+    if code >= 400:
+        raise Skip(f"presigned upload returned {code}")
+
+    accepted, correlation = provider.submit(upload["public_url"], prompt)
+    request_id = accepted.get("request_id", "")
+    print(f"    request {request_id}")
+
+    result = provider.poll(accepted["status_url"])
+    state = result.get("status")
+    if state != "completed":
+        raise Skip(f"{state}: {result.get('error', 'no detail')}")
+
+    images = result.get("images") or []
+    if not images:
+        raise Skip("completed with no image")
+
+    code, _, blob = request(images[0]["url"], timeout=timeout)
+    if code >= 400 or not blob:
+        raise Skip(f"could not download output ({code})")
+    return request_id, correlation, blob
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--apply", action="store_true",
@@ -287,31 +367,7 @@ def main() -> int:
     load_env()
 
     src = args.src.resolve()
-    if not src.is_dir():
-        sys.exit(f"--src is not a directory: {src}")
-
-    # A classical pass usually renames its outputs. If the queue names are not
-    # there, fall back to every image in the directory, sorted.
-    names = args.only or QUEUE
-    queue = [src / n for n in names if (src / n).exists()]
-    if not queue and not args.only:
-        queue = sorted(
-            p for p in src.iterdir()
-            if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")
-        )
-        if queue:
-            print(f"  (no queue names in {src}; taking all {len(queue)} images)")
-            # PROMPTS is keyed by filename. Renamed files silently lose their
-            # override, and one of those overrides is the only thing stopping a
-            # model from retouching a real person's face.
-            print("  ! renamed files cannot match a per-file prompt override.")
-            print("  ! " + ", ".join(sorted(PROMPTS)) + " must be passed via --only,")
-            print("  ! or renamed back, or its restore will use the generic prompt.")
-    for name in names:
-        if not (src / name).exists() and args.only:
-            print(f"  ! {name}: not in {src}, skipped")
-    if args.limit:
-        queue = queue[: args.limit]
+    queue = build_queue(src, args.only, args.limit)
     if not queue:
         print("Nothing to do.")
         return 1
@@ -321,15 +377,7 @@ def main() -> int:
           f"output {OUT.relative_to(ROOT)}/")
 
     if not args.apply:
-        for path in queue:
-            prompt = PROMPTS.get(path.name, BASE_PROMPT)
-            sha = hashlib.sha256(prompt.encode()).hexdigest()[:12]
-            seen = (path.name, args.model, sha) in done
-            size = path.stat().st_size
-            print(f"  {'skip' if seen else 'send'}  {path.name:<20} "
-                  f"{size/1024:6.1f} KB  prompt {sha}")
-        print("\nDry run. Nothing was sent and nothing was billed. "
-              "Re-run with --apply.")
+        report_dry_run(queue, args.model, done)
         return 0
 
     auth = credentials()
@@ -339,7 +387,7 @@ def main() -> int:
 
     for path in queue:
         prompt = PROMPTS.get(path.name, BASE_PROMPT)
-        sha = hashlib.sha256(prompt.encode()).hexdigest()[:12]
+        sha = prompt_sha(prompt)
         if (path.name, args.model, sha) in done:
             print(f"  = {path.name}: already restored with this prompt")
             skipped += 1
@@ -347,39 +395,10 @@ def main() -> int:
 
         print(f"  > {path.name}", flush=True)
         try:
-            content_type = mimetypes.guess_type(path.name)[0] or "image/jpeg"
-            status, _, payload = request(
-                f"{API}/files/generate-upload-url", method="POST",
-                body={"content_type": content_type},
-                headers={"Authorization": auth},
+            request_id, correlation, blob = restore_one(
+                auth, provider, path, prompt, args.timeout
             )
-            upload = as_json(payload)
-            check(status, upload)
-            headers = dict(upload.get("upload_headers") or {})
-            headers.setdefault("Content-Type", content_type)
-            code = put_file(upload["upload_url"], path, headers, args.timeout)
-            if code >= 400:
-                raise Skip(f"presigned upload returned {code}")
-
-            accepted, correlation = provider.submit(upload["public_url"], prompt)
-            request_id = accepted.get("request_id", "")
-            print(f"    request {request_id}")
-            result = provider.poll(accepted["status_url"])
-
-            state = result.get("status")
-            if state != "completed":
-                raise Skip(f"{state}: {result.get('error', 'no detail')}")
-
-            images = result.get("images") or []
-            if not images:
-                raise Skip("completed with no image")
-
-            code, _, blob = request(images[0]["url"], timeout=args.timeout)
-            if code >= 400 or not blob:
-                raise Skip(f"could not download output ({code})")
-
-            target = OUT / path.name
-            target.write_bytes(blob)
+            (OUT / path.name).write_bytes(blob)
             digest = hashlib.md5(blob).hexdigest()
             record({
                 "source": path.name, "model": args.model,
