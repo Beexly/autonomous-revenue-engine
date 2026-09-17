@@ -310,15 +310,17 @@ def _sweep_page(pg, page_name, w, problems):
         problems.append(f'{page_name} @{w}: pseudo decoration over text, {ps}')
 
 
-def gate_g1_g5(url_for, shots=None):
+def gate_g1_g5(url_for, shots=None, extra_pages=()):
     from playwright.sync_api import sync_playwright
     problems, quote = [], {}
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
-        for page_name in PAGES:
+        for page_name in list(PAGES) + list(extra_pages):
             for w in WIDTHS:
                 pg = browser.new_page(viewport={'width': w, 'height': 900})
                 pg.goto(url_for(page_name), wait_until='load')
+                # a WebGL station page needs its first frames before anything is measured
+                pg.wait_for_timeout(1200 if page_name not in PAGES else 0)
                 # smooth scrolling makes a hit-test race the scroll animation
                 pg.add_style_tag(content='html,body{scroll-behavior:auto !important}')
                 pg.wait_for_timeout(450)
@@ -356,6 +358,7 @@ def main():
     ap.add_argument('--sample', required=True)
     ap.add_argument('--base', help='live base URL; omit to test local files')
     ap.add_argument('--shots', help='directory for 390/1440 screenshots')
+    ap.add_argument('--also', default='', help='extra pages for G1 only, comma separated (e.g. table.html)')
     a = ap.parse_args()
     d = ROOT / 'samples' / a.sample
     if a.base:
@@ -381,7 +384,8 @@ def main():
             return (d / p).read_text(encoding='utf-8', errors='replace')
 
     (g2, g2d), (g3, g3d) = gate_g2_g3(a.sample, fetch)
-    problems, quote = gate_g1_g5(url_for, a.shots)
+    extra = tuple(x.strip() for x in a.also.split(',') if x.strip())
+    problems, quote = gate_g1_g5(url_for, a.shots, extra)
     g1 = not problems
     g5 = all(quote.values())
 

@@ -17,6 +17,7 @@
 
 <!-- One persistent scene. Every "page" below is a camera position inside it. -->
 <div id="stage" aria-hidden="true">
+  <picture id="stage-picture"><source media="(max-width:899px)" srcset="img/table-still-tall.jpg" width="1215" height="2160"><img id="stage-still" src="img/table-still.jpg" alt="" width="2160" height="1350" fetchpriority="high" decoding="async"></picture>
   <canvas id="table-canvas"></canvas>
   <div id="stage-fallback"></div>
 </div>
@@ -41,7 +42,7 @@
 <section class="station" id="s1" data-station="1">
   <div class="plate">
     <p class="eyebrow">Charcuterie Chick · Tomball, Texas</p>
-    <h1>All the elegance<br><i>without the cost.</i></h1>
+    <h1>Elegance<br><i>without the cost.</i></h1>
     <p class="lede">Grazing tables from $24 a person. Houston's largest charcuterie cart. Breads, jellies and jams made from scratch.</p>
     <div class="acts">
       <a class="pill" href="enquire.html">Price your party</a>
@@ -67,16 +68,27 @@
   </div>
 </section>
 
-<section class="station" id="s3" data-station="3">
+<section class="station station-wide" id="s3" data-station="3">
   <div class="plate">
     <p class="eyebrow">02 · The cart</p>
     <h2>Houston's largest<br><i>charcuterie cart.</i></h2>
     <p>It arrives built. Taco cart, candy bar, Bloody Mary and mimosa stations on the side. Under fifty guests, this is what you want.</p>
     <a class="line" href="menu.html">Carts, sweets and sips</a>
   </div>
+  <div class="photo-band">
+    <p class="band-label">Photographs from her own events</p>
+    <ul>
+      <li><figure><img src="img/cart-640.jpg" alt="The cart, logo on the front, candy jars on top, set up outside before guests arrive." width="640" height="480" loading="lazy" decoding="async"><figcaption>The cart, candy jars on top</figcaption></figure></li>
+      <li><figure><img src="img/knot-4.jpg" alt="Charcuterie cones in cups on a wooden riser: cheese, vegetables and crackers." width="945" height="720" loading="lazy" decoding="async"><figcaption>Vegetarian cones</figcaption></figure></li>
+      <li><figure><img src="img/sips-02.jpg" alt="Bloody Marys in tall glasses garnished with celery and olives." width="480" height="640" loading="lazy" decoding="async"><figcaption>Bloody Marys with celery and olives</figcaption></figure></li>
+      <li><figure><img src="img/sweets-01.jpg" alt="A skillet dessert topped with chopped nuts." width="480" height="640" loading="lazy" decoding="async"><figcaption>A skillet dessert with chopped nuts</figcaption></figure></li>
+      <li><figure><img src="img/table-01.jpg" alt="Waffles, breads and sliced fruit arranged along a grazing table." width="480" height="640" loading="lazy" decoding="async"><figcaption>Waffles, breads and fruit</figcaption></figure></li>
+    </ul>
+    <a class="line" href="gallery.html">All the photographs</a>
+  </div>
 </section>
 
-<section class="station" id="s4" data-station="4">
+<section class="station station-aside" id="s4" data-station="4">
   <div class="plate">
     <p class="eyebrow">03 · Tricia</p>
     <h2>I've worked the floor<br><i>and I've worked the line.</i></h2>
@@ -84,6 +96,10 @@
     <p>Woman-owned. English and Spanish. Tomball, The Woodlands, Spring and Conroe.</p>
     <a class="line" href="story.html">More about me</a>
   </div>
+  <figure class="portrait-print">
+    <img src="img/tricia-portrait-471.jpg" alt="Tricia Holfelder, owner of Charcuterie Chick." width="471" height="589" loading="lazy" decoding="async">
+    <figcaption>Tricia Holfelder</figcaption>
+  </figure>
 </section>
 
 <section class="station" id="s5" data-station="5">
@@ -101,6 +117,6 @@
 
 </main>
 
-<script type="module" src="table-cinematic.js"></script>
+<script src="table-boot.js"></script>
 </body>
 </html>
