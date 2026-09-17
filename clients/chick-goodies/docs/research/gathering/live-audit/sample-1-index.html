@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charcuterie Chick</title>
+<meta name="description" content="Grazing tables in Tomball. Reservations: 832-458-8180. Tricia Holfelder.">
+<link rel="canonical" href="https://charcuterie-chick-sample-1.vercel.app/">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Tokens: elevenmadisonpark.com getComputedStyle 2026-09-16 */
+:root {
+  --ink: rgb(0,0,0);
+  --paper: rgb(255,255,255);
+  --garamond: "EB Garamond", "Times New Roman", serif;
+  --nobel: Jost, "Helvetica Neue", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--nobel);
+  font-size: 16px;
+  line-height: normal;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 4;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 28px 40px;
+}
+.mark {
+  font-family: var(--garamond);
+  font-size: 21.04px;
+  letter-spacing: 0.4208px;
+  font-weight: 400;
+}
+nav { display: flex; gap: 28px; }
+nav a {
+  font-family: var(--nobel);
+  font-size: 17.68px;
+  letter-spacing: 0.3536px;
+  text-transform: uppercase;
+  padding: 1.768px 0;
+}
+.stage {
+  position: relative;
+  height: 100svh;
+  background: #fff;
+  overflow: hidden;
+}
+.stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.stage img.on { opacity: 1; }
+main { max-width: 640px; margin: 0 auto; padding: 96px 24px 120px; }
+h1 {
+  font-family: var(--garamond);
+  font-size: 37px;
+  font-weight: 500;
+  line-height: 37px;
+  margin: 0 0 28px;
+}
+p { font-family: var(--garamond); font-size: 21.04px; line-height: 1.45; margin: 0 0 18px; }
+.menu { list-style: none; margin: 48px 0; }
+.menu li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 0.67px solid rgb(0,0,0);
+  font-family: var(--nobel);
+  font-size: 17.68px;
+  letter-spacing: 0.3536px;
+  text-transform: uppercase;
+}
+.menu small {
+  display: block;
+  font-family: var(--garamond);
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.55;
+  margin-top: 4px;
+}
+.reserve {
+  display: inline-block;
+  font-family: var(--nobel);
+  font-size: 17.68px;
+  letter-spacing: 0.3536px;
+  text-transform: uppercase;
+  border-bottom: 0.67px solid currentColor;
+  padding: 1.768px 0;
+}
+form { display: grid; gap: 18px; margin-top: 40px; }
+label {
+  display: grid; gap: 6px;
+  font-family: var(--nobel);
+  font-size: 12px;
+  letter-spacing: 0.3536px;
+  text-transform: uppercase;
+}
+input, select, textarea {
+  font-family: var(--garamond);
+  font-size: 21.04px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 0.67px solid #000;
+  background: transparent;
+  border-radius: 0;
+}
+button {
+  font-family: var(--nobel);
+  font-size: 17.68px;
+  letter-spacing: 0.3536px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 0;
+  border-bottom: 0.67px solid currentColor;
+  padding: 1.768px 0;
+  cursor: pointer;
+  justify-self: start;
+}
+.go { display: flex; gap: 28px; flex-wrap: wrap; }
+#est div { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 0.67px solid #0002; font-size: 17.68px; }
+footer {
+  padding: 40px 24px 80px;
+  text-align: center;
+  font-size: 17.68px;
+  letter-spacing: 0.3536px;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="mark" href="#">Charcuterie Chick</a>
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="tel:+18324588180">Reservations</a>
+    <a href="#ask">Enquire</a>
+  </nav>
+</header>
+<div class="stage" data-slides>
+  <img class="on" src="img/knot-hero.jpg" width="945" height="720" alt="Holy Grail of Grazing">
+  <img src="img/knot-2.jpg" width="945" height="720" alt="Grand Graze">
+  <img src="img/knot-3.jpg" width="945" height="720" alt="Super Graze">
+  <img src="img/knot-4.jpg" width="945" height="720" alt="Boards">
+</div>
+<main id="menu">
+  <h1>Join us at the table.</h1>
+  <p>Tricia Holfelder. More than 35 years in restaurants. Tomball, Texas. One party at a time.</p>
+  <ul class="menu">
+    <li><span>Holy Grail<small>75 or 150 guests</small></span><span>$2,000</span></li>
+    <li><span>Grand Graze<small>per person · 50 min</small></span><span>$38</span></li>
+    <li><span>Super Graze</span><span>$30</span></li>
+    <li><span>Grazing Standard</span><span>$26</span></li>
+    <li><span>Graze Me, Craze Me</span><span>$24</span></li>
+    <li><span>Taco cart</span><span>$26.95</span></li>
+    <li><span>Boards</span><span>ask</span></li>
+  </ul>
+  <a class="reserve" href="tel:+18324588180">Reservations 832-458-8180</a>
+  <form id="ask">
+    <label>Name<input id="n" autocomplete="name"></label>
+    <label>Phone<input id="p" type="tel"></label>
+    <label>Date<input id="d" type="date"></label>
+    <label>Guests<input id="g" type="number" min="50" value="75"></label>
+    <label>Table<select id="t"><option value="holy">Holy Grail</option><option value="grand">Grand</option><option value="super">Super</option><option value="standard">Standard</option><option value="graze">Graze Me</option></select></label>
+    <label>Notes<textarea id="m" rows="3"></textarea></label>
+    <div id="est"></div>
+    <div class="go">
+      <button type="button" id="smsBtn">Text</button>
+      <button type="button" id="emailBtn">Email</button>
+      <button type="button" id="copyBtn">Copy</button>
+    </div>
+    <p id="hint"></p>
+  </form>
+</main>
+<footer>11931 Brantley Haven Drive, Tomball, TX 77375</footer>
+<script src="engine.js"></script>
+<script src="quiet.js"></script>
+</body>
+</html>

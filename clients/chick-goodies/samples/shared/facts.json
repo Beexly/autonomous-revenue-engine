@@ -1,0 +1,36 @@
+{
+  "menus": [
+    {
+      "id": "holy",
+      "name": "Holy Grail of Grazing",
+      "price": "$2,000 / 75 guests \u00b7 $3,500 / 150 guests",
+      "description": "Two sliders (50 of each), five cheeses, five meats, two salads, three dips, two hummus, two nuts, guacamole, pico de gallo, seasonal fruit and chips."
+    },
+    {
+      "id": "grand",
+      "name": "Grand Graze",
+      "price": "$38 per person",
+      "description": "Five sliders, four salads, three dips, two hummus, two nuts, chips and mini pudding cups: Oreo, butterscotch or banana."
+    },
+    {
+      "id": "super",
+      "name": "Super Graze",
+      "price": "$30 per person",
+      "description": "Three sliders (25 each), three salads, three dips, two hummus, nuts, chips and a full vegetable spread."
+    },
+    {
+      "id": "standard",
+      "name": "Grazing Standard",
+      "price": "$26 per person",
+      "description": "Everything in Graze Me, Craze Me, plus a second hummus, two dips, pasta salad and potato, sweet-potato or tortilla chips."
+    },
+    {
+      "id": "graze",
+      "name": "Graze Me, Craze Me",
+      "price": "$24 per person",
+      "description": "Two sliders (30 of each), meat and cheese, seasonal fruit, hummus, almonds, two salads, roasted and raw vegetables, and one dip."
+    }
+  ],
+  "phone": "18324588180",
+  "email": "charcuteriechick@outlook.com"
+}

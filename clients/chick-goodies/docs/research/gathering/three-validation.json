@@ -1,0 +1,52 @@
+{
+  "identical_brand_files": true,
+  "samples": [
+    {
+      "sample": "sample-1-editorial",
+      "brand_decodes": true,
+      "brand_size": [
+        1255,
+        433
+      ],
+      "brand_referenced": false,
+      "html_page_count": 1,
+      "scripts_loaded": [
+        "engine.js",
+        "quiet.js"
+      ],
+      "canvas_elements": 0,
+      "menu_entries": 5
+    },
+    {
+      "sample": "sample-2-after-dark",
+      "brand_decodes": true,
+      "brand_size": [
+        1255,
+        433
+      ],
+      "brand_referenced": false,
+      "html_page_count": 1,
+      "scripts_loaded": [
+        "engine.js",
+        "quiet.js"
+      ],
+      "canvas_elements": 0,
+      "menu_entries": 5
+    },
+    {
+      "sample": "sample-3-studio",
+      "brand_decodes": true,
+      "brand_size": [
+        1255,
+        433
+      ],
+      "brand_referenced": false,
+      "html_page_count": 1,
+      "scripts_loaded": [
+        "studio.js"
+      ],
+      "canvas_elements": 0,
+      "menu_entries": 5
+    }
+  ]
+}

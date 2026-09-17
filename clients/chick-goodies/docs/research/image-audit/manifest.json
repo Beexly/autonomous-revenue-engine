@@ -1,0 +1,578 @@
+{
+  "routes": [
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/menu.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/gallery.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/story.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/enquire.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/menu.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/gallery.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/story.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-1.vercel.app/enquire.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/menu.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/gallery.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/story.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/enquire.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/menu.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/gallery.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/story.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-2.vercel.app/enquire.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/menu.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/gallery.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/story.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/enquire.html",
+      "width": 390,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/menu.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/gallery.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/story.html",
+      "width": 1440,
+      "status": 404
+    },
+    {
+      "url": "https://charcuterie-chick-sample-3.vercel.app/enquire.html",
+      "width": 1440,
+      "status": 404
+    }
+  ],
+  "images": [
+    {
+      "src": "img/knot-hero.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-1.vercel.app/img/knot-hero.jpg",
+      "alt": "Holy Grail of Grazing",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 390,
+      "renderedHeight": 900,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-1.vercel.app/",
+      "viewport": 390,
+      "index": 0,
+      "screenshot": "1-390-index-0.png"
+    },
+    {
+      "src": "img/knot-2.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-1.vercel.app/img/knot-2.jpg",
+      "alt": "Grand Graze",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 390,
+      "renderedHeight": 900,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-1.vercel.app/",
+      "viewport": 390,
+      "index": 1,
+      "screenshot": "1-390-index-1.png"
+    },
+    {
+      "src": "img/knot-3.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-1.vercel.app/img/knot-3.jpg",
+      "alt": "Super Graze",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 390,
+      "renderedHeight": 900,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-1.vercel.app/",
+      "viewport": 390,
+      "index": 2,
+      "screenshot": "1-390-index-2.png"
+    },
+    {
+      "src": "img/knot-4.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-1.vercel.app/img/knot-4.jpg",
+      "alt": "Boards",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 390,
+      "renderedHeight": 900,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-1.vercel.app/",
+      "viewport": 390,
+      "index": 3,
+      "screenshot": "1-390-index-3.png"
+    },
+    {
+      "src": "img/knot-hero.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-1.vercel.app/img/knot-hero.jpg",
+      "alt": "Holy Grail of Grazing",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 1440,
+      "renderedHeight": 900,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-1.vercel.app/",
+      "viewport": 1440,
+      "index": 0,
+      "screenshot": "1-1440-index-0.png"
+    },
+    {
+      "src": "img/knot-2.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-1.vercel.app/img/knot-2.jpg",
+      "alt": "Grand Graze",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 1440,
+      "renderedHeight": 900,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-1.vercel.app/",
+      "viewport": 1440,
+      "index": 1,
+      "screenshot": "1-1440-index-1.png"
+    },
+    {
+      "src": "img/knot-3.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-1.vercel.app/img/knot-3.jpg",
+      "alt": "Super Graze",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 1440,
+      "renderedHeight": 900,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-1.vercel.app/",
+      "viewport": 1440,
+      "index": 2,
+      "screenshot": "1-1440-index-2.png"
+    },
+    {
+      "src": "img/knot-4.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-1.vercel.app/img/knot-4.jpg",
+      "alt": "Boards",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 1440,
+      "renderedHeight": 900,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-1.vercel.app/",
+      "viewport": 1440,
+      "index": 3,
+      "screenshot": "1-1440-index-3.png"
+    },
+    {
+      "src": "img/knot-hero.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-2.vercel.app/img/knot-hero.jpg",
+      "alt": "Holy Grail of Grazing",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 390,
+      "renderedHeight": 745.5,
+      "objectFit": "cover",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-2.vercel.app/",
+      "viewport": 390,
+      "index": 0,
+      "screenshot": "2-390-index-0.png"
+    },
+    {
+      "src": "img/knot-2.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-2.vercel.app/img/knot-2.jpg",
+      "alt": "Grand Graze",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 390,
+      "renderedHeight": 297.140625,
+      "objectFit": "cover",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-2.vercel.app/",
+      "viewport": 390,
+      "index": 1,
+      "screenshot": "2-390-index-1.png"
+    },
+    {
+      "src": "img/tricia-662.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-2.vercel.app/img/tricia-662.jpg",
+      "alt": "Tricia Holfelder",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 662,
+      "naturalHeight": 823,
+      "renderedWidth": 390,
+      "renderedHeight": 484.84375,
+      "objectFit": "cover",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-2.vercel.app/",
+      "viewport": 390,
+      "index": 2,
+      "screenshot": "2-390-index-2.png"
+    },
+    {
+      "src": "img/knot-hero.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-2.vercel.app/img/knot-hero.jpg",
+      "alt": "Holy Grail of Grazing",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 1440,
+      "renderedHeight": 745.5,
+      "objectFit": "cover",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-2.vercel.app/",
+      "viewport": 1440,
+      "index": 0,
+      "screenshot": "2-1440-index-0.png"
+    },
+    {
+      "src": "img/knot-2.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-2.vercel.app/img/knot-2.jpg",
+      "alt": "Grand Graze",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 1440,
+      "renderedHeight": 745.5,
+      "objectFit": "cover",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-2.vercel.app/",
+      "viewport": 1440,
+      "index": 1,
+      "screenshot": "2-1440-index-1.png"
+    },
+    {
+      "src": "img/tricia-662.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-2.vercel.app/img/tricia-662.jpg",
+      "alt": "Tricia Holfelder",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 662,
+      "naturalHeight": 823,
+      "renderedWidth": 1440,
+      "renderedHeight": 745.5,
+      "objectFit": "cover",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-2.vercel.app/",
+      "viewport": 1440,
+      "index": 2,
+      "screenshot": "2-1440-index-2.png"
+    },
+    {
+      "src": "img/logo.png",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/logo.png",
+      "alt": "The Chick Goodies",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 1209,
+      "naturalHeight": 388,
+      "renderedWidth": 117.859375,
+      "renderedHeight": 37.8125,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 390,
+      "index": 0,
+      "screenshot": "3-390-index-0.png"
+    },
+    {
+      "src": "img/knot-hero.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/knot-hero.jpg",
+      "alt": "An event by The Chick Goodies",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 343.21875,
+      "renderedHeight": 261.5,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 390,
+      "index": 1,
+      "screenshot": "3-390-index-1.png"
+    },
+    {
+      "src": "img/knot-hero.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/knot-hero.jpg",
+      "alt": "A photograph from The Chick Goodies event collection",
+      "loading": "lazy",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 343.21875,
+      "renderedHeight": 261.5,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 390,
+      "index": 2,
+      "screenshot": "3-390-index-2.png"
+    },
+    {
+      "src": "img/tricia-662.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/tricia-662.jpg",
+      "alt": "Tricia Holfelder, owner of Charcuterie Chick",
+      "loading": "lazy",
+      "srcset": "",
+      "naturalWidth": 662,
+      "naturalHeight": 823,
+      "renderedWidth": 210,
+      "renderedHeight": 261.0625,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 390,
+      "index": 3,
+      "screenshot": "3-390-index-3.png"
+    },
+    {
+      "src": "img/logo-paper.png",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/logo-paper.png",
+      "alt": "The Chick Goodies original wordmark",
+      "loading": "lazy",
+      "srcset": "",
+      "naturalWidth": 1209,
+      "naturalHeight": 388,
+      "renderedWidth": 160,
+      "renderedHeight": 51.34375,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 390,
+      "index": 4,
+      "screenshot": "3-390-index-4.png"
+    },
+    {
+      "src": "img/logo.png",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/logo.png",
+      "alt": "The Chick Goodies",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 1209,
+      "naturalHeight": 388,
+      "renderedWidth": 145,
+      "renderedHeight": 46.53125,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 1440,
+      "index": 0,
+      "screenshot": "3-1440-index-0.png"
+    },
+    {
+      "src": "img/knot-hero.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/knot-hero.jpg",
+      "alt": "An event by The Chick Goodies",
+      "loading": "auto",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 601.171875,
+      "renderedHeight": 458.03125,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 1440,
+      "index": 1,
+      "screenshot": "3-1440-index-1.png"
+    },
+    {
+      "src": "img/knot-hero.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/knot-hero.jpg",
+      "alt": "A photograph from The Chick Goodies event collection",
+      "loading": "lazy",
+      "srcset": "",
+      "naturalWidth": 945,
+      "naturalHeight": 720,
+      "renderedWidth": 519.03125,
+      "renderedHeight": 395.453125,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 1440,
+      "index": 2,
+      "screenshot": "3-1440-index-2.png"
+    },
+    {
+      "src": "img/tricia-662.jpg",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/tricia-662.jpg",
+      "alt": "Tricia Holfelder, owner of Charcuterie Chick",
+      "loading": "lazy",
+      "srcset": "",
+      "naturalWidth": 662,
+      "naturalHeight": 823,
+      "renderedWidth": 320,
+      "renderedHeight": 397.8125,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 1440,
+      "index": 3,
+      "screenshot": "3-1440-index-3.png"
+    },
+    {
+      "src": "img/logo-paper.png",
+      "currentSrc": "https://charcuterie-chick-sample-3.vercel.app/img/logo-paper.png",
+      "alt": "The Chick Goodies original wordmark",
+      "loading": "lazy",
+      "srcset": "",
+      "naturalWidth": 1209,
+      "naturalHeight": 388,
+      "renderedWidth": 190,
+      "renderedHeight": 60.96875,
+      "objectFit": "contain",
+      "visible": true,
+      "page": "https://charcuterie-chick-sample-3.vercel.app/",
+      "viewport": 1440,
+      "index": 4,
+      "screenshot": "3-1440-index-4.png"
+    }
+  ],
+  "unique_sources": [
+    "https://charcuterie-chick-sample-1.vercel.app/img/knot-2.jpg",
+    "https://charcuterie-chick-sample-1.vercel.app/img/knot-3.jpg",
+    "https://charcuterie-chick-sample-1.vercel.app/img/knot-4.jpg",
+    "https://charcuterie-chick-sample-1.vercel.app/img/knot-hero.jpg",
+    "https://charcuterie-chick-sample-2.vercel.app/img/knot-2.jpg",
+    "https://charcuterie-chick-sample-2.vercel.app/img/knot-hero.jpg",
+    "https://charcuterie-chick-sample-2.vercel.app/img/tricia-662.jpg",
+    "https://charcuterie-chick-sample-3.vercel.app/img/knot-hero.jpg",
+    "https://charcuterie-chick-sample-3.vercel.app/img/logo-paper.png",
+    "https://charcuterie-chick-sample-3.vercel.app/img/logo.png",
+    "https://charcuterie-chick-sample-3.vercel.app/img/tricia-662.jpg"
+  ],
+  "visual_review": "Not yet performed; screenshots are evidence, not visual approval."
+}

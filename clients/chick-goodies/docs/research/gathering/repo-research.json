@@ -1,0 +1,86 @@
+{
+  "checked_utc": "2026-09-17T00:43:54.303025+00:00",
+  "count": 8,
+  "repos": [
+    {
+      "repo": "dequelabs/axe-core",
+      "url": "https://github.com/dequelabs/axe-core",
+      "stars": 7517,
+      "pushed_at": "2026-09-16T23:17:31Z",
+      "archived": false,
+      "license": "MPL-2.0",
+      "verdict": "adopt",
+      "reason": "Dev-only browser accessibility gate; no client runtime."
+    },
+    {
+      "repo": "microsoft/playwright",
+      "url": "https://github.com/microsoft/playwright",
+      "stars": 96228,
+      "pushed_at": "2026-09-16T23:14:46Z",
+      "archived": false,
+      "license": "Apache-2.0",
+      "verdict": "adopt",
+      "reason": "Route, input, asset, motion and deployed parity tests."
+    },
+    {
+      "repo": "dimsemenov/PhotoSwipe",
+      "url": "https://github.com/dimsemenov/PhotoSwipe",
+      "stars": 25256,
+      "pushed_at": "2025-12-04T07:31:46Z",
+      "archived": false,
+      "license": "MIT",
+      "verdict": "candidate",
+      "reason": "Accessible zoom gallery; compare native dialog before adding runtime."
+    },
+    {
+      "repo": "darkroomengineering/lenis",
+      "url": "https://github.com/darkroomengineering/lenis",
+      "stars": 15851,
+      "pushed_at": "2026-09-09T14:10:28Z",
+      "archived": false,
+      "license": "MIT",
+      "verdict": "defer",
+      "reason": "Native scroll preserved; no evidence scroll replacement improves this scene."
+    },
+    {
+      "repo": "pmndrs/postprocessing",
+      "url": "https://github.com/pmndrs/postprocessing",
+      "stars": 2859,
+      "pushed_at": "2026-09-12T20:14:21Z",
+      "archived": false,
+      "license": "Zlib",
+      "verdict": "defer",
+      "reason": "Only adopt if an art-directed effect justifies extra render passes."
+    },
+    {
+      "repo": "mrdoob/three.js",
+      "url": "https://github.com/mrdoob/three.js",
+      "stars": 115591,
+      "pushed_at": "2026-09-16T18:51:33Z",
+      "archived": false,
+      "license": "MIT",
+      "verdict": "adopt-existing",
+      "reason": "Procedural table scene; measure draw calls, pause and adaptive pixel ratio."
+    },
+    {
+      "repo": "theatre-js/theatre",
+      "url": "https://github.com/theatre-js/theatre",
+      "stars": 12672,
+      "pushed_at": "2024-08-14T13:20:18Z",
+      "archived": false,
+      "license": "Apache-2.0",
+      "verdict": "reference",
+      "reason": "Timeline tooling not necessary for present short camera path."
+    },
+    {
+      "repo": "dimforge/rapier.js",
+      "url": "https://github.com/dimforge/rapier.js",
+      "stars": 696,
+      "pushed_at": "2026-07-12T16:55:48Z",
+      "archived": true,
+      "license": "Apache-2.0",
+      "verdict": "defer",
+      "reason": "No collision-based customer interaction yet; physics would add cost without function."
+    }
+  ]
+}

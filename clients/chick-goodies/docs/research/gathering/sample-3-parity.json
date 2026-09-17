@@ -1,0 +1,109 @@
+{
+  "target": "sample-3 only",
+  "routes_checked": 17,
+  "passed": true,
+  "rows": [
+    {
+      "file": "index.html",
+      "local_bytes": 4014,
+      "live_bytes": 4014,
+      "match": true
+    },
+    {
+      "file": "menu.html",
+      "local_bytes": 4307,
+      "live_bytes": 4307,
+      "match": true
+    },
+    {
+      "file": "gallery.html",
+      "local_bytes": 3839,
+      "live_bytes": 3839,
+      "match": true
+    },
+    {
+      "file": "story.html",
+      "local_bytes": 2472,
+      "live_bytes": 2472,
+      "match": true
+    },
+    {
+      "file": "enquire.html",
+      "local_bytes": 4007,
+      "live_bytes": 4007,
+      "match": true
+    },
+    {
+      "file": "gathering.css",
+      "local_bytes": 10541,
+      "live_bytes": 10541,
+      "match": true
+    },
+    {
+      "file": "gathering.js",
+      "local_bytes": 4612,
+      "live_bytes": 4612,
+      "match": true
+    },
+    {
+      "file": "table-scene.js",
+      "local_bytes": 6876,
+      "live_bytes": 6876,
+      "match": true
+    },
+    {
+      "file": "img/brand.webp",
+      "local_bytes": 79442,
+      "live_bytes": 79442,
+      "match": true
+    },
+    {
+      "file": "img/knot-hero.jpg",
+      "local_bytes": 197418,
+      "live_bytes": 197418,
+      "match": true
+    },
+    {
+      "file": "img/tricia-662.jpg",
+      "local_bytes": 67069,
+      "live_bytes": 67069,
+      "match": true
+    },
+    {
+      "file": "img/cart-640.jpg",
+      "local_bytes": 73913,
+      "live_bytes": 73913,
+      "match": true
+    },
+    {
+      "file": "img/knot-2.jpg",
+      "local_bytes": 144522,
+      "live_bytes": 144522,
+      "match": true
+    },
+    {
+      "file": "img/knot-3.jpg",
+      "local_bytes": 183967,
+      "live_bytes": 183967,
+      "match": true
+    },
+    {
+      "file": "img/sweets-01.jpg",
+      "local_bytes": 93810,
+      "live_bytes": 93810,
+      "match": true
+    },
+    {
+      "file": "img/sips-01.jpg",
+      "local_bytes": 46600,
+      "live_bytes": 46600,
+      "match": true
+    },
+    {
+      "file": "img/board-01.jpg",
+      "local_bytes": 99919,
+      "live_bytes": 99919,
+      "match": true
+    }
+  ]
+}

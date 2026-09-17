@@ -1,0 +1,1 @@
+{"name":"chick-goodies-quality-gate","private":true,"version":"1.0.0","description":"Dev-only accessibility testing; not deployed","dependencies":{"axe-core":"4.10.3"}}

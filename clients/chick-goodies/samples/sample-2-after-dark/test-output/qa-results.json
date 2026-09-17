@@ -1,0 +1,1427 @@
+{
+  "browser": "Playwright bundled Chromium, Windows headless",
+  "viewports": [
+    {
+      "route": "index",
+      "width": 360,
+      "scrollWidth": 360,
+      "h1": 1,
+      "title": 35,
+      "description": 135,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 281.8399658203125,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/cart-640.jpg",
+          "loaded": true,
+          "width": 292.47845458984375,
+          "native": 640,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "menu",
+      "width": 360,
+      "scrollWidth": 360,
+      "h1": 1,
+      "title": 29,
+      "description": 144,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 291.390625,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-2.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-3.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/table-01.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/wide-640.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 640,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "gallery",
+      "width": 360,
+      "scrollWidth": 360,
+      "h1": 1,
+      "title": 30,
+      "description": 147,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-4.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/graze-01.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/table-02.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/sips-01.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/board-02.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/sweets-01.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-4.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "story",
+      "width": 360,
+      "scrollWidth": 360,
+      "h1": 1,
+      "title": 31,
+      "description": 147,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/tricia-662.jpg",
+          "loaded": true,
+          "width": 274.77178955078125,
+          "native": 662,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/catering-1000.jpg",
+          "loaded": true,
+          "width": 310,
+          "native": 1000,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "enquire",
+      "width": 360,
+      "scrollWidth": 360,
+      "h1": 1,
+      "title": 33,
+      "description": 142,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "index",
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "title": 35,
+      "description": 135,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 311.12884521484375,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/cart-640.jpg",
+          "loaded": true,
+          "width": 320.79351806640625,
+          "native": 640,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "menu",
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "title": 29,
+      "description": 144,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 319.59375,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-2.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-3.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/table-01.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/wide-640.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 640,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "gallery",
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "title": 30,
+      "description": 147,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-4.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/graze-01.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/table-02.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/sips-01.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/board-02.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/sweets-01.jpg",
+          "loaded": true,
+          "width": 280,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-4.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "story",
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "title": 31,
+      "description": 147,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/tricia-662.jpg",
+          "loaded": true,
+          "width": 301.3626708984375,
+          "native": 662,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/catering-1000.jpg",
+          "loaded": true,
+          "width": 340,
+          "native": 1000,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "enquire",
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "title": 33,
+      "description": 142,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 155,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        155,
+        155
+      ]
+    },
+    {
+      "route": "index",
+      "width": 768,
+      "scrollWidth": 768,
+      "h1": 1,
+      "title": 35,
+      "description": 135,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 324.1753845214844,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/cart-640.jpg",
+          "loaded": true,
+          "width": 282.062255859375,
+          "native": 640,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "menu",
+      "width": 768,
+      "scrollWidth": 768,
+      "h1": 1,
+      "title": 29,
+      "description": 144,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 310.890625,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-2.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-3.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/table-01.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/wide-640.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 640,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "gallery",
+      "width": 768,
+      "scrollWidth": 768,
+      "h1": 1,
+      "title": 30,
+      "description": 147,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-4.jpg",
+          "loaded": true,
+          "width": 540,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/graze-01.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/table-02.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/sips-01.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/board-02.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/sweets-01.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-4.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "story",
+      "width": 768,
+      "scrollWidth": 768,
+      "h1": 1,
+      "title": 31,
+      "description": 147,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/tricia-662.jpg",
+          "loaded": true,
+          "width": 245.37835693359375,
+          "native": 662,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/catering-1000.jpg",
+          "loaded": true,
+          "width": 708,
+          "native": 1000,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "enquire",
+      "width": 768,
+      "scrollWidth": 768,
+      "h1": 1,
+      "title": 33,
+      "description": 142,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "index",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "title": 35,
+      "description": 135,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 618.9486694335938,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/cart-640.jpg",
+          "loaded": true,
+          "width": 528.8551025390625,
+          "native": 640,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "menu",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "title": 29,
+      "description": 144,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-hero.jpg",
+          "loaded": true,
+          "width": 480,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-2.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-3.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/table-01.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/wide-640.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 640,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "gallery",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "title": 30,
+      "description": 147,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-4.jpg",
+          "loaded": true,
+          "width": 540,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/graze-01.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/table-02.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/sips-01.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/board-02.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/sweets-01.jpg",
+          "loaded": true,
+          "width": 360,
+          "native": 480,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/knot-4.jpg",
+          "loaded": true,
+          "width": 0,
+          "native": 945,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "story",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "title": 31,
+      "description": 147,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/tricia-662.jpg",
+          "loaded": true,
+          "width": 448.39398193359375,
+          "native": 662,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/catering-1000.jpg",
+          "loaded": true,
+          "width": 940,
+          "native": 1000,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    },
+    {
+      "route": "enquire",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "title": 33,
+      "description": 142,
+      "images": [
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        },
+        {
+          "src": "img/brand.webp",
+          "loaded": true,
+          "width": 190,
+          "native": 1255,
+          "alt": true,
+          "dimensions": true
+        }
+      ],
+      "brand": [
+        190,
+        190
+      ]
+    }
+  ],
+  "checks": [
+    "360/index: HTTP 200",
+    "360/index: no horizontal page overflow",
+    "360/index: heading and metadata gates",
+    "360/index: images loaded, attributed, dimensioned, not upscaled",
+    "360/index: original brand mounts meet width floor",
+    "360/index: five navigation destinations",
+    "360/index: direct contact matches facts.json",
+    "360/menu: HTTP 200",
+    "360/menu: no horizontal page overflow",
+    "360/menu: heading and metadata gates",
+    "360/menu: images loaded, attributed, dimensioned, not upscaled",
+    "360/menu: original brand mounts meet width floor",
+    "360/menu: five navigation destinations",
+    "360/menu: direct contact matches facts.json",
+    "360/gallery: HTTP 200",
+    "360/gallery: no horizontal page overflow",
+    "360/gallery: heading and metadata gates",
+    "360/gallery: images loaded, attributed, dimensioned, not upscaled",
+    "360/gallery: original brand mounts meet width floor",
+    "360/gallery: five navigation destinations",
+    "360/gallery: direct contact matches facts.json",
+    "360/story: HTTP 200",
+    "360/story: no horizontal page overflow",
+    "360/story: heading and metadata gates",
+    "360/story: images loaded, attributed, dimensioned, not upscaled",
+    "360/story: original brand mounts meet width floor",
+    "360/story: five navigation destinations",
+    "360/story: direct contact matches facts.json",
+    "360/enquire: HTTP 200",
+    "360/enquire: no horizontal page overflow",
+    "360/enquire: heading and metadata gates",
+    "360/enquire: images loaded, attributed, dimensioned, not upscaled",
+    "360/enquire: original brand mounts meet width floor",
+    "360/enquire: five navigation destinations",
+    "360/enquire: direct contact matches facts.json",
+    "390/index: HTTP 200",
+    "390/index: no horizontal page overflow",
+    "390/index: heading and metadata gates",
+    "390/index: images loaded, attributed, dimensioned, not upscaled",
+    "390/index: original brand mounts meet width floor",
+    "390/index: five navigation destinations",
+    "390/index: direct contact matches facts.json",
+    "390/menu: HTTP 200",
+    "390/menu: no horizontal page overflow",
+    "390/menu: heading and metadata gates",
+    "390/menu: images loaded, attributed, dimensioned, not upscaled",
+    "390/menu: original brand mounts meet width floor",
+    "390/menu: five navigation destinations",
+    "390/menu: direct contact matches facts.json",
+    "390/gallery: HTTP 200",
+    "390/gallery: no horizontal page overflow",
+    "390/gallery: heading and metadata gates",
+    "390/gallery: images loaded, attributed, dimensioned, not upscaled",
+    "390/gallery: original brand mounts meet width floor",
+    "390/gallery: five navigation destinations",
+    "390/gallery: direct contact matches facts.json",
+    "390/story: HTTP 200",
+    "390/story: no horizontal page overflow",
+    "390/story: heading and metadata gates",
+    "390/story: images loaded, attributed, dimensioned, not upscaled",
+    "390/story: original brand mounts meet width floor",
+    "390/story: five navigation destinations",
+    "390/story: direct contact matches facts.json",
+    "390/enquire: HTTP 200",
+    "390/enquire: no horizontal page overflow",
+    "390/enquire: heading and metadata gates",
+    "390/enquire: images loaded, attributed, dimensioned, not upscaled",
+    "390/enquire: original brand mounts meet width floor",
+    "390/enquire: five navigation destinations",
+    "390/enquire: direct contact matches facts.json",
+    "768/index: HTTP 200",
+    "768/index: no horizontal page overflow",
+    "768/index: heading and metadata gates",
+    "768/index: images loaded, attributed, dimensioned, not upscaled",
+    "768/index: original brand mounts meet width floor",
+    "768/index: five navigation destinations",
+    "768/index: direct contact matches facts.json",
+    "768/menu: HTTP 200",
+    "768/menu: no horizontal page overflow",
+    "768/menu: heading and metadata gates",
+    "768/menu: images loaded, attributed, dimensioned, not upscaled",
+    "768/menu: original brand mounts meet width floor",
+    "768/menu: five navigation destinations",
+    "768/menu: direct contact matches facts.json",
+    "768/gallery: HTTP 200",
+    "768/gallery: no horizontal page overflow",
+    "768/gallery: heading and metadata gates",
+    "768/gallery: images loaded, attributed, dimensioned, not upscaled",
+    "768/gallery: original brand mounts meet width floor",
+    "768/gallery: five navigation destinations",
+    "768/gallery: direct contact matches facts.json",
+    "768/story: HTTP 200",
+    "768/story: no horizontal page overflow",
+    "768/story: heading and metadata gates",
+    "768/story: images loaded, attributed, dimensioned, not upscaled",
+    "768/story: original brand mounts meet width floor",
+    "768/story: five navigation destinations",
+    "768/story: direct contact matches facts.json",
+    "768/enquire: HTTP 200",
+    "768/enquire: no horizontal page overflow",
+    "768/enquire: heading and metadata gates",
+    "768/enquire: images loaded, attributed, dimensioned, not upscaled",
+    "768/enquire: original brand mounts meet width floor",
+    "768/enquire: five navigation destinations",
+    "768/enquire: direct contact matches facts.json",
+    "1440/index: HTTP 200",
+    "1440/index: no horizontal page overflow",
+    "1440/index: heading and metadata gates",
+    "1440/index: images loaded, attributed, dimensioned, not upscaled",
+    "1440/index: original brand mounts meet width floor",
+    "1440/index: five navigation destinations",
+    "1440/index: direct contact matches facts.json",
+    "1440/menu: HTTP 200",
+    "1440/menu: no horizontal page overflow",
+    "1440/menu: heading and metadata gates",
+    "1440/menu: images loaded, attributed, dimensioned, not upscaled",
+    "1440/menu: original brand mounts meet width floor",
+    "1440/menu: five navigation destinations",
+    "1440/menu: direct contact matches facts.json",
+    "1440/gallery: HTTP 200",
+    "1440/gallery: no horizontal page overflow",
+    "1440/gallery: heading and metadata gates",
+    "1440/gallery: images loaded, attributed, dimensioned, not upscaled",
+    "1440/gallery: original brand mounts meet width floor",
+    "1440/gallery: five navigation destinations",
+    "1440/gallery: direct contact matches facts.json",
+    "1440/story: HTTP 200",
+    "1440/story: no horizontal page overflow",
+    "1440/story: heading and metadata gates",
+    "1440/story: images loaded, attributed, dimensioned, not upscaled",
+    "1440/story: original brand mounts meet width floor",
+    "1440/story: five navigation destinations",
+    "1440/story: direct contact matches facts.json",
+    "1440/enquire: HTTP 200",
+    "1440/enquire: no horizontal page overflow",
+    "1440/enquire: heading and metadata gates",
+    "1440/enquire: images loaded, attributed, dimensioned, not upscaled",
+    "1440/enquire: original brand mounts meet width floor",
+    "1440/enquire: five navigation destinations",
+    "1440/enquire: direct contact matches facts.json",
+    "Keyboard skip link is first focus target",
+    "Skip link moves focus to main content",
+    "Pointer updates real CSS spotlight position",
+    "Native scroll updates theatrical scene progress",
+    "Explicit motion pause disables decorative interaction",
+    "Menu selection: holy",
+    "Menu selection: grand",
+    "Menu selection: super",
+    "Menu selection: standard",
+    "Menu selection: graze",
+    "Menu browser Back restores prior stage",
+    "Menu browser Forward restores selected stage",
+    "Menu keyboard arrows change stage",
+    "Menu CTA presets enquiry menu",
+    "Quote regression: holy/75/0 = $2,630.22",
+    "Quote regression: holy/150/0 = $4,400.22",
+    "Quote regression: grand/50/0 = $2,512.22",
+    "Quote regression: super/50/0 = $2,040.22",
+    "Quote regression: standard/50/0 = $1,804.22",
+    "Quote regression: graze/50/0 = $1,686.22",
+    "Quote regression: graze/50/2 = $2,040.22",
+    "Quote regression: holy/150/4 = $6,524.22",
+    "Invalid quote rejected: holy/74",
+    "Invalid quote rejected: holy/76",
+    "Invalid quote rejected: holy/149",
+    "Invalid quote rejected: holy/151",
+    "Invalid quote rejected: grand/49",
+    "Invalid quote rejected: graze/50.5",
+    "Invalid quote rejected: super/-1",
+    "Invalid quote rejected: standard/",
+    "Invalid quote rejected: graze/10001",
+    "Invalid quote can prepare honest custom enquiry",
+    "Enquiry notes stay plain text, never inserted as markup",
+    "Email draft uses exact facts recipient",
+    "Edited draft updates explicit email link",
+    "Clipboard-denied fallback selects draft and gives instructions",
+    "No PII or choices persisted in browser storage",
+    "Filmstrip next button actually scrolls photographs",
+    "Gallery frame 1 opens accessible native dialog",
+    "Lightbox respects native image width",
+    "Gallery frame 1: Escape closes",
+    "Gallery frame 1: focus restored",
+    "Gallery frame 2 opens accessible native dialog",
+    "Lightbox respects native image width",
+    "Gallery frame 2: Escape closes",
+    "Gallery frame 2: focus restored",
+    "Gallery frame 3 opens accessible native dialog",
+    "Lightbox respects native image width",
+    "Gallery frame 3: Escape closes",
+    "Gallery frame 3: focus restored",
+    "Gallery frame 4 opens accessible native dialog",
+    "Lightbox respects native image width",
+    "Gallery frame 4: Escape closes",
+    "Gallery frame 4: focus restored",
+    "Gallery frame 5 opens accessible native dialog",
+    "Lightbox respects native image width",
+    "Gallery frame 5: Escape closes",
+    "Gallery frame 5: focus restored",
+    "Gallery frame 6 opens accessible native dialog",
+    "Lightbox respects native image width",
+    "Gallery frame 6: Escape closes",
+    "Gallery frame 6: focus restored",
+    "index: local link exists index.html",
+    "index: local link exists index.html",
+    "index: local link exists menu.html",
+    "index: local link exists gallery.html",
+    "index: local link exists story.html",
+    "index: local link exists enquire.html",
+    "index: local link exists menu.html",
+    "index: local link exists story.html",
+    "index: local link exists menu.html",
+    "index: local link exists gallery.html",
+    "index: local link exists enquire.html",
+    "index: local link exists index.html",
+    "index: local link exists menu.html",
+    "menu: local link exists index.html",
+    "menu: local link exists index.html",
+    "menu: local link exists menu.html",
+    "menu: local link exists gallery.html",
+    "menu: local link exists story.html",
+    "menu: local link exists enquire.html",
+    "menu: local link exists enquire.html",
+    "menu: local link exists enquire.html",
+    "menu: local link exists enquire.html",
+    "menu: local link exists enquire.html",
+    "menu: local link exists enquire.html",
+    "menu: local link exists enquire.html",
+    "menu: local link exists index.html",
+    "menu: local link exists menu.html",
+    "gallery: local link exists index.html",
+    "gallery: local link exists index.html",
+    "gallery: local link exists menu.html",
+    "gallery: local link exists gallery.html",
+    "gallery: local link exists story.html",
+    "gallery: local link exists enquire.html",
+    "gallery: local link exists img/knot-4.jpg",
+    "gallery: local link exists img/graze-01.jpg",
+    "gallery: local link exists img/table-02.jpg",
+    "gallery: local link exists img/sips-01.jpg",
+    "gallery: local link exists img/board-02.jpg",
+    "gallery: local link exists img/sweets-01.jpg",
+    "gallery: local link exists enquire.html",
+    "gallery: local link exists enquire.html",
+    "gallery: local link exists index.html",
+    "gallery: local link exists menu.html",
+    "story: local link exists index.html",
+    "story: local link exists index.html",
+    "story: local link exists menu.html",
+    "story: local link exists gallery.html",
+    "story: local link exists story.html",
+    "story: local link exists enquire.html",
+    "story: local link exists enquire.html",
+    "story: local link exists enquire.html",
+    "story: local link exists index.html",
+    "story: local link exists menu.html",
+    "enquire: local link exists index.html",
+    "enquire: local link exists index.html",
+    "enquire: local link exists menu.html",
+    "enquire: local link exists gallery.html",
+    "enquire: local link exists story.html",
+    "enquire: local link exists enquire.html",
+    "enquire: local link exists enquire.html",
+    "enquire: local link exists index.html",
+    "enquire: local link exists menu.html",
+    "no-js/index: meaningful static page visible",
+    "no-js/menu: meaningful static page visible",
+    "no-js/gallery: meaningful static page visible",
+    "no-js/story: meaningful static page visible",
+    "no-js/enquire: meaningful static page visible",
+    "No JavaScript: all five menu descriptions remain visible",
+    "reduced-motion/index: meaningful static page visible",
+    "reduced-motion/menu: meaningful static page visible",
+    "reduced-motion/gallery: meaningful static page visible",
+    "reduced-motion/story: meaningful static page visible",
+    "reduced-motion/enquire: meaningful static page visible",
+    "Reduced-motion preference disables motion",
+    "Explicit control cannot override reduced-motion preference",
+    "Zero browser console errors",
+    "Zero uncaught page errors",
+    "Zero failed network requests",
+    "index: no duplicate IDs",
+    "index: every explicit field label has a control",
+    "menu: no duplicate IDs",
+    "menu: every explicit field label has a control",
+    "gallery: no duplicate IDs",
+    "gallery: every explicit field label has a control",
+    "story: no duplicate IDs",
+    "story: every explicit field label has a control",
+    "enquire: no duplicate IDs",
+    "enquire: every explicit field label has a control"
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": [],
+  "screenshots": [
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\index-390.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\menu-390.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\gallery-390.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\story-390.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\enquire-390.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\index-1440.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\menu-1440.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\gallery-1440.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\story-1440.png",
+    "C:\\Users\\Garrett\\autonomous-revenue-engine\\clients\\chick-goodies\\samples\\sample-2-after-dark\\test-output\\enquire-1440.png"
+  ],
+  "visual_approval": false,
+  "browser_version": "153.0.8010.12",
+  "status": "PASS"
+}

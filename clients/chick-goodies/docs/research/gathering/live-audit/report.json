@@ -1,0 +1,113 @@
+[
+  {
+    "url": "https://charcuterie-chick-sample-1.vercel.app/index.html",
+    "status": "200",
+    "exit": 0,
+    "title": "Charcuterie Chick",
+    "h1": [
+      "Join us at the table."
+    ]
+  },
+  {
+    "url": "https://charcuterie-chick-sample-1.vercel.app/menu.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-1.vercel.app/gallery.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-1.vercel.app/story.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-1.vercel.app/enquire.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-2.vercel.app/index.html",
+    "status": "200",
+    "exit": 0,
+    "title": "Tomball \u2014 Charcuterie Chick",
+    "h1": [
+      "Tomball"
+    ]
+  },
+  {
+    "url": "https://charcuterie-chick-sample-2.vercel.app/menu.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-2.vercel.app/gallery.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-2.vercel.app/story.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-2.vercel.app/enquire.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-3.vercel.app/index.html",
+    "status": "200",
+    "exit": 0,
+    "title": "Charcuterie Chick | Grazing Tables in Tomball, TX",
+    "h1": [
+      "Charcuterie Chick"
+    ]
+  },
+  {
+    "url": "https://charcuterie-chick-sample-3.vercel.app/menu.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-3.vercel.app/gallery.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-3.vercel.app/story.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  },
+  {
+    "url": "https://charcuterie-chick-sample-3.vercel.app/enquire.html",
+    "status": "404",
+    "exit": 0,
+    "title": null,
+    "h1": []
+  }
+]
