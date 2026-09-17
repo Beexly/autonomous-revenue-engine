@@ -31,7 +31,7 @@ Work in `sample-3-studio`. It deploys with the branch. Order, by plan 11.3 item 
 8. Item 8: restore the card photos under the owner's rule; commit originals first.
 9. Gates G1 to G6 on `table.html` and the restyled pages, at 390, 768, 1440, 1920.
 
-The 3D food stays abstract. Never photoreal. Never generated food.
+No modeled food on the table, abstract or otherwise: Garrett rejected the sphere-and-board dressing as cartoonish on 2026-09-17. The food is her photographs, laid on the runner as prints (sixteen of them, a pair under every camera station); the rest of the dressing is candles and a few glasses at the far ends. `table-cinematic.js` and the two stills in `img/` carry this already. Never photoreal models, never generated food, never bring the props back.
 
 ## Workstream C: send-ready checklist
 
