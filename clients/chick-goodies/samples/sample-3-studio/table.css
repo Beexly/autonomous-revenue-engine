@@ -244,3 +244,10 @@ p{margin:0 0 20px;color:var(--dim)}
   .counter{grid-template-columns:1fr;gap:38px}
   .counter-total{border-left:0;border-top:1px solid #f4ece01f;padding-left:0;padding-top:30px}
 }
+
+/* the sides list is the same price list, denser: two columns where there is room */
+.tables.sides{margin-top:26px}
+@media(min-width:760px){
+  .tables.sides{display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
+  .tables.sides li{margin:0}
+}
