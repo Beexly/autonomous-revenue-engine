@@ -207,7 +207,26 @@ carry:
 | `docs/proposal/img/after-cart.webp` | `samples/sample-3-studio/img/cut/cart-640.webp` (the studio re-shoot) |
 | `docs/proposal/img/after-trays.jpg` | `graze-01.jpg`, restored and enlarged | proposal page 4, before and after |
 | `docs/proposal/img/after-sips.jpg` | `sips-02.jpg`, studio re-shoot | proposal page 4, before and after |
-| `docs/proposal/img/before-trays.jpg`, `before-sips.jpg` | her originals, cropped 3:4 | proposal page 4 |
+| `docs/proposal/img/before-trays.jpg` | `graze-01.jpg`, her original, byte-identical | proposal page 5, the "yours" side |
+| `docs/proposal/img/before-sips.jpg` | `sips-02.jpg`, her original, byte-identical | proposal page 5, the "yours" side |
+
+**Corrected 2026-09-18.** This row previously read "her originals, cropped 3:4"
+and that was wrong. The two files sitting there were 600x800 upscales of the
+*enhanced* images — brighter, sharper and more saturated than anything she
+took. The proposal was therefore showing enhanced beside enhanced while
+labelling the left-hand one "Yours", which overstated her starting point and
+understated the work. Garrett caught it. Both files are now byte-identical to
+`graze-01.jpg` and `sips-02.jpg` (480x640, her camera-roll originals resized,
+IMG_4945 and the sips source). Never put a processed file on the "yours" side
+of a before-and-after.
+
+Two further originals supplied by Garrett on 2026-09-18, kept outside every
+Vercel project root so they are never served:
+
+| File | What it is | Used |
+|---|---|---|
+| `originals/graze-01-source.webp` | her candy-tray photograph, the source behind `graze-01.jpg` | reference only |
+| `originals/cart-venue-rose.webp` | the cart set up at a venue beside a large paper rose | not used yet |
 | `samples/sample-3-studio/img/table-still.jpg`, `table-still-tall.jpg`, `docs/proposal/img/table.jpg` | re-rendered from the scene with the three cut-outs above | phone still, loading frame, proposal page 2 |
 
 Rejected on 2026-09-18 and not in the repo: a cart restoration that dropped
