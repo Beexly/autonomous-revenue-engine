@@ -32,7 +32,10 @@ Headline: *Three sites to choose from. Built to get you booked.*
 - 3 finished designs, live today. She picks one.
 - 90 days of care after launch, included.
 
-The Revenue Engine (package name) in four stages, each a line item:
+The Revenue Engine (package name) drawn as a loop, not a line (2026-09-18): a
+ring of four arrows, the fourth in wine, with "One booked table, then the next
+one." at its center, and the four parts explained beside it. Label: one loop,
+four parts, every turn is a booked table.
 
 1. **Found.** Her Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.
 2. **Chosen.** A site that looks like her food, says what she charges and shows her 5.0.
@@ -41,7 +44,7 @@ The Revenue Engine (package name) in four stages, each a line item:
 
 Proof shown: 5.0 on The Knot, 13 reviews, Best of Weddings 2026 · 5.0 on WeddingWire, 11 reviews, 100% recommend.
 
-Bottom strip, "How this works", three decisions in order: 1 pick a site (page 2; three to choose from, and The Table as its own package) · 2 say yes to what you want (page 4; the website alone, or the Revenue Engine with it) · 3 live in seven days, then ninety days of care included; The Table takes three weeks.
+Bottom strip, "How this works", three decisions in order, set as plain text with inline numerals (no rules, no timeline): 1 pick a site (page 2; three to choose from, and The Table as its own package) · 2 say yes to what you want (page 4; the website alone, or the Revenue Engine with it) · 3 live in seven days, then ninety days of care included; The Table takes three weeks.
 
 ## Page 2. Choose your site
 
@@ -170,13 +173,11 @@ optional, cancel any time with thirty days' notice. Lede: one line, from the
 day she says yes: what we need from her, what is included, and what a plan
 adds.
 
-The page opens with a four-segment rail that labels the four columns beneath it
-rather than repeating them: Day 0 · Days 1 to 7 · Days 1 to 90 · From day 91,
-the middle two segments in gold, the last dashed. One line under the gold pair:
-"Ninety days on us. Care and Growth begin after that, and only if you want
-them." The forked road that used to sit here was removed on 2026-09-18 — its
-two arrows ran through the Care and Growth labels, and its stations duplicated
-the column subheads word for word. Four columns sit under the rail:
+The rail that opened this page was removed on 2026-09-18: it repeated the
+column subheads word for word, and the proposal already carried too many
+timelines. Its one line now closes the lede: "Ninety days on us. Care and
+Growth begin after that, and only if you want them." (The forked road before
+it went the same day, for the same reason.) Four columns:
 
 - **Before we start, the day she says yes:** this proposal approved, design picked; her logo files, any size; camera-roll originals of her photos; a yes or no on these details: street address on the site, the Spanish line, the About photo, how the cart, sweets and sips are charged, dietary notes.
 - **While we build, days 1 to 7:** the login for charcuteriechick.ai, her web address, or a short call and we do it together; the login to her current site; her Google Business Profile (the listing people see on Google Maps), or we claim it together.

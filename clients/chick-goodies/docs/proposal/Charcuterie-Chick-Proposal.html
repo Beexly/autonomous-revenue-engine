@@ -41,18 +41,23 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .meta { display: flex; gap: 28pt; margin-top: 16pt; font-size: 9.2pt; }
 .meta span { color: var(--mute); display: block; }
 .meta b { display: block; font-weight: 500; }
-.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin: 20pt 0 20pt; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin: 16pt 0 16pt; }
 .tile { background: var(--card); border: 1px solid var(--rule); padding: 14pt 16pt 13pt; border-radius: 2pt; }
 .tile .num { font-size: 32pt; line-height: 1; color: var(--wine); letter-spacing: -.02em; }
 .tile .num small { font-size: 13pt; letter-spacing: 0; margin-left: 4pt; }
 .tile .cap { margin-top: 7pt; font-size: 9.3pt; line-height: 1.35; color: var(--mute); }
-.engine { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14pt; margin-top: 12pt; }
-.engine::before { content: ""; position: absolute; left: 12pt; right: 12pt; top: 13pt; border-top: 1px solid var(--gold); }
-.step { position: relative; }
-.dot { width: 26pt; height: 26pt; border-radius: 50%; background: var(--paper); border: 1px solid var(--gold); color: var(--wine); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 11pt; }
-.step h3 { margin-top: 9pt; font-size: 14pt; }
-.step p { font-size: 8.8pt; line-height: 1.4; color: var(--mute); margin-top: 4pt; }
-.proof { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 20pt; }
+.loop { display: grid; grid-template-columns: 2.45in 1fr; gap: 16pt; align-items: center; margin-top: 4pt; }
+.loop-ring { width: 2.45in; height: auto; display: block; overflow: visible; }
+.loop-ring .ln { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 12px; fill: var(--wine); }
+.loop-ring .ll { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 15px; fill: var(--ink); }
+.loop-ring .lc { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 13.5px; fill: var(--wine); font-style: italic; }
+.loop-steps { display: grid; gap: 6pt; }
+.loop-step { display: flex; gap: 9pt; align-items: flex-start; }
+.loop-step i { flex: none; width: 17pt; height: 17pt; border-radius: 50%; border: 1px solid var(--gold); color: var(--wine); font-style: normal; font-family: 'Fraunces', serif; font-size: 9.5pt; display: flex; align-items: center; justify-content: center; margin-top: 1pt; }
+.loop-step.wine i { border-color: var(--wine); background: var(--wine); color: var(--paper); }
+.loop-step h3 { font-size: 12pt; line-height: 1.1; }
+.loop-step p { font-size: 8.6pt; line-height: 1.38; color: var(--mute); margin-top: 2pt; }
+.proof { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 14pt; }
 .stat { display: flex; gap: 12pt; align-items: center; border-top: 1px solid var(--rule); padding-top: 10pt; }
 .stat .big { font-size: 30pt; line-height: 1; }
 .stat .star { width: 14pt; height: 14pt; fill: var(--gold); flex: none; }
@@ -60,9 +65,8 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .stat .t b { font-weight: 500; display: block; }
 
 .p1-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14pt; margin-top: 10pt; }
-.p1-steps > div { border-top: 2px solid var(--gold); padding-top: 8pt; }
-.p1-steps .num { font-size: 24pt; line-height: 1; color: var(--wine); }
-.p1-steps b { display: block; font-weight: 500; font-size: 10.5pt; margin-top: 6pt; }
+.p1-steps b { display: block; font-weight: 500; font-size: 10.5pt; }
+.p1-steps b i { font-style: normal; font-family: 'Fraunces', serif; color: var(--wine); font-size: 14pt; margin-right: 6pt; }
 .p1-steps span { display: block; font-size: 8.8pt; color: var(--mute); line-height: 1.4; margin-top: 3pt; }
 
 /* page 2 */
@@ -306,21 +310,13 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .ph-cell figcaption { font-size: 7.2pt; letter-spacing: .13em; text-transform: uppercase; color: var(--mute); margin-top: 5pt; text-align: left; }
 .ph-cell.is-after figcaption { color: var(--wine); font-weight: 500; }
 /* page 6 · the rail that labels the four columns */
-.p5-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14pt; margin-top: 16pt; }
-.p5-rseg { position: relative; }
-.p5-rday { display: block; font-size: 7.4pt; letter-spacing: .15em; text-transform: uppercase; color: var(--mute); font-weight: 500; margin-bottom: 5pt; }
-.p5-rbar { display: block; height: 3pt; border-radius: 2pt; background: var(--rule); }
-.p5-rseg.on .p5-rbar { background: var(--gold); }
-.p5-rseg.last .p5-rbar { background: repeating-linear-gradient(90deg, var(--rule) 0 5pt, transparent 5pt 10pt); }
-.p5-rnote { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14pt; margin-top: 4pt; }
-.p5-rnote span { grid-column: 2 / 5; font-size: 8.6pt; color: var(--wine); font-weight: 500; letter-spacing: .02em; }
 .p4-phnote { margin-top: 11pt; font-size: 9pt; color: var(--mute); border-top: 1px solid var(--rule); padding-top: 8pt; }
 .p4-proof { margin-top: 9pt; border-top: 1px solid var(--rule); padding-top: 7pt; }
 .p4-pt { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 12.5pt; line-height: 1.25; }
 .p4-bars { width: 100%; height: auto; display: block; margin-top: 6pt; }
 /* page 5 · after launch */
 .p5-lede { margin-top: 8pt; font-size: 9.8pt; line-height: 1.5; color: var(--mute); }
-.p5-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14pt; margin-top: 6pt; }
+.p5-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14pt; margin-top: 16pt; }
 .p5-col { border-top: 2px solid var(--gold); padding-top: 6pt; }
 .p5-col b { display: block; font-weight: 500; font-size: 10pt; }
 .p5-col i { display: block; font-style: normal; font-size: 7.2pt; color: var(--mute); letter-spacing: .1em; text-transform: uppercase; margin-top: 1pt; }
@@ -397,12 +393,15 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     <div class="tile"><div class="num">90<small>days</small></div><div class="cap">Care after launch,<br>included.</div></div>
   </div>
 
-  <div class="sec"><span class="label wine">The Revenue Engine</span><span class="label">Four stages · each one a line item</span></div>
-  <div class="engine">
-    <div class="step"><div class="dot">1</div><h3>Found</h3><p>Your Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.</p></div>
-    <div class="step"><div class="dot">2</div><h3>Chosen</h3><p>A site that looks like your food, says what you charge and shows your 5.0.</p></div>
-    <div class="step"><div class="dot">3</div><h3>Booked</h3><p>Every quote request on your phone in seconds, logged so none goes unanswered.</p></div>
-    <div class="step"><div class="dot">4</div><h3>Booked again</h3><p>A thank-you, a one-tap review ask and a note to the same host at day 30.</p></div>
+  <div class="sec"><span class="label wine">The Revenue Engine</span><span class="label">One loop, four parts. Every turn is a booked table.</span></div>
+  <div class="loop">
+    <svg class="loop-ring" viewBox="0 0 300 256"><path d="M163.8 41.1 A88 88 0 0 1 236.9 114.2" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(236.9 114.2) rotate(81.0)"/><circle cx="212.2" cy="65.8" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="212.2" y="69.8" text-anchor="middle" class="ln">1</text><text x="230.6" y="51.4" text-anchor="start" class="ll">Found</text><path d="M236.9 141.8 A88 88 0 0 1 163.8 214.9" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(163.8 214.9) rotate(171.0)"/><circle cx="212.2" cy="190.2" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="212.2" y="194.2" text-anchor="middle" class="ln">2</text><text x="230.6" y="212.6" text-anchor="start" class="ll">Chosen</text><path d="M136.2 214.9 A88 88 0 0 1 63.1 141.8" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(63.1 141.8) rotate(261.0)"/><circle cx="87.8" cy="190.2" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="87.8" y="194.2" text-anchor="middle" class="ln">3</text><text x="69.4" y="212.6" text-anchor="end" class="ll">Booked</text><path d="M63.1 114.2 A88 88 0 0 1 136.2 41.1" fill="none" stroke="var(--wine)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--wine)" transform="translate(136.2 41.1) rotate(351.0)"/><circle cx="87.8" cy="65.8" r="11.5" fill="var(--paper)" stroke="var(--wine)" stroke-width="1.2"/><text x="87.8" y="69.8" text-anchor="middle" class="ln">4</text><text x="69.4" y="51.4" text-anchor="end" class="ll">Booked again</text><text x="150" y="124" text-anchor="middle" class="lc">One booked table,</text><text x="150" y="142" text-anchor="middle" class="lc">then the next one.</text></svg>
+    <div class="loop-steps">
+      <div class="loop-step"><i>1</i><div><h3>Found</h3><p>Your Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.</p></div></div>
+      <div class="loop-step"><i>2</i><div><h3>Chosen</h3><p>A site that looks like your food, says what you charge and shows your 5.0.</p></div></div>
+      <div class="loop-step"><i>3</i><div><h3>Booked</h3><p>Every quote request on your phone in seconds, logged so none goes unanswered.</p></div></div>
+      <div class="loop-step wine"><i>4</i><div><h3>Booked again</h3><p>A thank-you, a one-tap review ask and a note to the same host at day 30. The review is how the next host finds you, and the loop turns again.</p></div></div>
+    </div>
   </div>
 
   <div class="proof">
@@ -411,11 +410,11 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
   </div>
   <p class="small mute" style="margin-top:8pt">What every page is built on: the reputation you already have.</p>
 
-  <div class="sec" style="margin-top:18pt"><span class="label wine">How this works</span><span class="label">Three decisions, in order</span></div>
+  <div class="sec" style="margin-top:14pt"><span class="label wine">How this works</span><span class="label">Three decisions, in order</span></div>
   <div class="p1-steps">
-    <div><div class="num">1</div><b>Pick a site</b><span>Page 2. Three to choose from, and The Table as its own package.</span></div>
-    <div><div class="num">2</div><b>Say yes to what you want</b><span>Page 4. The website alone, or the Revenue Engine with it.</span></div>
-    <div><div class="num">3</div><b>Live in seven days</b><span>Then ninety days of care, included. The Table takes three weeks.</span></div>
+    <div><b><i>1</i>Pick a site</b><span>Page 2. Three to choose from, and The Table as its own package.</span></div>
+    <div><b><i>2</i>Say yes to what you want</b><span>Page 4. The website alone, or the Revenue Engine with it.</span></div>
+    <div><b><i>3</i>Live in seven days</b><span>Then ninety days of care, included. The Table takes three weeks.</span></div>
   </div>
   <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 1 of 7</span></div>
 </section>
@@ -668,15 +667,8 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 <section class="page">
   <div class="top"><span class="label">05 · After launch</span><span class="label">Optional · cancel any time with thirty days' notice</span></div>
   <h2>Ninety days on us.<br>Then, if you want, we keep going.</h2>
-  <p class="p5-lede">One line, from the day you say yes: what we need from you, what is included, and what a plan adds.</p>
+  <p class="p5-lede">From the day you say yes: what we need from you, what is included, and what a plan adds. Ninety days on us. Care and Growth begin after that, and only if you want them.</p>
 
-  <div class="p5-rail">
-    <div class="p5-rseg"><span class="p5-rday">Day 0</span><span class="p5-rbar"></span></div>
-    <div class="p5-rseg on"><span class="p5-rday">Days 1 to 7</span><span class="p5-rbar"></span></div>
-    <div class="p5-rseg on"><span class="p5-rday">Days 1 to 90</span><span class="p5-rbar"></span></div>
-    <div class="p5-rseg last"><span class="p5-rday">From day 91</span><span class="p5-rbar"></span></div>
-  </div>
-  <div class="p5-rnote"><span>Ninety days on us. Care and Growth begin after that, and only if you want them.</span></div>
 
   <div class="p5-grid">
     <div class="p5-col"><b>Before we start</b><i>The day you say yes</i>
