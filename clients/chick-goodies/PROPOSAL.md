@@ -1,9 +1,10 @@
 # Proposal: Charcuterie Chick
 
 Text record of the proposal Garrett sends. The designed document is
-`docs/proposal/Charcuterie-Chick-Proposal.html` (seven Letter pages, mostly
+`docs/proposal/Charcuterie-Chick-Proposal.html` (six Letter pages, mostly
 diagrams and tables); `docs/proposal/build.js` renders the PDF and, with
-`--shots`, refreshes the four site screenshots in `docs/proposal/img/`. Re-run
+`--shots`, refreshes the three site screenshots in `docs/proposal/img/` (`img/table.jpg` is the
+scene still from `samples/sample-3-studio/img/table-still.jpg`, resized). Re-run
 with `--shots` whenever a sample site changes, so the PDF shows what the links
 show. Every number below traces to `FACTS.md` (her prices, her reviews) or
 `QUOTE.md` (ours). Nothing else is quoted.
@@ -34,139 +35,147 @@ The Revenue Engine (package name) in four stages, each a line item:
 
 Proof shown: 5.0 on The Knot, 13 reviews, Best of Weddings 2026 · 5.0 on WeddingWire, 11 reviews, 100% recommend.
 
-One quiet line at the bottom: the recommendation is on page 4; pick the site first, everything else can be added later.
+Bottom strip, "How this works", three decisions in order: 1 pick a site (page 2; three to choose from, and The Table as its own package) · 2 say yes to what you want (page 4; the website alone, or the Revenue Engine with it) · 3 live in seven days, then ninety days of care included; The Table takes three weeks.
 
 ## Page 2. Choose your site
+
+Headline: *Pick the one that feels like you.* Top label: same pages, prices
+and photos; only the mood changes.
 
 | | Site | Mood | Price | Link |
 |---|---|---|---|---|
 | 01 | Garden Atelier | Elegant and editorial. A warm boutique on a quiet street. | $600 | https://charcuterie-chick-sample-1.vercel.app |
 | 02 | Midnight Supper | Evening and cinematic. The cart is the star. | $600 | https://charcuterie-chick-sample-2.vercel.app |
 | 03 | The Gathering | Bright and friendly. Prices up front. | $600 | https://charcuterie-chick-sample-3.vercel.app |
-| 04 | The Table, immersive upgrade | A candlelit 3D table you scroll along. Custom build, 3 weeks. | $1,500 | https://charcuterie-chick-sample-3.vercel.app/table.html |
 
 Each card carries a screenshot of the live home page (`docs/proposal/img/`).
+Every site includes: five pages, her real prices, her photos, her reviews, a
+quote to her phone in one tap, built to be found.
 
-Every site includes: five pages (home, menus and prices, photos, about, get a
-quote); her real prices ($24 to $38 a guest, the Holy Grail, the cart, sweets
-and sips); her photos (21 on file, no stock); her reviews by name; a quote to
-her phone in one tap; built to be found (Google Business Profile, search,
-Instagram, Facebook, Pinterest). Also fixed: the four $0.00 prices, the fifteen
-empty gallery slots and the broken links on her current site.
-
-Timeline: Day 0 she picks · Day 7 full site live on charcuteriechick.ai ·
-Day 14 workflows live, templates in her phone · Day 21 immersive site live, if
-chosen · Days 1 to 90 included care and small changes · Day 91 care or growth
-plan, if she wants it. Half to start, half at launch.
+Beneath the three, in a dark band, **The Table**, badged "A separate package":
+$1,500, custom build, live in 3 weeks,
+https://charcuterie-chick-sample-3.vercel.app/table.html. The still from the
+scene, then the five stations the camera moves between (Arrive · The tables ·
+The cart · Tricia · The number), then three lines: one candlelit room instead
+of pages, you never leave it · your boards, your cart and your photographs are
+on the table · on a phone it becomes a rendered still with the same words.
+Closing note: a new kind of site, different from the traditional look and feel
+of the three above; it follows the patterns of 48 immersive studio sites we
+studied for this project, Lusion, Unseen, Locomotive and North Kingdom among
+them, the kind that win the web's design awards. (The Table itself claims no
+award.)
 
 ## Page 3. The workflows ($500)
 
-Headline: *Every quote answered. Every event followed up.* Lede: three
-routines built around how she already works; we write every message in her
-voice and remind her when it is time; she taps send, so her customers only
-ever hear from her; no chatbot, no auto-reply, no paid texting service.
+Headline: *Six texts follow one booking. You tap send.* Lede: each routine
+has the text ready, in her voice, and reminds her on the day; nothing goes
+out without her.
 
-Each routine is drawn as trigger → ready for you → you do, with a "why it
-matters" line.
+Drawn as one phone thread (left, dark panel: the incoming quote request, then
+five outgoing texts in her voice with [first name], [date], [time], [offer],
+[link] as placeholders, each under a timing stamp) beside a numbered day line
+(right: routine name and one why-line).
 
-| # | Routine | Trigger | Ready for her | She does | Why it matters |
-|---|---|---|---|---|---|
-| 01 | Never miss a quote | A host asks: quote form, call or text button on every page | On her phone in seconds: date, guests, table, name and number, in a fixed order, and logged | Reply and book, her way; if a day passes with no reply, she gets a reminder | A grazing table is a $1,200 to $3,500 order. The host who does not hear back books someone else. |
-| 02 | Turn every event into a review | The event ends | Two texts, ready on time: day 2 a thank-you with one photo from their table; day 3 one line and a one-tap link to her Google reviews | Tap send, twice | She has 24 five-star reviews on The Knot and WeddingWire. Reviews are the cheapest source of new bookings and search rank; this builds the same proof on Google, one event at a time. |
-| 03 | Bring the host back | Thirty days later | A note to the same host with a seasonal offer she sets, written with her once and filled in for each host | Tap send | A host who has seen her table needs no convincing. One note, a month later, is the cheapest booking she will ever get. |
+| # | Stamp on the phone | Routine | Why it matters |
+|---|---|---|---|
+| 1 | From your site · in seconds (a reminder if no reply in a day) | Never miss a quote | A grazing table starts at $1,200 (50 guests at $24). The host who does not hear back books someone else. |
+| 2 | Day 3 · no reply yet | The quiet quote | Silence is not a no. Three days on, a short nudge is ready to send. |
+| 3 | 2 days before the event | Confirmed and counted | The headcount is the price. Date, table, count and arrival time in writing before the day. |
+| 4 | Day 2, then day 3 after the event | Turn every event into a review | Reviews are the cheapest source of new bookings. 24 five-star reviews on The Knot and WeddingWire; this builds the same proof on Google. |
+| 5 | Day 30 after the event | Bring the host back | A host who has seen her table needs no convincing. One note, a month later, with an offer she sets. |
+| 6 | 6 weeks before each season · to past hosts | The season ahead | The calendar fills in the order people are asked. Holidays, graduations, weddings: past hosts hear first. |
 
-What the package includes: every message in her voice (written with her,
-editable any time); the log (every quote request with date, headcount, table,
-and whether it was answered); one screen a month (calls, quotes, bookings, best
-photo).
+Band under the thread: $500, set up once, yours for good; under half of one
+50-guest table; live within a week of the site. Three keeps: you tap send (no
+chatbot, no auto-reply, no paid texting service) · the log (every quote: date,
+headcount, table, answered or not) · one screen a month (calls, quotes,
+bookings and the best photo).
 
 ## Page 4. Investment
 
-Headline: *Pick a site. Add what you want. One booking covers it.*
+Headline: *Three ways to say yes.*
 
-| Item | Price | Timing |
+| Card | Price | Includes |
 |---|---|---|
-| One-page site | $150 | Live in 2 days, on our address; her current site untouched |
-| Full website, her pick of the three | $600 | Live on charcuteriechick.ai in 7 days |
-| Immersive website, The Table finished | $1,500 | Live in 3 weeks |
-| Workflows | $500 | Live within a week of the site |
-| Photo enhancement | $250 | All 21 current photos cleaned, corrected, sized; originals kept |
-| Photo recreation | $450 | Twelve new hero and social images from her photographs; she approves each |
-| Both photography services | $600 | |
+| The website, her pick of the three | $600 | Full website; five pages; live in 7 days on charcuteriechick.ai. Workflows and photography can be added any time. |
+| The Revenue Engine, the site and the system (tagged Recommended) | $1,600 | Full website, six workflow routines, both photography services. Site live in 7 days. Separately $1,800. |
+| The Revenue Engine, immersive, with The Table | $2,450 | The Table as her site, six workflow routines, both photography services. Custom build, live in 3 weeks. Separately $2,700. |
 
-Packages: **The Revenue Engine** (full website, workflows, both photography
-services) **$1,600**, separately $1,800 · **The Revenue Engine, Immersive**
-(immersive website, workflows, both photography services) **$2,450**,
-separately $2,700.
+Note under the cards: each one includes 90 days of care after launch; half to
+start, half at launch; Texas sales tax is added where it applies.
 
-Chart, "One booking covers it", her table prices before the $229 setup fee and
-tax: full website $600 · her smallest table booking (50 guests at $24) $1,200 ·
-The Revenue Engine $1,600 · Holy Grail of Grazing, 75 guests $2,000 · The
-Revenue Engine, Immersive $2,450 · Holy Grail of Grazing, 150 guests $3,500.
-Caption: one Holy Grail table at 75 guests pays for the whole Revenue Engine
-package; one at 150 pays for the immersive one.
+Add-ons, site, workflows, photos: one-page site $150 (live in 2 days; if she
+does not like it, she does not pay) · workflows $500 (six routines, live within
+a week of the site) · photo enhancement $250 (her photos on file, cleaned and
+sized) · photo recreation $450 (twelve new images, from her photos) · both
+photography services $600 · photo restoration $25 per photo (old or damaged
+prints, brought back).
 
-## Page 5. Creative add-ons
+Add-ons, creative: logo restore $150 (clean files, nothing redrawn) · logo
+redesign $450 (a fresh mark, still her chick; three directions, two rounds) ·
+created images $300 a set of ten (made to order from her photos; she approves
+each) · marketing kit $400 (menu and price card, flyer, business card, social
+templates) · short videos $300 each, three for $750 (30 to 60 seconds, with
+music and captions) · The Creative Bundle $1,250 (logo redesign, marketing
+kit, ten images, one video; separately $1,450).
 
-Headline: *One look, from your logo to your last post.* Add any of these to any
-package, including The Table. Everything starts from her own logo, photographs
-and food; she approves every piece before it is used.
+Proof bar: one Holy Grail table at 75 guests ($2,000, her published price
+before the $229 setup fee and tax) pays for the whole Revenue Engine package
+($1,600).
 
-| Add-on | What | Price |
-|---|---|---|
-| Logo restore | Current logo rebuilt as crisp files at every size, for site, print, signage, social | $150 |
-| Logo redesign | A refreshed mark that keeps her chick; three directions, two rounds, every file | $450 |
-| Photo restoration | Old prints, damaged or blurry photos brought back | $25 per photo |
-| Created images | New pictures made to order from her photos or from a description: a holiday table, a seasonal board, a menu item not yet shot | $300, set of ten |
-| Marketing kit | Printed menu and price card, one-page flyer, business card, Instagram and Facebook templates; print-ready | $400 |
-| Short videos | 30 to 60 seconds for Instagram, Facebook and the site, from her photos and clips, with music and captions | $300 each, three for $750 |
-| The Creative Bundle | Logo redesign, marketing kit, ten created images, one short video | $1,250 (separately $1,450) |
+## Page 5. After launch, and what we need from her
 
-How add-ons work: tell us what you need · options within a week · you approve ·
-files delivered, yours to keep. Photo enhancement and recreation stay on page 4.
-
-## Page 6. After launch, and what we need from her
-
-From day 91, optional, cancel any time with thirty days' notice:
+Headline: *Ninety days on us. Then, if you want, we keep going.* Top label:
+optional, cancel any time with thirty days' notice. Timeline: launch · ninety
+days on us (monitoring and small changes, included) · day 90 · from day 91, if
+she wants (Care or Growth, billed monthly in advance).
 
 | | Care, $69 a month | Growth, $149 a month |
 |---|---|---|
 | Hosting, domain and uptime monitoring | yes | yes |
 | Monthly check of every page, form and link | yes | yes |
 | Security updates and backups | yes | yes |
-| Changes each month (prices, photos, seasonal notes) | 1 hour | 3 hours |
+| Changes each month | 1 hour | 3 hours |
 | Search check | quarterly | monthly, with a leads report |
 | Google Business Profile posts from her event photos | no | 2 a month |
 | Review workflow kept running | no | yes |
 
-What we need from her, by when:
+What we need from her, and when (three short lists):
 
-- **Before we start (day 0):** this proposal approved with the design picked; logo files; camera-roll originals of her photos; a yes or no on five details (street address on the site, the Spanish line, the About photo, how the cart, sweets and sips are charged, dietary notes).
-- **Before launch (by day 7):** domain settings for charcuteriechick.ai, or thirty minutes together; admin access to the current site; Google Business Profile ownership, or we claim it together.
-- **After launch (once):** ten minutes to approve the three message templates; the two WeddingWire listing fixes ("The Catering Chick", "$150 per person for stations"), done with her.
-- **Each month (growth plan only):** a few phone photos from one event for the Google posts; ten minutes on the one-screen report if she wants to talk it through.
+- **Before we start, the day she says yes:** this proposal approved, design picked; her logo files, any size; camera-roll originals of her photos; a yes or no on these details: street address on the site, the Spanish line, the About photo, how the cart, sweets and sips are charged, dietary notes.
+- **Before launch, while we build:** domain settings for charcuteriechick.ai, or we set them together on a short call; admin access to her current site; access to her Google Business Profile, or we claim it together.
+- **After launch, once:** a quick yes on the message templates; fixes to her WeddingWire listing, done with her; on Growth, a few phone photos each month, from an event that month, for the Google posts.
 
-## Page 7. Payment and terms
+## Page 6. Payment and terms
 
-| When | What is due |
-|---|---|
-| Day 0, to start (the day she approves) | Half of the website and workflows. For a package, half of the package price. |
-| At launch (day 7, or day 21 for The Table) | The other half. |
-| When she approves the set (photography bought on its own, and creative add-ons) | In full, after she has approved every image, file or video. Photography inside a package is covered by the package payments. |
-| On delivery (one-page site only) | $150. If she does not like it, she does not pay. |
-| From day 91, monthly (only if she chooses a plan) | Care $69 or Growth $149, billed monthly in advance. Cancel any time with thirty days' notice. |
+Headline: *Half to start. Half when it is live.* One timeline, what goes live
+above the line and what she pays below it:
 
-Ownership: her domain, logo, photos and words stay hers; the site files are
-hers at launch; nothing on her current site changes until she says go.
-Revisions: two rounds before launch on the full or immersive site, one round on
-the one-page site; then the included 90 days, then the care plan. Not included: ad spend, a paid photographer, printed menus beyond the
-marketing kit, online payments, a booking calendar, automated replies (the last
-three on purpose). Prices in US dollars, valid through October 1, 2026; every
-invoice references this proposal.
+| Station | Live | She pays |
+|---|---|---|
+| Day 0 | She approves and we start | Half of the website, workflows or package price |
+| Day 7 | Full site live on charcuteriechick.ai | The other half. The Table goes live on day 21 and is paid then. |
+| Within a week | Workflows live on her phone | Nothing due; paid with the site |
+| On approval | She approves a delivered set | In full, for photography on its own and creative add-ons. In a package: covered. |
+| Day 91 | A plan, only if she wants one | $69 or $149 a month, in advance, Care or Growth |
+
+Days 1 to 90 after launch: care included with any website. The one-page site
+is the exception: $150 on delivery, live in 2 days; if she does not like it,
+she does not pay.
+
+Four tiles. Ownership: her domain, logo, photos and words stay hers; the site
+files are hers at launch; nothing on her current site changes until she says
+go. Revisions: two rounds before launch on the full or immersive site, one on
+the one-page site; then the included 90 days, then the care plan. Not
+included: ad spend, a paid photographer, printed menus beyond the marketing
+kit, online payments, a booking calendar, automated replies (the last three on
+purpose: her customers hear from her). Prices: US dollars, valid through
+October 1, 2026; Texas sales tax is added where it applies; every invoice
+references this proposal.
 
 **Payable to** Galaxy Sports Network LLC (Garrett Baxley). Card:
 https://buy.stripe.com/8x23cxb6FanJail8JT14405. Check, Zelle or bank transfer:
 details on the invoice.
 
 Acceptance: reply "approved" with the design picked and the items wanted, or
-sign page 7 of the PDF.
+sign page 6 of the PDF.
