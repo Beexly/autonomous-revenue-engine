@@ -1,23 +1,35 @@
 # Email to Tricia and Stacey
 
-Highlights only. The proposal PDF carries the detail; this note covers the few
-things that are NOT in it: that there are three samples rather than one finished
-site, that the one-pager and the phone versions are free, what The Table
-actually is, and the offer to walk them through it in person. Everything
-else — the six routines one by one, the payment schedule, the ninety days,
-the add-ons — is on the PDF's own pages and is deliberately left out here.
+Highlights only. The proposal PDF carries the detail; this note covers what is
+NOT in it. Revised 2026-09-18 on Garrett's edits from his Gmail draft.
 
-`EMAIL-TO-CLIENT.html` is the one to use: open it in a browser, press "Copy the
-email", paste into Gmail. Bold and clickable links survive the paste. The plain
-text below is the fallback and the record.
+Four things to know about this version:
 
-Links carry the full `https://` prefix on purpose. Gmail only autolinks a URL
-that starts with a scheme or `www.`; a bare `charcuterie-chick-sample-1.vercel.app`
-renders as dead grey text.
+1. No signature block. Garrett's Gmail appends "Regards, Garrett Baxley" plus
+   his LinkedIn automatically, and the old body signature duplicated it in the
+   sent draft. The body now ends with the phone number only.
+2. The three are described as full sized websites rather than samples, at
+   Garrett's instruction. "Three directions" carries the choose-one framing.
+3. The mobile work is framed as given in place of billing for a one-pager. The
+   one-pager link stays because it is live and it is a real thing they were
+   given.
+4. The Table section explains that the renderings on it are rough because it is
+   a sample, and that the detail hours are not spent before approval. This is
+   deliberate expectation-setting, not an apology.
+
+TWO CLAIMS GARRETT MADE THAT ARE NOT VERIFIED IN THIS REPO, and are his to
+stand behind: that Unseen and Lusion "have won multiple awards over the past
+couple of years", and that "big firms usually charge $10,000+ per project".
+Lusion's own homepage title reads "Award Winning 3D and Interactive Web
+Studio", which supports the first at least in their own words. The $10,000
+figure has no source on file.
+
+`EMAIL-TO-CLIENT.html` is the one to use: open it, press "Copy the email",
+paste into Gmail. Bold and clickable links survive the paste. Links carry the
+full `https://` prefix because Gmail will not autolink a bare domain.
 
 Rules carried from the proposal: never "AI" in front of the client, no claim
-about how fast Tricia answers anyone, no street address. Figures trace to
-`../PROPOSAL.md`, `../QUOTE.md`, `../FACTS.md`.
+about how fast Tricia answers anyone, no street address.
 
 ## Send to
 
@@ -25,8 +37,8 @@ Tricia Holfelder and Stacey Smith <smithst2015@gmail.com>
 
 ## Before sending
 
-1. Attach `docs/proposal/Charcuterie-Chick-Proposal.pdf` (six pages, 2.2 MB).
-2. Nothing to fill in.
+1. Attach `docs/proposal/Charcuterie-Chick-Proposal.pdf` (seven pages, 2.7 MB).
+2. Let Gmail's own signature close it. Do not re-add a name block.
 
 ## Subject
 
@@ -36,9 +48,9 @@ Here's what I built for you
 
 Hi Tricia and Stacey,
 
-Here it is. I've attached the whole proposal — six pages, mostly pictures. Let me just give you the handful of things that aren't in it.
+Here it is. I've attached the whole proposal — seven pages, mostly pictures. Let me just give you the handful of things that aren't in it.
 
-I built you three websites, not one. All three are live right now. Click around in them, you can't break anything, and none of it touches the site you have today.
+I built you three full sized websites, rather than just samples. All three are live right now. Click around in them, you can't break anything, and none of it touches the site you have today.
 
 Garden Atelier — elegant and calm
 
@@ -52,9 +64,9 @@ The Gathering — bright and friendly, prices right up front
 
 https://charcuterie-chick-sample-3.vercel.app
 
-These are samples — three directions, not three finished websites. Whichever one you like becomes the starting point, and that's when we make it properly yours. Nothing in them is locked. Colors, sections, pages: all of it moves. It's your website.
+Ultimately, these are three directions. Whichever one you like becomes the starting point, and that's when we make it properly yours. Nothing in them is locked. Colors, sections, pages: all of it moves. It's your website.
 
-I also built you a simple one-page version, and phone versions of everything. No charge on either.
+I also went ahead and optimized all three of these for a mobile device, rather than charging you for an additional one-pager. The simple one-page version is live too, and it's yours either way:
 
 https://charcuterie-chick-showcase.vercel.app
 
@@ -64,18 +76,18 @@ Then there's this one.
 
 https://charcuterie-chick-sample-3.vercel.app/table.html
 
-Open it and you're standing in a candlelit room, looking down a long table with your boards on it. You never leave that room — instead of clicking to a new page, the room moves. It's called an immersive site, it's the hardest thing I know how to build, and there aren't many people who'll even attempt one. I studied 48 of the sites that win the big design awards before I built yours.
+This one is a bit outside the box, and different from your traditional website. Open it and you're standing in a candlelit room, looking down a long table with your boards on it. You never leave that room — instead of clicking to a new page, the room moves.
 
-$1,500, three weeks. That's under what it's worth and I know it. Boards like yours deserve a room, not a web page.
+The inspiration came from studios like Unseen (https://unseen.co) and Lusion (https://lusion.co), who have won multiple awards over the past couple of years for their creative design work. Their sites are presented as an immersive experience rather than a stagnant website. I personally think this concept is unique enough that it would fit the boutique feel your brand already brings.
+
+One thing to know before you open it. What you're looking at is a sample, and the renderings and images on the table are rough. That's deliberate. The detail work is where nearly all of the hours go on a build like this, and I'm not putting those hours in before you tell me you want it. Picture it finished, with your own photographs in place of what's there.
+
+In full transparency: these designs win awards for good reason. They are very technically difficult to make, and big firms usually charge $10,000+ per project for this kind of work. Mine is $1,500, three weeks. There's more in the packet, but I wanted to give you some extra context here.
 
 On the money — it's all on page 4. If you're asking me, the $1,400 is the one I'd pick. The website brings people to you; the six text messages that come with it are what turn them into bookings.
 
-And if anything is confusing — the pricing, what any of this does, how it works — just call me. I'll walk you both through it on the phone, or come sit down and open it on my own laptop. There's no part of this you're expected to figure out alone.
+Please email, text or call me if anything is confusing — the pricing, what any of this does, how it works. I'll walk you both through it on the phone, or come sit down and open it on my own laptop. There's no part of this you're expected to figure out alone.
 
 Whenever you're ready, just reply and tell me which one you liked.
 
-Garrett Baxley
-
-Galaxy Sports Network LLC
-
-281.660.7639
+281.660.7639 — call or text any time.
