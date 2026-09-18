@@ -331,3 +331,61 @@ figcaption .n::after{content:' · ';color:var(--garden-muted)}
   .band img{height:clamp(200px,52vw,320px)}
   .proof::before{font-size:120px;left:8px}
 }
+
+/* events · what we cater — garden atelier */
+.events{background:var(--garden-cream);border-top:var(--hair) solid var(--garden-gold);border-bottom:var(--hair) solid var(--garden-gold);padding:var(--s2) max(28px,calc((100% - 1000px)/2))}
+.events h2{font-family:var(--garden-serif);font-weight:400;font-size:var(--t5);line-height:1.05;margin:0 0 20px}
+.events .events-lede{font-size:var(--t3);max-width:60ch;margin-bottom:34px;color:var(--garden-muted)}
+.events-list{list-style:none;padding:0;margin:0 0 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px 38px}
+.events-list li{border-top:var(--hair) solid var(--garden-gold);padding-top:11px;font-family:var(--garden-sans);font-size:var(--t2)}
+.events-proof{font-size:var(--t1);color:var(--garden-muted);max-width:70ch}
+@media(max-width:640px){.events{padding:var(--s1) 22px}}
+
+
+/* ============================================================
+   THE GARDEN LAYER · boutique / feminine pass
+   Garden Atelier is named for a garden and had no curve in it:
+   --radius was 2px, and .specimen.oval rendered a square. The
+   arch is the oldest feminine form in decorative art, so the
+   photographs now sit under one. Blush is an ornament colour
+   only: it never carries text, so contrast is untouched.
+   ============================================================ */
+:root{
+  --garden-blush:#e7c6c0;      /* dusty rose, ornament only */
+  --garden-blush-air:#f7ece8;  /* the palest wash of it */
+  --arch:170px 170px 4px 4px;  /* the house arch */
+}
+
+/* photographs live under an arch */
+.hero-photo{border-radius:calc(170px + 10px) calc(170px + 10px) 6px 6px}
+.hero-photo img,.framed img{border-radius:var(--arch)}
+.specimen.tall img,.specimen.landscape img,.specimen.wide img{border-radius:var(--arch)}
+/* .specimen img is object-fit:contain on a cream ground so her photographs are
+   never cropped. The arch therefore shapes the mat, not the picture, so the mat
+   is made deliberate: a hairline mount, the way a print is hung in a gallery. */
+.specimen img{border:var(--hair) solid rgba(184,150,62,.45);padding:0}
+.specimen.oval img{border-color:rgba(184,150,62,.55)}
+/* a class named oval should be an oval */
+.specimen.oval img{border-radius:50% 50% 48% 48% / 42% 42% 58% 58%}
+
+/* the sprig: a leaf drawn in CSS, no asset, before every eyebrow */
+.eyebrow{position:relative}
+.eyebrow::before{
+  content:'';position:absolute;left:-21px;top:.18em;width:11px;height:11px;
+  background:var(--garden-gold);border-radius:0 100% 0 100%;transform:rotate(-20deg);opacity:.85
+}
+@media (max-width:900px){.eyebrow::before{display:none}}
+
+/* soft, not square: the calls to action */
+.pill,.button,.btn{border-radius:40px}
+
+/* a blush wash on the quiet bands, so the page breathes in colour */
+.pantry,.band-soft{background:var(--garden-blush-air)}
+
+/* hairlines warm up */
+.events-list li{border-top-color:var(--garden-blush)}
+
+@media (max-width:640px){
+  :root{--arch:120px 120px 4px 4px}
+  .hero-photo{border-radius:130px 130px 6px 6px}
+}
