@@ -16,7 +16,13 @@ there as a fact tile.
 
 **Prepared for** Tricia Holfelder, Charcuterie Chick (The Chick Goodies), Tomball, Texas
 **Prepared by** Garrett Baxley, Galaxy Sports Network LLC
-**Date** September 17, 2026 · **Valid through** October 1, 2026
+**Date** September 17, 2026
+
+No expiry is printed. The "valid through October 1, 2026" line was removed from
+every page on 2026-09-18 at Garrett's request: page 1 now carries "Prepared for
+Tricia Holfelder", page 4 "90 days of care included", page 6 "half to start,
+half at launch", and the Prices tile opens "US dollars." Quoting a price with no
+stated expiry means the numbers in `QUOTE.md` hold until Garrett revises them.
 
 ## Page 1. At a glance
 
@@ -216,8 +222,8 @@ go. Revisions: two rounds before launch on the full or immersive site, one on
 the one-page site; then the included 90 days, then the care plan. Not
 included: ad spend, a paid photographer, printed menus beyond the marketing
 kit, online payments, a booking calendar, automated replies (the last three on
-purpose: her customers hear from her). Prices: US dollars, valid through
-October 1, 2026; Texas sales tax is added where it applies; every invoice
+purpose: her customers hear from her). Prices: US dollars; Texas sales tax is
+added where it applies; every invoice
 references this proposal.
 
 **Payable to** Galaxy Sports Network LLC (Garrett Baxley). Card:
