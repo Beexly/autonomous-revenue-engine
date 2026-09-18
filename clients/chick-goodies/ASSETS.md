@@ -70,3 +70,25 @@ image on a dark background and does not resemble the wordmark in
 `brand-reference-1364.jpg` and is **not** used on the page. Ask Tricia/Garrett
 which asset is the logo, and whether the dark file is a logo variant, a menu
 board, or a metrics screenshot. Do not guess — requirement 1 is "same logo".
+
+## 5. Studio re-shoots and restorations made from her photos (2026-09-18)
+
+Made on Higgsfield (Nano Banana 2 for the drinks and the trays, Nano Banana
+Pro for the cart) with her own photo attached as the reference and the
+instruction to keep every item as photographed. Nothing is generated from a
+description. Garrett picked each one against the source and rejected every
+variant that changed her cart, her sign or her logo.
+
+| File | Made from | Use |
+|---|---|---|
+| `samples/sample-3-studio/img/cut/sips-02.webp` | `sips-02.jpg` (Bloody Marys), studio re-shoot | cut-out on The Table, station 3 |
+| `samples/sample-3-studio/img/cut/graze-01.webp` | `graze-01.jpg` (candy trays), studio re-shoot from above | flat on The Table |
+| `samples/sample-3-studio/img/cut/cart-640.webp` | `cart-640.jpg` plus `candy-01.jpg` and the logo, studio re-shoot of the cart | cut-out on The Table, station 3 |
+| `docs/proposal/img/after-trays.jpg` | `graze-01.jpg`, restored and enlarged | proposal page 4, before and after |
+| `docs/proposal/img/after-sips.jpg` | `sips-02.jpg`, studio re-shoot | proposal page 4, before and after |
+| `docs/proposal/img/before-trays.jpg`, `before-sips.jpg` | her originals, cropped 3:4 | proposal page 4 |
+| `samples/sample-3-studio/img/table-still.jpg`, `table-still-tall.jpg`, `docs/proposal/img/table.jpg` | re-rendered from the scene with the three cut-outs above | phone still, loading frame, proposal page 2 |
+
+Rejected on 2026-09-18 and not in the repo: a cart restoration that dropped
+the logo sign, a composite of Tricia at the cart with an invented sign, two
+carts with invented frames, wheels and handles.
