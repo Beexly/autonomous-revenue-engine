@@ -73,7 +73,7 @@ Option B session.
 
 Garrett confirms these before they are quoted. Once he does, they are the only
 numbers, alongside A, B and C above. The proposal is payable to Galaxy Sports
-Edge LLC (Garrett Baxley).
+Network LLC (Garrett Baxley).
 
 | Item | Price | Notes |
 |---|---|---|
