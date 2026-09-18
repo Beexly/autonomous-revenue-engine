@@ -283,7 +283,7 @@ const cutouts = [
   { f:'table-02.webp',  x: -4.0, z: .15, h: .95 },  // bloody marys
   { f:'knot-4.webp',    x: -7.4, z:-.10, h:1.25 },  // station 2: the cones on their riser
   { f:'sips-02.webp',   x:  4.7, z: .25, h:1.00 },  // station 3: bloody marys
-  { f:'cart-640.webp',  x:  4.2, z:-3.1, h:2.55, floor:true },  // station 3: the cart itself
+  { f:'cart-640.webp',  x:  4.2, z:-3.1, h:2.75, floor:true },  // station 3: the cart itself, studio re-shoot of her photo
   { f:'graze-03.webp',  x:  7.7, z:-.20, h: .90 },  // jars
   { f:'sips-01.webp',   x:  9.0, z: .10, h: .95 },  // station 4: mimosas
   { f:'graze-02.webp',  x:  2.45,z:-.35, h: .75 },  // station 5: one cone past the candle, out of the close lens

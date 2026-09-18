@@ -119,6 +119,11 @@ templates) · short videos $300 each, three for $750 (30 to 60 seconds, with
 music and captions) · The Creative Bundle $1,250 (logo redesign, marketing
 kit, ten images, one video; separately $1,450).
 
+Photo work strip, "Photo work, from your own photos", two of the twenty-one
+on file: the candy trays, her photo beside the enhanced version; the Bloody
+Marys, her photo beside a studio shot made from it (`docs/proposal/img/`,
+recorded in `ASSETS.md` §5).
+
 Proof bar: one Holy Grail table at 75 guests ($2,000, her published price
 before the $229 setup fee and tax) pays for the whole Revenue Engine package
 ($1,600).
