@@ -41,8 +41,8 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .meta { display: flex; gap: 28pt; margin-top: 16pt; font-size: 9.2pt; }
 .meta span { color: var(--mute); display: block; }
 .meta b { display: block; font-weight: 500; }
-.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin: 16pt 0 16pt; }
-.tile { background: var(--card); border: 1px solid var(--rule); padding: 14pt 16pt 13pt; border-radius: 2pt; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin: 26pt 0 28pt; }
+.tile { background: var(--card); border: 1px solid var(--rule); padding: 18pt 16pt 17pt; border-radius: 2pt; }
 .tile .num { font-size: 32pt; line-height: 1; color: var(--wine); letter-spacing: -.02em; }
 .tile .num small { font-size: 13pt; letter-spacing: 0; margin-left: 4pt; }
 .tile .cap { margin-top: 7pt; font-size: 9.3pt; line-height: 1.35; color: var(--mute); }
@@ -57,7 +57,7 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 .loop-step.wine i { border-color: var(--wine); background: var(--wine); color: var(--paper); }
 .loop-step h3 { font-size: 12pt; line-height: 1.1; }
 .loop-step p { font-size: 8.6pt; line-height: 1.38; color: var(--mute); margin-top: 2pt; }
-.proof { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 14pt; }
+.proof { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 30pt; }
 .stat { display: flex; gap: 12pt; align-items: center; border-top: 1px solid var(--rule); padding-top: 10pt; }
 .stat .big { font-size: 30pt; line-height: 1; }
 .stat .star { width: 14pt; height: 14pt; fill: var(--gold); flex: none; }
@@ -312,6 +312,17 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 /* page 6 · the rail that labels the four columns */
 .p4-phnote { margin-top: 11pt; font-size: 9pt; color: var(--mute); border-top: 1px solid var(--rule); padding-top: 8pt; }
 .p4-proof { margin-top: 9pt; border-top: 1px solid var(--rule); padding-top: 7pt; }
+.p1-paysec { margin-top: 2pt; }
+.p1-proof { margin-top: 0; border-top: 0; padding-top: 0; }
+.p1-proof .p4-pt { font-size: 14.5pt; }
+.p1-proof .p4-bars { margin-top: 12pt; }
+.p4-loopsec { margin-top: 10pt; border-top: 1px solid var(--rule); padding-top: 8pt; }
+.p4-loop { grid-template-columns: 1.8in 1fr; gap: 12pt; margin-top: 0; }
+.p4-loop .loop-ring { width: 1.8in; }
+.p4-loop .loop-steps { grid-template-columns: 1fr 1fr; gap: 5pt 14pt; }
+.p4-loop .loop-step h3 { font-size: 11pt; }
+.p4-loop .loop-step p { font-size: 8.1pt; line-height: 1.34; }
+.p4-loop + .p4-menu { margin-top: 10pt; }
 .p4-pt { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 12.5pt; line-height: 1.25; }
 .p4-bars { width: 100%; height: auto; display: block; margin-top: 6pt; }
 /* page 5 · after launch */
@@ -393,24 +404,26 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
     <div class="tile"><div class="num">90<small>days</small></div><div class="cap">Care after launch,<br>included.</div></div>
   </div>
 
-  <div class="sec"><span class="label wine">The Revenue Engine</span><span class="label">One loop, four parts. Every turn is a booked table.</span></div>
-  <div class="loop">
-    <svg class="loop-ring" viewBox="0 0 300 256"><path d="M163.8 41.1 A88 88 0 0 1 236.9 114.2" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(236.9 114.2) rotate(81.0)"/><circle cx="212.2" cy="65.8" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="212.2" y="69.8" text-anchor="middle" class="ln">1</text><text x="230.6" y="51.4" text-anchor="start" class="ll">Found</text><path d="M236.9 141.8 A88 88 0 0 1 163.8 214.9" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(163.8 214.9) rotate(171.0)"/><circle cx="212.2" cy="190.2" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="212.2" y="194.2" text-anchor="middle" class="ln">2</text><text x="230.6" y="212.6" text-anchor="start" class="ll">Chosen</text><path d="M136.2 214.9 A88 88 0 0 1 63.1 141.8" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(63.1 141.8) rotate(261.0)"/><circle cx="87.8" cy="190.2" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="87.8" y="194.2" text-anchor="middle" class="ln">3</text><text x="69.4" y="212.6" text-anchor="end" class="ll">Booked</text><path d="M63.1 114.2 A88 88 0 0 1 136.2 41.1" fill="none" stroke="var(--wine)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--wine)" transform="translate(136.2 41.1) rotate(351.0)"/><circle cx="87.8" cy="65.8" r="11.5" fill="var(--paper)" stroke="var(--wine)" stroke-width="1.2"/><text x="87.8" y="69.8" text-anchor="middle" class="ln">4</text><text x="69.4" y="51.4" text-anchor="end" class="ll">Booked again</text><text x="150" y="124" text-anchor="middle" class="lc">One booked table,</text><text x="150" y="142" text-anchor="middle" class="lc">then the next one.</text></svg>
-    <div class="loop-steps">
-      <div class="loop-step"><i>1</i><div><h3>Found</h3><p>Your Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.</p></div></div>
-      <div class="loop-step"><i>2</i><div><h3>Chosen</h3><p>A site that looks like your food, says what you charge and shows your 5.0.</p></div></div>
-      <div class="loop-step"><i>3</i><div><h3>Booked</h3><p>Every quote request on your phone in seconds, logged so none goes unanswered.</p></div></div>
-      <div class="loop-step wine"><i>4</i><div><h3>Booked again</h3><p>A thank-you, a one-tap review ask and a note to the same host at day 30. The review is how the next host finds you, and the loop turns again.</p></div></div>
-    </div>
+  <div class="sec p1-paysec"><span class="label wine">Pays for itself</span><span class="label">One booking covers the recommended package. Details on page 4.</span></div>
+  <div class="p4-proof p1-proof">
+    <p class="p4-pt">One Holy Grail table at 75 guests pays for the whole Revenue Engine package.</p>
+    <svg class="p4-bars" viewBox="0 0 600 46" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', sans-serif" role="img" aria-label="One Holy Grail table at 75 guests, $2,000, beside the Revenue Engine package, $1,400">
+      <text x="600" y="9" text-anchor="end" font-size="8.5" fill="#7b6c5f">One Holy Grail table, 75 guests <tspan font-family="'Fraunces', serif" font-size="12.5" fill="#2a1c14">$2,000</tspan></text>
+      <rect x="0" y="14" width="600" height="12" rx="1" fill="#b8963e"/>
+      <rect x="0" y="14" width="420" height="12" rx="1" fill="#6e2230"/>
+      <rect x="420" y="14" width="1.7" height="12" fill="#f7f1e6"/>
+      <line x1="420" y1="26" x2="420" y2="32" stroke="#6e2230" stroke-width=".8"/>
+      <text x="420" y="42" text-anchor="end" font-size="8.5" fill="#7b6c5f">The Revenue Engine <tspan font-family="'Fraunces', serif" font-size="12.5" fill="#2a1c14">$1,400</tspan></text>
+      <text x="0" y="42" font-size="8" fill="#7b6c5f">Your published price, before the $229 setup fee and tax.</text>
+    </svg>
   </div>
-
   <div class="proof">
     <div class="stat"><div class="big">5.0</div><svg class="star"><use href="#star"/></svg><div class="t"><b>The Knot · 13 reviews</b>Best of Weddings 2026</div></div>
     <div class="stat"><div class="big">5.0</div><svg class="star"><use href="#star"/></svg><div class="t"><b>WeddingWire · 11 reviews</b>100% recommend</div></div>
   </div>
   <p class="small mute" style="margin-top:8pt">What every page is built on: the reputation you already have.</p>
 
-  <div class="sec" style="margin-top:14pt"><span class="label wine">How this works</span><span class="label">Three decisions, in order</span></div>
+  <div class="sec" style="margin-top:32pt"><span class="label wine">How this works</span><span class="label">Three decisions, in order</span></div>
   <div class="p1-steps">
     <div><b><i>1</i>Pick a site</b><span>Page 2. Three to choose from, and The Table as its own package.</span></div>
     <div><b><i>2</i>Say yes to what you want</b><span>Page 4. The website alone, or the Revenue Engine with it.</span></div>
@@ -583,6 +596,17 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
   </div>
   <p class="p4-note">Each one includes 90 days of care after launch. Half to start, half at launch. Texas sales tax is added where it applies.</p>
 
+  <div class="sec p4-loopsec"><span class="label wine">The Revenue Engine</span><span class="label">The recommended package, as one loop. Every turn is a booked table.</span></div>
+  <div class="loop p4-loop">
+    <svg class="loop-ring" viewBox="0 0 300 256"><path d="M163.8 41.1 A88 88 0 0 1 236.9 114.2" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(236.9 114.2) rotate(81.0)"/><circle cx="212.2" cy="65.8" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="212.2" y="69.8" text-anchor="middle" class="ln">1</text><text x="230.6" y="51.4" text-anchor="start" class="ll">Found</text><path d="M236.9 141.8 A88 88 0 0 1 163.8 214.9" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(163.8 214.9) rotate(171.0)"/><circle cx="212.2" cy="190.2" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="212.2" y="194.2" text-anchor="middle" class="ln">2</text><text x="230.6" y="212.6" text-anchor="start" class="ll">Chosen</text><path d="M136.2 214.9 A88 88 0 0 1 63.1 141.8" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(63.1 141.8) rotate(261.0)"/><circle cx="87.8" cy="190.2" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="87.8" y="194.2" text-anchor="middle" class="ln">3</text><text x="69.4" y="212.6" text-anchor="end" class="ll">Booked</text><path d="M63.1 114.2 A88 88 0 0 1 136.2 41.1" fill="none" stroke="var(--wine)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--wine)" transform="translate(136.2 41.1) rotate(351.0)"/><circle cx="87.8" cy="65.8" r="11.5" fill="var(--paper)" stroke="var(--wine)" stroke-width="1.2"/><text x="87.8" y="69.8" text-anchor="middle" class="ln">4</text><text x="69.4" y="51.4" text-anchor="end" class="ll">Booked again</text><text x="150" y="124" text-anchor="middle" class="lc">One booked table,</text><text x="150" y="142" text-anchor="middle" class="lc">then the next one.</text></svg>
+    <div class="loop-steps">
+      <div class="loop-step"><i>1</i><div><h3>Found</h3><p>Your Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.</p></div></div>
+      <div class="loop-step"><i>2</i><div><h3>Chosen</h3><p>A site that looks like your food, says what you charge and shows your 5.0.</p></div></div>
+      <div class="loop-step"><i>3</i><div><h3>Booked</h3><p>Every quote request on your phone in seconds, logged so none goes unanswered.</p></div></div>
+      <div class="loop-step wine"><i>4</i><div><h3>Booked again</h3><p>A thank-you, a one-tap review ask and a note to the same host at day 30. The review is how the next host finds you, and the loop turns again.</p></div></div>
+    </div>
+  </div>
+
   <div class="p4-menu">
     <div>
       <div class="p4-h">Add to any package · site, workflows, photos</div>
@@ -605,18 +629,6 @@ h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
 
   <p class="p4-phnote">Photo work, from your own photographs: see the next page.</p>
 
-  <div class="p4-proof">
-    <p class="p4-pt">One Holy Grail table at 75 guests pays for the whole Revenue Engine package.</p>
-    <svg class="p4-bars" viewBox="0 0 600 46" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', sans-serif" role="img" aria-label="One Holy Grail table at 75 guests, $2,000, beside the Revenue Engine package, $1,400">
-      <text x="600" y="9" text-anchor="end" font-size="8.5" fill="#7b6c5f">One Holy Grail table, 75 guests <tspan font-family="'Fraunces', serif" font-size="12.5" fill="#2a1c14">$2,000</tspan></text>
-      <rect x="0" y="14" width="600" height="12" rx="1" fill="#b8963e"/>
-      <rect x="0" y="14" width="420" height="12" rx="1" fill="#6e2230"/>
-      <rect x="420" y="14" width="1.7" height="12" fill="#f7f1e6"/>
-      <line x1="420" y1="26" x2="420" y2="32" stroke="#6e2230" stroke-width=".8"/>
-      <text x="420" y="42" text-anchor="end" font-size="8.5" fill="#7b6c5f">The Revenue Engine <tspan font-family="'Fraunces', serif" font-size="12.5" fill="#2a1c14">$1,400</tspan></text>
-      <text x="0" y="42" font-size="8" fill="#7b6c5f">Your published price, before the $229 setup fee and tax.</text>
-    </svg>
-  </div>
   <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 4 of 7</span></div>
 </section>
 
