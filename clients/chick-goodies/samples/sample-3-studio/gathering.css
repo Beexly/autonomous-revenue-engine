@@ -15,3 +15,36 @@
 .events-list li{border-top:1px solid #243bc14d;padding-top:13px;font-size:16px}
 .events-proof{font-size:14px;max-width:62ch}
 @media(max-width:560px){.events{padding:60px 6% 70px}}
+
+
+/* ============================================================
+   BLOSSOM LAYER · boutique / feminine pass
+   The Gathering already had arches and circles, so this pass
+   adds warmth rather than curve: a blush that sits between the
+   butter and the paper, scalloped edges on the soft bands, and
+   petal corners on the photographs. Blush never carries text.
+   ============================================================ */
+:root{--blush:#f6dcd7;--blush-deep:#eec3bb}
+
+/* petals, not rectangles */
+.gallery-wall img{border-radius:46% 46% 8px 8px}
+.menu-item:hover .price{color:#1a2ea8}
+.events{background:linear-gradient(174deg,var(--butter) 62%,var(--blush))}
+
+/* a scalloped hem on the blush band, drawn with gradients */
+.events{position:relative}
+.events::after{
+  content:'';position:absolute;left:0;right:0;bottom:-1px;height:18px;
+  background:radial-gradient(circle at 12px 0,transparent 12px,var(--paper) 12.5px);
+  background-size:24px 18px;background-repeat:repeat-x
+}
+
+/* the quote and planner surfaces pick up the blush */
+.planner-output{background:var(--blush)}
+.intro{background:linear-gradient(190deg,var(--butter),#f3e6b6)}
+
+/* softer hairlines */
+.events-list li{border-top-color:var(--blush-deep)}
+.menu-item{border-top-color:#243bc133}
+
+@media (max-width:560px){ .events::after{height:12px;background-size:18px 12px} }

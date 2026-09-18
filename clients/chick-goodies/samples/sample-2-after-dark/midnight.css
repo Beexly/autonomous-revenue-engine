@@ -22,3 +22,41 @@
 .events-list li:first-child{border-top:1px solid var(--line)}
 .events-proof{grid-column:1/-1;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--muted)}
 @media(max-width:850px){.events{grid-template-columns:1fr;padding:70px 6vw 80px}}
+
+
+/* ============================================================
+   CANDLELIGHT LAYER · boutique / feminine pass
+   Midnight Supper had one curve in the entire stylesheet. On a
+   dark site femininity cannot come from paleness, so it comes
+   from light: arched photographs, a rose-gold warmer than the
+   copper, and a low glow behind the stills as if a candle were
+   just off frame. Rose is ornament and large type only.
+   ============================================================ */
+:root{--rose:#e8b9ae;--rose-dim:#8a5f56}
+
+/* the photographs stand in arched niches */
+.hero-still{border-radius:190px 190px 6px 6px;padding:18px 16px 16px}
+.hero-still img{border-radius:174px 174px 3px 3px/172px 172px 3px 3px}
+.film-frame img,.menu-photo img,.feature-scene figure img,.story-intro figure img{
+  border-radius:150px 150px 4px 4px}
+
+/* candle, just off frame */
+.hero-still{box-shadow:0 36px 75px #0008, 0 0 90px -20px #e8b9ae33}
+.feature-scene figure{filter:drop-shadow(0 0 60px #e8b9ae1f)}
+
+/* rose-gold detail: eyebrows and the rules between things */
+.eyebrow{color:var(--rose)}
+.opening,.extras,.gallery-note,.story-letter{border-top-color:var(--rose-dim)}
+.events-list li{border-bottom-color:var(--rose-dim)}
+.events-list li:first-child{border-top-color:var(--rose-dim)}
+
+/* softened calls to action */
+.ticket{border-radius:40px}
+.ticket span:last-child{border-left-color:var(--rose-dim)}
+
+@media (max-width:850px){
+  .hero-still{border-radius:140px 140px 6px 6px}
+  .hero-still img{border-radius:126px 126px 3px 3px/124px 124px 3px 3px}
+  .film-frame img,.menu-photo img,.feature-scene figure img,.story-intro figure img{
+    border-radius:110px 110px 4px 4px}
+}
