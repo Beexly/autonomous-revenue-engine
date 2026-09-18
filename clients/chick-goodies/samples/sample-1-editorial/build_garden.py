@@ -1,4 +1,15 @@
 """Build static Garden pages from verified local DNA. No network or credentials."""
+import sys
+sys.exit(
+    "Refusing to run: the .html files in this directory are now hand-edited and "
+    "are the source of truth.\n"
+    "This generator still emits the pre-rewrite copy (old titles and meta "
+    "descriptions, kill-list wording, no canonical/OG/JSON-LD), so running it "
+    "would silently revert the content pass.\n"
+    "Port the changes into this script before removing this guard. "
+    "See clients/chick-goodies/PLAN-CONTENT-STRATEGY.md section 4.1."
+)
+
 from pathlib import Path
 from html import escape as e
 import json

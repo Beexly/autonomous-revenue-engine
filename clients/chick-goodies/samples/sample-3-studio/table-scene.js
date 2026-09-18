@@ -3,13 +3,31 @@ const canvas=document.getElementById('table-scene'),wrap=canvas.parentElement,co
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');let paused=reduced.matches,visible=true,tick=0,frames=0,time=0,elapsed=0,raf=0,last=0;
 const metrics={ready:false,frames:0,paused,drawCalls:0,quality:1.5,camera:[],pointer:[0,0]};window.GatheringScene=metrics;
 try{
-const renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setClearColor(0xfff9ea,0);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.35;
-const scene=new T.Scene(),camera=new T.PerspectiveCamera(38,1,.1,70);scene.add(new T.HemisphereLight(0xfff9ea,0x394ab3,3));const light=new T.DirectionalLight(0xfff5cd,4);light.position.set(-5,9,5);scene.add(light);
+const renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setClearColor(0xfff9ea,0);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.06;renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
+const scene=new T.Scene(),camera=new T.PerspectiveCamera(38,1,.1,70);
+// Studio environment built from emissive planes and convolved by PMREM: a softbox,
+// a cool fill and a butter bounce. No image file, no network, no generated texture.
+const pmrem=new T.PMREMGenerator(renderer),envScene=new T.Scene();
+envScene.background=new T.Color(0xfff9ea).multiplyScalar(.30);
+const softbox=(hex,gain,w,h,pos,rot)=>{const m=new T.Mesh(new T.PlaneGeometry(w,h),new T.MeshBasicMaterial({color:hex,side:T.DoubleSide}));m.material.color.multiplyScalar(gain);m.position.set(pos[0],pos[1],pos[2]);m.rotation.set(rot[0],rot[1],rot[2]);envScene.add(m)};
+softbox(0xfff6e2,4.4,15,10,[-6,9,5],[-Math.PI/2.5,0,.3]);
+softbox(0xdce5ff,1.15,12,9,[9,5,-4],[0,-Math.PI/2.2,0]);
+softbox(0xefe692,.85,17,7,[0,-4.5,6],[Math.PI/2,0,0]);
+scene.environment=pmrem.fromScene(envScene,.04,.1,60).texture;
+pmrem.dispose();envScene.traverse(o=>{if(o.geometry){o.geometry.dispose();o.material.dispose()}});
+scene.add(new T.HemisphereLight(0xfff9ea,0x394ab3,.32));
+const light=new T.DirectionalLight(0xfff5cd,2.3);light.position.set(-5,9,5);light.castShadow=true;
+light.shadow.mapSize.set(1024,1024);light.shadow.radius=3;light.shadow.bias=-.0008;light.shadow.normalBias=.03;
+{const sc=light.shadow.camera;sc.near=1;sc.far=34;sc.left=-8;sc.right=8;sc.top=8;sc.bottom=-8;sc.updateProjectionMatrix()}
+scene.add(light);
 const world=new T.Group();scene.add(world);
 const blue=new T.MeshStandardMaterial({color:0x263ece,roughness:.3,metalness:.08}),cream=new T.MeshStandardMaterial({color:0xfffbef,roughness:.22}),gold=new T.MeshStandardMaterial({color:0xb39652,metalness:.7,roughness:.3});
 const top=new T.Mesh(new T.CylinderGeometry(3.6,3.6,.19,96),new T.MeshStandardMaterial({color:0xe5dc92,roughness:.9}));top.scale.z=.64;world.add(top);
 // Woven cloth pattern is procedural geometry shading, not an image of food.
-const cloth=new T.Mesh(new T.PlaneGeometry(6.9,1.6),new T.ShaderMaterial({side:T.DoubleSide,uniforms:{uTime:{value:0}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec2 vUv;uniform float uTime;void main(){float thread=sin(vUv.x*950.)*sin(vUv.y*360.);float stripe=step(.82,fract(vUv.x*22.));vec3 col=mix(vec3(.93,.92,.79),vec3(.26,.33,.67),stripe*.28);col+=thread*.035;gl_FragColor=vec4(col,1.);}'}));cloth.rotation.x=-Math.PI/2;cloth.position.y=.105;world.add(cloth);
+const clothMat=new T.MeshStandardMaterial({color:0xece6c8,roughness:.87,side:T.DoubleSide});
+// Same weave maths as before, injected into a lit material so the cloth receives shadow.
+clothMat.onBeforeCompile=sh=>{sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nvarying vec2 vWeave;').replace('#include <begin_vertex>','#include <begin_vertex>\nvWeave=uv;');sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nvarying vec2 vWeave;').replace('#include <color_fragment>','#include <color_fragment>\nfloat thread=sin(vWeave.x*950.)*sin(vWeave.y*360.);float stripe=step(.82,fract(vWeave.x*22.));diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.26,.33,.67),stripe*.28);diffuseColor.rgb+=thread*.035;');};
+const cloth=new T.Mesh(new T.PlaneGeometry(6.9,1.6),clothMat);cloth.rotation.x=-Math.PI/2;cloth.position.y=.105;world.add(cloth);
 const dishGeo=new T.CylinderGeometry(.62,.46,.065,56),rimGeo=new T.TorusGeometry(.55,.024,8,56),innerGeo=new T.TorusGeometry(.40,.009,6,48);const accents=[];
 for(let i=0;i<6;i++){const a=(i/6)*Math.PI*2+.12,g=new T.Group();g.position.set(Math.cos(a)*2.52,.16,Math.sin(a)*1.37);g.rotation.y=-a;
 const plate=new T.Mesh(dishGeo,cream);g.add(plate);for(const geo of [rimGeo,innerGeo]){const rim=new T.Mesh(geo,blue);rim.rotation.x=Math.PI/2;rim.position.y=.04;g.add(rim)}
@@ -25,6 +43,7 @@ world.updateMatrixWorld(true);
 const batches=new Map(),inverse=world.matrixWorld.clone().invert();
 world.traverse(node=>{if(!node.isMesh||node.material.transparent)return;const key=JSON.stringify(node.geometry.parameters)+'|'+node.geometry.type+'|'+node.material.uuid;if(!batches.has(key))batches.set(key,[]);batches.get(key).push(node)});
 for(const nodes of batches.values()){if(nodes.length<2)continue;const batch=new T.InstancedMesh(nodes[0].geometry,nodes[0].material,nodes.length);nodes.forEach((node,i)=>{batch.setMatrixAt(i,inverse.clone().multiply(node.matrixWorld));node.removeFromParent()});batch.computeBoundingSphere();world.add(batch)}
+world.traverse(n=>{if(n.isMesh||n.isInstancedMesh){n.castShadow=true;n.receiveShadow=true}});
 world.rotation.set(0,-.25,-.04);
 const target=new T.Vector2(),pointer=new T.Vector2();let progress=0;
 function resize(){const r=wrap.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();render(0)}
@@ -32,5 +51,5 @@ function render(dt){if(!paused){time+=dt;pointer.lerp(target,.055);world.rotatio
 function loop(now){raf=0;if(paused||!visible||document.hidden)return;const dt=Math.min((now-last)/1000,.05);last=now;render(dt);frames++;elapsed+=dt;if(frames===120){if(elapsed>4&&metrics.quality>1){metrics.quality=1;renderer.setPixelRatio(1)}frames=0;elapsed=0}raf=requestAnimationFrame(loop)}
 function start(){if(!raf&&!paused&&visible&&!document.hidden){last=performance.now();raf=requestAnimationFrame(loop)}}
 function state(){metrics.paused=paused;control.setAttribute('aria-pressed',String(paused));control.textContent=paused?'Play motion':'Pause motion';if(paused){cancelAnimationFrame(raf);raf=0;render(0)}else start()}
-control.addEventListener('click',()=>{paused=!paused;state()});reduced.addEventListener('change',()=>{paused=reduced.matches;state()});window.addEventListener('pointermove',e=>{target.set(e.clientX/innerWidth*2-1,1-e.clientY/innerHeight*2)},{passive:true});window.addEventListener('scroll',()=>{progress=Math.min(1,Math.max(0,scrollY/innerHeight));if(paused)return;start()},{passive:true});new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(!visible){cancelAnimationFrame(raf);raf=0}else start()}).observe(canvas);document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else start()});new ResizeObserver(resize).observe(wrap);canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();cancelAnimationFrame(raf);raf=0;wrap.classList.remove('scene-ready');metrics.ready=false;control.textContent='Motion unavailable';control.disabled=true});resize();wrap.classList.add('scene-ready');metrics.ready=true;state();
+control.addEventListener('click',()=>{paused=!paused;state()});reduced.addEventListener('change',()=>{paused=reduced.matches;state()});window.addEventListener('pointermove',e=>{target.set(e.clientX/innerWidth*2-1,1-e.clientY/innerHeight*2)},{passive:true});window.addEventListener('scroll',()=>{const r=wrap.getBoundingClientRect();progress=Math.min(1,Math.max(0,(innerHeight-r.top)/(innerHeight+r.height)));if(paused)return;start()},{passive:true});new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(!visible){cancelAnimationFrame(raf);raf=0}else start()}).observe(canvas);document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else start()});new ResizeObserver(resize).observe(wrap);canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();cancelAnimationFrame(raf);raf=0;wrap.classList.remove('scene-ready');metrics.ready=false;control.textContent='Motion unavailable';control.disabled=true});resize();wrap.classList.add('scene-ready');metrics.ready=true;state();
 }catch(error){metrics.error=String(error);control.textContent='Static view';control.disabled=true;}

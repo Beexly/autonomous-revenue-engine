@@ -13,13 +13,7 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
-          "ok": true,
-          "alt": true,
-          "sized": true
-        },
-        {
-          "src": "img/knot-hero.jpg",
+          "src": "img/knot-3.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -57,6 +51,8 @@
         "menu.html",
         "enquire.html?occasion=Wedding",
         "story.html",
+        "https://www.theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771",
+        "https://www.weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html",
         "enquire.html",
         "tel:+18324588180",
         "index.html",
@@ -68,27 +64,27 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
+          "name": "table-scene.js",
+          "bytes": 8594
         },
         {
           "name": "cart-640.jpg",
           "bytes": 90485
         },
         {
-          "name": "table-scene.js",
-          "bytes": 6876
+          "name": "knot-3.jpg",
+          "bytes": 228333
         },
         {
           "name": "gathering.js",
@@ -100,7 +96,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
+          "bytes": 1445
         },
         {
           "name": "three.module.js",
@@ -166,15 +162,15 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
-        },
-        {
-          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 10894
         },
         {
           "name": "brand.webp",
           "bytes": 79442
+        },
+        {
+          "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
+          "bytes": 0
         },
         {
           "name": "knot-2.jpg",
@@ -190,19 +186,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "bytes": 1445
         }
       ],
       "route": "menu.html",
@@ -296,43 +280,43 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
-        },
-        {
           "name": "board-01.jpg",
           "bytes": 115720
+        },
+        {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
         },
         {
           "name": "cart-640.jpg",
           "bytes": 90485
         },
         {
-          "name": "sips-01.jpg",
-          "bytes": 55668
-        },
-        {
-          "name": "sweets-01.jpg",
-          "bytes": 111688
-        },
-        {
           "name": "knot-3.jpg",
           "bytes": 228333
         },
         {
+          "name": "sips-01.jpg",
+          "bytes": 55668
+        },
+        {
           "name": "gathering.js",
           "bytes": 5237
+        },
+        {
+          "name": "sweets-01.jpg",
+          "bytes": 111688
         },
         {
           "name": "gathering-polish.css",
@@ -340,19 +324,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "bytes": 1445
         }
       ],
       "route": "gallery.html",
@@ -394,6 +366,8 @@
         "story.html",
         "enquire.html",
         "enquire.html",
+        "https://www.theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771",
+        "https://www.weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html",
         "enquire.html",
         "tel:+18324588180",
         "index.html",
@@ -405,11 +379,11 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
@@ -429,19 +403,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "bytes": 1445
         }
       ],
       "route": "story.html",
@@ -490,11 +452,11 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
@@ -510,19 +472,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "bytes": 1445
         }
       ],
       "route": "enquire.html",
@@ -543,13 +493,7 @@
           "sized": true
         },
         {
-          "src": "img/knot-hero.jpg",
-          "ok": true,
-          "alt": true,
-          "sized": true
-        },
-        {
-          "src": "img/knot-hero.jpg",
+          "src": "img/knot-3.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -587,6 +531,8 @@
         "menu.html",
         "enquire.html?occasion=Wedding",
         "story.html",
+        "https://www.theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771",
+        "https://www.weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html",
         "enquire.html",
         "tel:+18324588180",
         "index.html",
@@ -598,19 +544,19 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
           "bytes": 79442
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
+          "name": "knot-3.jpg",
+          "bytes": 228333
         },
         {
           "name": "cart-640.jpg",
@@ -618,7 +564,7 @@
         },
         {
           "name": "table-scene.js",
-          "bytes": 6876
+          "bytes": 8594
         },
         {
           "name": "gathering.js",
@@ -630,7 +576,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
+          "bytes": 1445
         },
         {
           "name": "tricia-662.jpg",
@@ -639,18 +585,6 @@
         {
           "name": "three.module.js",
           "bytes": 1314681
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
         }
       ],
       "route": "index.html",
@@ -708,11 +642,11 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
@@ -732,19 +666,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "bytes": 1445
         }
       ],
       "route": "menu.html",
@@ -838,11 +760,11 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
@@ -861,12 +783,12 @@
           "bytes": 90485
         },
         {
-          "name": "sips-01.jpg",
-          "bytes": 55668
-        },
-        {
           "name": "knot-3.jpg",
           "bytes": 228333
+        },
+        {
+          "name": "sips-01.jpg",
+          "bytes": 55668
         },
         {
           "name": "sweets-01.jpg",
@@ -882,19 +804,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "bytes": 1445
         }
       ],
       "route": "gallery.html",
@@ -936,6 +846,8 @@
         "story.html",
         "enquire.html",
         "enquire.html",
+        "https://www.theknot.com/marketplace/the-chick-goodies-tomball-tx-2094771",
+        "https://www.weddingwire.com/biz/the-chick-goodies/fe9aa7e180588473.html",
         "enquire.html",
         "tel:+18324588180",
         "index.html",
@@ -947,11 +859,11 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
@@ -971,19 +883,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "bytes": 1445
         }
       ],
       "route": "story.html",
@@ -1032,11 +932,11 @@
       "resources": [
         {
           "name": "gathering.css",
-          "bytes": 10606
+          "bytes": 10894
         },
         {
           "name": "css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap",
-          "bytes": 7610
+          "bytes": 0
         },
         {
           "name": "brand.webp",
@@ -1052,19 +952,7 @@
         },
         {
           "name": "content.css",
-          "bytes": 1396
-        },
-        {
-          "name": "rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
-          "bytes": 36932
-        },
-        {
-          "name": "nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtHA-Q.woff2",
-          "bytes": 23076
-        },
-        {
-          "name": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
-          "bytes": 38404
+          "bytes": 1445
         }
       ],
       "route": "enquire.html",
@@ -1082,14 +970,14 @@
   ],
   "scene": {
     "ready": true,
-    "frames": 42,
+    "frames": 17,
     "paused": false,
     "drawCalls": 23,
     "quality": 1.5,
     "camera": [
       0,
-      7.7,
-      9.5
+      7.049865677810434,
+      10.050113657237326
     ],
     "pointer": [
       0,
