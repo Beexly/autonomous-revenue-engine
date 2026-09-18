@@ -14,13 +14,13 @@
   --garden-sans: "Jost", "Helvetica Neue", Arial, sans-serif;
 
   /* One paper, one ink, one accent */
-  --garden-paper: #f7f1e6;          /* warm linen */
+  --garden-paper: #efe6d6;          /* warm linen */
   --garden-ink: #2a1c14;            /* espresso — 14.65:1 on linen */
   --garden-accent: #6e2230;         /* oxblood — 9.66:1 on linen */
 
   /* Supporting ground and line */
   --garden-cream: #fdf8ef;          /* the lighter band */
-  --garden-sand: #efe3cd;           /* warm tint block */
+  --garden-sand: #f1dfbc;           /* warm tint block */
   --garden-gold: #b8963e;           /* HAIRLINES ONLY — 2.50:1, never text */
   --garden-gold-ink: #765c1c;       /* the same gold for text — 4.98:1 on sand, the worst ground */
   --garden-muted: #6b5645;          /* muted body — 5.44:1 on sand, replaces every opacity */
