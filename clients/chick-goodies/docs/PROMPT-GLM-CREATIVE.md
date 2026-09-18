@@ -35,8 +35,21 @@ audience is not technical. Neither is she.
 
 ## What already exists
 
-Three complete sample directions, five pages each, all live. Open every page, at
-**390px** and at **1440px**.
+Three complete sample directions, five pages each. **The files are on this
+machine** at:
+
+```
+C:\Users\Garrett\Downloads\chick-samples\sample-1-editorial
+C:\Users\Garrett\Downloads\chick-samples\sample-2-after-dark
+C:\Users\Garrett\Downloads\chick-samples\sample-3-studio
+```
+
+Read the actual source. Each folder has `index.html`, `menu.html`,
+`gallery.html`, `story.html`, `enquire.html`, one stylesheet, and an `img`
+folder. Sample 3 also has `table.html`.
+
+They are also live, which is the faster way to judge how they *feel*. Open every
+page at **390px** and at **1440px**:
 
 **1 · Garden Atelier** — https://charcuterie-chick-sample-1.vercel.app
 Editorial. Cream, gold, botanical. A printed page. Arched photographs.
@@ -49,8 +62,9 @@ Bright, blue and butter, poster-like, playful.
 Plus https://charcuterie-chick-sample-3.vercel.app/table.html — a 3D immersive
 home-page concept, an early build, deliberately abstract.
 
-Each site has: `index.html`, `menu.html`, `gallery.html`, `story.html`,
-`enquire.html`.
+These are pure static files. Open the `.html` straight off disk, or serve the
+folder (`python -m http.server` from inside it) — there is no build step and
+nothing to install.
 
 ## What I want from you
 
@@ -93,6 +107,6 @@ Read every page first. Then answer these five, in this order.
 
 ## How to answer
 
-Be specific and be opinionated. Name the page, the section, the selector when you
-have it. I would rather have five sharp calls than twenty safe ones. If you think
+Be specific and be opinionated. You have the source, so name the file, the
+selector and the line — not "the hero could be stronger". I would rather have five sharp calls than twenty safe ones. If you think
 a whole direction is dead, say so plainly and say what dies with it.
