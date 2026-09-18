@@ -28,7 +28,7 @@ Headline: *Three sites to choose from. Built to get you booked.*
 
 The Revenue Engine (package name) in four stages, each a line item:
 
-1. **Found.** Google Business Profile, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.
+1. **Found.** Her Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.
 2. **Chosen.** A site that looks like her food, says what she charges and shows her 5.0.
 3. **Booked.** Every quote request on her phone in seconds, logged so none goes unanswered.
 4. **Booked again.** A thank-you, a one-tap review ask and a note to the same host at day 30.
@@ -62,8 +62,8 @@ https://charcuterie-chick-sample-3.vercel.app/table.html. The still from the
 scene, then the five stations the camera moves between (Arrive · The tables ·
 The cart · Tricia · The number), then three lines beside the note: one
 candlelit room instead of pages, you never leave it · your boards, your cart
-and your photographs are on the table · on a phone it becomes a rendered still
-with the same words. The note: a new kind of site, different from the
+and your photographs are on the table · on a phone it becomes one picture of the
+room, with the same words. The note: a new kind of site, different from the
 traditional look and feel of the three above; it follows the patterns of 48
 immersive studio sites we studied for this project, Lusion, Unseen, Locomotive
 and North Kingdom among them, the kind that win the web's design awards. (The
@@ -115,9 +115,9 @@ start, half at launch; Texas sales tax is added where it applies.
 Add to any package, names and prices only (no descriptions on the page).
 Site, workflows, photos: one-page site $150 · workflows, six routines $500 ·
 photo enhancement $150 · photo recreation $250 · both photography services
-$350 (separately $400) · photo restoration $25 per photo. Creative: logo
-restore or redesign $150 · created images $250 a set of ten · marketing kit
-$400 · short videos $150 each, three for $400 · The Creative Bundle $800 (logo
+$350 (separately $400) · old or damaged photos restored $25 per photo. Creative: logo
+restore or redesign $150 · created images from her photos $250 a set of ten · marketing kit (menu, flyer,
+card, social) $400 · short videos, 30 to 60 seconds, $150 each, three for $400 · The Creative Bundle $800 (logo
 redesign, marketing kit, ten images, one video; separately $950).
 
 Photo work strip, "Photo work, from your own photos", two of the twenty-one on
@@ -143,8 +143,8 @@ line forks into two tracks, Care $69 a month and Growth $149 a month. Four
 columns sit under the stations:
 
 - **Before we start, the day she says yes:** this proposal approved, design picked; her logo files, any size; camera-roll originals of her photos; a yes or no on these details: street address on the site, the Spanish line, the About photo, how the cart, sweets and sips are charged, dietary notes.
-- **While we build, days 1 to 7:** domain settings for charcuteriechick.ai, or we set them together on a short call; admin access to her current site; access to her Google Business Profile, or we claim it together.
-- **Included with any site, days 1 to 90:** two rounds of changes before launch; monitoring and small changes after it; a quick yes on the message templates; fixes to her WeddingWire listing, done with her.
+- **While we build, days 1 to 7:** the login for charcuteriechick.ai, her web address, or a short call and we do it together; the login to her current site; her Google Business Profile (the listing people see on Google Maps), or we claim it together.
+- **Included with any site, days 1 to 90:** two rounds of changes before launch; monitoring and small changes after it; a quick yes on the message templates; fixes to her WeddingWire listing (the name and a price are wrong today), done with her.
 - **If she wants more, from day 91:** a plan, billed monthly in advance; cancel any time with thirty days' notice.
 
 Below: "What a month on Growth looks like" (every page, form and link
@@ -155,11 +155,11 @@ plans.
 
 | | Care, $69 a month | Growth, $149 a month |
 |---|---|---|
-| Hosting, domain and uptime monitoring | yes | yes |
+| Hosting and her web address, kept running and watched | yes | yes |
 | Monthly check of every page, form and link | yes | yes |
-| Security updates and backups | yes | yes |
+| Security updates and a backup copy of the site | yes | yes |
 | Changes each month | 1 hour | 3 hours |
-| Search check | quarterly | monthly, with a leads report |
+| How she shows up in Google | every three months | monthly, with who asked for a quote |
 | Google Business Profile posts from her event photos | no | 2 a month |
 | Review workflow kept running | no | yes |
 
@@ -183,7 +183,7 @@ Days 1 to 90 after launch: care included with any website. The one-page site
 is the exception: $150 on delivery, live in 2 days; if she does not like it,
 she does not pay.
 
-Four tiles. Ownership: her domain, logo, photos and words stay hers; the site
+Four tiles. Ownership: her web address, logo, photos and words stay hers; the site
 files are hers at launch; nothing on her current site changes until she says
 go. Revisions: two rounds before launch on the full or immersive site, one on
 the one-page site; then the included 90 days, then the care plan. Not
