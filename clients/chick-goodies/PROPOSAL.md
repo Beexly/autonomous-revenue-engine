@@ -16,7 +16,7 @@ there as a fact tile.
 
 **Prepared for** Tricia Holfelder, Charcuterie Chick (The Chick Goodies), Tomball, Texas
 **Prepared by** Garrett Baxley, Galaxy Sports Network LLC
-**Date** September 17, 2026
+**Date** September 18, 2026
 
 No expiry is printed. The "valid through October 1, 2026" line was removed from
 every page on 2026-09-18 at Garrett's request: page 1 now carries "Prepared for
@@ -145,10 +145,13 @@ as she made it, and she approves each one before it is used; twenty-one of her
 photographs are on file.
 
 Two rows. The first is two-up: **Photo enhancement $150** (all twenty-one
-cleaned, colour-corrected and sized for the site, Google, Instagram and
+cleaned, color-corrected and sized for the site, Google, Instagram and
 Pinterest; originals untouched) beside **Photo recreation $250** (twelve new
 hero images built from her own photographs, lit as a studio would; same drinks,
-same garnish, same glass). Each shows her photograph next to the result.
+same garnish, same glass). Each shows her photograph next to the result. The
+enhancement example is her wide candy-tray photograph (`LH32E.jpg`): the
+original is flat and grey-green, the enhanced side is the same file with levels,
+white balance, contrast, saturation and sharpening corrected.
 
 The second row runs full width: **Your cart, and the mark on the front of it,
 $250 + $150** — the cart she already owns, photographed as a product instead of

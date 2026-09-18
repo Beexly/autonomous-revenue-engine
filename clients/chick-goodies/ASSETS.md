@@ -205,9 +205,9 @@ carry:
 |---|---|
 | `docs/proposal/img/before-cart.jpg` | `samples/sample-3-studio/img/cart-640.jpg` (her driveway photograph) |
 | `docs/proposal/img/after-cart.webp` | `samples/sample-3-studio/img/cut/cart-640.webp` (the studio re-shoot) |
-| `docs/proposal/img/after-trays.jpg` | `graze-01.jpg`, restored and enlarged | proposal page 4, before and after |
+| `docs/proposal/img/after-trays.jpg` | `LH32E.jpg` (her wide candy-tray photograph), levels, white balance, contrast, saturation and sharpening only, 600×800 (2026-09-18) | proposal page 5, the "enhanced" side |
 | `docs/proposal/img/after-sips.jpg` | `sips-02.jpg`, studio re-shoot | proposal page 4, before and after |
-| `docs/proposal/img/before-trays.jpg` | `graze-01.jpg`, her original, byte-identical | proposal page 5, the "yours" side |
+| `docs/proposal/img/before-trays.jpg` | `LH32E.jpg`, her original, resized to 600×800 and nothing else (2026-09-18) | proposal page 5, the "yours" side |
 | `docs/proposal/img/before-sips.jpg` | `sips-02.jpg`, her original, byte-identical | proposal page 5, the "yours" side |
 
 **Corrected 2026-09-18.** This row previously read "her originals, cropped 3:4"
