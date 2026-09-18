@@ -1,196 +1,151 @@
 # Email to Tricia and Stacey
 
-The email Garrett sends with the proposal PDF. Plain text on purpose: it is
-pasted straight into Gmail, so no markdown formatting, no bullet characters
-that turn into something else, and links spelled out so they can be typed by
-hand.
+Two files. `EMAIL-TO-CLIENT.html` is the one to use: open it in a browser, press
+"Copy the email", paste into Gmail. Bold and clickable links survive the paste.
+The plain text below is the fallback, and the record of what was sent.
 
-Every number traces to `../PROPOSAL.md`, `../QUOTE.md` or `../FACTS.md`.
-Wording rules carried over from the proposal: "Revenue Engine" is only ever the
-package name, never "AI" in front of the client, no claim about how fast Tricia
-answers anyone, no street address.
+Links are written with the full `https://` prefix on purpose. Gmail only turns a
+bare `charcuterie-chick-sample-1.vercel.app` into a link if it starts with a
+scheme or `www.` — without it the recipient sees dead grey text. That was the
+bug in the first draft.
 
-Framing set by Garrett 2026-09-18: the three are **samples**, three directions.
-Customization starts once they pick one, and nothing is fixed — it is their
-site. No "valid through" date in the email. The one-page site and the mobile
-versions are not charged for.
+Wording rules carried from the proposal: never "AI" in front of the client, no
+claim about how fast Tricia answers anyone, no street address. Voice is
+Garrett's, written to two people who are friends of his dad's and who do not use
+computers much. Every figure traces to `../PROPOSAL.md`, `../QUOTE.md` or
+`../FACTS.md`.
 
 ## Send to
 
-Tricia Holfelder · Stacey Smith <smithst2015@gmail.com>
+Tricia Holfelder and Stacey Smith <smithst2015@gmail.com>
 
 ## Before sending
 
 1. Attach `docs/proposal/Charcuterie-Chick-Proposal.pdf` (six pages, 2.2 MB).
-2. Nothing else to fill in. Cell number is already in the signature.
+2. Nothing to fill in. The cell number is in the signature.
 
 ## Subject
 
-Your samples are ready — three directions, and one more
+Here's what I built for you
 
-## Body
+## Body (plain text fallback)
 
 Hi Tricia and Stacey,
 
-Thank you both for the time you have given me on this. The work is finished,
-and I would like to walk you through it.
+I finally get to send you this.
 
-I have attached the full proposal as a PDF. It is six pages and mostly
-pictures, so it reads quickly. What is below is the plain-English version.
+I built you three different websites. Not three versions of the same one — three genuinely different directions. The idea is that you look at them and one of them feels like you. That's the one we build on.
 
+They're all live, so you can click around inside them instead of squinting at a picture of them. I've attached the full proposal as a PDF too — six pages, mostly pictures. But let me walk you through it here first, in plain English. The PDF has the numbers; this has the reasoning.
 
-THE THREE SAMPLES
+The three
 
-All three are live on the internet, so you can click through them instead of
-looking at a picture of them. Open them on your phone or your computer. If your
-email shows the lines below in blue, tap one. If not, type it into the bar at
-the top of your browser. You cannot break anything, and none of them touch the
-website you have today.
+Tap any of the blue links and it'll open right up. Poke at everything. You can't break them, and none of this touches your current website — that one is sitting exactly where you left it.
 
-  1. Garden Atelier - elegant and calm, like a warm boutique on a quiet street
-     charcuterie-chick-sample-1.vercel.app
+Garden Atelier
 
-  2. Midnight Supper - evening and cinematic, with the cart as the star
-     charcuterie-chick-sample-2.vercel.app
+Elegant and calm. A warm little boutique on a quiet street.
 
-  3. The Gathering - bright and friendly, with your prices right up front
-     charcuterie-chick-sample-3.vercel.app
+https://charcuterie-chick-sample-1.vercel.app
 
-These are samples. Three directions, so you can see which one feels like you.
-Picking one is not the end of it, it is the start: that is when we go properly
-into making it yours, with your photographs, your words, your prices and the
-pages you actually want.
+Midnight Supper
 
-And nothing here is fixed. If you want different colors, a section moved, a
-page added or one taken out, we do it. It is your site.
+Evening, candlelit, cinematic. The cart is the star of this one.
 
+https://charcuterie-chick-sample-2.vercel.app
 
-TWO THINGS I DID NOT CHARGE YOU FOR
+The Gathering
 
-I built you a simple one-page version as well, and I am not billing you for it:
+Bright and friendly. Prices right up front, nothing to hunt for.
 
-  charcuterie-chick-showcase.vercel.app
+https://charcuterie-chick-sample-3.vercel.app
 
-I also went back through everything and built proper mobile versions, so all of
-it works correctly on a phone and not just on a computer. That matters more than
-it sounds, because a phone is where nearly everyone will see you.
+Now — these are samples. Three directions, not three finished websites. Picking one isn't the finish line, it's the starting line. That's when we sit down and make it actually yours: your photographs, your words, your prices, the pages you actually want and none of the ones you don't.
 
-No charge on either. You are friends of my dad's.
+And nothing in them is set in stone. Different colors? Move that section? Add a page, kill a page? We do it. It's your website. I just built the first draft.
 
+Two things I'm not charging you for
 
-THE FOURTH ONE: THE TABLE
+I also built you a simple one-page version, and I'm not billing you for it:
 
-This one is different from everything above, and it is the one I most want you
-to see.
+https://charcuterie-chick-showcase.vercel.app
 
-  charcuterie-chick-sample-3.vercel.app/table.html
+And I went back through all of them and built proper phone versions, so they look right on a phone instead of shrinking into something you have to pinch and zoom. That matters more than it sounds. Almost everyone who finds you is going to find you on their phone, standing in their kitchen, thinking about a party.
 
-An ordinary website is a stack of pages. You click, a new page loads, you click
-again. All three samples above work that way, and they work well.
+Both of those are on me. You're friends of my dad's. That's just how that works.
 
-The Table does not. You open it and you are looking at a long table set in
-candlelight, with your boards, your cart and your photographs laid out on it.
-You never leave that room. Instead of loading a new page, the view moves along
-the table to whatever you want to see next: the tables, the cart, you, the
-prices. There is nothing for a visitor to learn. They move, and it follows. On a
-phone it settles into one still picture of the room, with the same words.
+Now the one I really want you to see
 
-Let me be straight with you about what this is, because the price does not tell
-you. This is an immersive, storytelling website. The visitor walks through a
-room instead of reading pages. It is the hardest thing I build, and it is very
-new - this style is only a few years old anywhere. Before I started yours I
-studied 48 of the sites that win the web's design awards, from studios like
-Lusion and North Kingdom, to understand how they hold a room together and still
-keep it fast.
+The Table
 
-Most of the work in one of these is invisible. It has to run smoothly on an old
-phone. It has to not break. It has to still say plainly what you charge. Getting
-all three right at once is the part almost nobody manages, and there are very
-few people who will even attempt to build you one. This is something I have been
-developing for a long time, and your food is the reason I wanted to build this
-particular one.
+https://charcuterie-chick-sample-3.vercel.app/table.html
 
-I am offering it at $1,500, which is well under what I believe it is worth. I
-would rather it exist, and I would rather it be yours.
+Give it a second to load, and then just look at it.
 
-It is a custom build and it takes three weeks. And if you open it and it simply
-is not you, say so plainly. Any one of the three samples will serve you very
-well.
+Here's the difference. A normal website is a stack of pages — you click, a page loads, you click again. All three above work that way, and they work well.
 
+The Table doesn't. You open it and you're standing in a candlelit room, looking down a long table. Your boards are on it. Your cart is there. Your photographs are lying on the table like someone just set them down. And you never leave that room. Instead of loading a new page, the room moves — the view slides along the table to whatever you want to see next. The tables. The cart. You. The prices. There's nothing for anybody to learn. They move, it follows. On a phone the whole thing settles into one still picture of the room, with all the same words.
 
-WHAT ACTUALLY GETS YOU BOOKED
+Let me be honest with you about what this is, because the price doesn't tell you.
 
-A website brings the request in. What happens after the request arrives is where
-the booking is won or lost, and this is the part I want to be sure you
-understand, because it is the piece that pays for itself.
+This is a storytelling website. Immersive, is the word people use for it. The visitor walks through a room instead of reading pages, and it is by a wide margin the hardest thing I know how to build. It's also very new — this style barely existed a few years ago. Before I started yours I went and studied 48 of the sites that win the big international design awards, the ones built by studios like Lusion and North Kingdom, just to understand how they hold a room together without the whole thing falling apart.
 
-Here is how it works. A message is written ahead of time, in your words, and it
-sits on your phone. When something happens - a quote comes in, an event ends, a
-season is coming - your phone reminds you, you read the message, and you tap
-send. Nothing ever goes out on its own. Nothing sounds like a machine. It is
-your voice, every time. It just is not you at eleven at night trying to remember
-who you owe a reply to.
+Most of the work in one of these is invisible. It has to run smooth on an old phone. It can't break. It still has to plainly tell somebody what a table costs. Getting all three of those right at the same time is the part almost nobody manages, and there honestly aren't many people who'll even take a swing at it.
 
-There are six of them:
+I've been building toward this for a long time. And I'll tell you the truth: your food is why I wanted to build this particular one. Boards like yours deserve a room, not a web page.
 
-  1. Never miss a quote. A request from your site lands on your phone with the
-     name, the date and the headcount already in it. If nobody has replied in a
-     day, you get a nudge.
+$1,500, three weeks. That's well under what I think it's worth, and I know it. I'd rather it exist, and I'd rather it be yours.
 
-  2. The quiet quote. Three days on, if a quote has gone quiet, a short and
-     friendly follow-up is ready. Silence is not a no.
+And if you open it and it's just not you — say so, plainly, no hard feelings whatsoever. Any one of the three will serve you beautifully.
 
-  3. Confirmed and counted. Two days before the event: date, table, final
-     headcount and arrival time, in writing. The headcount is the price, so this
-     one protects your money.
+The part that actually gets you booked
 
-  4. Turn every event into a review. A thank-you with a photo from their table
-     two days after, and the Google review link the day after that. You have 24
-     five-star reviews on The Knot and WeddingWire already. This builds the same
-     proof on Google, where people actually search.
+Can I tell you what kills most catering websites? It isn't the website. It's what happens in the days right after somebody asks for a quote.
 
-  5. Bring the host back. Thirty days later, one note to the same host, with
-     whatever offer you decide. Someone who has already seen your table does not
-     need convincing.
+So here's what I'd set up for you. A message gets written ahead of time — in your words, sitting down with you, not mine — and it lives on your phone. Something happens: a quote comes in, an event wraps up, a season's coming. Your phone taps you on the shoulder. You read it, you tap send.
 
-  6. The season ahead. Six weeks before each busy season - holidays,
-     graduations, weddings - your past hosts hear from you first. Calendars fill
-     in the order people are asked.
+Nothing ever goes out on its own. Nothing sounds like a robot. It's your voice every single time. It's just not you at eleven at night trying to remember who you still owe an answer to.
 
-And that is only the messages. The $500 also covers all six written with you,
-sitting down together, in your voice; set up on your phone with the reminder on
-the day; the log, so every quote request is recorded along with whether it was
-answered; and one screen a month showing calls, quotes, bookings and your best
-photo. It is yours for good after that. No monthly fee, no software to learn.
+Six of them:
 
-Your smallest grazing table is $1,200. One booking that would otherwise have
-slipped away pays for all six of these twice over.
+1. Never miss a quote. The request lands on your phone with the name, the date and the headcount already filled in. Nobody's answered in a day? You get a nudge.
 
+2. The quiet quote. Three days on, if they've gone quiet, a short friendly follow-up is already written and waiting. Silence isn't a no. Usually it's just a busy person.
 
-PRICING
+3. Confirmed and counted. Two days out: date, table, final headcount, arrival time, in writing. The headcount is the price — this one protects your money.
 
-It is all laid out on page 4 of the attachment, so I will not repeat it here.
-The website is $600. The website together with the six messages and the photo
-work is $1,400, and that is the one I would point you to. The Table, as your
-site, with the same extras, is $2,250. Every one of them includes ninety days of
-looking after it once it is live, and it is half to start and half when it goes
-live.
+4. Turn every event into a review. A thank-you with a photo of their table two days after, and the Google review link the day after that. You've already got 24 five-star reviews on The Knot and WeddingWire. This puts that same proof on Google, which is where people actually look.
 
-If anything about the pricing is unclear, or you want to know what any of these
-services actually are and how they work, ask me. That is what I am here for, and
-there is no question too small.
+5. Bring the host back. Thirty days later, one note to that same host, with whatever offer you want to make. Somebody who has already stood in front of your table doesn't need a sales pitch.
 
-And if any part of this is more computer than you care to deal with, call me. I
-will walk you both through the pages one at a time on the phone, or come sit
-down with you and open them on my own laptop. There is no part of this you are
-expected to figure out alone.
+6. The season ahead. Six weeks before the holidays, before graduations, before wedding season — your past hosts hear from you first. Calendars fill up in the order people get asked.
 
-When you have decided, just reply with the direction you liked and which option
-you want. That is all I need to start.
+That's $500, and it isn't just the six messages. It's writing all six with you, in your own voice. Setting them up on your phone with the reminder on the day. A log, so every quote request gets recorded along with whether anybody answered it. And one screen a month that tells you calls, quotes, bookings and your best photo. Then it's yours for good. No monthly fee, nothing to learn, no chatbot, ever.
 
-Thank you again, both of you. Thirty-five years of this shows in your food, and
-I would like the website to finally show it too.
+Your smallest table is $1,200. One booking that would have slipped through the cracks pays for the whole thing twice.
+
+Money
+
+It's all on page 4 of the PDF, so I won't belabor it here.
+
+The website is $600 — same as we said.
+
+The website with the six messages and the photo work is $1,400. That's the one I'd put you in, if you're asking me.
+
+The Table as your website, with those same extras, is $2,250.
+
+All three include ninety days of me looking after it once it's live. Half up front, half when it goes live.
+
+And listen — if anything about the pricing doesn't make sense, or you want me to explain what any of this actually is and how it works, ask me. Genuinely. There's no question too small, and I'd much rather answer ten of them now than have you nodding along to something you're not sure about.
+
+If any part of this is more computer than you care to deal with, just call me. I'll walk you both through the pages one at a time on the phone, or I'll come sit down with you and open them on my own laptop. There is no part of this you're expected to figure out alone.
+
+When you've decided, just hit reply and tell me which one you liked and what you want. That's all I need to get started.
+
+Thank you, both of you. Thirty-five years of this is sitting in that food, and I'd like the website to finally say so.
 
 Garrett Baxley
+
 Galaxy Sports Network LLC
+
 281.660.7639
