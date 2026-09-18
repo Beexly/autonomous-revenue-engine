@@ -196,6 +196,15 @@ variant that changed her cart, her sign or her logo.
 | `samples/sample-3-studio/img/cut/sips-02.webp` | `sips-02.jpg` (Bloody Marys), studio re-shoot | cut-out on The Table, station 3 |
 | `samples/sample-3-studio/img/cut/graze-01.webp` | `graze-01.jpg` (candy trays), studio re-shoot from above | flat on The Table |
 | `samples/sample-3-studio/img/cut/cart-640.webp` | `cart-640.jpg` plus `candy-01.jpg` and the logo, studio re-shoot of the cart | cut-out on The Table, station 3 |
+
+Copied into the proposal on 2026-09-18 for the photo-work page (page 5), which
+shows each pair at full size rather than the cropped strip that page 4 used to
+carry:
+
+| Proposal file | Copied from |
+|---|---|
+| `docs/proposal/img/before-cart.jpg` | `samples/sample-3-studio/img/cart-640.jpg` (her driveway photograph) |
+| `docs/proposal/img/after-cart.webp` | `samples/sample-3-studio/img/cut/cart-640.webp` (the studio re-shoot) |
 | `docs/proposal/img/after-trays.jpg` | `graze-01.jpg`, restored and enlarged | proposal page 4, before and after |
 | `docs/proposal/img/after-sips.jpg` | `sips-02.jpg`, studio re-shoot | proposal page 4, before and after |
 | `docs/proposal/img/before-trays.jpg`, `before-sips.jpg` | her originals, cropped 3:4 | proposal page 4 |

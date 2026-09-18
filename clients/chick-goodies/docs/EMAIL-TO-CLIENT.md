@@ -37,7 +37,7 @@ Tricia Holfelder and Stacey Smith <smithst2015@gmail.com>
 
 ## Before sending
 
-1. Attach `docs/proposal/Charcuterie-Chick-Proposal.pdf` (six pages, 2.2 MB).
+1. Attach `docs/proposal/Charcuterie-Chick-Proposal.pdf` (seven pages, 2.7 MB).
 2. Let Gmail's own signature close it. Do not re-add a name block.
 
 ## Subject
@@ -48,7 +48,7 @@ Here's what I built for you
 
 Hi Tricia and Stacey,
 
-Here it is. I've attached the whole proposal — six pages, mostly pictures. Let me just give you the handful of things that aren't in it.
+Here it is. I've attached the whole proposal — seven pages, mostly pictures. Let me just give you the handful of things that aren't in it.
 
 I built you three full sized websites, rather than just samples. All three are live right now. Click around in them, you can't break anything, and none of it touches the site you have today.
 

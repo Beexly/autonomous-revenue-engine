@@ -1,7 +1,7 @@
 # Proposal: Charcuterie Chick
 
 Text record of the proposal Garrett sends. The designed document is
-`docs/proposal/Charcuterie-Chick-Proposal.html` (six Letter pages, mostly
+`docs/proposal/Charcuterie-Chick-Proposal.html` (seven Letter pages, mostly
 diagrams and tables); `docs/proposal/build.js` renders the PDF and, with
 `--shots`, refreshes the three site screenshots in `docs/proposal/img/` (`img/table.jpg` is the
 scene still from `samples/sample-3-studio/img/table-still.jpg`, resized). Re-run
@@ -120,27 +120,54 @@ restore or redesign $150 · created images from her photos $250 a set of ten · 
 card, social) $400 · short videos, 30 to 60 seconds, $150 each, three for $400 · The Creative Bundle $800 (logo
 redesign, marketing kit, ten images, one video; separately $950).
 
-Photo work strip, "Photo work, from your own photos", two of the twenty-one on
-file: the candy trays, her photo beside the enhanced version, captioned
-"Photo enhancement · $150"; the Bloody Marys, her photo beside the studio
-shot made from it, captioned "Photo recreation · $250" (`docs/proposal/img/`,
-recorded in `ASSETS.md` §6).
+One line under the add-ons points at the next page: "Photo work, from your own
+photographs: see the next page." The cramped two-pair strip that used to sit
+here was removed on 2026-09-18 — at `height: .76in` with `object-fit: cover` it
+cropped 600x800 portrait sources into a horizontal sliver, so neither the
+before nor the after could be read.
 
 Proof bar: one Holy Grail table at 75 guests ($2,000, her published price
 before the $229 setup fee and tax) pays for the whole Revenue Engine package
 ($1,400).
 
-## Page 5. After launch, and what we need from her
+## Page 5. Photo work
+
+Headline: *Your photographs, finished properly.* Top label: every image on the
+page starts from one of her own photographs. Lede: nothing is stock and nothing
+is invented; we start from the picture she already took, keep every item exactly
+as she made it, and she approves each one before it is used; twenty-one of her
+photographs are on file.
+
+Two rows. The first is two-up: **Photo enhancement $150** (all twenty-one
+cleaned, colour-corrected and sized for the site, Google, Instagram and
+Pinterest; originals untouched) beside **Photo recreation $250** (twelve new
+hero images built from her own photographs, lit as a studio would; same drinks,
+same garnish, same glass). Each shows her photograph next to the result.
+
+The second row runs full width: **Your cart, and the mark on the front of it,
+$250 + $150** — the cart she already owns, photographed as a product instead of
+in a driveway, carrying a redesigned mark; photo recreation $250 and logo
+restore or redesign $150, both inside The Creative Bundle at $800. Her driveway
+photograph sits beside the studio shot.
+
+Images are `object-fit` free: each is sized by height with `width: auto`, so
+nothing is ever cropped. Sources in `docs/proposal/img/`, provenance in
+`ASSETS.md` §6.
+
+## Page 6. After launch, and what we need from her
 
 Headline: *Ninety days on us. Then, if you want, we keep going.* Top label:
 optional, cancel any time with thirty days' notice. Lede: one line, from the
 day she says yes: what we need from her, what is included, and what a plan
 adds.
 
-The page is one road: You say yes (day 0) · Launch (day 7) · Day 90, with the
-gold segment between launch and day 90 marked "ninety days on us", then the
-line forks into two tracks, Care $69 a month and Growth $149 a month. Four
-columns sit under the stations:
+The page opens with a four-segment rail that labels the four columns beneath it
+rather than repeating them: Day 0 · Days 1 to 7 · Days 1 to 90 · From day 91,
+the middle two segments in gold, the last dashed. One line under the gold pair:
+"Ninety days on us. Care and Growth begin after that, and only if you want
+them." The forked road that used to sit here was removed on 2026-09-18 — its
+two arrows ran through the Care and Growth labels, and its stations duplicated
+the column subheads word for word. Four columns sit under the rail:
 
 - **Before we start, the day she says yes:** this proposal approved, design picked; her logo files, any size; camera-roll originals of her photos; a yes or no on these details: street address on the site, the Spanish line, the About photo, how the cart, sweets and sips are charged, dietary notes.
 - **While we build, days 1 to 7:** the login for charcuteriechick.ai, her web address, or a short call and we do it together; the login to her current site; her Google Business Profile (the listing people see on Google Maps), or we claim it together.
@@ -166,7 +193,7 @@ plans.
 Closing line: the first ninety days come with any website; after that, she
 decides.
 
-## Page 6. Payment and terms
+## Page 7. Payment and terms
 
 Headline: *Half to start. Half when it is live.* One timeline, what goes live
 above the line and what she pays below it:
