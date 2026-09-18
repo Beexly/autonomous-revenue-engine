@@ -32,15 +32,11 @@ Headline: *Three sites to choose from. Built to get you booked.*
 - 3 finished designs, live today. She picks one.
 - 90 days of care after launch, included.
 
-The Revenue Engine (package name) drawn as a loop, not a line (2026-09-18): a
-ring of four arrows, the fourth in wine, with "One booked table, then the next
-one." at its center, and the four parts explained beside it. Label: one loop,
-four parts, every turn is a booked table.
-
-1. **Found.** Her Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.
-2. **Chosen.** A site that looks like her food, says what she charges and shows her 5.0.
-3. **Booked.** Every quote request on her phone in seconds, logged so none goes unanswered.
-4. **Booked again.** A thank-you, a one-tap review ask and a note to the same host at day 30.
+Pays-for-itself bar (moved here from page 4 on 2026-09-18, when the Revenue
+Engine loop moved the other way): label "Pays for itself · one booking covers
+the recommended package, details on page 4", then one Holy Grail table at 75
+guests ($2,000, her published price, before the $229 setup fee and tax) drawn
+against the Revenue Engine package ($1,400).
 
 Proof shown: 5.0 on The Knot, 13 reviews, Best of Weddings 2026 · 5.0 on WeddingWire, 11 reviews, 100% recommend.
 
@@ -135,9 +131,20 @@ here was removed on 2026-09-18 — at `height: .76in` with `object-fit: cover` i
 cropped 600x800 portrait sources into a horizontal sliver, so neither the
 before nor the after could be read.
 
-Proof bar: one Holy Grail table at 75 guests ($2,000, her published price
-before the $229 setup fee and tax) pays for the whole Revenue Engine package
-($1,400).
+Under the cards, above the add-on menus (moved here from page 1 on 2026-09-18,
+because the package it explains is priced on this page):
+
+The Revenue Engine (package name) drawn as a loop, not a line: a
+ring of four arrows, the fourth in wine, with "One booked table, then the next
+one." at its center, and the four parts explained beside it. Label: the recommended
+package, as one loop; every turn is a booked table.
+
+1. **Found.** Her Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.
+2. **Chosen.** A site that looks like her food, says what she charges and shows her 5.0.
+3. **Booked.** Every quote request on her phone in seconds, logged so none goes unanswered.
+4. **Booked again.** A thank-you, a one-tap review ask and a note to the same host at day 30.
+
+The pays-for-itself bar that closed this page now opens the cover (page 1).
 
 ## Page 5. Photo work
 
