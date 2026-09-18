@@ -112,7 +112,7 @@ h2{font-family:var(--garden-serif);font-size:var(--t5);font-weight:400;font-styl
 
 .hero-photo{margin:0;border:var(--hair) solid var(--garden-gold);padding:10px;background:var(--garden-cream)}
 .hero-photo img{width:100%}
-.hero-photo figcaption{font-family:var(--garden-serif);font-size:var(--t1);font-style:italic;margin-top:12px;color:var(--garden-muted)}
+.hero-photo figcaption,.framed figcaption{font-family:var(--garden-serif);font-size:var(--t1);font-style:italic;margin-top:12px;color:var(--garden-muted)}
 
 
 
@@ -254,8 +254,8 @@ footer{padding:0;background:var(--garden-ink);color:var(--garden-paper)}.cta-hea
 .band figcaption{font-family:var(--garden-serif);font-size:var(--t1);font-style:italic;color:var(--garden-muted);max-width:1000px;margin:12px auto 0;padding:0 28px}
 
 /* Rule 3 — captions: numeral, middle dot, words */
-.specimen figcaption .n,.band figcaption .n{font-family:var(--garden-sans);font-size:var(--t0);letter-spacing:.14em;color:var(--garden-gold-ink);font-style:normal}
-.specimen figcaption .n::after,.band figcaption .n::after{content:' · ';color:var(--garden-muted)}
+figcaption .n{font-family:var(--garden-sans);font-size:var(--t0);letter-spacing:.14em;color:var(--garden-gold-ink);font-style:normal}
+figcaption .n::after{content:' · ';color:var(--garden-muted)}
 
 /* Rule 5 — the menu card */
 .menu-card{max-width:1000px;margin:0 auto;padding:var(--s3) 28px}
