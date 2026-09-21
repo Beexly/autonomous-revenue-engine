@@ -1,0 +1,189 @@
+[
+  {
+    "query": "site:upwork.com/jobs \"Meta Pixel\" CAPI",
+    "status": 200,
+    "success": true,
+    "warning": null,
+    "error": null,
+    "items": [],
+    "keys": [
+      "success",
+      "data",
+      "creditsUsed",
+      "id"
+    ],
+    "data_keys": [
+      "web"
+    ]
+  },
+  {
+    "query": "site:upwork.com/jobs Shopify \"Facebook pixel\" overcount OR discrepancy",
+    "status": 200,
+    "success": true,
+    "warning": null,
+    "error": null,
+    "items": [],
+    "keys": [
+      "success",
+      "data",
+      "creditsUsed",
+      "id"
+    ],
+    "data_keys": [
+      "web"
+    ]
+  },
+  {
+    "query": "site:upwork.com/jobs Framer pixel CAPI",
+    "status": 200,
+    "success": true,
+    "warning": null,
+    "error": null,
+    "items": [],
+    "keys": [
+      "success",
+      "data",
+      "creditsUsed",
+      "id"
+    ],
+    "data_keys": [
+      "web"
+    ]
+  },
+  {
+    "query": "site:upwork.com/jobs Stape CAPI",
+    "status": 200,
+    "success": true,
+    "warning": null,
+    "error": null,
+    "items": [],
+    "keys": [
+      "success",
+      "data",
+      "creditsUsed",
+      "id"
+    ],
+    "data_keys": [
+      "web"
+    ]
+  },
+  {
+    "query": "site:upwork.com/jobs \"Events Manager\" purchase discrepancy",
+    "status": 200,
+    "success": true,
+    "warning": null,
+    "error": null,
+    "items": [],
+    "keys": [
+      "success",
+      "data",
+      "creditsUsed",
+      "id"
+    ],
+    "data_keys": [
+      "web"
+    ]
+  },
+  {
+    "query": "site:upwork.com/jobs \"server-side\" GTM Meta pixel",
+    "status": 200,
+    "success": true,
+    "warning": null,
+    "error": null,
+    "items": [],
+    "keys": [
+      "success",
+      "data",
+      "creditsUsed",
+      "id"
+    ],
+    "data_keys": [
+      "web"
+    ]
+  },
+  {
+    "query": "site:upwork.com/freelance-jobs/apply Meta Pixel CAPI",
+    "status": 200,
+    "success": true,
+    "warning": null,
+    "error": null,
+    "items": [
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Meta-Pixel-Conversion-Tracking-Expert-Needed_~022091542438648881792/",
+        "title": "Meta Pixel & Conversion Tracking Expert Needed",
+        "description": "We are looking for an experienced Meta Pixel & Conversion API expert to properly set up and verify conversion tracking on our WordPress website."
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Meta-CAPI-GoHighLevel-Attribution-Expert_~022090508785148564836/",
+        "title": "Meta CAPI + GoHighLevel Attribution Expert",
+        "description": "Current Pixel and Conversions API setup, including whether events are duplicating or being dropped Event Match Quality scores and which match keys are missing ..."
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/GTM-Meta-Pixel-Catalogue-Tracking-Specialist_~022090818692975988519/",
+        "title": "GTM & Meta Pixel/Catalogue Tracking Specialist",
+        "description": "Meta Conversions API (CAPI) setup and event deduplication. Pixel/CAPI events for dynamic ads \u2026 specializes in tracking, analytics, feeds, and Meta catalogue ..."
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Investigate-Meta-Tracking-Issue_~022091896963588212410/",
+        "title": "Meta Tracking & Attribution Issue \u2014 Need Expert to Audit ...",
+        "description": "We are looking for an experienced Meta Ads / Meta Pixel & Conversions API specialist to investigate an issue with our Meta purchase tracking."
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Facebook-Pixel-Tracking-Issue_~022090157247832197619/",
+        "title": "Facebook Pixel Tracking Issue - Freelance Job in Digital ...",
+        "description": "Scope: 1. Audit everything sending events to Meta \u2014 pixel, CAPI, checkout scripts, third party apps 2. Identify why purchases are overcounting 3. Fix it 4."
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Meta-Ads-build-launch-run-first-paid-test-fixed-week-project_~022090745548668978874/",
+        "title": "Meta Ads \u2014 build, launch & run a first paid test (fixed 6\u20138 ...",
+        "description": "Meta Pixel + Conversions API installed. Pixel + CAPI fire correctly \u2014 set up campaign structure, audiences and ads. Level $5.00 - $25.00 Hourly Remote Job"
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Meta-Ads-Specialist-Online-Coaching-Business-Model-Has-Experience-scaling-000-Day_~022090737276017198457/",
+        "title": "Meta Ads Specialist | Online Coaching Business Model",
+        "description": "Meta Ads Specialist | Online Coaching Business Model | Has Experience in scaling to $5,000/Day+ - Freelance Job in Digital Marketing - $3,000.00"
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Meta-Conversions-API-CAPI-WooCommerce-Expert-Needed_~022089967443867029579/",
+        "title": "Meta Conversions API (CAPI) + WooCommerce Expert ...",
+        "description": "I'm looking for someone with hands-on experience setting up Meta Conversions API (CAPI) with WooCommerce who can help me troubleshoot a couple of things for ..."
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Google-Ads-Meta-Account-Setup_~022090857642085013113/",
+        "title": "Google Ads & Meta Account Setup",
+        "description": "Set up client-owned Google Ads and Meta advertising accounts, connect them to agency manager accounts, configure GA4 and Google Tag Manager, install and test ..."
+      },
+      {
+        "url": "https://www.upwork.com/freelance-jobs/apply/Senior-commerce-Growth-Marketer-Meta-Google-Ads-Expert-Shopify-Tracking-Specialist_~022090932681109345939/",
+        "title": "Senior E-commerce Growth Marketer & Meta/Google Ads ...",
+        "description": "Seeking an expert eCommerce Marketer & Media Buyer based in India to audit and fix Meta CAPI, Pixel, and Shopify conversion issues."
+      }
+    ],
+    "keys": [
+      "success",
+      "data",
+      "creditsUsed",
+      "id"
+    ],
+    "data_keys": [
+      "web"
+    ]
+  },
+  {
+    "query": "site:upwork.com/jobs \"Conversions API\" Shopify",
+    "status": 200,
+    "success": true,
+    "warning": null,
+    "error": null,
+    "items": [],
+    "keys": [
+      "success",
+      "data",
+      "creditsUsed",
+      "id"
+    ],
+    "data_keys": [
+      "web"
+    ]
+  }
+]
