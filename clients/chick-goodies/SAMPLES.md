@@ -1,5 +1,7 @@
 # SAMPLES — current (2026-09-16)
 
+> **Superseded 2026-09-17 on one point:** Garrett presents all three samples and Tricia picks. Do not read the "sample 3 only" lines below as current. The current handoff is `STATE.md`, then `PROMPT-BUILDERS.md`, then `PLAN-CONTENT-STRATEGY.md`. The owner verdicts, design bans and photography ceiling below still apply.
+
 Owner verdict: sample 3 is the direction. Samples 1 and 2 are experiments,
 not the pitch. **No proposal section on any live URL.**
 

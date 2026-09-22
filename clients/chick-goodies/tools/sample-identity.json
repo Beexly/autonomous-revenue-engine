@@ -1,0 +1,39 @@
+{
+  "pairs": {
+    "sample-1-editorial vs sample-2-after-dark": {
+      "ground_de": 85.88,
+      "ground_dl": 86.2,
+      "heading_a": "Cormorant Garamond",
+      "heading_b": "Barlow"
+    },
+    "sample-1-editorial vs sample-3-studio": {
+      "ground_de": 4.1,
+      "ground_dl": 6.4,
+      "heading_a": "Cormorant Garamond",
+      "heading_b": "DM Sans"
+    },
+    "sample-2-after-dark vs sample-3-studio": {
+      "ground_de": 92.01,
+      "ground_dl": 92.6,
+      "heading_a": "Barlow",
+      "heading_b": "DM Sans"
+    }
+  },
+  "samples": {
+    "sample-1-editorial": {
+      "ground": "#efe6d6",
+      "heading": "Cormorant Garamond",
+      "ink": "#2a1c14"
+    },
+    "sample-2-after-dark": {
+      "ground": "#151111",
+      "heading": "Barlow",
+      "ink": "#f3ead9"
+    },
+    "sample-3-studio": {
+      "ground": "#fff9ea",
+      "heading": "DM Sans",
+      "ink": "#243bc1"
+    }
+  }
+}

@@ -11,7 +11,10 @@ class ContentTests(unittest.TestCase):
         self.assertEqual(page.h1.get_text(' ', strip=True), 'Elegance without the cost.')
 
     def test_shared_navigation_and_footer(self):
-        for file in ROOT.glob('*.html'):
+        # table.html is a separate exploration with its own chrome, not one of
+        # concept 3's five pages. Scope the shared-chrome assertions to those five.
+        for name in ('index.html','menu.html','gallery.html','story.html','enquire.html'):
+            file = ROOT / name
             with self.subTest(page=file.name):
                 page = BeautifulSoup(file.read_text(encoding='utf-8'), 'html.parser')
                 self.assertEqual([a.get_text(' ', strip=True) for a in page.select('header nav a')], ['Home', 'Menus and prices', 'Photos', 'About Tricia', 'Get a quote'])

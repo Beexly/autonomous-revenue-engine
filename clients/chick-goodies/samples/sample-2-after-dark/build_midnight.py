@@ -1,10 +1,13 @@
 """Build only the five Midnight Supper documents from local facts."""
-# Historical writer retained for reference only. Stop on import as well as CLI.
-# Keep this after the module docstring / future imports, before all other code.
-raise SystemExit(
-    "LEGACY BUILD DISABLED: canonical sample HTML/CSS/JS are direct-edited. "
-    "Do not regenerate or replay preparation/migration scripts. "
-    "See clients/chick-goodies/tools/BUILD-SAFETY.md."
+import sys
+sys.exit(
+    "Refusing to run: the .html files in this directory are now hand-edited and "
+    "are the source of truth.\n"
+    "This generator still emits the pre-rewrite copy (old titles and meta "
+    "descriptions, kill-list wording, no canonical/OG/JSON-LD), so running it "
+    "would silently revert the content pass.\n"
+    "Port the changes into this script before removing this guard. "
+    "See clients/chick-goodies/PLAN-CONTENT-STRATEGY.md section 4.1."
 )
 
 from pathlib import Path

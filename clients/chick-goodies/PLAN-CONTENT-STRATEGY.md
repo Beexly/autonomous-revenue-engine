@@ -619,3 +619,172 @@ From WeddingWire (vendor description and FAQ):
 - Reviewers as published: Abigail, Crystal, Lauren, Tiffni, Darrell, Stacey, Shelby. One calls her "Trish". `[NEEDS TRICIA: does she go by Trish?]`
 
 Action for Garrett: ask Tricia which of these are true today, add the confirmed ones to FACTS.md, and have her fix the two listing errors. "Your budget, your taste, your way" is the best line she has written and belongs on the site the day it is in FACTS.md.
+
+## 8. Design bar (added 2026-09-17, second pass)
+
+The owner's bar is EMP, Noma and Floema: restaurant sites where one photograph carries the screen, one typeface family does all the work, the air is the design, and the reservation is the only loud thing. The 48-site corpus Garrett supplied (Lusion, Unseen, Locomotive, North Kingdom and the rest) is a motion-agency corpus. It is used here for discipline and pacing, never for effects. Tokens already extracted from EMP and Noma live in `docs/research/emp-noma/PLAN.md` and still apply.
+
+### 8.1 Rules (each one is testable)
+
+1. One display face and one text face per concept. No third family anywhere. The italic emphasis word is allowed once per screen.
+2. One accent color per concept. Backgrounds are fields, not accents. A second accent is a bug.
+3. Photographs are objects. `object-fit: contain` on a void, at or under native pixels, in a frame that belongs to the grid. Never absolutely positioned over copy. Never cover-stretched to fill a viewport. Never upscaled until the restore pass under the owner's photo rule.
+4. One spacing scale per concept, applied to every section. Desktop 120/80/48, mobile 72/48/32, or the concept's own scale used everywhere. No section chooses its own padding.
+5. Air, not objects. The hero holds one headline, one line, one primary action, one photograph. Rings, threads, botanical glyphs, rotated labels and 3D plates are allowed only where they never touch text or a photo at 360, 390, 768, 1024, 1440 and 1920. If a decoration touches anything at any width, it goes.
+6. Hairlines at 0.67 to 1px. No box-shadow, no gradients, no glass, no grain, no marquee, no custom cursor, no Ken Burns. (Owner verdicts in HANDOFF.md and DESIGN_REFS.md.)
+7. Chrome small and quiet. Nav 14 to 16px, one row at 390 or a menu button. One button style per concept. No candy buttons.
+8. The number is the design. On the quote page the total is set in the display face and the breakdown is small.
+9. Numbered sequencing 01 to 05 (Floema) only where the concept already uses it (2 and 3), in one numeral style across the site.
+10. Motion: one reveal per section, opacity plus a translate of 12px or less, 400ms or less, `prefers-reduced-motion` honored. Nothing else moves on scroll. No parallax on photos.
+11. Captions are literal (S8) and set in one style per concept.
+12. Type sizes come from a scale, not from the element. Body copy measures 60 to 75 characters per line.
+13. Every page at every width: no horizontal scroll, nothing clipped, nothing overlapping, every button reachable, axe WCAG AA clean.
+
+### 8.2 From the corpus: take and refuse
+
+Take: the hero states the proposition before any effect; all content stays in semantic HTML; mobile and reduced-motion degrade cleanly; payload and frame rate are measured, not assumed; at most one signature element, and only in the hero.
+
+Refuse for this quote: WebGL heroes, shaders, particle scenes and food-film video. There is no footage, her photos top out at 945px, and STATE.md bans WebGL on 480px photos. Adding any of it would be the AI feel the client named in BRIEF.md. Revisit on the winner only, with original photography in hand.
+
+### 8.3 What each hero must be
+
+- Concept 1 (EMP register). The photograph as an object with air around it. Headline in the serif at display size, set in three lines in a copy column wide enough for seven words a line. The pistachio eyebrow. One link. The proof line on its own row with 24px above it. No ring, no thread, no rotated label in the hero.
+- Concept 2 (Noma dark). Already closest to the bar. Keep the composition. Fix the caption leftovers only.
+- Concept 3 (Floema plus The Platter). A two-column hero grid: copy left, about 55%; photo right, about 45%, as a framed in-flow object. The 3D table scene sits under the photo column only, never under copy or buttons, and drops below the action row or hides at 768px and under. Both proof lines upright in the copy column under the sub copy.
+
+## 9. Correction pass: verified defects on the live builds (2026-09-17 evening)
+
+Method: all 15 live pages rendered in headless Chromium at 390, 1440 and 1920, copy dumped in DOM order, screenshots inspected, assets checked for HTTP 200. Only defects that reproduce are listed. Garrett's two screenshots (sample 1 gallery, sample 3 home at about 2000px) match what is below.
+
+### 9.1 Cross-site
+
+- C1. Meta descriptions from 4.1 were not applied on any page. Repo and live carry the old text on all 15 pages, and sample 3 still repeats one meta across its five pages. The new text went into `og:description` instead. Fix: replace the `description` meta on all 15 pages from the 4.1 tables. Sample 3's tag has a different attribute order, so match by attribute name, not by string.
+- C2. Kill-list copy still live. Sample 1: all eight gallery captions ("Gathered around the table", "The small details", "An occasion on wheels", "Room for a little more", "Something to share", "A toast to together", "A sweet ending", "Company, beautifully kept"), the hero label "THE ART OF GATHERING · TEXAS", the hero caption "Food for company. Made with care.", the oval caption "From a cart to a full table." Sample 2: the hero caption "01 / THE GATHERING Real food. Real occasions." and the cart caption with "CENTREPIECE". Sample 3: the hero caption "Real food. A reason to gather.", the six gallery captions ("The gathering table", "A closer look", "Good things on wheels", "Raise a glass", "A generous welcome", "Something sweet"), and "gather" 14 times plus "occasion" 8 times across the five pages, mostly in captions, labels and option text. Fix: S8 captions everywhere, then a string sweep per kill-list item 15.
+- C3. "enquiry" survives in visible text (sample 1 twice, sample 2 once, sample 3 twice). Fix per voice rule 14.
+- C4. The builders omitted the street address from the footer pending approval. Correct. It stays out until Tricia confirms.
+
+### 9.2 Sample 1, Garden Atelier (the most work)
+
+- S1-1. Page intros have no horizontal padding. `.page-intro` sets only `padding-top`, so the gallery and menu H1s sit at x=0 at 1440 and 1920, and at about 2000px the eyebrow clips to "HOTOS". Fix: put every page intro inside the same centered container (max-width and side padding) as `.content-block`.
+- S1-2. The gallery wall collapses. `.specimen-wall` is a 12-track grid; wide, tall and landscape figures span 8, 5 and 9 tracks, but `.specimen.oval` has no span, so both ovals fall into one 1/12 track and render 30 to 40px wide with captions wrapping letter by letter. The wall's parent panel is also only about 450px wide at 1440, so even spanned figures are thumbnails. Fix: give the wall the full content width, give the oval a span of 4 or 5, cap figure heights, and let the eight photos read as a wall.
+- S1-3. Masthead nav wraps at 390 into two rows with "GET A QUOTE" orphaned. Fix: two even rows or a menu button at 480px and under.
+- S1-4. `.scroll-note` is `position: fixed` and prints "Menus and prices ↓" over the hero photo on phones. Fix: static under the hero copy, or hidden under 768px.
+- S1-5. The hero copy column is too narrow at 1440: the seven-word H1 breaks into six lines in a column of about 240px, and the proof line collides with the scroll note. Fix: copy column at about 560px so the H1 sets in three lines, proof line on its own row.
+- S1-6. The purple ring sits over the hero photo (with white blobs inside it) and the diagonal thread runs through content on phones. Fix: remove both from the hero, or keep one as a hairline in empty space only (rule 5).
+- S1-7. The oval cart photo on the home page clips its own caption. Fix: caption outside the oval, or a rectangular frame with the literal caption.
+- S1-8. Menu page: to cure the hidden-on-load bug the builder set every table panel to display, so all five now stack under a tab row that still looks like tabs. Also "PUBLISHED PRICE$24 per person" has no space between label and price. Fix: either make the tabs switch panels without hiding content before JS runs, or drop the tab row; put the label on its own line.
+- S1-9. Menu page intro paragraph sits at x=0 (same cause as S1-1).
+
+### 9.3 Sample 2, Midnight Supper (closest to presentable)
+
+- S2-1. Hero caption "01 / THE GATHERING Real food. Real occasions." becomes the S8 caption for knot-hero.jpg.
+- S2-2. Cart caption "THE CART / A DIFFERENT KIND OF CENTREPIECE" becomes "THE CART. HOUSTON'S LARGEST." (2.2).
+- S2-3. Nav at 390: "Menus and prices" wraps under its numeral. Low priority: shorten to "Menus" under 480px.
+- S2-4. C1 and C3 apply. Nothing else blocks the presentation.
+
+### 9.4 Sample 3, The Gathering
+
+- S3-1. Hero at 1440 and 1920: the photo frame overlaps the sub copy and the "Menus and prices" link. The proof line lives in `.scene-label` (absolute, rotated -8°, bottom 20%, right 5%) and `.hero{overflow:hidden}` clips it to "not · Best of Weddings 2026". Fix per 8.3: two-column grid, photo in flow, proof line upright in the copy column, no rotation.
+- S3-2. Hero at 390: `.scene-fallback` (the butter table with plate rings, absolute inset 18% 15%) sits behind the "Get a quote" button and the "Menus and prices" link. Fix: scene below the action row or hidden at 768px and under. Nothing decorative under a button.
+- S3-3. "5.0 on WeddingWire. 100% would recommend." floats at the bottom left of the hero, detached from the Knot line. Fix: both proof lines together under the sub copy.
+- S3-4. Hero caption "Real food. A reason to gather." and block 01 caption "From Tricia's table, to yours." become S8 captions.
+- S3-5. Gallery: the "See it larger" pill on every photo renders as a blank white pill because the label has no contrast against it. Fix: ink text on the pill, or drop the pill and keep the caption as the link. Captions 01 to 06 become S8 captions.
+- S3-6. Menu page: each table shows the italic one-line note and then the full contents, which repeat each other. Low priority: keep the note as the lede and set the contents smaller.
+- S3-7. The builder changed "Five tables" to "Four tables from $24 to $38 a person, or the Holy Grail". That is correct (four per-person tables plus the Holy Grail). Keep.
+
+### 9.5 Gates: what "presentable" means, per site
+
+- G1. All 15 pages at 390, 768, 1440 and 1920: no horizontal scroll, no element overlapping another element's text box, no clipped text, no decoration touching a photo or text.
+- G2. Zero kill-list strings from C2 on any page. "gather" at most once per site. "enquire" and "enquiry" absent from visible text.
+- G3. 15 unique titles and 15 unique metas, matching 4.1.
+- G4. Existing gates green: `tools/quality-gate.py` (samples 2 and 3), `samples/sample-1-editorial/qa_garden_pw.py`, the `test_content.py` and `test_content_browser.py` suites, and a live crawl extended from `tools/e2e-live-sample3.py` to all three hosts.
+- G5. Quote flow: prefill links work, the draft carries table, guests and date, the six verified totals in STATE.md reproduce, and tel, sms and mailto links open.
+- G6. Deployed, then re-crawled live after deploy. Screenshots at 390 and 1440 for all 15 pages committed under each sample's `test-output/`.
+
+### 9.6 Presentation gate for Garrett (five minutes per site, phone and laptop)
+
+Open the five pages. Read the hero aloud; it should sound like Tricia. Tap Get a quote and run one estimate. Confirm nothing overlaps and nothing is clipped. Confirm the Photos captions name food. If any of that fails, the site is not ready to send, whatever the reports say.
+
+## 10. Concept 1, second pass: small-town boutique, warm (added 2026-09-17, late)
+
+Garrett's brief, in his words: keep this as the elegant one; it feels cold, boring, dry and bare; Tomball is a little boutique town; not tacky; "small-town boujee boutique".
+
+What that means on the page: Old Town Tomball on a Saturday. Brick storefronts, a bakery window, string lights, a wine bar, antiques, a market. The site should feel like her shop window, not a gallery wall. The elegance stays (serif, hairlines, air). The warmth comes from four places: color temperature, photographs, the density of real content, and her family names on the food. Where this section conflicts with 8.3's EMP register for concept 1, this section wins. Every other rule in section 8 holds.
+
+### 10.1 Why it reads cold today (live pages, 1440, after the correction pass)
+
+- The paper is a grayish cream and the ink a cool plum. Every rule and label is pale gray. Nothing on the page is warm except the photographs.
+- The story page has one food photograph and a black-and-white portrait inside a bordered card, with a drawn grid baked into the image file. Everything else is small type on empty cream.
+- The type is small for the space it sits in. Display sizes are modest and body copy runs 15 to 16px with wide margins.
+- The home page shows three photographs. One sits in an oval that still clips its own caption ("...ndy jars on top").
+- Gallery captions run the numeral into the words ("01Chips, guacamole and sliced meats") at 12px italic gray.
+- There is no menu card, no pantry, no story in movements, no guest book. The content is thin, so the design has nothing to be generous with.
+
+### 10.2 Direction (eleven rules)
+
+1. Warm the tokens. Paper: warm linen, start at #f7f1e6. Ink: espresso, start at #2a1c14. Accent: one of oxblood (start at #6e2230) or olive (start at #5b5f3b), chosen by holding each against knot-hero.jpg and the cart photo. Gold (start at #b8963e) is a hairline and eyebrow color only, never a fill, never a gradient. These are starting values. Tune them against the photographs, then freeze them in the token sheet.
+2. Bigger, denser type. H1 88 to 104px at 1440, H2 56 to 64px, body 17 to 18px on a 60 to 70 character measure. Eyebrows in small caps with letterspacing. The italic emphasis word stays.
+3. Photographs fill the page. Every section carries a photograph at the width of its column or wider, and each page has at least one full-bleed band (the grazing table). Frames are hairline rectangles. No ovals; the oval clips captions and it goes. Captions literal, 13 to 14px, with a middle dot between numeral and words.
+4. Restore the portrait under the owner's rule: remove the drawn grid, recompose to a 4:5 frame, keep it monochrome on the warm paper. If Tricia has a color version, use hers. Ask for it in the same message that confirms the portrait is her (11.4).
+5. The menu is a menu card. On the home and menu pages, set the five tables as a printed menu: name on the left in the serif, price on the right, a dotted leader between, contents in small type beneath. This is the single most "boutique" move on the site and it is pure content. `[F: Grazing tables]`
+6. The pantry block, new on home and story. Heading "Made by hand." Lines: "The breads, jellies and jams are made from scratch." and "Mom's macaroni and Uncle Trey's potato salad are on the menu by name. So is my corn dip." `[F: Knot bio; Choices]`
+7. The story page as a magazine feature: the restored portrait large, the 35-years headline, then three movements with numerals and no dates (FACTS.md has none):
+   - 01 The floor. "Seating, serving, reading a room. More than 35 years in restaurants, all told." `[F: Experience]`
+   - 02 The line. "Prep, timing, the plate. Both sides of the kitchen door." `[F: Experience]`
+   - 03 The cart. "My own business now. Houston's largest charcuterie cart, grazing tables for 50 and up, one party at a time." `[F: Knot bio; Grazing tables]`
+   Then the pantry block, the full-bleed table photograph, and the guest book.
+8. The guest book is the proof block restyled: a large opening quotation mark in the accent, the three quotes in italic serif, names in small caps, the Knot and WeddingWire lines above with their links. Heading stays "What they said." `[F: Reviews; The Knot; WeddingWire]`
+9. One fleuron, not a garden. The ✳ glyph may stay as a single divider between sections. No rings, threads or botanical clusters near text or photographs (8.1 rule 5 holds).
+10. Warm the chrome. One button style: accent fill, paper text, either a 2px radius or a full pill, one or the other. Hairlines in gold at 1px. The footer on an espresso band with paper text carrying the NAP line and "English and Spanish spoken."
+11. Keep the tackiness out. No script fonts, no gold gradients or foil, no watercolor florals, no rose gold, no "est." badge (the year is unverified), no stock textures, no wood-grain backgrounds, no grain. Warmth comes from color, photographs and words, never from ornament.
+
+### 10.3 Copy that moves with it (first person, traced)
+
+- Home hero stays as built: "Grazing tables, boards and Houston's largest charcuterie cart." with "Elegance without the cost. Tomball, The Woodlands, Spring and Conroe." `[F]`
+- Home, new line under the proof: "Come see what I put on a table." linking to Photos.
+- Home menu card intro: "Five tables. Prices on the card." `[F: Grazing tables]`
+- Story, movements as in 10.2 rule 7. Pantry as in rule 6.
+- Gallery intro stays: "Real tables. Real parties."
+
+## 11. The immersive direction: table.html (added 2026-09-17, late)
+
+### 11.1 What it is
+
+A Three.js WebGL one-page experience served under sample 3 at `/table.html`: a long candlelit table rendered in 3D, her photographs as small cards on the runner, five sections (Arrive, The tables, The cart, Tricia, The number) linking out to sample 3's menu, story and quote pages. The copy is FACTS-clean. The H1 alters her tagline to "All the elegance without the cost." Opus's report line saying it is not deployed is stale: it is live and returns 200.
+
+### 11.2 Verified state (2026-09-17 evening, rendered at 390, 1440, 1920)
+
+- Desktop: the hero works and it is the best single screen in the project. Below the hero the page becomes a dark text page. Sections 02 (the cart) and 03 (Tricia) have no photographs at all. "The number" promises a number and delivers a sentence and a phone link. There is no calculator.
+- Phone (390): the hero is dark and empty; no table is visible. The nav row does not wrap and pushes the page 90px wider than the screen (scrollWidth 480 on a 390 viewport). At 1440 there is a 24px horizontal overflow.
+- Photographs exist only as WebGL textures. No `img`, no alt text, nothing for search engines, nothing for a phone that fails WebGL. A reduced-motion rule exists in the CSS and the script checks the preference; what it shows in that state is unverified on a device.
+- Payload: `vendor/three.module.js` is 1.3 MB uncompressed and unminified, loaded on every visit. Compressed transfer size and time to a visible hero on a mid-range phone are unmeasured.
+- The exit paths break the spell. "See the tables" and "The full menu" leave the dark scene for sample 3's bright blue and butter pages. The immersive is a home page without matching inner pages.
+- The 3D food is abstract: spheres, domes, candles. That is the right call under the photo rule. It reads as a model of a table, not as fake food. Keep it abstract. Never make it photoreal.
+
+### 11.3 What it needs before it can be sold (the scope of the upgrade)
+
+1. Inner pages in the immersive's own tokens (dark paper, candle gold, the serif). Recommendation: keep the one-pager and give it its own menu card, a photograph band and the calculator, then restyle the quote page dark first, then menu and story.
+2. A phone version that is designed, not degraded: a rendered still of the table (a real capture of the scene exported as an image) as the hero on phones and under reduced motion, with the same copy. WebGL only on wide screens with a capable GPU, by feature detection, never by user-agent sniffing.
+3. Photographs as photographs: her real photos as `img` elements in a gallery band with literal captions and alt text, in addition to the cards on the table.
+4. The number: the calculator from sample 3, restyled, the total set in the serif at display size.
+5. A performance budget: a minified Three.js build or a trimmed bundle from the vendored file, compressed transfer measured, the headline visible immediately and the scene under 2.5 seconds on a mid-range phone on 4G.
+6. The 390 nav overflow and the 24px desktop overflow fixed, then the six gates from 9.5 run on table.html at every width.
+7. H1 back to her verbatim tagline: "Elegance without the cost." The added "All the" is not hers. `[F: taglines]`
+8. Photo restoration for the cards under the owner's rule. The cards are small, so 480px sources are fine.
+9. Decision, 2026-09-17 evening: the modeled food (matcap spheres on plates and boards) is gone. Garrett saw it up close in stations 01 and 02 and called it cartoonish, which it was: flat-painted primitives beside real photographs. The table now dresses with her photographs: eleven cut-outs of her own food and cart (`img/cut/*.webp`, backgrounds removed with a local model, nothing generated), of which eight stand upright and turn to face the camera, one under every station, and three boards lie flat on the runner; plus seven prints, candles and four glasses at the far ends. Garrett's reference for the target feel is oryzo.ai (Lusion): one real object large in the frame, dark warm air, big type. The phone and loading stills were re-rendered from the new scene. No food geometry comes back; if the table needs more life, it gets more of her photographs, not models.
+
+### 11.4 Price and positioning (recommendation; Garrett says the final number to the client)
+
+- The three concepts stay at $600 (QUOTE.md Option B). They are the deal, and the reason for it is personal. Do not discount further; cut scope instead.
+- The immersive is Option C at $1,500: Option B plus a $900 immersive upgrade. Three weeks after she picks, not seven days. Half at start, half at launch. It includes the phone version, the restyled inner pages, the calculator, performance work and device testing. It relies on the photo session already inside Option B.
+- Why $1,500 and not more: it keeps the friends-and-family logic (a real discount on real work) while making the upgrade unmistakably a tier above. Why not less: at $1,000 the upgrade would price custom 3D and device testing below the base site's own SEO scope, and Garrett would eat the testing hours.
+- If she balks: keep the number and offer the one-page immersive without restyled inner pages at $1,200. Never below.
+- Present all four at once, labelled. The fourth anchors the three: $1,500 next to $600 makes the $600 look like the deal it is, and it gives her an upgrade path without a second pitch. Send links only after Garrett's five-minute gate on each (9.6). For the immersive, say it is a preview. Gate it to honest, not to finished.
+- The note, in Garrett's voice, plain:
+
+> Tricia, here are three full-site directions. Any of them is the $600 site we talked about, live on your domain about a week after you pick.
+> 1. Garden Atelier, the elegant one: [link]
+> 2. Midnight Supper, the evening one: [link]
+> 3. The Gathering, prices up front: [link]
+> There is a fourth one I want you to see, because I think it fits you: [link]. It is a 3D table you scroll along. It is custom-built, it is not something a template can do, and it takes me about three weeks and a lot more hours, so it is $1,500 instead of $600. It is a preview right now, still rough on phones, but the idea is there.
+> Open all four on your phone and your laptop, then tell me which one feels like you. One more thing: the photo on the About page, is that you?

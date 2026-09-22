@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Proposal for Charcuterie Chick</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+<style>
+@page { size: Letter; margin: 0; }
+:root {
+  --paper:#f7f1e6; --card:#fffcf5; --ink:#2a1c14; --wine:#6e2230; --gold:#b8963e; --olive:#5b5f3b;
+  --mute:#7b6c5f; --rule:#dccfb9; --rule-2:#eadfcb;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); }
+body { font-family: 'DM Sans', 'Liberation Sans', Helvetica, Arial, sans-serif; font-size: 10pt; line-height: 1.45; font-optical-sizing: auto; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+a { color: var(--wine); text-decoration: none; }
+p { margin: 0; }
+.page { position: relative; width: 8.5in; height: 11in; padding: .55in .62in .75in; overflow: hidden; background: var(--paper); page-break-after: always; break-after: page; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+@media screen { body { background: #cfc3ae; padding: 28px 0; } .page { margin: 0 auto 28px; box-shadow: 0 10px 34px rgba(42,28,20,.22); } }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+h1, h2, h3, .num, .big, .serif { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-weight: 400; font-variation-settings: "SOFT" 30, "WONK" 0; }
+h1, h2 { font-variation-settings: "SOFT" 60, "WONK" 1; }
+h1 { font-size: 40pt; line-height: 1.02; letter-spacing: -.012em; margin: 0; }
+h2 { font-size: 25pt; line-height: 1.08; letter-spacing: -.01em; margin: 0; }
+h3 { font-size: 13pt; line-height: 1.2; margin: 0; }
+.label { font-size: 7.4pt; letter-spacing: .17em; text-transform: uppercase; color: var(--mute); font-weight: 500; }
+.label.wine { color: var(--wine); }
+.lede { font-size: 11.5pt; line-height: 1.5; max-width: 5.9in; }
+.mute { color: var(--mute); }
+.small { font-size: 8.6pt; line-height: 1.4; }
+.top { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 8pt; margin-bottom: 22pt; }
+.foot { position: absolute; left: .62in; right: .62in; bottom: .4in; display: flex; justify-content: space-between; font-size: 7.2pt; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); border-top: 1px solid var(--rule); padding-top: 6pt; }
+.sec { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6pt; }
+
+/* page 1 */
+.meta { display: flex; gap: 28pt; margin-top: 16pt; font-size: 9.2pt; }
+.meta span { color: var(--mute); display: block; }
+.meta b { display: block; font-weight: 500; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin: 26pt 0 28pt; }
+.tile { background: var(--card); border: 1px solid var(--rule); padding: 18pt 16pt 17pt; border-radius: 2pt; }
+.tile .num { font-size: 32pt; line-height: 1; color: var(--wine); letter-spacing: -.02em; }
+.tile .num small { font-size: 13pt; letter-spacing: 0; margin-left: 4pt; }
+.tile .cap { margin-top: 7pt; font-size: 9.3pt; line-height: 1.35; color: var(--mute); }
+.loop { display: grid; grid-template-columns: 2.45in 1fr; gap: 16pt; align-items: center; margin-top: 4pt; }
+.loop-ring { width: 2.45in; height: auto; display: block; overflow: visible; }
+.loop-ring .ln { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 12px; fill: var(--wine); }
+.loop-ring .ll { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 15px; fill: var(--ink); }
+.loop-ring .lc { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 13.5px; fill: var(--wine); font-style: italic; }
+.loop-steps { display: grid; gap: 6pt; }
+.loop-step { display: flex; gap: 9pt; align-items: flex-start; }
+.loop-step i { flex: none; width: 17pt; height: 17pt; border-radius: 50%; border: 1px solid var(--gold); color: var(--wine); font-style: normal; font-family: 'Fraunces', serif; font-size: 9.5pt; display: flex; align-items: center; justify-content: center; margin-top: 1pt; }
+.loop-step.wine i { border-color: var(--wine); background: var(--wine); color: var(--paper); }
+.loop-step h3 { font-size: 12pt; line-height: 1.1; }
+.loop-step p { font-size: 8.6pt; line-height: 1.38; color: var(--mute); margin-top: 2pt; }
+.proof { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 30pt; }
+.stat { display: flex; gap: 12pt; align-items: center; border-top: 1px solid var(--rule); padding-top: 10pt; }
+.stat .big { font-size: 30pt; line-height: 1; }
+.stat .star { width: 14pt; height: 14pt; fill: var(--gold); flex: none; }
+.stat .t { font-size: 9.3pt; line-height: 1.35; }
+.stat .t b { font-weight: 500; display: block; }
+
+.p1-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14pt; margin-top: 10pt; }
+.p1-steps b { display: block; font-weight: 500; font-size: 10.5pt; }
+.p1-steps b i { font-style: normal; font-family: 'Fraunces', serif; color: var(--wine); font-size: 14pt; margin-right: 6pt; }
+.p1-steps span { display: block; font-size: 8.8pt; color: var(--mute); line-height: 1.4; margin-top: 3pt; }
+
+/* page 2 */
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10pt; margin-top: 14pt; }
+.card { background: var(--card); border: 1px solid var(--rule); padding: 12pt 12pt 11pt; border-radius: 2pt; display: flex; flex-direction: column; min-height: 3.5in; }
+.card.up { border-color: var(--wine); box-shadow: inset 0 0 0 1px var(--wine); }
+.shot { margin: -12pt -12pt 10pt; height: 1.12in; overflow: hidden; border-bottom: 1px solid var(--rule); background: #e9e0d0; }
+.card.up .shot { margin-top: -12pt; }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.card .n { font-family: 'Fraunces', serif; font-size: 22pt; color: var(--gold); line-height: 1; }
+.card h3 { margin-top: 6pt; }
+.card .mood { font-size: 8.8pt; color: var(--mute); margin-top: 3pt; line-height: 1.35; flex: 1; }
+.sw { display: flex; gap: 4pt; margin-top: 8pt; }
+.sw i { width: 11pt; height: 11pt; border-radius: 50%; border: 1px solid rgba(42,28,20,.15); }
+.card .price { margin-top: 9pt; border-top: 1px solid var(--rule-2); padding-top: 7pt; font-size: 9pt; color: var(--mute); }
+.card .price b { font-family: 'Fraunces', serif; font-weight: 500; font-size: 13pt; display: block; line-height: 1.1; color: var(--ink); }
+.card .url { font-size: 7.6pt; margin-top: 5pt; word-break: break-all; display: block; }
+.badge { display: inline-block; background: var(--wine); color: #f7f1e6; font-size: 6.8pt; letter-spacing: .14em; text-transform: uppercase; padding: 2pt 6pt; border-radius: 2pt; margin-bottom: 6pt; font-weight: 500; align-self: flex-start; }
+.badge.gold { background: var(--gold); color: #2a1c14; }
+.incl { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10pt; margin-top: 8pt; }
+.incl div { border-top: 2px solid var(--gold); padding-top: 6pt; }
+.incl b { display: block; font-weight: 500; font-size: 9.2pt; line-height: 1.3; }
+.incl span { font-size: 8.2pt; color: var(--mute); line-height: 1.35; display: block; margin-top: 2pt; }
+.tl svg { width: 100%; height: auto; display: block; }
+
+/* page 3 */
+.wf-head { display: grid; grid-template-columns: 1.7in 1fr; column-gap: 16pt; margin-top: 12pt; }
+.wf-head .k { font-size: 7pt; letter-spacing: .16em; text-transform: uppercase; color: var(--mute); font-weight: 500; padding-bottom: 5pt; }
+.wf { display: grid; grid-template-columns: 1.7in 1fr; column-gap: 16pt; padding: 9pt 0 10pt; border-top: 1px solid var(--rule); }
+.wf.last { border-bottom: 1px solid var(--rule); }
+.wf .n { font-family: 'Fraunces', serif; font-size: 20pt; color: var(--gold); line-height: 1; }
+.wf h3 { font-size: 13.5pt; margin-top: 4pt; }
+.wf .tag { font-size: 8.6pt; color: var(--mute); margin-top: 3pt; line-height: 1.35; }
+.steps { display: grid; grid-template-columns: 1fr 14pt 1fr 14pt 1fr; column-gap: 3pt; align-items: stretch; }
+.st { background: var(--card); border: 1px solid var(--rule); border-radius: 2pt; padding: 6pt 8pt 7pt; }
+.st.you { background: transparent; border-style: dashed; }
+.st b { display: block; font-weight: 500; font-size: 9.4pt; line-height: 1.25; }
+.st span { display: block; font-size: 8pt; color: var(--mute); line-height: 1.35; margin-top: 2pt; }
+.arr { width: 14pt; height: 14pt; color: var(--gold); align-self: center; }
+.why { margin-top: 7pt; font-size: 8.8pt; line-height: 1.4; padding-left: 8pt; border-left: 2px solid var(--gold); }
+.why b { font-weight: 500; }
+.get { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin-top: 14pt; }
+.get div { border-top: 2px solid var(--gold); padding-top: 6pt; }
+.get b { display: block; font-weight: 500; font-size: 9.4pt; }
+.get span { display: block; font-size: 8.3pt; color: var(--mute); line-height: 1.35; margin-top: 2pt; }
+
+/* page 5 · creative add-ons */
+.addons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10pt; margin-top: 16pt; }
+.ad { background: var(--card); border: 1px solid var(--rule); border-radius: 2pt; padding: 12pt 13pt 11pt; display: flex; flex-direction: column; min-height: 1.7in; }
+.ad h3 { font-size: 13.5pt; }
+.ad p { font-size: 8.8pt; color: var(--mute); line-height: 1.4; margin-top: 4pt; flex: 1; }
+.ad .pr { margin-top: 9pt; border-top: 1px solid var(--rule-2); padding-top: 6pt; font-family: 'Fraunces', serif; font-size: 14pt; color: var(--wine); }
+.ad .pr small { font-family: 'DM Sans', sans-serif; font-size: 8.2pt; color: var(--mute); margin-left: 5pt; }
+.bundle { margin-top: 14pt; border: 1px solid var(--gold); box-shadow: inset 0 0 0 1px var(--gold); padding: 12pt 16pt; display: flex; align-items: center; gap: 16pt; background: var(--card); border-radius: 2pt; }
+.bundle .label { white-space: nowrap; }
+.bundle .what { flex: 1; font-size: 10pt; line-height: 1.35; }
+.bundle .price { text-align: right; }
+.bundle .price .num { font-size: 24pt; line-height: 1; color: var(--wine); }
+
+/* page 6 · when */
+.when { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12pt; margin-top: 12pt; }
+.when > div { border-top: 2px solid var(--gold); padding-top: 6pt; }
+.when b { display: block; font-weight: 500; font-size: 9.6pt; }
+.when i { display: block; font-style: normal; font-size: 7.2pt; color: var(--mute); letter-spacing: .1em; text-transform: uppercase; margin-top: 1pt; }
+.when ul { list-style: none; margin: 7pt 0 0; padding: 0; font-size: 8.5pt; line-height: 1.38; }
+.when li { display: flex; gap: 6pt; margin-bottom: 5pt; }
+.when li::before { content: ""; width: 7.5pt; height: 7.5pt; border: 1px solid var(--mute); flex: none; margin-top: 2.5pt; border-radius: 1pt; }
+
+/* page 7 · payment */
+.payt { width: 100%; border-collapse: collapse; font-size: 9.2pt; margin-top: 14pt; }
+.payt th { text-align: left; font-size: 7.4pt; letter-spacing: .17em; text-transform: uppercase; color: var(--wine); font-weight: 500; padding: 0 0 5pt; border-bottom: 1px solid var(--ink); }
+.payt td { padding: 7pt 0; border-bottom: 1px solid var(--rule-2); vertical-align: top; line-height: 1.4; }
+.payt td:first-child { width: 2.3in; font-weight: 500; padding-right: 14pt; }
+.payt td:first-child span { display: block; font-weight: 400; color: var(--mute); font-size: 8.2pt; }
+.terms2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6pt 20pt; margin-top: 14pt; font-size: 8.6pt; line-height: 1.45; }
+.terms2 b { font-weight: 500; }
+
+/* page 4 */
+.inv { display: grid; grid-template-columns: 1.15fr .95fr; gap: 20pt; margin-top: 14pt; }
+.pl { width: 100%; border-collapse: collapse; font-size: 9.2pt; margin-top: 3pt; }
+.pl th { text-align: left; font-size: 7.4pt; letter-spacing: .17em; text-transform: uppercase; color: var(--wine); font-weight: 500; padding: 0 0 5pt; border-bottom: 1px solid var(--ink); }
+.pl th.p { text-align: right; }
+.pl td { padding: 6.5pt 0; border-bottom: 1px solid var(--rule-2); vertical-align: top; }
+.pl td b { font-weight: 500; display: block; font-size: 9.6pt; }
+.pl td span { color: var(--mute); font-size: 8.2pt; line-height: 1.35; display: block; }
+.pl td.p { text-align: right; font-family: 'Fraunces', serif; font-size: 12.5pt; white-space: nowrap; padding-left: 10pt; }
+.pk { background: var(--card); border: 1px solid var(--rule); padding: 12pt 14pt; border-radius: 2pt; margin-bottom: 10pt; }
+.pk.rec { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); margin-top: 6pt; }
+.pk h3 { font-size: 14pt; }
+.pk ul { list-style: none; margin: 6pt 0 0; padding: 0; font-size: 8.8pt; color: var(--mute); line-height: 1.5; }
+.pk li::before { content: "+"; color: var(--gold); margin-right: 5pt; }
+.pk .pr { display: flex; align-items: baseline; gap: 8pt; margin-top: 8pt; border-top: 1px solid var(--rule-2); padding-top: 7pt; }
+.pk .pr .num { font-size: 24pt; line-height: 1; color: var(--wine); }
+.pk .pr span { font-size: 8.4pt; color: var(--mute); }
+.chart { margin-top: 16pt; border-top: 1px solid var(--rule); padding-top: 12pt; }
+.bar { display: grid; grid-template-columns: 2.1in 1fr .6in; align-items: center; gap: 8pt; margin-top: 5pt; font-size: 8.8pt; }
+.bar .lab { line-height: 1.25; }
+.bar .lab small { display: block; color: var(--mute); font-size: 7.6pt; }
+.bar .track { height: 11pt; background: var(--rule-2); border-radius: 1pt; position: relative; }
+.bar .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 1pt; background: var(--wine); }
+.bar.her .fill { background: var(--gold); }
+.bar .v { font-family: 'Fraunces', serif; font-size: 10.5pt; text-align: right; }
+.klegend { font-size: 8pt; color: var(--mute); display: flex; gap: 14pt; margin-top: 8pt; }
+.klegend i { display: inline-block; width: 9pt; height: 9pt; margin-right: 5pt; vertical-align: -1pt; background: var(--wine); }
+.klegend i.g { background: var(--gold); }
+.chart .cap { margin-top: 8pt; font-size: 9pt; }
+
+/* page 5 */
+.plans { width: 100%; border-collapse: collapse; font-size: 9pt; margin-top: 14pt; }
+.plans th { text-align: left; font-weight: 500; padding: 0 0 6pt; border-bottom: 1px solid var(--ink); font-size: 8.6pt; vertical-align: bottom; color: var(--mute); }
+.plans th .num { font-size: 17pt; display: block; color: var(--wine); line-height: 1.1; }
+.plans th.c, .plans td.c { text-align: center; width: 1.7in; }
+.plans td { padding: 5pt 0; border-bottom: 1px solid var(--rule-2); vertical-align: middle; }
+.ck { width: 11pt; height: 11pt; color: var(--olive); vertical-align: middle; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20pt; margin-top: 16pt; }
+.need { list-style: none; margin: 8pt 0 0; padding: 0; font-size: 8.8pt; line-height: 1.4; }
+.need li { display: flex; gap: 7pt; margin-bottom: 5pt; }
+.need li::before { content: ""; width: 8pt; height: 8pt; border: 1px solid var(--mute); flex: none; margin-top: 3pt; border-radius: 1pt; }
+.terms { font-size: 8.6pt; line-height: 1.45; margin-top: 8pt; }
+.terms p { margin-bottom: 5pt; }
+.terms b { font-weight: 500; }
+.pay { margin-top: 12pt; background: var(--card); border: 1px solid var(--rule); padding: 10pt 14pt; display: flex; gap: 18pt; align-items: center; font-size: 9.2pt; line-height: 1.4; }
+.pay b { font-weight: 500; }
+.sig { margin-top: 10pt; display: grid; grid-template-columns: 1fr 1fr; gap: 24pt; }
+.sig > div { padding-top: 30pt; }
+.sig .line { border-top: 1px solid var(--ink); padding-top: 4pt; display: flex; justify-content: space-between; font-size: 8.2pt; color: var(--mute); }
+.sig .line b { color: var(--ink); font-weight: 500; font-size: 9pt; }
+/* page 2 · choose your site */
+.p2-lede { margin-top: 7pt; font-size: 9.6pt; line-height: 1.45; }
+.p2-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin-top: 12pt; }
+.p2-card { background: var(--card); border: 1px solid var(--rule); border-radius: 2pt; display: flex; flex-direction: column; overflow: hidden; }
+.p2-shot { height: 1in; overflow: hidden; border-bottom: 1px solid var(--rule); background: #e9e0d0; flex: none; }
+.p2-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.p2-body { padding: 9pt 11pt 10pt; display: flex; flex-direction: column; flex: 1; }
+.p2-t { display: flex; align-items: baseline; gap: 6pt; }
+.p2-n { font-family: 'Fraunces', serif; font-size: 15pt; line-height: 1; color: var(--gold); }
+.p2-t h3 { font-size: 13.5pt; }
+.p2-mood { font-size: 8.8pt; color: var(--mute); line-height: 1.35; margin-top: 3pt; flex: 1; }
+.p2-pr { margin-top: 8pt; border-top: 1px solid var(--rule-2); padding-top: 6pt; display: flex; align-items: baseline; justify-content: space-between; }
+.p2-pr b { font-family: 'Fraunces', serif; font-weight: 500; font-size: 14pt; line-height: 1.1; }
+.p2-pr span { font-size: 8.4pt; color: var(--mute); }
+.p2-url { display: block; font-size: 7.2pt; margin-top: 3pt; word-break: break-all; }
+.p2-custom { margin-top: 9pt; font-size: 9.2pt; line-height: 1.45; color: var(--mute); }
+.p2-custom b { color: var(--ink); font-weight: 500; }
+.p2-band { margin: 14pt -.62in 0; padding: 13pt .62in 13pt; background: var(--ink); color: var(--paper); }
+.p2-bh { display: flex; justify-content: space-between; align-items: center; gap: 14pt; }
+.p2-tr { display: flex; align-items: center; gap: 9pt; }
+.p2-tr h3 { font-size: 24pt; line-height: 1; color: var(--paper); font-variation-settings: "SOFT" 60, "WONK" 1; }
+.p2-badge { margin: 0; align-self: center; }
+.p2-bp { text-align: right; white-space: nowrap; }
+.p2-bp div { display: flex; align-items: baseline; justify-content: flex-end; gap: 8pt; }
+.p2-bp .num { font-size: 22pt; line-height: 1; color: var(--gold); }
+.p2-bp span { font-size: 8.4pt; color: rgba(247,241,230,.7); }
+.p2-bp a { display: block; font-size: 7.4pt; color: var(--gold); margin-top: 4pt; }
+.p2-bimg { position: relative; height: 1.15in; margin-top: 10pt; overflow: hidden; border-radius: 2pt; background: #150d09; }
+.p2-bimg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; display: block; }
+.p2-bimg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink), rgba(42,28,20,0) 9%, rgba(42,28,20,0) 91%, var(--ink)); }
+.p2-path { margin-top: 8pt; }
+.p2-path svg { width: 100%; height: auto; display: block; }
+.p2-two { display: grid; grid-template-columns: 1fr 1.05fr; gap: 20pt; margin-top: 9pt; align-items: start; }
+.p2-three p { border-top: 1px solid rgba(184,150,62,.45); padding: 4pt 0 5pt; font-size: 8.6pt; line-height: 1.38; color: rgba(247,241,230,.88); }
+.p2-note { border-top: 1px solid rgba(247,241,230,.18); padding-top: 5pt; font-size: 8.8pt; line-height: 1.45; color: rgba(247,241,230,.8); }
+/* page 3 · the workflows */
+.p3-h2 { font-size: 24pt; }
+.p3-explain { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24pt; margin-top: 8pt; padding: 9pt 0 9pt; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); align-items: start; }
+.p3-explain h3 { font-size: 12.5pt; }
+.p3-explain p { margin-top: 4pt; font-size: 9.2pt; line-height: 1.45; }
+.p3-value { margin-top: 7pt; font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 13pt; line-height: 1.25; color: var(--wine); }
+.p3-value small { display: block; font-family: 'DM Sans', 'Liberation Sans', Helvetica, Arial, sans-serif; font-size: 8.4pt; line-height: 1.4; color: var(--mute); margin-top: 3pt; }
+.p3-pricehead { display: flex; align-items: baseline; gap: 9pt; }
+.p3-pricehead .num { font-size: 22pt; line-height: 1; color: var(--wine); letter-spacing: -.02em; }
+.p3-buys { list-style: none; margin: 6pt 0 0; padding: 0; }
+.p3-buys li { display: flex; gap: 7pt; align-items: flex-start; padding: 2pt 0; font-size: 8.8pt; line-height: 1.36; color: var(--mute); }
+.p3-buys li > span { flex: 1; }
+.p3-buys li::before { content: ""; flex: none; width: 6pt; height: 3.2pt; border-left: 1.5pt solid var(--olive); border-bottom: 1.5pt solid var(--olive); transform: rotate(-45deg); margin-top: 4.5pt; }
+.p3-buys b { color: var(--ink); font-weight: 500; }
+.p3-flow { position: relative; display: grid; grid-template-columns: 2.5in 1fr; column-gap: .34in; margin-top: 12pt; }
+.p3-flow::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2.5in; background: var(--ink); border-radius: 16pt; }
+.p3-flow::after { content: ""; position: absolute; left: calc(2.5in + .34in); top: 10pt; bottom: 14pt; border-left: 1px solid var(--gold); }
+.p3-ph { position: relative; display: flex; flex-direction: column; padding: 4pt 9pt 5pt; }
+.p3-ph.first { padding-top: 8pt; }
+.p3-ph.last { padding-bottom: 9pt; }
+.p3-stamp { align-self: center; font-size: 6.8pt; letter-spacing: .12em; text-transform: uppercase; color: rgba(247,241,230,.72); margin: 0 0 3pt; font-weight: 500; text-align: center; }
+.p3-b { max-width: 2.1in; padding: 3.5pt 7pt 4.5pt; font-size: 8.2pt; line-height: 1.36; border-radius: 10pt; color: var(--ink); }
+.p3-b.in { align-self: flex-start; background: var(--card); border-bottom-left-radius: 3pt; }
+.p3-b.out { align-self: flex-end; background: var(--gold); border-bottom-right-radius: 3pt; }
+.p3-b + .p3-b { margin-top: 4pt; }
+.p3-b i { font-style: normal; opacity: .62; }
+.p3-b u { text-decoration: underline; text-underline-offset: 1.5pt; opacity: .62; }
+.p3-note { display: flex; align-items: center; gap: 5pt; margin-top: 6pt; padding: 3pt 7pt; border: 1px dashed rgba(247,241,230,.4); border-radius: 6pt; font-size: 7.4pt; line-height: 1.3; color: rgba(247,241,230,.85); }
+.p3-note svg { width: 10pt; height: 10pt; flex: none; color: var(--gold); }
+.p3-thumb { float: left; width: .42in; height: .3in; margin: 1pt 6pt 0 0; display: block; }
+.p3-tx { position: relative; padding: 3pt 0 5pt 24pt; }
+.p3-dot { position: absolute; left: -13pt; top: 6pt; width: 26pt; height: 26pt; border-radius: 50%; background: var(--paper); border: 1px solid var(--gold); color: var(--wine); font-family: 'Fraunces', serif; font-size: 14pt; line-height: 24pt; text-align: center; }
+.p3-tx h3 { font-size: 13pt; }
+.p3-why { margin-top: 2pt; font-size: 8.8pt; line-height: 1.4; color: var(--mute); }
+.p3-why b { color: var(--ink); font-weight: 500; }
+/* page 4 · investment */
+.p4-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin-top: 14pt; }
+.p4-card { position: relative; background: var(--card); border: 1px solid var(--rule); border-radius: 2pt; padding: 0 12pt 11pt; display: flex; flex-direction: column; }
+.p4-card.rec { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.p4-strip { position: relative; display: flex; gap: 1px; height: .46in; margin: 0 -12pt 0; background: #e9e0d0; border-bottom: 1px solid var(--rule); overflow: hidden; }
+.p4-strip img { flex: 1 1 0; min-width: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.p4-strip img.p4-tbl { object-position: 50% 60%; }
+.p4-tag { position: absolute; top: 6pt; left: 6pt; background: var(--wine); color: #f7f1e6; font-size: 6.8pt; letter-spacing: .14em; text-transform: uppercase; padding: 2pt 6pt; border-radius: 2pt; font-weight: 500; line-height: 1.3; }
+.p4-card h3 { margin-top: 9pt; font-size: 13.5pt; }
+.p4-var { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-style: italic; font-size: 10.5pt; line-height: 1.25; color: var(--gold); margin-top: 1pt; }
+.p4-price { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 26pt; line-height: 1; letter-spacing: -.015em; color: var(--wine); margin-top: 8pt; }
+.p4-sub { font-size: 8.4pt; line-height: 1.35; color: var(--mute); margin-top: 4pt; min-height: 22.7pt; }
+.p4-slots { display: flex; flex-direction: column; gap: 3pt; margin-top: 7pt; }
+.p4-slot { display: flex; align-items: center; gap: 5pt; padding: 3pt 6pt; border: 1px dashed var(--rule); border-radius: 2pt; font-size: 8.6pt; line-height: 1.3; color: var(--mute); }
+.p4-slot.on { border-style: solid; background: var(--paper); color: var(--ink); }
+.p4-slot b { font-weight: 500; flex: 1; }
+.p4-ck { width: 10pt; height: 10pt; color: var(--olive); flex: none; }
+.p4-ring { width: 8pt; height: 8pt; border: 1px dashed var(--mute); border-radius: 50%; flex: none; margin: 0 1pt; }
+.p4-note { margin-top: 9pt; font-size: 8.8pt; line-height: 1.4; color: var(--mute); }
+.p4-menu { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28pt; margin-top: 16pt; align-items: start; }
+.p4-h { font-size: 7pt; letter-spacing: .16em; text-transform: uppercase; color: var(--wine); font-weight: 500; padding-bottom: 5pt; border-bottom: 1px solid var(--ink); }
+.p4-row { display: grid; grid-template-columns: 1fr auto; column-gap: 8pt; align-items: baseline; padding: 5pt 0; border-bottom: 1px solid var(--rule-2); }
+.p4-row b { font-weight: 500; font-size: 9.8pt; line-height: 1.3; }
+.p4-pr { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 12pt; line-height: 1.2; color: var(--ink); white-space: nowrap; text-align: right; }
+.p4-pr small { font-family: 'DM Sans', 'Liberation Sans', Helvetica, Arial, sans-serif; font-size: 7.4pt; color: var(--mute); margin-left: 4pt; }
+.p4-d { grid-column: 1 / -1; font-size: 8pt; line-height: 1.35; color: var(--mute); }
+.p4-bundle { margin-top: 6pt; padding: 6pt 8pt; background: var(--card); border: 1px solid var(--gold); box-shadow: inset 0 0 0 1px var(--gold); border-radius: 2pt; }
+.p4-bundle b { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-weight: 400; font-size: 11.5pt; }
+.p4-bundle .p4-pr { font-size: 13pt; color: var(--wine); }
+/* page 5 · photo work, full page */
+.ph-lede { margin-top: 7pt; font-size: 9.6pt; line-height: 1.45; color: var(--mute); max-width: 6.1in; }
+.ph-rows { margin-top: 13pt; display: grid; gap: 12pt; }
+.ph-row { border-top: 1px solid var(--rule); padding-top: 8pt; }
+.ph-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20pt; }
+.ph-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
+.ph-head b { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-weight: 400; font-size: 12.5pt; }
+.ph-price { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 12.5pt; color: var(--wine); white-space: nowrap; }
+.ph-why { font-size: 8.4pt; color: var(--mute); line-height: 1.38; margin-top: 2pt; }
+.ph-duo .ph-why { min-height: 3.2em; }
+.ph-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 9pt; margin-top: 7pt; }
+.ph-cell { margin: 0; text-align: center; }
+.ph-cell img { height: 2.12in; width: auto; max-width: 100%; margin: 0 auto; display: block; border-radius: 2pt; }
+.ph-row.wide .ph-cell img { height: 2.78in; }
+.ph-cell figcaption { font-size: 7.2pt; letter-spacing: .13em; text-transform: uppercase; color: var(--mute); margin-top: 5pt; text-align: left; }
+.ph-cell.is-after figcaption { color: var(--wine); font-weight: 500; }
+/* page 6 · the rail that labels the four columns */
+.p4-phnote { margin-top: 11pt; font-size: 9pt; color: var(--mute); border-top: 1px solid var(--rule); padding-top: 8pt; }
+.p4-proof { margin-top: 9pt; border-top: 1px solid var(--rule); padding-top: 7pt; }
+.p1-paysec { margin-top: 2pt; }
+.p1-proof { margin-top: 0; border-top: 0; padding-top: 0; }
+.p1-proof .p4-pt { font-size: 14.5pt; }
+.p1-proof .p4-bars { margin-top: 12pt; }
+.p4-loopsec { margin-top: 10pt; border-top: 1px solid var(--rule); padding-top: 8pt; }
+.p4-loop { grid-template-columns: 1.8in 1fr; gap: 12pt; margin-top: 0; }
+.p4-loop .loop-ring { width: 1.8in; }
+.p4-loop .loop-steps { grid-template-columns: 1fr 1fr; gap: 5pt 14pt; }
+.p4-loop .loop-step h3 { font-size: 11pt; }
+.p4-loop .loop-step p { font-size: 8.1pt; line-height: 1.34; }
+.p4-loop + .p4-menu { margin-top: 10pt; }
+.p4-pt { font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 12.5pt; line-height: 1.25; }
+.p4-bars { width: 100%; height: auto; display: block; margin-top: 6pt; }
+/* page 5 · after launch */
+.p5-lede { margin-top: 8pt; font-size: 9.8pt; line-height: 1.5; color: var(--mute); }
+.p5-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14pt; margin-top: 16pt; }
+.p5-col { border-top: 2px solid var(--gold); padding-top: 6pt; }
+.p5-col b { display: block; font-weight: 500; font-size: 10pt; }
+.p5-col i { display: block; font-style: normal; font-size: 7.2pt; color: var(--mute); letter-spacing: .1em; text-transform: uppercase; margin-top: 1pt; }
+.p5-col .need { margin-top: 6pt; }
+.p5-sub { display: block; font-size: 7.8pt; color: var(--mute); line-height: 1.35; margin-top: 1pt; }
+.p5-p { margin-top: 7pt; font-size: 9pt; line-height: 1.45; color: var(--mute); }
+.p5-list { list-style: none; margin: 5pt 0 0; padding: 0; font-size: 9pt; line-height: 1.38; }
+.p5-list li { display: flex; gap: 8pt; align-items: flex-start; padding: 2.5pt 0; }
+.p5-list li::before { content: ""; flex: none; width: 6.5pt; height: 3.5pt; border-left: 1.6pt solid var(--olive); border-bottom: 1.6pt solid var(--olive); transform: rotate(-45deg); margin-top: 4pt; }
+.p5-plans { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14pt; margin-top: 14pt; border-top: 1px solid var(--rule); padding-top: 12pt; align-items: start; }
+.p5-month { padding-right: 14pt; border-right: 1px solid var(--rule); }
+.p5-month h3 { font-size: 13pt; }
+.p5-month p { margin-top: 6pt; font-size: 9.4pt; line-height: 1.5; }
+.p5-ph { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--ink); padding-bottom: 6pt; }
+.p5-ph h3 { font-size: 17pt; line-height: 1; }
+.p5-price { text-align: right; line-height: 1; }
+.p5-price .num { font-size: 20pt; line-height: 1; color: var(--wine); letter-spacing: -.02em; }
+.p5-price small { display: block; font-size: 7.8pt; color: var(--mute); margin-top: 3pt; }
+.p5-plus { display: block; margin-top: 7pt; }
+.p5-plan .p5-list { font-size: 8.9pt; }
+.p5-close { margin-top: 10pt; font-family: 'Fraunces', 'Liberation Serif', Georgia, serif; font-size: 12.5pt; line-height: 1.3; text-align: center; color: var(--wine); }
+/* page 6 · payment */
+.p6-sub { margin-top: 6pt; font-size: 10pt; color: var(--mute); }
+.p6-tl { margin-top: 16pt; }
+.p6-tl svg { width: 100%; height: auto; display: block; }
+.p6-tl text { font-family: 'DM Sans', sans-serif; font-size: 9px; fill: var(--ink); }
+.p6-tl .p6-s text { text-anchor: middle; }
+.p6-tl .p6-tk { font-size: 7px; letter-spacing: .15em; text-transform: uppercase; fill: var(--mute); font-weight: 500; }
+.p6-tl .p6-d { font-family: 'Fraunces', serif; font-size: 14px; fill: var(--wine); }
+.p6-tl .p6-py { font-size: 9.4px; font-weight: 500; fill: var(--wine); }
+.p6-tl .p6-no { fill: var(--mute); font-weight: 400; }
+.p6-tl .p6-sb { font-size: 7.8px; fill: var(--mute); }
+.p6-tl .p6-ln { stroke: var(--ink); stroke-width: 1; }
+.p6-tl .p6-st { stroke: var(--rule); stroke-width: 1; }
+.p6-tl .p6-dot { fill: var(--paper); stroke: var(--gold); stroke-width: 1.3; }
+.p6-tl .p6-care { stroke: var(--gold); stroke-width: 1.4; fill: none; }
+.p6-tl .p6-cl { font-size: 7px; letter-spacing: .14em; text-transform: uppercase; fill: var(--olive); font-weight: 500; text-anchor: middle; }
+.p6-note { margin-top: 8pt; font-size: 8.8pt; color: var(--mute); }
+.p6-terms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; margin-top: 16pt; }
+.p6-terms > div { background: var(--card); border: 1px solid var(--rule); border-radius: 2pt; padding: 9pt 10pt; }
+.p6-terms p { margin-top: 4pt; font-size: 8.5pt; line-height: 1.4; }
+.p6-pay { margin-top: 12pt; background: var(--card); border: 1px solid var(--gold); box-shadow: inset 0 0 0 1px var(--gold); border-radius: 2pt; padding: 11pt 16pt; display: grid; grid-template-columns: 1.9in 1fr 1.6in; gap: 14pt; align-items: center; }
+.p6-llc { font-size: 15pt; line-height: 1.15; margin-top: 2pt; }
+.p6-to .small { display: block; margin-top: 1pt; }
+.p6-btn { display: inline-block; background: var(--wine); color: var(--paper); font-weight: 500; font-size: 9.5pt; letter-spacing: .04em; padding: 7pt 16pt; border-radius: 2pt; }
+.p6-url { display: block; margin-top: 4pt; font-size: 7.4pt; color: var(--wine); overflow-wrap: anywhere; }
+.p6-alt { font-size: 9pt; line-height: 1.4; }
+.p6-alt b { display: block; font-weight: 500; }
+.p6-alt span { display: block; }
+.p6-accept { margin-top: 14pt; font-size: 9.6pt; }
+.p6-accept b { font-weight: 500; }
+</style>
+</head>
+<body>
+<svg class="defs" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z"/></symbol>
+</defs></svg>
+
+<!-- 1 · cover and the offer at a glance -->
+<section class="page">
+  <div class="top"><span class="label">Proposal · September 18, 2026</span><span class="label">Prepared for Tricia Holfelder</span></div>
+  <h1>Three sites to choose from.<br>Built to get you booked.</h1>
+  <p class="lede" style="margin-top:12pt">Every page uses your real prices, your own photos and your reviews from The Knot and WeddingWire. Behind the site sits the system that turns a visitor into a booked table.</p>
+  <div class="meta">
+    <div><span>Prepared for</span><b>Tricia Holfelder · Charcuterie Chick · Tomball, Texas</b></div>
+    <div><span>From</span><b>Garrett Baxley · Galaxy Sports Network LLC</b></div>
+  </div>
+
+  <div class="tiles">
+    <div class="tile"><div class="num">$600</div><div class="cap">The full website.<br>The price we agreed.</div></div>
+    <div class="tile"><div class="num">3</div><div class="cap">Finished designs, live today.<br>You pick one.</div></div>
+    <div class="tile"><div class="num">90<small>days</small></div><div class="cap">Care after launch,<br>included.</div></div>
+  </div>
+
+  <div class="sec p1-paysec"><span class="label wine">Pays for itself</span><span class="label">One booking covers the recommended package. Details on page 4.</span></div>
+  <div class="p4-proof p1-proof">
+    <p class="p4-pt">One Holy Grail table at 75 guests pays for the whole Revenue Engine package.</p>
+    <svg class="p4-bars" viewBox="0 0 600 46" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', sans-serif" role="img" aria-label="One Holy Grail table at 75 guests, $2,000, beside the Revenue Engine package, $1,400">
+      <text x="600" y="9" text-anchor="end" font-size="8.5" fill="#7b6c5f">One Holy Grail table, 75 guests <tspan font-family="'Fraunces', serif" font-size="12.5" fill="#2a1c14">$2,000</tspan></text>
+      <rect x="0" y="14" width="600" height="12" rx="1" fill="#b8963e"/>
+      <rect x="0" y="14" width="420" height="12" rx="1" fill="#6e2230"/>
+      <rect x="420" y="14" width="1.7" height="12" fill="#f7f1e6"/>
+      <line x1="420" y1="26" x2="420" y2="32" stroke="#6e2230" stroke-width=".8"/>
+      <text x="420" y="42" text-anchor="end" font-size="8.5" fill="#7b6c5f">The Revenue Engine <tspan font-family="'Fraunces', serif" font-size="12.5" fill="#2a1c14">$1,400</tspan></text>
+      <text x="0" y="42" font-size="8" fill="#7b6c5f">Your published price, before the $229 setup fee and tax.</text>
+    </svg>
+  </div>
+  <div class="proof">
+    <div class="stat"><div class="big">5.0</div><svg class="star"><use href="#star"/></svg><div class="t"><b>The Knot · 13 reviews</b>Best of Weddings 2026</div></div>
+    <div class="stat"><div class="big">5.0</div><svg class="star"><use href="#star"/></svg><div class="t"><b>WeddingWire · 11 reviews</b>100% recommend</div></div>
+  </div>
+  <p class="small mute" style="margin-top:8pt">What every page is built on: the reputation you already have.</p>
+
+  <div class="sec" style="margin-top:32pt"><span class="label wine">How this works</span><span class="label">Three decisions, in order</span></div>
+  <div class="p1-steps">
+    <div><b><i>1</i>Pick a site</b><span>Page 2. Three to choose from, and The Table as its own package.</span></div>
+    <div><b><i>2</i>Say yes to what you want</b><span>Page 4. The website alone, or the Revenue Engine with it.</span></div>
+    <div><b><i>3</i>Live in seven days</b><span>Then ninety days of care, included. The Table takes three weeks.</span></div>
+  </div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 1 of 7</span></div>
+</section>
+
+<!-- 2 · choose your site -->
+<section class="page">
+  <div class="top"><span class="label">01 · Choose your site</span><span class="label">Three finished designs, live today</span></div>
+  <h2>Pick the one that feels like you.<br>Then we make it yours.</h2>
+  <p class="p2-lede">All three are built and live at the links below. Pick one and it becomes your site: your colors, your photos, your words, the pages you want. Your real prices, your reviews and a quote to your phone in one tap come with every one. The price stays $600.</p>
+
+  <div class="p2-trio">
+    <div class="p2-card"><div class="p2-shot"><img src="img/sample-1.jpg" alt="Garden Atelier, home page"></div>
+      <div class="p2-body"><div class="p2-t"><span class="p2-n">01</span><h3>Garden Atelier</h3></div>
+        <p class="p2-mood">Elegant and editorial. A warm boutique on a quiet street.</p>
+        <div class="sw"><i style="background:#f5f3ec"></i><i style="background:#2b1b3d"></i><i style="background:#d5e0c4"></i><i style="background:#8c6b9a"></i></div>
+        <div class="p2-pr"><b>$600</b><span>The full website</span></div>
+        <a class="p2-url" href="https://charcuterie-chick-sample-1.vercel.app">charcuterie-chick-sample-1.vercel.app</a></div></div>
+    <div class="p2-card"><div class="p2-shot"><img src="img/sample-2.jpg" alt="Midnight Supper, home page"></div>
+      <div class="p2-body"><div class="p2-t"><span class="p2-n">02</span><h3>Midnight Supper</h3></div>
+        <p class="p2-mood">Evening and cinematic. The cart is the star.</p>
+        <div class="sw"><i style="background:#151111"></i><i style="background:#f3ead9"></i><i style="background:#d19b77"></i><i style="background:#492327"></i></div>
+        <div class="p2-pr"><b>$600</b><span>The full website</span></div>
+        <a class="p2-url" href="https://charcuterie-chick-sample-2.vercel.app">charcuterie-chick-sample-2.vercel.app</a></div></div>
+    <div class="p2-card"><div class="p2-shot"><img src="img/sample-3.jpg" alt="The Gathering, home page"></div>
+      <div class="p2-body"><div class="p2-t"><span class="p2-n">03</span><h3>The Gathering</h3></div>
+        <p class="p2-mood">Bright and friendly. Prices up front.</p>
+        <div class="sw"><i style="background:#fff9ea"></i><i style="background:#243bc1"></i><i style="background:#efe692"></i><i style="background:#29382b"></i></div>
+        <div class="p2-pr"><b>$600</b><span>The full website</span></div>
+        <a class="p2-url" href="https://charcuterie-chick-sample-3.vercel.app">charcuterie-chick-sample-3.vercel.app</a></div></div>
+  </div>
+  <p class="p2-custom"><b>Any of the three can change.</b> Swap the palette, move a section, add a page, drop one. Two rounds of changes before launch are included, and the first ninety days after.</p>
+
+  <div class="p2-band">
+    <div class="p2-bh">
+      <div class="p2-tr"><h3>The Table</h3><span class="badge gold p2-badge">A separate package</span></div>
+      <div class="p2-bp"><div><span class="num">$1,500</span><span>Custom build, live in 3 weeks</span></div><a href="https://charcuterie-chick-sample-3.vercel.app/table.html">charcuterie-chick-sample-3.vercel.app/table.html</a></div>
+    </div>
+    <div class="p2-bimg"><img src="img/table.jpg" alt="The Table, a candlelit room with your boards, your cart and your photographs on one long table"></div>
+    <div class="p2-path"><svg viewBox="0 0 720 40" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', sans-serif">
+      <text x="0" y="9" font-size="10" fill="#b8963e" letter-spacing="1.4" font-weight="500">YOU SCROLL. THE CAMERA MOVES BETWEEN FIVE STATIONS.</text>
+      <line x1="5" y1="24" x2="706" y2="24" stroke="#b8963e" stroke-width=".8"/>
+      <path d="M706 20.5l7 3.5-7 3.5z" fill="#b8963e"/>
+      <g fill="#2a1c14" stroke="#b8963e" stroke-width="1.2"><circle cx="5" cy="24" r="4" fill="#b8963e"/><circle cx="180" cy="24" r="4"/><circle cx="355" cy="24" r="4"/><circle cx="530" cy="24" r="4"/><circle cx="700" cy="24" r="4"/></g>
+      <g font-size="10.5" fill="#f7f1e6"><text x="0" y="39">Arrive</text><text x="180" y="39" text-anchor="middle">The tables</text><text x="355" y="39" text-anchor="middle">The cart</text><text x="530" y="39" text-anchor="middle">Tricia</text><text x="713" y="39" text-anchor="end">The number</text></g>
+    </svg></div>
+    <div class="p2-two">
+      <div class="p2-three">
+        <p>One candlelit room instead of pages. You never leave it.</p>
+        <p>Your boards, your cart and your photographs are on the table.</p>
+        <p>On a phone it becomes one picture of the room, with the same words.</p>
+      </div>
+      <p class="p2-note">A new kind of site: more like walking through a room than reading pages, and different from the traditional look and feel of the three above. It follows the patterns of 48 immersive studio sites we studied for this project, Lusion, Unseen, Locomotive and North Kingdom among them, the kind that win the web's design awards.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 2 of 7</span></div>
+</section>
+
+<!-- 3 · the workflows -->
+<section class="page">
+  <div class="top"><span class="label">02 · The workflows</span><span class="label">Workflows package · $500 · six routines, set up once</span></div>
+  <h2 class="p3-h2">Six texts follow one booking.<br>You tap send.</h2>
+
+  <div class="p3-explain">
+    <div>
+      <h3>What a workflow is</h3>
+      <p>A message that is ready the moment something happens: a quote lands, an event ends, a season nears. We write each one with you, in your voice, and put it on your phone. On the day, your phone reminds you. You read it and tap send. Nothing goes out on its own, and nothing sounds like a robot.</p>
+      <p class="p3-value">One saved quote pays for it twice.<small>A grazing table starts at $1,200. The package is under half of one 50-guest table.</small></p>
+    </div>
+    <div>
+      <div class="p3-pricehead"><span class="num">$500</span><h3>What it buys</h3></div>
+      <ul class="p3-buys">
+        <li><span><b>Six routines on your phone,</b> the ones drawn below.</span></li>
+        <li><span><b>Every message written with you,</b> in your voice.</span></li>
+        <li><span><b>A reminder on the day,</b> so nothing slips.</span></li>
+        <li><span><b>The log.</b> Every quote request, and whether it was answered.</span></li>
+        <li><span><b>One screen a month.</b> Calls, quotes, bookings, best photo.</span></li>
+        <li><span><b>Yours for good.</b> No monthly fee, no software to learn, no chatbot.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="p3-flow">
+    <div class="p3-ph first">
+      <span class="p3-stamp">From your site · in seconds</span>
+      <div class="p3-b in">[date] · 50 guests · Grand Graze<br><i>[first name] · [number]</i></div>
+      <div class="p3-note"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.6 2.2H4.4zM10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>No reply in a day? You get a reminder.</div>
+    </div>
+    <div class="p3-tx"><span class="p3-dot">1</span><h3>Never miss a quote</h3><p class="p3-why"><b>A grazing table starts at $1,200.</b> The host who does not hear back books someone else.</p></div>
+
+    <div class="p3-ph">
+      <span class="p3-stamp">Day 3 · no reply yet</span>
+      <div class="p3-b out">Hi <i>[first name]</i>, still happy to hold your date. Any questions?</div>
+    </div>
+    <div class="p3-tx"><span class="p3-dot">2</span><h3>The quiet quote</h3><p class="p3-why"><b>Silence is not a no.</b> Three days on, a short nudge is ready to send.</p></div>
+
+    <div class="p3-ph">
+      <span class="p3-stamp">2 days before the event</span>
+      <div class="p3-b out">Grand Graze for 50 on <i>[date]</i>, arriving at <i>[time]</i>. Still right?</div>
+    </div>
+    <div class="p3-tx"><span class="p3-dot">3</span><h3>Confirmed and counted</h3><p class="p3-why"><b>The headcount is the price.</b> Date, table, count and arrival time in writing before the day.</p></div>
+
+    <div class="p3-ph">
+      <span class="p3-stamp">Day 2, then day 3 after the event</span>
+      <div class="p3-b out"><svg class="p3-thumb" viewBox="0 0 42 30"><rect width="42" height="30" rx="3" fill="#2a1c14" opacity=".16"/><path d="M5 24l9-10 7 7 5-4 11 7z" fill="#2a1c14" opacity=".42"/><circle cx="31" cy="9" r="3.2" fill="#2a1c14" opacity=".42"/></svg>Thank you, <i>[first name]</i>. One from your table.</div>
+      <div class="p3-b out">If you have a minute, a Google review would mean a lot. <u>[link]</u></div>
+    </div>
+    <div class="p3-tx"><span class="p3-dot">4</span><h3>Turn every event into a review</h3><p class="p3-why"><b>Reviews are the cheapest source of new bookings.</b> 24 five-star reviews on The Knot and WeddingWire. This builds the same proof on Google.</p></div>
+
+    <div class="p3-ph">
+      <span class="p3-stamp">Day 30 after the event</span>
+      <div class="p3-b out">Hi <i>[first name]</i>, holiday tables are open, with <i>[offer]</i> for you.</div>
+    </div>
+    <div class="p3-tx"><span class="p3-dot">5</span><h3>Bring the host back</h3><p class="p3-why"><b>A host who has seen your table needs no convincing.</b> One note, a month later, with an offer you set.</p></div>
+
+    <div class="p3-ph last">
+      <span class="p3-stamp">6 weeks before each season · to past hosts</span>
+      <div class="p3-b out">Graduation tables are open. Past hosts book first, with <i>[offer]</i>.</div>
+    </div>
+    <div class="p3-tx"><span class="p3-dot">6</span><h3>The season ahead</h3><p class="p3-why"><b>The calendar fills in the order people are asked.</b> Holidays, graduations, weddings: past hosts hear first.</p></div>
+  </div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 3 of 7</span></div>
+</section>
+
+<!-- 4 · investment and add-ons -->
+<section class="page">
+  <div class="top"><span class="label">03 · Investment</span><span class="label">US dollars · 90 days of care included</span></div>
+  <h2>Three ways to say yes.</h2>
+
+  <div class="p4-cards">
+    <div class="p4-card">
+      <div class="p4-strip"><img src="img/sample-1.jpg" alt="Garden Atelier"><img src="img/sample-2.jpg" alt="Midnight Supper"><img src="img/sample-3.jpg" alt="The Gathering"></div>
+      <h3>The website</h3>
+      <div class="p4-var">Your pick of the three</div>
+      <div class="p4-price">$600</div>
+      <p class="p4-sub">Five pages. Live in 7 days on charcuteriechick.ai.</p>
+      <div class="p4-slots">
+        <div class="p4-slot on"><svg class="p4-ck"><use href="#check"/></svg><b>Full website</b></div>
+        <div class="p4-slot"><i class="p4-ring"></i><b>Workflows</b></div>
+        <div class="p4-slot"><i class="p4-ring"></i><b>Photography</b></div>
+      </div>
+    </div>
+    <div class="p4-card rec">
+      <div class="p4-strip"><img src="img/sample-1.jpg" alt="Garden Atelier"><img src="img/sample-2.jpg" alt="Midnight Supper"><img src="img/sample-3.jpg" alt="The Gathering"><span class="p4-tag">Recommended</span></div>
+      <h3>The Revenue Engine</h3>
+      <div class="p4-var">The site and the system</div>
+      <div class="p4-price">$1,400</div>
+      <p class="p4-sub">Site live in 7 days. Separately $1,500.</p>
+      <div class="p4-slots">
+        <div class="p4-slot on"><svg class="p4-ck"><use href="#check"/></svg><b>Full website</b></div>
+        <div class="p4-slot on"><svg class="p4-ck"><use href="#check"/></svg><b>Six workflow routines</b></div>
+        <div class="p4-slot on"><svg class="p4-ck"><use href="#check"/></svg><b>Both photography services</b></div>
+      </div>
+    </div>
+    <div class="p4-card">
+      <div class="p4-strip"><img class="p4-tbl" src="img/table.jpg" alt="The Table, candlelit scene"></div>
+      <h3>The Revenue Engine</h3>
+      <div class="p4-var">Immersive, with The Table</div>
+      <div class="p4-price">$2,250</div>
+      <p class="p4-sub">Custom build, live in 3 weeks. Separately $2,400.</p>
+      <div class="p4-slots">
+        <div class="p4-slot on"><svg class="p4-ck"><use href="#check"/></svg><b>The Table, as your site</b></div>
+        <div class="p4-slot on"><svg class="p4-ck"><use href="#check"/></svg><b>Six workflow routines</b></div>
+        <div class="p4-slot on"><svg class="p4-ck"><use href="#check"/></svg><b>Both photography services</b></div>
+      </div>
+    </div>
+  </div>
+  <p class="p4-note">Each one includes 90 days of care after launch. Half to start, half at launch. Texas sales tax is added where it applies.</p>
+
+  <div class="sec p4-loopsec"><span class="label wine">The Revenue Engine</span><span class="label">The recommended package, as one loop. Every turn is a booked table.</span></div>
+  <div class="loop p4-loop">
+    <svg class="loop-ring" viewBox="0 0 300 256"><path d="M163.8 41.1 A88 88 0 0 1 236.9 114.2" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(236.9 114.2) rotate(81.0)"/><circle cx="212.2" cy="65.8" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="212.2" y="69.8" text-anchor="middle" class="ln">1</text><text x="230.6" y="51.4" text-anchor="start" class="ll">Found</text><path d="M236.9 141.8 A88 88 0 0 1 163.8 214.9" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(163.8 214.9) rotate(171.0)"/><circle cx="212.2" cy="190.2" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="212.2" y="194.2" text-anchor="middle" class="ln">2</text><text x="230.6" y="212.6" text-anchor="start" class="ll">Chosen</text><path d="M136.2 214.9 A88 88 0 0 1 63.1 141.8" fill="none" stroke="var(--gold)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--gold)" transform="translate(63.1 141.8) rotate(261.0)"/><circle cx="87.8" cy="190.2" r="11.5" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/><text x="87.8" y="194.2" text-anchor="middle" class="ln">3</text><text x="69.4" y="212.6" text-anchor="end" class="ll">Booked</text><path d="M63.1 114.2 A88 88 0 0 1 136.2 41.1" fill="none" stroke="var(--wine)" stroke-width="16" stroke-linecap="butt"/><polygon points="0,-13 10,0 0,13" fill="var(--wine)" transform="translate(136.2 41.1) rotate(351.0)"/><circle cx="87.8" cy="65.8" r="11.5" fill="var(--paper)" stroke="var(--wine)" stroke-width="1.2"/><text x="87.8" y="69.8" text-anchor="middle" class="ln">4</text><text x="69.4" y="51.4" text-anchor="end" class="ll">Booked again</text><text x="150" y="124" text-anchor="middle" class="lc">One booked table,</text><text x="150" y="142" text-anchor="middle" class="lc">then the next one.</text></svg>
+    <div class="loop-steps">
+      <div class="loop-step"><i>1</i><div><h3>Found</h3><p>Your Google Maps listing, search, Instagram, Facebook and Pinterest. Tomball, The Woodlands, Spring, Conroe.</p></div></div>
+      <div class="loop-step"><i>2</i><div><h3>Chosen</h3><p>A site that looks like your food, says what you charge and shows your 5.0.</p></div></div>
+      <div class="loop-step"><i>3</i><div><h3>Booked</h3><p>Every quote request on your phone in seconds, logged so none goes unanswered.</p></div></div>
+      <div class="loop-step wine"><i>4</i><div><h3>Booked again</h3><p>A thank-you, a one-tap review ask and a note to the same host at day 30. The review is how the next host finds you, and the loop turns again.</p></div></div>
+    </div>
+  </div>
+
+  <div class="p4-menu">
+    <div>
+      <div class="p4-h">Add to any package · site, workflows, photos</div>
+      <div class="p4-row"><b>One-page site</b><span class="p4-pr">$150</span></div>
+      <div class="p4-row"><b>Workflows, six routines</b><span class="p4-pr">$500</span></div>
+      <div class="p4-row"><b>Photo enhancement</b><span class="p4-pr">$150</span></div>
+      <div class="p4-row"><b>Photo recreation</b><span class="p4-pr">$250</span></div>
+      <div class="p4-row"><b>Both photography services</b><span class="p4-pr">$350<small>separately $400</small></span></div>
+      <div class="p4-row"><b>Old or damaged photos, restored</b><span class="p4-pr">$25<small>per photo</small></span></div>
+    </div>
+    <div>
+      <div class="p4-h">Add to any package · creative</div>
+      <div class="p4-row"><b>Logo restore or redesign</b><span class="p4-pr">$150</span></div>
+      <div class="p4-row"><b>Created images, from your photos</b><span class="p4-pr">$250<small>set of ten</small></span></div>
+      <div class="p4-row"><b>Marketing kit: menu, flyer, card, social</b><span class="p4-pr">$400</span></div>
+      <div class="p4-row"><b>Short videos, 30 to 60 seconds</b><span class="p4-pr">$150<small>each · three for $400</small></span></div>
+      <div class="p4-row p4-bundle"><b>The Creative Bundle</b><span class="p4-pr">$800<small>separately $950</small></span><span class="p4-d">Logo redesign, marketing kit, ten images, one video</span></div>
+    </div>
+  </div>
+
+  <p class="p4-phnote">Photo work, from your own photographs: see the next page.</p>
+
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 4 of 7</span></div>
+</section>
+
+<!-- 5 · photo work -->
+<section class="page">
+  <div class="top"><span class="label">04 · Photo work</span><span class="label">Every image below starts from your own photograph</span></div>
+  <h2>Your photographs,<br>finished properly.</h2>
+  <p class="ph-lede">Nothing here is stock and nothing is invented. We start from the picture you already took, keep every item exactly as you made it, and you approve each one before it is used anywhere. Twenty-one of your photographs are on file today.</p>
+
+  <div class="ph-rows">
+
+    <div class="ph-row">
+      <div class="ph-duo">
+        <div>
+          <div class="ph-head"><b>Photo enhancement</b><span class="ph-price">$150</span></div>
+          <p class="ph-why">All twenty-one cleaned, color-corrected and sized for the site, Google, Instagram and Pinterest. Your originals kept untouched.</p>
+          <div class="ph-pair">
+            <figure class="ph-cell"><img src="img/before-trays.jpg" alt="Candy trays on the cart, the original photograph"><figcaption>Yours</figcaption></figure>
+            <figure class="ph-cell is-after"><img src="img/after-trays.jpg" alt="The same candy trays, cleaned and color-corrected"><figcaption>Enhanced</figcaption></figure>
+          </div>
+        </div>
+        <div>
+          <div class="ph-head"><b>Photo recreation</b><span class="ph-price">$250</span></div>
+          <p class="ph-why">Twelve new hero images built from your own photographs, lit the way a studio would shoot them. Same drinks, same garnish, same glass.</p>
+          <div class="ph-pair">
+            <figure class="ph-cell"><img src="img/before-sips.jpg" alt="Bloody Marys, the original photograph"><figcaption>Yours</figcaption></figure>
+            <figure class="ph-cell is-after"><img src="img/after-sips.jpg" alt="The same Bloody Marys, restaged as a studio shot"><figcaption>Recreated</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph-row wide">
+      <div class="ph-head"><b>Your cart, and the mark on the front of it</b><span class="ph-price">$250 + $150</span></div>
+      <p class="ph-why">The cart you already own, photographed as a product instead of in a driveway, carrying a redesigned mark. Photo recreation $250, logo restore or redesign $150. Both sit inside The Creative Bundle at $800.</p>
+      <div class="ph-pair">
+        <figure class="ph-cell"><img src="img/before-cart.jpg" alt="The cart set up in the driveway, the original photograph"><figcaption>Yours</figcaption></figure>
+        <figure class="ph-cell is-after"><img src="img/after-cart.webp" alt="The same cart as a studio product shot carrying the redesigned mark"><figcaption>Recreated, with the new mark</figcaption></figure>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 5 of 7</span></div>
+</section>
+
+<!-- 6 · after launch -->
+<section class="page">
+  <div class="top"><span class="label">05 · After launch</span><span class="label">Optional · cancel any time with thirty days' notice</span></div>
+  <h2>Ninety days on us.<br>Then, if you want, we keep going.</h2>
+  <p class="p5-lede">From the day you say yes: what we need from you, what is included, and what a plan adds. Ninety days on us. Care and Growth begin after that, and only if you want them.</p>
+
+
+  <div class="p5-grid">
+    <div class="p5-col"><b>Before we start</b><i>The day you say yes</i>
+      <ul class="need">
+        <li>This proposal approved, design picked</li>
+        <li>Your logo files, any size</li>
+        <li>Camera-roll originals of your photos</li>
+        <li><div>A yes or no on these details<span class="p5-sub">Street address on the site · the Spanish line · the About photo · how the cart, sweets and sips are charged · dietary notes</span></div></li>
+      </ul>
+    </div>
+    <div class="p5-col"><b>While we build</b><i>Days 1 to 7</i>
+      <ul class="need">
+        <li>The login for charcuteriechick.ai, your web address, or a short call and we do it together</li>
+        <li>The login to your current site</li>
+        <li>Your Google Business Profile, the listing people see on Google Maps, or we claim it together</li>
+      </ul>
+    </div>
+    <div class="p5-col p5-inc"><b>Included with any site</b><i>Days 1 to 90</i>
+      <ul class="p5-list">
+        <li>Two rounds of changes before launch</li>
+        <li>Monitoring and small changes after it</li>
+        <li>A quick yes on the message templates</li>
+        <li>Fixes to your WeddingWire listing, where the name and a price are wrong today, done with you</li>
+      </ul>
+    </div>
+    <div class="p5-col"><b>If you want more</b><i>From day 91</i>
+      <p class="p5-p">A plan, billed monthly in advance. Cancel any time with thirty days' notice. Two to choose from, below.</p>
+    </div>
+  </div>
+
+  <div class="p5-plans">
+    <div class="p5-month">
+      <h3>What a month on Growth looks like</h3>
+      <p>We check every page, form and link, post twice to your Google Business Profile from your event photos, keep the review routine running, and send you one screen: calls, quotes, bookings and the best photo. Three hours of changes are yours to spend on prices, photos or a seasonal note.</p>
+    </div>
+    <div class="p5-plan">
+      <div class="p5-ph"><h3>Care</h3><div class="p5-price"><span class="num">$69</span><small>a month</small></div></div>
+      <ul class="p5-list">
+        <li>Hosting and your web address, kept running and watched</li>
+        <li>Monthly check of every page, form and link</li>
+        <li>Security updates and a backup copy of the site</li>
+        <li>One hour of changes a month</li>
+        <li>Every three months, a check on how you show up in Google</li>
+      </ul>
+    </div>
+    <div class="p5-plan">
+      <div class="p5-ph"><h3>Growth</h3><div class="p5-price"><span class="num">$149</span><small>a month</small></div></div>
+      <span class="label wine p5-plus">Everything in Care, plus</span>
+      <ul class="p5-list">
+        <li>Three hours of changes a month</li>
+        <li>A monthly report: how you show up in Google, and who asked for a quote</li>
+        <li>Two Google Business Profile posts a month, from your event photos</li>
+        <li>The review workflow kept running</li>
+      </ul>
+    </div>
+  </div>
+  <p class="p5-close">The first ninety days come with any website. After that, you decide.</p>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 6 of 7</span></div>
+</section>
+
+<!-- 7 · payment -->
+<section class="page">
+  <div class="top"><span class="label">06 · Payment</span><span class="label">US dollars · half to start, half at launch</span></div>
+  <h2>Half to start. Half when it is live.</h2>
+  <p class="p6-sub">Above the line, what goes live. Below it, what you pay.</p>
+
+  <div class="p6-tl">
+    <svg viewBox="0 0 523 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="When things go live and when you pay">
+      <text class="p6-tk" x="0" y="60">Live</text>
+      <text class="p6-tk" x="0" y="120">You pay</text>
+      <line class="p6-ln" x1="46" y1="88" x2="523" y2="88"/>
+      <g class="p6-s" transform="translate(84 0)">
+        <text class="p6-d" y="30">Day 0</text>
+        <text y="52">You approve</text><text y="64">and we start</text>
+        <line class="p6-st" y1="70" y2="82"/><line class="p6-st" y1="94" y2="104"/>
+        <circle class="p6-dot" cy="88" r="5.5"/>
+        <text class="p6-py" y="116">Half</text>
+        <text class="p6-sb" y="127">website, workflows</text><text class="p6-sb" y="137">or package price</text>
+      </g>
+      <g class="p6-s" transform="translate(184 0)">
+        <text class="p6-d" y="30">Day 7</text>
+        <text y="52">Full site live on</text><text y="64">charcuteriechick.ai</text>
+        <line class="p6-st" y1="70" y2="82"/><line class="p6-st" y1="94" y2="104"/>
+        <circle class="p6-dot" cy="88" r="5.5"/>
+        <text class="p6-py" y="116">The other half</text>
+        <text class="p6-sb" y="127">The Table goes live</text><text class="p6-sb" y="137">on day 21, paid then</text>
+      </g>
+      <g class="p6-s" transform="translate(284 0)">
+        <text class="p6-d" y="30">Within a week</text>
+        <text y="52">Workflows live</text><text y="64">on your phone</text>
+        <line class="p6-st" y1="70" y2="82"/><line class="p6-st" y1="94" y2="104"/>
+        <circle class="p6-dot" cy="88" r="5.5"/>
+        <text class="p6-py p6-no" y="116">Nothing due</text>
+        <text class="p6-sb" y="127">paid with the site</text>
+      </g>
+      <g class="p6-s" transform="translate(384 0)">
+        <text class="p6-d" y="30">On approval</text>
+        <text y="52">You approve</text><text y="64">a delivered set</text>
+        <line class="p6-st" y1="70" y2="82"/><line class="p6-st" y1="94" y2="104"/>
+        <circle class="p6-dot" cy="88" r="5.5"/>
+        <text class="p6-py" y="116">In full</text>
+        <text class="p6-sb" y="127">photography on its own</text><text class="p6-sb" y="137">and creative add-ons.</text><text class="p6-sb" y="147">In a package: covered.</text>
+      </g>
+      <g class="p6-s" transform="translate(482 0)">
+        <text class="p6-d" y="30">Day 91</text>
+        <text y="52">A plan, only if</text><text y="64">you want one</text>
+        <line class="p6-st" y1="70" y2="82"/><line class="p6-st" y1="94" y2="104"/>
+        <circle class="p6-dot" cy="88" r="5.5"/>
+        <text class="p6-py" y="116">$69 or $149</text>
+        <text class="p6-sb" y="127">a month, in advance</text><text class="p6-sb" y="137">Care or Growth</text>
+      </g>
+      <path class="p6-care" d="M184 156v6h298v-6"/>
+      <text class="p6-cl" x="333" y="173">Days 1 to 90 after launch · care included with any website</text>
+    </svg>
+  </div>
+  <p class="p6-note">The one-page site is the exception: $150 on delivery, live in 2 days. If you do not like it, you do not pay.</p>
+
+  <div class="p6-terms">
+    <div><span class="label wine">Ownership</span><p>Your web address, logo, photos and words stay yours. The site files are yours at launch. Nothing on your current site changes until you say go.</p></div>
+    <div><span class="label wine">Revisions</span><p>Two rounds before launch on the full or immersive site, one on the one-page site. Then the included 90 days, then the care plan.</p></div>
+    <div><span class="label wine">Not included</span><p>Ad spend, a paid photographer, printed menus beyond the marketing kit, online payments, a booking calendar, automated replies. The last three on purpose: your customers hear from you.</p></div>
+    <div><span class="label wine">Prices</span><p>US dollars. Texas sales tax is added where it applies. Every invoice references this proposal.</p></div>
+  </div>
+
+  <div class="p6-pay">
+    <div class="p6-to"><span class="label">Payable to</span><div class="serif p6-llc">Galaxy Sports Network LLC</div><span class="small mute">Garrett Baxley</span></div>
+    <div><a class="p6-btn" href="https://buy.stripe.com/8x23cxb6FanJail8JT14405">Pay by card</a><a class="p6-url" href="https://buy.stripe.com/8x23cxb6FanJail8JT14405">https://buy.stripe.com/8x23cxb6FanJail8JT14405</a></div>
+    <div class="p6-alt"><b>Or check, Zelle or bank transfer.</b><span class="mute">Details on the invoice.</span></div>
+  </div>
+
+  <p class="p6-accept">To accept, reply <b>"approved"</b> with the design you picked and the items you want, or sign below.</p>
+  <div class="sig">
+    <div><div class="line"><b>Tricia Holfelder, Charcuterie Chick</b><span>Date</span></div></div>
+    <div><div class="line"><b>Garrett Baxley, Galaxy Sports Network LLC</b><span>Date</span></div></div>
+  </div>
+  <div class="foot"><span>Charcuterie Chick · Proposal · Galaxy Sports Network LLC</span><span>Page 7 of 7</span></div>
+</section>
+
+</body>
+</html>

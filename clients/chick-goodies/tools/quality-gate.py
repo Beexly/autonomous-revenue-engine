@@ -35,10 +35,20 @@ with sync_playwright() as p:
    m['axe']=axe;check(not axe,f'{route}@{width}: axe '+str(axe))
    page.screenshot(path=str(OUT/f'{route}-{width}.png'),full_page=True);report['pages'].append(m)
  if args.sample=='sample-3-studio':
+  # The scene lives in the tables block now, not the hero, so it is below the fold
+  # on load. Both halves of its IntersectionObserver contract are asserted: it must
+  # idle while off screen, and it must run once scrolled to.
   page.goto(base,wait_until='networkidle');page.wait_for_timeout(600)
-  scene=page.evaluate('window.GatheringScene');report['scene']=scene;check(scene and scene.get('ready'),'WebGL did not render')
-  if scene and scene.get('ready'):
-   before=scene['frames'];page.mouse.move(1250,500);page.wait_for_timeout(400);after=page.evaluate('window.GatheringScene');check(after['frames']>before,'Scene not animating');check(after['pointer']!=scene['pointer'],'Pointer not reactive')
+  off=page.evaluate('window.GatheringScene');check(off and off.get('ready'),'WebGL did not render')
+  if off and off.get('ready'):
+   page.wait_for_timeout(600);off2=page.evaluate('window.GatheringScene')
+   check(off2['frames']-off['frames']<=2,'Scene renders while off screen')
+   page.eval_on_selector('.table-world',"el=>el.scrollIntoView({block:'center'})");page.wait_for_timeout(800)
+   scene=page.evaluate('window.GatheringScene');report['scene']=scene
+   before=scene['frames'];page.mouse.move(1250,500);page.wait_for_timeout(500);after=page.evaluate('window.GatheringScene')
+   check(after['frames']>before,'Scene not animating');check(after['pointer']!=scene['pointer'],'Pointer not reactive')
+  else:
+   report['scene']=off
    page.locator('#motion').click();before=page.evaluate('GatheringScene.frames');page.wait_for_timeout(250);check(page.evaluate('GatheringScene.frames')==before,'Pause failed')
    page.emulate_media(reduced_motion='reduce');page.reload(wait_until='networkidle');check(page.evaluate('GatheringScene.paused'),'Reduced motion not respected');page.emulate_media(reduced_motion='no-preference')
   page.goto(base+'gallery.html');page.locator('[data-lightbox]').first.click();check(page.locator('dialog').is_visible(),'Gallery did not open');src=page.locator('#large-photo').get_attribute('src');page.locator('#next-photo').click();check(page.locator('#large-photo').get_attribute('src')!=src,'Gallery next failed');page.keyboard.press('Escape');check(not page.locator('dialog').is_visible(),'Gallery escape failed')

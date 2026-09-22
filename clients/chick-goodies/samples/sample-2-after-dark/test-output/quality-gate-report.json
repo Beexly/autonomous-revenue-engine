@@ -65,19 +65,19 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
           "bytes": 11295
         },
         {
-          "name": "knot-hero.jpg",
-          "bytes": 241345
-        },
-        {
           "name": "brand.webp",
           "bytes": 79442
+        },
+        {
+          "name": "knot-hero.jpg",
+          "bytes": 241345
         },
         {
           "name": "barlow-condensed-700.ttf",
@@ -175,7 +175,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
@@ -302,7 +302,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
@@ -365,7 +365,7 @@
           "sized": true
         },
         {
-          "src": "img/catering-1000.jpg",
+          "src": "img/slider-01.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -400,7 +400,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
@@ -419,8 +419,8 @@
           "bytes": 87120
         },
         {
-          "name": "catering-1000.jpg",
-          "bytes": 128701
+          "name": "slider-01.jpg",
+          "bytes": 245383
         }
       ],
       "route": "story.html",
@@ -457,6 +457,7 @@
         "enquire.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
+        "sms:+18324588180",
         "mailto:charcuteriechick@outlook.com",
         "enquire.html",
         "tel:+18324588180",
@@ -469,7 +470,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
@@ -554,7 +555,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
@@ -664,7 +665,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
@@ -687,12 +688,12 @@
           "bytes": 177882
         },
         {
-          "name": "knot-3.jpg",
-          "bytes": 228333
-        },
-        {
           "name": "table-01.jpg",
           "bytes": 119185
+        },
+        {
+          "name": "knot-3.jpg",
+          "bytes": 228333
         },
         {
           "name": "wide-640.jpg",
@@ -791,7 +792,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
@@ -810,10 +811,6 @@
           "bytes": 112020
         },
         {
-          "name": "barlow-condensed-700.ttf",
-          "bytes": 87120
-        },
-        {
           "name": "table-02.jpg",
           "bytes": 50948
         },
@@ -828,6 +825,10 @@
         {
           "name": "sweets-01.jpg",
           "bytes": 111688
+        },
+        {
+          "name": "barlow-condensed-700.ttf",
+          "bytes": 87120
         }
       ],
       "route": "gallery.html",
@@ -854,7 +855,7 @@
           "sized": true
         },
         {
-          "src": "img/catering-1000.jpg",
+          "src": "img/slider-01.jpg",
           "ok": true,
           "alt": true,
           "sized": true
@@ -889,7 +890,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",
@@ -904,8 +905,8 @@
           "bytes": 81401
         },
         {
-          "name": "catering-1000.jpg",
-          "bytes": 128701
+          "name": "slider-01.jpg",
+          "bytes": 245383
         },
         {
           "name": "barlow-condensed-700.ttf",
@@ -946,6 +947,7 @@
         "enquire.html",
         "mailto:charcuteriechick@outlook.com",
         "tel:+18324588180",
+        "sms:+18324588180",
         "mailto:charcuteriechick@outlook.com",
         "enquire.html",
         "tel:+18324588180",
@@ -958,7 +960,7 @@
       "resources": [
         {
           "name": "midnight.css",
-          "bytes": 20753
+          "bytes": 20740
         },
         {
           "name": "midnight.js",

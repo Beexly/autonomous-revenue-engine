@@ -62,6 +62,86 @@ Her Shopify homepage gallery currently serves stock files: `Shrimp_Food_Prawns`,
 `healthy-simple-mexican-tacos-meat-600nw-…`, `cafe-drink-cake-…`). Part of the
 $600 job is deleting these from the storefront.
 
+### `catering-1000.jpg` — stock. Removed 2026-09-17.
+
+**Confirmed and pulled from the build.** At 2000px there is not one piece of
+charcuterie in the frame: shrimp canapés in ceramic spoons, salmon-and-caviar
+blinis, quinoa-cucumber squares, tiered silver stands, a glass conservatory.
+That is a hotel canapé reception, not her work. The file is deleted from
+`site/img/` and all three sample `img/` directories; git history keeps it.
+
+Evidence it is not her work:
+
+- What is in the frame — tiered silver stands, shrimp canapés, salmon blinis,
+  a bright banquet room — is not on her menu. Her menu is cheeses, meats,
+  eleven sliders, dips.
+- It stands in for three unrelated products at once: the Holy Grail table, the
+  Muffuletta slider and Pepperoni. One photo doing three jobs is filler
+  behaviour, not a photograph of a specific item.
+- Its source name is `72155`, the numeric pattern of the stock files in §3.
+- 1000×560 is a 16:9 crop. Nothing else she owns is 16:9.
+
+Where it currently ships:
+
+| File | Presented as |
+|---|---|
+| `samples/shared/looks.js:8` | Holy Grail of Grazing — **$2,000 / 75 guests**, her most expensive item |
+| `samples/shared/looks.js:30` | Muffuletta slider |
+| `samples/shared/looks.js:52` | Pepperoni |
+| `samples/sample-2-after-dark/story.html` | captioned "FROM THE KITCHEN TO YOUR TABLE" |
+| `samples/sample-1-editorial/gallery.html` | item 08, alt "…from Tricia's collection" |
+
+Two of those five were live. `looks.js` is not loaded by any page yet
+(`runway.js` reads `CHICK_LOOKS`, but nothing includes either), so its three
+entries were latent rather than shipping. All five are repointed anyway.
+
+**What replaced it**
+
+Tricia's own slider photographs, which were not previously in the build:
+`slider-01.jpg` and `slider-02.jpg` (2000×1333) — turkey sliders on a red
+lacquer tray, orchid garnish, gold-bead picks, real event light. She has
+eleven sliders on the menu and had no slider photograph anywhere in the build,
+while a stock canapé shot stood in for Muffuletta and Pepperoni.
+
+| Was | Now |
+|---|---|
+| `gallery.html` item 08 "Company, beautifully kept" | `slider-01.jpg`, "Something to hold" |
+| `story.html` `.story-wide` | `slider-01.jpg`, caption unchanged |
+| `looks.js` 05 Holy Grail of Grazing | `table-02.jpg` — a real grazing table |
+| `looks.js` 27 Muffuletta | `slider-01.jpg` |
+| `looks.js` 49 Pepperoni | `board-01.jpg` |
+
+### `tricia-662.jpg` — still open
+
+Studio seamless backdrop, fashion-catalog pose, a hand-drawn grid graphic laid
+over it. Its source name `Group_49_1_7ab96cd7-…` is design-tool layer naming,
+so it came out of a design file rather than a camera roll.
+`sample-2/story.html` captions it "TRICIA HOLFELDER / THE WOMAN BEHIND THE
+TABLE". **Left in place pending a yes or no from Tricia** — if it is not her,
+her About page carries a stranger's face under her name.
+
+### `tricia-portrait-471.jpg` — the grid removed by crop (2026-09-17, round two)
+
+Plan 10.2 rule 4 asks for the drawn grid gone, a 4:5 frame and monochrome.
+Measured first: the grid is a **border** graphic, not an overlay. Columns 0–140
+and 622–661 and rows 722–822 are white paper carrying the black strokes; the
+photograph's grey studio backdrop occupies columns 228–621 and rows 0–718. So a
+crop removes it and **no generative work was needed**.
+
+| | |
+|---|---|
+| Source | `tricia-662.jpg`, 662×823, md5 `4af53f3e9055d3e61f473c30e10f4200` |
+| Crop box | `(150, 0, 621, 589)` → 471×589, ratio 0.7996 ≈ 4:5 |
+| Conversion | greyscale in the file, not `filter:` in CSS |
+| Result | `tricia-portrait-471.jpg`, md5 `976ef989eceb27fa61e288c22ea4b4e3` |
+| Used by | `sample-1-editorial/index.html`, `story.html` |
+
+The original is untouched and still in git. Samples 2 and 3 still use
+`tricia-662.jpg`; only concept 1 was in the round-two brief.
+
+**The open question above is unchanged.** Cropping the grid out does not
+establish that the woman is Tricia. That still needs a yes or no from her.
+
 ## 4. Open question for the owner
 
 `IMG_7724.jpeg` was supplied with "THIS IS THE CORRECT INFO". It is a 1320×947
@@ -70,3 +150,85 @@ image on a dark background and does not resemble the wordmark in
 `brand-reference-1364.jpg` and is **not** used on the page. Ask Tricia/Garrett
 which asset is the logo, and whether the dark file is a logo variant, a menu
 board, or a metrics screenshot. Do not guess — requirement 1 is "same logo".
+
+## 5. Restoration — approved by the owner, 2026-09-17
+
+Section 1 says "do not upscale the 480px files". **The owner has overridden
+that**: Tricia has confirmed she does not want a professional photographer and
+has approved restoration and reimaging of her existing files. Section 1 stands
+as the record of what the source material is; this section is the standing
+instruction.
+
+Two passes, and they do different jobs:
+
+| Pass | What it can do | What it cannot do |
+|---|---|---|
+| **Classical** — denoise, luma-only sharpening, highlight roll-off, linear-light RobidouxSharp/Mitchell resize | Recover everything actually present in the file. Invents nothing, so it is safe unreviewed | Add detail that was never captured. No kernel invents a 12MP sensor |
+| **Generative** — `tools/restore-photos.py` | Add plausible detail past the 480×640 ceiling, which is the only way `graze-02` and `wide-640` ever carry a hero | Be trusted unreviewed. It *invents*, which is the point and the risk |
+
+Run the classical pass first; feed its output to the generative pass with
+`--src`. A cleaned, correctly-resized file gives the model real structure to
+hold onto.
+
+**`tricia-662.jpg` is a real person's face.** It carries a deliberately
+conservative prompt in `PROMPTS`, keyed by filename. If the file has been
+renamed by an earlier pass, that override silently stops matching — the script
+warns about this, and the warning is worth obeying. Classical-only is a
+defensible final answer for the portrait.
+
+Generative output lands in `restored/`, never in `site/img/`, and every run
+appends provenance (source, model, endpoint, prompt, `request_id`,
+`X-Correlation-ID`, md5, bytes) to `restored/manifest.jsonl`. Nothing moves into
+`site/img/` without a person looking at it first. Section 2 is why: an
+unreviewed generated image reaching a client build is a defect, and the manifest
+md5s are what makes that auditable rather than a matter of memory.
+
+## 6. Studio re-shoots and restorations made from her photos (2026-09-18)
+
+Under the standing instruction in section 5. Made on Higgsfield (Nano Banana 2 for the drinks and the trays, Nano Banana
+Pro for the cart) with her own photo attached as the reference and the
+instruction to keep every item as photographed. Nothing is generated from a
+description. Garrett picked each one against the source and rejected every
+variant that changed her cart, her sign or her logo.
+
+| File | Made from | Use |
+|---|---|---|
+| `samples/sample-3-studio/img/cut/sips-02.webp` | `sips-02.jpg` (Bloody Marys), studio re-shoot | cut-out on The Table, station 3 |
+| `samples/sample-3-studio/img/cut/graze-01.webp` | `graze-01.jpg` (candy trays), studio re-shoot from above | flat on The Table |
+| `samples/sample-3-studio/img/cut/cart-640.webp` | `cart-640.jpg` plus `candy-01.jpg` and the logo, studio re-shoot of the cart | cut-out on The Table, station 3 |
+
+Copied into the proposal on 2026-09-18 for the photo-work page (page 5), which
+shows each pair at full size rather than the cropped strip that page 4 used to
+carry:
+
+| Proposal file | Copied from |
+|---|---|
+| `docs/proposal/img/before-cart.jpg` | `samples/sample-3-studio/img/cart-640.jpg` (her driveway photograph) |
+| `docs/proposal/img/after-cart.webp` | `samples/sample-3-studio/img/cut/cart-640.webp` (the studio re-shoot) |
+| `docs/proposal/img/after-trays.jpg` | `LH32E.jpg` (her wide candy-tray photograph), levels, white balance, contrast, saturation and sharpening only, 600×800 (2026-09-18) | proposal page 5, the "enhanced" side |
+| `docs/proposal/img/after-sips.jpg` | `sips-02.jpg`, studio re-shoot | proposal page 4, before and after |
+| `docs/proposal/img/before-trays.jpg` | `LH32E.jpg`, her original, resized to 600×800 and nothing else (2026-09-18) | proposal page 5, the "yours" side |
+| `docs/proposal/img/before-sips.jpg` | `sips-02.jpg`, her original, byte-identical | proposal page 5, the "yours" side |
+
+**Corrected 2026-09-18.** This row previously read "her originals, cropped 3:4"
+and that was wrong. The two files sitting there were 600x800 upscales of the
+*enhanced* images — brighter, sharper and more saturated than anything she
+took. The proposal was therefore showing enhanced beside enhanced while
+labelling the left-hand one "Yours", which overstated her starting point and
+understated the work. Garrett caught it. Both files are now byte-identical to
+`graze-01.jpg` and `sips-02.jpg` (480x640, her camera-roll originals resized,
+IMG_4945 and the sips source). Never put a processed file on the "yours" side
+of a before-and-after.
+
+Two further originals supplied by Garrett on 2026-09-18, kept outside every
+Vercel project root so they are never served:
+
+| File | What it is | Used |
+|---|---|---|
+| `originals/graze-01-source.webp` | her candy-tray photograph, the source behind `graze-01.jpg` | reference only |
+| `originals/cart-venue-rose.webp` | the cart set up at a venue beside a large paper rose | not used yet |
+| `samples/sample-3-studio/img/table-still.jpg`, `table-still-tall.jpg`, `docs/proposal/img/table.jpg` | re-rendered from the scene with the three cut-outs above | phone still, loading frame, proposal page 2 |
+
+Rejected on 2026-09-18 and not in the repo: a cart restoration that dropped
+the logo sign, a composite of Tricia at the cart with an invented sign, two
+carts with invented frames, wheels and handles.
