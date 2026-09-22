@@ -1,5 +1,13 @@
 """Enhance one real photo: 2x Lanczos resample, unsharp, graded contrast/color.
 Prints before/after metrics. No AI generation; derived from her original file."""
+# Historical writer retained for reference only. Stop on import as well as CLI.
+# Keep this after the module docstring / future imports, before all other code.
+raise SystemExit(
+    "LEGACY BUILD DISABLED: canonical sample HTML/CSS/JS are direct-edited. "
+    "Do not regenerate or replay preparation/migration scripts. "
+    "See clients/chick-goodies/tools/BUILD-SAFETY.md."
+)
+
 from pathlib import Path
 from PIL import Image, ImageFilter, ImageEnhance, ImageOps
 import numpy as np, json, sys

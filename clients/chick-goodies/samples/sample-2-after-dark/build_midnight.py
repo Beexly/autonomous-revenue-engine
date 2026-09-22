@@ -1,4 +1,12 @@
 """Build only the five Midnight Supper documents from local facts."""
+# Historical writer retained for reference only. Stop on import as well as CLI.
+# Keep this after the module docstring / future imports, before all other code.
+raise SystemExit(
+    "LEGACY BUILD DISABLED: canonical sample HTML/CSS/JS are direct-edited. "
+    "Do not regenerate or replay preparation/migration scripts. "
+    "See clients/chick-goodies/tools/BUILD-SAFETY.md."
+)
+
 from pathlib import Path
 from html import escape
 from PIL import Image

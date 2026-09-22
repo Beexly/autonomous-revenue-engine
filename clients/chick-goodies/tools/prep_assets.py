@@ -5,6 +5,14 @@ Run:  python3 prep_assets.py
 Reads real photos from C:/Users/Garrett/chick/real, logo from Downloads,
 writes a deployable folder at C:/Users/Garrett/chick-site and swaps 832-458-8180.
 """
+# Historical writer retained for reference only. Stop on import as well as CLI.
+# Keep this after the module docstring / future imports, before all other code.
+raise SystemExit(
+    "LEGACY BUILD DISABLED: canonical sample HTML/CSS/JS are direct-edited. "
+    "Do not regenerate or replay preparation/migration scripts. "
+    "See clients/chick-goodies/tools/BUILD-SAFETY.md."
+)
+
 import os, shutil, glob
 from PIL import Image
 
