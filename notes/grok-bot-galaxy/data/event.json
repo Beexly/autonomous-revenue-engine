@@ -1,0 +1,43 @@
+{
+ "name": "Grok Bot Galaxy",
+ "tagline": "Grok Bot is your team of extraordinarily capable AI agents.",
+ "description": "A three day event in San Francisco, Sept 15–17, 2026 at The Howard — live demos and hands-on build sessions with the team behind Grok Bot.",
+ "page": "https://x.ai/galaxy",
+ "utm_campaign_seen": "20260921_Grok-Bot-Galaxy-Livestream-Follow-Up",
+ "dates": {
+  "start": "2026-09-15",
+  "end": "2026-09-17"
+ },
+ "hours": "8:45am–6:00pm PT",
+ "venue": {
+  "name": "The Howard",
+  "address": "661 Howard Street, San Francisco"
+ },
+ "virtual": "Virtually via Livestream — watch from anywhere",
+ "organizer": "SpaceXAI LLC (x.ai)",
+ "sections": [
+  {
+   "heading": "Watch the sessions",
+   "what": "10 role-specific workshops, each on YouTube"
+  },
+  {
+   "heading": "Watch the full days",
+   "what": "3 full-day broadcasts on X"
+  },
+  {
+   "heading": "What you'll make",
+   "what": "Create a Bot (name it, teach it your style, give it a goal) · Run real workflows (bots work in parallel across the apps, tools and websites you already use) · Meet the Grok Bot team"
+  }
+ ],
+ "ctas": [
+  {
+   "label": "Get Grok Bot",
+   "href": "/bot"
+  },
+  {
+   "label": "Explore Grok Bot Guides",
+   "href": "/bot/guides"
+  }
+ ],
+ "post_event": "The follow-up email (utm_campaign 20260921_...) points back at this page; the page is the durable record of the event and of every session recording."
+}

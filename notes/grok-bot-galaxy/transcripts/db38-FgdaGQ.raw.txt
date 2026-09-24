@@ -1,0 +1,774 @@
+[00:00:00] All right. Hello. Hello.
+[00:00:03] Hi everyone. My name is Josh Kim and I'm
+[00:00:06] so thankful for all of you for joining
+[00:00:07] us here and I'm excited to share how we
+[00:00:11] on the SpaceX AI team use Grockbot for
+[00:00:14] marketing.
+[00:00:16] Here's our runner show for today. Uh
+[00:00:19] I'll be sharing what Crockpot is, how we
+[00:00:21] use it internally, uh to market and grow
+[00:00:24] the product and most importantly how you
+[00:00:27] all can start using Grockbot within your
+[00:00:29] teams. Let's jump in. So let's start
+[00:00:32] with the context. Um the way we all
+[00:00:35] started using AI was pretty simple. Uh
+[00:00:38] many of you may still be using AI today
+[00:00:40] just like this. Uh and I certainly was
+[00:00:42] in this camp uh before I started on the
+[00:00:44] SpaceX AI team. The typical pattern is
+[00:00:46] that you have one or two AI chat bots
+[00:00:49] that you really use and leverage as your
+[00:00:51] thought partner. Meaning, you chat with
+[00:00:53] them, you ask questions, you spar on
+[00:00:55] strategy, maybe you edit copy. Um, but
+[00:00:58] they're really there as your thought
+[00:00:59] partner and not a doing partner.
+[00:01:02] As AI has started advancing, there's
+[00:01:04] been this rise of generalized and
+[00:01:06] specialized agents that can start to do
+[00:01:09] tasks with you. Um, we refer to these
+[00:01:12] internally as co-pilots because while
+[00:01:15] they can get those tasks done with you,
+[00:01:17] they still typically require you to
+[00:01:19] babysit them, push them along,
+[00:01:21] particularly for those complex tasks
+[00:01:24] rather than truly being able to delegate
+[00:01:26] your work.
+[00:01:28] And that's the reason why we're so
+[00:01:29] excited about Grockbot.
+[00:01:32] With Grockbot, marketing teams can now
+[00:01:35] actually start to automate away true
+[00:01:37] pieces of their work. You can think of
+[00:01:40] Grockbot as always on asynchronous AI
+[00:01:43] teammates that actually do and finish
+[00:01:46] the work on your behalf. And most
+[00:01:48] importantly, they'll do it the way that
+[00:01:50] you do it.
+[00:01:54] And today I'm excited to demo how on the
+[00:01:56] SpaceX marketing team, we not only use
+[00:02:00] bots to automate jobs and tasks, but we
+[00:02:03] actually use them to staff up functions
+[00:02:05] and create teams of bots to actually do
+[00:02:08] the work for you.
+[00:02:11] But first, let's do a quick intro of the
+[00:02:12] product. For those of you who haven't
+[00:02:14] tried it out yet, this is Grockbot. And
+[00:02:17] now some of you may be wondering how is
+[00:02:18] Grockbot different from all the other AI
+[00:02:21] tools and chat bots that I might use
+[00:02:23] today.
+[00:02:25] What's different about Grockbot is that
+[00:02:27] rather than working with one agent or
+[00:02:29] one chat with multi-threaded
+[00:02:31] conversations,
+[00:02:33] you create individual bots for each job.
+[00:02:36] And what that means is you think of one
+[00:02:38] bot to be a singular teammate that you
+[00:02:41] then delegate away a single task or a
+[00:02:43] set of related tasks.
+[00:02:46] What this also means is that you can
+[00:02:48] actually message your bots and talk to
+[00:02:49] them just like you would Slack or
+[00:02:52] message someone on Teams. Uh, and to
+[00:02:54] take it a step further, bots can start
+[00:02:56] to talk to each other and actually
+[00:02:57] collaborate with each other within group
+[00:02:59] chats as well.
+[00:03:01] And as you continue to work with your
+[00:03:03] bots, they'll learn how you work.
+[00:03:05] They'll learn your preferences. They'll
+[00:03:07] learn your memory. And they'll get
+[00:03:08] smarter and smarter and get closer to
+[00:03:11] the way that you actually do the job
+[00:03:13] yourself. So, similar to someone on your
+[00:03:16] team or someone that you collaborate
+[00:03:17] with, the more feedback you give and the
+[00:03:19] more you invest in your bots, uh, the
+[00:03:22] more they'll be able to do for you in
+[00:03:23] the long term.
+[00:03:26] And what makes bot especially unique is
+[00:03:29] that while it can hook up to all the
+[00:03:30] MCPS and APIs that you're currently
+[00:03:32] using today, it also has its own
+[00:03:35] computer. And that's a bit of a novel
+[00:03:37] paradigm shift from how you might be
+[00:03:38] using other AI tools today. And what it
+[00:03:42] simply means is that because it has
+[00:03:44] access to its own browser and its own
+[00:03:46] computer, so long as you give it access
+[00:03:48] to it to tools that you use, it can
+[00:03:50] actually use those tools just like you
+[00:03:52] would.
+[00:03:55] So what does this all mean for
+[00:03:56] marketers? If we talk about how it can
+[00:03:59] use tools just like you, that means that
+[00:04:03] your bot, you can teach it specific ways
+[00:04:05] that you like to optimize your bidding
+[00:04:07] strategy in ad platforms or the nuances
+[00:04:11] and how you put together a campaign
+[00:04:12] brief or maybe just how you like to
+[00:04:14] manage your computer. But ultimately,
+[00:04:16] what's really unique and valuable about
+[00:04:19] bot is that it becomes customized and
+[00:04:21] flexible to the way that you work.
+[00:04:24] And with bot, you'll also find that
+[00:04:27] you're no longer having to babysit and
+[00:04:28] push along and really, you know, remind
+[00:04:31] the bot to keep working. And rather,
+[00:04:34] Grockbot is extremely ambitious and it's
+[00:04:36] also very proactive. And so now you'll
+[00:04:38] be working with a team of bots that
+[00:04:40] actually want and will finish the work
+[00:04:42] for you. Um, and that's quite different
+[00:04:44] from other tools you might be using.
+[00:04:48] Because bot is hosted in the cloud, that
+[00:04:50] also means that they're running 24/7. No
+[00:04:52] more keeping your laptop open or needing
+[00:04:54] a Mac mini setup. And for marketers,
+[00:04:56] that means if you have reporting or
+[00:04:59] metrics that you're you're looking at on
+[00:05:01] a regular basis, you can trust that
+[00:05:03] Grockbot will be able to pull those down
+[00:05:05] for you.
+[00:05:07] And the best of all, as you might have
+[00:05:08] noticed, it's really simple to use. This
+[00:05:10] UI is as familiar and intuitive as
+[00:05:13] iMessage, which really lowers a barrier
+[00:05:15] to entry for any marketer, no matter
+[00:05:17] what their specializ specialization is
+[00:05:19] to weave agents into their daily
+[00:05:21] workflows.
+[00:05:24] Okay, so let's actually dive into what
+[00:05:27] we're going to do today during the demo.
+[00:05:30] Uh what we're going to do together is
+[00:05:31] actually launch a marketing campaign
+[00:05:33] from scratch from end to end. Um,
+[00:05:36] meaning we're going to start from the
+[00:05:38] first task that we typically take on,
+[00:05:40] which is market research analysis. We're
+[00:05:42] going to go all the way through to
+[00:05:44] ideulating and betting on positioning,
+[00:05:46] uh, updating a landing page,
+[00:05:49] starting to build and monitor ad
+[00:05:52] campaigns, draw that analysis, and then
+[00:05:54] actually end with automation. Now, this
+[00:05:57] is a lot of work. Uh, there's a lot of
+[00:05:59] things that happen behind the scenes.
+[00:06:01] For all of us in the room as as
+[00:06:03] marketers, you know that this slide
+[00:06:05] might look simple, but actually it
+[00:06:08] actually spans across many different
+[00:06:10] teams, functions, disciplines within a
+[00:06:13] typical marketing or meaning the person
+[00:06:16] who conducts market research is, you
+[00:06:18] know, having to work with a product
+[00:06:20] marketer to identify and best
+[00:06:22] positioning who then has to pass off a
+[00:06:24] task to the web team and so on and so
+[00:06:26] forth. And for anyone who's done
+[00:06:28] marketing before, that context
+[00:06:31] management, the coordination, the
+[00:06:34] orchestration of a campaign like this,
+[00:06:36] that's truly where the craft of the work
+[00:06:37] happens because it's the crux of our
+[00:06:39] job.
+[00:06:41] So today, I'm going to introduce you to
+[00:06:43] my marketing team of bots. And I would
+[00:06:46] be remiss to say that I built all these.
+[00:06:48] I was crowdsourcing these across the
+[00:06:49] entire SpaceXi team, uh, which is a
+[00:06:52] feature I'll talk about. But I'm excited
+[00:06:54] to show you how you can orchestrate an
+[00:06:56] entire campaign build across the entire
+[00:06:59] flow. So you can say hi to our market
+[00:07:01] researcher, our product marketer, our
+[00:07:03] website ops performance marketer,
+[00:07:05] marketing analyst, and lastly our
+[00:07:08] project manager.
+[00:07:11] So with that, let's dive into our demo.
+[00:07:15] Now for the sake of our demo we have uh
+[00:07:17] launched a brand new product and it is
+[00:07:21] called XAIR.
+[00:07:23] So this is an airline product that we
+[00:07:26] built as something that we can use to
+[00:07:28] build a net new campaign for. And you'll
+[00:07:31] see that this landing page is set up.
+[00:07:34] It's our homepage. People can do some
+[00:07:37] airline route searches, look for fairs,
+[00:07:40] and then we have some positioning and
+[00:07:43] value proposition, value propositions
+[00:07:45] currently in place. So, I'm going to
+[00:07:47] navigate to my Grockbot instance. And
+[00:07:51] just to walk through what you see on the
+[00:07:53] screen on the left side, sidebar, that's
+[00:07:55] where the bots live. I've pinned them to
+[00:07:57] the top, similar to what you might do in
+[00:07:58] iMessage. And I'll be flipping through
+[00:08:01] each bot and I'll explain what I'm doing
+[00:08:03] as I'm going through it. But let's get
+[00:08:05] started with the market research bot. So
+[00:08:07] what I'll say first is, hey market
+[00:08:10] researcher, what I'd like you to do is
+[00:08:13] study the X error website. Get a deeper
+[00:08:16] understanding of what the product is,
+[00:08:18] what market we're operating in. And now
+[00:08:21] I want you to go do a competitive
+[00:08:22] analysis.
+[00:08:24] identify and deeply understand our
+[00:08:26] competitors. Look at their marketing
+[00:08:28] websites. understand their positioning
+[00:08:29] and then importantly identify the gaps
+[00:08:32] and opportunities that we have to
+[00:08:33] actually strategically
+[00:08:35] um competitively position against them
+[00:08:37] within our marketing strategy.
+[00:08:41] So just dictated a prompt. I'm going to
+[00:08:44] set this off. Now the market researcher
+[00:08:47] bot is actually going to go and scrape
+[00:08:49] the website. It's going to understand
+[00:08:50] the product and then it's actually going
+[00:08:52] to go find the competitor competitors
+[00:08:55] their landing pages and start performing
+[00:08:57] this analysis.
+[00:08:58] So, while that's running, let me just do
+[00:09:00] a quick walkthrough of the additional
+[00:09:02] bots that we have. Um, we have a product
+[00:09:04] marketer bot, website ops performance
+[00:09:06] marketer,
+[00:09:08] marketing analyst, and a project
+[00:09:10] manager.
+[00:09:11] And
+[00:09:13] importantly, what I'm about to show is
+[00:09:15] that as this works, you can actually
+[00:09:17] kick off jobs asynchronously. Meaning,
+[00:09:20] you might have one bot that you work
+[00:09:21] with uh as your main point of contact,
+[00:09:23] but you can actually kick off work in
+[00:09:27] parallel. across a team of bots and that
+[00:09:29] means that orchestration is happening in
+[00:09:31] the background uh because the product is
+[00:09:33] always on. So market researcher is
+[00:09:35] saying it's pulled xair the competitive
+[00:09:38] asset is being identified. It's going to
+[00:09:40] show us a screenshot first of the
+[00:09:42] website and then go through gaps and
+[00:09:45] positioning.
+[00:09:49] Great. So it has its first output of an
+[00:09:52] analysis. It's talking about the
+[00:09:54] product. It's talking about the market.
+[00:09:56] is has identified key competitors. These
+[00:09:59] are all airlines that we're all familiar
+[00:10:00] with. Um I think most importantly it's
+[00:10:03] identify the gaps and where to lean in.
+[00:10:05] So similar to how you might work with a
+[00:10:07] market researcher, you ask, "Hey, I'm
+[00:10:10] launching this new feature. I'm going to
+[00:10:11] have this new exciting campaign launch.
+[00:10:13] Help me understand what's currently in
+[00:10:15] market." So we un we are optimizing for
+[00:10:18] breaking through the noise and actually
+[00:10:20] landing and resonating with our target
+[00:10:21] audience. So I think the most important
+[00:10:23] note here is you know these gaps around
+[00:10:26] useful time day design uh long hauls and
+[00:10:30] then really leading every message with
+[00:10:32] useful time which is something I think
+[00:10:34] is resonating at least with me and it's
+[00:10:37] also shown me that it's pulled up the
+[00:10:39] website and this is actually a view of
+[00:10:41] its browser that it has access to and
+[00:10:43] that it controls and it's showing me
+[00:10:46] progress updates of it working in the
+[00:10:47] background and being able to actually go
+[00:10:49] to the website itself, pull down a
+[00:10:51] screenshot and show to me uh how it's
+[00:10:53] progressing.
+[00:10:55] Now, marketer researcher has done one
+[00:10:57] task, and that's great. What I could do
+[00:10:59] is actually kick off another one, but
+[00:11:01] what I'm going to do instead is actually
+[00:11:03] go to the next bot, and that's the
+[00:11:04] product marketer. And I'm going to have
+[00:11:06] the product marketer actually do a
+[00:11:07] handoff of that work that the researcher
+[00:11:10] just did and take that into their work.
+[00:11:15] Okay, product marketer, what I'd like
+[00:11:16] you to do is now go to the market
+[00:11:19] researcher bot, do a handoff of the
+[00:11:22] analysis that just performed and I want
+[00:11:25] you to draw up a draft of a positioning
+[00:11:28] brief where you identify how we should
+[00:11:30] go to market, what our one oneliners
+[00:11:32] are, our positioning and packaging, um
+[00:11:35] some value statements, and then also
+[00:11:37] show me some examples of how this should
+[00:11:40] come to life across two or three
+[00:11:42] different marketing services.
+[00:11:47] So, as this is running, what you'll see
+[00:11:50] is in the chat, the product marketer bot
+[00:11:53] is starting to kick off this work. I
+[00:11:54] told it to actually go and speak to the
+[00:11:56] market researcher and actually grab that
+[00:11:58] context and information. Um, as it's
+[00:12:02] working, you'll see there's a visual
+[00:12:03] indicators. It's, you know, doing
+[00:12:04] things. It's running in the background.
+[00:12:06] Um, and then it'll actually show you,
+[00:12:08] hey, I exchanged a few messages with the
+[00:12:11] market researcher bot. And that's
+[00:12:13] showing that they're starting to
+[00:12:14] collaborate. And that's something that
+[00:12:17] you can tell it to do in the beginning,
+[00:12:18] but over time, it gets smarter and
+[00:12:20] smarter and smarter. And it will
+[00:12:22] actually do it proactively, meaning you
+[00:12:24] have to be less involved in doing the
+[00:12:25] orchestration of context and knowledge
+[00:12:27] between your bots, and rather they
+[00:12:28] actually start to work with each other
+[00:12:30] organically.
+[00:12:31] So, it's telling me it's grabbed the
+[00:12:34] market researcher analysis. It's
+[00:12:36] drafting the positioning brief. Um, it's
+[00:12:39] created a Google doc where it's actually
+[00:12:42] starting to draft that position brief
+[00:12:43] which we'll jump into. And inside it's
+[00:12:45] telling me what exactly it did.
+[00:12:48] So,
+[00:12:50] let's bring this up.
+[00:12:55] And if we go through this, this is
+[00:12:57] looking like a solid first draft.
+[00:13:00] Um I think what what I will do is start
+[00:13:04] to read through this. It has a research
+[00:13:06] handoff that I got from the market
+[00:13:08] researcher is identify the target
+[00:13:10] audience long haul travelers who want
+[00:13:13] useful time back. I'm going to leave a
+[00:13:14] comment and say this is great. Lean into
+[00:13:17] this in our messaging.
+[00:13:23] It's talking about positioning and
+[00:13:24] packaging and how we should be thinking
+[00:13:26] about our marketing strategy and the way
+[00:13:27] go we go out with messaging.
+[00:13:30] And it's also left some notes on go to
+[00:13:31] market, some additional oneliners about
+[00:13:34] different types and angles to lean into
+[00:13:37] and then some value statements and
+[00:13:38] examples of how it shows up. So there's
+[00:13:41] a paid landing page here that is
+[00:13:42] drafted. I think what we'll do for our
+[00:13:45] campaign is actually take this page,
+[00:13:47] shove it up into the website, launch the
+[00:13:50] landing page, and actually start
+[00:13:52] directing and building an ads campaign
+[00:13:54] to do a messaging test to see what's
+[00:13:56] landing the most and what's resonating.
+[00:13:59] So, I'm going to close this and I'm what
+[00:14:02] I'm actually going to do is tell it,
+[00:14:04] "Hey, product marketer, I've just left
+[00:14:06] some comments inside of the Google doc.
+[00:14:09] What I want you to do now is go through
+[00:14:11] the Google doc, take the comments and
+[00:14:13] the feedback, incorporate it into an
+[00:14:15] updated draft. And while you're at it, I
+[00:14:17] also want you to build out a full
+[00:14:19] outline of the landing page. And then I
+[00:14:22] also want you to ideulate and draft some
+[00:14:27] Google search campaigns to do variant
+[00:14:30] testing between the copy angles that you
+[00:14:32] drafted.
+[00:14:37] Now again, this is all happening within
+[00:14:39] one bot right now, but what it's doing
+[00:14:41] is flipping it back and forth between
+[00:14:44] market researcher bot to make sure that
+[00:14:45] it has the right context. is going into
+[00:14:48] the Google Docs which I've connected
+[00:14:49] through uh the MCP to be able to
+[00:14:52] actually look at the comments, look at
+[00:14:54] the feedback and incorporate into a new
+[00:14:56] draft. So, it's telling me, okay, it's
+[00:14:58] I'm reading your comments now. I'm going
+[00:15:00] to update the brief, expand the landing
+[00:15:02] page outline, and then start drafting uh
+[00:15:05] search ad variance inside the sheet,
+[00:15:07] which is great because that's typically
+[00:15:08] how performance marketers work.
+[00:15:12] Now, while this is happening, it's
+[00:15:14] reddrafting the file. I'm actually going
+[00:15:16] to flip over to my performance marketer.
+[00:15:18] I'm going to say, "Hey, performance
+[00:15:21] marketer. Uh, I would like you to start
+[00:15:24] creating a shell campaign inside of
+[00:15:26] Google Ads. And what I want you to do is
+[00:15:28] build it so that it's optimizing for
+[00:15:30] clicks because we're going to do some
+[00:15:31] copy and messaging testing that's being
+[00:15:33] drafted by the product marketer right
+[00:15:36] now.
+[00:15:37] So, before this demo, I actually hooked
+[00:15:40] up um this bot into my our Google Ads
+[00:15:44] account. What's happening is it now has
+[00:15:45] access to it. And when I kick this off,
+[00:15:48] it'll actually go into it and you'll be
+[00:15:49] able to see because it'll show
+[00:15:51] screenshots of how it's starting that
+[00:15:52] build and it'll be able to actually do
+[00:15:54] the clicks for me um and start the shell
+[00:15:57] campaign that can start uh trafficing
+[00:15:59] the ad copy into.
+[00:16:03] So, let's flip back to product marketer.
+[00:16:06] There's an updated brief. We can open
+[00:16:09] it. Comments are resolved.
+[00:16:14] Looks like it's in a good state. It has
+[00:16:16] a fuller landing page outline uh that we
+[00:16:20] can implement. It also has more built
+[00:16:22] out campaign variants which I believe
+[00:16:24] are also inside this sheet where it has
+[00:16:28] variant name, hypothesis, ad group name,
+[00:16:30] etc. as well as the URLs and then it's
+[00:16:34] also built some additional copy variants
+[00:16:36] here. So all this is happening in the
+[00:16:38] background. You know I've kicked off two
+[00:16:39] or three jobs in parallel. Um, but the
+[00:16:42] best part is that they're all sharing
+[00:16:43] context with each other while not
+[00:16:45] tripping over themselves to get their
+[00:16:46] work done.
+[00:16:49] Okay, this is feeling pretty good. What
+[00:16:50] I'm going to do now is I'm going to go
+[00:16:52] to website ops and I'm going to tell
+[00:16:54] them, okay, so landing page outline is
+[00:16:58] drafted. What I want you to do now is
+[00:17:01] take the landing page from the latest
+[00:17:03] brief that the product marketer just
+[00:17:04] drafted and spin up a PR to actually
+[00:17:07] push that as a new landing page into the
+[00:17:09] website and send me screenshots as
+[00:17:11] you're working so I can keep monitoring
+[00:17:13] your progress
+[00:17:18] on the back end. Again, this bot is
+[00:17:21] hooked up into our repo. It has access
+[00:17:24] right access to our landing page and our
+[00:17:26] marketing site. So, it's now able to
+[00:17:28] actually leverage what's under the hood
+[00:17:30] is cursor to be able to go write the
+[00:17:32] code, look at the copy, get the handoff
+[00:17:34] from the product marketer and actually
+[00:17:36] ship a new landing page to the marketing
+[00:17:38] site.
+[00:17:41] So, it's going to pull down the latest
+[00:17:42] product marketer brief. It's going to
+[00:17:44] open the PR. It's also going to show me
+[00:17:46] progress screenshots as it works.
+[00:17:50] Meanwhile, if we go back to performance
+[00:17:52] marketer, um, it's successfully gone and
+[00:17:55] found the copy that was drafted. Uh, it
+[00:18:00] has shown me some screenshots of it
+[00:18:03] actually starting to build the campaign
+[00:18:05] inside of the platform. And we'll let
+[00:18:07] this keep running as we finish up the
+[00:18:09] landing page.
+[00:18:13] Okay.
+[00:18:15] So, you can see how it's working
+[00:18:17] through. uh it is going to take a
+[00:18:20] landing page, it's going to update it
+[00:18:21] with the latest full uh paid landing
+[00:18:25] page outline that's passed off from the
+[00:18:26] product marketer and we'll actually be
+[00:18:28] able to ship this and you know ship it
+[00:18:31] to production um and see the updates
+[00:18:33] come to life.
+[00:18:37] Okay. So, while this is running, um I
+[00:18:39] would would like to show a feature that
+[00:18:43] uh I think is really special. It's quite
+[00:18:44] unique from the way that you might be
+[00:18:46] using other a AI agents now, which is
+[00:18:48] our sharing feature. Um, so something
+[00:18:52] really unique about Grockbot is that
+[00:18:54] while you can create these really
+[00:18:56] robust, powerful bots within your
+[00:18:59] workflow that are customized to the way
+[00:19:01] you work, you can continue to feed it
+[00:19:03] context and memory and build routines.
+[00:19:06] You can also turn those into templates.
+[00:19:09] And this is where I'll show you. You
+[00:19:11] share as a template. You're prompting it
+[00:19:13] to say, "Hey, I want you to create a
+[00:19:15] template of yourself that I can then
+[00:19:17] share with someone else." And the
+[00:19:19] implications of that are pretty powerful
+[00:19:20] because that means you can not only take
+[00:19:23] a snapshot of your bot in time and turn
+[00:19:26] that into a duplicatable
+[00:19:29] uh bot and agent that you can share with
+[00:19:31] your team but also people externally.
+[00:19:34] And what that means is for the receiver,
+[00:19:36] they are then have access to literally
+[00:19:39] the way you work because you've injected
+[00:19:41] all this context, your expertise, your
+[00:19:44] specialization directly into this bot
+[00:19:46] and they can easily take it, copy and
+[00:19:49] paste it directly into their Grockbot
+[00:19:51] instance and then start using it uh
+[00:19:53] exactly the way you would.
+[00:19:58] All right. So, uh, looks like it is
+[00:20:02] working on getting this page up.
+[00:20:06] It's still writing the page in the PR
+[00:20:09] and it'll show me when the preview is
+[00:20:11] up. So, while that's working, what we've
+[00:20:13] done so far, just as a quick recap, we
+[00:20:15] started with the market researcher.
+[00:20:18] We asked it to do an audit of our
+[00:20:20] product page, understand the product,
+[00:20:22] identify identify competitors, and then
+[00:20:25] give us strategic guidance on the gaps
+[00:20:27] and opportunities. That was passed off
+[00:20:29] to the product marketer to then draft up
+[00:20:32] a positioning brief, which it did in
+[00:20:34] Google Docs. I was then able to go into
+[00:20:36] that document, leave comments and
+[00:20:37] feedback, and then go back to the bot
+[00:20:39] and say, "Hey, fix this." The same way
+[00:20:42] that you might give feedback to someone
+[00:20:43] on your team when they're drafting a
+[00:20:44] document. It's done that rev. and come
+[00:20:47] back and said, "Great, I did that. I
+[00:20:49] also created an outline for a paid paid
+[00:20:52] landing page, and I'm also drafted this
+[00:20:55] copy that you can then traffic into your
+[00:20:57] ads."
+[00:20:59] That outline is now being worked on by
+[00:21:01] the website ops, which I'll give it um
+[00:21:04] it's currently working through this, and
+[00:21:06] that is going to be turned into a
+[00:21:07] landing page update that I'll push up
+[00:21:09] and we'll be able to host on uh the main
+[00:21:12] site.
+[00:21:14] performance marketer has started to
+[00:21:15] build the campaigns, built the shell,
+[00:21:17] and that copy is being fed into the way
+[00:21:20] that the campaign will be structured so
+[00:21:21] that we're getting that message test
+[00:21:23] live. And as this is running, um, rather
+[00:21:27] than needing to actually push the
+[00:21:29] campaign live here, because that would
+[00:21:30] require obviously like some additional
+[00:21:32] guidance on spending the budget and
+[00:21:34] hooking up a credit card, um, I've
+[00:21:36] actually already launched a campaign uh,
+[00:21:38] this week. And so what I'm going to do
+[00:21:40] is actually tell my marketing analyst,
+[00:21:42] hey, you're already hooked up to my
+[00:21:44] Google Ads account. I want you to
+[00:21:45] actually pull down that data and give me
+[00:21:48] insight and analysis into how the test
+[00:21:50] performed.
+[00:21:52] Hey, marketing analyst, what I want you
+[00:21:54] to do now is go into Google Ads. I want
+[00:21:58] you to pull down the data from our last
+[00:22:01] uh experiment on messaging, analyze it,
+[00:22:05] tell me the TLDDR of the insights, and
+[00:22:08] then give me recommendations on how we
+[00:22:10] should incorporate it into our marketing
+[00:22:12] strategy as well as update the other
+[00:22:13] assets that you've seen.
+[00:22:26] Okay. So, what this is doing now, it's
+[00:22:27] actually going into uh Google Ads
+[00:22:30] platform. It has access through that
+[00:22:32] through the API. It's going to pull down
+[00:22:34] the information, pull down the data, and
+[00:22:36] it'll be able to structure it into an
+[00:22:37] analysis that's all going to be living
+[00:22:39] within this chat here.
+[00:22:42] So, it gives me the TLDDR. It's pulled
+[00:22:44] this copy test down from copy from the
+[00:22:47] Google ads. Um, it has a clear winner uh
+[00:22:50] that's analyzed across different
+[00:22:51] variants of brand, customer promise,
+[00:22:53] hours in between, cheap that cost a day,
+[00:22:55] etc. Um, it has key metrics, spend, CTR,
+[00:22:59] CVR, etc. All the things that we care
+[00:23:01] about. I think most importantly, what
+[00:23:03] it's done is it's actually made
+[00:23:04] recommendations. And this is obviously
+[00:23:06] where there's some debate of how much,
+[00:23:09] you know, liberty do you give your agent
+[00:23:10] to, you know, actually make those
+[00:23:12] decisions for you. But I think in this
+[00:23:14] case, it's making recommendations that I
+[00:23:15] can then intake, you know, discuss with
+[00:23:19] the team, but also guide it to actually
+[00:23:21] make decisions on my behalf. Um but it's
+[00:23:24] made that entire process smooth and
+[00:23:27] without any dependencies that you might
+[00:23:29] otherwise have uh in a traditional or
+[00:23:33] okay so now we've finally gone through
+[00:23:35] every single piece research positioning
+[00:23:38] landing page which I will nudge one more
+[00:23:41] time push the page to prod
+[00:23:45] uh building the campaign inside a bot uh
+[00:23:48] that has access into your account from
+[00:23:50] the Grockbot instance
+[00:23:53] We've run the analysis. Let's pull that
+[00:23:55] down. And you might have noticed that
+[00:23:58] during this entire demo, I have to be
+[00:24:00] the one actually orchestrating. And to
+[00:24:03] go back to my earlier point, that's
+[00:24:04] really where the taxes, right? It's a
+[00:24:06] context switching. It's a having to know
+[00:24:09] the players, understand who's good at
+[00:24:11] what, and sort of like trafficking and
+[00:24:13] managing that entire process across the
+[00:24:14] entire workflow. Um, and that is
+[00:24:17] actually something else that you can
+[00:24:18] dedicate or delegate to Grockbot.
+[00:24:22] So now with my next and final bot, which
+[00:24:25] is the project manager, what I'm going
+[00:24:26] to tell it to is to do is actually study
+[00:24:29] the entire orchestration flow that we
+[00:24:31] just went through and then automate it
+[00:24:33] so that I don't have to be managing the
+[00:24:36] context, information, and communication
+[00:24:37] between all the different bots all the
+[00:24:39] time.
+[00:24:41] Hey project manager, I want you to now
+[00:24:44] study and talk to each of the bots in my
+[00:24:46] team and understand what each of their
+[00:24:48] roles is in bringing a campaign to life.
+[00:24:51] I want you to also look at our
+[00:24:53] conversations and look at where I had to
+[00:24:55] interject or give guidance or give
+[00:24:57] feedback and weave that into the way
+[00:24:59] that you work with them. And I want you
+[00:25:02] to also now kick this off and automate
+[00:25:05] it completely with three new campaigns.
+[00:25:08] send me screenshots and progress updates
+[00:25:10] that can stay in the loop. And most
+[00:25:12] importantly, I want you to now be my
+[00:25:14] point of contact, meaning I don't want
+[00:25:15] to talk to any other bots. I only want
+[00:25:17] to talk to you to save myself the
+[00:25:19] context switching.
+[00:25:23] So, I've now delegated away the entire
+[00:25:27] process of a campaign build and
+[00:25:29] throughout that identified, okay,
+[00:25:30] there's like tax and additional work
+[00:25:33] needed to actually make a campaign
+[00:25:35] happen from start to end. And the final
+[00:25:37] piece is actually taking another step
+[00:25:39] back and saying I'm just going to have
+[00:25:42] Grockbot do that and play the role of
+[00:25:44] project manager, coordinator, handoffs,
+[00:25:47] sharing the context, pushing the team
+[00:25:49] along. And I think most importantly,
+[00:25:51] what's most valuable is the fact that
+[00:25:53] you no longer have to context switch and
+[00:25:55] be bombarded with five different
+[00:25:57] messages from different uh individuals
+[00:26:00] or bots on your team. And that gives you
+[00:26:02] the clarity to be able to zoom back out
+[00:26:05] and really start to direct and uh direct
+[00:26:09] your energy and time towards where the
+[00:26:10] most leverage is.
+[00:26:14] So you'll be able to see it's saying
+[00:26:16] that it's the only um this bot is now
+[00:26:18] the only point of contact here. It's
+[00:26:20] studying the five specialists and it's
+[00:26:22] going to create and kick off three net
+[00:26:26] new campaigns that it'll then show me
+[00:26:29] screenshots of. So, it's identified
+[00:26:31] these are the campaigns we're going to
+[00:26:33] do research, positioning, landing page
+[00:26:35] build, etc. That's all queued up. Um,
+[00:26:38] and it will continue to keep me in the
+[00:26:39] loop so that I can continue monitor, but
+[00:26:41] I don't have to be directly involved in
+[00:26:43] every step of the process.
+[00:26:49] All right. And finally, we have uh a
+[00:26:52] website that we built up and running.
+[00:26:56] It's shown that it's actually pushed it
+[00:26:58] to prod.
+[00:27:00] And if I ask it, give me the URL.
+[00:27:04] It'll also give me the URL
+[00:27:09] that we can open C. And so this is the
+[00:27:11] URL that we drafted, went through
+[00:27:13] positioning, etc., and actually pushed
+[00:27:14] up to prod all from the one place where
+[00:27:18] all the work is happening, the Grockbot
+[00:27:20] workspace.
+[00:27:24] Okay. And that's it. That's our demo.
+[00:27:28] [applause]
+[00:27:32] So, just to wrap that up, um, what have
+[00:27:34] we learned by going through an entire
+[00:27:37] campaign build from start to end?
+[00:27:40] The first point is, uh, what's really
+[00:27:42] important when you're starting off with
+[00:27:43] Grockbot is to ensure that you're
+[00:27:45] scoping your bots properly. And the way
+[00:27:47] that I like to think about this is that
+[00:27:49] when you identify a bot or a job that
+[00:27:51] needs to be done, it's almost like
+[00:27:52] crafting a job description. Meaning
+[00:27:55] you're identifying a new teammate that
+[00:27:56] you need help from. You understand the
+[00:27:59] swim lanes and roles and
+[00:28:00] responsibilities and you're ensuring
+[00:28:02] that it's scoped tightly to ensure that
+[00:28:05] they are specialized and they're able to
+[00:28:07] get that specific uh piece of work done.
+[00:28:11] Uh because that's the way you squeeze
+[00:28:12] the most efficiency out of your team of
+[00:28:14] bots.
+[00:28:16] Second, you want to trust your bots. Uh
+[00:28:18] as you might have seen, these teammates
+[00:28:21] are ambitious. They're proactive.
+[00:28:23] They're hungry. They want to do your
+[00:28:25] work. And that starts with giving them
+[00:28:26] the access they need. Meaning, one of
+[00:28:28] the first steps you might take is
+[00:28:30] hooking them up into your Slack
+[00:28:32] instance, your email, and actually maybe
+[00:28:34] asking it like, "Hey, go study all the
+[00:28:37] context, all the messages, all of my
+[00:28:38] organizational history, and tell me what
+[00:28:40] you can do for me and take a take a job
+[00:28:42] off my plate." Um, but I think if you do
+[00:28:44] that, you give them the access, you
+[00:28:47] throw ambitious tasks against them,
+[00:28:49] you'll be surprised uh by what they're
+[00:28:51] capable of.
+[00:28:53] And finally, I've said this over and
+[00:28:54] over, but you want to invest in your
+[00:28:56] bots. They really get better and better
+[00:28:57] over time. You know, the point of
+[00:28:59] collaboration between botto is something
+[00:29:01] that gets uh more organic, especially as
+[00:29:03] you prompt it. Um, but they also improve
+[00:29:06] steadily as you start to feed it more
+[00:29:07] feedback, more context, more memory,
+[00:29:10] similar to how you might work or manage
+[00:29:12] a teammate, where the more feedback you
+[00:29:14] give them, the more time you invest into
+[00:29:15] them, the more they'll compound in value
+[00:29:17] and be able to take more and more off
+[00:29:18] your plate.
+[00:29:20] Lastly, here's a plug. Uh, this QR code
+[00:29:24] goes to our bot marketplace. And the
+[00:29:26] marketplace is actually where we take
+[00:29:28] the very best bot templates like the
+[00:29:31] ones that I shared, um, and host them.
+[00:29:34] Meaning, you might be able to create
+[00:29:35] your own bots and prompt them and build
+[00:29:37] up, you know, really rich context and
+[00:29:39] memory, but you can also just copy
+[00:29:41] others. And that's what I did is when
+[00:29:43] building out this demo, I crowdsourced
+[00:29:45] across the entire team. I said, "Hey,
+[00:29:47] who has the best positioning bot? who
+[00:29:48] has the best ads bought, etc. Um, and
+[00:29:51] you can find all of those on our
+[00:29:52] marketplace. So, I can encourage you to
+[00:29:53] go here and be able to copy them down.
+[00:29:58] And with that, that's it for me. Thank
+[00:30:00] you so much for your time. And I believe
+[00:30:02] we have some time for questions.

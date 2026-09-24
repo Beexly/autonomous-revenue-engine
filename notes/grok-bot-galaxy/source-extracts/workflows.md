@@ -1,0 +1,149 @@
+- Products
+
+- Solutions
+
+- Developer
+
+- Company
+
+- Pricing
+
+- News
+
+Contact Sales
+
+Try for free
+
+Products
+
+GrokBusinessGovernment
+
+Download
+
+iOSAndroidGrok on XGrok Bot
+
+Developers
+
+API ConsoleDocumentationGrok Build
+
+Try for free
+
+Back to newsJul 23, 2026
+
+## Workflows in Grok Build
+
+Grok Build can now write and run workflows: orchestration scripts that fan a task out across hundreds of parallel agents, verify the results, and report back in one background run.
+
+Try Free
+
+Grok Build can now run workflows: describe a large task in plain language, and Grok plans it, fans it out across hundreds of parallel agents in the background, and reports back when everything is done. Your session stays free the whole time.
+
+~/dev/relay
+
+|
+
+8.42%|
+
+❯can you create and run a workflow to review https://github.com/acme-corp/relay/pull/4821
+
+─Workflows─
+
+[✗]
+
+⋅pr-review0/0 agents · agents 0/128 (128 left) · 12s
+
+Multi-subagent GitHub PR review: fetch context, fan out specialist reviewers, adversarially verify findings, synthesize a ranked report
+
+Phases
+
+❯1Context
+
+2Review
+
+3Verify
+
+4Synthesize
+
+Context · 0 agents
+
+↑↓ phase · enter agent│p pause│x stop│s save│esc close
+
+Grok 4.5click to replay
+
+### When to use a workflow
+
+Workflows are built for complex, multi-faceted tasks a single conversation can't hold: reviewing every feature in a large PR, triaging the last 100 issues, auditing a codebase for one class of bug. If the work splits into many independent pieces and should end in one clear report, ask for a workflow.
+
+### How it works
+
+Grok plans the task as a small script: the phases of work, the agents in each phase, and how their results roll up. Each agent starts with a clean, focused context, and the plan can build in checks a single pass can't, like independent skeptics verifying every finding before it reaches the final report.
+
+Runs get a budget of 128 agents, and up to 1,024 for big jobs. Progress is saved as the run goes, so pausing and resuming never redoes finished work. Run /workflows to watch it live, phase by phase, with per-agent token counts.
+
+### Saving and reusing workflows
+
+Grok authors the workflow from your request, smoke-checks it before launching, and improves it between runs; you never write the script yourself. When one works, keep it: workflows in .grok/workflows/ are shared with your team, and ones in ~/.grok/workflows/ follow you everywhere. Each saved workflow becomes its own slash command that takes arguments, so once you keep the PR review from the demo above, the next review is just /pr-review 5137.
+
+/deep-research ships built in: it fans research questions out to parallel investigators, verifies every claim against its sources, and returns a cited report.
+
+### Try it today
+
+Some examples to try:
+
+- "use a workflow to review each feature in this PR"
+
+- "triage the last 100 Linear issues and give me a top-10 action list"
+
+- "audit every route handler for missing auth checks, and verify each finding"
+
+#### Install Grok Build
+
+$ curl -fsSL https://x.ai/cli/install.sh | bash
+
+Try Free
+
+© 2026 SpaceXAI LLC
+
+Built with Grok
+
+Products
+
+ChatBuildImagineVoiceBotGrokipedia
+
+Download
+
+grok.comiOSAndroidGrok on X
+
+Solutions
+
+BusinessGovernmentCustomer SupportLegalSecurityUse Cases
+
+Grok Bot
+
+OverviewMarketplaceGuidesUse Cases
+
+Developers
+
+API OverviewPricingModelsConsoleChangelogDocsStatus
+
+Enterprise
+
+Contact SalesFAQsBAADPA
+
+Company
+
+AboutColossusCareersNewsContact
+
+Trust
+
+SafetySecurityPrivacy PortalSubprocessorsHelp Center
+
+Legal
+
+TermsEnterprise TermsPrivacyCookiesAUPBrand
+
+Social
+
+@SpaceXAI@grokDiscord
+
+Built with Grok

@@ -1,0 +1,778 @@
+{
+ "count": 81,
+ "installs": [
+  {
+   "name": "AI Search Visibility",
+   "author": "Adam Tanguay",
+   "add_href": "/bot/BFiw9Y7BzTQ-3jFBAro1X",
+   "page": "https://x.ai/bot/marketplace/bots/ai-search-visibility",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Account Research Desk",
+   "author": "Anoop Baliga",
+   "add_href": "/bot/O3iqVd_ZrdRtrDJpxcKss",
+   "page": "https://x.ai/bot/marketplace/bots/account-book",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Ad Spend Watch",
+   "author": "Miguel Cruz",
+   "add_href": "/bot/MK5zStpj_As8CsRwg3r6w",
+   "page": "https://x.ai/bot/marketplace/bots/fuse",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Alfred",
+   "author": "Robin Delta",
+   "add_href": "/bot/p7Gh6HIrfv4AGzIow6-9X",
+   "page": "https://x.ai/bot/marketplace/bots/alfred",
+   "categories": [
+    "Operations"
+   ]
+  },
+  {
+   "name": "Apple Search Ads Review",
+   "author": "Chris Everett",
+   "add_href": "/bot/gadc3bVOsg9iIwmzAGRve",
+   "page": "https://x.ai/bot/marketplace/bots/apple-search-ads-review",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Call Follow-Ups",
+   "author": "Daniel Brill",
+   "add_href": "/bot/estQ8HWdKqhheDNmOGjcy",
+   "page": "https://x.ai/bot/marketplace/bots/call-follow-ups",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Chief Health Officer",
+   "author": "AJAC",
+   "add_href": "/bot/PwWb6fJXpeG857af6tEYi",
+   "page": "https://x.ai/bot/marketplace/bots/chief-health",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "Clip Bot",
+   "author": "This Week in AI",
+   "add_href": "/bot/-L1yFJ5mtwPgn3O_iYUo_",
+   "page": "https://x.ai/bot/marketplace/bots/clip-bot",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Company Docs Q&A",
+   "author": "Anoop Baliga",
+   "add_href": "/bot/GVAnpUah1K6PzJtG9EuG9",
+   "page": "https://x.ai/bot/marketplace/bots/company-docs-q-a",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Competitor Watch",
+   "author": "Shimecki",
+   "add_href": "/bot/aw0Zj54sIsAK7vMnajdz0",
+   "page": "https://x.ai/bot/marketplace/bots/competitor-watching",
+   "categories": [
+    "Product"
+   ]
+  },
+  {
+   "name": "Cooper",
+   "author": "Tommy Hansen",
+   "add_href": "/bot/8hhdYqfvRzigWstUtcmBZ",
+   "page": "https://x.ai/bot/marketplace/bots/cooper",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Copy Humanizer",
+   "author": "Massimo De Luisa",
+   "add_href": "/bot/YwxIbVEWqXN-HYCxiMCoB",
+   "page": "https://x.ai/bot/marketplace/bots/human-copywriter",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Credit Card Max",
+   "author": "Trevin Chow",
+   "add_href": "/bot/q4u8YgzGQqCAOUZcg0Lgt",
+   "page": "https://x.ai/bot/marketplace/bots/credit-card-max",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "Critiquito: Design Critique",
+   "author": "Manuel Muñoz Solera",
+   "add_href": "/bot/NqdH9qGvrq-yWRaXhJGM-",
+   "page": "https://x.ai/bot/marketplace/bots/critiquito",
+   "categories": [
+    "From Grok Bot Team",
+    "Design"
+   ]
+  },
+  {
+   "name": "Customer Call Coach & Assistant",
+   "author": "Anoop Baliga",
+   "add_href": "/bot/v1lSvhJCo4UrNGZxc5Fw8",
+   "page": "https://x.ai/bot/marketplace/bots/customer-call-coach",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Customer Proof Desk",
+   "author": "Anoop Baliga",
+   "add_href": "/bot/AamPlGjd2lIdDv6seEMXR",
+   "page": "https://x.ai/bot/marketplace/bots/customer-stories",
+   "categories": [
+    "Sales"
+   ]
+  },
+  {
+   "name": "Deal Hunting",
+   "author": "Shimecki",
+   "add_href": "/bot/yTeKCLayahHnMdHFG9GJg",
+   "page": "https://x.ai/bot/marketplace/bots/deal-hunting",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "Deal Inspector",
+   "author": "Jon Grigull",
+   "add_href": "/bot/vZfC76-4UC1XU7qC4m726",
+   "page": "https://x.ai/bot/marketplace/bots/deal-qualification",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "EBR & Value Deck Builder",
+   "author": "Krista Letz",
+   "add_href": "/bot/yA2-Ti3sPVNFO-zRzkwuX",
+   "page": "https://x.ai/bot/marketplace/bots/ebr-value-deck-builder",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Event Producer",
+   "author": "Jenna Nanpei",
+   "add_href": "/bot/wtEIGNZ8oipDDVQTDHMPB",
+   "page": "https://x.ai/bot/marketplace/bots/event-producer",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Event Request Desk",
+   "author": "Emma Weyrauch",
+   "add_href": "/bot/hp7QlVUPuYUp09kc6IFAA",
+   "page": "https://x.ai/bot/marketplace/bots/event-request-desk",
+   "categories": [
+    "From Grok Bot Team",
+    "Operations"
+   ]
+  },
+  {
+   "name": "Executive Assistant",
+   "author": "Natasha Kuo",
+   "add_href": "/bot/_DnP777DCicZpaTtm9_h5",
+   "page": "https://x.ai/bot/marketplace/bots/frank",
+   "categories": [
+    "From Grok Bot Team",
+    "Operations"
+   ]
+  },
+  {
+   "name": "Flora: Plant Care Log",
+   "author": "Rich Silver",
+   "add_href": "/bot/dGYdqS9vLSXpxoNCPBHys",
+   "page": "https://x.ai/bot/marketplace/bots/flora",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "GTM Account Research",
+   "author": "Stefan Markarian",
+   "add_href": "/bot/B6nsTFJlkGP4R-BbdIzeV",
+   "page": "https://x.ai/bot/marketplace/bots/account-research",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "GTM Connections",
+   "author": "Brian Joseph",
+   "add_href": "/bot/aUF_wTHXGWKU3-QPm6PmN",
+   "page": "https://x.ai/bot/marketplace/bots/warm-intro-finder",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "GTM Loop Closer",
+   "author": "Jon Grigull",
+   "add_href": "/bot/gj3IlHOOpzecm6xpmPJOt",
+   "page": "https://x.ai/bot/marketplace/bots/follow-through-agent",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "GTM Prospecting",
+   "author": "Caro Scalercio",
+   "add_href": "/bot/RpAQeGjhzaiO6_Rq_4fyC",
+   "page": "https://x.ai/bot/marketplace/bots/prospector",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Game Art Director",
+   "author": "Danny Limanseta",
+   "add_href": "/bot/KQnsHIvv4_Xk7HyhmewP3",
+   "page": "https://x.ai/bot/marketplace/bots/sable-game-art",
+   "categories": [
+    "Design"
+   ]
+  },
+  {
+   "name": "Haggle Bot",
+   "author": "Daniel Gartshein",
+   "add_href": "/bot/pwQ612YrX3R0eACnIMlom",
+   "page": "https://x.ai/bot/marketplace/bots/haggle-bot",
+   "categories": [
+    "From Grok Bot Team"
+   ]
+  },
+  {
+   "name": "Hiring Signals",
+   "author": "Simon Lackowski",
+   "add_href": "/bot/EbF8AR1wEHSWCGOp9D1qK",
+   "page": "https://x.ai/bot/marketplace/bots/hiring-activity-monitor",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Home robots",
+   "author": "Sawyer Merritt",
+   "add_href": "/bot/c47Jj2QSSR1UXEcuBgUtQ",
+   "page": "https://x.ai/bot/marketplace/bots/home-robots",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "Imogen",
+   "author": "Kent C. Dodds",
+   "add_href": "/bot/Eeu5NZp62OzQjtlY4ons2",
+   "page": "https://x.ai/bot/marketplace/bots/imogen",
+   "categories": [
+    "Design"
+   ]
+  },
+  {
+   "name": "Import Bot",
+   "author": "Shub Gaur",
+   "add_href": "/bot/HP4Q8GHtSIjbyGeI2vg7S",
+   "page": "https://x.ai/bot/marketplace/bots/import-bot",
+   "categories": [
+    "From Grok Bot Team",
+    "Personal"
+   ]
+  },
+  {
+   "name": "Lead Pipeline Desk",
+   "author": "Miguel Cruz",
+   "add_href": "/bot/oPDkINUfpUXhJDdsfRZht",
+   "page": "https://x.ai/bot/marketplace/bots/leadsworth",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Lingxi's Engineer Bot",
+   "author": "Lingxi Li",
+   "add_href": "/bot/SxqbG1NT5qEw7ggmHqQu_",
+   "page": "https://x.ai/bot/marketplace/bots/engineer-bot",
+   "categories": [
+    "From Grok Bot Team",
+    "Engineering"
+   ]
+  },
+  {
+   "name": "Love ❤️",
+   "author": "Danny Buck",
+   "add_href": "/bot/qDtCI8WZgVJKbN3rogL8j",
+   "page": "https://x.ai/bot/marketplace/bots/love",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "Luma Pages",
+   "author": "Jenna Nanpei",
+   "add_href": "/bot/jHT5FLhpCMx7JeIq9BEHY",
+   "page": "https://x.ai/bot/marketplace/bots/luma-pages",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Market Researcher",
+   "author": "Josh Kim",
+   "add_href": "/bot/xzkXiUbdYfPd7g30OhLGf",
+   "page": "https://x.ai/bot/marketplace/bots/market-researcher",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Marketing Analyst",
+   "author": "Josh Kim",
+   "add_href": "/bot/1RbG9yW5MpQ55XcQlJ0aQ",
+   "page": "https://x.ai/bot/marketplace/bots/marketing-analyst",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Meeting Recap Deck",
+   "author": "Krista Letz",
+   "add_href": "/bot/YklttiPpAHweKbOLV1TSF",
+   "page": "https://x.ai/bot/marketplace/bots/echo",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "NYC Parent",
+   "author": "Dennison",
+   "add_href": "/bot/cht7ytAhe3euOQy2wnEg9",
+   "page": "https://x.ai/bot/marketplace/bots/nyc-parent",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "Nightly Audit Engineer",
+   "author": "Lingxi Li",
+   "add_href": "/bot/0LLQmzk-yzwHi0zuiV0lC",
+   "page": "https://x.ai/bot/marketplace/bots/nightly-audit-engineer",
+   "categories": [
+    "From Grok Bot Team",
+    "Engineering"
+   ]
+  },
+  {
+   "name": "Office Ops Desk",
+   "author": "Erika Cabrera",
+   "add_href": "/bot/afZj-XnYkThA4MB7GfZK6",
+   "page": "https://x.ai/bot/marketplace/bots/office-ops-desk",
+   "categories": [
+    "From Grok Bot Team",
+    "Operations"
+   ]
+  },
+  {
+   "name": "Outbound Prospecting",
+   "author": "Krista Letz",
+   "add_href": "/bot/i03IaF768-ielyzegoGye",
+   "page": "https://x.ai/bot/marketplace/bots/pg",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Overheard",
+   "author": "Lenny Rachitsky",
+   "add_href": "/bot/NIEguoGUjA648fUPle8F5",
+   "page": "https://x.ai/bot/marketplace/bots/overheard",
+   "categories": []
+  },
+  {
+   "name": "Paid Media Report Desk",
+   "author": "Miguel Cruz",
+   "add_href": "/bot/qBFjPRQ3IbHG69qIFHblE",
+   "page": "https://x.ai/bot/marketplace/bots/tally",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Partnerships Call Coach",
+   "author": "Jenna Nanpei",
+   "add_href": "/bot/PlsyvUb0KnHIQr6psoy0L",
+   "page": "https://x.ai/bot/marketplace/bots/dan-lanning",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Performance Marketer",
+   "author": "Josh Kim",
+   "add_href": "/bot/JeNCKNe0ItsLMWYrLiRcb",
+   "page": "https://x.ai/bot/marketplace/bots/performance-marketer",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Pfp Bot",
+   "author": "Shub Gaur",
+   "add_href": "/bot/eFnHzlDcKdoA406SzZbNZ",
+   "page": "https://x.ai/bot/marketplace/bots/pfp-bot",
+   "categories": [
+    "From Grok Bot Team",
+    "Personal"
+   ]
+  },
+  {
+   "name": "Pipeline Pulse",
+   "author": "Krista Letz",
+   "add_href": "/bot/X-hZf_AreWNt-ZQPYs0Ev",
+   "page": "https://x.ai/bot/marketplace/bots/pipeline-health-and-forecast",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Pitch Deck Coach",
+   "author": "Hiten Shah",
+   "add_href": "/bot/zkVS-PkX1ooTE2nP21DPO",
+   "page": "https://x.ai/bot/marketplace/bots/pitch-deck-coach",
+   "categories": [
+    "Sales"
+   ]
+  },
+  {
+   "name": "Product Idea Stress Test",
+   "author": "Hiten Shah",
+   "add_href": "/bot/ph-u_zkF5Vui1GdGnysn9",
+   "page": "https://x.ai/bot/marketplace/bots/product-idea-stress-test",
+   "categories": [
+    "Product"
+   ]
+  },
+  {
+   "name": "Product Marketer",
+   "author": "Josh Kim",
+   "add_href": "/bot/nXp4Rp2trKV8AK-RC1Ohf",
+   "page": "https://x.ai/bot/marketplace/bots/product-marketer",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Product Support Inbox Assistant",
+   "author": "Anoop Baliga",
+   "add_href": "/bot/Rw8d83KAzTYQWBAtAscin",
+   "page": "https://x.ai/bot/marketplace/bots/customer-question-drafter",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Project Manager",
+   "author": "Josh Kim",
+   "add_href": "/bot/AMa1ig4YyoxfYtWFe7PLi",
+   "page": "https://x.ai/bot/marketplace/bots/marketing-project-manager",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Projects Manager",
+   "author": "Eric Zakariasson",
+   "add_href": "/bot/AZKaQOsjrAa51Nb4xvTur",
+   "page": "https://x.ai/bot/marketplace/bots/projects-manager",
+   "categories": [
+    "From Grok Bot Team",
+    "Engineering"
+   ]
+  },
+  {
+   "name": "Recruiting Coordinator",
+   "author": "Tommy Hansen",
+   "add_href": "/bot/KDahOjiDbbAvxqx9KaGcq",
+   "page": "https://x.ai/bot/marketplace/bots/mr-toms",
+   "categories": [
+    "From Grok Bot Team",
+    "Recruiting & People"
+   ]
+  },
+  {
+   "name": "Researchy",
+   "author": "Farzad",
+   "add_href": "/bot/i2hvaEONDg6_gEF5C9RlK",
+   "page": "https://x.ai/bot/marketplace/bots/researchy",
+   "categories": [
+    "Engineering"
+   ]
+  },
+  {
+   "name": "SEO & AEO Desk",
+   "author": "Adam Tanguay",
+   "add_href": "/bot/0IhyZWxwbf2cFmsmroZQL",
+   "page": "https://x.ai/bot/marketplace/bots/seo-aeo-desk",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Sales Call Coach",
+   "author": "Daniel Brill",
+   "add_href": "/bot/yZ5MFQFdl32vHt6fcIJAc",
+   "page": "https://x.ai/bot/marketplace/bots/sales-call-coach",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Sequencer",
+   "author": "Simon Lackowski",
+   "add_href": "/bot/6xnxd_CHg0cXVMQCwnRrZ",
+   "page": "https://x.ai/bot/marketplace/bots/sequencer",
+   "categories": [
+    "Sales"
+   ]
+  },
+  {
+   "name": "Signal Prospector",
+   "author": "Krista Letz",
+   "add_href": "/bot/wsbOPOkHApmIYLrErnC4e",
+   "page": "https://x.ai/bot/marketplace/bots/signal-prospector",
+   "categories": [
+    "From Grok Bot Team",
+    "Sales"
+   ]
+  },
+  {
+   "name": "Site Audit",
+   "author": "Shimecki",
+   "add_href": "/bot/_rzRrKKlUyBD3znUN5b3Q",
+   "page": "https://x.ai/bot/marketplace/bots/site-audit",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Stalk Bot",
+   "author": "Shub Gaur",
+   "add_href": "/bot/Y7iWVNiPdorgu6oFY-PRG",
+   "page": "https://x.ai/bot/marketplace/bots/stalk-bot",
+   "categories": [
+    "From Grok Bot Team",
+    "Product"
+   ]
+  },
+  {
+   "name": "Stills & Clips Desk",
+   "author": "Matt Palmer",
+   "add_href": "/bot/V8XugyLxzbQXLM9o5b3B-",
+   "page": "https://x.ai/bot/marketplace/bots/image-gen-bot",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Talent Discovery",
+   "author": "Tommy Hansen",
+   "add_href": "/bot/vIX2YW6rr6nQnf8-Rhyzc",
+   "page": "https://x.ai/bot/marketplace/bots/sherlock",
+   "categories": [
+    "From Grok Bot Team",
+    "Recruiting & People"
+   ]
+  },
+  {
+   "name": "Tech Demos",
+   "author": "Matt Palmer",
+   "add_href": "/bot/PaYvPhWPSynlUwFqMX7nc",
+   "page": "https://x.ai/bot/marketplace/bots/tech-demos",
+   "categories": [
+    "From Grok Bot Team",
+    "Personal"
+   ]
+  },
+  {
+   "name": "The Morning Newspaper",
+   "author": "Karen X. Cheng",
+   "add_href": "/bot/1xAJYJPes3X7dUM2mk9Di",
+   "page": "https://x.ai/bot/marketplace/bots/the-morning-newspaper",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "Tradbot",
+   "author": "Claire Vo",
+   "add_href": "/bot/wOE4e95HNxhSbrzyLkSI-",
+   "page": "https://x.ai/bot/marketplace/bots/tradbot-2",
+   "categories": []
+  },
+  {
+   "name": "Video Edit Desk",
+   "author": "X Freeze",
+   "add_href": "/bot/kGiyk73f5CF8XtBMIh0gW",
+   "page": "https://x.ai/bot/marketplace/bots/best-video-editor",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "WTD",
+   "author": "Jenna Nanpei",
+   "add_href": "/bot/Q3VCc_x0Y8lWd4m-rung2",
+   "page": "https://x.ai/bot/marketplace/bots/wtd",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Webby",
+   "author": "Farzad",
+   "add_href": "/bot/BX4-kOUI2CzphgiYLZ1hb",
+   "page": "https://x.ai/bot/marketplace/bots/webby",
+   "categories": [
+    "Personal"
+   ]
+  },
+  {
+   "name": "Website Ops",
+   "author": "Josh Kim",
+   "add_href": "/bot/NYDai_DOI_2pNDIKerrpD",
+   "page": "https://x.ai/bot/marketplace/bots/website-ops",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "Writing Bot",
+   "author": "Matt Palmer",
+   "add_href": "/bot/wtq-j01kD7o8gQFx7E9zv",
+   "page": "https://x.ai/bot/marketplace/bots/writing-bot",
+   "categories": [
+    "From Grok Bot Team",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "X Brief",
+   "author": "Dan McAteer",
+   "add_href": "/bot/RO8GwQZFXL9O95i13epqF",
+   "page": "https://x.ai/bot/marketplace/bots/x-brief",
+   "categories": [
+    "Marketing"
+   ]
+  },
+  {
+   "name": "dial bot",
+   "author": "Matt Palmer",
+   "add_href": "/bot/tIas6udS9kSXpcAz6LFd1",
+   "page": "https://x.ai/bot/marketplace/bots/dial-bot",
+   "categories": [
+    "From Grok Bot Team",
+    "Personal"
+   ]
+  },
+  {
+   "name": "dr eggbot",
+   "author": "Lauren Tan",
+   "add_href": "/bot/_jOdbfkB16zxu7MRcmReE",
+   "page": "https://x.ai/bot/marketplace/bots/dr-eggbot-v2",
+   "categories": [
+    "From Grok Bot Team"
+   ]
+  },
+  {
+   "name": "figma bro",
+   "author": "John Bai",
+   "add_href": "/bot/pXNvc_U2cGyZmheYrUuF_",
+   "page": "https://x.ai/bot/marketplace/bots/figma-bro",
+   "categories": [
+    "From Grok Bot Team",
+    "Design"
+   ]
+  },
+  {
+   "name": "last30days",
+   "author": "Matt Van Horn",
+   "add_href": "/bot/TxB-fy1KryaYJLYWBcGtT",
+   "page": "https://x.ai/bot/marketplace/bots/last30days",
+   "categories": [
+    "Product",
+    "Marketing"
+   ]
+  },
+  {
+   "name": "skippy",
+   "author": "Matt Palmer",
+   "add_href": "/bot/X4NHZvN9cvBBS5EgdjsLx",
+   "page": "https://x.ai/bot/marketplace/bots/skippy",
+   "categories": [
+    "From Grok Bot Team",
+    "Personal"
+   ]
+  },
+  {
+   "name": "tinkabot",
+   "author": "Lauren Tan",
+   "add_href": "/bot/-hmCmHB0ynJGvSKxeINfS",
+   "page": "https://x.ai/bot/marketplace/bots/tinkabot",
+   "categories": [
+    "From Grok Bot Team",
+    "Engineering"
+   ]
+  }
+ ]
+}

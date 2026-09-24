@@ -1,0 +1,92 @@
+[
+ {
+  "source": "raw/guides",
+  "name": "designing-grok-bot-with-grok-bot",
+  "words": 1349,
+  "links": 61,
+  "md": "extracted/guides/designing-grok-bot-with-grok-bot.md",
+  "author": "John Bai",
+  "date": "Aug 24, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "grok-bot-101",
+  "words": 1579,
+  "links": 64,
+  "md": "extracted/guides/grok-bot-101.md",
+  "author": "Matt Palmer",
+  "date": "Sep 11, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "grok-bot-for-engineering",
+  "words": 2229,
+  "links": 65,
+  "md": "extracted/guides/grok-bot-for-engineering.md",
+  "author": "Lingxi Li",
+  "date": "Sep 10, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "grok-bot-for-gtm",
+  "words": 1516,
+  "links": 61,
+  "md": "extracted/guides/grok-bot-for-gtm.md",
+  "author": "Krista Letz",
+  "date": "Aug 16, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "grok-bot-for-marketing",
+  "words": 1182,
+  "links": 69,
+  "md": "extracted/guides/grok-bot-for-marketing.md",
+  "author": "Josh Kim",
+  "date": "Sep 18, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "grok-bot-for-mobile-app-development",
+  "words": 1550,
+  "links": 63,
+  "md": "extracted/guides/grok-bot-for-mobile-app-development.md",
+  "author": "Ryan Perry",
+  "date": "Aug 25, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "grok-bot-for-pms",
+  "words": 1911,
+  "links": 60,
+  "md": "extracted/guides/grok-bot-for-pms.md",
+  "author": "Kevin Niparko",
+  "date": "Aug 15, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "grok-bot-for-support",
+  "words": 678,
+  "links": 66,
+  "md": "extracted/guides/grok-bot-for-support.md",
+  "author": "David Gan",
+  "date": "Sep 9, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "how-i-run-multiple-teams-of-grok-bots",
+  "words": 605,
+  "links": 58,
+  "md": "extracted/guides/how-i-run-multiple-teams-of-grok-bots.md",
+  "author": "Eric Zakariasson",
+  "date": "Aug 27, 2026"
+ },
+ {
+  "source": "raw/guides",
+  "name": "templates-for-grok-bot",
+  "words": 1118,
+  "links": 65,
+  "md": "extracted/guides/templates-for-grok-bot.md",
+  "author": "Matt Palmer",
+  "date": "Sep 8, 2026"
+ }
+]
