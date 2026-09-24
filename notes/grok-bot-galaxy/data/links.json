@@ -1,0 +1,3584 @@
+{
+ "bot": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "https://cursor.com/contact-sales?product=grok-bot",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://api2.cursor.sh/updates/download/stable/darwin-arm64/grok-bot-bd824e1890d8b96f",
+   "text": "Download"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Grok"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "/news/introducing-grok-bot",
+   "text": "Grok Bot is here • Read the launch post"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "Explore more bots"
+  },
+  {
+   "href": "https://cursor.com/bot/onboarding?product=grok-bot",
+   "text": "Get ProProPro+Ultra"
+  },
+  {
+   "href": "https://grok.com/plans?product=grok-bot",
+   "text": "Get SuperGrok PlusHeavy"
+  },
+  {
+   "href": "https://cursor.com/create-team?product=grok-bot",
+   "text": "Get StandardStandardPremium Teams"
+  },
+  {
+   "href": "https://grok.com/?product=grok-bot",
+   "text": "Already on an eligible Cursor, SuperGrok, or Teams plan? Grok Bot is included.Si"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "Read the guides"
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "bot_guides": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://api2.cursor.sh/updates/download/stable/darwin-arm64/grok-bot-bd824e1890d8b96f",
+   "text": "Download"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Grok"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "/bot/guides/grok-bot-101",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/grok-bot-for-engineering",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/grok-bot-for-support",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/templates-for-grok-bot",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/how-i-run-multiple-teams-of-grok-bots",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/grok-bot-for-marketing",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/grok-bot-for-mobile-app-development",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/designing-grok-bot-with-grok-bot",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/grok-bot-for-gtm",
+   "text": ""
+  },
+  {
+   "href": "/bot/guides/grok-bot-for-pms",
+   "text": ""
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "OverviewMarketplaceGuides"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "bot_marketplace": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://api2.cursor.sh/updates/download/stable/darwin-arm64/grok-bot-bd824e1890d8b96f",
+   "text": "Download"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Grok"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "All"
+  },
+  {
+   "href": "/bot/marketplace/from-grok-bot-team",
+   "text": "AllFrom Grok Bot Team"
+  },
+  {
+   "href": "/bot/marketplace/engineering",
+   "text": "AllFrom Grok Bot TeamEngineering"
+  },
+  {
+   "href": "/bot/marketplace/sales",
+   "text": "AllFrom Grok Bot TeamEngineeringSales"
+  },
+  {
+   "href": "/bot/marketplace/marketing",
+   "text": "AllFrom Grok Bot TeamEngineeringSalesMarketing"
+  },
+  {
+   "href": "/bot/marketplace/design",
+   "text": "AllFrom Grok Bot TeamEngineeringSalesMarketingDesign"
+  },
+  {
+   "href": "/bot/marketplace/personal",
+   "text": "AllFrom Grok Bot TeamEngineeringSalesMarketingDesignPersonal"
+  },
+  {
+   "href": "/bot/marketplace/recruiting-people",
+   "text": "AllFrom Grok Bot TeamEngineeringSalesMarketingDesignPersonalRecruiting & People"
+  },
+  {
+   "href": "/bot/marketplace/product",
+   "text": "AllFrom Grok Bot TeamEngineeringSalesMarketingDesignPersonalRecruiting & PeopleP"
+  },
+  {
+   "href": "/bot/marketplace/operations",
+   "text": "AllFrom Grok Bot TeamEngineeringSalesMarketingDesignPersonalRecruiting & PeopleP"
+  },
+  {
+   "href": "/bot/marketplace/bots/dr-eggbot-v2",
+   "text": "dr eggbotby Lauren Tan"
+  },
+  {
+   "href": "/bot/marketplace/bots/overheard",
+   "text": "dr eggbotby Lauren TanOverheardby Lenny Rachitsky"
+  },
+  {
+   "href": "/bot/marketplace/bots/tradbot-2",
+   "text": "dr eggbotby Lauren TanOverheardby Lenny RachitskyTradbotby Claire Vo"
+  },
+  {
+   "href": "/bot/marketplace/bots/projects-manager",
+   "text": "dr eggbotby Lauren TanOverheardby Lenny RachitskyTradbotby Claire VoProjects Man"
+  },
+  {
+   "href": "/bot/marketplace/bots/pg",
+   "text": "Outbound Prospecting by Krista LetzFinds prospects that match your ideal custome"
+  },
+  {
+   "href": "/bot/i03IaF768-ielyzegoGye",
+   "text": "Outbound Prospecting by Krista LetzFinds prospects that match your ideal custome"
+  },
+  {
+   "href": "/bot/marketplace/bots/seo-aeo-desk",
+   "text": "SEO & AEO Desk by Adam TanguayTurns your keywords into content ideas and writer-"
+  },
+  {
+   "href": "/bot/0IhyZWxwbf2cFmsmroZQL",
+   "text": "SEO & AEO Desk by Adam TanguayTurns your keywords into content ideas and writer-"
+  },
+  {
+   "href": "/bot/marketplace/bots/haggle-bot",
+   "text": "Haggle Bot by Daniel GartsheinInventories your SaaS spend from Ramp and bills, f"
+  },
+  {
+   "href": "/bot/pwQ612YrX3R0eACnIMlom",
+   "text": "Haggle Bot by Daniel GartsheinInventories your SaaS spend from Ramp and bills, f"
+  },
+  {
+   "href": "/bot/marketplace/bots/mr-toms",
+   "text": "Recruiting Coordinator by Tommy HansenSchedules interview loops, preps your inte"
+  },
+  {
+   "href": "/bot/KDahOjiDbbAvxqx9KaGcq",
+   "text": "Recruiting Coordinator by Tommy HansenSchedules interview loops, preps your inte"
+  },
+  {
+   "href": "/bot/marketplace/bots/researchy",
+   "text": "Researchy by FarzadA research and fact-check desk that runs every pass on the la"
+  },
+  {
+   "href": "/bot/i2hvaEONDg6_gEF5C9RlK",
+   "text": "Researchy by FarzadA research and fact-check desk that runs every pass on the la"
+  },
+  {
+   "href": "/bot/marketplace/bots/engineer-bot",
+   "text": "Lingxi's Engineer Bot by Lingxi LiA hands-off engineering supervisor. Boards wor"
+  },
+  {
+   "href": "/bot/SxqbG1NT5qEw7ggmHqQu_",
+   "text": "Lingxi's Engineer Bot by Lingxi LiA hands-off engineering supervisor. Boards wor"
+  },
+  {
+   "href": "/bot/marketplace/bots/tinkabot",
+   "text": "tinkabot by Lauren TanWraps an API into a Cursor/Agent Plugin (MCP + skills). Da"
+  },
+  {
+   "href": "/bot/-hmCmHB0ynJGvSKxeINfS",
+   "text": "tinkabot by Lauren TanWraps an API into a Cursor/Agent Plugin (MCP + skills). Da"
+  },
+  {
+   "href": "/bot/marketplace/bots/nightly-audit-engineer",
+   "text": "Nightly Audit Engineer by Lingxi LiA nightly engineering auditor that researches"
+  },
+  {
+   "href": "/bot/0LLQmzk-yzwHi0zuiV0lC",
+   "text": "Nightly Audit Engineer by Lingxi LiA nightly engineering auditor that researches"
+  },
+  {
+   "href": "/bot/marketplace/bots/follow-through-agent",
+   "text": "GTM Loop Closer by Jon GrigullFinds promises, follow-ups, and customer details l"
+  },
+  {
+   "href": "/bot/gj3IlHOOpzecm6xpmPJOt",
+   "text": "GTM Loop Closer by Jon GrigullFinds promises, follow-ups, and customer details l"
+  },
+  {
+   "href": "/bot/marketplace/bots/sales-call-coach",
+   "text": "Sales Call Coach by Daniel BrillScores your sales calls and tells you what to fi"
+  },
+  {
+   "href": "/bot/yZ5MFQFdl32vHt6fcIJAc",
+   "text": "Sales Call Coach by Daniel BrillScores your sales calls and tells you what to fi"
+  },
+  {
+   "href": "/bot/marketplace/bots/echo",
+   "text": "Meeting Recap Deck by Krista LetzTurns your meeting notes into a recap deck in y"
+  },
+  {
+   "href": "/bot/YklttiPpAHweKbOLV1TSF",
+   "text": "Meeting Recap Deck by Krista LetzTurns your meeting notes into a recap deck in y"
+  },
+  {
+   "href": "/bot/marketplace/bots/image-gen-bot",
+   "text": "Stills & Clips Desk by Matt PalmerPulls stills, thumbnails, and short clips out "
+  },
+  {
+   "href": "/bot/V8XugyLxzbQXLM9o5b3B-",
+   "text": "Stills & Clips Desk by Matt PalmerPulls stills, thumbnails, and short clips out "
+  },
+  {
+   "href": "/bot/marketplace/bots/clip-bot",
+   "text": "Clip Bot by This Week in AIFinds the best moments in a long recording and cuts t"
+  },
+  {
+   "href": "/bot/-L1yFJ5mtwPgn3O_iYUo_",
+   "text": "Clip Bot by This Week in AIFinds the best moments in a long recording and cuts t"
+  },
+  {
+   "href": "/bot/marketplace/bots/human-copywriter",
+   "text": "Copy Humanizer by Massimo De LuisaEdits and rewrites drafts, emails, and pages s"
+  },
+  {
+   "href": "/bot/YwxIbVEWqXN-HYCxiMCoB",
+   "text": "Copy Humanizer by Massimo De LuisaEdits and rewrites drafts, emails, and pages s"
+  },
+  {
+   "href": "/bot/marketplace/bots/imogen",
+   "text": "Imogen by Kent C. DoddsImogen the Impala Image Interpreter writes brief, copyabl"
+  },
+  {
+   "href": "/bot/Eeu5NZp62OzQjtlY4ons2",
+   "text": "Imogen by Kent C. DoddsImogen the Impala Image Interpreter writes brief, copyabl"
+  },
+  {
+   "href": "/bot/marketplace/bots/figma-bro",
+   "text": "figma bro by John BaiTurns a Figma frame into a build spec, and audits your comp"
+  },
+  {
+   "href": "/bot/pXNvc_U2cGyZmheYrUuF_",
+   "text": "figma bro by John BaiTurns a Figma frame into a build spec, and audits your comp"
+  },
+  {
+   "href": "/bot/marketplace/bots/critiquito",
+   "text": "Critiquito: Design Critique by Manuel Muñoz SoleraTurns a screenshot or Figma li"
+  },
+  {
+   "href": "/bot/NqdH9qGvrq-yWRaXhJGM-",
+   "text": "Critiquito: Design Critique by Manuel Muñoz SoleraTurns a screenshot or Figma li"
+  },
+  {
+   "href": "/bot/marketplace/bots/sable-game-art",
+   "text": "Game Art Director by Danny LimansetaTurns a game concept into a style guide, pal"
+  },
+  {
+   "href": "/bot/KQnsHIvv4_Xk7HyhmewP3",
+   "text": "Game Art Director by Danny LimansetaTurns a game concept into a style guide, pal"
+  },
+  {
+   "href": "/bot/marketplace/bots/credit-card-max",
+   "text": "Credit Card Max by Trevin ChowAdvises which credit card to use for a given purch"
+  },
+  {
+   "href": "/bot/q4u8YgzGQqCAOUZcg0Lgt",
+   "text": "Credit Card Max by Trevin ChowAdvises which credit card to use for a given purch"
+  },
+  {
+   "href": "/bot/marketplace/bots/home-robots",
+   "text": "Home robots by Sawyer MerrittControl home robots from chat: a Segway Navimow, a "
+  },
+  {
+   "href": "/bot/c47Jj2QSSR1UXEcuBgUtQ",
+   "text": "Home robots by Sawyer MerrittControl home robots from chat: a Segway Navimow, a "
+  },
+  {
+   "href": "/bot/marketplace/bots/flora",
+   "text": "Flora: Plant Care Log by Rich SilverFlora keeps a private houseplant care log an"
+  },
+  {
+   "href": "/bot/dGYdqS9vLSXpxoNCPBHys",
+   "text": "Flora: Plant Care Log by Rich SilverFlora keeps a private houseplant care log an"
+  },
+  {
+   "href": "/bot/marketplace/bots/import-bot",
+   "text": "Import Bot by Shub GaurBrings your setup from Claude Cowork, Codex, ChatGPT, Ope"
+  },
+  {
+   "href": "/bot/HP4Q8GHtSIjbyGeI2vg7S",
+   "text": "Import Bot by Shub GaurBrings your setup from Claude Cowork, Codex, ChatGPT, Ope"
+  },
+  {
+   "href": "/bot/marketplace/bots/sherlock",
+   "text": "Talent Discovery by Tommy HansenFinds candidates for open roles that match your "
+  },
+  {
+   "href": "/bot/vIX2YW6rr6nQnf8-Rhyzc",
+   "text": "Talent Discovery by Tommy HansenFinds candidates for open roles that match your "
+  },
+  {
+   "href": "/bot/marketplace/bots/stalk-bot",
+   "text": "Stalk Bot by Shub GaurSigns up for your competitors' newsletters and products un"
+  },
+  {
+   "href": "/bot/Y7iWVNiPdorgu6oFY-PRG",
+   "text": "Stalk Bot by Shub GaurSigns up for your competitors' newsletters and products un"
+  },
+  {
+   "href": "/bot/marketplace/bots/last30days",
+   "text": "last30days by Matt Van HornResearch what people actually say about any topic in "
+  },
+  {
+   "href": "/bot/TxB-fy1KryaYJLYWBcGtT",
+   "text": "last30days by Matt Van HornResearch what people actually say about any topic in "
+  },
+  {
+   "href": "/bot/marketplace/bots/competitor-watching",
+   "text": "Competitor Watch by ShimeckiTracks competitor pricing, product, and hiring pages"
+  },
+  {
+   "href": "/bot/aw0Zj54sIsAK7vMnajdz0",
+   "text": "Competitor Watch by ShimeckiTracks competitor pricing, product, and hiring pages"
+  },
+  {
+   "href": "/bot/marketplace/bots/product-idea-stress-test",
+   "text": "Product Idea Stress Test by Hiten ShahInvestigates a product or startup idea for"
+  },
+  {
+   "href": "/bot/ph-u_zkF5Vui1GdGnysn9",
+   "text": "Product Idea Stress Test by Hiten ShahInvestigates a product or startup idea for"
+  },
+  {
+   "href": "/bot/marketplace/bots/office-ops-desk",
+   "text": "Office Ops Desk by Erika CabreraTracks office shipments, facilities issues, and "
+  },
+  {
+   "href": "/bot/afZj-XnYkThA4MB7GfZK6",
+   "text": "Office Ops Desk by Erika CabreraTracks office shipments, facilities issues, and "
+  },
+  {
+   "href": "/bot/marketplace/bots/event-request-desk",
+   "text": "Event Request Desk by Emma WeyrauchScores every event, sponsorship, and speaking"
+  },
+  {
+   "href": "/bot/hp7QlVUPuYUp09kc6IFAA",
+   "text": "Event Request Desk by Emma WeyrauchScores every event, sponsorship, and speaking"
+  },
+  {
+   "href": "/bot/marketplace/bots/frank",
+   "text": "Executive Assistant by Natasha KuoEA chief-of-staff bot for exec support: confer"
+  },
+  {
+   "href": "/bot/_DnP777DCicZpaTtm9_h5",
+   "text": "Executive Assistant by Natasha KuoEA chief-of-staff bot for exec support: confer"
+  },
+  {
+   "href": "/bot/marketplace/bots/alfred",
+   "text": "Alfred by Robin DeltaDesigns, audits, and governs your Grok Bot organization so "
+  },
+  {
+   "href": "/bot/p7Gh6HIrfv4AGzIow6-9X",
+   "text": "Alfred by Robin DeltaDesigns, audits, and governs your Grok Bot organization so "
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "OverviewMarketplaceGuides"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "bot_use-cases": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://api2.cursor.sh/updates/download/stable/darwin-arm64/grok-bot-bd824e1890d8b96f",
+   "text": "Download"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Grok"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "https://cursor.com/contact-sales?product=grok-bot",
+   "text": "Download for macOSContact sales"
+  },
+  {
+   "href": "/bot/sc0a0ec3ce9c675824106",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s8ff03023f140bab479f7",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s59facc90a46a8b4f59da",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s5465ebb9e192551741f7",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sac3a109dfe021c555c7c",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s50bb9361d891bd788a23",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s2d62197e15bd11a1bd63",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s6d5f1cc3a564c8da972a",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sd4333bc337078a9752ac",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sa7d7f82d0068c2367a17",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sd6f165284d7fd2f25e56",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sfcf5d046a2784045938d",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s634fd63ee875502d8df9",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s297976f738dc390d23df",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s20b2c65ebeebb7362fa7",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/seb9d6ba6765c64113941",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sdeb02761a9d185e5899f",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sa2d131975aaab07e43f2",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sd358e6cf5e8bed188eec",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s162b4ed38d6cf1d56731",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sb94d44175e650dbb703e",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sb434ef300dea2b88aa58",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s2a289081613e5e361c79",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s1025e1ebe0b11f048bd4",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s0dfd5486dc759d409d69",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s47ebc74c9fcf9359b5a9",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sf813cbd3aadad1cfda46",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s229dcca5bc0eaa01b09c",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/scfddc8ad204a669484d0",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s4f048c7b7da9e010c2c3",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s066a9145d936e74d0c80",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s072bae9387b9fc03cac8",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s4d10d16bdbe2391aa753",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/se318a72a31fad75c277e",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s445a0c9a2ca4bea7729e",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/se479952f3c9e373dfd64",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s5d2839123b973b4480f9",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s9c881536413c0bbfa776",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s45471f3a8af234c13047",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s3c76c85a840b32b8fed8",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s98af8b9dcde521e1a9fa",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s2cfcbb8a38b8e22b7d18",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s25997c2d0308b4e76024",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s9e2a2591b97ca74fbeaa",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s8b59eb62f90871ac5c36",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s2e4acfb8db3cc0669a1b",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s4c86a54f188668096400",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s8173b3a9c49917de5b2d",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s1bde25ba45eca88ff276",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sb6d579c33f7a32d0e7af",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s634cb1edf26493e86be2",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sde2c69536d2f2564fe1b",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sb36667ce9e1fdc00cfe7",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s7aaf6431077930df326f",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/sc693906bdeded166b7ba",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/bot/s98a7368e786130ad172b",
+   "text": "Add to Grok Bot"
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "OverviewMarketplaceGuides"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "build": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Try for free"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "/news/grok-4-7",
+   "text": "NewMeet Grok 4.7 · Now powering Grok Build"
+  },
+  {
+   "href": "https://docs.x.ai/build/overview",
+   "text": "Read Docs"
+  },
+  {
+   "href": "/build/changelog",
+   "text": "Read Docs Changelog"
+  },
+  {
+   "href": "/open-source",
+   "text": "Read Docs Changelog Open Source"
+  },
+  {
+   "href": "https://grok.com/supergrok?referrer=grok-build",
+   "text": "Read docsTry now"
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "OverviewMarketplaceGuides"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "galaxy": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Try for free"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "https://youtu.be/zCqmTSF2ctg",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/gNysgEu-lew",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/hPE3A4Smkxc",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/tpDfoh5qPF8",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/SVZe46xaVTg",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/Iia8EF7niiA",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/BSB--jUnx9U",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/EA-sxwWK0Vs",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/EGt8FfTmTMY",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/db38-FgdaGQ",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://x.com/i/broadcasts/1AxRnZbVpjaxl",
+   "text": "Watch Day 1 on X"
+  },
+  {
+   "href": "https://x.com/i/broadcasts/1PKqrNyvmYwGb",
+   "text": "Watch Day 2 on X"
+  },
+  {
+   "href": "https://x.com/i/broadcasts/1YGNrbXEeazGw",
+   "text": "Watch Day 3 on X"
+  },
+  {
+   "href": "/bot",
+   "text": "Get Grok Bot"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "Get Grok BotExplore Grok Bot Guides"
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "galaxy_ssr": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Try for free"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "https://youtu.be/zCqmTSF2ctg",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/gNysgEu-lew",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/hPE3A4Smkxc",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/tpDfoh5qPF8",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/SVZe46xaVTg",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/Iia8EF7niiA",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/BSB--jUnx9U",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/EA-sxwWK0Vs",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/EGt8FfTmTMY",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://youtu.be/db38-FgdaGQ",
+   "text": "Watch on YouTube"
+  },
+  {
+   "href": "https://x.com/i/broadcasts/1AxRnZbVpjaxl",
+   "text": "Watch Day 1 on X"
+  },
+  {
+   "href": "https://x.com/i/broadcasts/1PKqrNyvmYwGb",
+   "text": "Watch Day 2 on X"
+  },
+  {
+   "href": "https://x.com/i/broadcasts/1YGNrbXEeazGw",
+   "text": "Watch Day 3 on X"
+  },
+  {
+   "href": "/bot",
+   "text": "Get Grok Bot"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "Get Grok BotExplore Grok Bot Guides"
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "grok_use-cases": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Try for free"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "/grok/use-cases/research-synthesis",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/market-monitoring",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/financial-analysis",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/code-planning",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/debugging",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/technical-docs",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/long-form-writing",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/marketing-copy",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/translation",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/voice-agents",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/document-processing",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/internal-tools",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/image-generation",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/image-editing",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/video-generation",
+   "text": ""
+  },
+  {
+   "href": "/grok/excel",
+   "text": ""
+  },
+  {
+   "href": "/grok/word",
+   "text": ""
+  },
+  {
+   "href": "/grok/powerpoint",
+   "text": ""
+  },
+  {
+   "href": "/grok/outlook",
+   "text": ""
+  },
+  {
+   "href": "/grok/workspace",
+   "text": ""
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "OverviewMarketplaceGuides"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "news": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Try for free"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "/news/grok-4-7",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-bot-customer-support",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-voice-transcribe-2",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-build-memory",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-bot-procurement",
+   "text": ""
+  },
+  {
+   "href": "/news/designing-grok-bot",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-bot-for-enterprise",
+   "text": ""
+  },
+  {
+   "href": "/news/biosafety-at-the-frontier",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-bot-and-x",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-6-microsoft-foundry",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-bot-more-plans",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-6-vertex-ai",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-6-amazon-bedrock",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-build-for-everyone",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-6-github-copilot",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-6",
+   "text": ""
+  },
+  {
+   "href": "/news/introducing-grok-bot",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-imagine-image-2",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-imagine-video-1-5-references",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-voice-think-fast-2",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-build-mode",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-github-copilot",
+   "text": ""
+  },
+  {
+   "href": "/news/introducing-google-workspace-addon",
+   "text": ""
+  },
+  {
+   "href": "/news/workflows",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-5-everywhere",
+   "text": ""
+  },
+  {
+   "href": "/news/introducing-outlook-addin",
+   "text": ""
+  },
+  {
+   "href": "/news/introducing-excel-addin",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-5",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-automations",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-build-open-source",
+   "text": ""
+  },
+  {
+   "href": "/news/new-flagship-voices",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-voice-agent-builder",
+   "text": ""
+  },
+  {
+   "href": "/news/introducing-goal",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-databricks",
+   "text": ""
+  },
+  {
+   "href": "/news/introducing-word-addin",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-amazon-bedrock",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-imagine-video-1-5",
+   "text": ""
+  },
+  {
+   "href": "/news/introducing-powerpoint-addin",
+   "text": ""
+  },
+  {
+   "href": "/news/agent-dashboard",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-warp",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-plugin-marketplace",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-imagine-1-5",
+   "text": ""
+  },
+  {
+   "href": "/news/composer-2-5",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-build-0-1",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-kilocode",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-build-cli",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-opencode",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-openclaw",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-skills",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-hermes",
+   "text": ""
+  },
+  {
+   "href": "/news/anthropic-compute-partnership",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-connectors",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-imagine-quality-mode",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-custom-voices",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-voice-think-fast-1",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-stt-and-tts-apis",
+   "text": ""
+  },
+  {
+   "href": "/news/xai-joins-spacex",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-imagine-api",
+   "text": ""
+  },
+  {
+   "href": "/news/series-e",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-business",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-collections-api",
+   "text": ""
+  },
+  {
+   "href": "/news/us-gov-dept-of-war",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-voice-agent-api",
+   "text": ""
+  },
+  {
+   "href": "/news/el-salvador-partnership",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-1-fast",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-goes-global",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-1",
+   "text": ""
+  },
+  {
+   "href": "/news/onegov",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4-fast",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-code-fast-1",
+   "text": ""
+  },
+  {
+   "href": "/news/government",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-4",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-3",
+   "text": ""
+  },
+  {
+   "href": "/news/series-c",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-1212",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-image-generation-release",
+   "text": ""
+  },
+  {
+   "href": "/news/api",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-2",
+   "text": ""
+  },
+  {
+   "href": "/news/series-b",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-1.5v",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-1.5",
+   "text": ""
+  },
+  {
+   "href": "/news/grok-os",
+   "text": ""
+  },
+  {
+   "href": "/news/prompt-ide",
+   "text": ""
+  },
+  {
+   "href": "/news/grok",
+   "text": ""
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "OverviewMarketplaceGuides"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "pricing": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Try for free"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "https://grok.com/?referrer=pricing",
+   "text": "Get Started"
+  },
+  {
+   "href": "https://grok.com/supergrok?referrer=pricing&target=supergrok",
+   "text": "Upgrade to SuperGrok"
+  },
+  {
+   "href": "https://grok.com/supergrok?referrer=pricing&target=supergrokplus",
+   "text": "Get SuperGrok Plus"
+  },
+  {
+   "href": "https://grok.com/supergrok?referrer=pricing&target=supergroklite",
+   "text": "Get Lite"
+  },
+  {
+   "href": "https://grok.com/supergrok?referrer=grok-build",
+   "text": "Get Heavy"
+  },
+  {
+   "href": "mailto:sales@x.ai",
+   "text": "Or email sales@x.ai"
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "OverviewMarketplaceGuides"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ],
+ "solutions_customer-support": [
+  {
+   "href": "/",
+   "text": ""
+  },
+  {
+   "href": "/grok",
+   "text": "Products"
+  },
+  {
+   "href": "/solutions",
+   "text": "Solutions"
+  },
+  {
+   "href": "/api",
+   "text": "Developer"
+  },
+  {
+   "href": "/company",
+   "text": "Company"
+  },
+  {
+   "href": "/pricing",
+   "text": "Pricing"
+  },
+  {
+   "href": "/news",
+   "text": "News"
+  },
+  {
+   "href": "/contact-sales",
+   "text": "Contact Sales"
+  },
+  {
+   "href": "https://grok.com/?referrer=website",
+   "text": "Try for free"
+  },
+  {
+   "href": "/grok/business",
+   "text": "GrokBusiness"
+  },
+  {
+   "href": "/grok/government",
+   "text": "GrokBusinessGovernment"
+  },
+  {
+   "href": "https://apps.apple.com/app/apple-store/id6670324846",
+   "text": "iOS"
+  },
+  {
+   "href": "https://play.google.com/store/apps/details?id=ai.x.grok",
+   "text": "iOSAndroid"
+  },
+  {
+   "href": "https://x.com/i/grok",
+   "text": "iOSAndroidGrok on X"
+  },
+  {
+   "href": "/bot#download",
+   "text": "iOSAndroidGrok on XGrok Bot"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-nav&utm_content=try-dropdown-api-console",
+   "text": "API Console"
+  },
+  {
+   "href": "https://docs.x.ai",
+   "text": "API ConsoleDocumentation"
+  },
+  {
+   "href": "/build",
+   "text": "API ConsoleDocumentationGrok Build"
+  },
+  {
+   "href": "/api/voice",
+   "text": "Contact SalesExplore Voice API"
+  },
+  {
+   "href": "/grok/use-cases/voice-agents",
+   "text": ""
+  },
+  {
+   "href": "/grok/use-cases/document-processing",
+   "text": ""
+  },
+  {
+   "href": "/api/imagine",
+   "text": "ChatBuildImagine"
+  },
+  {
+   "href": "/voice",
+   "text": "ChatBuildImagineVoice"
+  },
+  {
+   "href": "/bot",
+   "text": "ChatBuildImagineVoiceBot"
+  },
+  {
+   "href": "https://grokipedia.com",
+   "text": "ChatBuildImagineVoiceBotGrokipedia"
+  },
+  {
+   "href": "/solutions/customer-support",
+   "text": "BusinessGovernmentCustomer Support"
+  },
+  {
+   "href": "/solutions/legal",
+   "text": "BusinessGovernmentCustomer SupportLegal"
+  },
+  {
+   "href": "/solutions/security",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurity"
+  },
+  {
+   "href": "/grok/use-cases",
+   "text": "BusinessGovernmentCustomer SupportLegalSecurityUse Cases"
+  },
+  {
+   "href": "/bot/marketplace",
+   "text": "OverviewMarketplace"
+  },
+  {
+   "href": "/bot/guides",
+   "text": "OverviewMarketplaceGuides"
+  },
+  {
+   "href": "/bot/use-cases",
+   "text": "OverviewMarketplaceGuidesUse Cases"
+  },
+  {
+   "href": "https://docs.x.ai/developers/models",
+   "text": "API OverviewPricingModels"
+  },
+  {
+   "href": "https://console.x.ai?utm_source=website&utm_medium=referral&utm_campaign=site-footer&utm_content=developers-console",
+   "text": "API OverviewPricingModelsConsole"
+  },
+  {
+   "href": "/api/changelog",
+   "text": "API OverviewPricingModelsConsoleChangelog"
+  },
+  {
+   "href": "https://status.x.ai",
+   "text": "API OverviewPricingModelsConsoleChangelogDocsStatus"
+  },
+  {
+   "href": "/legal/faq-enterprise",
+   "text": "Contact SalesFAQs"
+  },
+  {
+   "href": "/legal/baa",
+   "text": "Contact SalesFAQsBAA"
+  },
+  {
+   "href": "/legal/data-processing-addendum",
+   "text": "Contact SalesFAQsBAADPA"
+  },
+  {
+   "href": "/colossus",
+   "text": "AboutColossus"
+  },
+  {
+   "href": "/careers",
+   "text": "AboutColossusCareers"
+  },
+  {
+   "href": "/contact",
+   "text": "AboutColossusCareersNewsContact"
+  },
+  {
+   "href": "/safety",
+   "text": "Safety"
+  },
+  {
+   "href": "/security",
+   "text": "SafetySecurity"
+  },
+  {
+   "href": "/privacy-portal",
+   "text": "SafetySecurityPrivacy Portal"
+  },
+  {
+   "href": "/legal/subprocessor-list",
+   "text": "SafetySecurityPrivacy PortalSubprocessors"
+  },
+  {
+   "href": "https://docs.x.ai/grok/user-guide",
+   "text": "SafetySecurityPrivacy PortalSubprocessorsHelp Center"
+  },
+  {
+   "href": "/legal",
+   "text": "Legal"
+  },
+  {
+   "href": "/legal/terms-of-service",
+   "text": "Terms"
+  },
+  {
+   "href": "/legal/terms-of-service-enterprise",
+   "text": "TermsEnterprise Terms"
+  },
+  {
+   "href": "/legal/privacy-policy",
+   "text": "TermsEnterprise TermsPrivacy"
+  },
+  {
+   "href": "/legal/cookie-policy",
+   "text": "TermsEnterprise TermsPrivacyCookies"
+  },
+  {
+   "href": "/legal/acceptable-use-policy",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUP"
+  },
+  {
+   "href": "/legal/brand-guidelines",
+   "text": "TermsEnterprise TermsPrivacyCookiesAUPBrand"
+  },
+  {
+   "href": "https://x.com/spacexai",
+   "text": "@SpaceXAI"
+  },
+  {
+   "href": "https://x.com/grok",
+   "text": "@SpaceXAI@grok"
+  },
+  {
+   "href": "https://discord.com/invite/kqCc86jM55",
+   "text": "@SpaceXAI@grokDiscord"
+  }
+ ]
+}

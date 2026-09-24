@@ -1,0 +1,326 @@
+{
+ "plans": [
+  "Free",
+  "SuperGrok Lite",
+  "SuperGrok",
+  "SuperGrok Plus",
+  "SuperGrok Heavy",
+  "Business",
+  "Enterprise"
+ ],
+ "rows": [
+  {
+   "feature": "Grok 4.6",
+   "availability": {
+    "Free": "yes",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Image generation (Imagine)",
+   "availability": {
+    "Free": "yes",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Video generation",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Web, iOS, Android apps",
+   "availability": {
+    "Free": "yes",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Grok Build",
+   "availability": {
+    "Free": "yes",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Grok Bot",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "no",
+    "Enterprise": "no"
+   }
+  },
+  {
+   "feature": "Real-time web + X search",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Expert",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Connectors",
+   "availability": {
+    "Free": "yes",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Team seat management",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Consolidated billing",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Role-based access control",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Custom RBAC",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "no",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Domain verification",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "User analytics",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "SOC 2 compliance (Type I & II)",
+   "availability": {
+    "Free": "yes",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "No training",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Custom data retention",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Single Sign-On (SSO)",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "no",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Directory Sync (SCIM)",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "no",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Advanced audit controls",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Customer-managed encryption keys",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "no",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Dedicated data plane",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "no",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Community support",
+   "availability": {
+    "Free": "yes",
+    "SuperGrok Lite": "yes",
+    "SuperGrok": "yes",
+    "SuperGrok Plus": "yes",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Priority support",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "yes",
+    "Business": "yes",
+    "Enterprise": "yes"
+   }
+  },
+  {
+   "feature": "Dedicated onboarding",
+   "availability": {
+    "Free": "no",
+    "SuperGrok Lite": "no",
+    "SuperGrok": "no",
+    "SuperGrok Plus": "no",
+    "SuperGrok Heavy": "no",
+    "Business": "no",
+    "Enterprise": "yes"
+   }
+  }
+ ],
+ "note": "Decoded from x.ai/pricing SSR HTML on 2026-09-23. 'yes' = check icon present, 'no' = dimmed minus icon. Prices for the individual plans come from the plan cards (Free $0, SuperGrok $30, SuperGrok Plus $100; Lite/Heavy/Business/Enterprise prices are not printed as plain text in the SSR HTML)."
+}

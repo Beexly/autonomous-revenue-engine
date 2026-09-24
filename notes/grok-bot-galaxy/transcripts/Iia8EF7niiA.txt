@@ -1,0 +1,409 @@
+I'm I'm Simon. I'm here on SpaceX's go to market team specifically in SDR and excited to talk about Grockbot specifically for this team. &gt;&gt; All right. So, at a high level, we'll be kind of going over what actually is Grockbot, why we use it internally, and
+
+then kind of dive into some of the actual like SDR use cases we use. Then I'll kind of demo actually what my environment looks like, and then we can kind of discuss that and go into a Q&amp;A
+
+from there. All right. So, first at a high level, I wanted to kind of discuss the actual AI maturity curve and what this looks like
+
+for STRs. So, starting out when I was using AI, I was just prompting back and forth with a chatbot. I'd do typical things like I'd ask, can you help me actually draft this email or kind of
+
+perfect this copy or do this account research for this specific account I'm looking at? And what we've seen kind of progress over the last year is first the
+
+idea of co-pilots. And so co-pilots are are AI that can actually go out and and carry out a true task. So instead of talking back and forth getting email copy and then copying that into your
+
+Gmail, it's something now that we see like actually having the AI go and basically hook up to a Gmail MCP or an API and be able to actually send that email off for you. And really with bot,
+
+what we believe is kind of the next frontier is actually automating entire job jobs in full. And so going beyond just a task and actually doing an endto-end workflow and really with the
+
+staff function of actually combining a team of bots, you can see how kind of automating a job but also combining that with different features of business like
+
+talking to RevOps or talking to your AE and getting context on an account and how bots can actually pull in that context for you and really help you do
+
+that full process. And so just diving into what Grockbot actually looks like if you haven't seen it before. So you have all your bots kind of here on the lefth hand side and
+
+they're doing different things like we have a sales outbound bot here. We have our chief of staff and you can message them just like you message your own teammates and more interestingly you can
+
+actually see them talk with each other. And I have my own rock button instance set up where really there's only one bot that I'm actually talking to. And so for
+
+for the most part I' I've kind of offloaded all that context to my chief of staff actually talking with other bots and and doing that all for me. And
+
+I think some important things also to emphasize here is that bots keep their own context at a perb bot level and memory. So they can really improve as
+
+you work more with them and as you go their memory gets better. And this is why I really emphasize you actually should be training your bots as well
+
+depending on the task with kind of the relevant info. So set up your Slack, set up your Gmail connector and you can actually kind of start to train it on what your voice looks like. And so
+
+specifically for Gmail, what I do is I've I've had it go into my Gmail and actually look at how do I actually talk to people and specifically in my outbound messages, how do I actually talk to people in a way where they actually want to respond and they're interested in kind of seeing a demo or something for and so I'll really go into
+
+more of what that actually looks like, how I place weights on certain things to actually help Grockbot understand this. But I think a big thing I want to talk about also is the ability to share your
+
+bots. And I'll dive into this more in the next slide, but I think as STRs, one of the most important things is being able to see what your teammates are actually doing and to kind of easily transfer those skills over to your other
+
+STRs. So you can actually really scale those outputs and do it very quickly. I think the truth at least at SpaceX of what we've seen is that what's working
+
+for us today was not working 3 months ago and 3 months before that it was something entirely different. And so the ability to really just move quickly and always be iterating is something that the ability to share bots is really going to help you with and help scale the entire SDR team.
+
+So diving into this more like why are we using Rockbot? I think to start it's as easy and as intuitive as just iMessage or another general platform. You can just talk to your bots and I think more
+
+importantly bots are always on and so you don't have to walk around with your laptop open anymore. You can actually close it. I can go on coffee walks and
+
+continue prompting from my phone. Or I can set it up on a longunning task and then trust that it will actually complete that task end to end and do the
+
+thing without me having to kind of object in between and and guide it. It really is the confidence to go carry out and do things. And there's many ways you can actually improve that by recording your own screen and some other stuff that I'll show more in the demo. But
+
+again, it also uses the tools just like you do. And so you can think of your basic connectors of MCPs, of APIs, everything that you've already kind of set up. But beyond that, what's really important is it actually owns its own
+
+VM. And so you can log into the browser. And for the parts of your SCR work that are a little more difficult or there's no real way to automate them. You can actually show bot in the browser. You can sign in to those tools and you can
+
+actually show bot by recording your screen, recording you go through it. You can show the exact workflows that you do in there. the really tedious and specific stuff that's kind of hard to
+
+explain or maybe there's no real like open API for it. And so this is really something that I found immense value in and what's given me the confidence to be able to say, "Okay, Grockbot, you can genuinely go end to end with what you're
+
+doing here." And as I talked about before, I think sharable templates are one of the most important things. And I think every single team at a team level
+
+should basically all be spending time building their own templates, sharing those with the team, getting an understanding of, okay, what are the things that are actually working and how
+
+can I not only just import that template, but how can I import it and then add my own nuance onto that of whatever like my tonality and my messaging is or actually maybe it's just
+
+I like to to do my workflow a slightly different way, but actually kind of taking this as a base template and then working beyond that. And you can also
+
+prompt Grockbot directly and and ask for direct improvements. You can import templates and be like, "Hey, look at this template my colleague shared with me. What do you think are things with my
+
+own workflow that you think would be a good addition to build on top of this or or to kind of get more value out of that?" So, I really emphasize just actually like talking back and forth with your Grock bots and kind of like
+
+starting to starting to really push it to help you. And and I think this is why we emphasize so heavily that Grockbot is really just a multiplier for your own
+
+work and and really a way to scale the outputs you're doing. And as an SCR, I don't think there's anything more important than actually doing that.
+
+All right. So diving into really what I see as the the common STR use cases are the things that like I'm doing on a day-to-day basis. I think number one,
+
+it's it's really prospecting. And so if you're an early stage startup, you can actually even help have Graqua kind of help you understand your ICP. And so you
+
+can look into things like, okay, for the AEES that have closed deals or have deals that have moved to stage one, what is the common kind of title that we're seeing actually carry those deals through? Or what's kind of the most
+
+responsive title or industry or subindustry of person to take an original meeting? How does that actually vary from economic buyer, the person who's actually signing off on this deal?
+
+And so you can really rock about kind of from from a first beginning actually understand like what is my ICP? What's the most optimum way to reach my goal? And personally as an SDR for me that's how many S1's can I get? And so you can
+
+kind of reverse engineer from that point and Grabba can kind of help you actually get to that point. And so on top of really just understanding that ICP within prospecting, you can do the full
+
+flow. So you can use enrichment tools, set those up within Grockbot. You can also use web search to kind of find more specific data like job postings or any
+
+funding announcements from some of your target companies and really just bring this all in. And I'll show how I can actually tie that into my next point which is a sequencer. And so really what
+
+I've done within my own Grockbot instance is I built kind of an ongoing list of all my prospects. And this lives as a CSV today. But really what I think
+
+is nuanced about this is you can have things like Grockbot routines and automations which are constantly updating this and I think something that's really been a big value ad on on
+
+the sense of sequencing is the fact that when I'm multi-threading an account um my AE might have a call with them and that might have happened yesterday and whatever the context from that call is is truly golden and it should shape my
+
+messaging for today. And so what Grockbback can do is it can actually take that context in just like a co-orker would. They can bowl, hey, your
+
+AE spoke with this person yesterday. Here's exactly what they mentioned. They mentioned a real painoint is they have all these tools to choose from and they kind of just feel stressed out. There's tool fatigue. There's AI fatigue. And
+
+really that should shape your messaging for that day going forward for that company. And Grockot has that context and it can pull that in and help you
+
+actually tailor messages at a at a company level. And maybe even in in a gone caller recording they mentioned, oh, you know what? Like this is actually the exact thing that Simon on the AI
+
+team is investigating right now or looking into. You should reach out to him. But a lot of those things never actually get actioned on. And so Graqua
+
+has the ability to actually really sequence and kind of do the full process of prospecting them, adding them into the sequence just off of the actual
+
+context that meeting they had with your AE. And I think that's that's something really nuanced that I haven't seen before. And on that same note, you can
+
+also do very high level account research. And so for PG-led companies, you can look at all the internal data of okay, who are my power users? Who's actually using this product? And more than that, you can look at the external signals for all companies in whole. So
+
+okay, who's fundraising? Who has job postings? And how does that kind of tailor the messaging based on our product? You can also look at things internally like okay how does this new
+
+product that we've launched actually change our outbounding message for a specific person in XYZ industry and really have grabbot kind of tailor those messaging to each and every company specific and that's actually diving into
+
+my last point as well which is drafting copy and what that looks like and so what I really highly emphasize is you actually sync your email with Grockbot
+
+just as kind of a starting point and and really push Grockbot to understand your tone and I think some of like the nuances that I've added on this because
+
+it's very easy to just sync your email but you have to kind of push it further and the first thing that I've done on that note is I said listen look
+
+specifically at my email copy that I've sent out to external or third party companies that also match the Salesforce account where I'm an assigned STR and
+
+then from that point what I actually am pushing it to do is also look at okay just look at any of the emails from that
+
+filtered list that actually got positive responses that didn't get negative responses. And then I think the most important thing that I've done on top of
+
+that note is I've actually put a heavier weight on emails that recently have received positive responses. And I think for a company like SpaceX, what we're always seeing is the product offering is always changing. Like I said, what was working three months ago is completely
+
+different now and might not work today. And so I pushed Grockbot to put a really heavy emphasis on the actual recent messages and to draft my copy more like
+
+that, but still kind of pull in inspiration from my older messaging to understand like kind of the human aspect of actually what I'm doing. And so these
+
+are kind of the real SCR use cases that I've I've seen, but I'll show you more in my demo of kind of how we can expand
+
+much beyond this. So, at a high level, I just wanted to first show what does my GRAW team actually look like here. And so, what
+
+I've really been emphasizing is you should have a chief of staff. And I think one of the most exhausting things for me is switching back and forth
+
+between my different bots. I'm always kind of forgetting the context, especially if I'm kind of shuffling many, many things at once. And so, what I actually really recommend is you have a chief of staff, and that should be the
+
+first bot that you set up. And what you should actually do from that point is set up all your other bots through your chief of staff. And and the reason being
+
+is when you do it this way, your chief of staff just has context on exactly the purpose and the end goal of that bot. And so as you kind of ask your your
+
+chief of staff, so Simon bot here for me to complete tasks, it understands the right bot to actually delegate that to and when needed, it's going to understand the context of multiple bots
+
+that it needs to get delegate to or actually get to talk with each other. And so I think this is really an important way to actually think from the beginning of how to set this up. And
+
+just for my other bots here, you can see. So I've got Shakespeare here, who is really the one I've like very meticulously trained on my email writing
+
+skills. And then I have web search, which obviously is just doing web research, but he actually works in parallel with my Simon Soldier. And I'll
+
+show you I basically have an entire army of Simon soldiers which I basically consider sub agents or subbots that when web search wants to delegate a task across say 50 or 100 counts the scalable
+
+way to do that is actually creating subbots that basically respond directly to web search. And lastly, I have customerbot who does a few things, but
+
+really is just taking in all the context on the meetings I'm having, understanding for deals that are moving to close one, kind of what's the context, what are the things that customers are really receptive to, and
+
+you can also get really nuanced with this. So, I think something you can do is look in Salesforce and say, okay, I have an account that's in the fintech
+
+vertical. Okay, let me understand. Let me talk with my customer bot or ask my chief of staff to actually talk to the customer bot and figure out, okay, what
+
+are the similar fintech companies that are closed on in recent deals and why were they interested? What were the main pain points they had? What were the main parts of our product that were actually relevant? And then I'm going to take that context and I'm actually going to have my chief of staff pass that off to Shakespeare to understand my email drafting and to push that in specifically for the fintech companies we serve. And so this is where I really
+
+push that you can have these all as kind of your your entire stack working on different parts of your outbound and make it genuinely productive.
+
+All right, so now let's let's dive into the demo and see actually what my setup looks like here. So here we've got it at a high level.
+
+Um, I'm very serious about my color coding as you can see here. But I I promise I have a reason behind this. And that's I really like to understand at a
+
+high level when my bots are are talking to each other. And especially because all my work is delegated from my actual chief of staff, I need to understand who
+
+my chief of staff is talking to at a section level. And so whenever I see the orange here, I know that my chief of staff is working on an actual research mission. It's doing something around research. When I see that it's message Shakespeare here, I know that it's doing some sort of outbound copy drafting. It's kind of starting to understand that. And the same here, I've talked
+
+about my my army here, but when I see the green messages, I understand, okay, it's delegating account research. It's splitting these up between subbots. And you can actually see here I have an army
+
+huddle as well, which basically has my web search bot talking with all of the soldiers here and basically just ordering them around and and the soldiers are just uh they're giving all the context they need. And so you can see I'm I'm researching kind of this this demo account fly low here, but it's
+
+you can see how it's basically broken all this up. And so now Oh, yeah. Yeah, for sure. Good. All right. Um, so now what I
+
+really want to show is actually how I'm enriching prospects, how I'm actually going and sequencing these people, and also what my daily routines look like.
+
+Because I think personally as an SDR, one of the most important things for me is waking up every morning and knowing very much what I'm actually going to work on for that day. I think that's
+
+just having assigned tasks that you wake up to is extremely helpful to start with. And so really what I've what I've done here on my routines on the side here. So the number one most important
+
+thing for me is every day I want 50 new prospects. And really these prospects have their own kind of internal rankings that I've I've trained graph on. And so
+
+typically how I break this up is I have five prospects that I need action on first thing in the morning. These are going to be the most relevant ones. So maybe it was someone who contacted sales
+
+but nobody ever reached out to them. Maybe it was someone who just downloaded some of our content that's extremely relevant to what they're doing and conversations we're already having with that account. And basically, this is my
+
+first five people that I genuinely need action on right away. And what I have is you can actually set up Grockbot to things like your calendar. So my chief of staff has access to my calendar and it can basically understand the context of okay, this is the five things you
+
+need action on. Now you have a 15 minute block I can make for you during this time, maybe 9:00 am. So you can actually just knock those out of the way. Then you don't have any other meetings. For the 45 others that I know you want to get to today, I'll block off time at 1
+
+p.m. So you can actually carry those out over another hour. But really, my chief of staff has kind of started to understand how I actually like to kind
+
+of break up my time and what's most important and really how I've seen the most results here. And so on this same basis, I have an inbox manager who does
+
+something very similar. So, I get Slack messages that I wake up to every morning. I'm added to meetings when I wake up every morning. And I have external emails that I wake up to every
+
+morning. And I really just need a simple way to actually understand which of these I should action on right away, which of these are most important. And so with a similar system, this is actually just going and it's really just
+
+ranking these for me on ones to action on and what the order to actually do that is. And so on this on the same basis as a PLG company, something that's
+
+really important to us is actually looking through all of our accounts for some of the signals. So where are power users living? What are the products they're using? What are the things they're actually using the products for
+
+that are most relevant? And so I also have every single weekday, and you can see all these are at 8 a.m. Um, I have all of my accounts basically getting scanned for any net new signals. So who are the new people who actually signed up for our product? Who are the new
+
+people who have reached out? downloaded content, like everything. And I really like this because I think speed to lead is one of the most important things. And
+
+so even if it's not the strongest signal, being fed that on a daily basis so you can actually just go in action on that while it's as warm as possible has
+
+led me to to some of the most receptive responses I've gotten. And so finishing out here, I have my sequencer. And I think just a important nuance on my sequencer is that I've also have a
+
+routine basically set on a Salesforce trigger. So anytime one of my accounts the actual account status updates. So maybe it's moving from stage zero to
+
+stage one. Uh this is basically a trigger that's that works in parallel with the sequence to unsequence people when maybe the the deal is moving forward and we don't need to outbound any more people. And so this is really a
+
+way you can kind of set up these kind of elaborate systems all just with routines and with Grockpot itself. But I'm going to dive in now to what my actual
+
+sequencer looks like here. And so here's here's kind of what it looks like. I've spun up this demo one here. And so you can see it's all saved
+
+as a CSV, which I will admit is like a hideous UI and is like very painful to look at as a user. And I think what my
+
+big emphasis here is you actually as a user shouldn't be looking at this much if at all. This should kind of just be Grockbot's brain and and some systematic
+
+way to actually track these. But you should genuinely trust Grockbot to actually have the context this and only look into it when you actually really need to. And so you can see here I have
+
+all these different sequences, a queue of prospects who are actually needing to be add in my prospect board. And then the most important stuff for me is the
+
+the things I need to action on this specific day. And so you can see this basically gives me all the things. It's it's also drafting copy for the emails
+
+and everything. You can see here it's already got Gmail drafts ID. So I can basically just go into my Gmail and review these all one by one. And if I
+
+wanted to, I can just talk to my chief of staff and I can be like, "Can you actually give me a score on how confident are you that this email is accurate, that it's solid, and that they
+
+might actually give a response?" And this is kind of what I've delegated it to at this point. I think I really emphasized at first, and especially as you're kind of training it on your voice
+
+to actually like thoroughly look at these and and honestly give it feedback. But it's now at a point where I I somewhat just trust it and and I can actually push it to to give me its own
+
+rating scores on how good these are. But I think on that note, something important to emphasize when you're focusing on your copy. So this could be
+
+Gmail, this could be for any other platform is what I've found works best is actually just prompting back and forth with Crockbot and asking it for
+
+examples. And so honestly, when I first had it pull in my emails and I even did all the stuff, okay, like let's wait the more recent responses, I found that it
+
+was almost kind of templated and every response looked very similar, but just with swapping of names, of company IDs, things like that. And so what I've really done is just kept going back and
+
+forth and asking, can you give me examples of these emails? And then on each one, basically critiquing it, being like, this is why this email sucks, and here's how you can make it better. and and really pushing for it to break out of kind of the standardized formatting it has and to actually kind of think and
+
+and give nuance responses at each single email. And I think something I really push is not a single one of your emails should look like a template. It shouldn't look like the same thing, but just swapping out company or name. And
+
+and I think that's something really important to also push here. So, I'm going to dive now into actually like why I structured my setup this way and what
+
+this actually looks like. And so, obviously, I'm my chief of staff at the top. And as I said, this is actually the only bot I talked to and and the one that I've built the rest of my bots from. And so, obviously, I I have all my
+
+outbound actually just structured in a single folder. And the reason I do this is I make I make one bot basically per platform. And and I think the the important reason to do this is because
+
+you should be thinking about bots as a way of things that can run in parallel. And so Shakespeare is doing all my email. And so I don't need a second
+
+email bot, but I might need a second outbound bot for a second platform that I'm reaching out to people on. Or maybe I need context for some of the calls I'm
+
+doing. And so having different bots for each of those different functions I think is is the best way to actually handle this and understand the context
+
+of how your bots are working with each other. And then so diving into my research here. So kind of the six key bots that I'm actually using for this one. I have my PLG bot which is tied up
+
+to Salesforce. So I'm actually getting to see okay who's who's signing up? What does our usage look like? It's also pulling in stuff like do we have any clothes lost? Um, it's also talking with
+
+other bots. And so, chief of staff might be able to recognize that. Okay, one of our prospect accounts is a closed loss opportunity. Okay, what's the context on
+
+why? Well, let's dig into the voice of the customer bot, understand the reasons why that opportunity closed loss. Okay, maybe we didn't have support for a
+
+critical function for the business then, but actually, as we've been updating, chief of staff recognizes that now we actually do support that. It's seen some of the closed one come in directly around that. And so that will actually
+
+then take this prospect or take this account and start ranking them higher in my sequencing because it's saying this is more urgent because you need to re-engage with them about this direct thing that they truly care about. And we know that from a call we had with them. And so being able to take that context and kind of have this full system running together I think is extremely
+
+important. But as we tie into this more you can see I also have ample market which kind of runs all our enrichment. So once we actually find prospects, this
+
+is how we actually hook up our tools to get their emails and to understand, okay, is this actually their email? Can we test it, make sure it won't bounce? Things like that that won't hurt your email deliverability scores. And then on
+
+top of that, I have a company research bot, which I think is is something very important here. And so I have this hooked up to my sumble instance. And
+
+what sumble is actually able to do, the most important thing that I found is it's able to pull in a company's tech stack. So for SpaceX's products, it's
+
+really important to understand, okay, this company is really operating with a legacy software stack and they're looking to to kind of move off that. Like here's the pain points we see from similar people and here's how we can
+
+kind of aim the messaging around that. And on top of that, Sumble can actually pull in job postings, too. And so that's actually how it understands tech stack. But more than that, it can actually try and pull in for you an understanding on
+
+their org chart. So if you're selling say for Grockbot into a into a go to market org someone can actually help you pull in information on okay here's actually the the leader for maybe their
+
+SDR team the person who would be interested in this and it's pushing all that context back into Grockbot. It's pushing it all back into the system and
+
+this understanding and again back to the voice of the customer bot. Maybe they said, "Oh, yeah, Simon on on the SDR goto market team is looking into these
+
+exact things." And it can talk with other bots like like our company research bot here. Pull that context back in of who exactly that is, where
+
+they sit in the org chart and help you actually sequence that and rank that based on here's how high they up in the company they are, like are they the economic buyer based on stuff like that.
+
+And so really, you can kind of have these all work together. And and again, I think this goes back to the point of the importance of of building all your
+
+bots from your chief of staff bot is it understands this context better and it understands it just like you would. And so moving forward here, I've kind of talked a lot about the voice of the customer bot, but I think a cool one here also that I use is web search bot.
+
+So I'm constantly looking at company funings or like I said earlier like job postings or any kind of public facing information, things in the news. And
+
+what I've really found as a friction point with this is it's hard to scale this when you have 100 to 200 accounts and every single day there's updates on
+
+some of these. And so how do we actually like scan for this at scale? So I've set up my web search bot here which is hooked up to exa. And what I actually do
+
+have is an army for it that can actually break up and delegate this work. And so you can see, I kind of talked about this earlier, but I have an army hundle
+
+huddle, which is basically just one bot telling the other bots, okay, we're going to break up these 200 companies to 40 each now run in parallel to actually
+
+do web search on all of these. So we can actually get this information back to Simon in a timely manner. And this is something I've really seen as like a practical way to scale some of the
+
+longrunning tasks and some of the ones that that really have slowed down some of my workflows in the short term. And so this has really helped me kind of stay stay on top of those things. And so
+
+kind of on top of that also we're looking at usage for PLG companies. We're looking into how much are people using this product? What teams are using
+
+this product? And and I think for GRBO something important. We're trying to understand like how many go to market people are using it and and what are kind of the use cases they have. So being able to pull in data like that too
+
+and have my chief of staff actually understand all that context makes it all the more easy to actually like kind of rank every single prospect, understand
+
+priorities and understand really like who are the best targets to go after because I think it's so easy to be overwhelmed as an SDR with all these
+
+different tasks and all these different things you have to do. And it's really hard to kind of mentally try and try and understand and rank these these different prospects. And so I think having some sort of like systematic ranking here with Grockbot as I've kind of built myself is is a really good way
+
+to do this. And and like I said earlier, I think a really nice part of this is you can actually share these with your team. And so you can get the learnings and kind of share those learnings. And I
+
+think one last thing I just wanted to show here is I've actually built some skills that kind of go deeper here. And so I actually have a entire just
+
+prospecting skill. And so our company here is Fly Low, but we can just we can just type this in. And so prospecting understands already all of the different things I want. And this is more something at this point I just run for
+
+oneoff maybe net new accounts I have or things I want to research like midway through the day. But most of this runs at routines at this point. But I I think
+
+something very interesting that I also want to talk about is the skill I've made around Grockpot ICP. And I think this is something that's really widely
+
+applicable here. And what this is is we're still figuring out all the different use cases for Grockbot and we're not sure really like who the best
+
+ICP and what that looks like and and it's really something that's kind of an ongoing development. And so what I wanted to do here is I wanted to turn
+
+our own findings on Grock's ICP into a scale. And I did this because this way I can constantly update this as it kind of gets more and more clear what this actually means. And so obviously it's
+
+something I've talked with Grapod before about about okay let's see what are what are the deals for Grapod that are actually moving past stage one that are
+
+showing interest what are the things from voice of the customerbot that are showing interest around this and why are they interested in this and this has
+
+really helped me kind of iterate on this skill more and more and I think it's something that really I want to keep building out and the reason I've kept it
+
+as a skill though is because it could drastically change and I want it to be able to be flexible and be something that my systems can basically call upon
+
+at any point and it's updated. So as we kind of iron out more and more what Grock's ICP is, we can really change this on the fly if we save it as a skill
+
+here. And so basically I can run that in the background and you can kind of see some of the highle stuff it's going to do. But really, it's I I do all my work
+
+and it kind of orients it all around CSVs that look like this that are pulling in everything like titles like what's their actual ICP persona like the
+
+owners and everything like what's the context on why and then you can see it's talking to other sources like ample market to actually get email data
+
+LinkedIn the locations here and and really just a lot of the context on these profiles and you can see that it's it's already basically running and and doing something like this But really
+
+really at a high level, this is this is how I actually run all of my sequencing here. And you can see that now it's messaging all of my orange bots. And I
+
+think like just for my own sanity, it's it's very clear now that it's in the research phase. And and I understand that. I think now boom, it's doing web
+
+search in the background. And I'm very clear and understanding on exactly what it's doing there. And that's I think why it's important to to kind of actually do
+
+these somewhat in a color color-coded fashion, maybe some themes. It's it's easy to remember and to actually kind of at a high level look down and and see
+
+what's happening. But all right, that is the demo. And so now I'm kind of just going to discuss like what we actually learned, what I think are genuinely like the
+
+takeaways that you guys should have and carry into your own setups for this as all right. So I think one of the most important things is going end to end.
+
+And this is something I hope I showed in my demo, but that I'm really trying to push is that it's very simple to just like prompt back and forth with Grockbot
+
+or to have Grockbot do a single task like sending an email for you. But I think really you should push it to do the entire workflow. And it's it's a lot of pain up front for you to prompt back
+
+and forth to build this system to figure out like what actually makes this system work. But if you stick through it and you're persistent and you train it on your style, you will get so much more
+
+benefit when it's able to go end to end. when it's able to pull people in from prospecting, it's able to enrich them. It's able to understand all the context and then it's able to push that out and actually outbound them and do the full process. And I think that's really what
+
+differentiates Crockbot and what makes it a true like force multiplier for STRs. So I really emphasize like thinking at a high level and kind of
+
+thinking how you can actually build that system. And I think on that same note, you should be intentional here. So it's really intuitive to just prompt each
+
+bot. And what I highly recommend is just taking a step back and thinking, okay, let me build this all through my actual chief of staff. Bots should be able to
+
+talk to each other. They should have that context. The point of this is is to offload more work from you and help you actually get higher outputs. And so you shouldn't actually be focusing even
+
+harder and messaging even more bots. It's exhausting from just all the prompt and context switching you're doing there. And lastly, what I kind of hope I
+
+really showed in my demo is how to think systematically about your setup. I think it is very easy to just always want to make new bots. It's kind of fun and it's kind of exciting, but as someone who's
+
+built an army of bots, I promise you, I've had way too many at some points. And and it's honestly more chaotic and it does more harm than good. And so, you should really be questioning like, why is it important that a new bot does this? Why can my existing email bot not
+
+just write my emails and also be able to be my inbox manager? Like like why do I need a second bot for that? And also on
+
+that note, like when should I just turn things into routines that that bot runs? But really, I I emphasize kind of thinking about all these different things as ways for you to actually just
+
+save more tokens in the first place, but actually just also not confuse yourself and not kind of just get overloaded with bots that are just doing like kind of similar things. And again, making things
+
+through your chief of staff makes it all the more easier to actually do that. All right. So, I just wanted to thank you guys for taking the time and I think
+
+we're going to just open it up to questions now. Here.

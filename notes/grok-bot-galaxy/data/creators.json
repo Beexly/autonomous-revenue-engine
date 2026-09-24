@@ -1,0 +1,1059 @@
+{
+ "distinct_creators": 45,
+ "by_creator": [
+  {
+   "creator": "Josh Kim",
+   "templates": 6,
+   "items": [
+    {
+     "name": "Market Researcher",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/xzkXiUbdYfPd7g30OhLGf",
+     "page": "https://x.ai/bot/marketplace/bots/market-researcher",
+     "prompt_chars": 3097
+    },
+    {
+     "name": "Marketing Analyst",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/1RbG9yW5MpQ55XcQlJ0aQ",
+     "page": "https://x.ai/bot/marketplace/bots/marketing-analyst",
+     "prompt_chars": 3120
+    },
+    {
+     "name": "Project Manager",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/AMa1ig4YyoxfYtWFe7PLi",
+     "page": "https://x.ai/bot/marketplace/bots/marketing-project-manager",
+     "prompt_chars": 3166
+    },
+    {
+     "name": "Performance Marketer",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/JeNCKNe0ItsLMWYrLiRcb",
+     "page": "https://x.ai/bot/marketplace/bots/performance-marketer",
+     "prompt_chars": 3119
+    },
+    {
+     "name": "Product Marketer",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/nXp4Rp2trKV8AK-RC1Ohf",
+     "page": "https://x.ai/bot/marketplace/bots/product-marketer",
+     "prompt_chars": 3051
+    },
+    {
+     "name": "Website Ops",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/NYDai_DOI_2pNDIKerrpD",
+     "page": "https://x.ai/bot/marketplace/bots/website-ops",
+     "prompt_chars": 3169
+    }
+   ]
+  },
+  {
+   "creator": "Anoop Baliga",
+   "templates": 5,
+   "items": [
+    {
+     "name": "Account Research Desk",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/O3iqVd_ZrdRtrDJpxcKss",
+     "page": "https://x.ai/bot/marketplace/bots/account-book",
+     "prompt_chars": 1592
+    },
+    {
+     "name": "Company Docs Q&A",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/GVAnpUah1K6PzJtG9EuG9",
+     "page": "https://x.ai/bot/marketplace/bots/company-docs-q-a",
+     "prompt_chars": 2161
+    },
+    {
+     "name": "Customer Call Coach & Assistant",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/v1lSvhJCo4UrNGZxc5Fw8",
+     "page": "https://x.ai/bot/marketplace/bots/customer-call-coach",
+     "prompt_chars": 3039
+    },
+    {
+     "name": "Product Support Inbox Assistant",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/Rw8d83KAzTYQWBAtAscin",
+     "page": "https://x.ai/bot/marketplace/bots/customer-question-drafter",
+     "prompt_chars": 2123
+    },
+    {
+     "name": "Customer Proof Desk",
+     "categories": [
+      "Sales"
+     ],
+     "install": "/bot/AamPlGjd2lIdDv6seEMXR",
+     "page": "https://x.ai/bot/marketplace/bots/customer-stories",
+     "prompt_chars": 1302
+    }
+   ]
+  },
+  {
+   "creator": "Matt Palmer",
+   "templates": 5,
+   "items": [
+    {
+     "name": "dial bot",
+     "categories": [
+      "From Grok Bot Team",
+      "Personal"
+     ],
+     "install": "/bot/tIas6udS9kSXpcAz6LFd1",
+     "page": "https://x.ai/bot/marketplace/bots/dial-bot",
+     "prompt_chars": 1393
+    },
+    {
+     "name": "Stills & Clips Desk",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/V8XugyLxzbQXLM9o5b3B-",
+     "page": "https://x.ai/bot/marketplace/bots/image-gen-bot",
+     "prompt_chars": 1029
+    },
+    {
+     "name": "skippy",
+     "categories": [
+      "From Grok Bot Team",
+      "Personal"
+     ],
+     "install": "/bot/X4NHZvN9cvBBS5EgdjsLx",
+     "page": "https://x.ai/bot/marketplace/bots/skippy",
+     "prompt_chars": 701
+    },
+    {
+     "name": "Tech Demos",
+     "categories": [
+      "From Grok Bot Team",
+      "Personal"
+     ],
+     "install": "/bot/PaYvPhWPSynlUwFqMX7nc",
+     "page": "https://x.ai/bot/marketplace/bots/tech-demos",
+     "prompt_chars": 1637
+    },
+    {
+     "name": "Writing Bot",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/wtq-j01kD7o8gQFx7E9zv",
+     "page": "https://x.ai/bot/marketplace/bots/writing-bot",
+     "prompt_chars": 0
+    }
+   ]
+  },
+  {
+   "creator": "Krista Letz",
+   "templates": 5,
+   "items": [
+    {
+     "name": "EBR & Value Deck Builder",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/yA2-Ti3sPVNFO-zRzkwuX",
+     "page": "https://x.ai/bot/marketplace/bots/ebr-value-deck-builder",
+     "prompt_chars": 448
+    },
+    {
+     "name": "Meeting Recap Deck",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/YklttiPpAHweKbOLV1TSF",
+     "page": "https://x.ai/bot/marketplace/bots/echo",
+     "prompt_chars": 995
+    },
+    {
+     "name": "Outbound Prospecting",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/i03IaF768-ielyzegoGye",
+     "page": "https://x.ai/bot/marketplace/bots/pg",
+     "prompt_chars": 1311
+    },
+    {
+     "name": "Pipeline Pulse",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/X-hZf_AreWNt-ZQPYs0Ev",
+     "page": "https://x.ai/bot/marketplace/bots/pipeline-health-and-forecast",
+     "prompt_chars": 1433
+    },
+    {
+     "name": "Signal Prospector",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/wsbOPOkHApmIYLrErnC4e",
+     "page": "https://x.ai/bot/marketplace/bots/signal-prospector",
+     "prompt_chars": 518
+    }
+   ]
+  },
+  {
+   "creator": "Jenna Nanpei",
+   "templates": 4,
+   "items": [
+    {
+     "name": "Partnerships Call Coach",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/PlsyvUb0KnHIQr6psoy0L",
+     "page": "https://x.ai/bot/marketplace/bots/dan-lanning",
+     "prompt_chars": 1461
+    },
+    {
+     "name": "Event Producer",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/wtEIGNZ8oipDDVQTDHMPB",
+     "page": "https://x.ai/bot/marketplace/bots/event-producer",
+     "prompt_chars": 1487
+    },
+    {
+     "name": "Luma Pages",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/jHT5FLhpCMx7JeIq9BEHY",
+     "page": "https://x.ai/bot/marketplace/bots/luma-pages",
+     "prompt_chars": 1998
+    },
+    {
+     "name": "WTD",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/Q3VCc_x0Y8lWd4m-rung2",
+     "page": "https://x.ai/bot/marketplace/bots/wtd",
+     "prompt_chars": 1487
+    }
+   ]
+  },
+  {
+   "creator": "Shimecki",
+   "templates": 3,
+   "items": [
+    {
+     "name": "Competitor Watch",
+     "categories": [
+      "Product"
+     ],
+     "install": "/bot/aw0Zj54sIsAK7vMnajdz0",
+     "page": "https://x.ai/bot/marketplace/bots/competitor-watching",
+     "prompt_chars": 720
+    },
+    {
+     "name": "Deal Hunting",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/yTeKCLayahHnMdHFG9GJg",
+     "page": "https://x.ai/bot/marketplace/bots/deal-hunting",
+     "prompt_chars": 419
+    },
+    {
+     "name": "Site Audit",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/_rzRrKKlUyBD3znUN5b3Q",
+     "page": "https://x.ai/bot/marketplace/bots/site-audit",
+     "prompt_chars": 224
+    }
+   ]
+  },
+  {
+   "creator": "Tommy Hansen",
+   "templates": 3,
+   "items": [
+    {
+     "name": "Cooper",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/8hhdYqfvRzigWstUtcmBZ",
+     "page": "https://x.ai/bot/marketplace/bots/cooper",
+     "prompt_chars": 1182
+    },
+    {
+     "name": "Recruiting Coordinator",
+     "categories": [
+      "From Grok Bot Team",
+      "Recruiting & People"
+     ],
+     "install": "/bot/KDahOjiDbbAvxqx9KaGcq",
+     "page": "https://x.ai/bot/marketplace/bots/mr-toms",
+     "prompt_chars": 1501
+    },
+    {
+     "name": "Talent Discovery",
+     "categories": [
+      "From Grok Bot Team",
+      "Recruiting & People"
+     ],
+     "install": "/bot/vIX2YW6rr6nQnf8-Rhyzc",
+     "page": "https://x.ai/bot/marketplace/bots/sherlock",
+     "prompt_chars": 2083
+    }
+   ]
+  },
+  {
+   "creator": "Miguel Cruz",
+   "templates": 3,
+   "items": [
+    {
+     "name": "Ad Spend Watch",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/MK5zStpj_As8CsRwg3r6w",
+     "page": "https://x.ai/bot/marketplace/bots/fuse",
+     "prompt_chars": 1557
+    },
+    {
+     "name": "Lead Pipeline Desk",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/oPDkINUfpUXhJDdsfRZht",
+     "page": "https://x.ai/bot/marketplace/bots/leadsworth",
+     "prompt_chars": 1147
+    },
+    {
+     "name": "Paid Media Report Desk",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/qBFjPRQ3IbHG69qIFHblE",
+     "page": "https://x.ai/bot/marketplace/bots/tally",
+     "prompt_chars": 1674
+    }
+   ]
+  },
+  {
+   "creator": "Shub Gaur",
+   "templates": 3,
+   "items": [
+    {
+     "name": "Import Bot",
+     "categories": [
+      "From Grok Bot Team",
+      "Personal"
+     ],
+     "install": "/bot/HP4Q8GHtSIjbyGeI2vg7S",
+     "page": "https://x.ai/bot/marketplace/bots/import-bot",
+     "prompt_chars": 3370
+    },
+    {
+     "name": "Pfp Bot",
+     "categories": [
+      "From Grok Bot Team",
+      "Personal"
+     ],
+     "install": "/bot/eFnHzlDcKdoA406SzZbNZ",
+     "page": "https://x.ai/bot/marketplace/bots/pfp-bot",
+     "prompt_chars": 3078
+    },
+    {
+     "name": "Stalk Bot",
+     "categories": [
+      "From Grok Bot Team",
+      "Product"
+     ],
+     "install": "/bot/Y7iWVNiPdorgu6oFY-PRG",
+     "page": "https://x.ai/bot/marketplace/bots/stalk-bot",
+     "prompt_chars": 3190
+    }
+   ]
+  },
+  {
+   "creator": "Adam Tanguay",
+   "templates": 2,
+   "items": [
+    {
+     "name": "AI Search Visibility",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/BFiw9Y7BzTQ-3jFBAro1X",
+     "page": "https://x.ai/bot/marketplace/bots/ai-search-visibility",
+     "prompt_chars": 1500
+    },
+    {
+     "name": "SEO & AEO Desk",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/0IhyZWxwbf2cFmsmroZQL",
+     "page": "https://x.ai/bot/marketplace/bots/seo-aeo-desk",
+     "prompt_chars": 894
+    }
+   ]
+  },
+  {
+   "creator": "Daniel Brill",
+   "templates": 2,
+   "items": [
+    {
+     "name": "Call Follow-Ups",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/estQ8HWdKqhheDNmOGjcy",
+     "page": "https://x.ai/bot/marketplace/bots/call-follow-ups",
+     "prompt_chars": 448
+    },
+    {
+     "name": "Sales Call Coach",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/yZ5MFQFdl32vHt6fcIJAc",
+     "page": "https://x.ai/bot/marketplace/bots/sales-call-coach",
+     "prompt_chars": 1250
+    }
+   ]
+  },
+  {
+   "creator": "Jon Grigull",
+   "templates": 2,
+   "items": [
+    {
+     "name": "Deal Inspector",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/vZfC76-4UC1XU7qC4m726",
+     "page": "https://x.ai/bot/marketplace/bots/deal-qualification",
+     "prompt_chars": 487
+    },
+    {
+     "name": "GTM Loop Closer",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/gj3IlHOOpzecm6xpmPJOt",
+     "page": "https://x.ai/bot/marketplace/bots/follow-through-agent",
+     "prompt_chars": 1532
+    }
+   ]
+  },
+  {
+   "creator": "Lauren Tan",
+   "templates": 2,
+   "items": [
+    {
+     "name": "dr eggbot",
+     "categories": [
+      "From Grok Bot Team"
+     ],
+     "install": "/bot/_jOdbfkB16zxu7MRcmReE",
+     "page": "https://x.ai/bot/marketplace/bots/dr-eggbot-v2",
+     "prompt_chars": 2114
+    },
+    {
+     "name": "tinkabot",
+     "categories": [
+      "From Grok Bot Team",
+      "Engineering"
+     ],
+     "install": "/bot/-hmCmHB0ynJGvSKxeINfS",
+     "page": "https://x.ai/bot/marketplace/bots/tinkabot",
+     "prompt_chars": 1237
+    }
+   ]
+  },
+  {
+   "creator": "Lingxi Li",
+   "templates": 2,
+   "items": [
+    {
+     "name": "Lingxi's Engineer Bot",
+     "categories": [
+      "From Grok Bot Team",
+      "Engineering"
+     ],
+     "install": "/bot/SxqbG1NT5qEw7ggmHqQu_",
+     "page": "https://x.ai/bot/marketplace/bots/engineer-bot",
+     "prompt_chars": 4505
+    },
+    {
+     "name": "Nightly Audit Engineer",
+     "categories": [
+      "From Grok Bot Team",
+      "Engineering"
+     ],
+     "install": "/bot/0LLQmzk-yzwHi0zuiV0lC",
+     "page": "https://x.ai/bot/marketplace/bots/nightly-audit-engineer",
+     "prompt_chars": 2363
+    }
+   ]
+  },
+  {
+   "creator": "Simon Lackowski",
+   "templates": 2,
+   "items": [
+    {
+     "name": "Hiring Signals",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/EbF8AR1wEHSWCGOp9D1qK",
+     "page": "https://x.ai/bot/marketplace/bots/hiring-activity-monitor",
+     "prompt_chars": 1700
+    },
+    {
+     "name": "Sequencer",
+     "categories": [
+      "Sales"
+     ],
+     "install": "/bot/6xnxd_CHg0cXVMQCwnRrZ",
+     "page": "https://x.ai/bot/marketplace/bots/sequencer",
+     "prompt_chars": 3168
+    }
+   ]
+  },
+  {
+   "creator": "Hiten Shah",
+   "templates": 2,
+   "items": [
+    {
+     "name": "Pitch Deck Coach",
+     "categories": [
+      "Sales"
+     ],
+     "install": "/bot/zkVS-PkX1ooTE2nP21DPO",
+     "page": "https://x.ai/bot/marketplace/bots/pitch-deck-coach",
+     "prompt_chars": 6877
+    },
+    {
+     "name": "Product Idea Stress Test",
+     "categories": [
+      "Product"
+     ],
+     "install": "/bot/ph-u_zkF5Vui1GdGnysn9",
+     "page": "https://x.ai/bot/marketplace/bots/product-idea-stress-test",
+     "prompt_chars": 5399
+    }
+   ]
+  },
+  {
+   "creator": "Farzad",
+   "templates": 2,
+   "items": [
+    {
+     "name": "Researchy",
+     "categories": [
+      "Engineering"
+     ],
+     "install": "/bot/i2hvaEONDg6_gEF5C9RlK",
+     "page": "https://x.ai/bot/marketplace/bots/researchy",
+     "prompt_chars": 1221
+    },
+    {
+     "name": "Webby",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/BX4-kOUI2CzphgiYLZ1hb",
+     "page": "https://x.ai/bot/marketplace/bots/webby",
+     "prompt_chars": 3511
+    }
+   ]
+  },
+  {
+   "creator": "Stefan Markarian",
+   "templates": 1,
+   "items": [
+    {
+     "name": "GTM Account Research",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/B6nsTFJlkGP4R-BbdIzeV",
+     "page": "https://x.ai/bot/marketplace/bots/account-research",
+     "prompt_chars": 1404
+    }
+   ]
+  },
+  {
+   "creator": "Robin Delta",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Alfred",
+     "categories": [
+      "Operations"
+     ],
+     "install": "/bot/p7Gh6HIrfv4AGzIow6-9X",
+     "page": "https://x.ai/bot/marketplace/bots/alfred",
+     "prompt_chars": 164
+    }
+   ]
+  },
+  {
+   "creator": "Chris Everett",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Apple Search Ads Review",
+     "categories": [
+      "From Grok Bot Team",
+      "Marketing"
+     ],
+     "install": "/bot/gadc3bVOsg9iIwmzAGRve",
+     "page": "https://x.ai/bot/marketplace/bots/apple-search-ads-review",
+     "prompt_chars": 982
+    }
+   ]
+  },
+  {
+   "creator": "X Freeze",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Video Edit Desk",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/kGiyk73f5CF8XtBMIh0gW",
+     "page": "https://x.ai/bot/marketplace/bots/best-video-editor",
+     "prompt_chars": 1190
+    }
+   ]
+  },
+  {
+   "creator": "AJAC",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Chief Health Officer",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/PwWb6fJXpeG857af6tEYi",
+     "page": "https://x.ai/bot/marketplace/bots/chief-health",
+     "prompt_chars": 0
+    }
+   ]
+  },
+  {
+   "creator": "This Week in AI",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Clip Bot",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/-L1yFJ5mtwPgn3O_iYUo_",
+     "page": "https://x.ai/bot/marketplace/bots/clip-bot",
+     "prompt_chars": 1166
+    }
+   ]
+  },
+  {
+   "creator": "Trevin Chow",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Credit Card Max",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/q4u8YgzGQqCAOUZcg0Lgt",
+     "page": "https://x.ai/bot/marketplace/bots/credit-card-max",
+     "prompt_chars": 500
+    }
+   ]
+  },
+  {
+   "creator": "Manuel Muñoz Solera",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Critiquito: Design Critique",
+     "categories": [
+      "From Grok Bot Team",
+      "Design"
+     ],
+     "install": "/bot/NqdH9qGvrq-yWRaXhJGM-",
+     "page": "https://x.ai/bot/marketplace/bots/critiquito",
+     "prompt_chars": 1033
+    }
+   ]
+  },
+  {
+   "creator": "Emma Weyrauch",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Event Request Desk",
+     "categories": [
+      "From Grok Bot Team",
+      "Operations"
+     ],
+     "install": "/bot/hp7QlVUPuYUp09kc6IFAA",
+     "page": "https://x.ai/bot/marketplace/bots/event-request-desk",
+     "prompt_chars": 1587
+    }
+   ]
+  },
+  {
+   "creator": "John Bai",
+   "templates": 1,
+   "items": [
+    {
+     "name": "figma bro",
+     "categories": [
+      "From Grok Bot Team",
+      "Design"
+     ],
+     "install": "/bot/pXNvc_U2cGyZmheYrUuF_",
+     "page": "https://x.ai/bot/marketplace/bots/figma-bro",
+     "prompt_chars": 998
+    }
+   ]
+  },
+  {
+   "creator": "Rich Silver",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Flora: Plant Care Log",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/dGYdqS9vLSXpxoNCPBHys",
+     "page": "https://x.ai/bot/marketplace/bots/flora",
+     "prompt_chars": 1827
+    }
+   ]
+  },
+  {
+   "creator": "Natasha Kuo",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Executive Assistant",
+     "categories": [
+      "From Grok Bot Team",
+      "Operations"
+     ],
+     "install": "/bot/_DnP777DCicZpaTtm9_h5",
+     "page": "https://x.ai/bot/marketplace/bots/frank",
+     "prompt_chars": 2044
+    }
+   ]
+  },
+  {
+   "creator": "Daniel Gartshein",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Haggle Bot",
+     "categories": [
+      "From Grok Bot Team"
+     ],
+     "install": "/bot/pwQ612YrX3R0eACnIMlom",
+     "page": "https://x.ai/bot/marketplace/bots/haggle-bot",
+     "prompt_chars": 5983
+    }
+   ]
+  },
+  {
+   "creator": "Sawyer Merritt",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Home robots",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/c47Jj2QSSR1UXEcuBgUtQ",
+     "page": "https://x.ai/bot/marketplace/bots/home-robots",
+     "prompt_chars": 1067
+    }
+   ]
+  },
+  {
+   "creator": "Massimo De Luisa",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Copy Humanizer",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/YwxIbVEWqXN-HYCxiMCoB",
+     "page": "https://x.ai/bot/marketplace/bots/human-copywriter",
+     "prompt_chars": 1006
+    }
+   ]
+  },
+  {
+   "creator": "Kent C. Dodds",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Imogen",
+     "categories": [
+      "Design"
+     ],
+     "install": "/bot/Eeu5NZp62OzQjtlY4ons2",
+     "page": "https://x.ai/bot/marketplace/bots/imogen",
+     "prompt_chars": 228
+    }
+   ]
+  },
+  {
+   "creator": "Matt Van Horn",
+   "templates": 1,
+   "items": [
+    {
+     "name": "last30days",
+     "categories": [
+      "Product",
+      "Marketing"
+     ],
+     "install": "/bot/TxB-fy1KryaYJLYWBcGtT",
+     "page": "https://x.ai/bot/marketplace/bots/last30days",
+     "prompt_chars": 1254
+    }
+   ]
+  },
+  {
+   "creator": "Danny Buck",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Love ❤️",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/qDtCI8WZgVJKbN3rogL8j",
+     "page": "https://x.ai/bot/marketplace/bots/love",
+     "prompt_chars": 311
+    }
+   ]
+  },
+  {
+   "creator": "Dennison",
+   "templates": 1,
+   "items": [
+    {
+     "name": "NYC Parent",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/cht7ytAhe3euOQy2wnEg9",
+     "page": "https://x.ai/bot/marketplace/bots/nyc-parent",
+     "prompt_chars": 2500
+    }
+   ]
+  },
+  {
+   "creator": "Erika Cabrera",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Office Ops Desk",
+     "categories": [
+      "From Grok Bot Team",
+      "Operations"
+     ],
+     "install": "/bot/afZj-XnYkThA4MB7GfZK6",
+     "page": "https://x.ai/bot/marketplace/bots/office-ops-desk",
+     "prompt_chars": 1182
+    }
+   ]
+  },
+  {
+   "creator": "Lenny Rachitsky",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Overheard",
+     "categories": [],
+     "install": "/bot/NIEguoGUjA648fUPle8F5",
+     "page": "https://x.ai/bot/marketplace/bots/overheard",
+     "prompt_chars": 1541
+    }
+   ]
+  },
+  {
+   "creator": "Eric Zakariasson",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Projects Manager",
+     "categories": [
+      "From Grok Bot Team",
+      "Engineering"
+     ],
+     "install": "/bot/AZKaQOsjrAa51Nb4xvTur",
+     "page": "https://x.ai/bot/marketplace/bots/projects-manager",
+     "prompt_chars": 0
+    }
+   ]
+  },
+  {
+   "creator": "Caro Scalercio",
+   "templates": 1,
+   "items": [
+    {
+     "name": "GTM Prospecting",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/RpAQeGjhzaiO6_Rq_4fyC",
+     "page": "https://x.ai/bot/marketplace/bots/prospector",
+     "prompt_chars": 1362
+    }
+   ]
+  },
+  {
+   "creator": "Danny Limanseta",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Game Art Director",
+     "categories": [
+      "Design"
+     ],
+     "install": "/bot/KQnsHIvv4_Xk7HyhmewP3",
+     "page": "https://x.ai/bot/marketplace/bots/sable-game-art",
+     "prompt_chars": 1584
+    }
+   ]
+  },
+  {
+   "creator": "Karen X. Cheng",
+   "templates": 1,
+   "items": [
+    {
+     "name": "The Morning Newspaper",
+     "categories": [
+      "Personal"
+     ],
+     "install": "/bot/1xAJYJPes3X7dUM2mk9Di",
+     "page": "https://x.ai/bot/marketplace/bots/the-morning-newspaper",
+     "prompt_chars": 0
+    }
+   ]
+  },
+  {
+   "creator": "Claire Vo",
+   "templates": 1,
+   "items": [
+    {
+     "name": "Tradbot",
+     "categories": [],
+     "install": "/bot/wOE4e95HNxhSbrzyLkSI-",
+     "page": "https://x.ai/bot/marketplace/bots/tradbot-2",
+     "prompt_chars": 2408
+    }
+   ]
+  },
+  {
+   "creator": "Brian Joseph",
+   "templates": 1,
+   "items": [
+    {
+     "name": "GTM Connections",
+     "categories": [
+      "From Grok Bot Team",
+      "Sales"
+     ],
+     "install": "/bot/aUF_wTHXGWKU3-QPm6PmN",
+     "page": "https://x.ai/bot/marketplace/bots/warm-intro-finder",
+     "prompt_chars": 1332
+    }
+   ]
+  },
+  {
+   "creator": "Dan McAteer",
+   "templates": 1,
+   "items": [
+    {
+     "name": "X Brief",
+     "categories": [
+      "Marketing"
+     ],
+     "install": "/bot/RO8GwQZFXL9O95i13epqF",
+     "page": "https://x.ai/bot/marketplace/bots/x-brief",
+     "prompt_chars": 925
+    }
+   ]
+  }
+ ],
+ "notable_external_creators_present": [
+  "Lenny Rachitsky",
+  "Hiten Shah",
+  "Kent C. Dodds",
+  "Claire Vo",
+  "Sawyer Merritt",
+  "Matt Van Horn",
+  "Lauren Tan",
+  "This Week in AI"
+ ],
+ "note": "The marketplace is seeded by named internal staff and recognisable external operators (newsletter authors, DevRel figures, founders). Each template carries a one-click install deep link, so the catalogue doubles as a distribution surface."
+}

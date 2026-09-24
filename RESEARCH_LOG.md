@@ -26,3 +26,7 @@
 
 ## Deferred
 Daily revenue score job — still blocked on measurement schema + Learning loop. Factory ships do not wait on that job.
+
+## 2026-09-23 — Grok Bot Galaxy notes added
+- Added `notes/grok-bot-galaxy/` (249 files): competitive intel on the Grok Bot launch campaign — event transcripts (61,506 words, 10 workshops), 91 news posts, 10 guides, 81 marketplace templates including 77 embedded production agent prompts, launch timeline, packaging matrix, metrics ledger with sources, and 137 install deep links.
+- Reference only: no product, no publish. See `notes/grok-bot-galaxy/REPO-NOTES.md` for what to take from it and the guardrails it reinforces.

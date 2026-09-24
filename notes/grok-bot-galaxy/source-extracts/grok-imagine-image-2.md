@@ -1,0 +1,225 @@
+- Products
+
+- Solutions
+
+- Developer
+
+- Company
+
+- Pricing
+
+- News
+
+Contact Sales
+
+Try for free
+
+Products
+
+GrokBusinessGovernment
+
+Download
+
+iOSAndroidGrok on XGrok Bot
+
+Developers
+
+API ConsoleDocumentationGrok Build
+
+Try for free
+
+Back to newsAug 7, 2026
+
+## Imagine Image 2.0
+
+Precise image generation and editing, built for real creative work.
+
+Open Grok.comTry on API
+
+Imagine Image 2.0 is now generally available as the new Quality Mode on grok.com/imagine, and our iOS and Android apps.
+
+We built Image 2.0 around a simple goal: make images you can use in real work. 2.0 follows instructions closely, down to the details. It plans typography and layout the way a designer would, so dense, multi-part visuals hold together and small text comes out sharp. And it preserves what you put in across generations and edits.
+
+### Precise editing
+
+Real work is iterative. The first generation is rarely the final asset, so Image 2.0 adds tools for changing exactly what you mean and nothing else.
+
+The magic wand edits the region you point at and leaves the rest untouched. Segmentation selects precise areas of the image to change. Background removal exports any subject with a transparent background, ready to drop into other work. Multi-ref editing accepts up to 5 input images in a single generation, removing the need for manual compositing.
+
+#### Smart resize
+
+One image, any size: pick a ratio and the model fills in the frame.
+
+1:2
+
+1:29:162:33:41:14:33:216:92:1
+
+### Real-world performance
+
+Image 2.0 was trained for fidelity across photography, design, and illustration, with editing treated as a first-class capability. It ranks second in the world in both text-to-image generation and image editing.
+
+#### Image Edit Arena
+
+#### Text-to-Image Arena
+
+Overall Elo. Source: Arena Image Edit and Text-to-Image leaderboards (as of Aug 7, 2026). xAI models are listed on Arena under SpaceXAI.
+
+### Templates
+
+We’re also introducing new templates, which package common image workflows into ready-made starting points. Each one covers a specific task — photo editing, product shots, headshots, icons, game assets, and more — with the workflow already configured, so you supply the inputs and get a finished result.
+
+Photo Tools
+
+Photo Edit
+
+Product
+
+Product Color Change
+
+Marketing
+
+Editorial Product Poster
+
+Photo Tools
+
+Reimagine
+
+Photo Tools
+
+Photo Collage
+
+Design Tools
+
+Mascot Maker
+
+Photo Tools
+
+BG Removal & Change
+
+Marketing
+
+E-Commerce Photos
+
+Marketing
+
+UGC Photos
+
+Photo Tools
+
+Professional Headshot
+
+Design Tools
+
+Icon Maker
+
+Design Tools
+
+Character Sprite
+
+Game Assets
+
+Props & UI Kit
+
+Streaming
+
+Emoji Creator
+
+Marketing
+
+Merch Maker
+
+#### Build a world for video
+
+One world from a handful of prompts: a character, her locations, and the props she carries — generated separately, holding one style from image to image.
+
+One world
+
+#### Built image by image
+
+A character, her locations, and the props she carries — generated separately, holding one look.
+
+Character
+
+Location
+
+Prop
+
+Character
+
+Location
+
+### Try it today on our consumer products
+
+Open
+
+Grok.com
+
+Open
+
+Grok on iOS
+
+Open
+
+Grok on Android
+
+### In the API
+
+Image 2.0 is available in the API as grok-imagine-image-2.0.
+
+Copy
+
+import xai_sdk client = xai_sdk.Client() response = client.image.sample( prompt="A concert poster for a synthwave band, bold retro typography, sharp small print", model="grok-imagine-image-2.0", ) print(response.url)
+
+python
+
+For full documentation, visit our docs page, or start generating in the playground.
+
+### Start generating
+
+Open Playground
+
+© 2026 SpaceXAI LLC
+
+Built with Grok
+
+Products
+
+ChatBuildImagineVoiceBotGrokipedia
+
+Download
+
+grok.comiOSAndroidGrok on X
+
+Solutions
+
+BusinessGovernmentCustomer SupportLegalSecurityUse Cases
+
+Grok Bot
+
+OverviewMarketplaceGuidesUse Cases
+
+Developers
+
+API OverviewPricingModelsConsoleChangelogDocsStatus
+
+Enterprise
+
+Contact SalesFAQsBAADPA
+
+Company
+
+AboutColossusCareersNewsContact
+
+Trust
+
+SafetySecurityPrivacy PortalSubprocessorsHelp Center
+
+Legal
+
+TermsEnterprise TermsPrivacyCookiesAUPBrand
+
+Social
+
+@SpaceXAI@grokDiscord
+
+Built with Grok
