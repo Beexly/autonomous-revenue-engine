@@ -146,7 +146,6 @@ h2{font-family:var(--garden-serif);font-size:var(--t5);font-weight:400;font-styl
 .specimen-wall.chapter{max-width:1200px}
 .specimen{position:relative;margin:0}
 .specimen.oval{grid-column:span 4}
-.specimen.oval img{border-radius:0}
 .specimen.tall{grid-column:span 6}
 .specimen.wide{grid-column:span 8}
 .specimen.landscape{grid-column:span 6}
@@ -215,7 +214,6 @@ footer{font-family:var(--garden-sans);font-size:var(--t2)}
   .menu-tabs{gap:16px}
   .specimen-wall{grid-template-columns:repeat(6,1fr)}
   .specimen.tall,.specimen.wide,.specimen.landscape{grid-column:span 6}
-  .specimen.oval{border-radius:0}
 }
 @media (max-width:420px){
   .chapter{padding:80px 16px}
