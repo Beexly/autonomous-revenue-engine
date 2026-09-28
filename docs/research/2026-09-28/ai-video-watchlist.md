@@ -1,5 +1,9 @@
 # AI video watchlist — FastVideo / MiniMax H3 (2026-09-28, Motif)
 
+**Owner: autonomous revenue engine.** This lane belongs to the revenue engine, not GSE.
+GSE's real-footage doctrine is unaffected — AI video must never substitute for real footage in
+GSE sports content.
+
 ## Source
 @rexxu.ai Instagram reel (2026-09-14): claims a GitHub repo making AI video generation ~9x faster
 using Visual Sparse Attention — one reference image → AI video, built for ComfyUI, MiniMax H3,
