@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Charcuterie Chick | Houston's Largest Charcuterie Cart & Grazing Tables | Tomball TX</title>
+  <meta name="description" content="Houston's largest charcuterie cart and luxury grazing tables from $24 a person. Thirty-five years of restaurant cooking behind every event. Tricia Holfelder, Tomball TX.">
+  <link rel="canonical" href="https://charcuterie-chick-sample-2.vercel.app/">
+  <meta name="theme-color" content="#0a0708">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Charcuterie Chick | The 3D Table Experience">
+  <meta property="og:description" content="Houston's largest charcuterie cart, luxury grazing tables, and thirty-five years of restaurant craft. Explore the 3D candlelit feast.">
+  <meta property="og:url" content="https://charcuterie-chick-sample-2.vercel.app/">
+  <meta property="og:image" content="https://charcuterie-chick-sample-2.vercel.app/img/slider-01.jpg">
+
+  <!-- Google Fonts: Fraunces & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="experience.css">
+</head>
+<body>
+
+  <!-- Fullscreen Persistent WebGL Canvas -->
+  <canvas id="webgl-canvas" aria-label="Interactive 3D Candlelit Charcuterie Table Experience" role="img"></canvas>
+
+  <!-- Post-processing Vignette & Film Grain Overlays -->
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="grain" aria-hidden="true"></div>
+
+  <!-- Luxury Fixed HUD -->
+  <header id="hud">
+    <a class="brand-badge" href="#ch-0" data-goto="0" aria-label="Charcuterie Chick Home">
+      <img src="img/stacey-logo-mark-trans.webp" alt="Charcuterie Chick" width="1400" height="474">
+    </a>
+
+    <!-- 7 Station Navigation Pills -->
+    <nav class="nav-stations" aria-label="Experience Stations">
+      <button type="button" class="nav-station active" data-goto="0" aria-current="page">Arrive</button>
+      <button type="button" class="nav-station" data-goto="1">Cones & Cups</button>
+      <button type="button" class="nav-station" data-goto="2">The Tables</button>
+      <button type="button" class="nav-station" data-goto="3">Holy Grail</button>
+      <button type="button" class="nav-station" data-goto="4">The Cart</button>
+      <button type="button" class="nav-station" data-goto="5">About Tricia</button>
+      <button type="button" class="nav-station" data-goto="6">Instant Quote</button>
+    </nav>
+
+    <!-- Ambient Actions -->
+    <div class="hud-actions">
+      <button type="button" id="btn-audio" class="hud-btn" aria-pressed="false">Candle Ambiance</button>
+      <button type="button" id="btn-motion" class="hud-btn" aria-pressed="false">Motion: On</button>
+      <a class="hud-btn call-pill" href="tel:+18324588180">832-458-8180</a>
+    </div>
+  </header>
+
+  <!-- Journey Track Vertical Rail (Right Side) -->
+  <aside id="journey-rail" aria-hidden="true">
+    <div class="rail-indicator">
+      <div class="rail-progress" id="rail-bar"></div>
+    </div>
+    <span class="rail-label" id="rail-text">01 / ARRIVE</span>
+  </aside>
+
+  <!-- Floating Story Chapters (Synchronized with 3D Camera Path) -->
+  <main id="chapters-container">
+
+    <!-- Act 0: Arrive / The Hero Board -->
+    <section class="chapter align-left active" id="ch-0" aria-label="Arrive">
+      <div class="plate">
+        <p class="tagline">Tomball · The Woodlands · Spring · Conroe</p>
+        <h1>Catering and <em>events</em><br>worth staying for.</h1>
+        <p class="lede">Houston's largest charcuterie cart, artisan grazing tables from $24 a person, and thirty-five years of restaurant cooking behind every board.</p>
+        
+        <div class="acts-row">
+          <a class="cta-ticket" href="#ch-1" data-goto="1">
+            <span>Explore The Feast</span>
+            <span>BEGIN ↗</span>
+          </a>
+          <a class="cta-ticket" href="#ch-6" data-goto="6">
+            <span>Instant Quote</span>
+            <span>$24/PP MIN</span>
+          </a>
+        </div>
+
+        <div style="margin-top:24px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--dim);">
+          <strong style="color:var(--ink);">5.0 on The Knot</strong> (13 reviews) · Best of Weddings 2026<br>
+          <strong style="color:var(--ink);">5.0 on WeddingWire</strong> (11 reviews) · 100% would recommend
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 1: Cones & Graze Cups -->
+    <section class="chapter align-right" id="ch-1" aria-label="Cones and Cups">
+      <div class="plate">
+        <p class="tagline">01 · Individual & Interactive</p>
+        <h2>Crafted for <em>mingling.</em><br>Cones, cups & skewers.</h2>
+        <p class="lede">Starting at $24/person for Graze Me, Craze Me. Designed for cocktail hours, wedding welcomes, and corporate networking where guests stay on their feet.</p>
+
+        <ul style="list-style:none; display:grid; gap:8px; margin:16px 0; font-size:13.5px; color:var(--ink);">
+          <li style="display:flex; align-items:center; gap:8px;">
+            <span style="color:var(--copper);">✦</span> Artisan cured meats: Genoa salami, spicy capicola, imported prosciutto
+          </li>
+          <li style="display:flex; align-items:center; gap:8px;">
+            <span style="color:var(--copper);">✦</span> Hand-rolled savory cones with rosemary sprigs & honeycomb dippers
+          </li>
+          <li style="display:flex; align-items:center; gap:8px;">
+            <span style="color:var(--copper);">✦</span> Scratch-made fruit jellies, house dips & spiced almonds
+          </li>
+        </ul>
+
+        <div class="acts-row">
+          <a class="cta-ticket" href="#ch-2" data-goto="2">
+            <span>See The Banquet Tables</span>
+            <span>NEXT ↗</span>
+          </a>
+          <a class="cta-link" href="#ch-6" data-goto="6">Price your party now →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 2: The Banquet Tables -->
+    <section class="chapter align-left" id="ch-2" aria-label="The Banquet Tables">
+      <div class="plate plate-wide">
+        <p class="tagline">02 · The Banquet Tables</p>
+        <h2>Fifty guests and up,<br><em>that's a table.</em></h2>
+        <p class="lede">Every table runs 90 minutes. Breads, jellies and jams are made entirely from scratch in Tricia's kitchen. Four curated tiers designed to fit your room.</p>
+
+        <ul class="menu-grid">
+          <li class="menu-tier">
+            <b>Graze Me, Craze Me</b>
+            <em>$24 / person</em>
+            <span>Two sliders, meat and cheese, seasonal fruit, hummus, almonds, two salads, roasted and raw vegetables, one dip.</span>
+          </li>
+          <li class="menu-tier">
+            <b>Grazing Standard</b>
+            <em>$26 / person</em>
+            <span>The above, plus second hummus, two dips, pasta salad, potato, sweet-potato and tortilla chips.</span>
+          </li>
+          <li class="menu-tier">
+            <b>Super Graze</b>
+            <em>$30 / person</em>
+            <span>Three sliders, three salads, three dips, two hummus, nuts, chips, and full vegetable spread.</span>
+          </li>
+          <li class="menu-tier">
+            <b>Grand Graze</b>
+            <em>$38 / person</em>
+            <span>Five sliders, four salads, three dips, two hummus, two nuts, chips, and mini pudding cups.</span>
+          </li>
+        </ul>
+
+        <div class="acts-row">
+          <a class="cta-ticket" href="#ch-3" data-goto="3">
+            <span>The Holy Grail Feast</span>
+            <span>SHOWSTOPPER ↗</span>
+          </a>
+          <a class="cta-link" href="#ch-6" data-goto="6">Calculate table total →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 3: The Holy Grail Feast -->
+    <section class="chapter align-right" id="ch-3" aria-label="The Holy Grail">
+      <div class="plate">
+        <p class="tagline">03 · The Wedding Showstopper</p>
+        <h2>The Holy Grail<br><em>of Grazing.</em></h2>
+        <p class="lede">The ultimate centerpiece for weddings and grand galas. Five cheeses, five cured meats, 100 scratch-made sliders, house guacamole, fresh pico de gallo, seasonal fruits, artisan dips, and warm chips.</p>
+
+        <div class="menu-tier holy-grail" style="margin:20px 0;">
+          <b>Holy Grail of Grazing</b>
+          <em>$2,000 · 75 guests<br>$3,500 · 150 guests</em>
+          <span>The showstopper centerpiece chosen by Houston wedding planners. 90-minute service included.</span>
+        </div>
+
+        <div class="acts-row">
+          <a class="cta-ticket" href="#ch-4" data-goto="4">
+            <span>Houston's Largest Cart</span>
+            <span>NEXT ↗</span>
+          </a>
+          <a class="cta-link" href="#ch-6" data-goto="6">Price the Holy Grail →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 4: Houston's Largest Cart & Side Stations -->
+    <section class="chapter align-left" id="ch-4" aria-label="The Cart">
+      <div class="plate plate-wide">
+        <p class="tagline">04 · The Star of the Evening</p>
+        <h2>Houston's largest<br><em>charcuterie cart.</em></h2>
+        <p class="lede">It arrives fully built. Under fifty guests, this is the star. Or roll it out alongside your grazing table as an irresistible interactive centerpiece.</p>
+
+        <p style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--copper); margin:18px 0 8px;">Interactive Side Stations & Additions:</p>
+        <div class="side-stations-grid">
+          <div class="side-item"><span>Taco Cart</span><em>$26.95</em></div>
+          <div class="side-item"><span>Candy Bar Chick</span><em>$5.00</em></div>
+          <div class="side-item"><span>Bloody Mary Chick</span><em>$6.50</em></div>
+          <div class="side-item"><span>Mimosa Chick</span><em>$4.00</em></div>
+          <div class="side-item"><span>Zeppole Beignets</span><em>$4.50</em></div>
+          <div class="side-item"><span>Slider Station</span><em>$2.95</em></div>
+        </div>
+
+        <div class="acts-row">
+          <a class="cta-ticket" href="#ch-5" data-goto="5">
+            <span>About Tricia Holfelder</span>
+            <span>NEXT ↗</span>
+          </a>
+          <a class="cta-link" href="#ch-6" data-goto="6">Add to quote →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 5: About Tricia & Five-Star Proof -->
+    <section class="chapter align-right" id="ch-5" aria-label="About Tricia">
+      <div class="plate">
+        <p class="tagline">05 · 35 Years of Restaurant Craft</p>
+        <h2>I've worked the floor<br><em>and I've worked the line.</em></h2>
+        <p class="lede">More than 35 years in restaurants, front of the house and back. Charcuterie Chick is the business I built out of all of it. One party at a time. Woman-owned. English and Spanish spoken.</p>
+
+        <div class="review-cards">
+          <div class="review-card">
+            <blockquote>“The charcuterie board was fresh, well-balanced, and beautifully arranged.”</blockquote>
+            <cite>Lucas Willis · The Knot 5.0</cite>
+          </div>
+          <div class="review-card">
+            <blockquote>“Beautifully balanced, incredibly fresh, and full of rich flavors.”</blockquote>
+            <cite>Jacob Hernandez · WeddingWire 5.0</cite>
+          </div>
+        </div>
+
+        <div class="acts-row">
+          <a class="cta-ticket" href="#ch-6" data-goto="6">
+            <span>Configure Instant Quote</span>
+            <span>CALCULATE ↗</span>
+          </a>
+          <a class="cta-link" href="tel:+18324588180">Direct Call: 832-458-8180</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 6: Instant Quote Configurator Console -->
+    <section class="chapter align-center" id="ch-6" aria-label="Quote Configurator">
+      <div class="plate plate-wide">
+        <p class="tagline">06 · Instant Quote Estimator</p>
+        <h2>Send me the date<br><em>and the headcount.</em></h2>
+        <p class="lede">Transparent math. Per-person rates, $229 setup, and 18% estimated tax calculated instantly. A quote request, not a binding booking.</p>
+
+        <div class="configurator-grid">
+          <!-- Controls Form -->
+          <div class="cfg-form" style="text-align:left;">
+            <label for="cfg-guests">Guest Count (50 Minimum)</label>
+            <div class="stepper-row">
+              <button type="button" class="stepper-btn" id="btn-guest-minus" aria-label="Decrease guests">-</button>
+              <input type="number" id="cfg-guests" value="75" min="50" max="500" step="5">
+              <button type="button" class="stepper-btn" id="btn-guest-plus" aria-label="Increase guests">+</button>
+            </div>
+
+            <label for="cfg-tier">Select Your Table</label>
+            <select id="cfg-tier">
+              <option value="graze">Graze Me, Craze Me — $24 / person</option>
+              <option value="standard" selected>Grazing Standard — $26 / person</option>
+              <option value="super">Super Graze — $30 / person</option>
+              <option value="grand">Grand Graze — $38 / person</option>
+              <option value="holy75">Holy Grail of Grazing (75 Guests) — $2,000</option>
+              <option value="holy150">Holy Grail of Grazing (150 Guests) — $3,500</option>
+            </select>
+
+            <label style="margin-top:16px;">Side Stations & Interactive Add-ons</label>
+            <div style="display:grid; gap:8px; margin-top:8px;">
+              <label style="font-weight:400; text-transform:none; letter-spacing:normal; display:flex; align-items:center; gap:8px; cursor:pointer;">
+                <input type="checkbox" id="chk-taco" style="width:auto; min-height:auto;">
+                <span>Taco Cart (+$26.95 / guest)</span>
+              </label>
+              <label style="font-weight:400; text-transform:none; letter-spacing:normal; display:flex; align-items:center; gap:8px; cursor:pointer;">
+                <input type="checkbox" id="chk-candy" style="width:auto; min-height:auto;">
+                <span>Candy Bar Chick (+$5.00 / guest)</span>
+              </label>
+              <label style="font-weight:400; text-transform:none; letter-spacing:normal; display:flex; align-items:center; gap:8px; cursor:pointer;">
+                <input type="checkbox" id="chk-mimosa" style="width:auto; min-height:auto;">
+                <span>Mimosa Chick (+$4.00 / guest)</span>
+              </label>
+              <label style="font-weight:400; text-transform:none; letter-spacing:normal; display:flex; align-items:center; gap:8px; cursor:pointer;">
+                <input type="checkbox" id="chk-bloody" style="width:auto; min-height:auto;">
+                <span>Bloody Mary Chick (+$6.50 / guest)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Live Receipt Breakdown -->
+          <div class="cfg-receipt" style="text-align:left;">
+            <p style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--copper);">Estimated Investment</p>
+            <div class="receipt-total" id="rcpt-total">$2,571</div>
+
+            <ul class="receipt-breakdown">
+              <li><span>Guests:</span><b id="rcpt-guests">75 guests</b></li>
+              <li><span id="rcpt-tier-label">Grazing Standard</span><b id="rcpt-tier-cost">$1,950</b></li>
+              <li><span>Add-ons:</span><b id="rcpt-addons">$0</b></li>
+              <li><span>Setup & Equipment:</span><b id="rcpt-setup">$229</b></li>
+              <li><span>Estimated Tax (18%):</span><b id="rcpt-tax">$392</b></li>
+            </ul>
+
+            <div style="display:grid; gap:10px;">
+              <a id="btn-sms-quote" class="cta-ticket" href="#" style="justify-content:center; width:100%;">
+                <span>Send SMS to Tricia</span>
+                <span>832-458-8180 ↗</span>
+              </a>
+              <a id="btn-email-quote" class="cta-ticket" href="#" style="justify-content:center; width:100%; background:rgba(209,155,119,0.06); border-color:var(--line);">
+                <span>Email Quote Request</span>
+                <span>charcuteriechick@outlook.com ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Ambient Scroll Hint -->
+  <div id="scroll-hint" aria-hidden="true">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>SCROLL OR DRAG TO EXPLORE</span>
+  </div>
+
+  <!-- Three.js Scrollytelling Engine -->
+  <script type="module" src="experience.js"></script>
+</body>
+</html>

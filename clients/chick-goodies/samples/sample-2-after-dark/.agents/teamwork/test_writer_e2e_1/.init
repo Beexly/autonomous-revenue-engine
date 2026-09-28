@@ -1,0 +1,4 @@
+# Working Directory for test_writer_e2e_1
+Role: teamwork_preview_test_writer
+Parent: orchestrator
+Track: E2E Testing Track

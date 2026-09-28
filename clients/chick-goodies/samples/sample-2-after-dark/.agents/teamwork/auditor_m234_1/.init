@@ -1,0 +1,4 @@
+# Working Directory for auditor_m234_1
+Role: teamwork_preview_auditor
+Parent: orchestrator
+Milestones: M2, M3, M4

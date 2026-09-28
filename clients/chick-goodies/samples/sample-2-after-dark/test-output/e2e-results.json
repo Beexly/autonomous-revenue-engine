@@ -1,0 +1,198 @@
+{
+  "timestamp": "2026-09-27T03:02:53Z",
+  "execution_seconds": 223.03,
+  "total_checks": 26,
+  "passed_checks": 26,
+  "failed_checks": 0,
+  "console_errors_count": 0,
+  "page_errors_count": 0,
+  "failed_requests_count": 0,
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": [],
+  "checks": [
+    {
+      "tier": "Tier 1",
+      "id": "T1.1",
+      "name": "Persistent Fullscreen 3D Canvas Mount",
+      "passed": true,
+      "detail": "Visible: True, Dims: 1440x900, WebGL: True"
+    },
+    {
+      "tier": "Tier 1",
+      "id": "T1.2",
+      "name": "Fixed Luxury HUD Navigation Mounting",
+      "passed": true,
+      "detail": "6 stations: True, Phone link: tel:+18324588180"
+    },
+    {
+      "tier": "Tier 1",
+      "id": "T1.3",
+      "name": "Procedural Web Audio Ambiance Toggle",
+      "passed": true,
+      "detail": "Initial: false, Toggled: true ('Ambiance: On'), Reverted: false"
+    },
+    {
+      "tier": "Tier 1",
+      "id": "T1.4",
+      "name": "6 Station Transitions & HUD Sync",
+      "passed": true,
+      "detail": "All 6 stages active, nav buttons synchronized, screenshots captured"
+    },
+    {
+      "tier": "Tier 1",
+      "id": "T1.5",
+      "name": "Spatial HUD Tooltip & Dynamic Leader Line",
+      "passed": true,
+      "detail": "Tooltip visible: True, Title: 'Organic Fresh Cut Rosemary', Line x2: 1140"
+    },
+    {
+      "tier": "Tier 1",
+      "id": "T1.6",
+      "name": "Interactive Beignet Hotspot & Sugar Burst",
+      "passed": true,
+      "detail": "Hotspot Title: 'Fresh Zeppole Beignets ($4.50/pp)', Badge: 'CLICK FOR SUGAR BURST!'"
+    },
+    {
+      "tier": "Tier 1",
+      "id": "T1.7",
+      "name": "Configurator UI Controls Mounting",
+      "passed": true,
+      "detail": "Slider: True, Pills count: 5, Receipt: True"
+    },
+    {
+      "tier": "Tier 2",
+      "id": "T2.1",
+      "name": "50-Guest Minimum Boundary Enforcement",
+      "passed": true,
+      "detail": "Slider min attribute: 50, Label: '50 guests', Tier: 'Graze Me, Craze Me (50 \u00d7 $24)'"
+    },
+    {
+      "tier": "Tier 2",
+      "id": "T2.2",
+      "name": "Upper Boundary Guest Count Math (300 guests)",
+      "passed": true,
+      "detail": "Total: '$8,766.22', Valid Currency: True"
+    },
+    {
+      "tier": "Tier 2",
+      "id": "T2.3",
+      "name": "Holy Grail Fixed Brackets ($2,000 / $3,500)",
+      "passed": true,
+      "detail": "75 guests: $2,000.00 (expected $2,000.00), 150 guests: $3,500.00 (expected $3,500.00)"
+    },
+    {
+      "tier": "Tier 2",
+      "id": "T2.4",
+      "name": "Texas 18% Catering Tax Invariant Check",
+      "passed": true,
+      "detail": "Food: $1200.00, Tax: $257.22, Total: $1686.22"
+    },
+    {
+      "tier": "Tier 2",
+      "id": "T2.5",
+      "name": "DPR Clamping Performance Guard (<= 2.0)",
+      "passed": true,
+      "detail": "Clamped DPR: 1 (Device DPR: 1)"
+    },
+    {
+      "tier": "Tier 3",
+      "id": "T3.1",
+      "name": "Tier Selection Sync (Act 2 Cards -> Act 5 Configurator)",
+      "passed": true,
+      "detail": "Card 30 active: True, Pill 30 active: True, Receipt: 'Super Graze (50 \u00d7 $30)'"
+    },
+    {
+      "tier": "Tier 3",
+      "id": "T3.2",
+      "name": "Multi-Add-On Toggling & Dynamic Subtotal",
+      "passed": true,
+      "detail": "Initially hidden: True, Active: $800.00 (expected $800.00)"
+    },
+    {
+      "tier": "Tier 3",
+      "id": "T3.3",
+      "name": "Spatial HUD Projection Clamping in Viewport",
+      "passed": true,
+      "detail": "Tooltip box: {'x': 30.79999542236328, 'y': 429.7462463378906, 'width': 248.40001678466797, 'height': 120.30435180664062}, Viewport: 1440x900"
+    },
+    {
+      "tier": "Tier 3",
+      "id": "T3.4",
+      "name": "Interaction Audio Synthesizer Readiness",
+      "passed": true,
+      "detail": "Audio button aria-pressed state: false"
+    },
+    {
+      "tier": "Tier 4",
+      "id": "T4.1",
+      "name": "Full Scrollytelling Journey Progression (0->5)",
+      "passed": true,
+      "detail": "Sequential traverse across all 6 narrative chapters verified"
+    },
+    {
+      "tier": "Tier 4",
+      "id": "T4.2",
+      "name": "Interactive Tasting Notes & Ingredients",
+      "passed": true,
+      "detail": "Note: 'French Triple-Cr\u00e8me Brie' \u2014 'Isigny Sainte-M\u00e8re bloomy rind with decadent cultured cream and honeycomb drizzle.'"
+    },
+    {
+      "tier": "Tier 4",
+      "id": "T4.3",
+      "name": "Custom Wedding Feast Quotation Workflow",
+      "passed": true,
+      "detail": "Food: $4,750.00 (expected $4,750.00), Add-ons: $912.50 (expected $912.50), Total: $6,951.97"
+    },
+    {
+      "tier": "Tier 4",
+      "id": "T4.4",
+      "name": "Instant SMS Lead Capture Trigger Verification",
+      "passed": true,
+      "detail": "Prefix valid: True, Decoded snippet: sms:+18324588180?body=Hi Tricia! I'm planning an event for 125 guests using your 3D b..."
+    },
+    {
+      "tier": "Tier 4",
+      "id": "T4.5",
+      "name": "Instant Email Proposal Trigger Verification",
+      "passed": true,
+      "detail": "Prefix valid: True, Decoded snippet: mailto:charcuteriechick@outlook.com?subject=Charcuterie Chick Event Quote \u2014 125 Guest..."
+    },
+    {
+      "tier": "Tier 2 (Mobile)",
+      "id": "M1",
+      "name": "Mobile Fullscreen Canvas Mount",
+      "passed": true,
+      "detail": "Canvas visible: True"
+    },
+    {
+      "tier": "Tier 2 (Mobile)",
+      "id": "M2",
+      "name": "Mobile Horizontal Overflow Gate (<=393px)",
+      "passed": true,
+      "detail": "Document scrollWidth: 393px (max 393px)"
+    },
+    {
+      "tier": "Tier 2 (Mobile)",
+      "id": "M3",
+      "name": "Mobile Station Progression to Act 2",
+      "passed": true,
+      "detail": "Act 2 active: True"
+    },
+    {
+      "tier": "Tier 2 (Mobile)",
+      "id": "M4",
+      "name": "Mobile Calculator Responsive Plate Fit",
+      "passed": true,
+      "detail": "Calculator width: 381.272403717041px"
+    },
+    {
+      "tier": "Tier 2 (Mobile)",
+      "id": "M5",
+      "name": "Mobile Spatial HUD Tooltip Viewport Clamping",
+      "passed": true,
+      "detail": "Mobile Tooltip Box: {'x': 103.79999542236328, 'y': 90.23062133789062, 'width': 248.40001678466797, 'height': 120.30438232421875}"
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,4 @@
+# Working Directory for auditor_m1_1
+Role: teamwork_preview_auditor
+Parent: orchestrator
+Milestone: M1

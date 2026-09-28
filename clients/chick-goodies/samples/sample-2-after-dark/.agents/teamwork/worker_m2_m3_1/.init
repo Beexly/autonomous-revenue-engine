@@ -1,0 +1,4 @@
+# Working Directory for worker_m2_m3_1
+Role: teamwork_preview_worker
+Parent: orchestrator
+Milestone: M2 & M3 & M4
