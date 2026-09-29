@@ -156,6 +156,7 @@ class DwellNotes {
       node.addEventListener('pointermove', this._onMove, { passive: true });
       node.addEventListener('focus', this._onEnter);
       node.addEventListener('blur', this._onLeave);
+      node.addEventListener('click', this._onClick);
     }
 
     this._onKey = (e) => {
@@ -178,6 +179,7 @@ class DwellNotes {
       node.removeEventListener('pointermove', this._onMove);
       node.removeEventListener('focus', this._onEnter);
       node.removeEventListener('blur', this._onLeave);
+      node.removeEventListener('click', this._onClick);
     }
     document.removeEventListener('keydown', this._onKey);
     window.removeEventListener('scroll', this._onScroll);
@@ -250,6 +252,17 @@ class DwellNotes {
     if (dx > MOVE_SLOP || dy > MOVE_SLOP) {
       clearTimeout(this._timers.get(key));
       this._timers.delete(key);
+    }
+  };
+
+  _onClick = (event) => {
+    const node = event.currentTarget;
+    const key = node.dataset.dwell;
+    if (!key) return;
+    if (this._open === key) {
+      this.close();
+    } else {
+      this._reveal(node, key);
     }
   };
 

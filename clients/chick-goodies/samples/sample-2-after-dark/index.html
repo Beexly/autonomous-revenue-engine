@@ -874,7 +874,7 @@ input[type="date"]:focus-visible {
       <div class="table-run" data-run>
         <!-- feast-cinematic-720p.mp4 -->
         <div class="table-run__media" aria-hidden="true">
-          <video class="table-run__video" src="img/feast-cinematic-720p.mp4" autoplay loop muted playsinline preload="auto"></video>
+          <video class="table-run__video" src="img/feast-cinematic-720p.mp4" loop muted playsinline preload="metadata"></video>
           <div class="table-run__overlay"></div>
         </div>
       </div>
@@ -1297,7 +1297,9 @@ const TIERS = {
   'holy-grail':  { name: 'Holy Grail of Grazing', mode: 'band', bands: { 75: 2000, 150: 3500 }, composition: 'Five cheeses, five meats, two sliders, guacamole and pico de gallo.' },
 };
 
-const state = { guests: 80, tier: 'super-graze', date: '2026-09-12' };
+const defaultTargetDate = new Date(Date.now() + 21 * 86400000).toISOString().split('T')[0];
+const minTargetDate = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+const state = { guests: 80, tier: 'super-graze', date: defaultTargetDate };
 
 const $ = (s) => document.querySelector(s);
 const money = (n) => '$' + n.toLocaleString('en-US');
@@ -1380,10 +1382,15 @@ $('#guests')?.addEventListener('input', (e) => {
   state.guests = Number(e.target.value);
   render();
 });
-$('#date')?.addEventListener('input', (e) => {
-  state.date = e.target.value;
-  render();
-});
+const dateEl = $('#date');
+if (dateEl) {
+  dateEl.min = minTargetDate;
+  dateEl.value = defaultTargetDate;
+  dateEl.addEventListener('input', (e) => {
+    state.date = e.target.value;
+    render();
+  });
+}
 
 document.querySelectorAll('[data-tier]').forEach((btn) => {
   btn.addEventListener('click', () => {

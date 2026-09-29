@@ -260,10 +260,17 @@
     return v;
   }
 
-  // Preload video loops
-  Object.keys(ACT_VIDEOS).forEach(k => {
-    if (ACT_VIDEOS[k]) initVideo(k, ACT_VIDEOS[k]);
-  });
+  // Lazy video initialization
+  function ensureVideo(actKey) {
+    if (ACT_VIDEOS[actKey] && !videoElements[actKey]) {
+      initVideo(actKey, ACT_VIDEOS[actKey]);
+    }
+  }
+
+  // Preload only initial act on startup
+  const initialAct = document.documentElement.getAttribute('data-act') || 'prologue';
+  ensureVideo(initialAct);
+  if (initialAct === 'prologue') ensureVideo('act1');
 
   // State Management
   let currentAct = document.documentElement.getAttribute('data-act') || 'prologue';
@@ -321,6 +328,10 @@
           prevAct = currentAct;
           currentAct = newAct;
           crossfadeStartTime = performance.now();
+
+          // Lazy load approaching video texture
+          ensureVideo(newAct);
+          if (newAct === 'act1' || newAct === 'act2') ensureVideo('act3');
 
           // Sync lighting target
           targetLight = ACT_LIGHTS[currentAct]?.lightIntensity ?? 0.0;
