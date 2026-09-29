@@ -112,6 +112,9 @@ Everything is live right now for you to explore on your computer and phone:
 3. **Stacey's Revised Logo:** Embedded directly into the masthead of every page.
 4. **Instant Price Estimator:** Guests can plug in 75 or 150 guests, see the exact math ($229 setup + 18% tax), and send a pre-filled text or email straight to your phone.
 
+### Optional: Operational Business Automations
+In addition to the website build, I’ve also outlined 4 optional business workflow engines (detailed in Section 7 of the invoice packet) that can handle 60-second SMS quote responses, automatic social posting of your weekend catering setups, and automated holiday corporate re-orders. We can keep things simple with just the website build, or layer in any of these automations whenever you're ready!
+
 ### Next Steps & Deposit
 Per the proposal for the top tier ($1,500 total), billing is split into **half to start ($750 deposit)** and **half at final launch ($750 balance)**.
 
@@ -176,3 +179,23 @@ Attn: Garrett Baxley
   Payable to **Galaxy Sports Network LLC** (Attn: Garrett Baxley).
 
 *Thank you for your business, Tricia!*
+
+---
+
+## 7. Optional Business Automation & Revenue Workflow Add-Ons
+
+*These operational packages turn your website from an online brochure into a self-driving catering business. They run in the background 24/7, answering brides while you are cooking, posting your weekend events, and securing repeat corporate bookings.*
+
+> [!NOTE]
+> These workflow packages are completely modular and optional add-ons on top of the $1,500 custom website build. Each can be activated individually or bundled together at a package discount.
+
+| Package | What It Solves For Chef Tricia | Setup Fee | Monthly Care |
+|---|---|---|---|
+| **1. The Automated Lead-to-Book Pipeline** | **Stops lost leads.** Fires instant SMS to your phone (`832-458-8180`) the second a quote is generated. Sends a 60-second personalized text/email to the host with an itemized estimate and 50% deposit link. Automatically follows up at 48 hours and 7 days. | \$497.00 | \$97.00 / mo |
+| **2. The Social & Event Content Syndicator** | **Zero-effort marketing.** Drop 3 photos from your weekend wedding into a private folder. The engine drafts localized captions with Woodlands/Tomball tags and auto-schedules to Instagram, Facebook, and Google. Automatically syncs new 5-star Knot & WeddingWire reviews. | \$397.00 | \$75.00 / mo |
+| **3. The Local SEO Citadel & Seasonal Menu Engine** | **Ranks #1 on Google without ads.** Automated sub-market pages (`charcuteriechick.ai/the-woodlands`, `/spring-tx`, `/conroe`) + weekly automated Google Business posts. Automatically updates calculator for seasonal boards (Valentine's, Fall Harvest, Holiday Truffle). | \$597.00 | \$125.00 / mo |
+| **4. The Corporate VIP Re-Order Engine** | **Fills your holiday calendar 8 weeks early.** Automatically tracks past corporate clients (realtors, law firms, clinics) and queues personalized booking invitations 8 weeks before Thanksgiving and Christmas parties. Includes 1-click Stripe billing with 18% Texas catering tax. | \$497.00 | \$97.00 / mo |
+| **★ COMPLETE AUTOMATION SUITE BUNDLE** | **All 4 Operational Engines Fully Integrated & Configured.** Includes Twilio SMS routing, SendGrid email delivery, Stripe automated checkout, Meta Graph social syndication, and monthly local SEO updates. | **\$1,497.00**<br>*(Save \$491.00)* | **\$247.00 / mo** |
+
+### How to Activate Workflows
+To add any workflow package to your launch, simply notify Garrett during your review or reply to your kickoff email. Custom integrations can be enabled before final DNS cutover.
