@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sensory/sensory.css">
 <style>
 /* ============================================================
    CHARCUTERIE CHICK — DESIGN SYSTEM SKELETON
@@ -789,8 +790,8 @@ input[type="date"]:focus-visible {
         <p class="act__subhead">Thirty-five years, and the blade still leads.</p>
         <div class="act__body">
           <p>There is a light over a cutting board at 4:40 in the morning that nobody outside a kitchen ever sees. One bulb, one block, one woman who has done this twelve thousand seven hundred and seventy-five times and has never once described it as a passion.</p>
-          <p>The prosciutto goes on whole. Meat that has been handled is meat that has already started to give up, so she works it once. The blade enters at the fat cap and travels the length of the shank without stopping, and what comes off is warm and thin enough to read a wine list through, because it was cut ninety seconds ago and not sliced in a plant in Iowa last Tuesday.</p>
-          <p>Then the honeycomb — Texas wildflower, from hives she can name — cut off the frame in slabs and set down still weeping onto the slate.</p>
+          <p><span data-dwell="prosciutto">The prosciutto goes on whole</span>. Meat that has been handled is meat that has already started to give up, so she works it once. The blade enters at the fat cap and travels the length of the shank without stopping, and what comes off is warm and thin enough to read a wine list through, because it was cut ninety seconds ago and not sliced in a plant in Iowa last Tuesday.</p>
+          <p>Then the <span data-dwell="honeycomb">honeycomb — Texas wildflower</span>, from hives she can name — cut off the frame in slabs and set down still weeping onto the slate.</p>
           <p>You will not find any of this on a menu, because a menu is a list of things and this is a record of hours.</p>
           <p>The blade goes back to the stone every Tuesday. One thousand eight hundred and twenty Tuesdays. A dull knife bruises what it cuts.</p>
         </div>
@@ -840,7 +841,7 @@ input[type="date"]:focus-visible {
         <p class="act__subhead">Manchego at twelve months. Brie at room temperature. Figs split by thumb, never knife.</p>
         <div class="act__body">
           <p>Put your hand flat on the counter. That is roughly the temperature the marble should be, and roughly the temperature the brie should never be. Cold brie is a mistake people make in public and blame on the cheese.</p>
-          <p>Manchego, D.O.P., twelve months in La Mancha. Cut it in triangles, because a triangle has a point and a point is somewhere to start when a nervous guest is looking at a counter full of strangers. Brie from Meaux, out of the cooler since last night and standing at room temperature now, so that at the cut it slumps instead of fighting. Split the figs with your thumb. A knife crushes the seed, and the seed is where the perfume lives.</p>
+          <p><span data-dwell="manchego">Manchego, D.O.P., twelve months</span> in La Mancha. Cut it in triangles, because a triangle has a point and a point is somewhere to start when a nervous guest is looking at a counter full of strangers. <span data-dwell="brie">Brie from Meaux</span>, out of the cooler since last night and standing at room temperature now, so that at the cut it slumps instead of fighting. Split the <span data-dwell="fig">figs with your thumb</span>. A knife crushes the seed, and the seed is where the perfume lives.</p>
           <p>Two things on this board may never share a temperature. Nothing may share a height. Fat needs acid or it coats the mouth and turns to paste by the third bite. Salt needs sweet or it lands like a dare.</p>
           <p>The board is load-bearing. Everything on it is holding something else up.</p>
           <p>Grazing tables for 50 guests and up. The cart, boards, sweets and sips for everything else. I take one party at a time.</p>
@@ -914,6 +915,7 @@ input[type="date"]:focus-visible {
           <p>Ours turns.</p>
           <p>It comes in under Edison bulbs. Twelve feet of it. Nobody hears it arrive so much as feels the street change.</p>
           <p>Beignets. Fried to order, which means the first one is too hot and the second one is exactly right. Powdered sugar going up through the lamplight like dust off a dirt road in July. Champagne cold enough that the glass hurts.</p>
+          <p class="score" data-memory="honeycomb" hidden>The honeycomb from 4:40 AM — drizzled over the second one.</p>
           <p>Here is what nothing else in this price range does. Put the beignet in one hand and the flute in the other and hold them both. That's the whole product. Nobody talks about the food at eleven forty. They talk about the noise they made when it arrived.</p>
         </div>
 
@@ -1133,6 +1135,8 @@ function actProgress(act) {
 
 let lastY = window.scrollY;
 let velocity = 0;
+const knifeTriggers = { prologue: false, act1: false, act2: false, grail: false, epilogue: false };
+const sensoryCues = { pour: false, glass: false };
 
 function frame() {
   const y = window.scrollY;
@@ -1158,6 +1162,7 @@ function frame() {
 
   if (html.getAttribute('data-act') !== current.id) {
     html.setAttribute('data-act', current.id);
+    document.dispatchEvent(new CustomEvent('cc:act', { detail: { id: current.id } }));
   }
 
   const minutes = current.hold ? current.from : lerp(current.from, current.to, clamp(p));
@@ -1206,6 +1211,58 @@ function frame() {
     });
   }
 
+  // Sensory audio cues (procedural audio logo & room cues)
+  if (window.CCSensory?.audio?.isEnabled()) {
+    if (current.id === 'prologue') {
+      if (p > 0.12 && !knifeTriggers.prologue) {
+        knifeTriggers.prologue = true;
+        window.CCSensory.audio.cue('knife');
+      } else if (p < 0.02) {
+        knifeTriggers.prologue = false;
+      }
+    } else if (current.id === 'act1') {
+      if (p > 0.35 && !knifeTriggers.act1) {
+        knifeTriggers.act1 = true;
+        window.CCSensory.audio.cue('knife');
+      } else if (p < 0.05) {
+        knifeTriggers.act1 = false;
+      }
+    } else if (current.id === 'act2') {
+      if (p > 0.45 && !knifeTriggers.act2) {
+        knifeTriggers.act2 = true;
+        window.CCSensory.audio.cue('knife');
+      } else if (p < 0.05) {
+        knifeTriggers.act2 = false;
+      }
+    } else if (current.id === 'act3') {
+      if (p > 0.65 && !knifeTriggers.grail) {
+        knifeTriggers.grail = true;
+        window.CCSensory.audio.cue('knife');
+      } else if (p < 0.1) {
+        knifeTriggers.grail = false;
+      }
+      if (p > 0.22 && !sensoryCues.pour) {
+        sensoryCues.pour = true;
+        window.CCSensory.audio.cue('pour');
+      } else if (p < 0.05) {
+        sensoryCues.pour = false;
+      }
+      if (p > 0.38 && !sensoryCues.glass) {
+        sensoryCues.glass = true;
+        window.CCSensory.audio.cue('glass');
+      } else if (p < 0.1) {
+        sensoryCues.glass = false;
+      }
+    } else if (current.id === 'epilogue') {
+      if (p > 0.15 && !knifeTriggers.epilogue) {
+        knifeTriggers.epilogue = true;
+        window.CCSensory.audio.cue('knife');
+      } else if (p < 0.02) {
+        knifeTriggers.epilogue = false;
+      }
+    }
+  }
+
   // Publish for the shader engineer
   html.style.setProperty('--p', p.toFixed(4));
   html.style.setProperty('--velocity', velocity.toFixed(3));
@@ -1214,16 +1271,17 @@ function frame() {
 }
 requestAnimationFrame(frame);
 
-/* ---------- Dwell marks (memory mechanic) ---------- */
-const marked = new Set();
-document.querySelectorAll('[data-dwell]').forEach((node) => {
-  let t = null;
-  const start = () => { t = setTimeout(() => marked.add(node.dataset.dwell), 2000); };
-  const stop = () => { clearTimeout(t); };
-  node.addEventListener('pointerenter', start);
-  node.addEventListener('pointerleave', stop);
-  node.addEventListener('focus', start);
-  node.addEventListener('blur', stop);
+/* ---------- Cross-act memory payoffs ---------- */
+document.addEventListener('cc:dwell', (e) => {
+  const key = e.detail?.key;
+  if (key === 'fig') {
+    const el = document.querySelector('[data-memory="fig"]');
+    if (el) el.hidden = false;
+  }
+  if (key === 'honeycomb') {
+    const el = document.querySelector('[data-memory="honeycomb"]');
+    if (el) el.hidden = false;
+  }
 });
 
 /* ---------- Calculator ----------
@@ -1366,5 +1424,6 @@ if (scoreEl) {
 }
 </script>
 <script src="shader-engine.js"></script>
+<script type="module" src="sensory/sensory-index.js"></script>
 </body>
 </html>

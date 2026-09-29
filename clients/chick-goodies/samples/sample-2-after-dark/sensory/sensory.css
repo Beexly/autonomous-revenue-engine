@@ -1,0 +1,189 @@
+/* ============================================================
+   Charcuterie Chick — Sensory pack styles
+   Design system holds: zero border-radius on structure, zero
+   box-shadow anywhere, hairline rules and printed-docket type
+   only. The popover is a slip of paper, not a card.
+   ============================================================ */
+
+/* ---------------- Header chrome (audio opt-in) ---------------- */
+
+.sensory-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 35;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3, 0.75rem);
+  padding: var(--sp-4, 1rem) var(--gutter, 1.5rem);
+  pointer-events: none;
+}
+
+.audio-toggle {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2, 0.5rem);
+  padding: var(--sp-2, 0.5rem) 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--rule, rgba(249, 246, 240, 0.14));
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--fg-faint);
+  cursor: pointer;
+  font-family: var(--font-mono, "IBM Plex Mono", ui-monospace, monospace);
+  font-size: var(--fs-mono-ui, 0.6875rem);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.audio-toggle:hover {
+  color: var(--fg-muted);
+  border-bottom-color: var(--accent);
+}
+
+.audio-toggle:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.audio-toggle__icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  /* Three hairline bars. Reads as a quiet level meter, not a speaker glyph. */
+  background:
+    linear-gradient(var(--fg-faint), var(--fg-faint)) 0 100% / 1px 5px no-repeat,
+    linear-gradient(var(--fg-faint), var(--fg-faint)) 4px 100% / 1px 9px no-repeat,
+    linear-gradient(var(--fg-faint), var(--fg-faint)) 8px 100% / 1px 7px no-repeat;
+  transition: background 180ms ease;
+}
+
+.audio-toggle[aria-pressed="true"] .audio-toggle__icon {
+  background:
+    linear-gradient(var(--accent), var(--accent)) 0 100% / 1px 5px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 4px 100% / 1px 9px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 8px 100% / 1px 7px no-repeat;
+}
+
+.audio-toggle[aria-pressed="true"] {
+  color: var(--fg-muted);
+  border-bottom-color: var(--accent);
+}
+
+.audio-toggle__state {
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .sensory-header {
+    top: 44px; /* sits under the collapsed margin clock bar */
+    padding-right: var(--gutter, 1.25rem);
+  }
+}
+
+/* ---------------- Dwell note (the slip of paper) ---------------- */
+
+.dwell-note {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 45;
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  padding: var(--sp-6, 1.5rem) var(--sp-5, 1.25rem) var(--sp-5, 1.25rem);
+  background: var(--ink-linen, #f9f6f0);
+  border: 1px solid var(--rule, rgba(13, 11, 12, 0.18));
+  border-radius: 0;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  color: var(--ink-obsidian, #0d0b0c);
+  opacity: 0;
+  pointer-events: none;
+  /* transform is written by JS as translate3d; only opacity animates here. */
+  transition: opacity 220ms ease;
+  will-change: opacity, transform;
+}
+
+.dwell-note[data-open="true"] {
+  opacity: 1;
+}
+
+.dwell__eyebrow {
+  margin: 0 0 var(--sp-3, 0.75rem);
+  font-family: var(--font-mono, "IBM Plex Mono", ui-monospace, monospace);
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink-obsidian, #0d0b0c) 42%, transparent);
+}
+
+.dwell__label {
+  margin: 0 0 var(--sp-4, 1rem);
+  padding-bottom: var(--sp-3, 0.75rem);
+  border-bottom: 1px solid var(--rule, rgba(13, 11, 12, 0.18));
+  font-family: var(--font-display, "Cormorant Garamond", serif);
+  font-size: 1.375rem;
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink-obsidian, #0d0b0c);
+}
+
+.dwell__body {
+  margin: 0;
+  font-family: var(--font-display, "Cormorant Garamond", serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink-obsidian, #0d0b0c) 88%, transparent);
+}
+
+.dwell__aside {
+  margin: var(--sp-4, 1rem) 0 0;
+  padding-top: var(--sp-3, 0.75rem);
+  border-top: 1px solid var(--rule, rgba(13, 11, 12, 0.18));
+  font-family: var(--font-mono, "IBM Plex Mono", ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--ink-copper, #c26838);
+}
+
+/* Stations need a hit area and a whisper of affordance without looking
+   like a button. A hairline underline that only appears on dwell. */
+[data-dwell] {
+  cursor: default;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 220ms ease;
+}
+
+[data-dwell]:hover,
+[data-dwell]:focus-visible {
+  border-bottom-color: var(--accent);
+}
+
+[data-dwell]:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------------- Reduced motion ---------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .dwell-note {
+    transition: none;
+  }
+  .audio-toggle,
+  .audio-toggle__icon,
+  [data-dwell] {
+    transition: none;
+  }
+}
