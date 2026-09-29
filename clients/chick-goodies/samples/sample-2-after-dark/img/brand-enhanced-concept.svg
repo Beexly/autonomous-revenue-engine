@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="600" height="120">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap');
+      .brand-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 34px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        fill: #f9f6f0;
+      }
+      .brand-sub {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        fill: #c26838;
+      }
+      .brand-ring {
+        stroke: #e5a642;
+        fill: none;
+      }
+    </style>
+  </defs>
+
+  <!-- Circular Cameo Seal -->
+  <g transform="translate(60, 60)">
+    <!-- Outer hairline ring -->
+    <circle r="46" class="brand-ring" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+    <!-- Inner solid hairline ring -->
+    <circle r="42" class="brand-ring" stroke-width="1.2"/>
+    <!-- Background disc -->
+    <circle r="40" fill="#141011"/>
+    
+    <!-- Stylized Chef Cameo Monogram & Cloche Accent -->
+    <path d="M-18,22 C-18,6 -8,-2 0,-2 C8,-2 18,6 18,22 Z" fill="#e5a642" opacity="0.85"/>
+    <circle cx="0" cy="-12" r="10" fill="#e5a642"/>
+    <path d="M-12,-18 C-12,-28 12,-28 12,-18 Z" fill="#f9f6f0" opacity="0.9"/>
+    
+    <!-- Accent Stars -->
+    <circle cx="-34" cy="0" r="1.5" fill="#e5a642"/>
+    <circle cx="34" cy="0" r="1.5" fill="#e5a642"/>
+  </g>
+
+  <!-- Typography Stack -->
+  <g transform="translate(136, 0)">
+    <!-- Primary Luxury Logotype -->
+    <text x="0" y="58" class="brand-title">CHARCUTERIE CHICK</text>
+    
+    <!-- Heritage Descriptor & Location -->
+    <text x="2" y="82" class="brand-sub">THE CHICK GOODIES · TOMBALL, TEXAS</text>
+    
+    <!-- Hairline Accent Divider -->
+    <line x1="2" y1="94" x2="380" y2="94" stroke="#c26838" stroke-width="0.8" opacity="0.4"/>
+  </g>
+</svg>
