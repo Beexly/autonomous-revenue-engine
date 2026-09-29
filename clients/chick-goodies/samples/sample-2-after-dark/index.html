@@ -101,52 +101,52 @@
 html[data-act="prologue"] {
   --surface: var(--ink-obsidian);
   --fg: var(--ink-linen);
-  --fg-muted: color-mix(in srgb, var(--ink-linen) 58%, transparent);
-  --fg-faint: color-mix(in srgb, var(--ink-linen) 26%, transparent);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 75%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 45%, transparent);
   --accent: var(--ink-amber);
   --rule: var(--surface-hairline-dark);
-  --scrim: color-mix(in srgb, var(--ink-obsidian) 55%, transparent);
+  --scrim: color-mix(in srgb, var(--ink-obsidian) 75%, transparent);
   --scrim-strength: 1;
 }
 html[data-act="act1"] {
-  --surface: var(--ink-linen);
-  --fg: var(--ink-obsidian);
-  --fg-muted: color-mix(in srgb, var(--ink-obsidian) 62%, transparent);
-  --fg-faint: color-mix(in srgb, var(--ink-obsidian) 28%, transparent);
+  --surface: var(--ink-obsidian);
+  --fg: var(--ink-linen);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 75%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 45%, transparent);
   --accent: var(--ink-copper);
-  --rule: var(--surface-hairline-light);
-  --scrim: color-mix(in srgb, var(--ink-linen) 75%, transparent);
+  --rule: var(--surface-hairline-dark);
+  --scrim: color-mix(in srgb, var(--ink-obsidian) 75%, transparent);
   --scrim-strength: 1;
 }
 html[data-act="act2"] {
   --surface: var(--surface-dusk);
   --fg: var(--ink-linen);
-  --fg-muted: color-mix(in srgb, var(--ink-linen) 58%, transparent);
-  --fg-faint: color-mix(in srgb, var(--ink-linen) 26%, transparent);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 75%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 45%, transparent);
   --accent: var(--ink-amber);
   --rule: var(--surface-hairline-dark);
-  --scrim: color-mix(in srgb, var(--surface-dusk) 55%, transparent);
-  --scrim-strength: .75;
+  --scrim: color-mix(in srgb, var(--surface-dusk) 70%, transparent);
+  --scrim-strength: .9;
 }
 html[data-act="act3"] {
   --surface: var(--ink-obsidian);
   --fg: var(--ink-linen);
-  --fg-muted: color-mix(in srgb, var(--ink-linen) 58%, transparent);
-  --fg-faint: color-mix(in srgb, var(--ink-linen) 26%, transparent);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 75%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 45%, transparent);
   --accent: var(--ink-amber);
   --rule: var(--surface-hairline-dark);
-  --scrim: color-mix(in srgb, var(--ink-obsidian) 55%, transparent);
-  --scrim-strength: .85;
+  --scrim: color-mix(in srgb, var(--ink-obsidian) 75%, transparent);
+  --scrim-strength: .9;
 }
 html[data-act="epilogue"] {
-  --surface: var(--ink-morning);
-  --fg: var(--ink-obsidian);
-  --fg-muted: color-mix(in srgb, var(--ink-obsidian) 58%, transparent);
-  --fg-faint: color-mix(in srgb, var(--ink-obsidian) 26%, transparent);
-  --accent: var(--ink-copper);
-  --rule: var(--surface-hairline-light);
-  --scrim: color-mix(in srgb, var(--ink-morning) 64%, transparent);
-  --scrim-strength: .3;
+  --surface: var(--ink-obsidian);
+  --fg: var(--ink-linen);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 75%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 45%, transparent);
+  --accent: var(--ink-amber);
+  --rule: var(--surface-hairline-dark);
+  --scrim: color-mix(in srgb, var(--ink-obsidian) 80%, transparent);
+  --scrim-strength: .95;
 }
 }
 
@@ -376,6 +376,11 @@ body {
   position: sticky; top: 0;
   height: 100vh;
   overflow: hidden;
+  z-index: 15;
+}
+.act--2 .act__content {
+  position: relative;
+  z-index: 25;
 }
 .act__stack {
   display: flex; flex-direction: column;
@@ -489,12 +494,12 @@ body {
   pointer-events: none;
   background:
     linear-gradient(90deg,
-      color-mix(in srgb, var(--surface-dusk) 92%, transparent) 0%,
-      transparent 18%,
-      transparent 82%,
-      color-mix(in srgb, var(--surface-dusk) 92%, transparent) 100%),
-    radial-gradient(80% 100% at 50% 65%,
-      color-mix(in srgb, var(--ink-amber) 18%, transparent), transparent 75%);
+      var(--ink-obsidian) 0%,
+      color-mix(in srgb, var(--ink-obsidian) 94%, transparent) 38%,
+      color-mix(in srgb, var(--ink-obsidian) 50%, transparent) 55%,
+      transparent 75%),
+    linear-gradient(180deg, color-mix(in srgb, var(--ink-obsidian) 70%, transparent) 0%, transparent 22%),
+    linear-gradient(0deg,  color-mix(in srgb, var(--ink-obsidian) 70%, transparent) 0%, transparent 26%);
 }
 .table-run__counter {
   position: absolute; top: 22vh; right: var(--gutter);
@@ -622,22 +627,25 @@ input[type="date"]:focus-visible {
   outline-offset: 4px;
 }
 
-/* Receipt — print docket. No radius. No shadow. */
+/* Receipt — luxury smoked obsidian glass docket */
 .receipt {
-  background: color-mix(in srgb, var(--ink-linen) 72%, transparent);
+  background: rgba(13, 11, 12, 0.85);
   border: 1px solid var(--rule);
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 4px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: var(--sp-8) var(--sp-6);
   font-family: var(--font-mono);
   max-width: 26rem;
+  color: var(--ink-linen);
 }
 .receipt__head {
   text-align: center;
   letter-spacing: var(--track-mono-ui);
   text-transform: uppercase;
   font-size: var(--fs-mono-ui);
-  color: var(--fg-muted);
+  color: var(--ink-amber);
   line-height: 1.9;
   padding-bottom: var(--sp-4);
   border-bottom: 1px solid var(--rule);
@@ -649,9 +657,9 @@ input[type="date"]:focus-visible {
   letter-spacing: .06em;
   text-transform: uppercase;
   padding: var(--sp-1) 0;
-  color: var(--fg-muted);
+  color: color-mix(in srgb, var(--ink-linen) 75%, transparent);
 }
-.receipt__row--strong { color: var(--fg); }
+.receipt__row--strong { color: var(--ink-linen); font-weight: 500; }
 .receipt__leader {
   flex: 1;
   border-bottom: 1px dotted var(--rule);
@@ -661,6 +669,7 @@ input[type="date"]:focus-visible {
 .receipt__value {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+  color: var(--ink-linen);
 }
 .receipt__total {
   margin-top: var(--sp-4);
@@ -673,14 +682,15 @@ input[type="date"]:focus-visible {
   font-size: var(--fs-mono-ui);
   letter-spacing: var(--track-mono-ui);
   text-transform: uppercase;
-  color: var(--fg-muted);
+  color: var(--ink-amber);
 }
 .receipt__total-value {
   font-family: var(--font-mono);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--fs-mono-fig);
   letter-spacing: var(--track-mono-fig);
   font-variant-numeric: tabular-nums;
+  color: var(--ink-linen);
 }
 .receipt__grail { margin-top: var(--sp-4); }
 .receipt__note {
@@ -691,7 +701,7 @@ input[type="date"]:focus-visible {
   font-size: .625rem;
   letter-spacing: var(--track-mono-ui);
   text-transform: uppercase;
-  color: var(--fg-faint);
+  color: color-mix(in srgb, var(--ink-linen) 55%, transparent);
   line-height: 1.8;
 }
 
@@ -724,6 +734,71 @@ input[type="date"]:focus-visible {
 .action:focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: 4px;
+}
+
+.tasting-tags {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-top: var(--sp-6);
+}
+.tasting-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 8px 16px;
+  background: color-mix(in srgb, var(--ink-linen) 6%, transparent);
+  border: 1px solid var(--rule);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all var(--dur-quick) var(--ease-editorial);
+}
+.tasting-tag:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+}
+.cta-row {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  margin-top: var(--sp-8);
+}
+.cta-ticket {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: 12px 22px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid var(--accent);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all var(--dur-quick) var(--ease-editorial);
+}
+.cta-ticket:hover {
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
+  border-color: var(--fg);
+}
+.cta-ticket--ghost {
+  background: color-mix(in srgb, var(--ink-linen) 4%, transparent);
+  border-color: var(--rule);
+  color: var(--fg-muted);
+}
+.cta-ticket--ghost:hover {
+  border-color: var(--accent);
+  color: var(--fg);
 }
 
 .brand-mark {
@@ -785,15 +860,19 @@ input[type="date"]:focus-visible {
     </div>
     <div class="act__content">
       <div class="act__stack">
-        <p class="eyebrow">Prologue · 4:40 AM</p>
-        <h1 class="act__headline">Four Forty in the Morning</h1>
-        <p class="act__subhead">Thirty-five years, and the blade still leads.</p>
+        <p class="eyebrow">Prologue · 4:40 AM · The Craft</p>
+        <h1 class="act__headline">Thirty-Five Years.<br>One Honed Blade.</h1>
+        <p class="act__subhead">Before the room wakes, the feast begins in the quiet of Tomball.</p>
         <div class="act__body">
-          <p>There is a light over a cutting board at 4:40 in the morning that nobody outside a kitchen ever sees. One bulb, one block, one woman who has done this twelve thousand seven hundred and seventy-five times and has never once described it as a passion.</p>
-          <p><span data-dwell="prosciutto">The prosciutto goes on whole</span>. Meat that has been handled is meat that has already started to give up, so she works it once. The blade enters at the fat cap and travels the length of the shank without stopping, and what comes off is warm and thin enough to read a wine list through, because it was cut ninety seconds ago and not sliced in a plant in Iowa last Tuesday.</p>
-          <p>Then the <span data-dwell="honeycomb">honeycomb — Texas wildflower</span>, from hives she can name — cut off the frame in slabs and set down still weeping onto the slate.</p>
-          <p>You will not find any of this on a menu, because a menu is a list of things and this is a record of hours.</p>
-          <p>The blade goes back to the stone every Tuesday. One thousand eight hundred and twenty Tuesdays. A dull knife bruises what it cuts.</p>
+          <p>Every ribbon of prosciutto is hand-sliced to melt on the tongue. Pure Texas wildflower honeycomb cut fresh off the hive onto natural slate. A masterclass in culinary texture, thirty-five years in the making.</p>
+        </div>
+        <div class="tasting-tags">
+          <span class="tasting-tag" data-dwell="prosciutto">✦ Hand-Cut Prosciutto</span>
+          <span class="tasting-tag" data-dwell="honeycomb">✦ Texas Wildflower Honeycomb</span>
+        </div>
+        <div class="cta-row">
+          <a class="cta-ticket" href="#act2">Explore The 12-Ft Table ↗</a>
+          <a class="cta-ticket cta-ticket--ghost" href="#epilogue">Instant Quote ($24/pp) ↗</a>
         </div>
       </div>
     </div>
@@ -836,15 +915,20 @@ input[type="date"]:focus-visible {
     </div>
     <div class="act__content">
       <div class="act__stack">
-        <p class="eyebrow">Act One · 10:40 AM</p>
-        <h2 class="act__headline">Nothing on This Board Agrees With Anything Else.</h2>
-        <p class="act__subhead">Manchego at twelve months. Brie at room temperature. Figs split by thumb, never knife.</p>
+        <p class="eyebrow">Act One · 10:40 AM · The Architecture</p>
+        <h2 class="act__headline">Architecture on Slate.</h2>
+        <p class="act__subhead">Two textures on this board may never collide without purpose.</p>
         <div class="act__body">
-          <p>Put your hand flat on the counter. That is roughly the temperature the marble should be, and roughly the temperature the brie should never be. Cold brie is a mistake people make in public and blame on the cheese.</p>
-          <p><span data-dwell="manchego">Manchego, D.O.P., twelve months</span> in La Mancha. Cut it in triangles, because a triangle has a point and a point is somewhere to start when a nervous guest is looking at a counter full of strangers. <span data-dwell="brie">Brie from Meaux</span>, out of the cooler since last night and standing at room temperature now, so that at the cut it slumps instead of fighting. Split the <span data-dwell="fig">figs with your thumb</span>. A knife crushes the seed, and the seed is where the perfume lives.</p>
-          <p>Two things on this board may never share a temperature. Nothing may share a height. Fat needs acid or it coats the mouth and turns to paste by the third bite. Salt needs sweet or it lands like a dare.</p>
-          <p>The board is load-bearing. Everything on it is holding something else up.</p>
-          <p>Grazing tables for 50 guests and up. The cart, boards, sweets and sips for everything else. I take one party at a time.</p>
+          <p>Aged twelve-month Manchego D.O.P. meets weeping honeycomb. Room-temperature French Brie de Meaux paired with fresh hand-split Mission figs. Every pairing is engineered so fat balances acid and salt awakens sweet.</p>
+        </div>
+        <div class="tasting-tags">
+          <span class="tasting-tag" data-dwell="manchego">✦ 12-Month Manchego</span>
+          <span class="tasting-tag" data-dwell="brie">✦ Room-Temp Brie</span>
+          <span class="tasting-tag" data-dwell="fig">✦ Split Mission Figs</span>
+        </div>
+        <div class="cta-row">
+          <a class="cta-ticket" href="#act2">The 12-Foot Feast ↗</a>
+          <a class="cta-ticket cta-ticket--ghost" href="#epilogue">Calculate Table Total ↗</a>
         </div>
         <div class="legend" aria-hidden="true">
           <p class="label">Temperature</p>
@@ -884,15 +968,21 @@ input[type="date"]:focus-visible {
       </div>
       <div class="act__content">
         <div class="act__stack">
-          <p class="eyebrow">Act Two · 6:40 PM</p>
-          <h2 class="act__headline">A Thousand Pieces. One Hour and Forty Minutes.</h2>
-          <p class="act__subhead">Fifty guests, or a hundred and fifty. The board gets longer; the rules do not.</p>
+          <p class="eyebrow">Act Two · 6:40 PM · The Banquet</p>
+          <h2 class="act__headline">Twelve Unbroken Feet.</h2>
+          <p class="act__subhead">Fifty to 150+ guests. Ninety minutes of non-stop grazing.</p>
           <div class="act__body">
-            <p>At fifty guests it stops being a board. At a hundred and fifty it becomes architecture — twelve unbroken feet of it down the center of the room — and people stand around it the way people stand at a river.</p>
-            <p>Twelve feet by fourteen inches is about two thousand square inches. About two thousand square inches is about a thousand separate things to pick up. Somebody will have built every one of them by hand, in a kitchen, in the dark, before any of these people had confirmed they were coming.</p>
-            <p>Every table runs ninety minutes. You talk to your guests. By nine o'clock about four hundred hands will have reached across this table. By ten forty, the board that took a full working day to build will be down to crumbs and orange peel and one untouched slice of something nobody recognised.</p>
-            <p>That is the point of it. You are not buying food. You are buying about a thousand small moments of people reaching past each other.</p>
-            <p class="score" data-memory="fig" hidden>That one. Somebody's about to take it.</p>
+            <p>At fifty guests it stops being a platter and becomes architecture. Four curated tiers from $24 to $38/person, loaded with artisan cured meats, imported cheeses, gourmet sliders, house dips, and fresh crudités.</p>
+          </div>
+          <div class="tasting-tags">
+            <span class="tasting-tag">✦ Graze Me ($24)</span>
+            <span class="tasting-tag">✦ Standard ($26)</span>
+            <span class="tasting-tag">✦ Super Graze ($30)</span>
+            <span class="tasting-tag">✦ Grand Graze ($38)</span>
+          </div>
+          <div class="cta-row">
+            <a class="cta-ticket" href="#act3">The Midnight Cart ↗</a>
+            <a class="cta-ticket cta-ticket--ghost" href="#epilogue">Price Your Table ↗</a>
           </div>
         </div>
       </div>
@@ -907,37 +997,25 @@ input[type="date"]:focus-visible {
     </div>
     <div class="act__content">
       <div class="act__stack">
-        <p class="eyebrow">Act Three · 11:40 PM</p>
-        <h2 class="act__headline">Somewhere After Ten, the Night Decides Whether to End or Turn.</h2>
-        <p class="act__subhead">Eleven forty. The cart rolls in.</p>
+        <p class="eyebrow">Act Three · 11:40 PM · The Turn & Holy Grail</p>
+        <h2 class="act__headline">Houston's Largest Cart<br>& The Holy Grail.</h2>
+        <p class="act__subhead">When the music shifts, the feast turns legendary.</p>
         <div class="act__body">
-          <p>There's a moment at every long party. Usually a little after ten. Usually when the playlist has gone soft. The night decides whether it's going to end or turn.</p>
-          <p>Ours turns.</p>
-          <p>It comes in under Edison bulbs. Twelve feet of it. Nobody hears it arrive so much as feels the street change.</p>
-          <p>Beignets. Fried to order, which means the first one is too hot and the second one is exactly right. Powdered sugar going up through the lamplight like dust off a dirt road in July. Champagne cold enough that the glass hurts.</p>
-          <p class="score" data-memory="honeycomb" hidden>The honeycomb from 4:40 AM — drizzled over the second one.</p>
-          <p>Here is what nothing else in this price range does. Put the beignet in one hand and the flute in the other and hold them both. That's the whole product. Nobody talks about the food at eleven forty. They talk about the noise they made when it arrived.</p>
+          <p>Rolling in under warm Edison bulbs: made-to-order Zeppole beignets dusted in powdered sugar, chilled champagne, and our signature wedding centerpiece — The Holy Grail of Grazing ($2,000 for 75 guests / $3,500 for 150).</p>
         </div>
-
-        <!-- HOLY GRAIL OF GRAZING — verified spec -->
-        <div class="act__body" style="margin-top: var(--sp-32)">
-          <p class="eyebrow">The Holy Grail of Grazing</p>
-          <h3 class="pull" style="margin-top: var(--sp-6)">And Then There's the One Nobody Forgets.</h3>
-          <p style="margin-top: var(--sp-6); max-width: var(--measure)">When it's set, the party stops. About four seconds. Four seconds of silence at a catered event is rarer than you'd think, and those four seconds are what the money buys. Not the food. The four seconds.</p>
+        <div class="tasting-tags">
+          <span class="tasting-tag" data-dwell="honeycomb">✦ Hot Powdered Beignets</span>
+          <span class="tasting-tag">✦ Houston's Largest Cart</span>
+          <span class="tasting-tag">✦ The Holy Grail ($2,000 / $3,500)</span>
         </div>
-
-        <figure class="grail" style="margin-top: var(--sp-16)">
-          <!-- crowd-around-grail.webp — the crowd, never the object as hero -->
+        <figure class="grail" style="margin-top: var(--sp-12)">
           <img src="img/table-still.jpg"
-               alt="Guests gathered around the Holy Grail of Grazing table" width="1600" height="900" style="object-fit: cover; width: 100%; height: auto; max-height: 540px;">
-          <figcaption class="label">Four seconds of silence</figcaption>
+               alt="Guests gathered around the Holy Grail of Grazing table" width="1600" height="900" style="object-fit: cover; width: 100%; height: auto; max-height: 480px; border-radius: 4px; border: 1px solid var(--rule);">
+          <figcaption class="label" style="margin-top: var(--sp-2)">The Holy Grail of Grazing · 75 Guests $2,000 · 150 Guests $3,500 · 5 Cheeses, 5 Meats, Sliders, Dips & Chips</figcaption>
         </figure>
-
-        <div class="act__body" style="margin-top: var(--sp-12); text-align: right">
-          <p class="figure" style="line-height: 1.5">75 GUESTS &nbsp; $2,000<br>150 GUESTS &nbsp; $3,500</p>
-          <p class="label" style="margin-top: var(--sp-4); line-height: 1.8; letter-spacing: .12em">
-            Five cheeses · Five meats · Two sliders · Guacamole · Pico de gallo
-          </p>
+        <div class="cta-row">
+          <a class="cta-ticket" href="#epilogue">Instant Quote Calculator ↗</a>
+          <a class="cta-ticket cta-ticket--ghost" href="tel:+18324588180">Direct Call: 832-458-8180</a>
         </div>
       </div>
     </div>
@@ -952,16 +1030,11 @@ input[type="date"]:focus-visible {
 
     <div class="act__content">
       <div class="act__stack">
-        <p class="eyebrow">Epilogue · 7:15 AM</p>
-        <h2 class="act__headline">You Choose. We Cut.</h2>
-        <p class="act__subhead">Twelve thousand seven hundred and seventy-five days. Yours would be the next one.</p>
+        <p class="eyebrow">Epilogue · 7:15 AM · Plan Your Date</p>
+        <h2 class="act__headline">Be a Guest at Your Own Party.</h2>
+        <p class="act__subhead">Pick your date. Dial your headcount. Watch the investment calculate in real time.</p>
         <div class="act__body">
-          <p>The morning after, at 7:15, before her own day starts, the host is already doing it again. Not eating. Planning.</p>
-          <p>She moves a number, and twenty becomes forty. Behind her the board from ten forty rebuilds itself. The twelve feet from six forty reaches further down the room. The cart rolls back in and the night gets four hours longer.</p>
-          <p>That is why you spent nine screens with a knife before you saw a single figure. By the time you reach the calculator you already know what you're buying: six hundred mornings a year, one blade honed every Tuesday, thirty-five years of knowing which cheese dies at minute twenty.</p>
-          <p>Here is the part nobody says out loud. You have just watched a day you weren't invited to. That's what the desire you're feeling is. It's the gap between what you noticed and what you missed.</p>
-          <p>At a good party, the host is the only person who doesn't get to eat. You answer the door. You work the room. You spend your own evening on your feet, and you'll remember it later as a blur of other people having a good time.</p>
-          <p>Pick your people. Pick your date. Let us carry the table and hand you back your hands. For one night, you get to be a guest at your own party.</p>
+          <p>Every table runs 90 minutes with full setup and styling. No surprise charges: food, $229 setup fee, and 18% estimated tax calculated instantly below.</p>
         </div>
       </div>
     </div>

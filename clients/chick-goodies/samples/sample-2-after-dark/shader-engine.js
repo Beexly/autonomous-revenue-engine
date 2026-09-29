@@ -74,10 +74,6 @@
     uniform float u_light_intensity;
     uniform vec3 u_ambient_tint;
 
-    // Up to 8 active ripple drops (x, y, birthTime, strength)
-    uniform vec4 u_drops[8];
-    uniform int u_drop_count;
-
     uniform sampler2D u_tex_current;
     uniform sampler2D u_tex_prev;
     uniform float u_crossfade;
@@ -100,38 +96,9 @@
       }
       uv.y = 1.0 - uv.y; // Flip Y for WebGL texture orientation
 
-      // 2. Fluid Displacement Waves & Caustic Highlights
-      vec2 displacement = vec2(0.0);
-      float caustic = 0.0;
-
-      for (int i = 0; i < 8; i++) {
-        if (i >= u_drop_count) break;
-        vec4 drop = u_drops[i];
-        float age = u_time - drop.z;
-        if (age >= 0.0 && age < 1.8) {
-          vec2 toFrag = (st - drop.xy);
-          toFrag.x *= screenAspect;
-          float d = length(toFrag);
-          
-          // Sinusoidal propagating ring
-          float waveRadius = age * 0.65;
-          float distToWave = abs(d - waveRadius);
-          
-          if (distToWave < 0.25) {
-            float envelope = exp(-distToWave * 18.0) * exp(-age * 2.2) * drop.w;
-            float wave = sin(distToWave * 45.0 - age * 12.0) * envelope;
-            vec2 dir = normalize(toFrag + vec2(0.0001));
-            displacement += dir * wave * 0.035;
-            caustic += max(0.0, wave * 2.5);
-          }
-        }
-      }
-
-      vec2 distortedUV = clamp(uv + displacement, 0.0, 1.0);
-
-      // 3. Texture Sampling with Cross-fade
-      vec4 colCurrent = texture2D(u_tex_current, distortedUV);
-      vec4 colPrev = texture2D(u_tex_prev, distortedUV);
+      // 2. Crystal-Clear Texture Sampling (Zero Ripple Echo Distortion)
+      vec4 colCurrent = texture2D(u_tex_current, uv);
+      vec4 colPrev = texture2D(u_tex_prev, uv);
       vec4 baseColor = mix(colPrev, colCurrent, u_crossfade);
 
       if (u_has_video < 0.5) {
@@ -142,19 +109,15 @@
         baseColor.rgb = mix(u_ambient_tint, baseColor.rgb, op * 0.88);
       }
 
-      // 4. Amber Caustic Light Sheen on Ripple Crests
-      vec3 amberCaustic = vec3(1.0, 0.82, 0.45) * caustic * 0.45;
-      baseColor.rgb += amberCaustic;
-
-      // 5. 2400K Warm Cursor Point Light (on dark grounds)
+      // 3. Gentle 2400K Warm Ambient Candlelight at Cursor (Zero Ripple, Pure Soft Glow)
       if (u_light_intensity > 0.01) {
         vec2 mouseCoord = u_mouse / u_resolution;
         vec2 toLight = (st - mouseCoord);
         toLight.x *= screenAspect;
         float lightDist = length(toLight);
-        float atten = exp(-lightDist * lightDist * 3.5) * u_light_intensity;
-        vec3 pointLightColor = vec3(1.0, 0.54, 0.14) * atten * 0.42;
-        baseColor.rgb += pointLightColor;
+        float atten = exp(-lightDist * lightDist * 4.5) * u_light_intensity;
+        vec3 candleGlow = vec3(1.0, 0.65, 0.28) * atten * 0.25;
+        baseColor.rgb += candleGlow;
       }
 
       gl_FragColor = vec4(baseColor.rgb, 1.0);
@@ -211,17 +174,11 @@
   const uMouse = gl.getUniformLocation(program, 'u_mouse');
   const uLightIntensity = gl.getUniformLocation(program, 'u_light_intensity');
   const uAmbientTint = gl.getUniformLocation(program, 'u_ambient_tint');
-  const uDropCount = gl.getUniformLocation(program, 'u_drop_count');
   const uCrossfade = gl.getUniformLocation(program, 'u_crossfade');
   const uHasVideo = gl.getUniformLocation(program, 'u_has_video');
   const uTexCurrent = gl.getUniformLocation(program, 'u_tex_current');
   const uTexPrev = gl.getUniformLocation(program, 'u_tex_prev');
   const uVideoOpacity = gl.getUniformLocation(program, 'u_video_opacity');
-
-  const uDropLocs = [];
-  for (let i = 0; i < 8; i++) {
-    uDropLocs.push(gl.getUniformLocation(program, `u_drops[${i}]`));
-  }
 
   // --- Video Texture Management ---
   const videoElements = {};
@@ -283,40 +240,13 @@
   let currentTint = ACT_LIGHTS[currentAct]?.tint ?? [0.05, 0.04, 0.05];
   let targetTint = [...currentTint];
 
-  // Mouse & Fluid Drops
+  // Mouse Tracking for Smooth Candlelight Glow (Zero Ripple Echo)
   let mouse = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.5 };
   let targetMouse = { x: mouse.x, y: mouse.y };
-  let lastMouse = { x: mouse.x, y: mouse.y };
-  let lastMoveTime = performance.now();
-
-  const drops = []; // max 8 drops: [normX, normY, birthTimeSec, strength]
-
-  function addDrop(nx, ny, strength) {
-    if (prefersReducedMotion) return;
-    const nowSec = (performance.now() - startTime) * 0.001;
-    drops.unshift([nx, ny, nowSec, Math.min(strength, 1.0)]);
-    if (drops.length > 8) drops.pop();
-  }
 
   window.addEventListener('pointermove', (e) => {
     targetMouse.x = e.clientX;
     targetMouse.y = e.clientY;
-
-    const now = performance.now();
-    const dt = now - lastMoveTime;
-    if (dt > 35) { // Throttle drop injection to ~28Hz
-      const dx = e.clientX - lastMouse.x;
-      const dy = e.clientY - lastMouse.y;
-      const speed = Math.sqrt(dx * dx + dy * dy);
-      if (speed > 12) {
-        const nx = e.clientX / window.innerWidth;
-        const ny = 1.0 - (e.clientY / window.innerHeight);
-        addDrop(nx, ny, Math.min(speed / 60.0, 1.0));
-      }
-      lastMouse.x = e.clientX;
-      lastMouse.y = e.clientY;
-      lastMoveTime = now;
-    }
   }, { passive: true });
 
   // Handle data-act changes via MutationObserver
@@ -453,11 +383,6 @@
     }
     gl.uniform1i(uTexPrev, 1);
 
-    // Upload Fluid Drops
-    gl.uniform1i(uDropCount, drops.length);
-    for (let i = 0; i < drops.length; i++) {
-      gl.uniform4f(uDropLocs[i], drops[i][0], drops[i][1], drops[i][2], drops[i][3]);
-    }
 
     // Draw Single Quad
     gl.drawArrays(gl.TRIANGLES, 0, 6);
