@@ -1,366 +1,1307 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-US" data-act="prologue">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Charcuterie Chick | Houston's Largest Charcuterie Cart & Luxury Grazing Tables</title>
-  <meta name="description" content="Houston's largest charcuterie cart and luxury grazing tables from $24 a person. Thirty-five years of restaurant cooking behind every event. Tricia Holfelder, Tomball TX.">
-  <link rel="canonical" href="https://charcuterie-chick-sample-2.vercel.app/">
-  <meta name="theme-color" content="#040203">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Charcuterie Chick — Tomball, Texas</title>
+<meta name="description" content="More than 35 years behind the line. Grazing tables, boards and Houston's largest charcuterie cart. Tomball, The Woodlands, Spring and Conroe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CHARCUTERIE CHICK — DESIGN SYSTEM SKELETON
+   Spec: Charcuterie-Chick-Visual-Design-System.md v1.0
+   L0 #layer-webgl  → shader engineer
+   L1 #layer-media  → video / photography
+   L2 schematic     → SVG
+   L5 grain         → shader / CSS
+   L10 scrim        → CSS
+   L20 content      → editorial column
+   L30 rail         → margin clock
+   L40 instruments  → calculator
+   L50 brand        → Epilogue only
+   ============================================================ */
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Charcuterie Chick | The 3D Table Experience">
-  <meta property="og:description" content="Houston's largest charcuterie cart, luxury grazing tables, and thirty-five years of restaurant craft. Explore the 3D candlelit feast.">
-  <meta property="og:url" content="https://charcuterie-chick-sample-2.vercel.app/">
-  <meta property="og:image" content="https://charcuterie-chick-sample-2.vercel.app/img/stage1-micro-cone.png">
+@layer tokens, reset, type, layout, acts, media, schematic, table, instruments, motion;
 
-  <!-- Typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+/* ---------- 00 TOKENS ---------- */
+@layer tokens {
+:root {
+  /* Primary palette — five hexes only */
+  --ink-obsidian: #0d0b0c;
+  --ink-amber:    #e5a642;
+  --ink-copper:   #c26838;
+  --ink-linen:    #f9f6f0;
+  --ink-morning:  #e8eaed;
+  --surface-dusk: #16110e;
 
-  <link rel="stylesheet" href="immersion.css">
-  <link rel="stylesheet" href="experience.css">
+  --surface-hairline-dark:  color-mix(in srgb, var(--ink-linen) 14%, transparent);
+  --surface-hairline-light: color-mix(in srgb, var(--ink-obsidian) 18%, transparent);
+
+  /* Type */
+  --font-display: "Cormorant Garamond", "Times New Roman", Times, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xl: clamp(3.25rem, 7.2vw, 7.25rem);
+  --fs-display-l:  clamp(2.25rem, 4.6vw, 4.5rem);
+  --fs-display-m:  clamp(1.625rem, 2.8vw, 2.75rem);
+  --fs-lede:       clamp(1.25rem, 1.6vw, 1.5rem);
+  --fs-body:       clamp(1.0625rem, 1.15vw, 1.25rem);
+  --fs-caption:    0.9375rem;
+  --fs-mono-ui:    0.6875rem;
+  --fs-mono-clock: 0.8125rem;
+  --fs-mono-price: 1.25rem;
+  --fs-mono-fig:   clamp(1.75rem, 3vw, 3rem);
+
+  --lh-display-xl: 0.92;
+  --lh-display-l:  1.02;
+  --lh-lede:       1.4;
+  --lh-body:       1.58;
+  --track-display: -0.022em;
+  --track-mono-ui: 0.14em;
+  --track-mono-fig: -0.01em;
+
+  --measure: 32rem;
+  --measure-lede: 40rem;
+
+  /* Space */
+  --sp-1: .25rem; --sp-2: .5rem; --sp-3: .75rem; --sp-4: 1rem;
+  --sp-6: 1.5rem; --sp-8: 2rem; --sp-12: 3rem; --sp-16: 4rem;
+  --sp-24: 6rem; --sp-32: 8rem; --sp-48: 12rem;
+
+  /* Field */
+  --rail: 4.5rem;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --content: 78rem;
+  --edge: calc(var(--rail) + var(--gutter));
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-shutter:   cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-damp:      cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-quick: 180ms;
+  --dur-mid: 420ms;
+  --dur-act: 900ms;
+  --dur-swap: 1100ms;
+
+  /* Semantic — defaults to prologue */
+  --surface: var(--ink-obsidian);
+  --fg: var(--ink-linen);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 58%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 26%, transparent);
+  --accent: var(--ink-amber);
+  --rule: var(--surface-hairline-dark);
+  --scrim: color-mix(in srgb, var(--ink-obsidian) 55%, transparent);
+  --scrim-strength: 1;
+}
+
+html[data-act="prologue"] {
+  --surface: var(--ink-obsidian);
+  --fg: var(--ink-linen);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 58%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 26%, transparent);
+  --accent: var(--ink-amber);
+  --rule: var(--surface-hairline-dark);
+  --scrim: color-mix(in srgb, var(--ink-obsidian) 55%, transparent);
+  --scrim-strength: 1;
+}
+html[data-act="act1"] {
+  --surface: var(--ink-linen);
+  --fg: var(--ink-obsidian);
+  --fg-muted: color-mix(in srgb, var(--ink-obsidian) 62%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-obsidian) 28%, transparent);
+  --accent: var(--ink-copper);
+  --rule: var(--surface-hairline-light);
+  --scrim: color-mix(in srgb, var(--ink-linen) 62%, transparent);
+  --scrim-strength: .35;
+}
+html[data-act="act2"] {
+  --surface: var(--surface-dusk);
+  --fg: var(--ink-linen);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 58%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 26%, transparent);
+  --accent: var(--ink-amber);
+  --rule: var(--surface-hairline-dark);
+  --scrim: color-mix(in srgb, var(--surface-dusk) 55%, transparent);
+  --scrim-strength: .75;
+}
+html[data-act="act3"] {
+  --surface: var(--ink-obsidian);
+  --fg: var(--ink-linen);
+  --fg-muted: color-mix(in srgb, var(--ink-linen) 58%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-linen) 26%, transparent);
+  --accent: var(--ink-amber);
+  --rule: var(--surface-hairline-dark);
+  --scrim: color-mix(in srgb, var(--ink-obsidian) 55%, transparent);
+  --scrim-strength: .85;
+}
+html[data-act="epilogue"] {
+  --surface: var(--ink-morning);
+  --fg: var(--ink-obsidian);
+  --fg-muted: color-mix(in srgb, var(--ink-obsidian) 58%, transparent);
+  --fg-faint: color-mix(in srgb, var(--ink-obsidian) 26%, transparent);
+  --accent: var(--ink-copper);
+  --rule: var(--surface-hairline-light);
+  --scrim: color-mix(in srgb, var(--ink-morning) 64%, transparent);
+  --scrim-strength: .3;
+}
+}
+
+/* ---------- 01 RESET ---------- */
+@layer reset {
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img, video, canvas, svg { display: block; max-width: 100%; }
+button, input, select { font: inherit; color: inherit; }
+a { color: inherit; }
+figure { margin: 0; }
+h1, h2, h3, p { margin: 0; }
+
+html {
+  background: var(--surface);
+  color: var(--fg);
+  transition: background-color var(--dur-swap) var(--ease-editorial),
+              color var(--dur-swap) var(--ease-editorial);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  overflow-x: hidden;
+}
+}
+
+/* ---------- 02 TYPE ---------- */
+@layer type {
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  font-weight: 400;
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  line-height: 1;
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  font-weight: 400;
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+.act__headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-display-xl);
+  line-height: var(--lh-display-xl);
+  letter-spacing: var(--track-display);
+  width: min(14ch, 100%);
+  margin-left: calc(var(--rail) * -0.35);
+  text-wrap: balance;
+}
+.act__subhead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--fs-lede);
+  line-height: var(--lh-lede);
+  max-width: var(--measure-lede);
+  color: var(--fg-muted);
+  margin-top: var(--sp-8);
+}
+.act__body {
+  max-width: var(--measure);
+  margin-top: var(--sp-16);
+}
+.act__body p + p { margin-top: var(--sp-6); }
+.pull {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-display-m);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  max-width: var(--measure-lede);
+}
+.figure {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: var(--fs-mono-fig);
+  line-height: 1;
+  letter-spacing: var(--track-mono-fig);
+  font-variant-numeric: tabular-nums;
+}
+}
+
+/* ---------- 03 LAYOUT ---------- */
+@layer layout {
+.layer-webgl  { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.layer-media  { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+.layer-grain  { position: fixed; inset: 0; z-index: 5; pointer-events: none;
+                opacity: .045; mix-blend-mode: overlay;
+                background-image: var(--grain-tile); }
+.layer-scrim  { position: fixed; inset: 0; z-index: 10; pointer-events: none;
+                background:
+                  linear-gradient(180deg, var(--scrim) 0%, transparent 28%),
+                  linear-gradient(0deg,  var(--scrim) 0%, transparent 34%);
+                opacity: var(--scrim-strength);
+                transition: opacity var(--dur-swap) var(--ease-editorial); }
+
+.act__content {
+  position: relative;
+  z-index: 20;
+  padding: var(--sp-24) var(--gutter) var(--sp-24) var(--edge);
+  max-width: var(--content);
+}
+.instruments { position: relative; z-index: 40; }
+.brand { position: relative; z-index: 50; }
+
+/* Margin rail */
+.rail {
+  position: fixed; top: 0; bottom: 0; left: 0;
+  width: var(--rail);
+  display: flex; flex-direction: column;
+  justify-content: space-between; align-items: center;
+  padding: var(--sp-8) 0;
+  pointer-events: none;
+  z-index: 30;
+  color: var(--fg-faint);
+}
+.rail__spine {
+  position: absolute; top: var(--sp-8); bottom: var(--sp-8);
+  left: 50%; width: 1px;
+  background: var(--rule);
+}
+.rail__fill {
+  width: 100%; height: 100%;
+  background: var(--accent);
+  transform-origin: top center;
+  transform: scaleY(var(--p, 0));
+  transition: transform 120ms linear;
+}
+.rail__time {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font: 400 var(--fs-mono-clock)/1 var(--font-mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+.rail__day {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  display: flex; gap: var(--sp-3);
+  font-family: var(--font-mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.rail__day-label { font-size: var(--fs-mono-ui); color: var(--fg-faint); }
+.rail__day-figure {
+  font-size: .9375rem; font-weight: 300;
+  letter-spacing: .12em; color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  :root { --rail: 0px; --edge: var(--gutter); }
+  .rail {
+    top: 0; bottom: auto; left: 0; right: 0;
+    width: 100%; height: 44px;
+    flex-direction: row; align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--gutter);
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .rail__spine {
+    top: auto; bottom: 0; left: 0; right: 0;
+    width: 100%; height: 1px;
+  }
+  .rail__fill {
+    transform-origin: left center;
+    transform: scaleX(var(--p, 0));
+    width: 100%; height: 1px;
+  }
+  .rail__time, .rail__day {
+    writing-mode: horizontal-tb;
+    letter-spacing: .14em;
+    font-size: var(--fs-mono-ui);
+  }
+  .act__headline { margin-left: 0; }
+}
+}
+
+/* ---------- 04 ACTS ---------- */
+@layer acts {
+.act {
+  position: relative;
+  min-height: 100vh;
+}
+.act--prologue { min-height: 180vh; }
+.act--1        { min-height: 200vh; }
+.act--2        { height: 250vh; }
+.act--3        { height: 280vh; }
+.act--epilogue { min-height: 160vh; padding-bottom: var(--sp-32); }
+
+.act__pin {
+  position: sticky; top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.act__stack {
+  display: flex; flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+.score {
+  margin-top: var(--sp-12);
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: var(--fs-mono-ui);
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  max-width: 36ch;
+  line-height: 1.8;
+}
+.score[hidden] { display: none; }
+}
+
+/* ---------- 05 MEDIA ---------- */
+@layer media {
+.media-bleed {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.act--prologue .media-bleed { object-position: center right; }
+.act--1        .media-bleed { object-position: center center; }
+.act--2        .media-bleed { object-position: center center; }
+.act--3        .media-bleed { object-position: center right; }
+.act--epilogue .media-bleed { object-position: center center; }
+
+.media-mount {
+  position: absolute; inset: 0;
+  background: var(--surface);
+  overflow: hidden;
+}
+.media-mount::after {
+  /* poster stand-in while assets are still 720p proxies */
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 90% at 70% 40%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 62%);
+  opacity: .9;
+  pointer-events: none;
+}
+.grail img {
+  width: 100%; height: clamp(22rem, 52vh, 34rem);
+  object-fit: cover; object-position: center 40%;
+}
+.grail figcaption { margin-top: var(--sp-3); }
+}
+
+/* ---------- 06 SCHEMATIC (Act 1) ---------- */
+@layer schematic {
+.schematic {
+  position: absolute; inset: 0;
+  z-index: 2; pointer-events: none;
+  width: 100%; height: 100%;
+}
+.schematic .grid-line { stroke: var(--fg-faint); stroke-width: .5; fill: none; }
+.schematic .pair {
+  stroke: var(--accent); stroke-width: 1; fill: none;
+  stroke-linecap: round;
+}
+.schematic .pair-label {
+  fill: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+}
+.legend {
+  display: flex; flex-direction: column; gap: var(--sp-3);
+  margin-top: var(--sp-12);
+}
+.legend__row {
+  display: flex; align-items: center; gap: var(--sp-3);
+}
+.legend__track {
+  flex: 1; height: 1px; background: var(--rule); position: relative;
+}
+.legend__dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--fg-faint);
+}
+.legend__dot--solid { background: var(--accent); }
+}
+
+/* ---------- 07 TABLE RUN (Act 2) ---------- */
+@layer table {
+.table-run {
+  position: absolute; inset: 0;
+  width: 320vw;
+  will-change: transform;
+  transform: translate3d(calc(var(--run, 0) * -220vw), 0, 0);
+}
+.table-run__media {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--ink-obsidian) 88%, transparent) 0%,
+      transparent 22%,
+      transparent 78%,
+      color-mix(in srgb, var(--ink-obsidian) 88%, transparent) 100%),
+    radial-gradient(80% 100% at 50% 70%,
+      color-mix(in srgb, var(--ink-amber) 22%, transparent), transparent 70%),
+    var(--surface-dusk);
+}
+.table-run__counter {
+  position: absolute; top: 22vh; right: var(--gutter);
+  z-index: 20;
+  text-align: right;
+}
+.table-run__counter .label { display: block; margin-bottom: var(--sp-2); }
+}
+
+/* ---------- 08 INSTRUMENTS (Epilogue) ---------- */
+@layer instruments {
+.instruments {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: var(--sp-16);
+  padding: 0 var(--gutter) var(--sp-32) var(--edge);
+  max-width: var(--content);
+  align-items: start;
+}
+@media (max-width: 1100px) {
+  .instruments { grid-template-columns: 1fr; }
+}
+
+.controls { display: flex; flex-direction: column; gap: var(--sp-12); margin-top: var(--sp-12); }
+
+.field__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-bottom: var(--sp-4);
+}
+.field__value {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: var(--fs-mono-fig);
+  letter-spacing: var(--track-mono-fig);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* Range — hairline + amber tick, never a pill */
+input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 1px;
+  background: var(--rule);
+  border-radius: 0; outline: none;
+  margin: var(--sp-4) 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 1px; height: 22px;
+  background: var(--accent);
+  border: 0; border-radius: 0;
+  cursor: ew-resize;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 1px; height: 22px;
+  background: var(--accent);
+  border: 0; border-radius: 0;
+  cursor: ew-resize;
+}
+input[type="range"]:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 6px;
+}
+
+/* Tiers — printed price line, not a segmented control */
+.tiers { display: flex; gap: var(--sp-8); flex-wrap: wrap; }
+.tiers button {
+  background: none; border: 0;
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--fg-faint);
+  cursor: pointer; text-align: left;
+  min-width: 7.5rem;
+  border-radius: 0;
+}
+.tiers button[aria-checked="true"] {
+  color: var(--fg);
+  border-bottom: 1px solid var(--accent);
+}
+.tiers__price {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-price);
+  letter-spacing: .04em;
+}
+.tiers__name {
+  display: block; margin-top: var(--sp-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+.tier-composition {
+  margin-top: var(--sp-6);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  max-width: 36ch;
+  line-height: 1.7;
+}
+
+/* Date */
+input[type="date"] {
+  background: none; border: 0;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+  padding: var(--sp-2) 0;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  letter-spacing: .06em;
+  color: var(--fg);
+  min-width: 12rem;
+}
+input[type="date"]:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Receipt — print docket. No radius. No shadow. */
+.receipt {
+  background: color-mix(in srgb, var(--ink-linen) 72%, transparent);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+  padding: var(--sp-8) var(--sp-6);
+  font-family: var(--font-mono);
+  max-width: 26rem;
+}
+.receipt__head {
+  text-align: center;
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  font-size: var(--fs-mono-ui);
+  color: var(--fg-muted);
+  line-height: 1.9;
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--rule);
+}
+.receipt__rows { padding: var(--sp-4) 0; }
+.receipt__row {
+  display: flex; align-items: baseline; gap: var(--sp-2);
+  font-size: .8125rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: var(--sp-1) 0;
+  color: var(--fg-muted);
+}
+.receipt__row--strong { color: var(--fg); }
+.receipt__leader {
+  flex: 1;
+  border-bottom: 1px dotted var(--rule);
+  transform: translateY(-.25em);
+  min-width: 1.5rem;
+}
+.receipt__value {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.receipt__total {
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: baseline; justify-content: space-between;
+}
+.receipt__total-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.receipt__total-value {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: var(--fs-mono-fig);
+  letter-spacing: var(--track-mono-fig);
+  font-variant-numeric: tabular-nums;
+}
+.receipt__grail { margin-top: var(--sp-4); }
+.receipt__note {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  line-height: 1.8;
+}
+
+/* Actions — hairline text, never filled buttons */
+.actions { margin-top: var(--sp-8); display: flex; flex-direction: column; }
+.action {
+  display: block;
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--fg);
+  text-decoration: none;
+}
+.action__label {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--fs-lede);
+  line-height: 1.3;
+}
+.action__meta {
+  display: block; margin-top: var(--sp-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  transition: color var(--dur-quick) var(--ease-editorial);
+}
+.action:hover { border-bottom-color: var(--accent); }
+.action:hover .action__meta { color: var(--accent); }
+.action:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.brand-mark {
+  margin-top: var(--sp-16);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+}
+
+/* ---------- 09 MOTION ---------- */
+@layer motion {
+@media (prefers-reduced-motion: reduce) {
+  html { transition: none; }
+  .rail__fill { transition: none; }
+  .layer-scrim { transition: none; }
+  .table-run { transform: none; width: 100%; }
+  .act--2, .act--3 { height: auto; min-height: 100vh; }
+  .act__pin { position: relative; height: auto; min-height: 100vh; }
+}
+}
+</style>
 </head>
 <body>
 
-  <!-- Ambient Cinematic Video Backdrop (Offloaded to WebGL VideoTexture in Three.js) -->
-  <div id="cinematic-backdrop" aria-hidden="true" style="display:none;"></div>
+<!-- L0 — shader engineer mount -->
+<canvas id="layer-webgl" class="layer-webgl" aria-hidden="true"></canvas>
 
-  <!-- Persistent Fullscreen 3D WebGL Canvas -->
-  <canvas id="webgl-canvas" aria-label="Interactive 3D Candlelit Charcuterie Table Experience" role="img"></canvas>
+<!-- L1 — media mount (video / photography composited here) -->
+<div id="layer-media" class="layer-media" aria-hidden="true"></div>
 
-  <!-- Film Grain & Vignette Overlays -->
-  <div id="vignette" aria-hidden="true"></div>
-  <div id="grain" aria-hidden="true"></div>
+<!-- L5 — unifying grain -->
+<div class="layer-grain" aria-hidden="true"></div>
 
-  <!-- Luxury Fixed HUD -->
-  <header id="hud">
-    <a class="brand-badge" href="#ch-0" data-goto="0" aria-label="Charcuterie Chick Home">
-      <img src="img/stacey-logo-mark-trans.webp" alt="Charcuterie Chick" width="1400" height="474">
-    </a>
+<!-- L10 — directional scrim -->
+<div class="layer-scrim" aria-hidden="true"></div>
 
-    <!-- 6 Progressive Scale Stations -->
-    <nav class="nav-stations" aria-label="Experience Stations">
-      <button type="button" class="nav-station active" data-goto="0" aria-current="page">00 The Seed</button>
-      <button type="button" class="nav-station" data-goto="1">01 The Board</button>
-      <button type="button" class="nav-station" data-goto="2">02 The Banquet</button>
-      <button type="button" class="nav-station" data-goto="3">03 The Cart</button>
-      <button type="button" class="nav-station" data-goto="4">04 The Chef</button>
-      <button type="button" class="nav-station" data-goto="5">05 Instant Quote</button>
-    </nav>
+<!-- L30 — margin timeline clock -->
+<aside class="rail" aria-hidden="true">
+  <div class="rail__spine">
+    <div class="rail__fill" data-progress></div>
+  </div>
+  <time class="rail__time" data-clock datetime="04:40">4:40 AM</time>
+  <div class="rail__day">
+    <span class="rail__day-label">Day</span>
+    <span class="rail__day-figure" data-day>12,775</span>
+  </div>
+</aside>
 
-    <!-- Ambient Actions -->
-    <div class="hud-actions">
-      <button type="button" id="btn-audio" class="hud-btn" aria-pressed="false">Candle Ambiance</button>
-      <a class="hud-btn call-pill" href="tel:+18324588180">832-458-8180</a>
+<main id="story">
+
+  <!-- ============ PROLOGUE · 4:40 AM ============ -->
+  <section class="act act--prologue" data-act="prologue" id="prologue">
+    <div class="media-mount" aria-hidden="true">
+      <!-- prologue-blade-720p.mp4  ▸ ASSET NEEDED -->
+      <div class="media-bleed" data-scrub="prologue"></div>
     </div>
-  </header>
-
-  <!-- Journey Track Vertical Rail (Right Side) -->
-  <aside id="journey-rail" aria-hidden="true">
-    <div class="rail-indicator">
-      <div class="rail-progress" id="rail-bar"></div>
+    <div class="act__content">
+      <div class="act__stack">
+        <p class="eyebrow">Prologue · 4:40 AM</p>
+        <h1 class="act__headline">Four Forty in the Morning</h1>
+        <p class="act__subhead">Thirty-five years, and the blade still leads.</p>
+        <div class="act__body">
+          <p>There is a light over a cutting board at 4:40 in the morning that nobody outside a kitchen ever sees. One bulb, one block, one woman who has done this twelve thousand seven hundred and seventy-five times and has never once described it as a passion.</p>
+          <p>The prosciutto goes on whole. Meat that has been handled is meat that has already started to give up, so she works it once. The blade enters at the fat cap and travels the length of the shank without stopping, and what comes off is warm and thin enough to read a wine list through, because it was cut ninety seconds ago and not sliced in a plant in Iowa last Tuesday.</p>
+          <p>Then the honeycomb — Texas wildflower, from hives she can name — cut off the frame in slabs and set down still weeping onto the slate.</p>
+          <p>You will not find any of this on a menu, because a menu is a list of things and this is a record of hours.</p>
+          <p>The blade goes back to the stone every Tuesday. One thousand eight hundred and twenty Tuesdays. A dull knife bruises what it cuts.</p>
+        </div>
+      </div>
     </div>
-    <span class="rail-label" id="rail-text">00 / THE SEED</span>
-  </aside>
+  </section>
 
-  <!-- Interactive Story Chapters (Synchronized with 3D Spatial Scale) -->
-  <main id="chapters-container">
-
-    <!-- Act 0: The Seed (Micro Scale) -->
-    <section class="chapter align-left active" id="ch-0" aria-label="The Seed">
-      <div class="plate">
-        <p class="tagline">Tomball · The Woodlands · Spring · Conroe</p>
-        <h1>It begins with<br><em>a single bite.</em></h1>
-        <p class="lede">Every grand feast starts at the microscopic level: imported prosciutto ribbons, fresh rosemary sprigs, and pure Texas honeycomb droplets.</p>
-        
-        <div class="acts-row">
-          <a class="cta-ticket" href="#ch-1" data-goto="1">
-            <span>Watch It Grow</span>
-            <span>EXPLORE ↗</span>
-          </a>
-          <a class="cta-ticket" href="#ch-5" data-goto="5">
-            <span>Instant Quote</span>
-            <span>$24/PP MIN</span>
-          </a>
+  <!-- ============ ACT 1 · 10:40 AM ============ -->
+  <section class="act act--1" data-act="act1" id="act1">
+    <div class="media-mount" aria-hidden="true">
+      <!-- micro-seed-720p.mp4 -->
+      <div class="media-bleed" data-scrub="act1"></div>
+      <!-- L2 — top-down schematic -->
+      <svg class="schematic" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="grid">
+          <line class="grid-line" x1="120" y1="80" x2="120" y2="520"/>
+          <line class="grid-line" x1="880" y1="80" x2="880" y2="520"/>
+          <line class="grid-line" x1="120" y1="80" x2="880" y2="80"/>
+          <line class="grid-line" x1="120" y1="520" x2="880" y2="520"/>
+        </g>
+        <!-- pair-fat-acid : brie → fig -->
+        <path class="pair" data-pair="fat-acid"
+              d="M260,300 Q400,180 560,260"
+              stroke-dasharray="400" stroke-dashoffset="400"/>
+        <text class="pair-label" x="410" y="215" text-anchor="middle">Fat → Acid</text>
+        <!-- pair-salt-sweet : manchego → honeycomb -->
+        <path class="pair" data-pair="salt-sweet"
+              d="M240,420 Q430,470 620,400"
+              stroke-dasharray="420" stroke-dashoffset="420"/>
+        <text class="pair-label" x="430" y="455" text-anchor="middle">Salt → Sweet</text>
+        <!-- pair-temp -->
+        <path class="pair" data-pair="temp"
+              d="M300,180 Q500,120 720,190"
+              stroke-dasharray="460" stroke-dashoffset="460"/>
+        <text class="pair-label" x="510" y="135" text-anchor="middle">Cold → Room</text>
+        <!-- pair-height -->
+        <path class="pair" data-pair="height"
+              d="M340,500 Q520,540 700,490"
+              stroke-dasharray="380" stroke-dashoffset="380"/>
+        <text class="pair-label" x="520" y="530" text-anchor="middle">Low → High</text>
+      </svg>
+    </div>
+    <div class="act__content">
+      <div class="act__stack">
+        <p class="eyebrow">Act One · 10:40 AM</p>
+        <h2 class="act__headline">Nothing on This Board Agrees With Anything Else.</h2>
+        <p class="act__subhead">Manchego at twelve months. Brie at room temperature. Figs split by thumb, never knife.</p>
+        <div class="act__body">
+          <p>Put your hand flat on the counter. That is roughly the temperature the marble should be, and roughly the temperature the brie should never be. Cold brie is a mistake people make in public and blame on the cheese.</p>
+          <p>Manchego, D.O.P., twelve months in La Mancha. Cut it in triangles, because a triangle has a point and a point is somewhere to start when a nervous guest is looking at a counter full of strangers. Brie from Meaux, out of the cooler since last night and standing at room temperature now, so that at the cut it slumps instead of fighting. Split the figs with your thumb. A knife crushes the seed, and the seed is where the perfume lives.</p>
+          <p>Two things on this board may never share a temperature. Nothing may share a height. Fat needs acid or it coats the mouth and turns to paste by the third bite. Salt needs sweet or it lands like a dare.</p>
+          <p>The board is load-bearing. Everything on it is holding something else up.</p>
+          <p>Grazing tables for 50 guests and up. The cart, boards, sweets and sips for everything else. I take one party at a time.</p>
         </div>
-
-        <div class="proof-bar">
-          <div><strong style="color:var(--gold);">5.0 on The Knot</strong> (13 reviews) · Best of Weddings 2026</div>
-          <div><strong style="color:var(--gold);">5.0 on WeddingWire</strong> (11 reviews) · 100% recommended</div>
+        <div class="legend" aria-hidden="true">
+          <p class="label">Temperature</p>
+          <div class="legend__row">
+            <span class="legend__dot"></span>
+            <span class="legend__track"></span>
+            <span class="label">5600K</span>
+          </div>
+          <div class="legend__row">
+            <span class="legend__dot legend__dot--solid"></span>
+            <span class="legend__track"></span>
+            <span class="label">Room</span>
+          </div>
+          <div class="legend__row">
+            <span class="legend__dot"></span>
+            <span class="legend__track"></span>
+            <span class="label">Chilled</span>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Act 1: The Board (Gathering Scale: 10–25 Guests) -->
-    <section class="chapter align-right" id="ch-1" aria-label="The Board">
-      <div class="plate">
-        <p class="tagline">01 · Gathering Scale · 10 to 25 Guests</p>
-        <h2>Then, an artisan<br><em>centerpiece board.</em></h2>
-        <p class="lede">The single bite joins a black walnut canvas. Triple-crème brie, aged Spanish manchego, Genoa salami florets, and sliced fresh mission figs.</p>
-
-        <ul class="feature-bullets">
-          <li><span class="bullet-star">✦</span> Two signature sliders included per guest</li>
-          <li><span class="bullet-star">✦</span> Scratch-made seasonal fruit jellies & artisan dips</li>
-          <li><span class="bullet-star">✦</span> Roasted and raw farm vegetable crudités</li>
-        </ul>
-
-        <div class="acts-row">
-          <a class="cta-ticket" href="#ch-2" data-goto="2">
-            <span>Expand to Banquet</span>
-            <span>GROW ↗</span>
-          </a>
-          <a class="cta-link" href="#ch-5" data-goto="5">Price this setup now →</a>
+  <!-- ============ ACT 2 · 6:40 PM ============ -->
+  <section class="act act--2" data-act="act2" id="act2">
+    <div class="act__pin">
+      <div class="table-run" data-run>
+        <!-- feast-cinematic-720p.mp4 -->
+        <div class="table-run__media" aria-hidden="true"></div>
+      </div>
+      <div class="table-run__counter" aria-hidden="true">
+        <span class="label">Guests</span>
+        <span class="figure" data-guests>50</span>
+      </div>
+      <div class="act__content">
+        <div class="act__stack">
+          <p class="eyebrow">Act Two · 6:40 PM</p>
+          <h2 class="act__headline">A Thousand Pieces. One Hour and Forty Minutes.</h2>
+          <p class="act__subhead">Fifty guests, or a hundred and fifty. The board gets longer; the rules do not.</p>
+          <div class="act__body">
+            <p>At fifty guests it stops being a board. At a hundred and fifty it becomes architecture — twelve unbroken feet of it down the center of the room — and people stand around it the way people stand at a river.</p>
+            <p>Twelve feet by fourteen inches is about two thousand square inches. About two thousand square inches is about a thousand separate things to pick up. Somebody will have built every one of them by hand, in a kitchen, in the dark, before any of these people had confirmed they were coming.</p>
+            <p>Every table runs ninety minutes. You talk to your guests. By nine o'clock about four hundred hands will have reached across this table. By ten forty, the board that took a full working day to build will be down to crumbs and orange peel and one untouched slice of something nobody recognised.</p>
+            <p>That is the point of it. You are not buying food. You are buying about a thousand small moments of people reaching past each other.</p>
+            <p class="score" data-memory="fig" hidden>That one. Somebody's about to take it.</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Act 2: The Banquet Tables (Room Scale: 50–150+ Guests) -->
-    <section class="chapter align-left" id="ch-2" aria-label="The Banquet Tables">
-      <div class="plate plate-wide">
-        <p class="tagline">02 · Room Scale · 50 Guests and Up</p>
-        <h2>Fifty guests and up,<br><em>that's a table.</em></h2>
-        <p class="lede">A continuous 12-foot candlelit feast that stretches across the room. Ninety minutes of non-stop grazing. No chafing dishes, no caterer shortcuts.</p>
-
-        <!-- 4 Curated Tiers -->
-        <div class="tier-cards">
-          <div class="tier-card active" data-tier="24">
-            <span class="tier-cost">$24/pp</span>
-            <h3>Graze Me, Craze Me</h3>
-            <p>Two sliders, cured meats, cheeses, fruit, hummus, almonds, 2 salads, roasted & raw vegetables, 1 dip.</p>
-          </div>
-          <div class="tier-card" data-tier="26">
-            <span class="tier-cost">$26/pp</span>
-            <h3>Grazing Standard</h3>
-            <p>All of above plus second hummus, two dips, pasta salad, potato, sweet-potato & tortilla chips.</p>
-          </div>
-          <div class="tier-card" data-tier="30">
-            <span class="tier-cost">$30/pp</span>
-            <h3>Super Graze</h3>
-            <p>Three sliders, three salads, three dips, two hummus, nuts, chips, and full vegetable spread.</p>
-          </div>
-          <div class="tier-card" data-tier="38">
-            <span class="tier-cost">$38/pp</span>
-            <h3>Grand Graze</h3>
-            <p>Five sliders, four salads, three dips, two hummus, two nuts, chips, and mini pudding cups.</p>
-          </div>
+  <!-- ============ ACT 3 · 11:40 PM ============ -->
+  <section class="act act--3" data-act="act3" id="act3">
+    <div class="media-mount" aria-hidden="true">
+      <!-- cart-cinematic-720p.mp4 -->
+      <div class="media-bleed" data-scrub="act3"></div>
+    </div>
+    <div class="act__content">
+      <div class="act__stack">
+        <p class="eyebrow">Act Three · 11:40 PM</p>
+        <h2 class="act__headline">Somewhere After Ten, the Night Decides Whether to End or Turn.</h2>
+        <p class="act__subhead">Eleven forty. The cart rolls in.</p>
+        <div class="act__body">
+          <p>There's a moment at every long party. Usually a little after ten. Usually when the playlist has gone soft. The night decides whether it's going to end or turn.</p>
+          <p>Ours turns.</p>
+          <p>It comes in under Edison bulbs. Twelve feet of it. Nobody hears it arrive so much as feels the street change.</p>
+          <p>Beignets. Fried to order, which means the first one is too hot and the second one is exactly right. Powdered sugar going up through the lamplight like dust off a dirt road in July. Champagne cold enough that the glass hurts.</p>
+          <p>Here is what nothing else in this price range does. Put the beignet in one hand and the flute in the other and hold them both. That's the whole product. Nobody talks about the food at eleven forty. They talk about the noise they made when it arrived.</p>
         </div>
 
-        <div class="acts-row" style="margin-top:20px;">
-          <a class="cta-ticket" href="#ch-3" data-goto="3">
-            <span>See The Cart & Holy Grail</span>
-            <span>NEXT ↗</span>
-          </a>
-          <a class="cta-link" href="#ch-5" data-goto="5">Customize your tier in Quote Calculator →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Act 3: The Spectacle (Houston's Largest Cart & The Holy Grail) -->
-    <section class="chapter align-right" id="ch-3" aria-label="The Cart and Holy Grail">
-      <div class="plate">
-        <p class="tagline">03 · Flagship Spectacle</p>
-        <h2>Houston's largest<br><em>charcuterie cart.</em></h2>
-        <p class="lede">The glowing mobile cart is the showstopper. Ambient Edison filament bulbs, live on-site chef service, and custom culinary bar stations.</p>
-
-        <div class="grail-box">
-          <div class="grail-head">
-            <span class="grail-title">The Holy Grail Centerpiece</span>
-            <span class="grail-price">$2,000 (75 guests) · $3,500 (150 guests)</span>
-          </div>
-          <p class="grail-desc">The ultimate showpiece for luxury weddings and high-profile corporate galas. Fully styled with cascading boards, floral accents, and table runner styling.</p>
+        <!-- HOLY GRAIL OF GRAZING — verified spec -->
+        <div class="act__body" style="margin-top: var(--sp-32)">
+          <p class="eyebrow">The Holy Grail of Grazing</p>
+          <h3 class="pull" style="margin-top: var(--sp-6)">And Then There's the One Nobody Forgets.</h3>
+          <p style="margin-top: var(--sp-6); max-width: var(--measure)">When it's set, the party stops. About four seconds. Four seconds of silence at a catered event is rarer than you'd think, and those four seconds are what the money buys. Not the food. The four seconds.</p>
         </div>
 
-        <ul class="cart-bars">
-          <li><strong>Taco Cart</strong> · $26.95 / guest</li>
-          <li><strong>Slider Bar</strong> · $2.95 / piece</li>
-          <li><strong>Zeppole Beignets</strong> · $4.50 / guest</li>
-          <li><strong>Mimosa & Bloody Mary Bars</strong> · $4.00 – $6.50 / guest</li>
-        </ul>
+        <figure class="grail" style="margin-top: var(--sp-16)">
+          <!-- crowd-around-grail.webp — the crowd, never the object as hero -->
+          <img src="img/table-still.jpg"
+               alt="Guests gathered around the Holy Grail of Grazing table" width="1600" height="900" style="object-fit: cover; width: 100%; height: auto; max-height: 540px;">
+          <figcaption class="label">Four seconds of silence</figcaption>
+        </figure>
 
-        <div class="acts-row">
-          <a class="cta-ticket" href="#ch-4" data-goto="4">
-            <span>Meet Chef Tricia</span>
-            <span>NEXT ↗</span>
-          </a>
-          <a class="cta-link" href="#ch-5" data-goto="5">Build instant custom package →</a>
+        <div class="act__body" style="margin-top: var(--sp-12); text-align: right">
+          <p class="figure" style="line-height: 1.5">75 GUESTS &nbsp; $2,000<br>150 GUESTS &nbsp; $3,500</p>
+          <p class="label" style="margin-top: var(--sp-4); line-height: 1.8; letter-spacing: .12em">
+            Five cheeses · Five meats · Two sliders · Guacamole · Pico de gallo
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Act 4: The Heritage (Chef Tricia Holfelder) -->
-    <section class="chapter align-left" id="ch-4" aria-label="About Chef Tricia">
-      <div class="plate">
-        <p class="tagline">04 · Thirty-Five Years Behind the Knife</p>
-        <h2>Thirty-five years of<br><em>restaurant craft.</em></h2>
-        <p class="lede">Tricia Holfelder didn't pick up charcuterie from social media. She spent 35 years in Texas restaurant kitchens running high-volume service, scratch sauces, and butchery.</p>
-        
-        <p style="font-size:13.5px; color:var(--ink-dim); margin-bottom:18px;">
-          "Every loaf of bread, every compound butter, every seasonal preserve is made from scratch in my Tomball kitchen. When your guests walk up to our tables, they taste real culinary discipline."
+  <!-- ============ EPILOGUE · 7:15 AM ============ -->
+  <section class="act act--epilogue" data-act="epilogue" id="epilogue">
+    <div class="media-mount" aria-hidden="true">
+      <!-- epilogue-window-720p.mp4  ▸ ASSET NEEDED -->
+      <div class="media-bleed" data-scrub="epilogue"></div>
+    </div>
+
+    <div class="act__content">
+      <div class="act__stack">
+        <p class="eyebrow">Epilogue · 7:15 AM</p>
+        <h2 class="act__headline">You Choose. We Cut.</h2>
+        <p class="act__subhead">Twelve thousand seven hundred and seventy-five days. Yours would be the next one.</p>
+        <div class="act__body">
+          <p>The morning after, at 7:15, before her own day starts, the host is already doing it again. Not eating. Planning.</p>
+          <p>She moves a number, and twenty becomes forty. Behind her the board from ten forty rebuilds itself. The twelve feet from six forty reaches further down the room. The cart rolls back in and the night gets four hours longer.</p>
+          <p>That is why you spent nine screens with a knife before you saw a single figure. By the time you reach the calculator you already know what you're buying: six hundred mornings a year, one blade honed every Tuesday, thirty-five years of knowing which cheese dies at minute twenty.</p>
+          <p>Here is the part nobody says out loud. You have just watched a day you weren't invited to. That's what the desire you're feeling is. It's the gap between what you noticed and what you missed.</p>
+          <p>At a good party, the host is the only person who doesn't get to eat. You answer the door. You work the room. You spend your own evening on your feet, and you'll remember it later as a blur of other people having a good time.</p>
+          <p>Pick your people. Pick your date. Let us carry the table and hand you back your hands. For one night, you get to be a guest at your own party.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- L40 — INSTRUMENTS -->
+    <div class="instruments">
+      <div>
+        <p class="eyebrow">The Quote</p>
+        <h3 class="pull" style="margin-top: var(--sp-4)">Move the number. Watch the night take shape.</h3>
+
+        <div class="controls">
+          <div>
+            <label class="field__label" for="guests">Guests</label>
+            <div class="field__value" data-guests-read>80</div>
+            <input type="range" id="guests" min="50" max="150" step="1" value="80"
+                   aria-label="Number of guests">
+            <p class="label" style="margin-top: var(--sp-2)">Grazing tables start at 50 guests.</p>
+          </div>
+
+          <div>
+            <span class="field__label" id="tier-label">Table</span>
+            <div class="tiers" role="radiogroup" aria-labelledby="tier-label">
+              <button type="button" role="radio" data-tier="graze-me" data-price="24" aria-checked="false">
+                <span class="tiers__price">$24</span>
+                <span class="tiers__name">Graze Me, Craze Me</span>
+              </button>
+              <button type="button" role="radio" data-tier="standard" data-price="26" aria-checked="false">
+                <span class="tiers__price">$26</span>
+                <span class="tiers__name">Grazing Standard</span>
+              </button>
+              <button type="button" role="radio" data-tier="super-graze" data-price="30" aria-checked="true">
+                <span class="tiers__price">$30</span>
+                <span class="tiers__name">Super Graze</span>
+              </button>
+              <button type="button" role="radio" data-tier="grand-graze" data-price="38" aria-checked="false">
+                <span class="tiers__price">$38</span>
+                <span class="tiers__name">Grand Graze</span>
+              </button>
+              <button type="button" role="radio" data-tier="holy-grail" data-price="band" aria-checked="false">
+                <span class="tiers__price">$2,000</span>
+                <span class="tiers__name">Holy Grail · 75</span>
+              </button>
+            </div>
+            <p class="tier-composition" data-composition>
+              Three sliders, three salads, three dips, two hummus, nuts, chips and a full vegetable spread.
+            </p>
+          </div>
+
+          <div>
+            <label class="field__label" for="date">Date</label>
+            <input type="date" id="date" value="2026-09-12">
+          </div>
+        </div>
+      </div>
+
+      <!-- RECEIPT -->
+      <div>
+        <div class="receipt" data-receipt>
+          <div class="receipt__head">
+            Charcuterie Chick<br>
+            Tomball, Texas
+          </div>
+          <div class="receipt__rows">
+            <div class="receipt__row">
+              <span>Guests</span><span class="receipt__leader"></span>
+              <span class="receipt__value" data-r-guests>80</span>
+            </div>
+            <div class="receipt__row">
+              <span>Table</span><span class="receipt__leader"></span>
+              <span class="receipt__value" data-r-tier>Super Graze</span>
+            </div>
+            <div class="receipt__row">
+              <span>Per person</span><span class="receipt__leader"></span>
+              <span class="receipt__value" data-r-pp>$30</span>
+            </div>
+            <div class="receipt__row receipt__row--strong">
+              <span>Board</span><span class="receipt__leader"></span>
+              <span class="receipt__value" data-r-board>$2,400</span>
+            </div>
+            <div class="receipt__row">
+              <span>Date</span><span class="receipt__leader"></span>
+              <span class="receipt__value" data-r-date>12 Sep</span>
+            </div>
+            <div class="receipt__grail">
+              <div class="receipt__row" data-r-grail-row hidden>
+                <span data-r-grail-name>Holy Grail · 75</span><span class="receipt__leader"></span>
+                <span class="receipt__value" data-r-grail>$2,000</span>
+              </div>
+            </div>
+          </div>
+          <div class="receipt__total">
+            <span class="receipt__total-label">Total</span>
+            <span class="receipt__total-value" data-r-total>$2,400</span>
+          </div>
+          <p class="receipt__note">
+            A quote request, not a booking.<br>
+            Dates and prices are confirmed by Tricia.
+          </p>
+        </div>
+
+        <div class="actions">
+          <a class="action" data-sms href="sms:+18324588180">
+            <span class="action__label">Text Tricia</span>
+            <span class="action__meta">832 · 458 · 8180</span>
+          </a>
+          <a class="action" data-mail href="mailto:charcuteriechick@outlook.com">
+            <span class="action__label">Email the kitchen</span>
+            <span class="action__meta">charcuteriechick@outlook.com</span>
+          </a>
+          <a class="action" href="tel:+18324588180">
+            <span class="action__label">Call</span>
+            <span class="action__meta">Tomball · The Woodlands · Spring · Conroe</span>
+          </a>
+        </div>
+
+        <p class="score" data-score hidden>
+          You stopped at six of them. There were about a thousand.
         </p>
 
-        <div class="badges-row">
-          <div class="badge-item">
-            <span class="badge-icon">★</span>
-            <span class="badge-txt"><strong>The Knot</strong><br>Best of Weddings 2026</span>
-          </div>
-          <div class="badge-item">
-            <span class="badge-icon">♥</span>
-            <span class="badge-txt"><strong>WeddingWire</strong><br>Couples' Choice 2026</span>
-          </div>
-          <div class="badge-item">
-            <span class="badge-icon">35</span>
-            <span class="badge-txt"><strong>Years Craft</strong><br>Restaurant Pedigree</span>
-          </div>
-        </div>
-
-        <div class="acts-row" style="margin-top:24px;">
-          <a class="cta-ticket" href="#ch-5" data-goto="5">
-            <span>Price Your Event Now</span>
-            <span>BUILD QUOTE ↗</span>
-          </a>
-        </div>
+        <!-- L50 — the only wordmark on the site -->
+        <p class="brand-mark brand">Charcuterie Chick</p>
       </div>
-    </section>
-
-    <!-- Act 5: Real-Time Event Builder & Instant Quote Calculator -->
-    <section class="chapter align-center" id="ch-5" aria-label="Instant Quote Calculator">
-      <div class="plate plate-calculator">
-        <div class="calc-header">
-          <p class="tagline">05 · Real-Time Mathematical Quote Engine</p>
-          <h2>Design your feast.<br><em>Transparent to the penny.</em></h2>
-          <p class="lede">Select your guest count and menu tier. No hidden fees, no mystery quotes. Pre-fills directly into an instant SMS to Tricia.</p>
-        </div>
-
-        <div class="calc-grid">
-          <!-- Controls -->
-          <div class="calc-controls">
-            <!-- Guests -->
-            <div class="control-group">
-              <div class="control-label">
-                <span>Guest Count (50 min)</span>
-                <b id="lbl-guests">75 guests</b>
-              </div>
-              <input type="range" id="input-guests" min="50" max="300" step="5" value="75">
-            </div>
-
-            <!-- Tier Selection -->
-            <div class="control-group">
-              <span class="control-title">Select Menu Tier</span>
-              <div class="tier-selector">
-                <button type="button" class="tier-pill active" data-rate="24">Graze Me $24</button>
-                <button type="button" class="tier-pill" data-rate="26">Standard $26</button>
-                <button type="button" class="tier-pill" data-rate="30">Super $30</button>
-                <button type="button" class="tier-pill" data-rate="38">Grand $38</button>
-                <button type="button" class="tier-pill" data-rate="holy-grail">Holy Grail</button>
-              </div>
-            </div>
-
-            <!-- Optional Add-ons -->
-            <div class="control-group">
-              <span class="control-title">Popular Add-ons</span>
-              <div class="addons-grid">
-                <label class="addon-check">
-                  <input type="checkbox" id="add-beignets" data-price="4.50">
-                  <span>Zeppole Beignets (+$4.50/pp)</span>
-                </label>
-                <label class="addon-check">
-                  <input type="checkbox" id="add-cart" data-flat="350">
-                  <span>Midnight Cart Service (+$350)</span>
-                </label>
-                <label class="addon-check">
-                  <input type="checkbox" id="add-sliders" data-price="2.95">
-                  <span>Extra Sliders (+$2.95/pp)</span>
-                </label>
-                <label class="addon-check">
-                  <input type="checkbox" id="add-mimosas" data-price="4.00">
-                  <span>Mimosa Bar Setup (+$4.00/pp)</span>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Receipt Breakdown -->
-          <div class="calc-receipt">
-            <div class="receipt-card">
-              <div class="receipt-row">
-                <span id="rcpt-tier-name">Graze Me, Craze Me (75 × $24)</span>
-                <b id="rcpt-tier-subtotal">$1,800.00</b>
-              </div>
-              <div class="receipt-row" id="rcpt-addons-row" style="display:none;">
-                <span>Add-ons Subtotal</span>
-                <b id="rcpt-addons-subtotal">$0.00</b>
-              </div>
-              <div class="receipt-row">
-                <span>Production & Styling Setup</span>
-                <b>$229.00</b>
-              </div>
-              <div class="receipt-row">
-                <span>Texas State Tax (18% Catering)</span>
-                <b id="rcpt-tax">$365.22</b>
-              </div>
-              <div class="receipt-divider"></div>
-              <div class="receipt-row total-row">
-                <span>Total Investment</span>
-                <b id="rcpt-total">$2,394.22</b>
-              </div>
-
-              <div class="receipt-actions">
-                <a id="btn-sms" class="action-btn action-primary" href="#">
-                  <span>Lock Date via SMS</span>
-                  <span class="btn-sub">Direct to Tricia's Cell (832-458-8180)</span>
-                </a>
-                <a id="btn-email" class="action-btn action-secondary" href="#">
-                  <span>Email Formal Proposal</span>
-                  <span class="btn-sub">charcuteriechick@outlook.com</span>
-                </a>
-              </div>
-              <p class="receipt-note">50% deposit locks your date on Tricia's calendar. Balance due only after review.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Interactive Scroll Prompt -->
-  <div id="scroll-hint" aria-hidden="true">
-    <div class="hint-wheel"></div>
-    <span>SCROLL OR DRAG TO EXPLORE 3D</span>
-  </div>
-
-  <!-- Floating 3D Interaction Tooltip & Leader Line -->
-  <div id="spatial-hud" aria-hidden="true">
-    <svg id="hud-line-svg">
-      <line id="hud-line" x1="0" y1="0" x2="0" y2="0" stroke="rgba(226, 167, 126, 0.7)" stroke-width="1.5" stroke-dasharray="3,3" />
-      <circle id="hud-reticle" cx="0" cy="0" r="6" fill="none" stroke="rgba(226, 167, 126, 0.9)" stroke-width="1.5" />
-    </svg>
-    <div id="hud-tooltip" class="hud-tooltip">
-      <span class="hud-title" id="hud-title">Artisan Node</span>
-      <p class="hud-desc" id="hud-desc">Tasting notes and ingredients.</p>
-      <span class="hud-badge" id="hud-badge">Tap to interact</span>
     </div>
-  </div>
+  </section>
 
-  <!-- Vendors & Core Scripts -->
-  <script>
-    // Safeguard quote receipt values from count-up animations during instant navigation or chapter 5 calculation
-    window.addEventListener('chapterChange', function(e) {
-      if (e.detail && (e.detail.instant || e.detail.chapterIndex === 5)) {
-        e.stopImmediatePropagation();
-        const ch = document.querySelectorAll('.chapter')[e.detail.chapterIndex];
-        if (ch) {
-          ch.classList.remove('ch-entering');
-          void ch.offsetWidth;
-          ch.classList.add('ch-entering');
-        }
+</main>
+
+<script type="module">
+/* ============================================================
+   Clock, act theming, table run, calculator.
+   Shader engineer: you receive on <html> every frame —
+     --p       act progress 0..1
+     --run     Act 2 table extension 0..1
+     --velocity scroll velocity
+   You never write layout. You never own a DOM node outside
+   #layer-webgl.
+   ============================================================ */
+
+const html = document.documentElement;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+
+const ACTS = [
+  { id: 'prologue', el: '#prologue', from: 4 * 60 + 40,  to: 10 * 60 + 40, hold: false },
+  { id: 'act1',     el: '#act1',     from: 10 * 60 + 40, to: 18 * 60 + 40, hold: false },
+  { id: 'act2',     el: '#act2',     from: 18 * 60 + 40, to: 23 * 60 + 40, hold: false },
+  { id: 'act3',     el: '#act3',     from: 23 * 60 + 40, to: 23 * 60 + 40, hold: true  },
+  { id: 'epilogue', el: '#epilogue', from: 23 * 60 + 40, to: 31 * 60 + 15, hold: false },
+];
+
+const clockEl = document.querySelector('[data-clock]');
+const progressEl = document.querySelector('[data-progress]');
+const guestsEl = document.querySelector('[data-guests]');
+
+function formatClock(totalMinutes) {
+  const m = ((totalMinutes % (24 * 60)) + 24 * 60) % (24 * 60);
+  const h24 = Math.floor(m / 60);
+  const min = Math.round(m % 60);
+  const h12 = ((h24 + 11) % 12) + 1;
+  const suffix = h24 < 12 ? 'AM' : 'PM';
+  return `${h12}:${String(min).padStart(2, '0')} ${suffix}`;
+}
+
+function actProgress(act) {
+  const el = document.querySelector(act.el);
+  if (!el) return 0;
+  const r = el.getBoundingClientRect();
+  const scrollable = Math.max(1, el.offsetHeight - window.innerHeight);
+  return clamp(-r.top / scrollable);
+}
+
+let lastY = window.scrollY;
+let velocity = 0;
+
+function frame() {
+  const y = window.scrollY;
+  velocity = lerp(velocity, y - lastY, 0.15);
+  lastY = y;
+
+  let current = ACTS[0];
+  let p = 0;
+
+  for (const act of ACTS) {
+    const el = document.querySelector(act.el);
+    if (!el) continue;
+    const r = el.getBoundingClientRect();
+    if (r.top <= window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.25) {
+      current = act;
+      p = actProgress(act);
+      break;
+    }
+    if (r.top > window.innerHeight * 0.5) break;
+    current = act;
+    p = 1;
+  }
+
+  if (html.getAttribute('data-act') !== current.id) {
+    html.setAttribute('data-act', current.id);
+  }
+
+  const minutes = current.hold ? current.from : lerp(current.from, current.to, clamp(p));
+  if (clockEl) {
+    const text = formatClock(minutes);
+    if (clockEl.textContent !== text) {
+      clockEl.textContent = text;
+      const total = Math.round(minutes);
+      const h24 = Math.floor(((total % 1440) + 1440) % 1440 / 60);
+      clockEl.setAttribute('datetime',
+        `${String(h24).padStart(2, '0')}:${String(Math.round(total % 60)).padStart(2, '0')}`);
+    }
+  }
+
+  const story = document.getElementById('story');
+  if (story && progressEl) {
+    const totalScrollable = Math.max(1, story.offsetHeight - window.innerHeight);
+    progressEl.parentElement?.style.setProperty('--p', clamp(y / totalScrollable));
+  }
+
+  // Act 2 table run
+  const runEl = document.querySelector('[data-run]');
+  if (runEl && current.id === 'act2') {
+    runEl.style.setProperty('--run', p.toFixed(4));
+    if (guestsEl) {
+      const g = Math.round(lerp(50, 150, p));
+      if (guestsEl.textContent !== String(g)) guestsEl.textContent = String(g);
+    }
+  }
+
+  // Act 1 schematic draw
+  if (current.id === 'act1') {
+    document.querySelectorAll('.pair').forEach((path, i) => {
+      const local = clamp((p - 0.78) / 0.14);
+      const staggered = clamp((local - i * 0.08) / 0.7);
+      const len = path.getTotalLength ? path.getTotalLength() : 400;
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = String(len * (1 - staggered));
+    });
+  }
+
+  // Publish for the shader engineer
+  html.style.setProperty('--p', p.toFixed(4));
+  html.style.setProperty('--velocity', velocity.toFixed(3));
+
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* ---------- Dwell marks (memory mechanic) ---------- */
+const marked = new Set();
+document.querySelectorAll('[data-dwell]').forEach((node) => {
+  let t = null;
+  const start = () => { t = setTimeout(() => marked.add(node.dataset.dwell), 2000); };
+  const stop = () => { clearTimeout(t); };
+  node.addEventListener('pointerenter', start);
+  node.addEventListener('pointerleave', stop);
+  node.addEventListener('focus', start);
+  node.addEventListener('blur', stop);
+});
+
+/* ---------- Calculator ----------
+   Catalog mirrors lead-engine/app/config.py. Five published tables.
+   The Holy Grail is a FIFTH TABLE priced by headcount band — not an add-on.
+   Grazing tables are published for 50 guests and up.
+   The server is the price authority; this client is display-only. */
+const TIERS = {
+  'graze-me':    { name: 'Graze Me, Craze Me',  mode: 'pp', price: 24, composition: 'Two sliders, meat and cheese, seasonal fruit, hummus, almonds, two salads, roasted and raw vegetables, and one dip.' },
+  'standard':    { name: 'Grazing Standard',    mode: 'pp', price: 26, composition: 'Everything in Graze Me, Craze Me, plus a second hummus, two dips, pasta salad and chips.' },
+  'super-graze': { name: 'Super Graze',         mode: 'pp', price: 30, composition: 'Three sliders, three salads, three dips, two hummus, nuts, chips and a full vegetable spread.' },
+  'grand-graze': { name: 'Grand Graze',         mode: 'pp', price: 38, composition: 'Five sliders, four salads, three dips, two hummus, two nuts, chips and mini pudding cups.' },
+  'holy-grail':  { name: 'Holy Grail of Grazing', mode: 'band', bands: { 75: 2000, 150: 3500 }, composition: 'Five cheeses, five meats, two sliders, guacamole and pico de gallo.' },
+};
+
+const state = { guests: 80, tier: 'super-graze', date: '2026-09-12' };
+
+const $ = (s) => document.querySelector(s);
+const money = (n) => '$' + n.toLocaleString('en-US');
+
+function quoteOf(guests, tierKey) {
+  const t = TIERS[tierKey];
+  if (t.mode === 'pp') {
+    return { guests, total: guests * t.price, unit: t.price, label: `${t.name} — per person` };
+  }
+  /* Band pricing: seat up to the smallest published band that fits. */
+  const bands = Object.keys(t.bands).map(Number).sort((a, b) => a - b);
+  const band = bands.find((b) => guests <= b) ?? bands[bands.length - 1];
+  return { guests: band, total: t.bands[band], unit: t.bands[band], label: `${t.name} — ${band} guests` };
+}
+
+function render() {
+  const t = TIERS[state.tier];
+  const q = quoteOf(state.guests, state.tier);
+
+  $('[data-guests-read]').textContent = state.guests.toLocaleString('en-US');
+  $('[data-composition]').textContent = t.composition;
+
+  $('[data-r-guests]').textContent = q.guests.toLocaleString('en-US');
+  $('[data-r-tier]').textContent = t.name;
+  $('[data-r-pp]').textContent = t.mode === 'pp' ? money(t.price) : money(q.total);
+  $('[data-r-board]').textContent = money(q.total);
+
+  const d = new Date(state.date + 'T12:00:00');
+  $('[data-r-date]').textContent = isNaN(d)
+    ? '—'
+    : d.toLocaleDateString('en-US', { day: 'numeric', month: 'short' }).toUpperCase();
+
+  const grailRow = $('[data-r-grail-row]');
+  if (grailRow) grailRow.hidden = true;
+
+  $('[data-r-total]').textContent = money(q.total);
+
+  const dateLabel = isNaN(d)
+    ? 'a date'
+    : d.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' });
+
+  const body = [
+    `Hi Tricia — I'd like to hold a date.`,
+    ``,
+    `${q.guests} guests · ${t.name} · total ${money(q.total)}`,
+    `Target date: ${dateLabel}`,
+    ``,
+    `Quote total: ${money(q.total)}`,
+    `Sent from charcuteriechick.ai`,
+  ].join('\n');
+
+  $('[data-sms]').href = `sms:+18324588180?&body=${encodeURIComponent(body)}`;
+  $('[data-mail]').href =
+    `mailto:charcuteriechick@outlook.com?subject=${encodeURIComponent(
+      `Date request — ${q.guests} guests, ${dateLabel}`
+    )}&body=${encodeURIComponent(body)}`;
+}
+
+$('#guests')?.addEventListener('input', (e) => {
+  state.guests = Number(e.target.value);
+  render();
+});
+$('#date')?.addEventListener('input', (e) => {
+  state.date = e.target.value;
+  render();
+});
+
+document.querySelectorAll('[data-tier]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-tier]').forEach((b) => b.setAttribute('aria-checked', 'false'));
+    btn.setAttribute('aria-checked', 'true');
+    state.tier = btn.dataset.tier;
+    render();
+  });
+});
+
+render();
+
+/* ---------- Booking: the only number that moves ---------- */
+function commitBooking() {
+  const dayEl = document.querySelector('[data-day]');
+  if (dayEl) dayEl.textContent = '12,776';
+  html.setAttribute('data-act', 'prologue');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Reset the clock to 4:40 AM — a new day begins
+  if (clockEl) clockEl.textContent = '4:40 AM';
+}
+document.querySelectorAll('[data-sms], [data-mail]').forEach((el) => {
+  el.addEventListener('click', commitBooking);
+});
+
+/* ---------- Score reveal ---------- */
+const scoreEl = document.querySelector('[data-score]');
+if (scoreEl) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        scoreEl.hidden = false;
+        io.disconnect();
       }
-    }, true);
-  </script>
-  <script src="immersion.js" defer></script>
-  <script type="module" src="experience.js"></script>
+    });
+  }, { threshold: 0.6 });
+  io.observe(scoreEl);
+}
+</script>
+<script src="shader-engine.js"></script>
 </body>
 </html>
