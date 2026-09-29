@@ -315,8 +315,60 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/* Masthead Header */
+.masthead {
+  position: fixed;
+  top: 0;
+  left: var(--rail);
+  right: 0;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--gutter);
+  z-index: 35;
+  pointer-events: none;
+}
+.masthead a {
+  pointer-events: auto;
+}
+.masthead__brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  opacity: 0.92;
+  transition: opacity var(--dur-quick) ease;
+}
+.masthead__brand:hover {
+  opacity: 1;
+}
+.masthead__logo {
+  height: 36px;
+  width: auto;
+}
+.masthead__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-right: 130px;
+}
+.masthead__tel {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-ui);
+  letter-spacing: var(--track-mono-ui);
+  text-transform: uppercase;
+  color: var(--ink-amber);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-quick) ease;
+}
+.masthead__tel:hover {
+  border-color: var(--ink-amber);
+}
+
 @media (max-width: 900px) {
   :root { --rail: 0px; --edge: var(--gutter); }
+  .masthead { display: none; }
   .rail {
     top: 0; bottom: auto; left: 0; right: 0;
     width: 100%; height: 44px;
@@ -850,6 +902,16 @@ input[type="date"]:focus-visible {
   </div>
 </aside>
 
+<!-- Masthead Header: Vector Cameo Brand Seal & Direct Contact -->
+<header class="masthead">
+  <a href="#prologue" class="masthead__brand" aria-label="Charcuterie Chick Home">
+    <img src="img/brand-enhanced-concept.svg" alt="Charcuterie Chick — Tomball, Texas" class="masthead__logo" width="220" height="44">
+  </a>
+  <div class="masthead__actions">
+    <a href="tel:+18324588180" class="masthead__tel">832 · 458 · 8180</a>
+  </div>
+</header>
+
 <main id="story">
 
   <!-- ============ PROLOGUE · 4:40 AM ============ -->
@@ -958,7 +1020,7 @@ input[type="date"]:focus-visible {
       <div class="table-run" data-run>
         <!-- feast-cinematic-720p.mp4 -->
         <div class="table-run__media" aria-hidden="true">
-          <video class="table-run__video" src="img/feast-cinematic-720p.mp4" loop muted playsinline preload="metadata"></video>
+          <video class="table-run__video" src="img/feast-cinematic-720p.mp4" autoplay loop muted playsinline preload="auto"></video>
           <div class="table-run__overlay"></div>
         </div>
       </div>
@@ -973,6 +1035,7 @@ input[type="date"]:focus-visible {
           <p class="act__subhead">Fifty to 150+ guests. Ninety minutes of non-stop grazing.</p>
           <div class="act__body">
             <p>At fifty guests it stops being a platter and becomes architecture. Four curated tiers from $24 to $38/person, loaded with artisan cured meats, imported cheeses, gourmet sliders, house dips, and fresh crudités.</p>
+            <p class="score" data-memory="fig" hidden>That one. Somebody's about to take it.</p>
           </div>
           <div class="tasting-tags">
             <span class="tasting-tag">✦ Graze Me ($24)</span>
@@ -1002,15 +1065,16 @@ input[type="date"]:focus-visible {
         <p class="act__subhead">When the music shifts, the feast turns legendary.</p>
         <div class="act__body">
           <p>Rolling in under warm Edison bulbs: made-to-order Zeppole beignets dusted in powdered sugar, chilled champagne, and our signature wedding centerpiece — The Holy Grail of Grazing ($2,000 for 75 guests / $3,500 for 150).</p>
+          <p class="score" data-memory="honeycomb" hidden>The honeycomb from 4:40 AM — drizzled over the second one.</p>
         </div>
         <div class="tasting-tags">
-          <span class="tasting-tag" data-dwell="honeycomb">✦ Hot Powdered Beignets</span>
+          <span class="tasting-tag">✦ Hot Powdered Beignets</span>
           <span class="tasting-tag">✦ Houston's Largest Cart</span>
           <span class="tasting-tag">✦ The Holy Grail ($2,000 / $3,500)</span>
         </div>
         <figure class="grail" style="margin-top: var(--sp-12)">
-          <img src="img/table-still.jpg"
-               alt="Guests gathered around the Holy Grail of Grazing table" width="1600" height="900" style="object-fit: cover; width: 100%; height: auto; max-height: 480px; border-radius: 4px; border: 1px solid var(--rule);">
+          <img src="img/stage3-grand-banquet.png"
+               alt="Guests gathered around the Holy Grail of Grazing banquet table" width="1600" height="900" style="object-fit: cover; width: 100%; height: auto; max-height: 520px; border-radius: 4px; border: 1px solid var(--rule);">
           <figcaption class="label" style="margin-top: var(--sp-2)">The Holy Grail of Grazing · 75 Guests $2,000 · 150 Guests $3,500 · 5 Cheeses, 5 Meats, Sliders, Dips & Chips</figcaption>
         </figure>
         <div class="cta-row">
@@ -1111,8 +1175,16 @@ input[type="date"]:focus-visible {
               <span class="receipt__value" data-r-pp>$30</span>
             </div>
             <div class="receipt__row receipt__row--strong">
-              <span>Board</span><span class="receipt__leader"></span>
+              <span>Food Subtotal</span><span class="receipt__leader"></span>
               <span class="receipt__value" data-r-board>$2,400</span>
+            </div>
+            <div class="receipt__row">
+              <span>Setup & Styling</span><span class="receipt__leader"></span>
+              <span class="receipt__value" data-r-setup>$229</span>
+            </div>
+            <div class="receipt__row">
+              <span>Estimated Tax (18%)</span><span class="receipt__leader"></span>
+              <span class="receipt__value" data-r-tax>$473</span>
             </div>
             <div class="receipt__row">
               <span>Date</span><span class="receipt__leader"></span>
@@ -1126,8 +1198,8 @@ input[type="date"]:focus-visible {
             </div>
           </div>
           <div class="receipt__total">
-            <span class="receipt__total-label">Total</span>
-            <span class="receipt__total-value" data-r-total>$2,400</span>
+            <span class="receipt__total-label">Total Investment</span>
+            <span class="receipt__total-value" data-r-total>$3,102</span>
           </div>
           <p class="receipt__note">
             A quote request, not a booking.<br>
@@ -1261,10 +1333,15 @@ function frame() {
   const runVid = document.querySelector('.table-run__video');
   if (runEl && current.id === 'act2') {
     runEl.style.setProperty('--run', p.toFixed(4));
-    if (runVid && runVid.duration && !runVid.seeking) {
-      const targetTime = runVid.duration * p;
-      if (Math.abs(runVid.currentTime - targetTime) > 0.08) {
-        runVid.currentTime = targetTime;
+    if (runVid) {
+      if (runVid.paused) {
+        runVid.play().catch(() => {});
+      }
+      if (runVid.duration && !runVid.seeking) {
+        const targetTime = runVid.duration * p;
+        if (Math.abs(runVid.currentTime - targetTime) > 0.08) {
+          runVid.currentTime = targetTime;
+        }
       }
     }
     if (guestsEl) {
@@ -1379,13 +1456,39 @@ const money = (n) => '$' + n.toLocaleString('en-US');
 
 function quoteOf(guests, tierKey) {
   const t = TIERS[tierKey];
+  let foodTotal = 0;
+  let unit = 0;
+  let label = '';
+  let seatedGuests = guests;
+
   if (t.mode === 'pp') {
-    return { guests, total: guests * t.price, unit: t.price, label: `${t.name} — per person` };
+    foodTotal = guests * t.price;
+    unit = t.price;
+    label = `${t.name} — per person`;
+  } else {
+    /* Band pricing: seat up to the smallest published band that fits. */
+    const bands = Object.keys(t.bands).map(Number).sort((a, b) => a - b);
+    const band = bands.find((b) => guests <= b) ?? bands[bands.length - 1];
+    foodTotal = t.bands[band];
+    unit = t.bands[band];
+    seatedGuests = band;
+    label = `${t.name} — ${band} guests`;
   }
-  /* Band pricing: seat up to the smallest published band that fits. */
-  const bands = Object.keys(t.bands).map(Number).sort((a, b) => a - b);
-  const band = bands.find((b) => guests <= b) ?? bands[bands.length - 1];
-  return { guests: band, total: t.bands[band], unit: t.bands[band], label: `${t.name} — ${band} guests` };
+
+  const setupFee = 229;
+  const tax = Math.round((foodTotal + setupFee) * 0.18);
+  const grandTotal = foodTotal + setupFee + tax;
+
+  return {
+    guests: seatedGuests,
+    foodTotal,
+    setupFee,
+    tax,
+    grandTotal,
+    total: grandTotal,
+    unit,
+    label
+  };
 }
 
 function render() {
@@ -1407,8 +1510,10 @@ function render() {
 
   $('[data-r-guests]').textContent = q.guests.toLocaleString('en-US');
   $('[data-r-tier]').textContent = t.name;
-  $('[data-r-pp]').textContent = t.mode === 'pp' ? money(t.price) : money(q.total);
-  $('[data-r-board]').textContent = money(q.total);
+  $('[data-r-pp]').textContent = t.mode === 'pp' ? money(t.price) : money(q.foodTotal);
+  $('[data-r-board]').textContent = money(q.foodTotal);
+  if ($('[data-r-setup]')) $('[data-r-setup]').textContent = money(q.setupFee);
+  if ($('[data-r-tax]')) $('[data-r-tax]').textContent = money(q.tax);
 
   const d = new Date(state.date + 'T12:00:00');
   $('[data-r-date]').textContent = isNaN(d)
@@ -1422,13 +1527,13 @@ function render() {
       const grailName = $('[data-r-grail-name]');
       const grailVal = $('[data-r-grail]');
       if (grailName) grailName.textContent = q.label;
-      if (grailVal) grailVal.textContent = money(q.total);
+      if (grailVal) grailVal.textContent = money(q.foodTotal);
     }
   } else {
     if (grailRow) grailRow.hidden = true;
   }
 
-  $('[data-r-total]').textContent = money(q.total);
+  $('[data-r-total]').textContent = money(q.grandTotal);
 
   const dateLabel = isNaN(d)
     ? 'a date'
@@ -1437,10 +1542,14 @@ function render() {
   const body = [
     `Hi Tricia — I'd like to hold a date.`,
     ``,
-    `${q.guests} guests · ${t.name} · total ${money(q.total)}`,
-    `Target date: ${dateLabel}`,
+    `Catering Request:`,
+    `• Headcount: ${q.guests} guests (${t.name})`,
+    `• Target date: ${dateLabel}`,
+    `• Food Subtotal: ${money(q.foodTotal)}`,
+    `• Setup & Styling: ${money(q.setupFee)}`,
+    `• Estimated Tax (18%): ${money(q.tax)}`,
+    `• Total Investment: ${money(q.grandTotal)}`,
     ``,
-    `Quote total: ${money(q.total)}`,
     `Sent from charcuteriechick.ai`,
   ].join('\n');
 
