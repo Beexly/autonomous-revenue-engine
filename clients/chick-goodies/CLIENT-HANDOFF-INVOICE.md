@@ -99,25 +99,46 @@ To point your official domain (`charcuteriechick.ai`) to the live platform, upda
 
 Hi Tricia and Stacey,
 
-As promised, I have built the mockup combining **Midnight Supper** (Option 2) with **The Table** moving room experience (Option 4), and integrated Stacey's revised logo!
+As promised, I have built the complete live experience combining **Midnight Supper** (Option 2) with **The 3D Moving Table** (Option 4)!
 
-Everything is live right now for you to explore on your computer and phone:
+Rather than having you review static concepts or PDF mockups, the entire platform is functioning live right now so you can test-drive it on your computer and phone:
 
 👉 **Flagship Website:** [https://charcuterie-chick-sample-2.vercel.app](https://charcuterie-chick-sample-2.vercel.app)  
 👉 **The 3D Moving Table Experience:** [https://charcuterie-chick-sample-2.vercel.app/table.html](https://charcuterie-chick-sample-2.vercel.app/table.html)  
 
-### What We Built & Fused:
-1. **The Candlelit Atmosphere & Full Pages:** Deep midnight ground, glowing amber lanterns, and full pages for Menus, Real Event Photos, your Story, and Quotes.
-2. **The 3D Moving Table:** Step inside the table experience at the top of the home page or via the menu. The camera glides down the table between the stations, with an instant still-image fallback for phones.
-3. **Stacey's Revised Logo:** Embedded directly into the masthead of every page.
-4. **Instant Price Estimator:** Guests can plug in 75 or 150 guests, see the exact math ($229 setup + 18% tax), and send a pre-filled text or email straight to your phone.
+---
 
-### Optional: Operational Business Automations
-In addition to the website build, I’ve also outlined 4 optional business workflow engines (detailed in Section 7 of the invoice packet) that can handle 60-second SMS quote responses, automatic social posting of your weekend catering setups, and automated holiday corporate re-orders. We can keep things simple with just the website build, or layer in any of these automations whenever you're ready!
+### Highlights of What We Built & Fused:
+
+1. **The Candlelit Atmosphere & Scrollytelling Journey:**
+   A continuous 5-act evening experience (from 4:40 AM dawn prep to 11:40 PM late-night cart) set on warm linen and deep obsidian grounds with real catering cinematography.
+2. **Interactive Kitchen Acoustics (Opt-In):**
+   Tap **SOUND OFF** in the top right header to hear the room—gentle kitchen warmth, wine pour resonance, and the signature blade-on-wood knife cue across your key preparation milestones.
+3. **Chef Tricia's Dwell Tasting Notes:**
+   When visitors linger or tap underlined pairing items (like your whole prosciutto slice, honeycomb, 12-month Manchego, or room-temperature brie), a delicate printed paper docket opens with your personal culinary voice and slicing techniques.
+4. **Real-Time Catering Calculator:**
+   Guests can select 50 to 150+ guests, toggle between your 5 grazing table tiers (including the Holy Grail packages), see the exact math ($229 setup fee + 18% Texas tax), and tap a button to send a pre-filled quote request directly to your phone.
+5. **Full Multi-Page Platform:**
+   Dedicated pages for Menus & Prices, Real Party Photos, About Tricia, and Quote Builder.
+
+---
+
+### A Quick Recommendation on Your Logo & Contact Info
+
+I love your illustrated portrait mark—it carries your warmth, personal charm, and 35 years of hospitality.
+
+On desktop and mobile headers, however, having the phone number and tagline printed in tiny lettering inside the image file can get blurry on small phone screens, and brides on iPhones can't tap it to dial.
+
+**What I recommend for the launch:**
+* **Keep your portrait front and center**: We've framed your illustrated face inside a clean circular gold seal that stays crisp on any retina phone screen.
+* **Make your phone number 1-tap clickable**: We display `832-458-8180` in live, clean text right beside your logo so couples can tap once to call you instantly.
+* **Keep Stacey's full graphic for print**: Use the full illustration with all service lines on your physical catering boxes, kraft paper wraps, and event menus where high-resolution print looks fantastic!
+
+---
 
 ### Milestone Payment Structure & 90-Day Peace of Mind
 
-Because I wanted to make sure you and Stacey could test-drive the real, functioning platform rather than just looking at static sketches or concepts, I went ahead and built out the complete live platform first!
+Because I wanted to make sure you and Stacey could test-drive the real, functioning platform rather than just looking at sketches, I went ahead and built out the complete live platform first!
 
 Per our agreed friend rate for the custom build ($1,500 total), here is how the milestones work:
 
@@ -129,12 +150,12 @@ Per our agreed friend rate for the custom build ($1,500 total), here is how the 
    Payable only once we connect your official domain (`charcuteriechick.ai`), verify email/SMS routing, and launch the platform publicly to your clients.
 
 3. **My 90-Day Personal Care Commitment (Included at No Charge):**  
-   Because this is a flagship portfolio project for me and you are family friends, I am including **90 days of dedicated post-launch support and adjustments**. That means as you, Stacey, and your real catering clients start using the site:
+   Because this is a flagship portfolio project for me and you are family friends, I am including **90 days of dedicated post-launch support and adjustments**:
    - Need any prices, menu items, or wording adjusted? I'll update it right away.
    - Want new weekend photos swapped into the gallery or hero? Send them over.
    - Any quirks, mobile display questions, or small adjustments? Covered 100% with zero extra invoices.
 
-Take a look around the site and let me know your thoughts!
+Take a look around the site on your phone and computer and let me know what you think!
 
 Warmly,  
 **Garrett Baxley**  
