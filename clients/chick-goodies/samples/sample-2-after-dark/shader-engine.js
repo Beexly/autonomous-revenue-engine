@@ -19,7 +19,7 @@
   const ACT_VIDEOS = {
     'prologue': 'img/micro-seed-720p.mp4',
     'act1':     'img/micro-seed-720p.mp4',
-    'act2':     'img/feast-cinematic-720p.mp4',
+    'act2':     '', // Handled by 320vw DOM video in .table-run
     'act3':     'img/cart-cinematic-720p.mp4',
     'epilogue': ''
   };
@@ -82,6 +82,7 @@
     uniform sampler2D u_tex_prev;
     uniform float u_crossfade;
     uniform float u_has_video;
+    uniform float u_video_opacity;
 
     void main() {
       // 1. Aspect Ratio Correction (Cover fit)
@@ -136,8 +137,9 @@
       if (u_has_video < 0.5) {
         baseColor = vec4(u_ambient_tint, 1.0);
       } else {
-        // Blend softly with ambient substrate tint to prevent harsh video edges
-        baseColor.rgb = mix(u_ambient_tint, baseColor.rgb, 0.88);
+        // Blend dynamically with ambient substrate tint based on u_video_opacity
+        float op = clamp(u_video_opacity, 0.0, 1.0);
+        baseColor.rgb = mix(u_ambient_tint, baseColor.rgb, op * 0.88);
       }
 
       // 4. Amber Caustic Light Sheen on Ripple Crests
@@ -214,6 +216,7 @@
   const uHasVideo = gl.getUniformLocation(program, 'u_has_video');
   const uTexCurrent = gl.getUniformLocation(program, 'u_tex_current');
   const uTexPrev = gl.getUniformLocation(program, 'u_tex_prev');
+  const uVideoOpacity = gl.getUniformLocation(program, 'u_video_opacity');
 
   const uDropLocs = [];
   for (let i = 0; i < 8; i++) {
@@ -399,6 +402,24 @@
     const prevVid = videoElements[prevAct];
     const hasVid = (curVid && ACT_VIDEOS[currentAct]) ? 1.0 : 0.0;
     gl.uniform1f(uHasVideo, hasVid);
+
+    // Read act scroll progress and update video opacity & scrubbing
+    const pVal = parseFloat(document.documentElement.style.getPropertyValue('--p')) || 0;
+
+    let videoOp = 1.0;
+    if (currentAct === 'act1') {
+      // Camera lifts out of fig seed and fades cleanly into unbleached linen paper
+      videoOp = Math.max(0.0, 1.0 - Math.min(1.0, Math.max(0.0, (pVal - 0.12) / 0.42)));
+    }
+    gl.uniform1f(uVideoOpacity, videoOp);
+
+    // Scrub active video on scroll for Prologue and Act 3
+    if (curVid && curVid.duration && !curVid.seeking && (currentAct === 'prologue' || currentAct === 'act3')) {
+      const targetTime = curVid.duration * pVal;
+      if (Math.abs(curVid.currentTime - targetTime) > 0.08) {
+        curVid.currentTime = targetTime;
+      }
+    }
 
     if (curVid && curVid.videoWidth > 0) {
       gl.uniform2f(uVidRes, curVid.videoWidth, curVid.videoHeight);

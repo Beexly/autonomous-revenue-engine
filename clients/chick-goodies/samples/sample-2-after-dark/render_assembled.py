@@ -54,7 +54,49 @@ with sync_playwright() as p:
     page.wait_for_timeout(1200)
     page.screenshot(path='test-output/assembled_5_calculator.png')
 
+    # Test Calculator Interactions: Select Grand Graze with 65 guests
+    page.fill('#guests', '65')
+    page.evaluate("document.getElementById('guests').dispatchEvent(new Event('input'))")
+    page.click('button[data-tier="grand-graze"]')
+    page.wait_for_timeout(400)
+    page.screenshot(path='test-output/assembled_6_calc_grand_graze.png')
+
+    # Test Calculator Interactions: Select Holy Grail with 120 guests
+    page.fill('#guests', '120')
+    page.evaluate("document.getElementById('guests').dispatchEvent(new Event('input'))")
+    page.click('button[data-tier="holy-grail"]')
+    page.wait_for_timeout(400)
+    page.screenshot(path='test-output/assembled_7_calc_holy_grail.png')
+
     browser.close()
+
+    # Mobile Verification (390 x 844 iPhone 14 standard)
+    browser_mob = p.chromium.launch(headless=True)
+    page_mob = browser_mob.new_page(viewport={'width': 390, 'height': 844})
+    page_mob.on('console', lambda msg: console_logs.append(f"[MOB {msg.type}] {msg.text}"))
+    page_mob.on('pageerror', lambda err: page_errors.append(f"[MOB ERROR] {err}"))
+
+    page_mob.goto('http://127.0.0.1:8088/index.html', wait_until='networkidle')
+    page_mob.wait_for_timeout(1200)
+    page_mob.screenshot(path='test-output/mobile_0_prologue.png')
+
+    page_mob.evaluate("document.getElementById('act1').scrollIntoView()")
+    page_mob.wait_for_timeout(1000)
+    page_mob.screenshot(path='test-output/mobile_1_act1.png')
+
+    page_mob.evaluate("document.getElementById('act2').scrollIntoView()")
+    page_mob.wait_for_timeout(1000)
+    page_mob.screenshot(path='test-output/mobile_2_act2.png')
+
+    page_mob.evaluate("document.getElementById('act3').scrollIntoView()")
+    page_mob.wait_for_timeout(1000)
+    page_mob.screenshot(path='test-output/mobile_3_act3.png')
+
+    page_mob.evaluate("document.querySelector('.instruments').scrollIntoView()")
+    page_mob.wait_for_timeout(1000)
+    page_mob.screenshot(path='test-output/mobile_5_calculator.png')
+
+    browser_mob.close()
 
 server.shutdown()
 

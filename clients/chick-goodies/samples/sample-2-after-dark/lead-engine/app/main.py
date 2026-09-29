@@ -30,7 +30,6 @@ from .config import (
     PRODUCT_KEYS,
     PUBLISHED_DISCLAIMER,
     Settings,
-    service_area_pages,
 )
 from .integrations import StripeClient, TwilioClient
 from .packages.lead_to_book import LeadInquiry, LeadToBook
@@ -39,6 +38,7 @@ from .packages.seo_citadel import (
     audit_all,
     local_business_schema,
     service_area_page,
+    service_area_pages,
     schema_jsonld,
 )
 from .packages.syndicator import (
