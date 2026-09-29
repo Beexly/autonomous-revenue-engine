@@ -7,8 +7,8 @@
 **Target Domain:** `charcuteriechick.ai` (`www.charcuteriechick.ai`)  
 **Production Live Preview:** [https://charcuterie-chick-sample-2.vercel.app](https://charcuterie-chick-sample-2.vercel.app)  
 **Total Project Investment:** $1,500.00 USD  
-**Initial Deposit Due to Start (50%):** $750.00 USD  
-**Final Balance at Launch (50%):** $750.00 USD  
+**Initial Deposit Due Now (Milestone 1):** $600.00 USD  
+**Final Balance at Launch (Milestone 2):** $900.00 USD  
 
 ---
 
@@ -197,9 +197,9 @@ Attn: Garrett Baxley
 | **4. Menu Catalog Remediation & Stacey's Logo Integration** | Full digitization of all 5 grazing tables, carts, sliders, and dips (zero \$0.00 bugs). High-DPI integration of Stacey's revised brand mark. | \$150.00 |
 | **5. Local SEO, Schema Graph & Search Visibility** | Schema.org JSON-LD data (`FoodEstablishment`, `CateringService`, `FAQPage`), XML sitemaps, and robots configuration targeted for Tomball, The Woodlands, Spring, and Conroe. | \$100.00 |
 | **6. Domain Deployment, Edge Hosting & 90-Day Care** | DNS cutover configuration for `charcuteriechick.ai`, automated SSL certificate provisioning, high-availability edge hosting setup, and **90 days of post-launch maintenance, photo updates, and text tweaks**. | \$100.00 |
-| | **TOTAL PROJECT INVESTMENT:** | **\$1,500.00 USD** |
-| | **PHASE 1: INITIAL DEPOSIT DUE (50%):** | **\$750.00 USD** |
-| | **PHASE 2: FINAL BALANCE AT LAUNCH (50%):** | **\$750.00 USD** |
+| | **TOTAL PROJECT INVESTMENT:** | **$1,500.00 USD** |
+| | **PHASE 1: INITIAL DEPOSIT DUE NOW:** | **$600.00 USD** |
+| | **PHASE 2: FINAL BALANCE AT LAUNCH:** | **$900.00 USD** |
 
 ---
 
