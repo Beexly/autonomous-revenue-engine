@@ -115,11 +115,24 @@ Everything is live right now for you to explore on your computer and phone:
 ### Optional: Operational Business Automations
 In addition to the website build, I’ve also outlined 4 optional business workflow engines (detailed in Section 7 of the invoice packet) that can handle 60-second SMS quote responses, automatic social posting of your weekend catering setups, and automated holiday corporate re-orders. We can keep things simple with just the website build, or layer in any of these automations whenever you're ready!
 
-### Next Steps & Deposit
-Per the proposal for the top tier ($1,500 total), billing is split into **half to start ($750 deposit)** and **half at final launch ($750 balance)**.
+### Milestone Payment Structure & 90-Day Peace of Mind
 
-You can submit the $750 project deposit securely via card here:  
-💳 **[Submit $750 Project Deposit Securely via Stripe](https://buy.stripe.com/8x23cxb6FanJail8JT14405)**
+Because I wanted to make sure you and Stacey could test-drive the real, functioning platform rather than just looking at static sketches or concepts, I went ahead and built out the complete live platform first!
+
+Per our agreed friend rate for the custom build ($1,500 total), here is how the milestones work:
+
+1. **Milestone 1 — $750 Build Deposit (Due Now):**  
+   Validates and covers the full custom design, interactive 3D table experience, digitized menu catalog, and live staging you can explore today.  
+   💳 **[Submit $750 Build Deposit Securely via Stripe](https://buy.stripe.com/8x23cxb6FanJail8JT14405)**
+
+2. **Milestone 2 — $750 Final Balance (Due at DNS Go-Live):**  
+   Payable only once we connect your official domain (`charcuteriechick.ai`), verify email/SMS routing, and launch the platform publicly to your clients.
+
+3. **My 90-Day Personal Care Commitment (Included at No Charge):**  
+   Because this is a flagship portfolio project for me and you are family friends, I am including **90 days of dedicated post-launch support and adjustments**. That means as you, Stacey, and your real catering clients start using the site:
+   - Need any prices, menu items, or wording adjusted? I'll update it right away.
+   - Want new weekend photos swapped into the gallery or hero? Send them over.
+   - Any quirks, mobile display questions, or small adjustments? Covered 100% with zero extra invoices.
 
 Take a look around the site and let me know your thoughts!
 
