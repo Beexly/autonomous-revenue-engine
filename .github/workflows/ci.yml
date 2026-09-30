@@ -1,0 +1,40 @@
+name: CI
+
+# Restored 2026-09-14 (motif): the August ci.yml from
+# claude/signal-origin-blockages-qx464s was audited against the current tree.
+# - node-apps: all 5 matrix apps still have lib/*.test.js on main. Kept.
+# - python-conformal-lite: rewritten — there is no tests/ dir and no
+#   installable package; test_core.py runs from the package dir with numpy.
+# - ops-tools + static-docs jobs DROPPED: ops/tools/ and the three
+#   check-*.mjs scripts do not exist on main. Re-add when they do.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  node-apps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [hn-bait, qi-check, subject-fold, swap-check, voice-delta]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node --test apps/${{ matrix.app }}/lib/*.test.js
+
+  python-conformal-lite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+        working-directory: apps/conformal-lite
+      - run: python -m unittest test_core -v
+        working-directory: apps/conformal-lite
