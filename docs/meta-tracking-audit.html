@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meta Tracking Audit — Pixel + CAPI dedup and EMQ</title>
-<meta name="description" content="$19 Meta Tracking Audit Workbook plus Pixel + CAPI diagnostic. Deduplication, Event Match Quality, attribution-gap analysis. Free DIY checklist below.">
+<meta name="description" content="$19 Meta Tracking Audit Workbook. Pixel + CAPI dedup and Event Match Quality. Free DIY checklist below.">
 <style>
   body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a;background:#fff}
   h1{font-size:1.6rem;margin-bottom:.2rem}
@@ -17,23 +17,24 @@
   ol li,ul li{margin:.35rem 0}
   code{background:#f4f4f4;padding:.1rem .3rem;border-radius:3px;font-size:.9em}
   .fine{font-size:.85rem;color:#666;margin-top:2.5rem;border-top:1px solid #eee;padding-top:.8rem}
+  .parked{font-size:.92rem;color:#666;margin:.6rem 0 0}
 </style>
 </head>
 <body>
 <h1>Your Meta ads are being billed on broken data.</h1>
-<p class="muted">Pixel + Conversions API double-counting, low Event Match Quality, and attribution gaps inflate cost-per-result. If you spend $5k+/month on Meta, a tracking defect is usually a four-figure annual leak.</p>
+<p class="muted">Pixel + Conversions API double-counting, low Event Match Quality, and attribution gaps inflate cost-per-result. If Meta Purchase for seven days is 1.6 times Shopify orders, you are usually looking at two <code>event_id</code>s for one order.</p>
 
 <h2>Buy now</h2>
 <div class="tier"><span class="price">$19</span><b>Meta Tracking Audit Workbook</b> — 90 minutes, fill-in-the-blanks<br>
 15 checks across four parts: deduplication, Event Match Quality, delivery health, and a fix-priority matrix with a before/after evidence record. No code needed to run the checks. Card checkout on Gumroad.</div>
-<p><a class="cta" href="https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook">Buy the $19 workbook</a>
-<a class="cta" href="mailto:Baxley.Garrett@gmail.com?subject=Meta%20tracking%20diagnostic">Email to book a diagnostic</a></p>
+<p><a class="cta" href="https://signalorigin.gumroad.com/l/meta-tracking-audit-workbook">Buy the $19 workbook</a></p>
 
 <h2>Done-for-you</h2>
-<div class="tier"><span class="price">$250 flat</span><b>Meta Tracking Diagnostic</b> — 3 business days<br>
-Events Manager deep review · Pixel/CAPI deduplication verification (shared <code>event_id</code> coverage per event) · EMQ score per event with the exact parameters missing · <code>action_source</code> and server-event correctness · Meta-vs-backend count reconciliation · prioritized fix list with effort estimates. Written report with before-state evidence. Email to book.</div>
+<div class="tier"><span class="price">$250</span><b>Meta Tracking Diagnostic</b> — parked<br>
+Events Manager deep review · Pixel/CAPI deduplication verification (shared <code>event_id</code> coverage per event) · EMQ score per event with the exact parameters missing · <code>action_source</code> and server-event correctness · Meta-vs-backend count reconciliation · prioritized fix list with effort estimates. Written report with before-state evidence.
+<p class="parked">Email <a href="mailto:Baxley.Garrett@gmail.com?subject=Meta%20tracking%20diagnostic">Baxley.Garrett@gmail.com</a> after Stripe is live. Not a checkout.</p></div>
 <div class="tier"><span class="price">$500–$1,500</span><b>Implementation</b> — scoped from the diagnostic<br>
-Dedup fix (event_id parity across browser + server) · server-side event setup or repair · hashed-PII normalization for EMQ lift · test-event verification · after-state evidence: EMQ before/after and count reconciliation vs your backend. Fixed quote before work starts. Email to book.</div>
+Dedup fix (event_id parity across browser + server) · server-side event setup or repair · hashed-PII normalization for EMQ lift · test-event verification · after-state evidence: EMQ before/after and count reconciliation vs your backend. Fixed quote before work starts. Parked with the diagnostic.</div>
 <p class="muted">Evidence-first: every claim in the report is verifiable in your own Events Manager and backend numbers. No retainers required. Sports/DFS is not in this service.</p>
 
 <h2>DIY: the free 15-point checklist</h2>
