@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grok Bot Galaxy — extraction package</title>
+<style>
+  :root { --ground:#08090C; --panel:#12141A; --bone:#EDE8E0; --fog:#C4BFB6; --mist:#8F8A82; --ember:#FF4D2E; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--bone);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 20px 60px; }
+  header { border-bottom:1px solid #23262e; padding-bottom:22px; margin-bottom:26px; }
+  .kicker { color:var(--ember); font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+  h1 { font-size:34px; margin:8px 0 6px; letter-spacing:-.02em; }
+  .sub { color:var(--fog); max-width:70ch; }
+  .stats { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 0; }
+  .stat { background:var(--panel); border:1px solid #23262e; border-radius:10px; padding:10px 14px; }
+  .stat b { display:block; font-size:20px; }
+  .stat span { color:var(--mist); font-size:12px; }
+  h2 { font-size:19px; margin:34px 0 12px; }
+  .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); }
+  .card { background:var(--panel); border:1px solid #23262e; border-left:3px solid var(--day);
+    border-radius:12px; padding:16px 16px 12px; }
+  .card h3 { margin:6px 0 2px; font-size:17px; }
+  .meta { display:flex; gap:8px; align-items:center; font-size:12px; color:var(--mist); }
+  .pill { background:#1c1f27; color:var(--bone); border-radius:999px; padding:2px 9px; font-size:11px; }
+  .speakers { color:var(--fog); font-size:13px; margin:0 0 8px; }
+  .premise { color:var(--fog); font-size:13.5px; margin:0 0 8px; }
+  .bots { color:var(--mist); font-size:12.5px; margin:0 0 10px; }
+  .links a { color:var(--ember); text-decoration:none; margin-right:12px; font-size:13px; }
+  .links a:hover { text-decoration:underline; }
+  .bar { display:flex; gap:12px; align-items:center; margin:6px 0; font-size:13px; color:var(--fog); }
+  .bl { color:#08090C; font-weight:600; border-radius:6px; padding:2px 9px; font-size:12px; }
+  .cols { display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+  .panel { background:var(--panel); border:1px solid #23262e; border-radius:12px; padding:16px; }
+  ul { margin:6px 0 0; padding-left:18px; color:var(--fog); font-size:13px; }
+  li { margin:3px 0; }
+  a { color:var(--ember); }
+  footer { margin-top:36px; color:var(--mist); font-size:12px; border-top:1px solid #23262e; padding-top:16px; }
+  code { background:#1c1f27; padding:1px 5px; border-radius:4px; font-size:12.5px; }
+  .dim { color:var(--mist); font-size:12px; }
+  .tbl { width:100%; border-collapse:collapse; font-size:12.5px; }
+  .tbl th { text-align:left; color:var(--mist); font-weight:500; border-bottom:1px solid #23262e; padding:4px 6px; }
+  .tbl td { padding:4px 6px; border-bottom:1px solid #1a1d24; vertical-align:top; }
+  .tbl td.val { color:var(--ember); white-space:nowrap; font-weight:600; }
+  .timeline li { margin-bottom:8px; }
+  .timeline code { color:var(--ember); }
+</style></head>
+<body><div class="wrap">
+<header>
+  <div class="kicker">Extraction package · collected 2026-09-23</div>
+  <h1>Grok Bot Galaxy</h1>
+  <p class="sub">A three day event in San Francisco, Sept 15–17, 2026 at The Howard — live demos and hands-on build sessions with the team behind Grok Bot. 8:45am–6:00pm PT · The Howard,
+     661 Howard Street, San Francisco · Virtually via Livestream — watch from anywhere.</p>
+  <div class="stats">
+    <div class="stat"><b>10</b><span>workshop sessions</span></div>
+    <div class="stat"><b>61,506</b><span>words transcribed</span></div>
+    <div class="stat"><b>91</b><span>news posts (66,010 words)</span></div>
+    <div class="stat"><b>10</b><span>guides (13,717 words)</span></div>
+    <div class="stat"><b>77</b><span>production agent prompts</span></div>
+    <div class="stat"><b>138,766</b><span>chars of agent spec</span></div>
+    <div class="stat"><b>81</b><span>install links</span></div>
+    <div class="stat"><b>47</b><span>named bots</span></div>
+    <div class="stat"><b>56</b><span>use cases</span></div>
+    <div class="stat"><b>81</b><span>templates · 45 creators</span></div>
+  </div>
+</header>
+
+<h2>The campaign around the event</h2>
+<div class="panel"><ul class="timeline"><li><code>2026-08-11</code> <b>Grok Bot launched in beta</b><br><span class='dim'>Available to SuperGrok / SuperGrok Plus / SuperGrok Heavy, Cursor Pro / Pro+ / Ultra, Cursor Teams Standard &amp; Premium, on desktop and iOS. Enterprise joins a waitlist. Grok Bot car</span></li><li><code>2026-08-14</code> <b>Cursor becomes part of SpaceXAI</b><br><span class='dim'>The two support organisations begin merging around a much broader product portfolio.</span></li><li><code>2026-08-15</code> <b>Guide: Grok Bot for PMs</b><br><span class='dim'>Kevin Niparko.</span></li><li><code>2026-08-16</code> <b>Guide: Grok Bot for GTM</b><br><span class='dim'>Krista Letz.</span></li><li><code>2026-08-21</code> <b>Grok 4.6 lands on Gemini Enterprise Agent Platform</b><br><span class='dim'>Model distribution via Google Model Garden; 500k context, reasoning efforts low/medium/high/xhigh.</span></li><li><code>2026-08-24</code> <b>Guide: Designing Grok Bot with Grok Bot</b><br><span class='dim'>John Bai.</span></li><li><code>2026-08-25</code> <b>Guide: Grok Bot for mobile app development</b><br><span class='dim'>Ryan Perry.</span></li><li><code>2026-08-26</code> <b>Grok Bot included with more plans</b><br><span class='dim'>Expanded to all SuperGrok, Cursor Pro and Cursor Teams plans; still beta; enterprise waitlist.</span></li><li><code>2026-08-27</code> <b>Guide: How I run multiple teams of Grok Bots</b><br><span class='dim'>Eric Zakariasson.</span></li><li><code>2026-08-29</code> <b>Grok Bot now works with X</b><br><span class='dim'>X connector; a developer account is created if needed; paid Grok Bot users get free X API credits; X plugin for search, timelines, trends, bookmarks.</span></li><li><code>2026-09-03</code> <b>Grok Bot for Enterprise</b><br><span class='dim'>Enterprise availability with access, network and audit governance. Grok and Cursor Enterprise customers get free usage for two weeks and can invite the whole org, including people </span></li><li><code>2026-09-03</code> <b>Design essay: Designing Grok Bot for a world of persistent agents</b><br><span class='dim'>The five primitives (Bots, Chats, Prompts, Tools, Artifacts), avatar state system, three levels of computer access, capabilities vs context boundaries.</span></li><li><code>2026-09-04</code> <b>Haggle Bot procurement write-up</b><br><span class='dim'>&gt; $100,000 in direct savings; full system prompt published; 43 idle seats = $14,220; $85,662/yr unused SKUs; one tech order cut $14,629 to $6,143 (58%).</span></li><li><code>2026-09-08</code> <b>Guide: Templates for Grok Bot</b><br><span class='dim'>Matt Palmer.</span></li><li><code>2026-09-09</code> <b>Guide: Grok Bot for Support</b><br><span class='dim'>David Gan.</span></li><li><code>2026-09-10</code> <b>Guide: Grok Bot for Engineering</b><br><span class='dim'>Lingxi Li.</span></li><li><code>2026-09-11</code> <b>Guide: Grok Bot 101</b><br><span class='dim'>Matt Palmer.</span></li><li><code>2026-09-15</code> <b>Grok Bot Galaxy begins</b><br><span class='dim'>Three-day event at The Howard, 661 Howard St, San Francisco, plus livestream. 8:45am–6:00pm PT daily.</span></li><li><code>2026-09-18</code> <b>Guide: Grok Bot for Marketing</b><br><span class='dim'>Josh Kim.</span></li><li><code>2026-09-17</code> <b>Grok Bot Galaxy ends</b><br><span class='dim'>10 role-specific workshops delivered; the full days live on as three X broadcasts.</span></li><li><code>2026-09-21</code> <b>Session recordings published + follow-up email</b><br><span class='dim'>All ten workshops go up on YouTube (unlisted-style view counts of 33–192 on 2026-09-23); customer.io follow-up email links back to the event page.</span></li><li><code>2026-09-22</code> <b>Support case study published</b><br><span class='dim'>175% ticket increase absorbed with no new hires; would have needed ~200 people; $0.20–$0.30 per resolution vs $1–$4 for traditional AI support tools.</span></li></ul>
+  <p class="dim" style="margin-top:10px">Full chronology with sources:
+  <a href="analysis/launch-timeline.md">analysis/launch-timeline.md</a> ·
+  <a href="analysis/revenue-mechanics.md">revenue-mechanics.md</a></p></div>
+
+<h2>Sourced numbers</h2>
+<div class="panel"><table class="tbl"><thead><tr><th>Metric</th><th>Value</th><th>Source</th></tr></thead>
+<tbody><tr><td>Grok Bot share of internal merged PRs</td><td class='val'>double-digit %</td><td class='dim'>transcript gNysgEu-lew 00:08:58; guides/grok-bot-for-pms</td></tr><tr><td>Support ticket volume increase absorbed</td><td class='val'>175%</td><td class='dim'>news/grok-bot-customer-support</td></tr><tr><td>Cost per support resolution (Grok Bot)</td><td class='val'>$0.20–$0.30</td><td class='dim'>news/grok-bot-customer-support</td></tr><tr><td>Cost per support resolution (traditional AI tools)</td><td class='val'>$1–$4 flat</td><td class='dim'>news/grok-bot-customer-support</td></tr><tr><td>Cost per ticket (live session figures)</td><td class='val'>$1–$2 medium/complex; ~$0.20 low-complexity batched</td><td class='dim'>transcript BSB--jUnx9U 00:29:23, 00:30:47</td></tr><tr><td>Haggle Bot direct savings found</td><td class='val'>&gt; $100,000</td><td class='dim'>news/grok-bot-procurement</td></tr><tr><td>Unused seats found in one SaaS audit</td><td class='val'>43 seats idle 90 days = $14,220</td><td class='dim'>news/grok-bot-procurement</td></tr><tr><td>Unused SKUs found in one SaaS product</td><td class='val'>$85,662 / year</td><td class='dim'>news/grok-bot-procurement</td></tr><tr><td>Weekly office-supply order reduction</td><td class='val'>$14,629 → $6,143 (58%)</td><td class='dim'>news/grok-bot-procurement</td></tr><tr><td>Refund requests resolved without a human</td><td class='val'>99%</td><td class='dim'>news/grok-bot-customer-support</td></tr><tr><td>Customer interactions used to train tone/voice</td><td class='val'>over 1,000,000</td><td class='dim'>news/grok-bot-customer-support</td></tr><tr><td>Product feedback synthesised daily</td><td class='val'>20,000+ points</td><td class='dim'>news/grok-bot-customer-support</td></tr><tr><td>Cloud agents managed before Grok Bot</td><td class='val'>15 at a time</td><td class='dim'>transcript zCqmTSF2ctg 00:04:07</td></tr><tr><td>Cloud agents managed with a bot fleet</td><td class='val'>200+ simultaneously</td><td class='dim'>guides/grok-bot-for-engineering</td></tr></tbody></table>
+  <p class="dim" style="margin-top:10px">All 24 entries with sources:
+  <a href="data/metrics-ledger.json">data/metrics-ledger.json</a></p></div>
+
+<h2>Agent definition corpus</h2>
+<div class="cols">
+  <div class="panel"><strong>Longest published prompts</strong>
+    <table class="tbl"><thead><tr><th>Bot</th><th>Creator</th><th>Chars</th></tr></thead>
+    <tbody><tr><td>Pitch Deck Coach</td><td class='dim'>Hiten Shah</td><td class='val'>6,877</td></tr><tr><td>Haggle Bot</td><td class='dim'>Daniel Gartshein</td><td class='val'>5,983</td></tr><tr><td>Product Idea Stress Test</td><td class='dim'>Hiten Shah</td><td class='val'>5,399</td></tr><tr><td>Lingxi's Engineer Bot</td><td class='dim'>Lingxi Li</td><td class='val'>4,505</td></tr><tr><td>Webby</td><td class='dim'>Farzad</td><td class='val'>3,511</td></tr><tr><td>Import Bot</td><td class='dim'>Shub Gaur</td><td class='val'>3,370</td></tr><tr><td>Stalk Bot</td><td class='dim'>Shub Gaur</td><td class='val'>3,190</td></tr><tr><td>Website Ops</td><td class='dim'>Josh Kim</td><td class='val'>3,169</td></tr><tr><td>Sequencer</td><td class='dim'>Simon Lackowski</td><td class='val'>3,168</td></tr><tr><td>Project Manager</td><td class='dim'>Josh Kim</td><td class='val'>3,166</td></tr></tbody></table></div>
+  <div class="panel"><strong>Most prolific template creators</strong><ul><li>Josh Kim <b>6</b></li><li>Anoop Baliga <b>5</b></li><li>Matt Palmer <b>5</b></li><li>Krista Letz <b>5</b></li><li>Jenna Nanpei <b>4</b></li><li>Shimecki <b>3</b></li><li>Tommy Hansen <b>3</b></li><li>Miguel Cruz <b>3</b></li><li>Shub Gaur <b>3</b></li><li>Adam Tanguay <b>2</b></li><li>Daniel Brill <b>2</b></li><li>Jon Grigull <b>2</b></li></ul>
+    <p class="dim">45 creators · 393 skills · 127 routines · 304 integrations</p></div>
+</div>
+
+<h2>Sessions</h2>
+<div class="grid">
+    <article class="card" style="--day:#FF4D2E">
+      <div class="meta"><span class="pill">Day 1</span>
+        <span class="dur">00:45:10</span>
+        <span class="words">7,331 words</span></div>
+      <h3>Grok Bot for Engineers</h3>
+      <p class="speakers">Lingxi Li</p>
+      <p class="premise">The deepest technical session of the three days: how an engineer runs a fleet of named bot 'colleagues' that supervise Cursor cloud agents, plus the arc of coding AI that led there.</p>
+      <p class="bots"><strong>Bots:</strong> Chief of staff · Craig · Steve · Hogan</p>
+      <div class="links">
+        <a href="https://youtu.be/zCqmTSF2ctg">Watch</a>
+        <a href="sessions/zCqmTSF2ctg.md">Brief</a>
+        <a href="transcripts/zCqmTSF2ctg.txt">Transcript</a>
+        <a href="transcripts/zCqmTSF2ctg.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#FF4D2E">
+      <div class="meta"><span class="pill">Day 1</span>
+        <span class="dur">00:37:14</span>
+        <span class="words">7,721 words</span></div>
+      <h3>Grok Bot for Founders</h3>
+      <p class="speakers">Shub Gaur</p>
+      <p class="premise">The most opinionated session: four bots that run a founder's customer, product, competitive and feedback loops — ending with token-cost discipline and a shared bot.</p>
+      <p class="bots"><strong>Bots:</strong> Closebot · Prodbot · Stockbot · Protobot</p>
+      <div class="links">
+        <a href="https://youtu.be/hPE3A4Smkxc">Watch</a>
+        <a href="sessions/hPE3A4Smkxc.md">Brief</a>
+        <a href="transcripts/hPE3A4Smkxc.txt">Transcript</a>
+        <a href="transcripts/hPE3A4Smkxc.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#FF4D2E">
+      <div class="meta"><span class="pill">Day 1</span>
+        <span class="dur">00:35:12</span>
+        <span class="words">7,182 words</span></div>
+      <h3>Grok Bot for Product Managers</h3>
+      <p class="speakers">Kevin Niparko, Roshan Sadanani</p>
+      <p class="premise">Two PMs describe the product brief behind Grok Bot (colleague-like agents) and run a full PM workflow end to end on a fake airline, from a data question to mocks to engineering.</p>
+      <p class="bots"><strong>Bots:</strong> Cora · Emily · Ashley · PMP Pete · Pixel · Rey</p>
+      <div class="links">
+        <a href="https://youtu.be/gNysgEu-lew">Watch</a>
+        <a href="sessions/gNysgEu-lew.md">Brief</a>
+        <a href="transcripts/gNysgEu-lew.txt">Transcript</a>
+        <a href="transcripts/gNysgEu-lew.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#9AA8E8">
+      <div class="meta"><span class="pill">Day 2</span>
+        <span class="dur">00:30:47 (caption-derived, approximate)</span>
+        <span class="words">4,190 words</span></div>
+      <h3>Grok Bot for Customer Support</h3>
+      <p class="speakers">David Gan</p>
+      <p class="premise">Demo-heavy support session with the only hard cost-per-ticket numbers of the event, plus a four-bot support org that improves itself.</p>
+      <p class="bots"><strong>Bots:</strong> Build · Reply · Alert · Tune</p>
+      <div class="links">
+        <a href="https://youtu.be/BSB--jUnx9U">Watch</a>
+        <a href="sessions/BSB--jUnx9U.md">Brief</a>
+        <a href="transcripts/BSB--jUnx9U.txt">Transcript</a>
+        <a href="transcripts/BSB--jUnx9U.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#9AA8E8">
+      <div class="meta"><span class="pill">Day 2</span>
+        <span class="dur">00:34:04</span>
+        <span class="words">7,174 words</span></div>
+      <h3>Grok Bot for SDRs</h3>
+      <p class="speakers">Simon Lackowski</p>
+      <p class="premise">The most candid session about failure modes: how to build an SDR system end to end, and why too many bots makes things worse.</p>
+      <p class="bots"><strong>Bots:</strong> Chief of staff · Email / outbound bot · Various specialists</p>
+      <div class="links">
+        <a href="https://youtu.be/Iia8EF7niiA">Watch</a>
+        <a href="sessions/Iia8EF7niiA.md">Brief</a>
+        <a href="transcripts/Iia8EF7niiA.txt">Transcript</a>
+        <a href="transcripts/Iia8EF7niiA.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#9AA8E8">
+      <div class="meta"><span class="pill">Day 2</span>
+        <span class="dur">00:21:07</span>
+        <span class="words">4,004 words</span></div>
+      <h3>Grok Bot for Sales</h3>
+      <p class="speakers">Krista Letz, Mark Wright</p>
+      <p class="premise">Shortest session of the event (21 minutes): a working sales desk built from six bots, with the clearest 'how to start' checklist.</p>
+      <p class="bots"><strong>Bots:</strong> Olive · PG · Echo · Customer-expert bot · Engineer bot</p>
+      <div class="links">
+        <a href="https://youtu.be/SVZe46xaVTg">Watch</a>
+        <a href="sessions/SVZe46xaVTg.md">Brief</a>
+        <a href="transcripts/SVZe46xaVTg.txt">Transcript</a>
+        <a href="transcripts/SVZe46xaVTg.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#9AA8E8">
+      <div class="meta"><span class="pill">Day 2</span>
+        <span class="dur">00:45:58</span>
+        <span class="words">9,573 words</span></div>
+      <h3>Grok Bot for Sales Engineers</h3>
+      <p class="speakers">Amrita Venkatraman</p>
+      <p class="premise">Day 2 opener and the longest session: three sales-engineering bots, a taught skill, and a demo where Grok Bot proposes and spins up three more bots for itself.</p>
+      <p class="bots"><strong>Bots:</strong> Sherlock · Serena · Mimi · Battlecard Blair · Demo Drake · AI Radar</p>
+      <div class="links">
+        <a href="https://youtu.be/tpDfoh5qPF8">Watch</a>
+        <a href="sessions/tpDfoh5qPF8.md">Brief</a>
+        <a href="transcripts/tpDfoh5qPF8.txt">Transcript</a>
+        <a href="transcripts/tpDfoh5qPF8.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#5ECFA0">
+      <div class="meta"><span class="pill">Day 3</span>
+        <span class="dur">00:29:34 (caption-derived, approximate)</span>
+        <span class="words">5,180 words</span></div>
+      <h3>Grok Bot for Marketing</h3>
+      <p class="speakers">Josh Kim</p>
+      <p class="premise">Closing session: a full marketing campaign built end to end by a six-bot marketing team, from market research through ads to production.</p>
+      <p class="bots"><strong>Bots:</strong> Market researcher · Product marketer · Website ops · Performance marketer · Marketing analyst · Project manager</p>
+      <div class="links">
+        <a href="https://youtu.be/db38-FgdaGQ">Watch</a>
+        <a href="sessions/db38-FgdaGQ.md">Brief</a>
+        <a href="transcripts/db38-FgdaGQ.txt">Transcript</a>
+        <a href="transcripts/db38-FgdaGQ.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#5ECFA0">
+      <div class="meta"><span class="pill">Day 3</span>
+        <span class="dur">00:21:24 (caption-derived, approximate)</span>
+        <span class="words">3,544 words</span></div>
+      <h3>Grok Bot for Marketing Operations</h3>
+      <p class="speakers">Matthew Silberman, Teresa Hsu</p>
+      <p class="premise">RevOps/MarOps session with the strongest conceptual claim of the event: Grok Bot lets ops teams build tools instead of writing rules.</p>
+      <p class="bots"><strong>Bots:</strong> OP1 · Fiser · Juno · Ondes · Territory-planning bot</p>
+      <div class="links">
+        <a href="https://youtu.be/EA-sxwWK0Vs">Watch</a>
+        <a href="sessions/EA-sxwWK0Vs.md">Brief</a>
+        <a href="transcripts/EA-sxwWK0Vs.txt">Transcript</a>
+        <a href="transcripts/EA-sxwWK0Vs.timed.txt">Timed</a>
+      </div>
+    </article>
+    <article class="card" style="--day:#5ECFA0">
+      <div class="meta"><span class="pill">Day 3</span>
+        <span class="dur">00:29:59 (caption-derived, approximate)</span>
+        <span class="words">5,607 words</span></div>
+      <h3>Grok Bot for Post Sales</h3>
+      <p class="speakers">Blake Schuller</p>
+      <p class="premise">The most concrete 'day in the life' session: six post-sales workflows, a single front bot that manages ten specialists, and a self-improvement routine.</p>
+      <p class="bots"><strong>Bots:</strong> Gus · Frankie · Wally · + specialists</p>
+      <div class="links">
+        <a href="https://youtu.be/EGt8FfTmTMY">Watch</a>
+        <a href="sessions/EGt8FfTmTMY.md">Brief</a>
+        <a href="transcripts/EGt8FfTmTMY.txt">Transcript</a>
+        <a href="transcripts/EGt8FfTmTMY.timed.txt">Timed</a>
+      </div>
+    </article></div>
+
+<h2>By day</h2>
+<div class="panel"><div class='bar'><span class='bl' style='background:#FF4D2E'>Day 1</span><span>3 sessions · 1h 57m · 22,234 words</span></div><div class='bar'><span class='bl' style='background:#9AA8E8'>Day 2</span><span>4 sessions · 2h 11m · 24,941 words</span></div><div class='bar'><span class='bl' style='background:#5ECFA0'>Day 3</span><span>3 sessions · 1h 20m · 14,331 words</span></div>
+  <ul><li><span class='pill'>Day 1</span> <a href='https://x.com/i/broadcasts/1AxRnZbVpjaxl'>Day 1 Broadcast</a></li><li><span class='pill'>Day 2</span> <a href='https://x.com/i/broadcasts/1PKqrNyvmYwGb'>Day 2 Broadcast</a></li><li><span class='pill'>Day 3</span> <a href='https://x.com/i/broadcasts/1YGNrbXEeazGw'>Day 3 Broadcast</a></li></ul></div>
+
+<h2>Catalogues</h2>
+<div class="cols">
+  <div class="panel"><strong>Use-case categories</strong><ul><li>Engineering <b>5</b></li><li>Customer Success &amp; Support <b>4</b></li><li>Life &amp; Leverage <b>4</b></li><li>Recruiting &amp; People <b>4</b></li><li>Operations &amp; Finance <b>5</b></li><li>Sales <b>10</b></li><li>Product <b>5</b></li><li>General <b>6</b></li><li>Marketing <b>13</b></li></ul></div>
+  <div class="panel"><strong>Marketplace categories</strong><ul><li>design <b>4</b></li><li>engineering <b>5</b></li><li>from-grok-bot-team <b>49</b></li><li>marketing <b>23</b></li><li>operations <b>4</b></li><li>personal <b>14</b></li><li>product <b>4</b></li><li>sales <b>22</b></li><li>uncategorised <b>2</b></li></ul></div>
+  <div class="panel"><strong>Key documents</strong><ul>
+    <li><a href="README.md">README</a> — package guide</li>
+    <li><a href="AGENT-BRIEF.md">AGENT-BRIEF.md</a> — handoff manual</li>
+    <li><a href="analysis/glossary.md">glossary.md</a> — every term and system</li>
+    <li><a href="analysis/cross-session.md">cross-session.md</a> — patterns and conflicts</li>
+    <li><a href="analysis/quotes.md">quotes.md</a> — 37 timestamped quotes</li>
+    <li><a href="analysis/under-leveraged.md">under-leveraged.md</a> — what the first pass missed</li>
+    <li><a href="analysis/launch-timeline.md">launch-timeline.md</a> — the six-week campaign</li>
+    <li><a href="analysis/revenue-mechanics.md">revenue-mechanics.md</a> — packaging &amp; distribution</li>
+    <li><a href="analysis/agent-prompt-corpus.md">agent-prompt-corpus.md</a> — the 77 prompts</li>
+    <li><a href="data/install-links.json">install-links.json</a> — 137 install deep links</li>
+    <li><a href="data/caption-corrections.json">caption-corrections.json</a> — fix garbled names</li>
+    <li><a href="data/bots.json">bots.json</a> — all 47 named bots</li>
+  </ul></div>
+</div>
+
+<footer>
+  Source of record: <a href="https://x.ai/galaxy">https://x.ai/galaxy</a>. Transcripts are YouTube auto-captions —
+  normalise spelling with <code>data/caption-corrections.json</code> before quoting.
+  Demo assets (Fly Low Airlines, Northwind, XAIR) are fictional stage props.
+</footer>
+</div></body></html>

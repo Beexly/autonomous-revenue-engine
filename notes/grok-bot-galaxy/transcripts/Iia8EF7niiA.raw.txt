@@ -1,0 +1,984 @@
+[00:00:00] I'm I'm Simon. I'm here on SpaceX's go
+[00:00:04] to market team specifically in SDR and
+[00:00:07] excited to talk about Grockbot
+[00:00:08] specifically for this team.
+[00:00:12] &gt;&gt; All right. So, at a high level, we'll be
+[00:00:14] kind of going over what actually is
+[00:00:15] Grockbot, why we use it internally, and
+[00:00:18] then kind of dive into some of the
+[00:00:19] actual like SDR use cases we use. Then
+[00:00:22] I'll kind of demo actually what my
+[00:00:23] environment looks like, and then we can
+[00:00:25] kind of discuss that and go into a Q&amp;A
+[00:00:27] from there.
+[00:00:29] All right. So, first at a high level, I
+[00:00:31] wanted to kind of discuss the actual AI
+[00:00:33] maturity curve and what this looks like
+[00:00:35] for STRs. So, starting out when I was
+[00:00:38] using AI, I was just prompting back and
+[00:00:40] forth with a chatbot. I'd do typical
+[00:00:43] things like I'd ask, can you help me
+[00:00:44] actually draft this email or kind of
+[00:00:46] perfect this copy or do this account
+[00:00:48] research for this specific account I'm
+[00:00:50] looking at? And what we've seen kind of
+[00:00:52] progress over the last year is first the
+[00:00:55] idea of co-pilots. And so co-pilots are
+[00:00:58] are AI that can actually go out and and
+[00:01:00] carry out a true task. So instead of
+[00:01:01] talking back and forth getting email
+[00:01:03] copy and then copying that into your
+[00:01:05] Gmail, it's something now that we see
+[00:01:07] like actually having the AI go and
+[00:01:10] basically hook up to a Gmail MCP or an
+[00:01:12] API and be able to actually send that
+[00:01:14] email off for you. And really with bot,
+[00:01:16] what we believe is kind of the next
+[00:01:18] frontier is actually automating entire
+[00:01:21] job jobs in full. And so going beyond
+[00:01:24] just a task and actually doing an
+[00:01:26] endto-end workflow and really with the
+[00:01:28] staff function of actually combining a
+[00:01:30] team of bots, you can see how kind of
+[00:01:32] automating a job but also combining that
+[00:01:34] with different features of business like
+[00:01:36] talking to RevOps or talking to your AE
+[00:01:39] and getting context on an account and
+[00:01:40] how bots can actually pull in that
+[00:01:42] context for you and really help you do
+[00:01:44] that full process.
+[00:01:49] And so just diving into what Grockbot
+[00:01:51] actually looks like if you haven't seen
+[00:01:52] it before. So you have all your bots
+[00:01:54] kind of here on the lefth hand side and
+[00:01:57] they're doing different things like we
+[00:01:58] have a sales outbound bot here. We have
+[00:02:00] our chief of staff and you can message
+[00:02:02] them just like you message your own
+[00:02:04] teammates and more interestingly you can
+[00:02:06] actually see them talk with each other.
+[00:02:08] And I have my own rock button instance
+[00:02:10] set up where really there's only one bot
+[00:02:12] that I'm actually talking to. And so for
+[00:02:14] for the most part I' I've kind of
+[00:02:16] offloaded all that context to my chief
+[00:02:18] of staff actually talking with other
+[00:02:20] bots and and doing that all for me. And
+[00:02:23] I think some important things also to
+[00:02:24] emphasize here is that bots keep their
+[00:02:28] own context at a perb bot level and
+[00:02:30] memory. So they can really improve as
+[00:02:32] you work more with them and as you go
+[00:02:34] their memory gets better. And this is
+[00:02:36] why I really emphasize you actually
+[00:02:37] should be training your bots as well
+[00:02:39] depending on the task with kind of the
+[00:02:42] relevant info. So set up your Slack, set
+[00:02:44] up your Gmail connector and you can
+[00:02:45] actually kind of start to train it on
+[00:02:47] what your voice looks like. And so
+[00:02:49] specifically for Gmail, what I do is
+[00:02:51] I've I've had it go into my Gmail and
+[00:02:53] actually look at how do I actually talk
+[00:02:56] to people and specifically in my
+[00:02:58] outbound messages, how do I actually
+[00:02:59] talk to people in a way where they
+[00:03:01] actually want to respond and they're
+[00:03:03] interested in kind of seeing a demo or
+[00:03:04] something for and so I'll really go into
+[00:03:07] more of what that actually looks like,
+[00:03:08] how I place weights on certain things to
+[00:03:10] actually help Grockbot understand this.
+[00:03:12] But I think a big thing I want to talk
+[00:03:14] about also is the ability to share your
+[00:03:16] bots. And I'll dive into this more in
+[00:03:18] the next slide, but I think as STRs, one
+[00:03:21] of the most important things is being
+[00:03:23] able to see what your teammates are
+[00:03:25] actually doing and to kind of easily
+[00:03:27] transfer those skills over to your other
+[00:03:29] STRs. So you can actually really scale
+[00:03:31] those outputs and do it very quickly. I
+[00:03:33] think the truth at least at SpaceX of
+[00:03:35] what we've seen is that what's working
+[00:03:38] for us today was not working 3 months
+[00:03:40] ago and 3 months before that it was
+[00:03:42] something entirely different. And so the
+[00:03:44] ability to really just move quickly and
+[00:03:45] always be iterating is something that
+[00:03:47] the ability to share bots is really
+[00:03:49] going to help you with and help scale
+[00:03:50] the entire SDR team.
+[00:03:55] So diving into this more like why are we
+[00:03:57] using Rockbot? I think to start it's as
+[00:03:59] easy and as intuitive as just iMessage
+[00:04:02] or another general platform. You can
+[00:04:03] just talk to your bots and I think more
+[00:04:06] importantly bots are always on and so
+[00:04:08] you don't have to walk around with your
+[00:04:10] laptop open anymore. You can actually
+[00:04:12] close it. I can go on coffee walks and
+[00:04:14] continue prompting from my phone. Or I
+[00:04:16] can set it up on a longunning task and
+[00:04:18] then trust that it will actually
+[00:04:19] complete that task end to end and do the
+[00:04:22] thing without me having to kind of
+[00:04:24] object in between and and guide it. It
+[00:04:26] really is the confidence to go carry out
+[00:04:28] and do things. And there's many ways you
+[00:04:29] can actually improve that by recording
+[00:04:31] your own screen and some other stuff
+[00:04:32] that I'll show more in the demo. But
+[00:04:35] again, it also uses the tools just like
+[00:04:37] you do. And so you can think of your
+[00:04:39] basic connectors of MCPs, of APIs,
+[00:04:42] everything that you've already kind of
+[00:04:43] set up. But beyond that, what's really
+[00:04:44] important is it actually owns its own
+[00:04:47] VM. And so you can log into the browser.
+[00:04:49] And for the parts of your SCR work that
+[00:04:51] are a little more difficult or there's
+[00:04:53] no real way to automate them. You can
+[00:04:55] actually show bot in the browser. You
+[00:04:57] can sign in to those tools and you can
+[00:04:59] actually show bot by recording your
+[00:05:00] screen, recording you go through it. You
+[00:05:02] can show the exact workflows that you do
+[00:05:04] in there. the really tedious and
+[00:05:06] specific stuff that's kind of hard to
+[00:05:08] explain or maybe there's no real like
+[00:05:10] open API for it. And so this is really
+[00:05:12] something that I found immense value in
+[00:05:15] and what's given me the confidence to be
+[00:05:16] able to say, "Okay, Grockbot, you can
+[00:05:18] genuinely go end to end with what you're
+[00:05:20] doing here." And as I talked about
+[00:05:22] before, I think sharable templates are
+[00:05:24] one of the most important things. And I
+[00:05:27] think every single team at a team level
+[00:05:29] should basically all be spending time
+[00:05:31] building their own templates, sharing
+[00:05:33] those with the team, getting an
+[00:05:34] understanding of, okay, what are the
+[00:05:35] things that are actually working and how
+[00:05:38] can I not only just import that
+[00:05:39] template, but how can I import it and
+[00:05:41] then add my own nuance onto that of
+[00:05:43] whatever like my tonality and my
+[00:05:45] messaging is or actually maybe it's just
+[00:05:47] I like to to do my workflow a slightly
+[00:05:49] different way, but actually kind of
+[00:05:51] taking this as a base template and then
+[00:05:53] working beyond that. And you can also
+[00:05:55] prompt Grockbot directly and and ask for
+[00:05:58] direct improvements. You can import
+[00:06:00] templates and be like, "Hey, look at
+[00:06:01] this template my colleague shared with
+[00:06:03] me. What do you think are things with my
+[00:06:05] own workflow that you think would be a
+[00:06:07] good addition to build on top of this or
+[00:06:09] or to kind of get more value out of
+[00:06:11] that?" So, I really emphasize just
+[00:06:12] actually like talking back and forth
+[00:06:14] with your Grock bots and kind of like
+[00:06:16] starting to starting to really push it
+[00:06:18] to help you. And and I think this is why
+[00:06:20] we emphasize so heavily that Grockbot is
+[00:06:22] really just a multiplier for your own
+[00:06:24] work and and really a way to scale the
+[00:06:26] outputs you're doing. And as an SCR, I
+[00:06:28] don't think there's anything more
+[00:06:29] important than actually doing that.
+[00:06:34] All right. So diving into really what I
+[00:06:36] see as the the common STR use cases are
+[00:06:39] the things that like I'm doing on a
+[00:06:40] day-to-day basis. I think number one,
+[00:06:43] it's it's really prospecting. And so if
+[00:06:45] you're an early stage startup, you can
+[00:06:46] actually even help have Graqua kind of
+[00:06:48] help you understand your ICP. And so you
+[00:06:51] can look into things like, okay, for the
+[00:06:53] AEES that have closed deals or have
+[00:06:55] deals that have moved to stage one, what
+[00:06:57] is the common kind of title that we're
+[00:06:59] seeing actually carry those deals
+[00:07:00] through? Or what's kind of the most
+[00:07:02] responsive title or industry or
+[00:07:04] subindustry of person to take an
+[00:07:06] original meeting? How does that actually
+[00:07:08] vary from economic buyer, the person
+[00:07:10] who's actually signing off on this deal?
+[00:07:12] And so you can really rock about kind of
+[00:07:14] from from a first beginning actually
+[00:07:17] understand like what is my ICP? What's
+[00:07:20] the most optimum way to reach my goal?
+[00:07:21] And personally as an SDR for me that's
+[00:07:23] how many S1's can I get? And so you can
+[00:07:25] kind of reverse engineer from that point
+[00:07:27] and Grabba can kind of help you actually
+[00:07:29] get to that point. And so on top of
+[00:07:31] really just understanding that ICP
+[00:07:33] within prospecting, you can do the full
+[00:07:35] flow. So you can use enrichment tools,
+[00:07:37] set those up within Grockbot. You can
+[00:07:39] also use web search to kind of find more
+[00:07:41] specific data like job postings or any
+[00:07:45] funding announcements from some of your
+[00:07:46] target companies and really just bring
+[00:07:48] this all in. And I'll show how I can
+[00:07:50] actually tie that into my next point
+[00:07:52] which is a sequencer. And so really what
+[00:07:54] I've done within my own Grockbot
+[00:07:56] instance is I built kind of an ongoing
+[00:07:58] list of all my prospects. And this lives
+[00:08:00] as a CSV today. But really what I think
+[00:08:03] is nuanced about this is you can have
+[00:08:05] things like Grockbot routines and
+[00:08:06] automations which are constantly
+[00:08:08] updating this and I think something
+[00:08:10] that's really been a big value ad on on
+[00:08:12] the sense of sequencing is the fact that
+[00:08:15] when I'm multi-threading an account um
+[00:08:17] my AE might have a call with them and
+[00:08:19] that might have happened yesterday and
+[00:08:21] whatever the context from that call is
+[00:08:22] is truly golden and it should shape my
+[00:08:25] messaging for today. And so what
+[00:08:27] Grockbback can do is it can actually
+[00:08:28] take that context in just like a
+[00:08:30] co-orker would. They can bowl, hey, your
+[00:08:32] AE spoke with this person yesterday.
+[00:08:34] Here's exactly what they mentioned. They
+[00:08:35] mentioned a real painoint is they have
+[00:08:38] all these tools to choose from and they
+[00:08:39] kind of just feel stressed out. There's
+[00:08:41] tool fatigue. There's AI fatigue. And
+[00:08:43] really that should shape your messaging
+[00:08:44] for that day going forward for that
+[00:08:46] company. And Grockot has that context
+[00:08:48] and it can pull that in and help you
+[00:08:50] actually tailor messages at a at a
+[00:08:51] company level. And maybe even in in a
+[00:08:54] gone caller recording they mentioned,
+[00:08:56] oh, you know what? Like this is actually
+[00:08:57] the exact thing that Simon on the AI
+[00:09:00] team is investigating right now or
+[00:09:02] looking into. You should reach out to
+[00:09:03] him. But a lot of those things never
+[00:09:05] actually get actioned on. And so Graqua
+[00:09:07] has the ability to actually really
+[00:09:08] sequence and kind of do the full process
+[00:09:11] of prospecting them, adding them into
+[00:09:12] the sequence just off of the actual
+[00:09:15] context that meeting they had with your
+[00:09:16] AE. And I think that's that's something
+[00:09:18] really nuanced that I haven't seen
+[00:09:19] before. And on that same note, you can
+[00:09:22] also do very high level account
+[00:09:24] research. And so for PG-led companies,
+[00:09:26] you can look at all the internal data of
+[00:09:28] okay, who are my power users? Who's
+[00:09:30] actually using this product? And more
+[00:09:31] than that, you can look at the external
+[00:09:33] signals for all companies in whole. So
+[00:09:35] okay, who's fundraising? Who has job
+[00:09:37] postings? And how does that kind of
+[00:09:39] tailor the messaging based on our
+[00:09:40] product? You can also look at things
+[00:09:42] internally like okay how does this new
+[00:09:45] product that we've launched actually
+[00:09:47] change our outbounding message for a
+[00:09:49] specific person in XYZ industry and
+[00:09:52] really have grabbot kind of tailor those
+[00:09:54] messaging to each and every company
+[00:09:56] specific and that's actually diving into
+[00:09:58] my last point as well which is drafting
+[00:10:00] copy and what that looks like and so
+[00:10:02] what I really highly emphasize is you
+[00:10:05] actually sync your email with Grockbot
+[00:10:08] just as kind of a starting point and and
+[00:10:10] really push Grockbot to understand your
+[00:10:12] tone and I think some of like the
+[00:10:14] nuances that I've added on this because
+[00:10:16] it's very easy to just sync your email
+[00:10:17] but you have to kind of push it further
+[00:10:20] and the first thing that I've done on
+[00:10:21] that note is I said listen look
+[00:10:24] specifically at my email copy that I've
+[00:10:26] sent out to external or third party
+[00:10:29] companies that also match the Salesforce
+[00:10:31] account where I'm an assigned STR and
+[00:10:33] then from that point what I actually am
+[00:10:35] pushing it to do is also look at okay
+[00:10:37] just look at any of the emails from that
+[00:10:40] filtered list that actually got positive
+[00:10:42] responses that didn't get negative
+[00:10:43] responses. And then I think the most
+[00:10:46] important thing that I've done on top of
+[00:10:48] that note is I've actually put a heavier
+[00:10:51] weight on emails that recently have
+[00:10:53] received positive responses. And I think
+[00:10:55] for a company like SpaceX, what we're
+[00:10:57] always seeing is the product offering is
+[00:10:58] always changing. Like I said, what was
+[00:11:00] working three months ago is completely
+[00:11:02] different now and might not work today.
+[00:11:04] And so I pushed Grockbot to put a really
+[00:11:06] heavy emphasis on the actual recent
+[00:11:09] messages and to draft my copy more like
+[00:11:11] that, but still kind of pull in
+[00:11:13] inspiration from my older messaging to
+[00:11:15] understand like kind of the human aspect
+[00:11:17] of actually what I'm doing. And so these
+[00:11:20] are kind of the real SCR use cases that
+[00:11:22] I've I've seen, but I'll show you more
+[00:11:24] in my demo of kind of how we can expand
+[00:11:26] much beyond this.
+[00:11:29] So, at a high level, I just wanted to
+[00:11:30] first show what does my GRAW team
+[00:11:33] actually look like here. And so, what
+[00:11:35] I've really been emphasizing is you
+[00:11:37] should have a chief of staff. And I
+[00:11:39] think one of the most exhausting things
+[00:11:41] for me is switching back and forth
+[00:11:43] between my different bots. I'm always
+[00:11:45] kind of forgetting the context,
+[00:11:47] especially if I'm kind of shuffling
+[00:11:48] many, many things at once. And so, what
+[00:11:51] I actually really recommend is you have
+[00:11:53] a chief of staff, and that should be the
+[00:11:55] first bot that you set up. And what you
+[00:11:57] should actually do from that point is
+[00:11:59] set up all your other bots through your
+[00:12:01] chief of staff. And and the reason being
+[00:12:03] is when you do it this way, your chief
+[00:12:05] of staff just has context on exactly the
+[00:12:08] purpose and the end goal of that bot.
+[00:12:11] And so as you kind of ask your your
+[00:12:13] chief of staff, so Simon bot here for me
+[00:12:15] to complete tasks, it understands the
+[00:12:18] right bot to actually delegate that to
+[00:12:20] and when needed, it's going to
+[00:12:21] understand the context of multiple bots
+[00:12:23] that it needs to get delegate to or
+[00:12:26] actually get to talk with each other.
+[00:12:28] And so I think this is really an
+[00:12:29] important way to actually think from the
+[00:12:31] beginning of how to set this up. And
+[00:12:33] just for my other bots here, you can
+[00:12:34] see. So I've got Shakespeare here, who
+[00:12:37] is really the one I've like very
+[00:12:39] meticulously trained on my email writing
+[00:12:41] skills. And then I have web search,
+[00:12:44] which obviously is just doing web
+[00:12:45] research, but he actually works in
+[00:12:47] parallel with my Simon Soldier. And I'll
+[00:12:50] show you I basically have an entire army
+[00:12:52] of Simon soldiers which I basically
+[00:12:54] consider sub agents or subbots that when
+[00:12:57] web search wants to delegate a task
+[00:12:59] across say 50 or 100 counts the scalable
+[00:13:02] way to do that is actually creating
+[00:13:03] subbots that basically respond directly
+[00:13:06] to web search. And lastly, I have
+[00:13:08] customerbot who does a few things, but
+[00:13:11] really is just taking in all the context
+[00:13:13] on the meetings I'm having,
+[00:13:16] understanding for deals that are moving
+[00:13:18] to close one, kind of what's the
+[00:13:19] context, what are the things that
+[00:13:21] customers are really receptive to, and
+[00:13:23] you can also get really nuanced with
+[00:13:24] this. So, I think something you can do
+[00:13:26] is look in Salesforce and say, okay, I
+[00:13:28] have an account that's in the fintech
+[00:13:31] vertical. Okay, let me understand. Let
+[00:13:33] me talk with my customer bot or ask my
+[00:13:35] chief of staff to actually talk to the
+[00:13:37] customer bot and figure out, okay, what
+[00:13:39] are the similar fintech companies that
+[00:13:41] are closed on in recent deals and why
+[00:13:45] were they interested? What were the main
+[00:13:46] pain points they had? What were the main
+[00:13:48] parts of our product that were actually
+[00:13:49] relevant? And then I'm going to take
+[00:13:51] that context and I'm actually going to
+[00:13:53] have my chief of staff pass that off to
+[00:13:54] Shakespeare to understand my email
+[00:13:56] drafting and to push that in
+[00:13:58] specifically for the fintech companies
+[00:13:59] we serve. And so this is where I really
+[00:14:01] push that you can have these all as kind
+[00:14:03] of your your entire stack working on
+[00:14:06] different parts of your outbound and
+[00:14:07] make it genuinely productive.
+[00:14:12] All right, so now let's let's dive into
+[00:14:14] the demo and see actually what my setup
+[00:14:16] looks like here.
+[00:14:18] So here we've got it at a high level.
+[00:14:20] Um, I'm very serious about my color
+[00:14:23] coding as you can see here. But I I
+[00:14:25] promise I have a reason behind this. And
+[00:14:27] that's I really like to understand at a
+[00:14:29] high level when my bots are are talking
+[00:14:31] to each other. And especially because
+[00:14:32] all my work is delegated from my actual
+[00:14:35] chief of staff, I need to understand who
+[00:14:37] my chief of staff is talking to at a
+[00:14:40] section level. And so whenever I see the
+[00:14:42] orange here, I know that my chief of
+[00:14:44] staff is working on an actual research
+[00:14:46] mission. It's doing something around
+[00:14:47] research. When I see that it's message
+[00:14:49] Shakespeare here, I know that it's doing
+[00:14:51] some sort of outbound copy drafting.
+[00:14:53] It's kind of starting to understand
+[00:14:54] that. And the same here, I've talked
+[00:14:56] about my my army here, but when I see
+[00:14:59] the green messages, I understand, okay,
+[00:15:01] it's delegating account research. It's
+[00:15:03] splitting these up between subbots. And
+[00:15:05] you can actually see here I have an army
+[00:15:07] huddle as well, which basically has my
+[00:15:09] web search bot talking with all of the
+[00:15:12] soldiers here and basically just
+[00:15:14] ordering them around and and the
+[00:15:16] soldiers are just uh they're giving all
+[00:15:17] the context they need. And so you can
+[00:15:19] see I'm I'm researching kind of this
+[00:15:21] this demo account fly low here, but it's
+[00:15:23] you can see how it's basically broken
+[00:15:25] all this up. And so now Oh, yeah. Yeah,
+[00:15:30] for sure.
+[00:15:32] Good. All right. Um, so now what I
+[00:15:35] really want to show is actually how I'm
+[00:15:37] enriching prospects, how I'm actually
+[00:15:39] going and sequencing these people, and
+[00:15:42] also what my daily routines look like.
+[00:15:44] Because I think personally as an SDR,
+[00:15:46] one of the most important things for me
+[00:15:48] is waking up every morning and knowing
+[00:15:51] very much what I'm actually going to
+[00:15:53] work on for that day. I think that's
+[00:15:55] just having assigned tasks that you wake
+[00:15:57] up to is extremely helpful to start
+[00:15:59] with. And so really what I've what I've
+[00:16:01] done here on my routines on the side
+[00:16:03] here. So the number one most important
+[00:16:05] thing for me is every day I want 50 new
+[00:16:08] prospects. And really these prospects
+[00:16:11] have their own kind of internal rankings
+[00:16:12] that I've I've trained graph on. And so
+[00:16:15] typically how I break this up is I have
+[00:16:18] five prospects that I need action on
+[00:16:20] first thing in the morning. These are
+[00:16:21] going to be the most relevant ones. So
+[00:16:23] maybe it was someone who contacted sales
+[00:16:25] but nobody ever reached out to them.
+[00:16:27] Maybe it was someone who just downloaded
+[00:16:29] some of our content that's extremely
+[00:16:31] relevant to what they're doing and
+[00:16:32] conversations we're already having with
+[00:16:34] that account. And basically, this is my
+[00:16:36] first five people that I genuinely need
+[00:16:38] action on right away. And what I have is
+[00:16:40] you can actually set up Grockbot to
+[00:16:42] things like your calendar. So my chief
+[00:16:44] of staff has access to my calendar and
+[00:16:46] it can basically understand the context
+[00:16:48] of okay, this is the five things you
+[00:16:51] need action on. Now you have a 15 minute
+[00:16:53] block I can make for you during this
+[00:16:55] time, maybe 9:00 am. So you can actually
+[00:16:57] just knock those out of the way. Then
+[00:16:58] you don't have any other meetings. For
+[00:17:00] the 45 others that I know you want to
+[00:17:01] get to today, I'll block off time at 1
+[00:17:04] p.m. So you can actually carry those out
+[00:17:06] over another hour. But really, my chief
+[00:17:09] of staff has kind of started to
+[00:17:10] understand how I actually like to kind
+[00:17:12] of break up my time and what's most
+[00:17:14] important and really how I've seen the
+[00:17:17] most results here. And so on this same
+[00:17:20] basis, I have an inbox manager who does
+[00:17:22] something very similar. So, I get Slack
+[00:17:24] messages that I wake up to every
+[00:17:26] morning. I'm added to meetings when I
+[00:17:27] wake up every morning. And I have
+[00:17:29] external emails that I wake up to every
+[00:17:31] morning. And I really just need a simple
+[00:17:33] way to actually understand which of
+[00:17:35] these I should action on right away,
+[00:17:36] which of these are most important. And
+[00:17:38] so with a similar system, this is
+[00:17:40] actually just going and it's really just
+[00:17:42] ranking these for me on ones to action
+[00:17:44] on and what the order to actually do
+[00:17:46] that is. And so on this on the same
+[00:17:49] basis as a PLG company, something that's
+[00:17:51] really important to us is actually
+[00:17:53] looking through all of our accounts for
+[00:17:54] some of the signals. So where are power
+[00:17:56] users living? What are the products
+[00:17:58] they're using? What are the things
+[00:17:59] they're actually using the products for
+[00:18:01] that are most relevant? And so I also
+[00:18:04] have every single weekday, and you can
+[00:18:06] see all these are at 8 a.m. Um, I have
+[00:18:09] all of my accounts basically getting
+[00:18:10] scanned for any net new signals. So who
+[00:18:12] are the new people who actually signed
+[00:18:13] up for our product? Who are the new
+[00:18:16] people who have reached out? downloaded
+[00:18:18] content, like everything. And I really
+[00:18:20] like this because I think speed to lead
+[00:18:22] is one of the most important things. And
+[00:18:25] so even if it's not the strongest
+[00:18:26] signal, being fed that on a daily basis
+[00:18:29] so you can actually just go in action on
+[00:18:30] that while it's as warm as possible has
+[00:18:33] led me to to some of the most receptive
+[00:18:35] responses I've gotten. And so finishing
+[00:18:38] out here, I have my sequencer. And I
+[00:18:41] think just a important nuance on my
+[00:18:42] sequencer is that I've also have a
+[00:18:45] routine basically set on a Salesforce
+[00:18:47] trigger. So anytime one of my accounts
+[00:18:49] the actual account status updates. So
+[00:18:52] maybe it's moving from stage zero to
+[00:18:54] stage one. Uh this is basically a
+[00:18:56] trigger that's that works in parallel
+[00:18:58] with the sequence to unsequence people
+[00:19:01] when maybe the the deal is moving
+[00:19:02] forward and we don't need to outbound
+[00:19:04] any more people. And so this is really a
+[00:19:06] way you can kind of set up these kind of
+[00:19:08] elaborate systems all just with routines
+[00:19:10] and with Grockpot itself. But I'm going
+[00:19:12] to dive in now to what my actual
+[00:19:16] sequencer looks like here.
+[00:19:19] And so here's here's kind of what it
+[00:19:21] looks like. I've spun up this demo one
+[00:19:23] here. And so you can see it's all saved
+[00:19:25] as a CSV, which I will admit is like a
+[00:19:28] hideous UI and is like very painful to
+[00:19:30] look at as a user. And I think what my
+[00:19:32] big emphasis here is you actually as a
+[00:19:34] user shouldn't be looking at this much
+[00:19:37] if at all. This should kind of just be
+[00:19:39] Grockbot's brain and and some systematic
+[00:19:41] way to actually track these. But you
+[00:19:43] should genuinely trust Grockbot to
+[00:19:45] actually have the context this and only
+[00:19:47] look into it when you actually really
+[00:19:48] need to. And so you can see here I have
+[00:19:51] all these different sequences, a queue
+[00:19:53] of prospects who are actually needing to
+[00:19:55] be add in my prospect board. And then
+[00:19:57] the most important stuff for me is the
+[00:20:00] the things I need to action on this
+[00:20:02] specific day. And so you can see this
+[00:20:04] basically gives me all the things. It's
+[00:20:06] it's also drafting copy for the emails
+[00:20:08] and everything. You can see here it's
+[00:20:11] already got Gmail drafts ID. So I can
+[00:20:13] basically just go into my Gmail and
+[00:20:15] review these all one by one. And if I
+[00:20:17] wanted to, I can just talk to my chief
+[00:20:18] of staff and I can be like, "Can you
+[00:20:20] actually give me a score on how
+[00:20:22] confident are you that this email is
+[00:20:24] accurate, that it's solid, and that they
+[00:20:26] might actually give a response?" And
+[00:20:28] this is kind of what I've delegated it
+[00:20:30] to at this point. I think I really
+[00:20:31] emphasized at first, and especially as
+[00:20:33] you're kind of training it on your voice
+[00:20:35] to actually like thoroughly look at
+[00:20:37] these and and honestly give it feedback.
+[00:20:40] But it's now at a point where I I
+[00:20:42] somewhat just trust it and and I can
+[00:20:44] actually push it to to give me its own
+[00:20:46] rating scores on how good these are. But
+[00:20:48] I think on that note, something
+[00:20:50] important to emphasize when you're
+[00:20:52] focusing on your copy. So this could be
+[00:20:54] Gmail, this could be for any other
+[00:20:56] platform is what I've found works best
+[00:20:59] is actually just prompting back and
+[00:21:01] forth with Crockbot and asking it for
+[00:21:03] examples. And so honestly, when I first
+[00:21:07] had it pull in my emails and I even did
+[00:21:09] all the stuff, okay, like let's wait the
+[00:21:11] more recent responses, I found that it
+[00:21:13] was almost kind of templated and every
+[00:21:15] response looked very similar, but just
+[00:21:17] with swapping of names, of company IDs,
+[00:21:20] things like that. And so what I've
+[00:21:22] really done is just kept going back and
+[00:21:24] forth and asking, can you give me
+[00:21:25] examples of these emails? And then on
+[00:21:28] each one, basically critiquing it, being
+[00:21:30] like, this is why this email sucks, and
+[00:21:32] here's how you can make it better. and
+[00:21:33] and really pushing for it to break out
+[00:21:35] of kind of the standardized formatting
+[00:21:36] it has and to actually kind of think and
+[00:21:39] and give nuance responses at each single
+[00:21:42] email. And I think something I really
+[00:21:43] push is not a single one of your emails
+[00:21:45] should look like a template. It
+[00:21:47] shouldn't look like the same thing, but
+[00:21:49] just swapping out company or name. And
+[00:21:51] and I think that's something really
+[00:21:53] important to also push here. So, I'm
+[00:21:56] going to dive now into actually like why
+[00:21:58] I structured my setup this way and what
+[00:22:01] this actually looks like. And so,
+[00:22:04] obviously, I'm my chief of staff at the
+[00:22:05] top. And as I said, this is actually the
+[00:22:07] only bot I talked to and and the one
+[00:22:09] that I've built the rest of my bots
+[00:22:11] from. And so, obviously, I I have all my
+[00:22:14] outbound actually just structured in a
+[00:22:16] single folder. And the reason I do this
+[00:22:19] is I make I make one bot basically per
+[00:22:21] platform. And and I think the the
+[00:22:23] important reason to do this is because
+[00:22:25] you should be thinking about bots as a
+[00:22:27] way of things that can run in parallel.
+[00:22:29] And so Shakespeare is doing all my
+[00:22:31] email. And so I don't need a second
+[00:22:34] email bot, but I might need a second
+[00:22:36] outbound bot for a second platform that
+[00:22:38] I'm reaching out to people on. Or maybe
+[00:22:40] I need context for some of the calls I'm
+[00:22:43] doing. And so having different bots for
+[00:22:45] each of those different functions I
+[00:22:46] think is is the best way to actually
+[00:22:48] handle this and understand the context
+[00:22:50] of how your bots are working with each
+[00:22:52] other. And then so diving into my
+[00:22:54] research here. So kind of the six key
+[00:22:58] bots that I'm actually using for this
+[00:23:00] one. I have my PLG bot which is tied up
+[00:23:02] to Salesforce. So I'm actually getting
+[00:23:04] to see okay who's who's signing up? What
+[00:23:06] does our usage look like? It's also
+[00:23:08] pulling in stuff like do we have any
+[00:23:10] clothes lost? Um, it's also talking with
+[00:23:13] other bots. And so, chief of staff might
+[00:23:15] be able to recognize that. Okay, one of
+[00:23:17] our prospect accounts is a closed loss
+[00:23:20] opportunity. Okay, what's the context on
+[00:23:22] why? Well, let's dig into the voice of
+[00:23:23] the customer bot, understand the reasons
+[00:23:25] why that opportunity closed loss. Okay,
+[00:23:28] maybe we didn't have support for a
+[00:23:30] critical function for the business then,
+[00:23:32] but actually, as we've been updating,
+[00:23:34] chief of staff recognizes that now we
+[00:23:36] actually do support that. It's seen some
+[00:23:37] of the closed one come in directly
+[00:23:39] around that. And so that will actually
+[00:23:41] then take this prospect or take this
+[00:23:43] account and start ranking them higher in
+[00:23:46] my sequencing because it's saying this
+[00:23:47] is more urgent because you need to
+[00:23:49] re-engage with them about this direct
+[00:23:50] thing that they truly care about. And we
+[00:23:52] know that from a call we had with them.
+[00:23:54] And so being able to take that context
+[00:23:56] and kind of have this full system
+[00:23:58] running together I think is extremely
+[00:24:00] important. But as we tie into this more
+[00:24:03] you can see I also have ample market
+[00:24:04] which kind of runs all our enrichment.
+[00:24:06] So once we actually find prospects, this
+[00:24:08] is how we actually hook up our tools to
+[00:24:10] get their emails and to understand,
+[00:24:12] okay, is this actually their email? Can
+[00:24:14] we test it, make sure it won't bounce?
+[00:24:16] Things like that that won't hurt your
+[00:24:17] email deliverability scores. And then on
+[00:24:20] top of that, I have a company research
+[00:24:22] bot, which I think is is something very
+[00:24:24] important here. And so I have this
+[00:24:25] hooked up to my sumble instance. And
+[00:24:28] what sumble is actually able to do, the
+[00:24:30] most important thing that I found is
+[00:24:31] it's able to pull in a company's tech
+[00:24:33] stack. So for SpaceX's products, it's
+[00:24:35] really important to understand, okay,
+[00:24:37] this company is really operating with a
+[00:24:39] legacy software stack and they're
+[00:24:41] looking to to kind of move off that.
+[00:24:43] Like here's the pain points we see from
+[00:24:45] similar people and here's how we can
+[00:24:47] kind of aim the messaging around that.
+[00:24:49] And on top of that, Sumble can actually
+[00:24:52] pull in job postings, too. And so that's
+[00:24:54] actually how it understands tech stack.
+[00:24:56] But more than that, it can actually try
+[00:24:58] and pull in for you an understanding on
+[00:25:00] their org chart. So if you're selling
+[00:25:03] say for Grockbot into a into a go to
+[00:25:05] market org someone can actually help you
+[00:25:07] pull in information on okay here's
+[00:25:09] actually the the leader for maybe their
+[00:25:12] SDR team the person who would be
+[00:25:13] interested in this and it's pushing all
+[00:25:15] that context back into Grockbot. It's
+[00:25:17] pushing it all back into the system and
+[00:25:19] this understanding and again back to the
+[00:25:22] voice of the customer bot. Maybe they
+[00:25:23] said, "Oh, yeah, Simon on on the SDR
+[00:25:25] goto market team is looking into these
+[00:25:27] exact things." And it can talk with
+[00:25:29] other bots like like our company
+[00:25:30] research bot here. Pull that context
+[00:25:32] back in of who exactly that is, where
+[00:25:34] they sit in the org chart and help you
+[00:25:36] actually sequence that and rank that
+[00:25:38] based on here's how high they up in the
+[00:25:40] company they are, like are they the
+[00:25:42] economic buyer based on stuff like that.
+[00:25:44] And so really, you can kind of have
+[00:25:46] these all work together. And and again,
+[00:25:48] I think this goes back to the point of
+[00:25:50] the importance of of building all your
+[00:25:52] bots from your chief of staff bot is it
+[00:25:55] understands this context better and it
+[00:25:57] understands it just like you would. And
+[00:25:59] so moving forward here, I've kind of
+[00:26:01] talked a lot about the voice of the
+[00:26:02] customer bot, but I think a cool one
+[00:26:04] here also that I use is web search bot.
+[00:26:06] So I'm constantly looking at company
+[00:26:09] funings or like I said earlier like job
+[00:26:11] postings or any kind of public facing
+[00:26:13] information, things in the news. And
+[00:26:15] what I've really found as a friction
+[00:26:16] point with this is it's hard to scale
+[00:26:18] this when you have 100 to 200 accounts
+[00:26:21] and every single day there's updates on
+[00:26:23] some of these. And so how do we actually
+[00:26:25] like scan for this at scale? So I've set
+[00:26:27] up my web search bot here which is
+[00:26:29] hooked up to exa. And what I actually do
+[00:26:32] have is an army for it that can actually
+[00:26:34] break up and delegate this work. And so
+[00:26:36] you can see, I kind of talked about this
+[00:26:37] earlier, but I have an army hundle
+[00:26:39] huddle, which is basically just one bot
+[00:26:42] telling the other bots, okay, we're
+[00:26:44] going to break up these 200 companies to
+[00:26:46] 40 each now run in parallel to actually
+[00:26:49] do web search on all of these. So we can
+[00:26:51] actually get this information back to
+[00:26:52] Simon in a timely manner. And this is
+[00:26:55] something I've really seen as like a
+[00:26:56] practical way to scale some of the
+[00:26:58] longrunning tasks and some of the ones
+[00:27:01] that that really have slowed down some
+[00:27:02] of my workflows in the short term. And
+[00:27:04] so this has really helped me kind of
+[00:27:05] stay stay on top of those things. And so
+[00:27:08] kind of on top of that also we're
+[00:27:11] looking at usage for PLG companies.
+[00:27:13] We're looking into how much are people
+[00:27:15] using this product? What teams are using
+[00:27:17] this product? And and I think for GRBO
+[00:27:20] something important. We're trying to
+[00:27:21] understand like how many go to market
+[00:27:23] people are using it and and what are
+[00:27:24] kind of the use cases they have. So
+[00:27:26] being able to pull in data like that too
+[00:27:28] and have my chief of staff actually
+[00:27:30] understand all that context makes it all
+[00:27:32] the more easy to actually like kind of
+[00:27:34] rank every single prospect, understand
+[00:27:36] priorities and understand really like
+[00:27:40] who are the best targets to go after
+[00:27:41] because I think it's so easy to be
+[00:27:42] overwhelmed as an SDR with all these
+[00:27:45] different tasks and all these different
+[00:27:46] things you have to do. And it's really
+[00:27:48] hard to kind of mentally try and try and
+[00:27:51] understand and rank these these
+[00:27:53] different prospects. And so I think
+[00:27:55] having some sort of like systematic
+[00:27:56] ranking here with Grockbot as I've kind
+[00:27:58] of built myself is is a really good way
+[00:28:00] to do this. And and like I said earlier,
+[00:28:02] I think a really nice part of this is
+[00:28:04] you can actually share these with your
+[00:28:06] team. And so you can get the learnings
+[00:28:07] and kind of share those learnings. And I
+[00:28:10] think one last thing I just wanted to
+[00:28:12] show here is I've actually built some
+[00:28:13] skills that kind of go deeper here. And
+[00:28:16] so I actually have a entire just
+[00:28:18] prospecting skill. And so our company
+[00:28:21] here is Fly Low, but we can just we can
+[00:28:23] just type this in. And so prospecting
+[00:28:25] understands already all of the different
+[00:28:27] things I want. And this is more
+[00:28:28] something at this point I just run for
+[00:28:30] oneoff maybe net new accounts I have or
+[00:28:33] things I want to research like midway
+[00:28:34] through the day. But most of this runs
+[00:28:36] at routines at this point. But I I think
+[00:28:38] something very interesting that I also
+[00:28:40] want to talk about is the skill I've
+[00:28:42] made around Grockpot ICP. And I think
+[00:28:45] this is something that's really widely
+[00:28:47] applicable here. And what this is is
+[00:28:49] we're still figuring out all the
+[00:28:51] different use cases for Grockbot and
+[00:28:53] we're not sure really like who the best
+[00:28:55] ICP and what that looks like and and
+[00:28:57] it's really something that's kind of an
+[00:28:58] ongoing development. And so what I
+[00:29:00] wanted to do here is I wanted to turn
+[00:29:03] our own findings on Grock's ICP into a
+[00:29:06] scale. And I did this because this way I
+[00:29:08] can constantly update this as it kind of
+[00:29:11] gets more and more clear what this
+[00:29:12] actually means. And so obviously it's
+[00:29:15] something I've talked with Grapod before
+[00:29:17] about about okay let's see what are what
+[00:29:18] are the deals for Grapod that are
+[00:29:20] actually moving past stage one that are
+[00:29:22] showing interest what are the things
+[00:29:23] from voice of the customerbot that are
+[00:29:25] showing interest around this and why are
+[00:29:27] they interested in this and this has
+[00:29:29] really helped me kind of iterate on this
+[00:29:31] skill more and more and I think it's
+[00:29:33] something that really I want to keep
+[00:29:34] building out and the reason I've kept it
+[00:29:37] as a skill though is because it could
+[00:29:38] drastically change and I want it to be
+[00:29:41] able to be flexible and be something
+[00:29:42] that my systems can basically call upon
+[00:29:44] at any point and it's updated. So as we
+[00:29:47] kind of iron out more and more what
+[00:29:48] Grock's ICP is, we can really change
+[00:29:51] this on the fly if we save it as a skill
+[00:29:53] here. And so basically I can run that in
+[00:29:56] the background and you can kind of see
+[00:29:57] some of the highle stuff it's going to
+[00:29:59] do. But really, it's I I do all my work
+[00:30:02] and it kind of orients it all around
+[00:30:03] CSVs that look like this that are
+[00:30:05] pulling in everything like titles like
+[00:30:07] what's their actual ICP persona like the
+[00:30:10] owners and everything like what's the
+[00:30:12] context on why and then you can see it's
+[00:30:14] talking to other sources like ample
+[00:30:16] market to actually get email data
+[00:30:18] LinkedIn the locations here and and
+[00:30:21] really just a lot of the context on
+[00:30:23] these profiles and you can see that it's
+[00:30:25] it's already basically running and and
+[00:30:27] doing something like this But really
+[00:30:30] really at a high level, this is this is
+[00:30:32] how I actually run all of my sequencing
+[00:30:34] here. And you can see that now it's
+[00:30:36] messaging all of my orange bots. And I
+[00:30:38] think like just for my own sanity, it's
+[00:30:40] it's very clear now that it's in the
+[00:30:42] research phase. And and I understand
+[00:30:44] that. I think now boom, it's doing web
+[00:30:46] search in the background. And I'm very
+[00:30:48] clear and understanding on exactly what
+[00:30:50] it's doing there. And that's I think why
+[00:30:52] it's important to to kind of actually do
+[00:30:54] these somewhat in a color color-coded
+[00:30:56] fashion, maybe some themes. It's it's
+[00:30:58] easy to remember and to actually kind of
+[00:31:00] at a high level look down and and see
+[00:31:02] what's happening.
+[00:31:07] But all right, that is the demo.
+[00:31:10] And so now I'm kind of just going to
+[00:31:11] discuss like what we actually learned,
+[00:31:13] what I think are genuinely like the
+[00:31:15] takeaways that you guys should have and
+[00:31:17] carry into your own setups for this as
+[00:31:21] all right. So I think one of the most
+[00:31:24] important things is going end to end.
+[00:31:26] And this is something I hope I showed in
+[00:31:28] my demo, but that I'm really trying to
+[00:31:29] push is that it's very simple to just
+[00:31:32] like prompt back and forth with Grockbot
+[00:31:34] or to have Grockbot do a single task
+[00:31:37] like sending an email for you. But I
+[00:31:39] think really you should push it to do
+[00:31:41] the entire workflow. And it's it's a lot
+[00:31:42] of pain up front for you to prompt back
+[00:31:45] and forth to build this system to figure
+[00:31:46] out like what actually makes this system
+[00:31:48] work. But if you stick through it and
+[00:31:50] you're persistent and you train it on
+[00:31:51] your style, you will get so much more
+[00:31:54] benefit when it's able to go end to end.
+[00:31:55] when it's able to pull people in from
+[00:31:57] prospecting, it's able to enrich them.
+[00:31:59] It's able to understand all the context
+[00:32:00] and then it's able to push that out and
+[00:32:02] actually outbound them and do the full
+[00:32:04] process. And I think that's really what
+[00:32:06] differentiates Crockbot and what makes
+[00:32:08] it a true like force multiplier for
+[00:32:10] STRs. So I really emphasize like
+[00:32:13] thinking at a high level and kind of
+[00:32:15] thinking how you can actually build that
+[00:32:16] system. And I think on that same note,
+[00:32:19] you should be intentional here. So it's
+[00:32:21] really intuitive to just prompt each
+[00:32:23] bot. And what I highly recommend is just
+[00:32:26] taking a step back and thinking, okay,
+[00:32:28] let me build this all through my actual
+[00:32:30] chief of staff. Bots should be able to
+[00:32:32] talk to each other. They should have
+[00:32:33] that context. The point of this is is to
+[00:32:35] offload more work from you and help you
+[00:32:37] actually get higher outputs. And so you
+[00:32:39] shouldn't actually be focusing even
+[00:32:41] harder and messaging even more bots.
+[00:32:43] It's exhausting from just all the prompt
+[00:32:45] and context switching you're doing
+[00:32:46] there. And lastly, what I kind of hope I
+[00:32:49] really showed in my demo is how to think
+[00:32:51] systematically about your setup. I think
+[00:32:54] it is very easy to just always want to
+[00:32:57] make new bots. It's kind of fun and it's
+[00:32:59] kind of exciting, but as someone who's
+[00:33:01] built an army of bots, I promise you,
+[00:33:02] I've had way too many at some points.
+[00:33:04] And and it's honestly more chaotic and
+[00:33:06] it does more harm than good. And so, you
+[00:33:08] should really be questioning like, why
+[00:33:09] is it important that a new bot does
+[00:33:11] this? Why can my existing email bot not
+[00:33:13] just write my emails and also be able to
+[00:33:16] be my inbox manager? Like like why do I
+[00:33:19] need a second bot for that? And also on
+[00:33:21] that note, like when should I just turn
+[00:33:22] things into routines that that bot runs?
+[00:33:25] But really, I I emphasize kind of
+[00:33:27] thinking about all these different
+[00:33:28] things as ways for you to actually just
+[00:33:33] save more tokens in the first place, but
+[00:33:36] actually just also not confuse yourself
+[00:33:37] and not kind of just get overloaded with
+[00:33:39] bots that are just doing like kind of
+[00:33:41] similar things. And again, making things
+[00:33:44] through your chief of staff makes it all
+[00:33:46] the more easier to actually do that.
+[00:33:52] All right. So, I just wanted to thank
+[00:33:54] you guys for taking the time and I think
+[00:33:56] we're going to just open it up to
+[00:33:57] questions now. Here.

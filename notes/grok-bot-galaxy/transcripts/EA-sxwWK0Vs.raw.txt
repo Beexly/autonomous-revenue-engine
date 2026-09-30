@@ -1,0 +1,503 @@
+[00:00:00] And so, um,
+[00:00:05] as I mentioned, uh, there's really that
+[00:00:07] ease of use that you get with Grockbot.
+[00:00:09] Um, you have these always on agents
+[00:00:11] where you no longer have to worry for
+[00:00:13] any of you, uh, who are out there who
+[00:00:15] are maybe doing work at an inconvenient
+[00:00:16] time, but you can't close your laptop
+[00:00:18] because if you do, then the agent is
+[00:00:20] going to stop working. You don't have
+[00:00:21] that concern here.
+[00:00:23] And really when you combine all these
+[00:00:26] primitives together, you get to a place
+[00:00:28] where
+[00:00:30] in this really natural way, you talk to
+[00:00:32] your bots, you know the access that they
+[00:00:34] have. Um they're really intelligent.
+[00:00:36] They can keep working around the clock
+[00:00:38] and produce um some really high value
+[00:00:41] outputs for you.
+[00:00:44] So I'm really excited particularly for
+[00:00:46] this audience um to share a few use
+[00:00:49] cases that I have personally that the
+[00:00:52] RevOps and Marops team internally at
+[00:00:54] SpaceX AAI has for using Grockbot to do
+[00:00:57] our work more effectively. So first a
+[00:01:00] quick show of hands for people here in
+[00:01:02] person. How many of you are on your
+[00:01:04] RevOps or Marops team at your company?
+[00:01:08] Anyone working on GTM engineering, GTM
+[00:01:10] systems?
+[00:01:12] Okay, workflows, processes, automations.
+[00:01:15] I'm sort of speaking the same language
+[00:01:16] as all you seeing some nods in the
+[00:01:18] audience. Well, what's really exciting
+[00:01:21] about Grockbot for RevOps and Marops is
+[00:01:24] [snorts]
+[00:01:25] um I can sort of go through all of
+[00:01:27] these. Some of these I'm going to demo
+[00:01:28] in just a second, but if I had to call
+[00:01:31] out just one to really highlight about
+[00:01:34] how a tool like Grockbot changes the
+[00:01:36] nature of our work is we can finally
+[00:01:40] build tools and not just rules. So often
+[00:01:45] times when you're in these roles that
+[00:01:47] are inherently about crossf functional
+[00:01:49] collaboration and aligning stakeholders,
+[00:01:52] uh so much of the job is just like
+[00:01:55] communicating communicating information
+[00:01:57] out, hoping that people follow
+[00:01:59] guidelines for like the right way to set
+[00:02:02] up a campaign, the right way to get
+[00:02:04] something tracked. But finally, with a
+[00:02:06] tool like Grockbot, we can all think of
+[00:02:08] ourselves as much more technical to the
+[00:02:12] point where we're not just setting out
+[00:02:14] the guidelines for, hey, if someone at
+[00:02:17] the company wants to get XYZ campaign
+[00:02:19] done, they have to follow this
+[00:02:21] checklist. And instead, we can set up
+[00:02:23] the infrastructure, the like internal
+[00:02:26] apps where those teams can do the work.
+[00:02:29] And the apps are just set up to respect
+[00:02:32] those rules in the first place. And so
+[00:02:34] you can sort of think of the marketing
+[00:02:36] and sales teams as playing a game that
+[00:02:39] you are designing as that sort of back
+[00:02:42] office ops team. But really across all
+[00:02:45] of these use cases that we're
+[00:02:47] highlighting here um there are there's
+[00:02:50] really so much to do uh that that really
+[00:02:52] fundamentally changes the nature of the
+[00:02:55] work.
+[00:02:56] And so uh I want to walk all of you
+[00:02:59] through a demo of some specific ways
+[00:03:01] that I use Grockbot. um to highlight a
+[00:03:04] couple of those use cases from the prior
+[00:03:05] slide. And before we do that, I just
+[00:03:08] want to introduce you to my team of
+[00:03:10] bots. So, there are some obscure
+[00:03:13] references here with the names of my
+[00:03:15] bots. Uh I don't know if by any chance
+[00:03:18] there are any Radio Head fans out there
+[00:03:19] in the audience. Amazing. So, maybe you
+[00:03:22] would understand the reference to uh
+[00:03:24] owned over there. That's a beloved
+[00:03:26] instrument. Uh but all of these are sort
+[00:03:28] of references to music devices. Uh in
+[00:03:32] another life I might have pursued that
+[00:03:34] passion a bit more but now I can um use
+[00:03:37] do that with my bots. Uh and so we've
+[00:03:40] got OP1 my sort of synthesizer chief of
+[00:03:42] staff um who drives a lot of my work.
+[00:03:45] We've got Fiser, which is sort of the
+[00:03:47] like receiver of all the information
+[00:03:50] from across my inboxes, email, calendar,
+[00:03:54] text messages, Slack.
+[00:03:57] Juno is my product manager bot um that
+[00:04:01] sort of helps me think through corner
+[00:04:03] cases, product requirements. When I'm
+[00:04:05] going out and thinking of tools that I
+[00:04:07] want to build for our marketing and
+[00:04:09] sales teams, it helps me really think
+[00:04:11] through all the implications and build
+[00:04:13] the right thing in the first place. And
+[00:04:15] then owned is my engineerbot. Um, so it
+[00:04:18] has a really clear sense of our systems,
+[00:04:21] how they interact with each other,
+[00:04:23] things like the CRM and our data
+[00:04:25] warehouse and our existing codebase and
+[00:04:27] how we build internal tools at SpaceX.
+[00:04:30] Um, and so, uh, what you'll see in a
+[00:04:33] second here in our demo
+[00:04:36] is first I want to show you, um, what I
+[00:04:39] call the self-completing
+[00:04:43] task list. Uh, so this to me, I'm sort
+[00:04:47] of a productivity nerd. Um for over half
+[00:04:52] a decade I've been building my own
+[00:04:53] internal systems for getting work done
+[00:04:55] more efficiently because especially in a
+[00:04:57] role like revops or marops as I said
+[00:04:59] earlier so much of it is just
+[00:05:01] stakeholder management. You're getting
+[00:05:03] so many messages from so many different
+[00:05:04] places trying to make sense of it trying
+[00:05:07] to understand what is truly high
+[00:05:08] priority. Um, and finally, with a tool
+[00:05:11] like Grockbot, what you can do is you
+[00:05:14] can set up these bots to monitor all
+[00:05:17] your inboxes and help you distill, okay,
+[00:05:20] of all these messages you've received,
+[00:05:22] things that showed up on your calendar,
+[00:05:24] which of these are actual tasks versus
+[00:05:26] which of these are just FYI or things
+[00:05:28] that we can safely ignore. Um, and so
+[00:05:31] what we'll do here is we can see my bots
+[00:05:35] have already been active in the
+[00:05:36] background. So Fiser, the sort of
+[00:05:39] executive assistant or receiver agent
+[00:05:41] that's tapped in to all my inboxes,
+[00:05:45] um we can see today at 9:04 a.m. um it
+[00:05:49] completed this ongoing routine that it
+[00:05:51] has. You can see um over here it has
+[00:05:55] this regular routine that it runs on a
+[00:05:57] schedule where it checks all my inboxes
+[00:06:01] and picks out whatever's new
+[00:06:04] and then it proactively um actually like
+[00:06:07] while I was giving this talk messaged
+[00:06:10] OP1 again that's my chief of staff agent
+[00:06:13] and it gave it the rundown of across
+[00:06:16] email calendar work chat all the
+[00:06:20] information that came my way. And so
+[00:06:23] this alone is such an unlock in terms of
+[00:06:27] knowing like I can even if I wanted to,
+[00:06:30] I could turn notifications off on Slack,
+[00:06:34] on email, and I would just know that in
+[00:06:36] the background my bots are monitoring
+[00:06:38] those channels for me and surfacing to
+[00:06:40] me the things that are most important
+[00:06:42] that should really take away my
+[00:06:44] attention. Um, and that alone, um,
+[00:06:48] really cuts down on the context
+[00:06:50] switching for me and really helps me get
+[00:06:52] into much more of a focus mode in my
+[00:06:54] work and just be a lot happier, um, in
+[00:06:57] my work.
+[00:06:59] So, really, really cool, right? That
+[00:07:02] alone changes the game. And then what
+[00:07:04] you see here is Fiser is receiving this
+[00:07:07] information. It's proactively telling my
+[00:07:08] chief of staff, hey, here's what's new.
+[00:07:12] And then my chief of staff is distilling
+[00:07:14] that down into um the actual tasks and
+[00:07:19] subtasks that I was able to identify
+[00:07:22] from that input. So right, sometimes you
+[00:07:24] get messages and you don't actually have
+[00:07:26] to act on them. Sometimes you get
+[00:07:27] messages and you have to act on them,
+[00:07:30] but you can't really tell just by
+[00:07:32] reading the message alone like what's
+[00:07:33] really going on here. And so with bot,
+[00:07:36] what you can do is it reads the message.
+[00:07:38] It reads the entire Slack exchange and
+[00:07:41] it sort of distills for you like, hey, I
+[00:07:44] think here's what that person is asking
+[00:07:46] for. Um, and so it just makes your life
+[00:07:49] so much easier. Now, here's the really
+[00:07:51] cool thing is this is where we get to
+[00:07:53] the self-completing part of the of the
+[00:07:56] self-completing task list is
+[00:07:59] um my two bots, Fisher and OP1 are
+[00:08:02] working together to identify tasks and
+[00:08:05] then OP1 identifies one of those tasks.
+[00:08:08] Looks like there's a territory dispute.
+[00:08:10] A couple AES have some disagreements
+[00:08:13] about who should work a given account.
+[00:08:15] And what OP1 can do is relay that task
+[00:08:21] to another bot that I have which is a
+[00:08:24] territory planning bot. It can give it
+[00:08:26] context on what's going on. And then
+[00:08:29] that territory planner bot who has full
+[00:08:32] information on our rules of engagement,
+[00:08:35] um how we set out different territories,
+[00:08:38] all the context from our CRM, that bot
+[00:08:40] is able to complete a pretty good first
+[00:08:43] draft of of that task of what u
+[00:08:47] deliverable is needed to complete that
+[00:08:49] task.
+[00:08:51] And so, uh, I didn't even have to think
+[00:08:53] about, you know, what what we should do
+[00:08:56] about this territory dispute. Of course,
+[00:08:58] I can always come in and validate the
+[00:09:00] work and make sure that it actually
+[00:09:02] makes sense. Um, but it's really amazing
+[00:09:05] to think that like I I have a team. I
+[00:09:08] truly have a team. A team that is
+[00:09:11] monitoring my inboxes, distilling the
+[00:09:13] tasks, relaying those tasks to the right
+[00:09:16] other teammates who can get them done
+[00:09:17] for me. and then I just come in and sort
+[00:09:20] of oversee the whole process um and and
+[00:09:23] finalize things.
+[00:09:25] So that's demo one.
+[00:09:27] Demo two is really how I was able to
+[00:09:31] build um what to put it in a piffy way
+[00:09:35] is a dating app for leads that we use
+[00:09:39] internally at SpaceX AAI where you know
+[00:09:42] often uh for those of you in the
+[00:09:44] audience who know what I'm talking about
+[00:09:47] marketing sales handoff is like such a
+[00:09:50] classic issue in companies where
+[00:09:52] marketing is producing all these leads
+[00:09:55] sales people are like I don't really
+[00:09:57] love these leads. I don't want to have
+[00:09:58] to work them. So, they're just sitting
+[00:10:00] there getting stale. You don't really
+[00:10:03] have a feedback loop where marketing can
+[00:10:05] refine their targeting to give sales
+[00:10:07] more of the kind of leads that they
+[00:10:09] want. And the whole process is just
+[00:10:11] broken. And so, uh I sort of identified
+[00:10:16] a better way to handle the marketing
+[00:10:18] sales handoff, which is what if every AE
+[00:10:21] could log into an app and they would
+[00:10:23] just see the leads that they own. They
+[00:10:25] can swipe left to end those leads. When
+[00:10:28] they end those leads, they have to give
+[00:10:30] a specific ended reason. When they hit
+[00:10:32] submit, it actually writes back to the
+[00:10:34] CRM in all the correct ways. When they
+[00:10:37] swipe right, they can add that uh
+[00:10:40] prospect, they can add that lead
+[00:10:41] directly into a follow-up sequence. And
+[00:10:44] so this is what I mean when earlier on I
+[00:10:46] said this really transforms what we can
+[00:10:49] do as someone on revops or marops where
+[00:10:53] all of a sudden we're not um just
+[00:10:55] talking about SLAs's and making sure
+[00:10:57] that sales teams abide by the SLAs's and
+[00:11:00] hey why aren't you working these leads
+[00:11:01] and okay let me relay that anecdotal
+[00:11:04] information about these leads back to
+[00:11:06] the marketing team. Instead we just set
+[00:11:10] up the game for the teams to play. They
+[00:11:13] play that game and we get a lot of
+[00:11:16] really valuable information on, okay,
+[00:11:19] why are these leads being ended? How can
+[00:11:20] we sort of programmatically feed that
+[00:11:22] back into the marketing teams to improve
+[00:11:24] the targeting and give sales more of the
+[00:11:26] leads they like? How can we make it as
+[00:11:28] easy as possible for sales people so
+[00:11:29] that this is something fun that they
+[00:11:31] want to get to inbox zero with their
+[00:11:33] leads every day? So the way that we did
+[00:11:35] this was um I basically told my product
+[00:11:39] manager bot I want to build an internal
+[00:11:42] app for sales reps to review their
+[00:11:43] leads. Um I gave it a rough idea of the
+[00:11:46] mechanics for the app, some extra things
+[00:11:49] that I want and most importantly from
+[00:11:52] the start we really want to get this off
+[00:11:55] flow with our CRM right um because
+[00:11:57] that's sort of the most critical thing.
+[00:11:59] We want people sales people to be able
+[00:12:01] to log in and see the leads they own and
+[00:12:04] make sure that we're writing uh
+[00:12:06] information back into the CRM properly.
+[00:12:09] So what happens when I send this message
+[00:12:11] is Juno is a really good thought partner
+[00:12:15] for me. Um so I have this rough idea for
+[00:12:18] an app and with prior AI tools what
+[00:12:22] might have happened is the AI really
+[00:12:25] wants to please me. it really wants to
+[00:12:26] do a good job and so right away it jumps
+[00:12:28] into okay I'm starting the coding
+[00:12:30] process here it is and maybe it doesn't
+[00:12:33] look like what you envisioned maybe it
+[00:12:35] doesn't work like what you envisioned
+[00:12:37] maybe it anchored too much on what you
+[00:12:39] had in that first prompt and so in a way
+[00:12:40] you're sort of scared to use the AI and
+[00:12:43] overthinking like did I get that prompt
+[00:12:45] right did I need to give it more detail
+[00:12:46] in the first place oh no now it's
+[00:12:48] running away and building the wrong
+[00:12:50] thing what Grockbot does is it takes a
+[00:12:53] second it asks you follow-up questions
+[00:12:56] really good followup questions, things
+[00:12:58] that I didn't necessarily think about
+[00:13:00] when I first had the idea for this app.
+[00:13:02] And so we can answer these questions.
+[00:13:05] We'll see. It'll ask a few more. We can
+[00:13:08] go through this process. Let's see. I
+[00:13:10] want to show people only their new
+[00:13:13] leads. No additional filters.
+[00:13:19] We want to make sure. Okay, so this is a
+[00:13:23] really good question. when a lead when a
+[00:13:25] lead is accepted, what should change in
+[00:13:27] the CRM? Now, what I want to tell bot is
+[00:13:31] actually we shouldn't change any fields
+[00:13:34] in the CRM when a lead is accepted
+[00:13:39] because
+[00:13:40] the real moment that the lead status
+[00:13:44] changes is when the rep reaches out. We
+[00:13:49] already have an automation for tracking
+[00:13:52] that activity and updating the lead
+[00:13:55] status. So, we're really getting in the
+[00:13:58] weeds here. And AI is the the AI, the
+[00:14:01] Grockbot is really prompting me to think
+[00:14:03] more deeply about my idea and to say,
+[00:14:06] "Hey, you know what? That's a good
+[00:14:07] point. I'm not just answering questions
+[00:14:09] mindlessly, but I'm really thinking
+[00:14:10] through some of the implications here.
+[00:14:13] Let's do reason and optional notes." And
+[00:14:16] there will probably be just one or two
+[00:14:18] more questions that it'll ask.
+[00:14:22] Let's see. Offline actions.
+[00:14:24] Great question. Let's cue and confirm
+[00:14:29] before done.
+[00:14:31] So then we'll see that this product
+[00:14:33] manager bot will come up with a spec for
+[00:14:36] our product. And not only that, but
+[00:14:40] let's do let's do local only here. Not
+[00:14:44] only will it come up with the spec, but
+[00:14:46] what we'll see in just a second is
+[00:14:49] well, I won't spoil anything.
+[00:14:55] So, we can see it's drafting the product
+[00:14:57] spec.
+[00:15:02] And actually, it's sort of giving it
+[00:15:03] away. So, what Juno is going to do for
+[00:15:06] me is it's going to write the spec and
+[00:15:09] then proactively hand it off to own, our
+[00:15:12] engineering bot to actually get the
+[00:15:14] build started.
+[00:15:16] And again, I think the really magical
+[00:15:18] thing here is I didn't have to prompt
+[00:15:20] Juno to do that. Um, often when you're
+[00:15:23] using AI tools, if you even get to this
+[00:15:26] point of thought partnership and
+[00:15:28] producing really good quality outputs,
+[00:15:30] um, you have to take those outputs and
+[00:15:32] like send them into the right new
+[00:15:34] system. Um, if you even have a
+[00:15:37] consistent bot that you go to that just
+[00:15:38] does your engineering work. And here you
+[00:15:41] can again really think of it as a team
+[00:15:43] that's working on your behalf to get
+[00:15:45] things done end to end. So it messaged,
+[00:15:48] owned, it has this product spec ready
+[00:15:51] for the engineering to begin. And now we
+[00:15:55] can see that our engineer is off to
+[00:15:58] work. And now sort of cooking demo
+[00:16:01] style, I'll show you uh what the
+[00:16:03] finished product looks like. Um since I
+[00:16:06] won't bore you with all the details of
+[00:16:07] own doing the build, but what we've got
+[00:16:10] here, this is all fake data, so no
+[00:16:12] worries here. Um, this is just a mockup
+[00:16:15] of the real interface that I was able to
+[00:16:19] build with Grockbot and that many of our
+[00:16:23] reps now use on a daily basis to get
+[00:16:26] their reviewed leads down to zero. And
+[00:16:28] so we've got uh all this information
+[00:16:31] available at a glance about the lead.
+[00:16:33] Um, we can simply
+[00:16:37] put the card to the left to end that
+[00:16:39] lead.
+[00:16:41] We can uh swipe to the right and we can
+[00:16:45] put that lead in a sequence.
+[00:16:50] We can see more information about how
+[00:16:52] the lead came in in the first place.
+[00:16:56] And it just works already since
+[00:16:59] introducing this new app to our sales
+[00:17:02] reps, which by the way went from idea to
+[00:17:05] implementation in just two weeks. The
+[00:17:08] live build time was really 10 hours. And
+[00:17:10] then a lot of the other time was spent
+[00:17:12] just introducing people to this tool. Um
+[00:17:15] getting them familiar with it, gathering
+[00:17:16] more feedback and pro and feature
+[00:17:18] requests. Um in the two weeks since
+[00:17:22] we've adopted this on the team, we've
+[00:17:24] seen our leads reviewed rate shoot up.
+[00:17:27] Um the AES love it, marketing teams love
+[00:17:31] it because they're finally getting high
+[00:17:32] quality feedback from sellers on how
+[00:17:35] they can improve targeting. Um, and we
+[00:17:38] can see how working with Grockbot really
+[00:17:42] elevates what we can do. Like, you know,
+[00:17:44] show of hands out there in the audience.
+[00:17:46] How many of you feel like without AI you
+[00:17:49] would be able to build a product like
+[00:17:50] this?
+[00:17:53] Amazing. Okay. Right. We got we got one
+[00:17:57] hand. Now, I would say with AI and
+[00:18:00] especially after seeing this demo, how
+[00:18:02] many of you feel like you could pretty
+[00:18:04] confidently go into a chat with AI and
+[00:18:06] build this or any other internal tool
+[00:18:08] that your team needs?
+[00:18:10] Amazing. Amazing. I'm seeing a lot of
+[00:18:13] hands now. Um, and that was exactly me.
+[00:18:16] I I really joined this team with a lot
+[00:18:18] of ideas for how we could improve
+[00:18:20] processes, with a lot of specialized
+[00:18:22] knowledge around specific tools where I
+[00:18:24] just knew the menus and buttons to use.
+[00:18:28] But I'm at a point now where what I'm
+[00:18:30] using more than anything is just my
+[00:18:33] brain to really think critically about
+[00:18:35] what do we need as a team um and how we
+[00:18:38] can be more efficient.
+[00:18:40] So, um, now I really want to distill
+[00:18:44] what we learned from that demo.
+[00:18:47] And, uh, really
+[00:18:51] some of the big lessons are if you were
+[00:18:54] able to hire a full team, if someone
+[00:18:56] came to you and said you have headcount
+[00:18:58] to hire a full team of people reporting
+[00:18:59] to you, who would be on it? Really what
+[00:19:03] Grockbot does is it democratizes in a
+[00:19:05] way that CEO life anyone can hire an
+[00:19:10] unlimited set of specialists with the
+[00:19:13] right context and access. I think this
+[00:19:15] is really powerful for our day-to-day in
+[00:19:18] terms of just dreaming bigger about what
+[00:19:20] we can each do for the teams that we're
+[00:19:22] on. The next lesson is really to trust
+[00:19:26] your bots, give them agency, and at the
+[00:19:28] same time give them guard rails. So,
+[00:19:30] there's something really powerful about
+[00:19:32] knowing really confidently all the
+[00:19:35] access that your bots have, all the
+[00:19:37] things that they can do for you. Um,
+[00:19:39] because that helps you entrust them with
+[00:19:41] bigger and bigger tasks. But at the same
+[00:19:44] time, knowing that things aren't going
+[00:19:46] to go too far off the rails because
+[00:19:48] they'll always come back to you before
+[00:19:51] they ship anything. messages, writing
+[00:19:54] back to the CRM, pushing PRs.
+[00:19:57] And I think Grockbot really helps you
+[00:19:59] achieve that balance between pushing AI
+[00:20:03] tools to the limit and then running into
+[00:20:05] issues or feeling like I don't really
+[00:20:08] know what access it has. I don't know
+[00:20:10] how helpful it can really be, so I
+[00:20:12] haven't really started using it yet.
+[00:20:15] The final thing, and this is really, I
+[00:20:17] think, more of a call to action than
+[00:20:20] anything for those of you out in the
+[00:20:21] audience whose role is similar to mine,
+[00:20:24] is think of yourselves not as just the
+[00:20:28] people setting rules, processes, but
+[00:20:31] really you are a product manager and
+[00:20:35] your product is revenue growth. I am
+[00:20:38] extremely excited about where the
+[00:20:40] RevOps, Marops, GTM engineering, GTM
+[00:20:43] systems, whatever you want to call it,
+[00:20:45] where this profession is headed. And I
+[00:20:47] think that's particularly relevant with
+[00:20:48] Dreamforce going on this week is all of
+[00:20:51] us are thinking about the systems that
+[00:20:53] our GTM efforts are built on. And I
+[00:20:56] think in this new world where all of us
+[00:20:59] have access to tools like Grockbot, it
+[00:21:01] means we can think of ourselves as
+[00:21:04] identifying any bottlenecks to growth
+[00:21:08] and getting rid of them. That's our job
+[00:21:10] day in and day out is just talking to
+[00:21:12] teams, doing the human thing, forming
+[00:21:14] relationships, building trust,
+[00:21:17] distilling what needs to be built to
+[00:21:20] help the teams grow more effectively,
+[00:21:22] operate more effectively, and then going
+[00:21:24] and building those things.
+[00:21:29] So, that's it for the main presentation.
+[00:21:32] Um, we're going to have some time for
+[00:21:35] questions next. Um, thank you so much
+[00:21:39] for joining.
+[00:21:41] [applause]

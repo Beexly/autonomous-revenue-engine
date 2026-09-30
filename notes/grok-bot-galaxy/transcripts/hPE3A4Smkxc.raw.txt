@@ -1,0 +1,1058 @@
+[00:00:00] All right. Hello everyone. Welcome. Uh
+[00:00:04] really excited you all are here and uh
+[00:00:06] thank you for letting me interrupt the
+[00:00:08] cooking session that's happening on the
+[00:00:09] live stream and also for joining this
+[00:00:12] workshop about Grockbot for founders.
+[00:00:14] I'm Shub and I spend a ton of time with
+[00:00:17] founders helping them optimize their
+[00:00:19] Grockbot setups and ship quickly. And so
+[00:00:21] I'm very lucky to be pushing this
+[00:00:23] product to its limits. And today I want
+[00:00:25] to share some of those learnings with
+[00:00:27] you guys and hopefully get into some
+[00:00:28] live demos. So, let's get straight to
+[00:00:30] it. Um, I'll start with what we're going
+[00:00:33] to talk about. Over the next 60 to 90
+[00:00:36] minutes, we will run through some really
+[00:00:38] quick context around Grockbot, why it's
+[00:00:41] particularly useful for founders, and
+[00:00:43] then finally, obviously, some demos. We
+[00:00:45] got to have those. Uh, we will close out
+[00:00:47] with some tips for power users that
+[00:00:49] people seem to love, and then also try
+[00:00:52] to do some Q&amp;A for at least the folks
+[00:00:53] that are here with us present live. Uh
+[00:00:56] the final bonus piece I will add is that
+[00:00:58] I'll be sharing one of these bots at the
+[00:01:00] end so you can steal it for yourself. Uh
+[00:01:02] I wish I had like a call now number but
+[00:01:04] you know we'll we'll make do. Uh also
+[00:01:07] there will be a few of you in this
+[00:01:08] session that are not founders. You will
+[00:01:10] have snuck in which is awesome. Kudos. A
+[00:01:12] lot of this will still apply to you
+[00:01:14] especially if you are head of X at your
+[00:01:16] company. So stay posted. And for those
+[00:01:18] of you with Grock bots watching this
+[00:01:20] session this is a time for you to
+[00:01:22] probably watch it live because we got
+[00:01:23] some cool stuff going on. So let's get
+[00:01:25] straight to it.
+[00:01:27] A few of you have probably already seen
+[00:01:29] some version of an AI maturity curve.
+[00:01:31] Everyone is freaking out about this
+[00:01:32] these days. Uh but for us, we are really
+[00:01:35] optimistic with how the world of AI is
+[00:01:37] changing. As models improve and the
+[00:01:40] tooling improves, we are able to scale
+[00:01:42] our productivity quite a bit. And so
+[00:01:44] you'll see that we started with chat
+[00:01:45] bots, moved on to ephemeral agents that
+[00:01:48] finish a task and then you kind of throw
+[00:01:50] them away. And now bots are kind of this
+[00:01:52] next iteration of what we're really
+[00:01:54] pumped about, which is bots that
+[00:01:56] automate your jobs and bots that you can
+[00:01:58] have around for a really long time. The
+[00:02:01] key part is that these bots actually
+[00:02:03] compound. And I think that's the most
+[00:02:04] important piece is you let them do a
+[00:02:07] task, but you don't throw them away. You
+[00:02:08] keep them around, you invest in them,
+[00:02:10] and they get better with you the same
+[00:02:12] way an employee would. Finally, what
+[00:02:14] we're aiming for is this world where you
+[00:02:16] can just fully automate a staff function
+[00:02:18] for yourself and scale yourself with a
+[00:02:20] team of bots. And we're getting pretty
+[00:02:21] close to that internally. We've seen
+[00:02:23] some external examples of that. And I
+[00:02:25] want to share some of that today, but
+[00:02:27] we're really excited about what Grockbot
+[00:02:29] can do. And I know this is all very high
+[00:02:32] level. So maybe we get into the
+[00:02:33] specifics really quickly. How many of
+[00:02:35] you here have used Grockbot before? Just
+[00:02:36] quick check live at least. Perfect. Most
+[00:02:39] of you it seems. Uh so I will blaze
+[00:02:41] through this. Uh, Grockbot is obviously
+[00:02:44] a new tool that you can talk to just
+[00:02:46] like a co-orker, a teammate. You
+[00:02:49] basically text it like iMessage and it
+[00:02:51] can go off and do a lot of really cool
+[00:02:53] things for you. It is very proactive and
+[00:02:55] very ambitious. And the reason it can do
+[00:02:57] those things is because we've armed it
+[00:02:59] with its own computer. So unlike
+[00:03:02] traditional agents where they don't have
+[00:03:04] the MCP or the API or some sort of
+[00:03:06] direct connection to what they need to
+[00:03:07] do, uh, Grockbots can go off and do
+[00:03:11] things on their own even if they don't
+[00:03:13] have the perfect level of access. And
+[00:03:14] we'll get into how that works in the
+[00:03:16] demos really quickly, but they learn
+[00:03:18] from you. They're proactive, like I
+[00:03:20] said, and they have their own device.
+[00:03:21] And so they can not only connect to
+[00:03:23] other products directly, but they can
+[00:03:25] use your tools the same way you would.
+[00:03:27] And I'll explain what that means in a
+[00:03:29] second. But overall, what you need to
+[00:03:30] know is you can assign Grockbots's tasks
+[00:03:34] completely end to end. So for you, all
+[00:03:37] you need to do is delegate to them and
+[00:03:39] the mental load of having to check on
+[00:03:41] your agents and make sure they've done
+[00:03:42] their work is gone because in the ideal
+[00:03:45] state, a bot just handles the full end
+[00:03:47] to end flow for you just like a
+[00:03:49] colleague would and they just figure it
+[00:03:51] out as I like to say.
+[00:03:53] Okay, with that obviously ton of
+[00:03:55] founders in here and so you probably
+[00:03:57] know what Grockpot is and you're
+[00:03:58] wondering what can this thing do for me
+[00:04:00] and so there are a few things that are
+[00:04:02] really important to understand. First,
+[00:04:04] you all know your responsibilities as
+[00:04:06] founders, right? You have three key
+[00:04:08] execution pieces that either make or
+[00:04:10] break your company. And those are one,
+[00:04:12] you need to preserve your focus. You
+[00:04:14] have a trillion things hitting you all
+[00:04:15] day. Two, you need to do that while
+[00:04:17] maintaining velocity across all of the
+[00:04:19] things that your team is shipping. And
+[00:04:21] then finally, you need to really protect
+[00:04:23] protect your ability to make great high
+[00:04:26] quality insights all day. That means
+[00:04:28] good decisions and planning for the
+[00:04:30] future. And Grockbot is uniquely
+[00:04:32] positioned to make all of this way
+[00:04:34] easier. You'll see some features up here
+[00:04:36] on this slide, but I think most
+[00:04:38] importantly, Grockbot can handle all of
+[00:04:41] the distractions in your day-to-day
+[00:04:43] work. The stuff that is necessary, but
+[00:04:45] not necessarily the most important, you
+[00:04:47] can just hand off to Grockbot. That
+[00:04:49] mental load that it saves you is
+[00:04:51] probably more important than anything
+[00:04:52] else I'm going to talk about today. And
+[00:04:54] so it's worth you taking the time to
+[00:04:55] audit what that means for you. The
+[00:04:57] second is like I said, it can get its
+[00:04:59] tasks done end to end. And so that means
+[00:05:02] you really want to prompt your bots to
+[00:05:04] do all of the work for you. Not just
+[00:05:06] parts of it the same way you're used to
+[00:05:07] today, but really do all of it. That
+[00:05:09] includes the execution and the
+[00:05:11] verification of what it's done. And then
+[00:05:13] finally, I think there are large amounts
+[00:05:16] of information that we're all consuming
+[00:05:18] every single day. My screen time on X
+[00:05:20] today is very embarrassing, and I'm sure
+[00:05:22] your guys hopefully is too. And what
+[00:05:24] that means is there's just a constant
+[00:05:26] flow of information. In order for you to
+[00:05:28] maintain the same level of quality on
+[00:05:29] your insights, you need to find a way to
+[00:05:32] triage that entire fire hose. And
+[00:05:34] Grockbots are really well positioned to
+[00:05:35] do all of that. Okay, with that, it's
+[00:05:39] pretty clear to most of us now that this
+[00:05:41] is the best time in history to build
+[00:05:43] something, especially in software. And
+[00:05:45] Lingi, who's one of our engineers, he
+[00:05:47] was talking earlier, mentioned that he
+[00:05:49] can ship way faster with Grockpot than
+[00:05:52] he ever could before. I'm sure all of
+[00:05:53] you have seen this at this point by
+[00:05:54] kicking off cloud agents. Uh there is
+[00:05:57] this ability to delegate these full
+[00:05:58] tasks that I will harp on forever. Uh
+[00:06:01] you can automate a lot of the pieces
+[00:06:03] that you have to think about constantly
+[00:06:04] with routine. So you can have them set
+[00:06:06] on schedules, on web hooks, on signals,
+[00:06:09] so that once they're taken care of once,
+[00:06:11] they can just happen forever. And then
+[00:06:13] finally, and I think most importantly on
+[00:06:15] this slide is you can do things that
+[00:06:17] don't scale except you can actually
+[00:06:19] scale them, which is really cool. I'll
+[00:06:21] get into a demo around how that works,
+[00:06:22] but we've all heard the stories of how
+[00:06:24] most startups win their first customer.
+[00:06:26] There's some sort of hacky approach
+[00:06:28] where you build some very niche, super
+[00:06:31] janky prototype and just hope that it
+[00:06:33] works for them. And then when they
+[00:06:35] finally sign that contract, you breathe
+[00:06:36] a sigh of relief and then you do it a
+[00:06:38] hundred times again. And so with this
+[00:06:41] and with Grockbot, you can now make all
+[00:06:43] of this happen without the constant
+[00:06:45] headache that comes with it. And I'll
+[00:06:47] get into a demo about that in a second.
+[00:06:49] But we're very excited about what this
+[00:06:50] means for founders specifically because
+[00:06:53] you're all generally the most high
+[00:06:54] agency people out there. And so if you
+[00:06:56] have a product that enables that agency,
+[00:06:58] we get to some very, very cool ships
+[00:07:00] coming out in the next few years. Okay,
+[00:07:03] let's get into some use cases that I'll
+[00:07:04] be harping on today. Obviously, you all
+[00:07:07] experience your own unique pain points,
+[00:07:09] but these are a pretty good reference
+[00:07:11] point for how you can use Grockbot in
+[00:07:13] your day-to-day. And the four I'm going
+[00:07:14] to talk about are first closing
+[00:07:17] customers. So, this is the do things
+[00:07:18] that don't scale part. It is way easier
+[00:07:22] now than it has ever been to take your
+[00:07:24] customers and go with them end to end
+[00:07:26] without you having to do a lot of that
+[00:07:28] handholding and the intimate
+[00:07:30] conversations. you can really focus on
+[00:07:32] just getting your bot to handle most of
+[00:07:35] it and then step in when absolutely
+[00:07:36] needed. The second is product changes.
+[00:07:40] As you know, engineers ship way faster
+[00:07:42] now. You're probably shipping way faster
+[00:07:43] and staying across that many people
+[00:07:46] shipping that quickly can sometimes
+[00:07:47] leave you with some pretty embarrassing
+[00:07:49] moments. There were actually times when
+[00:07:50] I was demoing Grockbot in its earliest
+[00:07:53] forms and we removed a certain feature
+[00:07:56] uh that was in the sidebar and I was so
+[00:07:58] used to pointing at it and when it was
+[00:08:00] unshipped because I was just you know
+[00:08:02] busy that day I didn't see it and so I
+[00:08:04] was kind of demoing and pointing at
+[00:08:06] nothing which was really embarrassing. I
+[00:08:08] hope someone else has gone through that
+[00:08:09] experience because it is not fun but
+[00:08:11] this will go through how you can stay
+[00:08:13] across all these product changes. The
+[00:08:15] third is adapting to competitors. I
+[00:08:16] think this is the most fun demo we're
+[00:08:18] going to do today and also one that's
+[00:08:20] been pretty useful for me at least. And
+[00:08:22] so basically there is now an opportunity
+[00:08:25] because these bots can work as you to go
+[00:08:28] through other products and other
+[00:08:29] competitors and get a lot more insight
+[00:08:31] than you ever could manually. And then
+[00:08:33] finally shipping feedback quickly. We
+[00:08:35] all get feedback all day. Believe me, we
+[00:08:37] get more feedback than probably anyone
+[00:08:39] and a lot of it is not very nice. So
+[00:08:41] please be nice to us. Uh but shipping
+[00:08:43] feedback quickly is super important. And
+[00:08:46] so I will go through how you can do that
+[00:08:47] as a founder. All right, without further
+[00:08:50] ado, let's meet my squad here. Uh we're
+[00:08:52] going to go through four bots today. The
+[00:08:54] first is the closebot. That is the one
+[00:08:56] that handles my customers. The second is
+[00:08:59] prodbot, which is what figures out
+[00:09:00] what's been shipped and helps me say
+[00:09:02] across all of it. The third is stockbot.
+[00:09:04] That is the competition stalker. And the
+[00:09:07] fourth is protobot, which is pretty fun.
+[00:09:10] Uh it makes some designs for me, but it
+[00:09:11] also turns feedback into PRs. And then
+[00:09:14] we have a little guest star that I'll
+[00:09:15] talk about in a second. Okay, with that,
+[00:09:18] let's get into the actual demos.
+[00:09:22] All right, here is my Grockbot
+[00:09:24] interface. I'm on a demo interface right
+[00:09:26] now. Usually there's a lot more mess on
+[00:09:29] this screen, so hopefully it's a little
+[00:09:30] cleaner and easier to parse for you
+[00:09:32] guys. The first bot I'll start with is
+[00:09:34] Closebot. And there are two key things
+[00:09:36] that I want you guys to keep in mind
+[00:09:38] while I go through this. The first is
+[00:09:40] remember that your bots can compound. So
+[00:09:43] you can constantly be feeding them
+[00:09:45] insights and information and they will
+[00:09:47] store it, reference it when necessary
+[00:09:49] and get better over time which is really
+[00:09:51] important. The second thing is like I
+[00:09:53] said they can use your computer and work
+[00:09:55] with your tools which gets really
+[00:09:56] important as you start to try to do
+[00:09:58] things end to end. So closebot here and
+[00:10:00] I'll leave a little cheat sheet on the
+[00:10:01] side for you guys does a few things. It
+[00:10:04] focuses on prepping calls. So when you
+[00:10:07] need to talk to a customer it will do a
+[00:10:09] ton of deep research on them. It'll look
+[00:10:11] through our telemetry and what we've
+[00:10:13] done with them and make sure that we
+[00:10:15] have complete insight into how they
+[00:10:16] work. And then it will finally do a
+[00:10:19] walkthrough of what they're building and
+[00:10:21] their site in case it's relevant to what
+[00:10:22] we talk about. Uh there are a few other
+[00:10:25] steps, but I'll start by asking my bot
+[00:10:28] to prep the call. And in this case,
+[00:10:31] again, I'm in a demo environment. I
+[00:10:32] don't want to leak anyone's personal
+[00:10:34] data or any company's personal data.
+[00:10:36] that this bot will go off and basically
+[00:10:39] prep a call for this company that we're
+[00:10:41] calling Northwind. And the way it does
+[00:10:43] this and the way I actually do this
+[00:10:45] right now is it pulls all of the data
+[00:10:48] for its usage. So if you are a founder
+[00:10:51] and you obviously have that telemetry,
+[00:10:53] it is very good for customers that are
+[00:10:55] just trying out your product or on a
+[00:10:56] free trial to understand what they're
+[00:10:59] actually doing within your product and
+[00:11:01] then also to understand who they are.
+[00:11:03] Those are probably the two most
+[00:11:04] important things before you get onto a
+[00:11:05] customer call because that is how you
+[00:11:07] resonate with them in the quickest
+[00:11:09] manner possible. Again, you don't have
+[00:11:10] that long with these folks. You
+[00:11:12] generally have around, you know, 15 to
+[00:11:14] 20 minutes with your customers. And so,
+[00:11:17] what's really important is you get to
+[00:11:19] the crux of what they need and match it
+[00:11:21] with what you're doing. And bots help
+[00:11:23] you do that really quickly. And so right
+[00:11:25] now it's going through essentially some
+[00:11:27] demo prep, but what I'll show you is an
+[00:11:30] example of what I tend to use day-to-day
+[00:11:33] when I talk to founders. This is a call
+[00:11:35] prep HTML file. Obviously, it doesn't
+[00:11:38] look perfect and that doesn't matter
+[00:11:39] because I'm not sending it to anyone.
+[00:11:40] It's just for me. But basically, the
+[00:11:43] goal of this is to really understand who
+[00:11:45] these people are that I'm going to be
+[00:11:47] talking to, what their product does,
+[00:11:48] which Crockbot will research on its own,
+[00:11:50] and then walking through their site. The
+[00:11:52] reason the site is really important is
+[00:11:54] actually because the site tells you a
+[00:11:58] lot about what they care about first and
+[00:11:59] foremost, which is why I like including
+[00:12:01] some screenshots of what they're
+[00:12:02] building. But more importantly, I am
+[00:12:04] constantly finding bugs on people's
+[00:12:06] sites, and it is so nice for me to just
+[00:12:09] be able to go to them and say, "Hey, fix
+[00:12:10] this thing. Look, your cookie banner is
+[00:12:12] on top of your submit button." And that
+[00:12:14] sucks for everyone, so just go fix it.
+[00:12:16] And for them, it's really nice because
+[00:12:17] they get some feedback that's super
+[00:12:19] actionable. And so my bot has gotten
+[00:12:21] very good at figuring out what will
+[00:12:23] resonate with folks. And so I have it do
+[00:12:26] this every single time and without fail
+[00:12:28] it has found some issue that comes up
+[00:12:29] with some site which is a really cool
+[00:12:31] way to open a call. So just one of those
+[00:12:32] quality of life things. As we keep
+[00:12:34] scrolling you'll see these are
+[00:12:36] placeholder numbers but you'll see that
+[00:12:38] you get a lot of the activity that's
+[00:12:40] really relevant to what you want to talk
+[00:12:42] to them about. So we know in this case
+[00:12:44] that these folks already have some
+[00:12:45] seats. They already have done some
+[00:12:47] meetings. uh this product is like a
+[00:12:49] meeting tool. They have some sort of
+[00:12:52] arrangement and because I can look at
+[00:12:54] this graph, I can see what their usage
+[00:12:56] looks like. And so I look at this every
+[00:12:58] single time when I talk to founders to
+[00:13:00] try and understand are they really
+[00:13:02] accelerating and is there a specific
+[00:13:03] feature that I need to work with them on
+[00:13:05] or are they declining and there's some
+[00:13:07] sort of objection that I need to get
+[00:13:09] into. with you guys. You will all have
+[00:13:11] your own versions of this use case, but
+[00:13:13] it is so so important to just spend five
+[00:13:16] minutes before the call figuring this
+[00:13:17] stuff out. Now, for the really cool part
+[00:13:20] that I'm a little conflicted on, uh,
+[00:13:21] recommendations. The bot has gotten very
+[00:13:24] good at figuring out what I need to talk
+[00:13:27] to founders about, and in your case,
+[00:13:28] what you will probably need to talk to
+[00:13:30] customers about. And what that means is
+[00:13:32] it will give me a few key
+[00:13:34] recommendations about what I should do
+[00:13:36] with that founder or customer on that
+[00:13:38] call. And so the most important piece
+[00:13:41] for you guys as you have your customer
+[00:13:43] conversations is to come in armed with
+[00:13:44] some sort of knowledge. And this
+[00:13:46] automates getting some of that
+[00:13:47] knowledge. There are a few other pieces
+[00:13:49] here. It talks about some risks. And I
+[00:13:52] think the most important part is that
+[00:13:54] you come in prepped. You don't have to
+[00:13:55] spend the hour and a half of your time
+[00:13:57] doing this. And it does it on a routine.
+[00:13:59] So every day it will look at my calendar
+[00:14:02] and look at the meetings that I have and
+[00:14:04] just prep them. And I can trust five
+[00:14:06] minutes before I can go in and read that
+[00:14:08] stuff. Okay, so that's part one, which
+[00:14:11] is prepping the call. Part two is what
+[00:14:14] happens after the call, right? We want
+[00:14:16] to go end to end. We don't just want to
+[00:14:17] stop there. And so the same bot also
+[00:14:19] does a little bit of the compounding for
+[00:14:21] me. And what that means is after every
+[00:14:23] call, it will review the granola
+[00:14:25] transcript and figure out what that
+[00:14:27] person resonated with or didn't. And you
+[00:14:29] can do this with all of your customer
+[00:14:30] calls as well, right? And arm your teams
+[00:14:32] with it. You basically have your bot
+[00:14:34] look at every single transcript. And for
+[00:14:37] example, if in this case I was talking
+[00:14:39] about some new note-taking feature that
+[00:14:41] they didn't really care about and they
+[00:14:43] expressed that within the call for the
+[00:14:44] next one for the preparation document,
+[00:14:47] this tool will get better at making sure
+[00:14:49] that I'm not talking about that feature
+[00:14:51] again unless it's really relevant. And
+[00:14:53] so over time, if you give this two or
+[00:14:55] three weeks, it becomes really, really
+[00:14:57] powerful because not only do you not
+[00:15:00] have to go through other people's calls
+[00:15:01] and you can leverage theirs, but your
+[00:15:03] calls just get way better and you stop
+[00:15:05] tripping over yourself when you talk
+[00:15:07] about the same things. Okay, that's part
+[00:15:10] two. Part three is support. Basically,
+[00:15:13] we have a lot of customers and a lot of
+[00:15:16] them need support and right now there
+[00:15:19] are not enough people to support all of
+[00:15:21] those customers on their own. just
+[00:15:23] one-on-one. And so you need to be able
+[00:15:24] to scale up your support. And a lot of
+[00:15:26] founders leave this to the very last
+[00:15:28] thing. Believe me, I've been there. Uh
+[00:15:30] and it makes your life very very tough
+[00:15:32] to handle both getting new customers
+[00:15:34] through the funnel and then also
+[00:15:35] supporting the pre-existing ones. And so
+[00:15:37] you have a real opportunity to automate
+[00:15:39] this with Grockbot. But the most
+[00:15:41] important part that makes this really
+[00:15:42] work well is that you spend the time
+[00:15:45] empowering your bot to actually support
+[00:15:48] your customers. And what that means is
+[00:15:49] you not only connect it to your data,
+[00:15:51] but you connect it to your billing and
+[00:15:52] you connect it to the risky pieces that
+[00:15:54] you're scared to give because that is
+[00:15:56] where most of the support struggle
+[00:15:58] happens. And so that in combination with
+[00:16:01] the compounding piece leads us to this
+[00:16:04] really cool fourth section which is
+[00:16:06] activation. And so a lot of you probably
+[00:16:10] know your wow moment at this point. You
+[00:16:11] know when your customer is activated,
+[00:16:13] you know when they're going to stick
+[00:16:14] around. And so how do you incentivize
+[00:16:16] more of that, right? How do you decrease
+[00:16:18] time to value? One of the easiest ways
+[00:16:20] to do that is to give people money so
+[00:16:23] that they get there. And it doesn't have
+[00:16:24] to be much, right? But just getting them
+[00:16:26] across that hump is what turns people
+[00:16:28] into great customers. And so I have
+[00:16:30] hooked up this bot to actually do the
+[00:16:32] work. And when an activation event
+[00:16:35] happens, where in this case, again, I'm
+[00:16:37] using a note-taking app. If a template
+[00:16:39] is shared with your teammates, we have
+[00:16:41] $1,000, which is a crazy example, uh,
+[00:16:44] ready to send and it will automatically
+[00:16:46] send that email with those credits so
+[00:16:48] that that user or that customer can
+[00:16:51] leverage those credits and they feel
+[00:16:52] rewarded in that moment. And so instead
+[00:16:54] of you having to monitor every single
+[00:16:56] customer's journey and do this manually
+[00:16:58] or taking a tool and building it from
+[00:17:00] scratch, you can just offload it to your
+[00:17:03] bot and not think about it again and it
+[00:17:05] will run the campaign on its own.
+[00:17:07] Okay, there are a few other pieces that
+[00:17:10] are pretty obvious around the endto-end
+[00:17:12] customer journey, right? You want them
+[00:17:13] to sign contracts, which you can get
+[00:17:15] Grockbot to go back and forth with them
+[00:17:17] on. You want them to figure out your
+[00:17:19] pipeline and actually generate it with
+[00:17:20] Outbound, which Grockbot is very good
+[00:17:22] at. And then you want it to actually
+[00:17:25] make sure that your calendar is filled
+[00:17:27] and it can access your calendar and do
+[00:17:28] that every single time. So these are all
+[00:17:30] things that happen autonomously and I no
+[00:17:33] longer need to worry about 99% of this
+[00:17:35] journey. There are cases where I want to
+[00:17:37] step in with a customer and I want to
+[00:17:39] understand, hey, why didn't this call
+[00:17:40] resonate? I want to go deeper. And for
+[00:17:42] now, what that means is I spend my time
+[00:17:44] doing that, which is actually very
+[00:17:46] enjoyable. I actually enjoy talking to
+[00:17:47] customers. So that's what I meant when I
+[00:17:49] was saying like this is a little
+[00:17:50] emotionally complicated for me in that
+[00:17:52] some of this is really fun to do and so
+[00:17:54] I have to intentionally go in and steal
+[00:17:56] some of this back from my bots rather
+[00:17:58] than letting them do all of it. But uh
+[00:18:00] it is a very very cool time to be able
+[00:18:03] to scale to thousands of customers with
+[00:18:06] just your bots instead of you having to
+[00:18:08] go do this yourself. And that way like I
+[00:18:10] said you can focus on making good
+[00:18:11] decisions consistently, maintaining
+[00:18:13] velocity and maintaining focus. Okay,
+[00:18:16] that was bot number one. Let's go to bot
+[00:18:18] number two. This is Probot. Uh I
+[00:18:22] mentioned that example earlier where as
+[00:18:24] you start to have more and more
+[00:18:26] engineers shipping more things and
+[00:18:27] unshipping more things, you're doing it
+[00:18:29] yourself. You get confused around what's
+[00:18:31] live and isn't. So Probot is basically a
+[00:18:35] bot that
+[00:18:37] does a lot of this work for you in terms
+[00:18:40] of staying across what's been shipped.
+[00:18:42] And so I'm currently asking it to give
+[00:18:44] me a daily rundown of Flyo, which is the
+[00:18:47] demo surface that we used earlier in the
+[00:18:50] PM conversation as well. And Flyo is a
+[00:18:52] tool for flights and airlines and
+[00:18:54] booking travel. And what I like to have
+[00:18:57] this bot do in my actual day-to-day is
+[00:19:00] not only go through all of the PRs and
+[00:19:04] the linear issues that come in, but also
+[00:19:07] walk through the product end to end
+[00:19:09] itself. Remember, your bots have their
+[00:19:11] own computer, so they can use whatever
+[00:19:13] surfaces you use. And in this case, that
+[00:19:15] means going through the site that the
+[00:19:18] bot is assigned to, figuring out what
+[00:19:20] has changed, and then mapping it to its
+[00:19:23] experience. So, if it has a login for
+[00:19:25] the specific site, it can do a lot of
+[00:19:27] this work for you. You can see some of
+[00:19:28] it popping up right now. Uh, what you'll
+[00:19:30] notice if I scroll through this is it's
+[00:19:32] giving me a rundown. So, it gives me
+[00:19:33] here's what's shipped. Uh, these are
+[00:19:35] some examples of things that have
+[00:19:37] shipped recently. It also gives me
+[00:19:38] things that were unshipped so I avoid
+[00:19:40] that embarrassment again. And most
+[00:19:43] importantly, it will give me some
+[00:19:46] decisions and some key things where, you
+[00:19:48] know, now that we ship quickly, we don't
+[00:19:50] intentionally make all of these micro
+[00:19:52] decisions all the time. And so it tries
+[00:19:53] to catch some of those that we want to
+[00:19:55] be a little more intentional about. And
+[00:19:57] so overall, what you end up with is a
+[00:20:00] bunch of screenshots of the site. So the
+[00:20:02] bot is going through it and then also
+[00:20:04] you end up with a video of the bot
+[00:20:07] basically running through the site
+[00:20:08] itself. And so that way you can see what
+[00:20:10] it does without having to do it
+[00:20:12] yourself. So if you ever want to get in
+[00:20:13] deeper, you can always ask your bot to
+[00:20:15] take a video of the surface while it's
+[00:20:17] doing its work, which has become the
+[00:20:20] fastest way to verify if something is
+[00:20:22] done well or not. The other piece is
+[00:20:24] that you can connect this to your data.
+[00:20:26] So you can actually see what the results
+[00:20:29] of different ships are because you
+[00:20:31] connect it to your metrics and that way
+[00:20:33] instead of you having to view that
+[00:20:34] dashboard all day, you just see it here
+[00:20:37] and it is proactively given to you which
+[00:20:39] I think is one of the most important
+[00:20:40] parts about bots that they will surface
+[00:20:43] information to you as relevant and as
+[00:20:45] necessary. And so I think again what's
+[00:20:48] really important is as long as you
+[00:20:49] enable them to have all of the right
+[00:20:51] data, they can help you make great
+[00:20:53] decisions and also help you stay across
+[00:20:55] what your team is shipping. Okay, now
+[00:20:59] for my favorite bot, uh, Stockbot.
+[00:21:02] Right now, everyone is probably
+[00:21:05] distracted by their competitors and it
+[00:21:07] is very easy to ship things. But what's
+[00:21:09] not easy is checking what other people
+[00:21:12] are shipping. And so what Stockbot does
+[00:21:16] is it basically will go find your
+[00:21:19] competitors. It will sign up for
+[00:21:21] autonomously and go through their
+[00:21:23] product and then it will give you a full
+[00:21:26] rundown of basically everything they do.
+[00:21:29] So that includes what they've shipped,
+[00:21:31] their change log, what they're posting
+[00:21:33] on X, who they're hiring for, which is
+[00:21:36] actually a really good way to get signal
+[00:21:37] on what people are building, and
+[00:21:39] finally, just who their team is and what
+[00:21:41] they're prioritizing. And over time,
+[00:21:43] this also compounds as they learn about
+[00:21:45] more and more competitors. Your life
+[00:21:47] becomes easier because you start to get
+[00:21:48] more signals into how to position
+[00:21:50] yourself in the market and then also how
+[00:21:52] to counterposition to what they're
+[00:21:53] shipping. And so what I'll do right now
+[00:21:55] is kind of ask it to do a competitor
+[00:21:58] pulse right now. And basically I want it
+[00:22:02] to
+[00:22:04] check on notion and craft. Those are the
+[00:22:07] two hypothetical competitors we have
+[00:22:09] with this note-taking app. And so it
+[00:22:11] will go off and do all of this in
+[00:22:13] parallel. And it has been doing this for
+[00:22:15] a while. So it is constantly running
+[00:22:18] pulses. You see some of its routines on
+[00:22:20] the side here. And what you'll notice is
+[00:22:23] that these routines run relatively
+[00:22:26] often, every few days. But what that
+[00:22:28] also means is I don't have to do this
+[00:22:29] myself. It will run the routine, come
+[00:22:31] back to me if there's something
+[00:22:32] relevant, and if not, it will stay
+[00:22:35] silent and do its thing. And so this is
+[00:22:37] one of those ambient bots that's really
+[00:22:39] important to just have around because it
+[00:22:42] will get a lot of this work done for you
+[00:22:44] around competitor analysis and you don't
+[00:22:45] really need to think about it. And as
+[00:22:47] you get exposed to more and more of
+[00:22:48] these decisions that these companies are
+[00:22:50] making, you actually start to build the
+[00:22:53] muscle around why your decisions are
+[00:22:55] different and you start to understand
+[00:22:56] truly what your positioning is relative
+[00:22:59] to theirs. So you'll notice it's cooking
+[00:23:01] and doing some of the the research work.
+[00:23:04] What we see here is let's start with
+[00:23:05] craft which is a note-taking app.
+[00:23:08] Basically it has created a little
+[00:23:10] tearown in HTML. If this thing loads um
+[00:23:14] if not we can just look at it here. It
+[00:23:17] again just created a video where it's
+[00:23:19] going through and it will sign up. It'll
+[00:23:22] put in its information. It'll use a
+[00:23:24] throwaway email address uh and then
+[00:23:27] basically go through the entire flow. So
+[00:23:29] this is the onboarding flow and it's
+[00:23:30] looking through hey what is different
+[00:23:32] about their onboarding versus our
+[00:23:34] onboarding uh and it gets you to the
+[00:23:36] start page. It will also start to
+[00:23:38] actually like test it itself. So, it
+[00:23:40] will write in craft, which is again this
+[00:23:44] note-taking app, and tell me what went
+[00:23:46] well and what didn't, and then give me a
+[00:23:48] little overview of how it works. Uh,
+[00:23:50] Craft is not hiring actively right now.
+[00:23:52] So, that's good for us to know. And then
+[00:23:55] the final thing that I've done with this
+[00:23:56] one, which, you know, might be corporate
+[00:23:59] corporate espionage, but, you know, do
+[00:24:00] what you want with it and be
+[00:24:01] responsible, is basically I have it
+[00:24:05] email people that have churned off. A
+[00:24:07] lot of you have insights into where your
+[00:24:09] customers are churning. So you know uh
+[00:24:11] from Salesforce or whatever your tool is
+[00:24:13] that X customer left to Y tool and so
+[00:24:17] you can actually go and have your bot
+[00:24:18] reach out to them and understand why
+[00:24:20] that is. You don't need to go win them
+[00:24:22] back in that moment but just getting
+[00:24:23] that insight is really really important.
+[00:24:25] And so if you have that signal it's
+[00:24:27] another good way to course correct your
+[00:24:29] positioning versus others. You can see
+[00:24:31] the same thing for notion. Notion has a
+[00:24:33] bunch of hiring and so I've kind of
+[00:24:35] asked it to truncate uh because they're
+[00:24:38] hiring a ton of people, but it's still
+[00:24:40] important insight to get. And so I'm
+[00:24:42] showing you these these two examples.
+[00:24:43] And this is one where it's signed into
+[00:24:45] its own notion account. It authenticated
+[00:24:47] via email and is basically doing work in
+[00:24:51] it and giving me what that experience
+[00:24:53] looks like. As it starts to see the
+[00:24:55] differences in what's shipped, it will
+[00:24:57] focus on those specific things.
+[00:25:00] Okay, enough about this bot. But what I
+[00:25:03] will say is I will share this bot after
+[00:25:06] this and I will toss up a QR code. So if
+[00:25:08] you want to steal it, you totally can.
+[00:25:10] All right, let's move on to bot number
+[00:25:12] four. So bot number four is my protobot.
+[00:25:15] And this bot is basically really good
+[00:25:18] for just thoughts that I have in my head
+[00:25:21] when I want to get them prototyped, but
+[00:25:23] also it's really good for when we get
+[00:25:25] customer feedback and we want to just
+[00:25:27] explore what this would look like to
+[00:25:28] ship. And so what Protobot does really
+[00:25:31] well is it actually has right now its
+[00:25:34] own version of Grockbot running on its
+[00:25:36] computer. And I think I've shared this a
+[00:25:37] few times before, but I've given it its
+[00:25:39] own account that is not it. It has its
+[00:25:42] own separate entity. And it runs through
+[00:25:44] a lot of different bots, tests them out,
+[00:25:46] uh, and helps me with some of my
+[00:25:48] prototyping and also QAing. But I think
+[00:25:50] most importantly and the reason this
+[00:25:51] matters is because it has access to its
+[00:25:54] own product, it can do a lot of this
+[00:25:56] prototyping with the context of what the
+[00:25:58] product looks like today. So if I say
+[00:26:01] pull the most recent
+[00:26:04] customer feedback,
+[00:26:06] it will find some demo feedback, pull it
+[00:26:08] in, and then it will probably just start
+[00:26:12] working on fixing it. And so you as a
+[00:26:14] founder can probably envision yourself
+[00:26:16] and your product uh piping all of your
+[00:26:19] feedback channels. So that means things
+[00:26:20] like X, your support inbox or any other
+[00:26:25] signals that you see in your emails and
+[00:26:27] putting them all into a single pipeline
+[00:26:29] that goes to a bot that just kicks off
+[00:26:31] PRs and solves them. That's kind of how
+[00:26:33] some of our engineers work internally,
+[00:26:35] which is very cool because you'll see
+[00:26:37] the full feedback loop of feedback to
+[00:26:40] ship to deploy happen in hours. uh which
+[00:26:43] is awesome and it happens automatically
+[00:26:45] and organically which is very cool. So I
+[00:26:48] think you guys all know that adapting to
+[00:26:51] feedback is really important especially
+[00:26:52] in the early stages. You still need to
+[00:26:54] make the choice about which feedback to
+[00:26:56] take versus not uh because you're the
+[00:26:59] visionary. Your job is supposed to be to
+[00:27:01] figure that out. And in this case, the
+[00:27:04] fact that you can move this quickly
+[00:27:06] means the main bottleneck should be your
+[00:27:09] decision-making. It should be whether
+[00:27:10] this feedback should be shipped or not.
+[00:27:13] And so it will basically do the work.
+[00:27:16] Right now, it's saying that the customer
+[00:27:18] thinks that the share button for bot
+[00:27:20] templates isn't exciting enough and they
+[00:27:22] want it to pop. Um, so it'll probably
+[00:27:24] end up working on that for a little bit,
+[00:27:26] which is very fun. Uh, in the meantime
+[00:27:28] though, what I will show off is two
+[00:27:30] final bots. One is my Yapbot. So this
+[00:27:34] bot has one purpose and one purpose
+[00:27:36] only. It is built and exists to talk
+[00:27:39] like me. So it looks through my emails,
+[00:27:42] Slack, iMessage, any other form of
+[00:27:45] communication that I've done and it
+[00:27:47] learns from how I talk and it doesn't
+[00:27:50] just learn once. I think this comes back
+[00:27:52] to the compounding piece. It learns over
+[00:27:54] time. So every week or so, or you can
+[00:27:56] set it to whatever schedule you want, it
+[00:27:58] will take everything I've sent for the
+[00:27:59] day because it has access to all those
+[00:28:01] tools and essentially learn from them
+[00:28:03] and get better over time. So now I can
+[00:28:05] trust this bot to go and talk as me. And
+[00:28:08] what you'll notice is these other bots
+[00:28:10] are actually coming in and asking it for
+[00:28:12] help. So they are proactively bringing
+[00:28:15] in Yapbot to go talk like me across all
+[00:28:19] of the different surfaces. And I don't
+[00:28:20] need to do this myself. after they do
+[00:28:22] this a few times or I encourage them.
+[00:28:24] Like I said, they learn to loop in the
+[00:28:26] other bots as needed. And this bot might
+[00:28:28] seem like a small one because it's very
+[00:28:30] simple, but it's so important,
+[00:28:32] especially if you're trying to do any
+[00:28:33] sort of outbound or move quickly on
+[00:28:35] communications. It's nice to have a bot
+[00:28:37] you can just trust to do the stuff.
+[00:28:39] Obviously, you have some emails that are
+[00:28:41] really sensitive, so you might ask it to
+[00:28:43] just keep them as drafts rather than
+[00:28:44] just sending them right away. But even
+[00:28:46] then, it will learn from the delta
+[00:28:48] between the draft it created and what
+[00:28:50] was actually sent and get better and
+[00:28:52] better over time with the end vision
+[00:28:53] being that you don't need to think about
+[00:28:54] it at all. Okay, final tip. I have a
+[00:28:58] miscellaneous bot and this bot has one
+[00:29:00] job, which is basically to be kind of a
+[00:29:02] trash can for all of the random requests
+[00:29:05] I have. Today I wanted to see if Drake's
+[00:29:07] album dropped. It has not yet sadly. But
+[00:29:10] what's really cool about this one is I
+[00:29:11] can just ask it random things without
+[00:29:13] polluting the context of the other bots.
+[00:29:15] And if it ever has any important tasks
+[00:29:17] to do where it needs to transfer that
+[00:29:19] context, I can just ask and say, "Hey,
+[00:29:21] you learned about XYZ. Go tell Prodbot
+[00:29:24] about what you've learned so that it can
+[00:29:25] get better in the future." Sadly,
+[00:29:27] Drake's album isn't out. It checked
+[00:29:29] Instagram, but who knows? We'll get
+[00:29:31] there maybe later tonight. Okay, those
+[00:29:34] were all my bots. I think Protobot is
+[00:29:36] still still going. Uh it's kicking off a
+[00:29:39] cloud agent and hopefully it finishes
+[00:29:41] sometime soon. But you'll notice because
+[00:29:43] it has access to Grockbot, it can
+[00:29:45] actually just take a look at the
+[00:29:47] interface without needing to go find it
+[00:29:49] anywhere and it can drive it and QA it.
+[00:29:52] And as these tests happen, it's very
+[00:29:54] easily verifiable whether it's shipped
+[00:29:56] the right thing or not. And so I think
+[00:29:58] all of these bots are very powerful. And
+[00:30:01] most importantly, they're all powerful
+[00:30:02] in conjunction. So when Closebot gets
+[00:30:05] some feedback, it can pass it to
+[00:30:07] Protobot or when Probot is trying to get
+[00:30:09] across some of the key product decisions
+[00:30:11] that we've made, it can pass that
+[00:30:13] context off to Closebot so that it can
+[00:30:15] sell the right stuff. And overall, I
+[00:30:17] think the key framework that you folks
+[00:30:20] need to keep in mind is you want to
+[00:30:22] start to try and productize yourself as
+[00:30:24] much as possible and give away all of
+[00:30:26] your Legos, no matter how delightful
+[00:30:28] they are, so that you can focus on the
+[00:30:30] highest leverage thing because that is
+[00:30:31] what helps you win in a world where
+[00:30:33] everyone is shipping just as fast if not
+[00:30:36] faster for now. So keep all that in
+[00:30:38] mind. Uh but those are my thoughts.
+[00:30:39] Let's go back to presentation. Okay,
+[00:30:44] some final pieces. what we learned. Let
+[00:30:47] your bots run free. I am going to say
+[00:30:49] this forever. Give them access to as
+[00:30:50] much as you are possibly comfortable
+[00:30:52] with because that is the only way they
+[00:30:54] will be able to do work end to end. You
+[00:30:56] want to invest in them. So you might
+[00:30:59] find times where you need to course
+[00:31:00] correct a bot. And with an agent, you
+[00:31:02] might have the instinct of, man, I spent
+[00:31:04] too many tokens on course correcting it.
+[00:31:06] The context is polluted. Let me just get
+[00:31:08] rid of it and start a new one. In this
+[00:31:10] case, your key advantage is that your
+[00:31:12] bots get really good as you spend more
+[00:31:13] time with them. And obviously, as the
+[00:31:16] team has learned internally, the more
+[00:31:18] time you spend, the better you do. And
+[00:31:20] so, it's really important to really
+[00:31:21] believe in your bots the same way you
+[00:31:23] would with employees. And the other
+[00:31:25] piece to keep in mind here is the other
+[00:31:27] way to invest in them is by giving them
+[00:31:29] really good skills and tools. So, it's
+[00:31:31] very easy to say, "Hey, make this
+[00:31:33] cooler." And that could be your your
+[00:31:35] prompt that you want your bot to execute
+[00:31:36] on, but obviously it's not going to do a
+[00:31:39] great job and it's going to probably get
+[00:31:40] stuck somewhere and ask you a few
+[00:31:42] questions. The more intentionality you
+[00:31:44] put behind that task in the first place
+[00:31:46] lets you repeat it over and over again
+[00:31:48] without that many hitches. And then
+[00:31:49] finally, it is worth you taking one to
+[00:31:53] two hours and just thinking about your
+[00:31:55] day. I know that sounds dumb. I know
+[00:31:57] you're like, I need to move quickly, but
+[00:31:59] it is so so important to just take the
+[00:32:01] time. I don't care when. just do it and
+[00:32:03] figure out what you want to delegate
+[00:32:06] because doing that intentionally will
+[00:32:08] save you so many hours versus just
+[00:32:10] spinning up bots and hoping they do
+[00:32:12] things for you without having a true
+[00:32:13] intent around what they should do. Okay,
+[00:32:17] now I have a bonus round some tips and
+[00:32:19] tricks. I was watching the live stream
+[00:32:21] earlier and some people were like this
+[00:32:23] is expensive which is you know true in
+[00:32:26] some ways not true in others and we're
+[00:32:27] working on it. Uh, but there are some
+[00:32:29] really easy, high lever tips that can
+[00:32:31] make your life a lot easier. The first
+[00:32:34] is that browser use is super powerful
+[00:32:36] and it unblocks your bot from doing a
+[00:32:39] lot of things that it couldn't do if it
+[00:32:41] didn't have MCPS or APIs or some other
+[00:32:43] connection, but it's also expensive to
+[00:32:45] run multiple times. And the easiest way
+[00:32:49] to solve for this is to bias towards
+[00:32:52] using APIs and using interfaces that
+[00:32:54] people have already built or to actually
+[00:32:57] kind of hack it a little bit. You can
+[00:32:59] ask your bot to look at network requests
+[00:33:02] while it does a task once and then
+[00:33:04] figure out which APIs are being hit
+[00:33:06] while it's doing that task and then go
+[00:33:09] and start to just hit those directly
+[00:33:11] which takes way less time first of all
+[00:33:13] and is also way more token efficient
+[00:33:15] because you are no longer needing to go
+[00:33:17] through the browser interface and you
+[00:33:19] can just do it all directly. So ask your
+[00:33:20] bot and this is true for all
+[00:33:22] optimizations by the way that you guys
+[00:33:23] have probably been thinking of or taking
+[00:33:25] notes on. always just ask your bot how
+[00:33:27] to do it because it will figure it out
+[00:33:29] for you which is very nice. But be wary
+[00:33:32] of browser use more than once. Uh and if
+[00:33:35] you can get around it and scale quickly,
+[00:33:36] you absolutely should. Second piece,
+[00:33:39] routines. Uh when I was looking through
+[00:33:41] some of the data around the frequency of
+[00:33:44] routines that people set, I was a little
+[00:33:46] shocked. Uh and it freaks me out how
+[00:33:48] often you guys are running things. But I
+[00:33:50] think the most important part about
+[00:33:52] routines is to audit them. And you don't
+[00:33:54] have to do this yourself. Again, get a
+[00:33:55] bot to do it for you. But the most
+[00:33:57] important piece is be very intentional
+[00:34:00] about how often your routines are
+[00:34:02] running. They're really powerful, but
+[00:34:03] most people overindex on how often they
+[00:34:06] need to be running. And they think,
+[00:34:07] "This routine is so important, I need to
+[00:34:09] run it every 15 minutes," which comes
+[00:34:10] out to 100 times a day. So, that is a
+[00:34:13] very expensive routine. See if you can
+[00:34:15] be a little more nifty with them. So,
+[00:34:17] it's not just running them fewer times.
+[00:34:19] If you really need a routine, try and
+[00:34:20] run them on web hooks or try and run
+[00:34:22] them with some sort of inbound signal
+[00:34:24] that will let your bots actually take in
+[00:34:27] an input and then run it rather than
+[00:34:28] just having it blindly run on a
+[00:34:30] schedule. So, those two things alone
+[00:34:32] will probably save you a bunch in
+[00:34:34] tokens. I know there was some demand for
+[00:34:35] that. Okay, even more final tips before
+[00:34:38] they came me off stage. Uh, make a voice
+[00:34:41] bot. Obviously, I love mine. Uh, please
+[00:34:43] do this for yourself. It is the most
+[00:34:45] underrated way to get words out to other
+[00:34:48] people. It's have a bot that copies your
+[00:34:51] voice. Uh import your cookies. This lets
+[00:34:53] you stay signed in across a lot of
+[00:34:54] different tools. And it also stops you
+[00:34:57] from having to constantly take over the
+[00:34:59] bot's computer and help out. Uh group
+[00:35:02] bots by expertise. This is kind of a
+[00:35:04] personal preference thing, but I love
+[00:35:06] having my bots grouped by what they do.
+[00:35:08] And so if a bot is really good at just
+[00:35:10] handling a customer, I will give it
+[00:35:12] everything customer related. And if a
+[00:35:14] bot is really good at data analysis,
+[00:35:17] that will be its sole job. Because
+[00:35:19] sometimes they're weird compounding
+[00:35:20] pieces that happen that we don't even
+[00:35:23] know about. And so when you're giving it
+[00:35:24] two what feel like completely different
+[00:35:27] tasks, you can still get some of the
+[00:35:28] compounding benefits as long as they all
+[00:35:30] fall under the same expertise. There are
+[00:35:32] a few more on here like great skills,
+[00:35:34] which we talked about, how bots can
+[00:35:36] learn from you, and then auto
+[00:35:37] optimization routines. But I think the
+[00:35:39] last one is also pretty important.
+[00:35:41] having a bot that just exists to
+[00:35:44] optimize your other bots. So that means
+[00:35:45] better routines, figuring out where they
+[00:35:47] went wrong or where you had to ask
+[00:35:49] multiple times for something and then
+[00:35:50] making sure that doesn't happen again
+[00:35:52] and overseeing how the other ones work
+[00:35:54] and improving them is way easier than
+[00:35:56] having to do a lot of this yourself. So
+[00:35:58] save yourself the time. You set it once
+[00:36:00] and then you forget it, which is really
+[00:36:02] nice and I don't see enough people doing
+[00:36:03] that.
+[00:36:05] Okay, so that is close to the end uh of
+[00:36:10] what we've been doing here. Thank you
+[00:36:12] for your time and attention. I am going
+[00:36:14] to leave a QR code for Stockbot if you
+[00:36:17] guys want to steal it. It's a fun one.
+[00:36:18] You should try and use it on us. I think
+[00:36:20] that would be cool. I want to see what
+[00:36:21] people come up with. Uh but I really
+[00:36:24] appreciate everyone being around. I
+[00:36:26] think one of the the coolest parts about
+[00:36:29] these bots and where they're headed is
+[00:36:32] just how creative you can be. the uh
+[00:36:34] sorry the amount of different bots and
+[00:36:38] different combinations of bots that I've
+[00:36:40] seen has really blown me away and I
+[00:36:42] think founders are the perfect group to
+[00:36:44] figure out the edges of this entire
+[00:36:46] thing. I don't think we've hit the
+[00:36:48] limits yet and as we get closer and
+[00:36:49] closer to figuring out what these bots
+[00:36:52] can actually do and what they can't. Uh
+[00:36:53] we're going to be looking for signal
+[00:36:55] from you guys. So really appreciate it.
+[00:36:58] If you are on the live stream, we're
+[00:37:00] going to send you back to Matt, Lauren,
+[00:37:02] and Roshan to go and continue cooking.
+[00:37:05] So, appreciate it. Thanks.
+[00:37:13] Okay.

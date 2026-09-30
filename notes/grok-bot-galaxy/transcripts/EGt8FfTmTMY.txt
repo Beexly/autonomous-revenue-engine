@@ -1,0 +1,325 @@
+Hey everyone. Thank you so much for joining me today for GrokBot for post sales. My name is Blake and I am an AI deployment manager here at SpaceX AI and
+
+I'm really really looking forward to chatting with you all about GrokBot today. All right, so let's set the stage. What are we going to be doing for the next 45
+
+minutes? One, I said hi, welcome, done. Then we're going to talk about GrokBot. We'll introduce it, why GrokBot is great, specific post sales use cases. So post
+
+sales is kind of determined by anything if your customer facing after that sale gets done. It can include a lot of teams and really excited to talk about those use cases. We'll do a demo, get in the
+
+product, learn about what we learned, recap that, do a Q&amp;A, and then for those of folks in here, we are going to build. All right. Okay, so this is the AI
+
+maturity curve. This may look familiar to some of you. We've been talking about this a lot, especially at SpaceX AI, because AI is moving so quickly, we're
+
+finding that a lot of folks are in very different places along this maturity curve. But this is kind of where we're at. So it started off with just chat.
+
+All right, you were asking a chatbot coming in and maybe asking one simple question. And the next evolution is actually really clear to us at SpaceX AI. We're
+
+moving from chat to co-pilots, to bots, to having full teams of bots that can support you in all the work that you do from start to finish. And that's where I think GrokBot becomes really powerful. So a lot of you
+
+probably have been in GrokBot before, but those of you who haven't, let's talk about a little overview. This is GrokBot. May look familiar, it looks a little bit like iMessage if you're an Apple user. I do feel bad for all the Android users out there cuz we really did copy iMessage here. But this is GrokBot and it works as a
+
+team of agents. So, you have a bunch of different bots who have different skills. They can take tasks, work them from complete start to finish here. They
+
+have MCPs, APIs, and they actually even have their own virtual computers. So, think of them as like a teammate that can really get anything you want done,
+
+and we'll take some use cases and put them through Grockbot to show you exactly what that means. So, like I said, easy as iMessage. You
+
+have your bots on the left-hand side. You have you can pin people to the top. They're also on 24/7. So, that's one of my favorite things. You can go to sleep, you can go out of the office, you can shut your laptop. I've seen feel like we
+
+went through a stage here where people are walking around the office with open computers. Uh with Grockbot, no longer. You don't need to do that anymore. They use the tools just like you. Like I said, they have their own virtual computers. They finish their work, they
+
+can send you screenshots, screen recordings, listen to podcasts. Really, the sky is the limit. I feel like sometimes the hardest part is thinking about what you actually want to get done with Grockbot, and think big
+
+here. So, we'll be doing that a little bit today. All right. So, let's talk about post-sales. So, post-sales. So, I'll give you a little bit of like context into my role because a lot of these are very personal to me and the things that I found really successful. So, I said
+
+I'm an AI deployment manager, and that means after the sale is done and they come on to the SpaceX AI platform, I work with a bunch of customers to make sure that they see ROI, they're successful. So, what does that mean? It
+
+means lots of emails, lots of Slacks, Teams messages, meetings, conversations, and I have a lot of things going on. So, for those of you who are in post-sales watching this, that probably sounds
+
+familiar to you. Um so, here are my specific use cases. I could have probably made 20 of these slides. So, if you ever want to talk
+
+more about these, you let me know. So, first one, this is one of my favorites, morning status board. I wake up the same time every day. I check my
+
+GrokBot. I look and I can see exactly what's going on for the day. Any fires happen overnight? Who do I have meetings with? What did I say that I was going to
+
+do yesterday that I didn't do? Not that that ever happens. Um what's going on for the day and how can I get set up? So, that's one of my morning status board pieces. Then I have call prep.
+
+This is a great one because it's very much just in time in the sense that 15 to 20 minutes before a call, it pings me
+
+who's on the call, what their title is, what we talked about last time, a suggestion of maybe something new that launched since we talked previously, and
+
+maybe a suggestion for something to bring up to them, and then anything that I need unblocked. So, instead of taking the time to go review your notes, check through, you can actually just get your call prep from GrokBot. Another one is a follow-up desk. This is
+
+actually one of my favorites and we're going to walk through it live today. So, what happens is let's say my day is 9:00 to 5:00. I would say 75% of that is usually spent
+
+in meetings because it's what I find most energizing. I love talking to my customers. I love strategizing, being there personally. Um but a lot of the work in between those gets piled up if
+
+you don't have time to actually come back. So, the follow-up desk is a really great option for the second a call ends, my bots get the granola notes,
+
+transcript, they pull all the context that they need. They draft my reply. They create materials that I may need. So, it basically takes care of all that in between work, drafts it for me. I'll check it out and
+
+then decide if I want to send. So, that's one of my favorite use cases up here. We also have a promise keeper. Um this one's important to me because I want to
+
+make sure that I do what I say I'm going to do. So, if I say I'm going to do something, Promise Keepers always watching to make sure it lets me know to
+
+actually follow through with that. Um that's one of my favorites. On the other side is an ask watch. So, if I've asked someone else to do something and they don't get back to me, back in the day,
+
+you know, that gets like sucked into the abyss of emails or slacks and gets lost. Uh but no longer because ask watch has my back. And then finally, account
+
+reset. That we're actually going to walk through this today. If you're in post sales or work with a good amount of customers, sometimes it feels like there's a lot of things in motion. And
+
+so, what we like to do is talk to my bots, say, "Hey, I need just an update on where this is at." It knows exactly
+
+like the kind of response that I'm looking for and sends me a full download of everything. It also actually tells me a joke in the beginning cuz usually if I send the account reset, I'm feeling a little stressed. And it's always a space joke. So, we'll see what it comes up with today. Um so, these are my six main
+
+use cases. Like I said, many more in in the head. Uh can share those out with those of you live today. Okay. So, let's meet my team.
+
+Gus is my best friend. All right. So, Gus is my chief of staff. Gus and I are homies. So, we talk all day long. And I
+
+actually only I I think this is maybe a little bit unique in the sense that I only talk to Gus. So, a lot of people
+
+how they use their bots is they talk to a lot of their specialists. And I tried this, but I'm very distractible and I needed one best friend to get me through
+
+everything. I didn't want to manage a team of 10. So, Gus manages a team of 10. I'm in a team of one to two, depending on the day. Um so, Gus is my
+
+chief of staff. We'll work through with him a lot today on the demo. Then we have Frankie. I have a lot of follow-ups to do. So, Frankie's my specialist on follow-ups. We have Wally
+
+who knows my voice. Specifically, I sent, you know, a ton of emails and Slacks and things that I've written in the past, so it really knows what I'm doing. So, if you're setting up your Grok bot, definitely make sure that you
+
+go in and send it things that you've written, so you don't have to start from scratch. Um but it also knows different personas. So, it knows who I'm talking to. If I'm creating or if it's drafting an internal
+
+Slack for me, it's not going to be super formal. It's going to probably be in all lowercase, maybe add an emoji here or there, uh keep it very casual. If it's
+
+messaging an exec or emailing an exec, it's going to be short, to the point, formal, and it also knows kind of like a little bit of my style. So, we'll work with Wally today, too. Then we have Trudy, my source of truth.
+
+Uh Trudy's fabulous because specifically at Scale 6 AI, we have lots of platforms, lots of documentation, and I want to make sure that I ask a question
+
+that I get the right answer. And so, I have Gus go to Trudy if we really need specific information, I need sources for it, and he'll send it back to me.
+
+Then we have Scout. This is another good one. One of my I guess I love them all. I'm saying they're all my favorites, but they're all great. Uh Scout is my
+
+internal radar. So, I feel like one of the things that comes up, especially at Scale 6 AI, is we launch a lot of new things, updates come up, there's a lot
+
+happening internally. And before I was juggling probably 30, 40 Slack channels, also email updates for really important things. And so, actually every day Scout updates me, and that's why I said one to two, I manage a team of one to two depending on the day, cuz Scout usually updates me directly on what's new, what
+
+I need to know, link me directly to that Slack channel, um and just keep me in the loop. And then account, that's not actually its name. You can come up with a fun name def- based on the account. But
+
+since we're talking about post-sales today, we're assuming you probably have a book of accounts or specific accounts, and my best way my favorite way to do it
+
+is to have an account specialist for each account. So, the account specialist knows everything that they need to know. They have all the context. And so, you
+
+can basically have your own employee who has dialed in on that specific account. And so, I suggest you make one for all of the accounts you have. If you're working at scale and you have 1,500,
+
+there's probably a better way to do that. Uh but, these for medium to small books, definitely suggest. So, this is my dream team takeaway. Gus
+
+is my best friend. All right. Should we do a demo? Woo! All right. So, let's hop into Grockbot right now. So, to avoid let's just anchor, I guess, on this right now. So, this is what Grockbot looks like. And Grockbot is very simple in the sense
+
+that you have your bots on the left-hand side. You have pinned bots. So, if I wanted to right-click and pin someone, I can pin them to the top if I know I'm talking to them a lot. You also have your marketplace. So, this is where you can grab bots from other people, or you can connect to different
+
+plugins like Gmail, Google Calendar, Slack, etc. And then, each bot has their own computer, which we talked about a second ago. So, you'll see over here on the
+
+right, it has its own computer to open. So, you can specifically grab things in Google Chrome. It can open PowerPoints. Um there's even this button on the top that says teach a task. Very cool skill.
+
+You can come in and it can watch you, remember what you did, and then repeat that for you. So, those are the VMs. All right, so you can see the team that I just introduced you to on the left. We have Franny, Wally, Trudy, Frankie, and Scout.
+
+Down here, you'll see we have my my account bots. And then, we have staff meeting, which we'll use in a little bit. So, to get us started, I'm really busy right
+
+now. So, I'm going to tell Gus, I'm going to say, "Can you join the internal learnings call for me right now? Send takeaways when it's done."
+
+So, I can actually have Gus join my internal learnings call, and I wouldn't have it do it for just any call, so you want to be protective over what it does for this. Um but, sometimes there's a
+
+lot of new things coming out. And so, what I know is this upcoming meeting is a branding update for my company, Flywheel, in this demo situation.
+
+And it's going to come in and start joining the Google Meet. So, you can see it's clicking around. It's muting. It's turning up its camera.
+
+I'll let it do its thing, and we can come back to it. But, it's going to put in my name, and then it's going to actually write in the chat, "Hey everybody, this is Gus Blake's bot." And we are going to I'm going to sit here and send takeaways.
+
+All right, so thank you, Gus. He's joined the chat. He's going to send a few updates when he's done. All right. So, let's move to the next
+
+thing. So, I told you and promised you that we would talk about post-call follow-ups. I think again, in post-sales, this is really important. You want to make sure that uh your bots
+
+are working for you while you don't have extra time. And so, these are the perfect opportunities to do that. So, one of my accounts is named Harbor. So,
+
+I'm going to write into Gus, and I'm going to say, "I'm done." Okay, we won't sign in cuz this is going to take too long, but he can join the
+
+the call. It's very cool. Um I'm going to say, "I'm done with the Harbor call. And usually this would happen automatically, but for the demo use case, I decided I would prompt it to move. Um I also it just sent a because the
+
+handoff was dismissed and I told GrokBot that I was doing a demo today, which is actually this is a cool example, is it sent what an outcome would be after it
+
+left the call just in case. So, it went into the call and then shared what decisions were made. There's this new branding, sent me the link to the new branding, put it in the asks and owners and things
+
+that it needed to work on. So, cool outcome of that. So, I said I'm done with the Harbor call. It's going to work on the Harbor pack. Here's what you'll notice. As I said, I like to only talk to Gus, but Gus
+
+doesn't have the expertise that everybody else has. So, Gus has messaged Wally, Gus has messaged Frankie and Harbor. So, since it was a Harbor call, we have to do a follow-up and we have to do some writing. He's going to message those three bots.
+
+And just like that, I get a pack back. Um and it gives me everything that I need to do with the click of a button.
+
+So, Harbor post-call pack is ready, drafts only. I've made it very clear that I only want drafts. I never want it to send anything on its own.
+
+So, it dropped it something in Gmail. Let's check out Gmail. Great. All right, so it knew that I needed to talk to Maya, it knew that I needed to talk to Priya. It wrote a full
+
+message for me. Hey Maya, exclamation point. Like that's clearly me. I'm such an exclamation point person. And wrote it all out in my voice with everything
+
+that I needed to do. So, what I'll probably do in like realistically, tweak a few things, and then we'll talk about how this improves the system after. But
+
+I'll tweak a few things, press send, and it's done. Let's see what else it did. All right, it's writing a Oh, it's slacking Alex. So, Alex is the AE on the
+
+account. So, we're going to look at a draft in Slack. Let's see. Perfect. Okay, so it's going to put it into the post-sales account, updating
+
+Alex. Hey Alex, just chatted with Harbor. We're going to meet with the new champions next week. Working on a ROI PDF. Perfect. So, I'll tweak that. So, one
+
+out two out of three done. And then, during the call, we they requested an ROI one-pager. How to How to manage ROI, how to measure ROI. And it actually went in, worked with
+
+Frankie to use the Flywheel branding to build a fully beautiful ROI collection document. So, one, it does that very quickly. Two, it takes all your contacts, works with your account specialist, works with all your
+
+other bot specialist, and builds what you need to kind of get you through the follow-up that probably used to take at least 45 minutes before.
+
+All right. So, we're feeling good so far. Um this one, I'm going to go into Franny directly, just because we've been in Gus a lot, and I will show you how to go into other uh other bots.
+
+So, for Franny, I want to see another virtual machine use case. I think that would be fun to look at. So, I'm going to say, "Make me an ROI form
+
+for Northwind." Northwind is one of my accounts. Also, why this is While this is loading, you'll see that you can actually add labels to different accounts. Um which
+
+is really helpful when it comes to just figuring out who they are. Like, I have this labeled as as chief of staff. So, if you ever want to add a label, you can do that in its description.
+
+So, what it's actually going to do is open up forms and start building a draft of our ROI form. So, you can see it's opened up a form.
+
+It's going to start clicking around. The speed of these tasks depends on what the task is. Um but I know at SpaceX AI, it's been a big focus of us to make sure our models are really good at VM work.
+
+Um so I'm very excited to see where that goes. All right, so we've added in Northwind Logistics, Flylow check-in. Things are looking good. All right, we'll let this work. We'll check back on Franny in a second.
+
+Another use case I gave you earlier that I wanted to talk about and demo is where they say the the space joke. Aren't we curious to see what space joke they have for us? So I'm going to say,
+
+"Where are we at with Harbor?" Okay? It knows that when I say where are we at, it could be "I'm stressed about Harbor." You know, you can have it you can say whatever you want, but Gus knows
+
+when I say where are we at with Harbor, I need space joke pronto, and I need an update on where the account is. So let's let it do its thing.
+
+It's going to reply to me, and usually it'll message other agents. Oh, yep. Okay, so it messaged some other bots. We have Harbor, Frankie follow-up, and
+
+Scout. Wants to make sure it collects the full picture, so we know exactly where we are. You can also track and see what's happening with messages here.
+
+It updated me, still waiting on Frankie and Scout. Now it's just waiting on Scout, and we'll get a response this way. So while we're waiting on that, let's check back in on this form. It's probably not done yet. You can see it's starting to enter in different questions. So it knew it was
+
+for Northwind. It knows usually how we like to collect ROI, and it's starting to build that out here. Sometimes I like to watch the VM cuz I just think it's really cool and how it can click around. If this is something you do often, and you don't want it to guess on the different steps that it does, again the teach a task button is a really good option.
+
+Okay. Let's go back to Gus and see where we are at with Harbor. Here's a joke because life's not that serious. How do you organize a space party? You planet.
+
+Thanks, Gus. You're the best. Um all right, so it tells me what's at risk, who the people are, blockers, open promises, Slack, what's happening, and
+
+what to do next. I don't know about you, but like clearly since I only really talked to one agent, I need very specific things sent to me all in one
+
+beautiful pack, and this has been one of my favorite things to use. Um and so you can easily set this up with your bot, tell it what you want the output to be,
+
+and you don't have to do the joke, but it's fun. Um and then it will do that for you. All right. Franny form is still working.
+
+But you'll notice something interesting. So, it's actually messaged Frankie. It's messaged Harbor. None of these people have See how this guy has a little green
+
+circle on it? It'll be blue kind of like iMessage when it's ready for me to open. None of these people have pinged them to me because I don't want to be bothered
+
+with my 10-person team. I want to be bothered with who I'm just talking to. Franny will talk to me directly if I talk directly to Franny, but otherwise
+
+it's all going to go through Gus. And I find that really cool and convenient, and you can just really build it in the way that you want.
+
+So, while it's doing this, I'll show you one last demo use case, and then I'll talk about pulling this all together and building it as a system.
+
+So, let's use a staff meeting. So, I use staff meetings for when it can pull in different bots to have a conversation about something that requires a lot of different perspectives. This is good for
+
+honestly a lot of different types of roles. You can check for bias. So, if you want to say like, you know, I don't want you to always bias towards a specific customer, um it's good to bring all the voices into the room. So, let's run a staff meeting. We can
+
+say, um, start a staff meeting to talk about what I should spend the next and only free hour of my day today. And what you'll see, too, is
+
+Grockbot's really good at multitasking. So, even if it was still working with Frankie and Scout on this follow-up about our update about Harbor, it would
+
+also be able to work with me and work with the staff meeting. So, Grock can uh bot can juggle a lot of pieces at once,
+
+which is great. So, the staff meeting is live. Let's look at the tab for their takes. All right. So, Gus called a staff meeting. Gus said, "Blake has one free
+
+hour left. What are the one to two top priorities we want to focus focus on?" And I tell them to always disagree. It's not helpful, and especially with AI, you don't want them always just agreeing on everything. So, come in, disagree, fight
+
+for my time, and then tell me what makes the most sense. So, it looks like Harbor, oops, looks like Harbor has said some stuff on
+
+SSO first tracks. I actually ran one earlier to, um, show this as well, but you can see that they'll like literally have a conversation with each other.
+
+Northwind comes in and says, "Don't spend the time on us. There was a usage dip, but everything's fine. Soft later only if you have time."
+
+Uh, Brightline also says, "Don't spend it on us." Which is great. I bet Harbor has something to focus on. It seems like Harbor has something for SSO.
+
+Frankie follow-up says, "Protect the cap. This needs to go out now. And if you have more time, focus on the SSO problems." And Scout agrees. So, they're coming in, they're having a conversation, and Gus will usually
+
+return back to me once the staff meeting is over, and tell me what the final takeaway is and what we want to focus on. Okay, let's check back on Frannie.
+
+I bet the form's almost done. Great. Looks like it's done. It was starting to publish. The The form is done. We have what team and role are you on? What are your primary use cases? What does done look
+
+like? Great. So, we're collecting that. So, you can see that we have a lot of things moving at once, right? So, you want to design your system to be one
+
+that is able you're able to track easily. So, play around with it as you're setting up bots, and do what works for you because everyone's really different. So, it's finished. It told me the
+
+questions that it wrote, the share link, and the edit link. It asked if it wanted me to send it for me. So, very exciting. And then, all right, staff meeting's in. Go first.
+
+So, we need to focus on the SSO. Next, we're going to send Maya the next step email, which they actually already drafted in my Gmail. We saw that earlier. And then, we can hold and park
+
+a few of these other things that we don't need to focus on right now. All right. So, that's the majority of what I wanted to show you inside Grokbot. I hope you're feeling pretty confident. Let's just quickly rewind on how to get
+
+to this end state and what I suggest. I think one of the most intimidating things about something so possible like Grokbot is that feeling of a blank page.
+
+Usually, people do some research, and they go in, and they're like, what have other people made, or what can I do? Um I'm going to tell you what I did. It was actually really, really helpful for me.
+
+So, I actually took 10 to 15 minutes, and I put a voice memo on my phone. can also click this voice uh to talk on Grokbot directly,
+
+but I'm a pacer, so I have my phone. I'm pacing around, and I spent 10 to 15 minutes talking about what I do for work. Hi, my name is Blake. This is my job.
+
+Here's what I like about my job. Here's what I'm struggling with right now. Here are the processes that I think are broken. Here are the things that I feel
+
+like we could do better. And so, I went and talked through It was a very long transcript. I copied and pasted this transcript. I sent it to my first bot. He wasn't even Gus yet. Hard
+
+to think in the back of the day. Um sent it to him, said, "Hey, I need a system that's going to work for me. Help me build it."
+
+So, sent it. Gus, I'll call him Gus. Gus came back and said, "All right. Seems like you love doing things directly, talking to customers. Let's make sure we have enough time for you on your calendar to do that. Seems like this process is broken, or
+
+you're constantly checking Slack messages. Let's take that off your plate." So, if you want something specifically built for you, no matter what role you're in, my biggest piece of
+
+advice is to start with context. There's so much that lives in your head, and it's really, really powerful. So, you want to take that out of your head, give it to Grokbot, and Grokbot will do the rest. Another thing about getting set up and started is if you get stuck, or if you
+
+have questions, Grokbot usually has the answer. If you wanted to really push through things and try to figure it out, say like, "Don't stop until you figure
+
+this solution out." Um so, getting started with maybe some of these use cases, a voice memo, I think you're going to be in really good shape. The second piece of advice I have is uh
+
+creating this and making it into a system. So, something really cool about Grokbot is it learns what you like, it learns what you don't like, it starts to
+
+adapt and change with you. You almost invest in Grockit like you invest in another co-worker or direct report. And so it's going to do that. But I also built systems on top of this setup that
+
+will actually take care of that a little bit more. So on the right you'll see some of my routines. These are things that run automatically. So weekly at 8:30 I'll
+
+get my daily brief or my unfinished promises that I was telling you about earlier, 9:00 a.m., 1:00 p.m. or Friday dashboard. But one of my favorites is this thing
+
+called a self-improvement scan. And the one part of it that I actually really really love is number two. So one, it creates a full system audit. So
+
+if I'm doing things manually and I'm sending them or it's checking my Slack and it's noticing that I'm doing a lot of things that I'm not asking bot for help with, it's going in and saying,
+
+"Hmm, seems like we could automate this. I have an opportunity." and sends it back to me every single Wednesday. But number two is I feel like the piece that has really helped me the most is
+
+the voice learning. So the less I have to edit my drafts, edit my Slacks, edit my emails, the better. And what it does is it goes in and takes the
+
+delta of what it drafted versus what I sent, finds the delta of that, sends it back to Wally, Wally updates its rules, and so continuously gets better and better
+
+and better. And so one of my other pieces of advice for you is to make sure that you make this a system. All right. So let's go back for a second,
+
+jump out of the demo, and do a quick recap on what we learned. We just talked about a few of these. One, start with a voice dump.
+
+I feel like also I usually say this and I call this the imagination gap. Grockit is so capable, all right? The thing probably holding back your Grok bot is
+
+you thinking about what is actually possible. So, have it push itself. How can you make this better? What could we do? Think outside of the box. Um you
+
+don't need to have all the answers. So, start with that voice dump, give it the context, you're going to be in great shape. Two, personal suggestion, a little bit
+
+biased, put a bot in front. All right? Gus has saved my chaotic self um from getting overwhelmed in a bunch of different chats, and Gus manages a
+
+team. So, you don't have to manage a team of 10, you can manage a team of three managers. Build it how you want, just tell the agents, they'll take care of it for you.
+
+And then three is make it that living system. So, you want to make sure Grok bot 90% of that Grok bot's going to do on its own. It's really good at that.
+
+But put a little bit of extra in the things that you really find important. Like for me, I need my voice. I love an exclamation point. You know,
+
+Grok bot didn't initially love an exclamation point, and so I have taught it to have a little bit of personality. Maybe tell a joke about space.
+
+Okay, that was really fun. I hope you learned something. I'd like to take the next 15 minutes to answer a few questions. Um we can do it

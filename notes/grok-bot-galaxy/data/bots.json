@@ -1,0 +1,381 @@
+{
+ "count": 47,
+ "bots": [
+  {
+   "bot": "Chief of staff (called 'Link Shishi' — caption spelling uncertain)",
+   "role": "Single point of contact; routes requests to specialist engineers; holds engineering workflow context",
+   "session_id": "zCqmTSF2ctg",
+   "session": "Grok Bot for Engineers",
+   "day": 1,
+   "speaker": "Lingxi Li"
+  },
+  {
+   "bot": "Craig",
+   "role": "UI engineering specialist bot",
+   "session_id": "zCqmTSF2ctg",
+   "session": "Grok Bot for Engineers",
+   "day": 1,
+   "speaker": "Lingxi Li"
+  },
+  {
+   "bot": "Steve",
+   "role": "DevX specialist bot (the Nightly Audit Engineer renamed and onboarded into the fleet)",
+   "session_id": "zCqmTSF2ctg",
+   "session": "Grok Bot for Engineers",
+   "day": 1,
+   "speaker": "Lingxi Li"
+  },
+  {
+   "bot": "Hogan",
+   "role": "Infrastructure specialist bot",
+   "session_id": "zCqmTSF2ctg",
+   "session": "Grok Bot for Engineers",
+   "day": 1,
+   "speaker": "Lingxi Li"
+  },
+  {
+   "bot": "Cora",
+   "role": "Chief of staff — email, calendar, Slack; builds a model of how you work",
+   "session_id": "gNysgEu-lew",
+   "session": "Grok Bot for Product Managers",
+   "day": 1,
+   "speaker": "Kevin Niparko, Roshan Sadanani"
+  },
+  {
+   "bot": "Emily",
+   "role": "Engineering manager — deliberately not a coder; manages five engineering bots, deconstructs large chunks of work and runs verification loops",
+   "session_id": "gNysgEu-lew",
+   "session": "Grok Bot for Product Managers",
+   "day": 1,
+   "speaker": "Kevin Niparko, Roshan Sadanani"
+  },
+  {
+   "bot": "Ashley",
+   "role": "Data science / analytics — connected to the data warehouse (Databricks, Snowflake, etc.)",
+   "session_id": "gNysgEu-lew",
+   "session": "Grok Bot for Product Managers",
+   "day": 1,
+   "speaker": "Kevin Niparko, Roshan Sadanani"
+  },
+  {
+   "bot": "PMP Pete",
+   "role": "Product assistant — drafts PRDs, synthesizes customer insight, lower-level product work",
+   "session_id": "gNysgEu-lew",
+   "session": "Grok Bot for Product Managers",
+   "day": 1,
+   "speaker": "Kevin Niparko, Roshan Sadanani"
+  },
+  {
+   "bot": "Pixel",
+   "role": "Designer — loaded with an 'S-tier design' skill from best public design thinking",
+   "session_id": "gNysgEu-lew",
+   "session": "Grok Bot for Product Managers",
+   "day": 1,
+   "speaker": "Kevin Niparko, Roshan Sadanani"
+  },
+  {
+   "bot": "Rey",
+   "role": "Recruiter — sourcing and hiring pipeline",
+   "session_id": "gNysgEu-lew",
+   "session": "Grok Bot for Product Managers",
+   "day": 1,
+   "speaker": "Kevin Niparko, Roshan Sadanani"
+  },
+  {
+   "bot": "Closebot",
+   "role": "Owns the customer: deep pre-call research (telemetry + site walkthrough), post-call compounding from Granola transcripts, support, activation",
+   "session_id": "hPE3A4Smkxc",
+   "session": "Grok Bot for Founders",
+   "day": 1,
+   "speaker": "Shub Gaur"
+  },
+  {
+   "bot": "Prodbot",
+   "role": "What shipped/unshipped: reads PRs and Linear issues, walks the product itself, returns screenshots and a video of the run, ties to metrics",
+   "session_id": "hPE3A4Smkxc",
+   "session": "Grok Bot for Founders",
+   "day": 1,
+   "speaker": "Shub Gaur"
+  },
+  {
+   "bot": "Stockbot",
+   "role": "The competition stalker — signs up for competitors' newsletters/products under its own research email, records onboarding walkthroughs, watches site/pricing/changelog/jobs/X (the same idea ships on the marketplace as 'Stalk Bot')",
+   "session_id": "hPE3A4Smkxc",
+   "session": "Grok Bot for Founders",
+   "day": 1,
+   "speaker": "Shub Gaur"
+  },
+  {
+   "bot": "Protobot",
+   "role": "Designs and turns feedback into PRs",
+   "session_id": "hPE3A4Smkxc",
+   "session": "Grok Bot for Founders",
+   "day": 1,
+   "speaker": "Shub Gaur"
+  },
+  {
+   "bot": "Sherlock",
+   "role": "The technical expert and source of truth; the other bots are instructed to ground claims in him",
+   "session_id": "tpDfoh5qPF8",
+   "session": "Grok Bot for Sales Engineers",
+   "day": 2,
+   "speaker": "Amrita Venkatraman"
+  },
+  {
+   "bot": "Serena",
+   "role": "Hands-on competitor product tester, works on her own computer",
+   "session_id": "tpDfoh5qPF8",
+   "session": "Grok Bot for Sales Engineers",
+   "day": 2,
+   "speaker": "Amrita Venkatraman"
+  },
+  {
+   "bot": "Mimi",
+   "role": "Case-study slide curator (used every day for external-facing calls)",
+   "session_id": "tpDfoh5qPF8",
+   "session": "Grok Bot for Sales Engineers",
+   "day": 2,
+   "speaker": "Amrita Venkatraman"
+  },
+  {
+   "bot": "Battlecard Blair",
+   "role": "Competitive differentiation and sales-engineering battle cards (bot-created)",
+   "session_id": "tpDfoh5qPF8",
+   "session": "Grok Bot for Sales Engineers",
+   "day": 2,
+   "speaker": "Amrita Venkatraman"
+  },
+  {
+   "bot": "Demo Drake",
+   "role": "Demo and talk-track specialist; builds no-hallucination scripts grounded in Sherlock (bot-created)",
+   "session_id": "tpDfoh5qPF8",
+   "session": "Grok Bot for Sales Engineers",
+   "day": 2,
+   "speaker": "Amrita Venkatraman"
+  },
+  {
+   "bot": "AI Radar",
+   "role": "Tracks competitor AI tooling from public engineering blogs (bot-created)",
+   "session_id": "tpDfoh5qPF8",
+   "session": "Grok Bot for Sales Engineers",
+   "day": 2,
+   "speaker": "Amrita Venkatraman"
+  },
+  {
+   "bot": "Olive",
+   "role": "Chief of staff, named after her dog — handles day-to-day",
+   "session_id": "SVZe46xaVTg",
+   "session": "Grok Bot for Sales",
+   "day": 2,
+   "speaker": "Krista Letz, Mark Wright"
+  },
+  {
+   "bot": "PG",
+   "role": "Outbound prospecting / pipeline generation",
+   "session_id": "SVZe46xaVTg",
+   "session": "Grok Bot for Sales",
+   "day": 2,
+   "speaker": "Krista Letz, Mark Wright"
+  },
+  {
+   "bot": "Echo",
+   "role": "Turns a recorded discovery call into updated slides and next steps",
+   "session_id": "SVZe46xaVTg",
+   "session": "Grok Bot for Sales",
+   "day": 2,
+   "speaker": "Krista Letz, Mark Wright"
+  },
+  {
+   "bot": "Customer-expert bot",
+   "role": "Renewal/usage/risk tracking and feature-request to changelog matching",
+   "session_id": "SVZe46xaVTg",
+   "session": "Grok Bot for Sales",
+   "day": 2,
+   "speaker": "Krista Letz, Mark Wright"
+  },
+  {
+   "bot": "Engineer bot",
+   "role": "Answers technical questions fast enough to answer on the call",
+   "session_id": "SVZe46xaVTg",
+   "session": "Grok Bot for Sales",
+   "day": 2,
+   "speaker": "Krista Letz, Mark Wright"
+  },
+  {
+   "bot": "Chief of staff",
+   "role": "The only bot he talks to; everything else happens behind it",
+   "session_id": "Iia8EF7niiA",
+   "session": "Grok Bot for SDRs",
+   "day": 2,
+   "speaker": "Simon Lackowski"
+  },
+  {
+   "bot": "Email / outbound bot",
+   "role": "Writes in his voice, learned from his Gmail history",
+   "session_id": "Iia8EF7niiA",
+   "session": "Grok Bot for SDRs",
+   "day": 2,
+   "speaker": "Simon Lackowski"
+  },
+  {
+   "bot": "Various specialists",
+   "role": "He explicitly warns he has had too many at points",
+   "session_id": "Iia8EF7niiA",
+   "session": "Grok Bot for SDRs",
+   "day": 2,
+   "speaker": "Simon Lackowski"
+  },
+  {
+   "bot": "Build",
+   "role": "Sets up infrastructure and configuration",
+   "session_id": "BSB--jUnx9U",
+   "session": "Grok Bot for Customer Support",
+   "day": 2,
+   "speaker": "David Gan"
+  },
+  {
+   "bot": "Reply",
+   "role": "Answers users in the ticketing system and in Slack",
+   "session_id": "BSB--jUnx9U",
+   "session": "Grok Bot for Customer Support",
+   "day": 2,
+   "speaker": "David Gan"
+  },
+  {
+   "bot": "Alert",
+   "role": "Pinged by Reply; posts and tags him in Slack",
+   "session_id": "BSB--jUnx9U",
+   "session": "Grok Bot for Customer Support",
+   "day": 2,
+   "speaker": "David Gan"
+  },
+  {
+   "bot": "Tune",
+   "role": "Continuously improves the system",
+   "session_id": "BSB--jUnx9U",
+   "session": "Grok Bot for Customer Support",
+   "day": 2,
+   "speaker": "David Gan"
+  },
+  {
+   "bot": "OP1",
+   "role": "Synthesizer chief of staff — drives his work (named after the Teenage Engineering OP-1)",
+   "session_id": "EA-sxwWK0Vs",
+   "session": "Grok Bot for Marketing Operations",
+   "day": 3,
+   "speaker": "Matthew Silberman, Teresa Hsu"
+  },
+  {
+   "bot": "Fiser",
+   "role": "Receives everything from inboxes: email, calendar, text messages, Slack",
+   "session_id": "EA-sxwWK0Vs",
+   "session": "Grok Bot for Marketing Operations",
+   "day": 3,
+   "speaker": "Matthew Silberman, Teresa Hsu"
+  },
+  {
+   "bot": "Juno",
+   "role": "Product manager bot — corner cases and product requirements for internal tools",
+   "session_id": "EA-sxwWK0Vs",
+   "session": "Grok Bot for Marketing Operations",
+   "day": 3,
+   "speaker": "Matthew Silberman, Teresa Hsu"
+  },
+  {
+   "bot": "Ondes (captioned 'owned')",
+   "role": "Engineer bot — knows the CRM, data warehouse, existing codebase and how internal tools are built",
+   "session_id": "EA-sxwWK0Vs",
+   "session": "Grok Bot for Marketing Operations",
+   "day": 3,
+   "speaker": "Matthew Silberman, Teresa Hsu"
+  },
+  {
+   "bot": "Territory-planning bot",
+   "role": "Holds rules of engagement and CRM context; drafts territory decisions",
+   "session_id": "EA-sxwWK0Vs",
+   "session": "Grok Bot for Marketing Operations",
+   "day": 3,
+   "speaker": "Matthew Silberman, Teresa Hsu"
+  },
+  {
+   "bot": "Gus",
+   "role": "Chief of staff and 'best friend' — the only bot he talks to; manages a team of ~10",
+   "session_id": "EGt8FfTmTMY",
+   "session": "Grok Bot for Post Sales",
+   "day": 3,
+   "speaker": "Blake Schuller"
+  },
+  {
+   "bot": "Frankie",
+   "role": "Follow-up specialist",
+   "session_id": "EGt8FfTmTMY",
+   "session": "Grok Bot for Post Sales",
+   "day": 3,
+   "speaker": "Blake Schuller"
+  },
+  {
+   "bot": "Wally",
+   "role": "Voice specialist, trained on his sent emails and Slacks",
+   "session_id": "EGt8FfTmTMY",
+   "session": "Grok Bot for Post Sales",
+   "day": 3,
+   "speaker": "Blake Schuller"
+  },
+  {
+   "bot": "+ specialists",
+   "role": "Managed by Gus; he deliberately avoids managing ten bots himself",
+   "session_id": "EGt8FfTmTMY",
+   "session": "Grok Bot for Post Sales",
+   "day": 3,
+   "speaker": "Blake Schuller"
+  },
+  {
+   "bot": "Market researcher",
+   "role": "Studies the product and market; runs competitive analysis",
+   "session_id": "db38-FgdaGQ",
+   "session": "Grok Bot for Marketing",
+   "day": 3,
+   "speaker": "Josh Kim"
+  },
+  {
+   "bot": "Product marketer",
+   "role": "Positioning and messaging",
+   "session_id": "db38-FgdaGQ",
+   "session": "Grok Bot for Marketing",
+   "day": 3,
+   "speaker": "Josh Kim"
+  },
+  {
+   "bot": "Website ops",
+   "role": "Landing page changes, pushed to production",
+   "session_id": "db38-FgdaGQ",
+   "session": "Grok Bot for Marketing",
+   "day": 3,
+   "speaker": "Josh Kim"
+  },
+  {
+   "bot": "Performance marketer",
+   "role": "Ad campaign build and monitoring",
+   "session_id": "db38-FgdaGQ",
+   "session": "Grok Bot for Marketing",
+   "day": 3,
+   "speaker": "Josh Kim"
+  },
+  {
+   "bot": "Marketing analyst",
+   "role": "Draw analysis / reporting",
+   "session_id": "db38-FgdaGQ",
+   "session": "Grok Bot for Marketing",
+   "day": 3,
+   "speaker": "Josh Kim"
+  },
+  {
+   "bot": "Project manager",
+   "role": "Orchestrates the campaign across the other five",
+   "session_id": "db38-FgdaGQ",
+   "session": "Grok Bot for Marketing",
+   "day": 3,
+   "speaker": "Josh Kim"
+  }
+ ]
+}

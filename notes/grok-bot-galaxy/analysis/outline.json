@@ -1,0 +1,1465 @@
+{
+ "BSB--jUnx9U": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "Grok Bots",
+    "Hey",
+    "David",
+    "SpaceX AI",
+    "A. So",
+    "Second",
+    "IDE"
+   ],
+   "preview": "Hey everyone. Uh thank you for joining today's workshop on Grok Bot for customer support. My name is David and I am a software engineer here at SpaceX AI in the user ops org. I'm really excited to share what we've been w"
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "Grok Bot",
+    "Plane",
+    "Zendesk",
+    "Intercom",
+    "Slack",
+    "Notion",
+    "Notion. And",
+    "Um Grok Bot"
+   ],
+   "preview": "work. There are already connectors for most tools you use. You just have to go in the marketplace and search for them. And uh there is likely one for you. So, you can plug Grok Bot immediately into your ticketing system,"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "Grok Bot",
+    "Slack",
+    "Um Grok Bot",
+    "Anyone",
+    "Um Yeah",
+    "GTM",
+    "TSE",
+    "Cool. Um"
+   ],
+   "preview": "Um Grok Bot can make this a lot easier uh through alerting. So, you can spin up a bot that looks for certain things. For example, maybe your team is hyper-focused on churn this quarter, and you want to know when someone "
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "Cool. So",
+    "Grok Bot",
+    "Read",
+    "Uh I",
+    "Notion",
+    "FAQ. Oh",
+    "FlyLo",
+    "Google. We"
+   ],
+   "preview": "the need more than one running at a time. Uh I recommend breaking them up naturally then and reorganizing them uh in a way that makes sense to you. Cool. So, now I'll get into the demo. I have Grok Bot set up with the bo"
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Cool. So",
+    "Grok Bot",
+    "Grok Bots I",
+    "Notion",
+    "Supabase",
+    "Slack. Um",
+    "Reply",
+    "Alex"
+   ],
+   "preview": "Cool. So, first let's start with um maybe this first ticket. So, I'm going to go through alphabetical. So, this is just a very basic question. I forgot my password. How can I sign in? Or how do I reset it? So, let me ask"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Carter",
+    "Slack",
+    "Stripe",
+    "Damon",
+    "Cool. Okay",
+    "Cool. Uh",
+    "SOP",
+    "Damon. If I"
+   ],
+   "preview": "And once again, it's going to go through the exact same process. If I were to change something in this sort of uh loop, it would uh I've already told it to like make sure to read this every single time. So, if I were to "
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Cool. So",
+    "Carter",
+    "Damon",
+    "Elena",
+    "IDs",
+    "Stripe",
+    "SOP",
+    "Cool. Great. Great. Okay"
+   ],
+   "preview": "Uh let me pass in the customer IDs, maybe it'll make it quicker. &gt;&gt; [snorts] &gt;&gt; Cool. Let's It should be on its way now. &gt;&gt; Um, let's see. Cool. So, it's thinking it found them now, and it says both rep"
+  },
+  {
+   "start": "00:21",
+   "terms": [
+    "FAQ",
+    "Tune",
+    "FAQ. Say",
+    "Wi-Fi",
+    "Um. Okay",
+    "Um. Cool. So",
+    "Grok Bot"
+   ],
+   "preview": "And it should go from there. So, it's already come come back with some thinking. It's found the ticket and it's checking it's uh sort of already classified that pass sharing is uh the root issue and looking if it's in pu"
+  },
+  {
+   "start": "00:24",
+   "terms": [
+    "Wi-Fi",
+    "Cool. Um",
+    "Slack",
+    "SOP. So",
+    "Cool. So"
+   ],
+   "preview": "have a new sort of thinking note. Now it can reply with high confidence. There's a root issue and it links to the new section in docs that covers it. So, you cannot share your Wi-Fi pass with another person. Great, that'"
+  },
+  {
+   "start": "00:27",
+   "terms": [
+    "Um Okay",
+    "Um Uh I",
+    "Okay. Now",
+    "Great. So",
+    "Awesome. So",
+    "Cool. Um So",
+    "Um So",
+    "Slack"
+   ],
+   "preview": "Um Okay, it's going. Um Uh I ran this right before, so you can see that this is what would happen. Um it would reply and go from there. Let's give it maybe 10 more seconds. If not, we can go on. Okay. Now it says it's re"
+  },
+  {
+   "start": "00:30",
+   "terms": [
+    "Yeah."
+   ],
+   "preview": "complex tickets and there are ways I've already tried to like experiment and found ways to get that down a lot. So, there are um a lot of maybe low complexity billing tickets of like a user just asking for a refund or a "
+  }
+ ],
+ "EA-sxwWK0Vs": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "RevOps",
+    "Marops",
+    "GTM",
+    "Grok Bot. Um",
+    "SpaceX AAI",
+    "Anyone",
+    "XYZ"
+   ],
+   "preview": "And so, um, as I mentioned, uh, there's really that ease of use that you get with Grok Bot. Um, you have these always on agents where you no longer have to worry for any of you, uh, who are out there who are maybe doing "
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "OP1",
+    "Fiser",
+    "Slack. Juno",
+    "CRM",
+    "SpaceX. Um",
+    "Grok Bot",
+    "FYI"
+   ],
+   "preview": "of references to music devices. Uh in another life I might have pursued that passion a bit more but now I can um use do that with my bots. Uh and so we've got OP1 my sort of synthesizer chief of staff um who drives a lot"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "OP1",
+    "Slack",
+    "Fiser",
+    "Sometimes",
+    "Fisher",
+    "AES",
+    "CRM"
+   ],
+   "preview": "email calendar work chat all the information that came my way. And so this alone is such an unlock in terms of knowing like I can even if I wanted to, I could turn notifications off on Slack, on email, and I would just k"
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "CRM",
+    "Demo",
+    "SpaceX AAI",
+    "Instead",
+    "Um I",
+    "Juno"
+   ],
+   "preview": "makes sense. Um, but it's really amazing to think that like I I have a team. I truly have a team. A team that is monitoring my inboxes, distilling the tasks, relaying those tasks to the right other teammates who can get "
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Grok Bot",
+    "CRM",
+    "Hey",
+    "Offline",
+    "Juno"
+   ],
+   "preview": "do a good job and so right away it jumps into okay I'm starting the coding process here it is and maybe it doesn't look like what you envisioned maybe it doesn't work like what you envisioned maybe it anchored too much o"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Grok Bot",
+    "Juno",
+    "AES",
+    "Amazing. Okay. Right. We"
+   ],
+   "preview": "engineering bot to actually get the build started. And again, I think the really magical thing here is I didn't have to prompt Juno to do that. Um, often when you're using AI tools, if you even get to this point of thoug"
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Grok Bot",
+    "GTM",
+    "CEO",
+    "CRM",
+    "PRs. And I",
+    "RevOps",
+    "Marops",
+    "Dreamforce"
+   ],
+   "preview": "especially after seeing this demo, how many of you feel like you could pretty confidently go into a chat with AI and build this or any other internal tool that your team needs? Amazing. Amazing. I'm seeing a lot of hands"
+  },
+  {
+   "start": "00:21",
+   "terms": [],
+   "preview": "and building those things. So, that's it for the main presentation. Um, we're going to have some time for questions next. Um, thank you so much for joining. [applause]"
+  }
+ ],
+ "EGt8FfTmTMY": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "SpaceX AI",
+    "Hey",
+    "Thank",
+    "Blake",
+    "Grok Bot. May",
+    "Apple",
+    "Android"
+   ],
+   "preview": "Hey everyone. Thank you so much for joining me today for Grok Bot for post sales. My name is Blake and I am an AI deployment manager here at SpaceX AI and I'm really really looking forward to chatting with you all about "
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "ROI",
+    "Slacks",
+    "Teams",
+    "Grok Bot. I",
+    "Grok Bot. Another",
+    "Promise Keepers"
+   ],
+   "preview": "work with a bunch of customers to make sure that they see ROI, they're successful. So, what does that mean? It means lots of emails, lots of Slacks, Teams messages, meetings, conversations, and I have a lot of things goi"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "Gus",
+    "Slack",
+    "Wally",
+    "Trudy",
+    "Scale",
+    "Scout",
+    "Hey",
+    "Okay. So"
+   ],
+   "preview": "abyss of emails or slacks and gets lost. Uh but no longer because ask watch has my back. And then finally, account reset. That we're actually going to walk through this today. If you're in post sales or work with a good "
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "Gus",
+    "Grok Bot",
+    "Woo",
+    "Gmail",
+    "Google Calendar",
+    "Slack",
+    "Google Chrome. It",
+    "PowerPoints. Um"
+   ],
+   "preview": "since we're talking about post-sales today, we're assuming you probably have a book of accounts or specific accounts, and my best way my favorite way to do it is to have an account specialist for each account. So, the ac"
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Gus",
+    "Harbor",
+    "Harbor. So",
+    "Google Meet. So",
+    "Hey",
+    "Um I",
+    "Grok Bot",
+    "Wally"
+   ],
+   "preview": "And it's going to come in and start joining the Google Meet. So, you can see it's clicking around. It's muting. It's turning up its camera. I'll let it do its thing, and we can come back to it. But, it's going to put in "
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "ROI",
+    "Franny",
+    "Harbor",
+    "Frankie",
+    "Gus",
+    "Alex. So",
+    "Alex",
+    "Perfect. Okay"
+   ],
+   "preview": "it all out in my voice with everything that I needed to do. So, what I'll probably do in like realistically, tweak a few things, and then we'll talk about how this improves the system after. But I'll tweak a few things, "
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Franny",
+    "Scout. Wants",
+    "Frankie",
+    "Scout. Now",
+    "Scout",
+    "Northwind. It",
+    "ROI",
+    "Sometimes I"
+   ],
+   "preview": "Scout. Wants to make sure it collects the full picture, so we know exactly where we are. You can also track and see what's happening with messages here. It updated me, still waiting on Frankie and Scout. Now it's just wa"
+  },
+  {
+   "start": "00:21",
+   "terms": [
+    "Harbor",
+    "Gus",
+    "Scout",
+    "SSO",
+    "Frankie",
+    "Grock",
+    "Blake",
+    "Northwind"
+   ],
+   "preview": "So, let's run a staff meeting. We can say, um, start a staff meeting to talk about what I should spend the next and only free hour of my day today. And what you'll see, too, is Grok Bot's really good at multitasking. So,"
+  },
+  {
+   "start": "00:24",
+   "terms": [
+    "Grok Bot",
+    "Gus",
+    "Seems",
+    "Usually",
+    "Blake. This",
+    "Hard",
+    "Hey",
+    "Help"
+   ],
+   "preview": "I think one of the most intimidating things about something so possible like Grok Bot is that feeling of a blank page. Usually, people do some research, and they go in, and they're like, what have other people made, or w"
+  },
+  {
+   "start": "00:27",
+   "terms": [
+    "Grok",
+    "Wally",
+    "Gus",
+    "Friday",
+    "Slack",
+    "Hmm",
+    "Wednesday. But",
+    "Slacks"
+   ],
+   "preview": "get my daily brief or my unfinished promises that I was telling you about earlier, 9:00 a.m., 1:00 p.m. or Friday dashboard. But one of my favorites is this thing called a self-improvement scan. And the one part of it th"
+  }
+ ],
+ "Iia8EF7niiA": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "Gmail",
+    "SDR",
+    "STRs. So",
+    "Gmail MCP",
+    "API",
+    "RevOps",
+    "Slack"
+   ],
+   "preview": "I'm I'm Simon. I'm here on SpaceX's go to market team specifically in SDR and excited to talk about Grok Bot specifically for this team. &gt;&gt; All right. So, at a high level, we'll be kind of going over what actually "
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "Grok Bot",
+    "STRs. So",
+    "SpaceX",
+    "SDR",
+    "MCPs",
+    "APIs",
+    "VM. And",
+    "SCR"
+   ],
+   "preview": "actually doing and to kind of easily transfer those skills over to your other STRs. So you can actually really scale those outputs and do it very quickly. I think the truth at least at SpaceX of what we've seen is that w"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "Grok Bot",
+    "Graqua",
+    "ICP",
+    "Grock",
+    "SCR",
+    "STR",
+    "ICP. And",
+    "AEES"
+   ],
+   "preview": "or to kind of get more value out of that?\" So, I really emphasize just actually like talking back and forth with your Grock bots and kind of like starting to starting to really push it to help you. And and I think this i"
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "Grok Bot",
+    "XYZ",
+    "Salesforce",
+    "STR",
+    "SpaceX",
+    "SCR",
+    "GRAW",
+    "Simon"
+   ],
+   "preview": "okay, who's fundraising? Who has job postings? And how does that kind of tailor the messaging based on our product? You can also look at things internally like okay how does this new product that we've launched actually "
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Shakespeare",
+    "Simon",
+    "Salesforce",
+    "Let"
+   ],
+   "preview": "right bot to actually delegate that to and when needed, it's going to understand the context of multiple bots that it needs to get delegate to or actually get to talk with each other. And so I think this is really an imp"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Good. All",
+    "Because I",
+    "SDR",
+    "Maybe",
+    "Grok Bot",
+    "Slack",
+    "PLG"
+   ],
+   "preview": "it's delegating account research. It's splitting these up between subbots. And you can actually see here I have an army huddle as well, which basically has my web search bot talking with all of the soldiers here and basi"
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Gmail",
+    "Salesforce",
+    "Grockpot",
+    "CSV",
+    "Grok Bot",
+    "ID. So I",
+    "Crockbot"
+   ],
+   "preview": "signal, being fed that on a daily basis so you can actually just go in action on that while it's as warm as possible has led me to to some of the most receptive responses I've gotten. And so finishing out here, I have my"
+  },
+  {
+   "start": "00:21",
+   "terms": [
+    "IDs",
+    "Shakespeare",
+    "PLG"
+   ],
+   "preview": "more recent responses, I found that it was almost kind of templated and every response looked very similar, but just with swapping of names, of company IDs, things like that. And so what I've really done is just kept goi"
+  },
+  {
+   "start": "00:24",
+   "terms": [
+    "SDR",
+    "Simon",
+    "Sumble",
+    "Grok Bot",
+    "Maybe",
+    "Pull",
+    "PLG",
+    "GRBO"
+   ],
+   "preview": "really important to understand, okay, this company is really operating with a legacy software stack and they're looking to to kind of move off that. Like here's the pain points we see from similar people and here's how w"
+  },
+  {
+   "start": "00:27",
+   "terms": [
+    "Grok Bot",
+    "Grapod",
+    "SDR",
+    "Fly Low",
+    "Grockpot ICP. And I",
+    "ICP"
+   ],
+   "preview": "something important. We're trying to understand like how many go to market people are using it and and what are kind of the use cases they have. So being able to pull in data like that too and have my chief of staff actu"
+  },
+  {
+   "start": "00:30",
+   "terms": [
+    "Grok Bot",
+    "CSVs",
+    "ICP",
+    "LinkedIn",
+    "Crockbot",
+    "STRs. So I",
+    "Bots"
+   ],
+   "preview": "CSVs that look like this that are pulling in everything like titles like what's their actual ICP persona like the owners and everything like what's the context on why and then you can see it's talking to other sources li"
+  },
+  {
+   "start": "00:33",
+   "terms": [
+    "Here."
+   ],
+   "preview": "save more tokens in the first place, but actually just also not confuse yourself and not kind of just get overloaded with bots that are just doing like kind of similar things. And again, making things through your chief "
+  }
+ ],
+ "SVZe46xaVTg": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "Thanks",
+    "Spacex AI.",
+    "Spacex AI. And",
+    "Crystal",
+    "Build",
+    "Incomes Grok Bot. Uh",
+    "SpaceX AI. Krista"
+   ],
+   "preview": "Oh, hi everyone. Thanks so much for joining today's workshop on Grok Bot for sales. My name's Crystal Etz. I'm on the go-to-market team here at Spacex AI. &gt;&gt; And I'm Mark Wright, on the same go-to-market team at Sp"
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "Grok Bot",
+    "Echo",
+    "Crystal",
+    "Uh Uh",
+    "Whether",
+    "Strong Space X AI",
+    "Chief",
+    "Staff"
+   ],
+   "preview": "make Grok Bot feel much the same functionality uh as such as well. So, you can simply just type away and go from there. No longer do you need to close, you know, keep your laptop just a little bit open and keep it on for"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "Slack",
+    "Hey",
+    "Chief",
+    "Space X AI. It",
+    "Something I",
+    "Reach",
+    "Kind",
+    "BDR"
+   ],
+   "preview": "stopping a granola recording and bot will update those slides based on what the customer said during the meeting. And then just like a customer expert, I work with a few strategic customers. So, it helps me stay on top o"
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "CTO",
+    "CEO",
+    "Gmail",
+    "Hey",
+    "X API. Uh I",
+    "Apple CEO",
+    "Grok Bot",
+    "GrowthBot"
+   ],
+   "preview": "just like basic company data, like, \"Hey, oh, your company raised funding.\" Like, they're probably getting the same uh outreach from 1,000 companies right now. I like that it will pull like uh like personal hooks. So, sa"
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Slack",
+    "Notion",
+    "Salesforce",
+    "Granola",
+    "Gong",
+    "Probably",
+    "Salesforce. Oh",
+    "Maybe"
+   ],
+   "preview": "things that are important to them based on what they posted about. I don't know does anyone enjoy updating Salesforce next steps or pipeline? Probably not. &gt;&gt; [laughter] &gt;&gt; Oh, you do? Okay, I have one person"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Grok Bot",
+    "CEO",
+    "Hey",
+    "LinkedIn",
+    "Amplitude",
+    "Fair",
+    "Slack",
+    "Starlink"
+   ],
+   "preview": "So, like maybe for this question, I would have had to like talk to uh an engineer, or bring an engineer on the call to help walk the customer uh through setting up cloud agents. And then maybe I would have had to like ta"
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Grok Bot",
+    "Grok Bots",
+    "Chris",
+    "Happy",
+    "Grok Bot. Um",
+    "Roman",
+    "Yes. Yeah",
+    "Perfect. Um"
+   ],
+   "preview": "webinar with Roman uh around Grok Bot on Lenny's podcast?\" &gt;&gt; Yeah, and I think we have a lot of Grok Bots actually watching this as well. &gt;&gt; Yes. Yeah, there's probably Grok Bots live. Um so, it'll go off an"
+  }
+ ],
+ "db38-FgdaGQ": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "SpaceX AI",
+    "Hello. Hello. Hi",
+    "Josh Kim",
+    "Crockpot",
+    "Meaning",
+    "Grok Bot. With Grok Bot",
+    "SpaceX"
+   ],
+   "preview": "All right. Hello. Hello. Hi everyone. My name is Josh Kim and I'm so thankful for all of you for joining us here and I'm excited to share how we on the SpaceX AI team use Grok Bot for marketing. Here's our runner show fo"
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "Grok Bot",
+    "MCPS",
+    "APIs",
+    "Because",
+    "Mac"
+   ],
+   "preview": "that while it can hook up to all the MCPS and APIs that you're currently using today, it also has its own computer. And that's a bit of a novel paradigm shift from how you might be using other AI tools today. And what it"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "SpaceXi",
+    "XAIR. So",
+    "People",
+    "Grok Bot",
+    "Meaning"
+   ],
+   "preview": "who conducts market research is, you know, having to work with a product marketer to identify and best positioning who then has to pass off a task to the web team and so on and so forth. And for anyone who's done marketi"
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "Great. So",
+    "Um I",
+    "Hey",
+    "Help"
+   ],
+   "preview": "show us a screenshot first of the website and then go through gaps and positioning. Great. So it has its first output of an analysis. It's talking about the product. It's talking about the market. is has identified key c"
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Google",
+    "Um I",
+    "Lean",
+    "Hey",
+    "Google Docs",
+    "MCP"
+   ],
+   "preview": "actually do it proactively, meaning you have to be less involved in doing the orchestration of context and knowledge between your bots, and rather they actually start to work with each other organically. So, it's telling"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Hey",
+    "Google Ads. And",
+    "Google Ads",
+    "Comments",
+    "URLs",
+    "Again",
+    "Meanwhile",
+    "Okay. So"
+   ],
+   "preview": "which is great because that's typically how performance marketers work. Now, while this is happening, it's reddrafting the file. I'm actually going to flip over to my performance marketer. I'm going to say, \"Hey, perform"
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Grok Bot",
+    "Hey",
+    "Okay. So",
+    "Google Docs. I"
+   ],
+   "preview": "come to life. Okay. So, while this is running, um I would would like to show a feature that uh I think is really special. It's quite unique from the way that you might be using other a AI agents now, which is our sharing"
+  },
+  {
+   "start": "00:21",
+   "terms": [
+    "Google Ads",
+    "Hey",
+    "Google Ads. I",
+    "TLDDR",
+    "Okay. So",
+    "Google",
+    "CTR",
+    "CVR"
+   ],
+   "preview": "that the campaign will be structured so that we're getting that message test live. And as this is running, um, rather than needing to actually push the campaign live here, because that would require obviously like some a"
+  },
+  {
+   "start": "00:24",
+   "terms": [
+    "Grok Bot",
+    "URL",
+    "Grok Bot. So",
+    "Hey",
+    "C. And",
+    "Okay. And"
+   ],
+   "preview": "really where the taxes, right? It's a context switching. It's a having to know the players, understand who's good at what, and sort of like trafficking and managing that entire process across the entire workflow. Um, and"
+  },
+  {
+   "start": "00:27",
+   "terms": [
+    "Meaning",
+    "Hey",
+    "Grok Bot",
+    "Second",
+    "Slack",
+    "Lastly",
+    "Thank"
+   ],
+   "preview": "So, just to wrap that up, um, what have we learned by going through an entire campaign build from start to end? The first point is, uh, what's really important when you're starting off with Grok Bot is to ensure that you"
+  }
+ ],
+ "gNysgEu-lew": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "SpaceX AI",
+    "Hello",
+    "Welcome",
+    "Grobbot",
+    "PMs. Uh",
+    "Cool. We",
+    "Grok Bot. Some"
+   ],
+   "preview": "Hello everybody. Welcome to Grobbot for product managers or PMs. Uh very excited to see you all. We got many on the live stream as well. I'm Kevin Dearco from the SpaceX AI product team joined by and I'm Roshan Sani also"
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "Grok Bot",
+    "CRM",
+    "Slack",
+    "Salesforce",
+    "Figma",
+    "Maybe",
+    "Once"
+   ],
+   "preview": "definition. Uh the first one is that colleagues when you work with them often together often tie multiple tools together. They don't live in one system. Uh they work across many systems and those systems do different thi"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "Grok Bot",
+    "Yeah.",
+    "Exactly. Yeah. Uh",
+    "Grock",
+    "Absolutely. So",
+    "Grok Bot. I",
+    "PMs",
+    "Maybe"
+   ],
+   "preview": "interrupt, drive, and interact with agents in this way. And you'll see a little bit of this in a minute, but really, I think those are the four things that we found as we kind of built this product and played with it int"
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "Emily",
+    "Pixel",
+    "Kora",
+    "Slack",
+    "Emily. Emily",
+    "Grok Bot",
+    "Ashley",
+    "SQL"
+   ],
+   "preview": "with today. Uh some familiar faces and names uh that we can all all learn. So first is Kora uh chief of staff. Uh you can think of this as sort of the person that you turn to have access to your email, has access to your"
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Grok Bot",
+    "Okay. Uh I",
+    "Crockpot",
+    "Okay.",
+    "Grok Bot. This"
+   ],
+   "preview": "hiring pipeline. And so these are some of the very helpful uh Grok Bot colleagues that we have defined. But it is totally up to you exactly what your team is going to look like. And so throughout the course of this demo,"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Ashley",
+    "Einstein",
+    "Eigor",
+    "Nova",
+    "Larry",
+    "Eileen. You",
+    "MCP",
+    "Gmail"
+   ],
+   "preview": "have a section here for leadership. We have a couple of pin bots and then we have our engineering team that we just talked about down here. Einstein, Eigor, Nova, Larry, and Eileen. You can also hide bots or unassign the"
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Ashley",
+    "Cool. So",
+    "Roshan",
+    "Grok Bot",
+    "Maybe",
+    "PMP"
+   ],
+   "preview": "this yet and we can but you can also set up routines with bots. So if you haven't uh seen that that's a really really helpful thing. I wake up every morning and you know for those of you who like to monitor your favorite"
+  },
+  {
+   "start": "00:21",
+   "terms": [
+    "Ashley",
+    "Pete",
+    "PRD",
+    "PMP",
+    "Kevin",
+    "PMP. So",
+    "Pete. Pete",
+    "Yeah. Yeah. Before"
+   ],
+   "preview": "you notice, Kevin here is tagging PMP. So, this is where the bots will be able to chat with each other. Uh, and you'll see Ashley should fire off a message to Pete. Pete has a lot of product context on our business, unde"
+  },
+  {
+   "start": "00:24",
+   "terms": [
+    "Emily",
+    "Pixel",
+    "Grok Bot",
+    "Um I",
+    "Google Docs",
+    "Emily. So Emily",
+    "Pete",
+    "PRD"
+   ],
+   "preview": "right product shape that we should ship. &gt;&gt; And obviously there's a number of different ways you can do that. So one thing I like to do with notion is just leave comments in notion and crocbots can read notion comm"
+  },
+  {
+   "start": "00:27",
+   "terms": [
+    "Emily",
+    "Option A",
+    "Pixel",
+    "Option B",
+    "Sounds",
+    "Cool. And",
+    "Grok Bot",
+    "Grock"
+   ],
+   "preview": "on the left corner and things like this. Uh, and that really kind of gives this designer the ability to iterate really, really quickly and then, you know, get things mostly right on the first try versus having to start f"
+  },
+  {
+   "start": "00:30",
+   "terms": [
+    "Nova",
+    "Yeah.",
+    "PR. Is",
+    "Pixel",
+    "Ashley",
+    "PMP",
+    "Emily",
+    "Grok Bot. And"
+   ],
+   "preview": "codebase or maybe they they need to install some, you know, setup scripts to be able to ensure that the repo is testable and runnable. Um, these agents come with all of those batteries included, too. So, in this case, it"
+  },
+  {
+   "start": "00:33",
+   "terms": [
+    "Grok Bot",
+    "PMs",
+    "Yeah.",
+    "Fly Low Airlines."
+   ],
+   "preview": "going to be great on day zero. there is an onboarding phase where you can give them skills, you can give them context, you can teach them things. Uh and so over time they actually build up that context and intuition and "
+  }
+ ],
+ "hPE3A4Smkxc": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "Hello",
+    "Welcome. Uh",
+    "Uh I",
+    "Kudos. A",
+    "Grock",
+    "Everyone",
+    "Finally"
+   ],
+   "preview": "All right. Hello everyone. Welcome. Uh really excited you all are here and uh thank you for letting me interrupt the cooking session that's happening on the live stream and also for joining this workshop about Grok Bot f"
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "Grockpot",
+    "Grok Bot",
+    "Grok Bot. That",
+    "Grok Bots",
+    "Lingi"
+   ],
+   "preview": "use your tools the same way you would. And I'll explain what that means in a second. But overall, what you need to know is you can assign Grok Bots's tasks completely end to end. So for you, all you need to do is delegat"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "Grok Bot",
+    "Obviously",
+    "Believe",
+    "PRs. And",
+    "Usually"
+   ],
+   "preview": "so that once they're taken care of once, they can just happen forever. And then finally, and I think most importantly on this slide is you can do things that don't scale except you can actually scale them, which is reall"
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "Closebot. And",
+    "Northwind. And",
+    "Again",
+    "HTML",
+    "Obviously",
+    "Crockbot",
+    "Hey"
+   ],
+   "preview": "Closebot. And there are two key things that I want you guys to keep in mind while I go through this. The first is remember that your bots can compound. So you can constantly be feeding them insights and information and t"
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Part",
+    "Basically",
+    "Believe"
+   ],
+   "preview": "And for them, it's really nice because they get some feedback that's super actionable. And so my bot has gotten very good at figuring out what will resonate with folks. And so I have it do this every single time and with"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Grok Bot",
+    "Grok Bot. But",
+    "Outbound",
+    "Probot. Uh I"
+   ],
+   "preview": "this with Grok Bot. But the most important part that makes this really work well is that you spend the time empowering your bot to actually support your customers. And what that means is you not only connect it to your d"
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Flyo",
+    "Probot",
+    "PRs",
+    "Remember",
+    "Stockbot. Right"
+   ],
+   "preview": "you start to have more and more engineers shipping more things and unshipping more things, you're doing it yourself. You get confused around what's live and isn't. So Probot is basically a bot that does a lot of this wor"
+  },
+  {
+   "start": "00:21",
+   "terms": [
+    "Stockbot",
+    "Basically",
+    "HTML. If",
+    "Craft",
+    "Salesforce"
+   ],
+   "preview": "is very easy to ship things. But what's not easy is checking what other people are shipping. And so what Stockbot does is it basically will go find your competitors. It will sign up for autonomously and go through their "
+  },
+  {
+   "start": "00:24",
+   "terms": [
+    "Notion",
+    "Protobot",
+    "Grok Bot",
+    "QAing. But I",
+    "PRs"
+   ],
+   "preview": "the same thing for notion. Notion has a bunch of hiring and so I've kind of asked it to truncate uh because they're hiring a ton of people, but it's still important insight to get. And so I'm showing you these these two "
+  },
+  {
+   "start": "00:27",
+   "terms": [
+    "Yapbot. So",
+    "Slack",
+    "Yapbot",
+    "Obviously",
+    "Hey",
+    "XYZ. Go",
+    "Prodbot",
+    "Sadly"
+   ],
+   "preview": "Right now, it's saying that the customer thinks that the share button for bot templates isn't exciting enough and they want it to pop. Um, so it'll probably end up working on that for a little bit, which is very fun. Uh,"
+  },
+  {
+   "start": "00:30",
+   "terms": [
+    "APIs",
+    "Closebot",
+    "Let",
+    "Protobot",
+    "Probot",
+    "Legos",
+    "Give",
+    "Hey"
+   ],
+   "preview": "most importantly, they're all powerful in conjunction. So when Closebot gets some feedback, it can pass it to Protobot or when Probot is trying to get across some of the key product decisions that we've made, it can pass"
+  },
+  {
+   "start": "00:33",
+   "terms": [
+    "Second",
+    "Again",
+    "Obviously",
+    "Because",
+    "Thank"
+   ],
+   "preview": "for you which is very nice. But be wary of browser use more than once. Uh and if you can get around it and scale quickly, you absolutely should. Second piece, routines. Uh when I was looking through some of the data arou"
+  },
+  {
+   "start": "00:36",
+   "terms": [
+    "Stockbot",
+    "Matt",
+    "Lauren",
+    "Roshan",
+    "Thanks. Okay."
+   ],
+   "preview": "to leave a QR code for Stockbot if you guys want to steal it. It's a fun one. You should try and use it on us. I think that would be cool. I want to see what people come up with. Uh but I really appreciate everyone being"
+  }
+ ],
+ "tpDfoh5qPF8": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "Cool. Awesome. Welcome",
+    "Amita. I",
+    "Cursor",
+    "SDRs. Um",
+    "Matt",
+    "Lauren",
+    "Roshan"
+   ],
+   "preview": "Cool. Awesome. Welcome to day two of Grok Bot Galaxy. I'm super excited to be here. My name is Amita. I am a field engineer here at Cursor and we have a really great great suite of workshops for today. Um we're starting "
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "Grok Bot",
+    "Google",
+    "MongoDB",
+    "Slack.",
+    "Hey",
+    "Slack"
+   ],
+   "preview": "maybe any form of like a a chat or texting interface, you'll see that it looks pretty similar. Um, on the left is where all your bots live. Um, and as you can see, you can message them like teammates. So, you can say goo"
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "Grok Bot",
+    "Sherlock",
+    "Um I",
+    "Okay. Um I",
+    "Grock",
+    "Cool. Um",
+    "SpaceX",
+    "David Gan"
+   ],
+   "preview": "available on the marketplace. If you want to share bots with your team at work, you can do that as well. Uh for example, we have bots that are specific to the sales team that we all you know share. There's bots on the en"
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "Mimi",
+    "Serena",
+    "Williams",
+    "Echo",
+    "Christa",
+    "Mark",
+    "Awesome. So",
+    "Mimi. Um"
+   ],
+   "preview": "Williams because I'm a big tennis fan and she's also very famous for studying her competitors and watching how they play. Um, but what Serena does is she actually uses competitor products in her own computer and then tel"
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Mimi",
+    "Jellyfish",
+    "Salesforce",
+    "SpaceX. And",
+    "Starlink",
+    "API. And",
+    "Cursor",
+    "SpaceX. Um"
+   ],
+   "preview": "use SpaceX. And this is based on a public blog post about how Starlink uses, you know, the API. And they all look the same. They all have the same template, which is problem, solution, impact, and then a quote from the f"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Sherlock",
+    "Expedia",
+    "Grockpot",
+    "Serena",
+    "Flyo. Um",
+    "Williams. So",
+    "Um I",
+    "SpaceX"
+   ],
+   "preview": "Williams. So, I'm just gonna switch my account here so you all can see the other two bots. Um here we go. So, Grockpot for those engineers. These are the two bots. Um I have something very similar to Serena in my in my o"
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "Serena",
+    "Sherlock",
+    "Flyo. Um",
+    "Expedia",
+    "Hey",
+    "Skyscanner",
+    "Grok Bot",
+    "Hey Sherlock"
+   ],
+   "preview": "specific to just how we do it? Um, does Expedia do it better? Do they talk about it in their technical blogs? Um, something that I do whenever I'm kind of researching competitors and want to try out what other products a"
+  },
+  {
+   "start": "00:21",
+   "terms": [
+    "Southwest",
+    "Serena",
+    "Grok Bot",
+    "Fly Low",
+    "Flyo",
+    "Spirit Airlines",
+    "Serena. So",
+    "Fly Lo. And"
+   ],
+   "preview": "a Flyo booking flow baseline. I'm going to pull what the code actually supports, and then I'll reply back to her and let her know like, hey, we support these things that maybe Southwest and Spirit Airlines don't. Um what"
+  },
+  {
+   "start": "00:24",
+   "terms": [
+    "Sherlock",
+    "Serena Williams",
+    "Grok Bot",
+    "Cursor",
+    "Serena",
+    "Southwest",
+    "Mimi",
+    "Mimi. Oh"
+   ],
+   "preview": "Okay, I'm going to check in on Sherlock here and see how he's doing. Looks like he's looking again at like our booking flow. baseline and what we're offering as our product. You can see here that the cloud agents are bei"
+  },
+  {
+   "start": "00:27",
+   "terms": [
+    "Sherlock",
+    "Serena",
+    "MongoDB",
+    "MCP",
+    "PowerBI",
+    "Agenta",
+    "Serena Williams",
+    "Southwest"
+   ],
+   "preview": "have you found is the key differentiator in our competitors that would be significantly you know loweffort to build in the product and what they can do is they can basically have a conversation with each other both based"
+  },
+  {
+   "start": "00:30",
+   "terms": [
+    "Sherlock",
+    "Serena",
+    "Grok Bot",
+    "Booking Southwest. So",
+    "GitHub",
+    "Google. You",
+    "Expedia",
+    "Cool. And"
+   ],
+   "preview": "one that I created yesterday, which is actually showing a bot how to do a slide deck animation. Um, what's cool about this is you can teach it multiple different skills and it can apply those skills at the right time dep"
+  },
+  {
+   "start": "00:33",
+   "terms": [
+    "Serena",
+    "Sherlock",
+    "Serena Williams",
+    "Sherlock. Sure. And I",
+    "Hey",
+    "Grok Bot"
+   ],
+   "preview": "And so that's one easy way that we can fix things. Also the second is a flexible date calendar. Um, looks like this is live. The front end client already has it wired, but it never calls it. This would be a classic diffe"
+  },
+  {
+   "start": "00:36",
+   "terms": [
+    "Salesforce",
+    "Mimi",
+    "Hey",
+    "Grok Bot",
+    "Spin",
+    "Grockpot",
+    "Um I",
+    "Already"
+   ],
+   "preview": "engineer, you work at a particular company, you guys have very particular workflows. Um, and you know, you do demos, you do particular things that are very specific and are not, you know, onetoone with what I showed. Go "
+  },
+  {
+   "start": "00:39",
+   "terms": [
+    "Mimi",
+    "Salesforce",
+    "Grok Bot",
+    "Grab",
+    "Hey",
+    "Echo",
+    "Uber. They",
+    "Again"
+   ],
+   "preview": "\"Great work. Can you do one for Grab?\" And again, as I mentioned with the steering, I could have sent all of these to Mimi at once. I could say, \"Hey, do Salesforce, do Grab, do this other customer story that we have.\" A"
+  },
+  {
+   "start": "00:42",
+   "terms": [
+    "Sherlock",
+    "Serena",
+    "Cursor",
+    "Serena.",
+    "Hey",
+    "Mimi",
+    "Produce",
+    "Demo Drake"
+   ],
+   "preview": "and Serena. um and see how both of them are doing. As I mentioned, I taught Sherlock how to use that AI kind of blog skill so that it's able to find out what our competitors are doing. Um but you can also see here that t"
+  },
+  {
+   "start": "00:45",
+   "terms": [
+    "Grok Bot. Um",
+    "Mimi"
+   ],
+   "preview": "models I feel that actually pushes back um and will say I cannot do something. It won't always kind of just be sick of fantic and tell me yes or or yeah, of course, you're absolutely right. Um and so sometimes what I'll "
+  }
+ ],
+ "zCqmTSF2ctg": [
+  {
+   "start": "00:00",
+   "terms": [
+    "Grok Bot",
+    "Grok Bot Galaxy",
+    "Lingshi",
+    "SpaceX AAI. Uh",
+    "SpaceX AAI",
+    "Asian",
+    "Grok Bot. And",
+    "Slack"
+   ],
+   "preview": "Good afternoon and welcome to Grok Bot Galaxy and thank you so much for joining today's workshop on Grok Bot for engineers. My name is Lingshi and I'm a uh software engineer at SpaceX AAI. Uh to give you a little backgro"
+  },
+  {
+   "start": "00:03",
+   "terms": [
+    "Grok Bot. Um",
+    "Mac",
+    "Grok Bot"
+   ],
+   "preview": "run whatever is possible on your computer on cloud. That means we can just give you 10 machines or even more to run things in parallel. Your agents will no longer fight for the same port. And you know at the at the time "
+  },
+  {
+   "start": "00:06",
+   "terms": [
+    "Grok Bot",
+    "Growbot",
+    "Verscell",
+    "Versel MCP. It",
+    "Versail MCP",
+    "Another",
+    "Scrockbot"
+   ],
+   "preview": "with cloud agents grabbot can do for you with tool calls. And so you don't have to uh you know let your grabbot control some user interface to start the agents and read the transcript. It can efficiently read all these t"
+  },
+  {
+   "start": "00:09",
+   "terms": [
+    "Android",
+    "Groa",
+    "Windows",
+    "Linux",
+    "Mac OS. So",
+    "Golden Gate Park",
+    "Unlike"
+   ],
+   "preview": "able to do the work that you might think they're able to do. for example like I was a big user of uh the open claw and her her agent um and they were not really able to do the engineering works that good because they lac"
+  },
+  {
+   "start": "00:12",
+   "terms": [
+    "Grok Bot",
+    "Previously",
+    "Even",
+    "Approve",
+    "Slack"
+   ],
+   "preview": "uh we have been building around the grogbot and also build a grabbot for us. The first thing is get the things done when I'm away. So let's think about um you are you are possibly asleep or you are on a fight and your te"
+  },
+  {
+   "start": "00:15",
+   "terms": [
+    "Slack MCP. Um",
+    "PR. And",
+    "Everything",
+    "Uh I",
+    "Everyone",
+    "PRs"
+   ],
+   "preview": "Slack MCP. Um so we also we have the bots to automatically kick off a task to start digging into whether the the the reproduce is still valid on main and then if it's still valid go fix it and send me the PR. And the sam"
+  },
+  {
+   "start": "00:18",
+   "terms": [
+    "PRs",
+    "Previously",
+    "Versell",
+    "Slack",
+    "CIS"
+   ],
+   "preview": "a.m. my uh my GR uh my bot will set will start a research cloud agent to to review uh across the whole surface of our monorrele and they can identify issues like uh code quality uh not being good things should be modular"
+  },
+  {
+   "start": "00:21",
+   "terms": [
+    "Hogan",
+    "Grok Bot",
+    "Link Shishi. Um",
+    "Craig",
+    "Steve",
+    "DevX",
+    "Infra. You",
+    "Uh I"
+   ],
+   "preview": "needed. And most of the time when CI is read a bot will automatically kicks in starts to examining what is being read and then starts to uh spin up a cloud agent to fix it and then also has our instructions of how to det"
+  },
+  {
+   "start": "00:24",
+   "terms": [
+    "Steve",
+    "Craig",
+    "Hello. I",
+    "Nightly. Um",
+    "Steve. I",
+    "Usually"
+   ],
+   "preview": "workflows or how things should be developed. And now let me give you a demo of how I going to set these things up. This will be a very live demo because uh I'm also the first time setting these things. So right now I jus"
+  },
+  {
+   "start": "00:27",
+   "terms": [
+    "Asian",
+    "MCP. So",
+    "Yes. So",
+    "Try",
+    "ASAP",
+    "Grotbot",
+    "Jenny."
+   ],
+   "preview": "the Asian in parallel. So right now I already had a task to cry and I think there's one issue with the pho website uh that's being reported. It's very urgent. So, okay. Um, I think there's an issue with flyair.com that u"
+  },
+  {
+   "start": "00:30",
+   "terms": [
+    "Jenny",
+    "Steve",
+    "Okay. On",
+    "Let",
+    "Okay. So",
+    "Craig",
+    "Slash",
+    "Grobbox"
+   ],
+   "preview": "Okay. On board a new member called Jenny for doing all the uh for head of operations. and my Jenny will starts to uh play around with the playbook. Jenny needs to manage a playbook for my engineering team and needs to ow"
+  },
+  {
+   "start": "00:33",
+   "terms": [
+    "Craig"
+   ],
+   "preview": "monitor the cloud agents every five minutes to check the progress to check where uh the cloud agent is currently running on and you know sometimes the cloud agents are running tests that are very long. they do like a sle"
+  },
+  {
+   "start": "00:36",
+   "terms": [
+    "Jenny",
+    "Craig",
+    "Bot",
+    "Asian",
+    "Sometimes",
+    "Okay. So",
+    "Okay. So Jenny",
+    "Mr. Craig"
+   ],
+   "preview": "engineer bots because that won't scale if you have 10 or 15 or 20 bots I will have it hand it with the Jenny so let me check if Jenny is on right now Jenny owns edit Jenny owns edits. So, you know, Jenny will nudge me wh"
+  },
+  {
+   "start": "00:39",
+   "terms": [
+    "Craig",
+    "Perf",
+    "Jenny",
+    "Steve. So Steve",
+    "Let",
+    "PR. So",
+    "Plus"
+   ],
+   "preview": "proof so it's easier for me to review. That's also how I work nowadays that I don't really check my cloud agents. I check I check the results and check the proof but it will be very disappointed if the proof is just not "
+  },
+  {
+   "start": "00:42",
+   "terms": [
+    "Shbas",
+    "Scrubbots",
+    "Another",
+    "Grok Bot",
+    "Thank"
+   ],
+   "preview": "agents would do this for me so most of my task can stay on what kind of things needs to be done what kind of things needs to be killed and you can see this task just gets back all these screenshots I can just feel confid"
+  }
+ ]
+}

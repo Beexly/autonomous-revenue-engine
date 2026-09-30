@@ -1,0 +1,115 @@
+- Products
+
+- Solutions
+
+- Developer
+
+- Company
+
+- Pricing
+
+- News
+
+Contact Sales
+
+Try for free
+
+Products
+
+GrokBusinessGovernment
+
+Download
+
+iOSAndroidGrok on XGrok Bot
+
+Developers
+
+API ConsoleDocumentationGrok Build
+
+Try for free
+
+Back to newsMay 6, 2026
+
+## Connectors in web, iOS, and Android
+
+Deep integrations that bring the apps you use every day directly into Grok.
+
+Try Connectors
+
+Today, we're excited to launch Connectors — deep integrations that bring the apps you use every day directly into Grok. Connectors let Grok work with your tools end-to-end, turning fragmented workflows into seamless experiences. Read and summarize emails, update slides, organize your calendar, edit spreadsheets, and much more — all without constant copy-pasting.
+
+### Available on Grok Web, iOS, and Android
+
+Connectors are now live on Grok Web, iOS, and Android.
+
+- Web: Sign in, click the + button, select Connectors, and click + Add connector to get started. Try it now.
+
+- iOS and Android: Go to Settings → Connectors and connect the services you want to use with Grok.
+
+Your browser does not support the video tag.
+
+### The following Connectors are now available
+
+- SharePoint: Grok can search, read, and synthesize the latest files, lists, and pages across your organization. With write permissions enabled, Grok can also create, edit, and update documents, lists, and pages. Advanced document editing capabilities are powered by Grok 4.3.
+
+- Outlook: Search your inbox, calendar, and meetings with full context. Grok can draft and send emails, create calendar invites, or help you triage and prioritize your inbox.
+
+- OneDrive: Instant access to all your personal and shared files. Ask Grok to analyze spreadsheets, presentations, reports, and more without ever leaving the chat.
+
+- Google Workspace: Connect Gmail, Drive, Docs, Sheets, and Calendar with one integration. Grok can read and write emails, documents, spreadsheets, and events.
+
+- Notion: Work directly in your Notion workspace. Search or edit pages, databases, and wikis across you and your team’s docs.
+
+- GitHub: Connect your repositories, issues, and pull requests. Grok can search code, summarize PRs, review changes, and help you stay on top of your development workflow.
+
+- Linear: Connect your Linear workspace to bring tasks, issues, roadmaps, and projects directly into Grok. Grok can search through your backlog, summarize sprint progress, draft updates, and create new issues.
+
+In addition to all the connectors above, we’re also launching Bring Your Own MCP: Connect any custom Model Context Protocol server to Grok. No matter what your team uses - a homegrown knowledge base, proprietary APIs, or an internal MCP gateway - Grok can plug straight into your own tools and workflows.
+
+To read documentation about connectors visit https://docs.x.ai/grok/connectors
+
+© 2026 SpaceXAI LLC
+
+Built with Grok
+
+Products
+
+ChatBuildImagineVoiceBotGrokipedia
+
+Download
+
+grok.comiOSAndroidGrok on X
+
+Solutions
+
+BusinessGovernmentCustomer SupportLegalSecurityUse Cases
+
+Grok Bot
+
+OverviewMarketplaceGuidesUse Cases
+
+Developers
+
+API OverviewPricingModelsConsoleChangelogDocsStatus
+
+Enterprise
+
+Contact SalesFAQsBAADPA
+
+Company
+
+AboutColossusCareersNewsContact
+
+Trust
+
+SafetySecurityPrivacy PortalSubprocessorsHelp Center
+
+Legal
+
+TermsEnterprise TermsPrivacyCookiesAUPBrand
+
+Social
+
+@SpaceXAI@grokDiscord
+
+Built with Grok

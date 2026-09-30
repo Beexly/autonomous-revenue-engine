@@ -1,0 +1,1311 @@
+[00:00:00] Cool. Awesome. Welcome to day two of
+[00:00:02] Grockbot Galaxy. I'm super excited to be
+[00:00:04] here. My name is Amita. I am a field
+[00:00:07] engineer here at Cursor and we have a
+[00:00:09] really great great suite of workshops
+[00:00:12] for today. Um we're starting off with
+[00:00:14] Grockbot for sales engineers and then
+[00:00:16] we'll have Grockbot for sales later
+[00:00:17] today. Grockbot for SDRs. Um we have uh
+[00:00:21] one specific for customer support. Um,
+[00:00:23] and then throughout all of this, we'll
+[00:00:25] be following along with Matt, Lauren,
+[00:00:27] and Roshan on how their company is
+[00:00:29] going. So, super exciting day. Thank you
+[00:00:31] all for tuning in. Um, and yeah, let's
+[00:00:34] get started.
+[00:00:36] All right, so today's session is
+[00:00:37] Grockbot for sales engineers. Um, what
+[00:00:40] I'm planning on doing with today's
+[00:00:41] session is kind of similar to the other
+[00:00:42] ones. I'm showing three bots. Um, these
+[00:00:45] are three bots that I actually use on a
+[00:00:46] day-to-day. Um, two of them will be in a
+[00:00:49] demo project. So, you'll see kind of how
+[00:00:51] it works in sort of a sandbox scenario.
+[00:00:54] And then one of them I'll show I
+[00:00:55] actually use every day for curating
+[00:00:57] particular customer kind of case study
+[00:01:00] slides when I need to do uh external
+[00:01:02] facing calls. Um, I'll do a quick
+[00:01:05] overview of Grockbot for folks who maybe
+[00:01:07] this is the first time turning in um or
+[00:01:09] tuning into the Grockbot Galaxy event.
+[00:01:11] Um, so we'll do a quick overview about
+[00:01:13] Grockbot. I'll talk a little bit about
+[00:01:15] why we created it, what makes it
+[00:01:17] different from some of the other
+[00:01:18] products out there, and then we'll get
+[00:01:19] into the use cases that I'll talked
+[00:01:21] about, and then a demo. And we'll have
+[00:01:23] some time for questions at the end. So,
+[00:01:25] if you do have questions, please save
+[00:01:26] them for the last 15 minutes or so. And
+[00:01:28] we'll have some build time for folks in
+[00:01:30] person. So, I'm happy to come around and
+[00:01:32] see how you all are using Grockbot.
+[00:01:34] There are little uh coasters, I think,
+[00:01:35] at your table that show you different
+[00:01:37] use cases of how we use Grockbot. So, if
+[00:01:39] you want to scan the back, there's a QR
+[00:01:41] code that kind of shows you a template
+[00:01:43] of a Grockbot you might be interested
+[00:01:44] in.
+[00:01:46] Okay. Um, we showed this slide
+[00:01:48] yesterday, but I want to kind of hone in
+[00:01:50] on exactly what this means, where we're
+[00:01:52] moving towards a world that's less kind
+[00:01:55] of task based and one-off kind of
+[00:01:57] request to an AI tool and more so a team
+[00:02:00] of bots kind of at your service working
+[00:02:03] together on a task. Um, so we're really
+[00:02:05] going from a, you know, a chatbot type
+[00:02:08] world to more like a team of colleagues.
+[00:02:10] And what's nice about this is when I
+[00:02:12] think about Grockbot, I think about a
+[00:02:14] tool that actually gives me finished
+[00:02:15] work. Um, and that's the beauty of it is
+[00:02:18] it's not meant to be something that you
+[00:02:19] have to constantly babysit or something
+[00:02:21] that is always, you know, just at your
+[00:02:24] computer that you always have to keep
+[00:02:25] your laptop open for. It's literally
+[00:02:27] meant to be like a teammate where, you
+[00:02:29] know, it can work maybe while you're on
+[00:02:31] vacation, you're away, it can work while
+[00:02:33] you're asleep. it can work because you
+[00:02:34] can, you know, talk to it on your phone
+[00:02:36] like you would a normal colleague. And
+[00:02:37] so we're going towards a world um where
+[00:02:41] that's going to be happening all the
+[00:02:42] time for all different types of domains.
+[00:02:44] So whether you're in sales, you're in
+[00:02:46] product, you're in engineering, you're
+[00:02:47] going to have a staff or a team of bots
+[00:02:49] at your service that can help you
+[00:02:51] basically accomplish work that maybe you
+[00:02:53] didn't have time for before, maybe
+[00:02:54] you're not looking forward to, but
+[00:02:56] you're also kind of having them ready to
+[00:02:59] go with the context and memory that
+[00:03:00] you're kind of providing them.
+[00:03:03] Okay, so for folks who haven't seen
+[00:03:05] Grockbot before, um first I recommend
+[00:03:07] downloading it. Uh it's on Android, iOS,
+[00:03:10] and the Mac. So if you haven't
+[00:03:11] downloaded it yet, please do. Um and
+[00:03:13] it's kind of the best way to to see it
+[00:03:15] and try it out for yourself. Um there's
+[00:03:17] a couple main things to highlight here.
+[00:03:19] The first is kind of the interface
+[00:03:21] itself. So if you've used iMessage or
+[00:03:24] maybe any form of like a a chat or
+[00:03:26] texting interface, you'll see that it
+[00:03:28] looks pretty similar. Um, on the left is
+[00:03:30] where all your bots live. Um, and as you
+[00:03:33] can see, you can message them like
+[00:03:34] teammates. So, you can say good morning
+[00:03:35] to your bots. You can thank them. You
+[00:03:37] can basically go back and forth them
+[00:03:39] because they have this long lived memory
+[00:03:41] that it's able to learn from, you know,
+[00:03:43] what you've said before if maybe you've
+[00:03:45] told it that you didn't like how it did
+[00:03:46] something a particular way. It keeps
+[00:03:48] that in its memory and it's able to do
+[00:03:50] better the next time around. And we'll
+[00:03:51] see an example of that actually in this
+[00:03:53] demo. Um, you will also see that bots
+[00:03:56] have their own computers. And so this is
+[00:03:58] kind of what I mean where bots are like
+[00:04:00] colleagues is no longer do you have to
+[00:04:03] maybe connect each bot to every single
+[00:04:06] service or provider that you want to
+[00:04:08] have access to. Your bot can do a lot of
+[00:04:11] that for you. Um an example that we did
+[00:04:13] yesterday was a bot making its own
+[00:04:15] Google form. Um an example that I've
+[00:04:17] heard from the crowd is a bot logging
+[00:04:19] into MongoDB and kind of analyzing your
+[00:04:21] database and making sure that everything
+[00:04:23] is, you know, up to snuff. And then I
+[00:04:25] think another cool thing about computer
+[00:04:27] use is you can monitor what it's doing
+[00:04:29] in the computer itself. So if for
+[00:04:31] example I want to take over its
+[00:04:32] computer, I totally can. I can also
+[00:04:35] control from an enterprise level what it
+[00:04:37] has access to in that computer. So if
+[00:04:39] for some reason I don't want it to
+[00:04:40] access a particular website or I don't
+[00:04:42] want it to download a particular thing,
+[00:04:44] I can always keep that in my admin
+[00:04:46] controls so that you know you don't want
+[00:04:47] the bot making decisions that you
+[00:04:49] wouldn't take yourself. And then
+[00:04:51] automations and routines. That's a huge
+[00:04:53] one. Um, and I think it's something that
+[00:04:54] people constantly look for with AI tools
+[00:04:57] is, hey, how can I automate or have a
+[00:04:59] repetitive task be done without me
+[00:05:01] having to think about it? Um, a common
+[00:05:03] one that I have actually is I subscribe
+[00:05:05] to a bunch of different, you know, AI
+[00:05:07] newsletters and podcasts and I've
+[00:05:09] started not to keep track of all of
+[00:05:10] them. And so every morning I'll have bot
+[00:05:13] actually look through my email, find the
+[00:05:14] newsletters that are relevant to me and
+[00:05:16] then just create them in a daily digest
+[00:05:18] and summarize them in Slack. and then it
+[00:05:20] just messages me every morning saying,
+[00:05:21] "Hey, here's what you missed from, you
+[00:05:23] know, these podcasts, these newsletters,
+[00:05:25] and it helps me keep up to date, but
+[00:05:26] it's also something that I no longer
+[00:05:28] have to think about." Um, similarly,
+[00:05:30] there's a very common like morning
+[00:05:31] brief, morning digest for your work if
+[00:05:33] there's Slack messages that you've
+[00:05:34] missed overnight. Um, I do like to
+[00:05:37] highlight that for distributed teams,
+[00:05:38] Grockbot is really a gamecher because
+[00:05:40] you can go from, you know, having to
+[00:05:43] wait on work being done from other
+[00:05:45] teammates or other tools to just having
+[00:05:47] something that's really always on and
+[00:05:49] always at your service. And so that's
+[00:05:50] kind of the beauty of Grockbot is that
+[00:05:52] it's really great for distributed teams,
+[00:05:54] but also it's for it's a multiplier.
+[00:05:56] It's a force multiplier for you wherever
+[00:05:59] you are. Um, and then the last thing is
+[00:06:01] sharing your bots with others. So you
+[00:06:03] see here on these kind of little
+[00:06:04] coasters that we have QR codes. Uh
+[00:06:06] that's for you know public bots that are
+[00:06:08] available on the marketplace. If you
+[00:06:10] want to share bots with your team at
+[00:06:12] work, you can do that as well. Uh for
+[00:06:13] example, we have bots that are specific
+[00:06:15] to the sales team that we all you know
+[00:06:17] share. There's bots on the engineering
+[00:06:18] team that they share with us as well.
+[00:06:20] And so bots are meant to be multiplayer.
+[00:06:22] They're meant to be used and shared. Um
+[00:06:24] and also creates a sense of consistency
+[00:06:26] across the company is you know you want
+[00:06:28] to make sure that let's say the the
+[00:06:29] sales bot is not using different
+[00:06:32] resources that maybe someone else's
+[00:06:33] sales bot is. So having that consistency
+[00:06:35] of bots is also very important.
+[00:06:39] Okay. Um I touched a little bit on some
+[00:06:41] of this like why Grockbot and what makes
+[00:06:43] it different. Um I think the main things
+[00:06:45] to highlight here is it's very easy to
+[00:06:47] use. Um I think a lot of tools when you
+[00:06:49] first spin it up you don't know where to
+[00:06:50] start. You don't know how to kind of
+[00:06:52] connect things. Grockbot kind of learns
+[00:06:54] all of that for you. Um, you'll see it
+[00:06:56] actually when we work with a bot from
+[00:06:58] scratch today. Uh, it will basically ask
+[00:07:01] me like, hey, what am I being used for
+[00:07:02] and how can I best help you? And we'll
+[00:07:04] also do something cool. We'll actually
+[00:07:07] ask one of the Grock bots today to spin
+[00:07:09] up its own team of bots. I'm basically
+[00:07:11] going to ask it, hey, what bots do you
+[00:07:13] think would be helpful for you? If I had
+[00:07:16] to ask you to hire your own team, what
+[00:07:18] would be useful for you? And a bot can
+[00:07:19] actually make that decision. And so bots
+[00:07:21] spitting up other bots or bots working
+[00:07:23] with their other you know teammates is
+[00:07:25] what really makes Grockbot this like
+[00:07:27] multiplayer force multiplier tool. Um
+[00:07:30] and then as I mentioned computer use and
+[00:07:32] the fact that it can do an entire task
+[00:07:34] end to end. Um one thing that I really
+[00:07:36] like about Grockbot is if I give it a
+[00:07:38] task and again it's in the cloud so it's
+[00:07:40] always on. I can come back and trust
+[00:07:42] that the task will be done. It's not
+[00:07:44] going to sit waiting for my approval.
+[00:07:46] It's not going to go back and forth on
+[00:07:47] like should I do this decision, should I
+[00:07:48] not? it will finish the task and then I
+[00:07:50] can tweak it or steer it however I want.
+[00:07:53] But the goal is that you're not just
+[00:07:54] sitting and waiting for it to get do
+[00:07:56] something. You're actually coming back
+[00:07:57] to finish work which really really saves
+[00:08:00] a lot of time.
+[00:08:03] Cool. Um so as I mentioned these are
+[00:08:05] some sales engineer use cases that I
+[00:08:08] have seen um at SpaceX and also three of
+[00:08:11] them actually I'll be showing today. Um,
+[00:08:13] and so the engineered technical
+[00:08:15] resource, David Gan will probably go
+[00:08:17] more into detail about this in his
+[00:08:18] customer support support session. So if
+[00:08:20] you're interested in that, definitely
+[00:08:21] take a look. Um, but what's nice about
+[00:08:23] this is we get a lot of customer
+[00:08:26] questions about security. We get
+[00:08:27] questions about how Grockbot was built,
+[00:08:29] how is memory being stored, um, how is
+[00:08:32] it, you know, what type of computer is
+[00:08:33] it using, is it a Linux VM? All these
+[00:08:35] technical questions, some of them are in
+[00:08:37] our docs, but some of them also are just
+[00:08:39] in the implementation of Grockbot,
+[00:08:41] right? in the repository. And so what I
+[00:08:43] do as a sales engineer is I actually
+[00:08:45] have a expert I call him Sherlock and
+[00:08:47] what he does is he basically has access
+[00:08:50] to a repository. So he has access to you
+[00:08:52] know the Grockbot repository and so if a
+[00:08:54] customer asks me a question I can go ask
+[00:08:56] Sherlock hey a customer is curious like
+[00:08:59] do we support X Y and Z? Sherlock comes
+[00:09:01] back. But what's nice about this is I've
+[00:09:03] actually steered Sherlock to make sure
+[00:09:05] that he doesn't ever, you know, release
+[00:09:07] any IP that he phrase this thing in an
+[00:09:09] easy to understand way if I need to
+[00:09:11] communicate this to maybe someone more
+[00:09:13] high level, someone that's not down in
+[00:09:14] the weeds. And so that's kind of the
+[00:09:16] beauty of this particular Grockbot is
+[00:09:19] that it's meant to understand things
+[00:09:21] technically, but then phrase them back
+[00:09:22] to me as to how I would, you know, tell
+[00:09:24] a customer. And then competitive intel.
+[00:09:27] This is a really fun one. Um,
+[00:09:29] competitive intel is basically a bot
+[00:09:31] that I created. I named it Serena
+[00:09:32] Williams because I'm a big tennis fan
+[00:09:34] and she's also very famous for studying
+[00:09:37] her competitors and watching how they
+[00:09:38] play. Um, but what Serena does is she
+[00:09:42] actually uses competitor products in her
+[00:09:44] own computer and then tells me, hey, by
+[00:09:48] the way, this competitor is using or is
+[00:09:50] doing something different than how your
+[00:09:52] product is. Um, is that something that
+[00:09:54] you want to put on your road map or
+[00:09:56] something that you'd want to change? And
+[00:09:57] we'll see an example of that today
+[00:09:58] actually of Serena actually going in
+[00:10:00] trying out a competitor product, giving
+[00:10:02] me feedback on, you know, what's
+[00:10:04] different between my product and theirs.
+[00:10:06] Um, and then maybe suggesting like what
+[00:10:07] I can what actions I can take later. Um,
+[00:10:10] Echo is something that I think Christa
+[00:10:12] and Mark will show in a later session.
+[00:10:13] It's basically live curating a deck
+[00:10:16] during a customer call. Really neat
+[00:10:18] tool. Um, I I don't use it often, but
+[00:10:21] what I usually do is before a customer
+[00:10:23] call, I'll give it context. I'll give it
+[00:10:25] notes. And then what I'll do is I have
+[00:10:27] this giant master deck of slides of
+[00:10:29] anything from you know uh case studies
+[00:10:31] that we done with customers to
+[00:10:33] benchmarks everything in one kind of
+[00:10:35] master deck and based on the notes that
+[00:10:37] I've given it of what the customer is
+[00:10:38] interested in it will curate those
+[00:10:40] slides and basically highlight what's
+[00:10:43] important in you know what the customer
+[00:10:45] wants and then now I have like a
+[00:10:46] specific deck catered to that customer
+[00:10:48] that I can show later. So we'll show an
+[00:10:50] example of this today. Um, but in the
+[00:10:52] build session, if you all are curious
+[00:10:54] about this type of bot, I'm happy to
+[00:10:55] build it out with you. Okay, cool.
+[00:11:00] Awesome. So, let's get started with the
+[00:11:02] demo then. Um, we have three bots today.
+[00:11:04] We have Mimi. Um, she's going to be kind
+[00:11:06] of the slide customer proof point
+[00:11:08] researcher. Sherlock, as I mentioned, is
+[00:11:11] my technical expert. Um, and then Serena
+[00:11:13] Williams is my competitive Intel one.
+[00:11:15] Um, and that will be fun to see. So,
+[00:11:17] let's see how they do. All right.
+[00:11:23] So, the first thing I'm going to do is
+[00:11:24] I'm going to show you my bots. They are
+[00:11:26] right here. Um, I'm going to start with
+[00:11:28] Mimi. So, what's nice about Mimi, you'll
+[00:11:32] see that I had a conversation with her
+[00:11:34] over the past I think couple days. And
+[00:11:36] the goal of Mimi, if I actually click on
+[00:11:38] her here, is let me actually click into,
+[00:11:42] sorry, into her um
+[00:11:46] into her description. Um, basically what
+[00:11:50] Mimi does is she has access to a slide
+[00:11:52] deck. So you can see it here. She has
+[00:11:55] access to this slide deck once the
+[00:11:56] computer connects. And what she's able
+[00:11:58] to do is she's able to curate the deck
+[00:12:01] and create customer case studies for me.
+[00:12:03] So I have a bunch of slides about, you
+[00:12:05] know, SpaceX and this is what I would
+[00:12:06] present to a customer. But what's nice
+[00:12:08] about kind of my case studies is they
+[00:12:11] all look the same, right? So I have one,
+[00:12:13] for example, for Starlink and how they
+[00:12:15] use SpaceX. And this is based on a
+[00:12:17] public blog post about how Starlink
+[00:12:19] uses, you know, the API. And they all
+[00:12:21] look the same. They all have the same
+[00:12:22] template, which is problem, solution,
+[00:12:25] impact, and then a quote from the from
+[00:12:27] the blog post. And often what I do,
+[00:12:29] right, is let's say I'm meeting with a
+[00:12:32] hardware customer. Um, and I need to
+[00:12:34] present to them an example of how one of
+[00:12:36] our existing hardware customers has used
+[00:12:38] Cursor or has used SpaceX. Um, I
+[00:12:41] basically give Mimi a blog post or maybe
+[00:12:44] even notes from a previous conversation
+[00:12:46] with a customer. And all I do is I
+[00:12:48] basically tell her to create a slide
+[00:12:50] like this. So, we're going to do a live
+[00:12:53] example of that. Um, you'll see that she
+[00:12:55] did one for Jellyfish recently.
+[00:12:56] Jellyfish just did a blog post about how
+[00:12:58] they use cursor for code review. And so,
+[00:13:00] all I did was I say, "Hey, we actually
+[00:13:02] go up here. I said, I just want you to
+[00:13:04] do your job for Jellyfish." And here's
+[00:13:06] the blog post. And boom. You know, she
+[00:13:08] went through. She said, "Okay, here's
+[00:13:10] what I'm going to do for Jellyfish based
+[00:13:11] on reading this blog post. This is the
+[00:13:13] problem. This is the solution impact
+[00:13:15] quote." And then the nice thing about
+[00:13:17] Mimi is again because she has access to
+[00:13:19] her own her own computer, she can create
+[00:13:21] these slides for me and then take
+[00:13:22] screenshots. So she's like, "Okay, this
+[00:13:24] is, you know, the jellyfish logo." She
+[00:13:26] was able to actually go to the jellyfish
+[00:13:28] brand page, get the right logo, and put
+[00:13:30] that on the slide. And then this is the
+[00:13:32] problem, solution, impact, and quote.
+[00:13:35] And so let's do an example of this live
+[00:13:37] and see how how Mimi does. So what I'm
+[00:13:39] going to do actually is I'm going to go
+[00:13:40] back to the browser here. Um, and I'm
+[00:13:43] going to take this blog post. I thought
+[00:13:44] it was very apt because it's a
+[00:13:46] Salesforce blog post about how they use
+[00:13:47] cursor to cut legacy code coverage time
+[00:13:49] by 85%. I'm just going to take this guy
+[00:13:53] and I'm going to go to Mimi and I'm
+[00:13:55] going to say, can you create
+[00:13:59] another one of these slides
+[00:14:02] for Salesforce for me? And I'll just
+[00:14:05] link the blog post here. And actually
+[00:14:06] I'll specifically just say blog post
+[00:14:08] here so she knows.
+[00:14:11] And so what she'll do and you know we'll
+[00:14:14] come back to this at the end of the
+[00:14:15] session to see how she does is she'll be
+[00:14:17] able to take this um create a slide from
+[00:14:19] it and then you know actually insert
+[00:14:21] that slide into the slide deck here. So
+[00:14:24] again what I'm opening here is Mimi's
+[00:14:26] computer. As I mentioned I can take
+[00:14:28] control of it. You know I can click
+[00:14:30] around in it. But what you'll actually
+[00:14:31] see, which is very cool, is Mimi will
+[00:14:34] have her own cursor in here. So Mimi
+[00:14:36] will start editing the slide. Um, she'll
+[00:14:38] give me an update on, you know, when
+[00:14:39] it's ready and how it's doing. Um, and
+[00:14:41] then once she's done, she'll go ahead
+[00:14:43] and present it back to me just like she
+[00:14:45] did with Jellyfish.
+[00:14:47] So, I'll let Mimi go here. I just want
+[00:14:49] to make sure um that she can access
+[00:14:52] this. Um, but while she's working, I'm
+[00:14:55] actually going to go to the other two
+[00:14:57] bots. So, Sherlock and um and Serena
+[00:15:01] Williams. So, I'm just gonna switch my
+[00:15:03] account here so you all can see the
+[00:15:04] other two bots. Um here we go. So,
+[00:15:07] Grockpot for those engineers. These are
+[00:15:09] the two bots. Um I have something very
+[00:15:10] similar to Serena in my in my other
+[00:15:12] account that specifically looks for
+[00:15:14] Grockpot competitors and you know what
+[00:15:16] they do differently. Um but for today,
+[00:15:18] I'm actually going to work in a booking
+[00:15:20] app that we at SpaceX just created as a
+[00:15:23] demo project. So the app that we
+[00:15:25] actually have is something called Flyo.
+[00:15:27] Uh think about it as a very simple
+[00:15:29] booking flight booking app. So basically
+[00:15:31] what we did is we've created this entire
+[00:15:33] company called Flyo. Um they're meant to
+[00:15:35] book flights for anybody. You can
+[00:15:37] upgrade your seat, you can change your
+[00:15:39] flight, you know, whenever you want.
+[00:15:41] Very similar to Expedia or Google
+[00:15:42] flights, any other flight booking app
+[00:15:44] that you see. Um what's nice about this
+[00:15:47] is, you know, we have created a whole
+[00:15:49] like suite of engineering products that
+[00:15:51] power a fly. So, there's a front end,
+[00:15:54] there's a backend, there's a web app,
+[00:15:56] there's an internal app for the crew to
+[00:15:57] use. Um, and what's nice is my Grockbot
+[00:16:01] Sherlock bot has access to all of these
+[00:16:03] things. So, if I actually go back to
+[00:16:05] Sherlock here, you can see I gave him
+[00:16:08] kind of a description. I said, "You're a
+[00:16:10] technical expert on Flyo. Um, and you
+[00:16:13] support the website floowower.com."
+[00:16:16] Um, I gave him access to the particular
+[00:16:18] repos. So, the booking backend, the
+[00:16:20] booking front end. Um, and then I also
+[00:16:22] say if there's a customer issue, I want
+[00:16:24] you to be able to kind of investigate
+[00:16:26] and then communicate what could be wrong
+[00:16:27] to a customer. Um, so I worked with
+[00:16:29] Sherlock a little bit yesterday. I was
+[00:16:31] just curious. I was wondering, hey, how
+[00:16:33] do we support a race condition for maybe
+[00:16:34] someone trying to book two flights at
+[00:16:37] the same time or they're trying to book
+[00:16:38] the same seat at the same time. And so
+[00:16:40] what you'll see is that Sherlock
+[00:16:42] actually uses cursor cloud agents under
+[00:16:44] the hood, which is what makes it um
+[00:16:46] really easy and what makes it able for
+[00:16:48] me to close my laptop is that Sherlock
+[00:16:50] is basically able to say, okay, I'm
+[00:16:52] going to dig into how booking handles
+[00:16:53] two people grabbing the same flight at
+[00:16:55] once. Um you'll notice that it says
+[00:16:57] here, all right, Flyo doesn't let two
+[00:16:58] different customers confirm the same
+[00:17:00] last cabin. Um the protection is in
+[00:17:02] Postgress, which is good to know. Um and
+[00:17:04] then it kind of covers two different use
+[00:17:05] cases, right? a last remaining ticket or
+[00:17:08] if someone is booking the same actual
+[00:17:10] seat, what do you do in those scenarios?
+[00:17:12] And then what's nice about this and this
+[00:17:14] is what I would recommend for anyone
+[00:17:15] working in like a customerf facing or
+[00:17:17] just support role where you have to
+[00:17:18] respond back about how things work is
+[00:17:21] this is what you should tell a customer
+[00:17:22] is that we hold the last remaining cabin
+[00:17:24] space when you start checkout for 10
+[00:17:26] minutes and if someone else started
+[00:17:27] first, you know, you'll get a complaint
+[00:17:29] when trying to book. Um, and so this is
+[00:17:30] kind of what maybe I would even tell it.
+[00:17:32] I can say, "All right, draft this in is
+[00:17:34] it in draft it in an email and send it
+[00:17:36] to this customer." Or I can even say,
+[00:17:37] "Um, okay, this looks great. Can you
+[00:17:40] actually send it for me myself?" And
+[00:17:41] then I can give it a particular, you
+[00:17:43] know, approval to send an email or a
+[00:17:46] Slack for me. Um, so this is the great
+[00:17:48] thing about Sherlock is that it's able
+[00:17:50] to be a technical expert and answer
+[00:17:52] questions for me if I'm ever, you know,
+[00:17:54] confused about how something was
+[00:17:55] implemented inside of my product. Now,
+[00:17:58] let's go to Serena. Um, so Serena, as I
+[00:18:00] mentioned, um, is a competitive Intel
+[00:18:03] bot. And so what she's going to do is
+[00:18:06] she's going to use her own computer to
+[00:18:07] test out competitor products, see how
+[00:18:09] they compare to Flyo. So I'm assuming
+[00:18:11] she'll probably test out products like
+[00:18:13] Expedia, maybe Skyscanner, Google
+[00:18:15] Flights. Um, and then also check and
+[00:18:18] talk to Sherlock and see, you know, hey,
+[00:18:21] do we implement, for example, this whole
+[00:18:22] race condition thing, like does Expedia
+[00:18:24] implement that or is this something
+[00:18:26] specific to just how we do it? Um, does
+[00:18:28] Expedia do it better? Do they talk about
+[00:18:30] it in their technical blogs? Um,
+[00:18:32] something that I do whenever I'm kind of
+[00:18:34] researching competitors and want to try
+[00:18:36] out what other products are doing is I
+[00:18:38] always read their change log, their
+[00:18:39] feature releases, their blogs, because
+[00:18:41] it's kind of a way for me to see like,
+[00:18:43] okay, what are they doing differently or
+[00:18:45] how are they implementing things
+[00:18:46] differently? And Serena can kind of do
+[00:18:48] all of that for you. In fact, you can
+[00:18:50] even set up a routine here and say,
+[00:18:52] "Hey, Serena, like every week maybe, can
+[00:18:55] you summarize uh what has happened
+[00:18:57] recently with the Expedia technical blog
+[00:19:00] or with the Skyscanner technical blog
+[00:19:01] and let me know um if they've shipped
+[00:19:03] anything recently that I should be aware
+[00:19:05] of." Um, a very common I think tool in
+[00:19:09] travel apps and websites right now is
+[00:19:11] like an AI travel agent. Um, so what
+[00:19:13] we'll do actually is we'll talk to
+[00:19:14] Serena and see like, hey, how are you
+[00:19:17] able to see that in some of these other
+[00:19:18] products? Are there products that are
+[00:19:20] doing that right now? And I'm actually
+[00:19:22] going to have her talk to Sherlock and
+[00:19:24] see what would be the technical lift
+[00:19:25] actually of being able to build like an
+[00:19:27] AI agent inside of Flyo. Um, so let's go
+[00:19:30] ahead and get started here. I'm actually
+[00:19:31] just going to say um what are some
+[00:19:35] competitor products
+[00:19:39] that you think
+[00:19:41] are worth testing
+[00:19:44] against?
+[00:19:49] And you'll see that what's nice about
+[00:19:51] Grockbot is it thinks and it's able to
+[00:19:54] kind of communicate what it's saying if
+[00:19:56] you ask it to. But for the most part
+[00:19:58] it'll actually do a lot of its work
+[00:19:59] behind the scenes. Um so I can always
+[00:20:01] ask it sometimes which is like what are
+[00:20:03] you thinking or what's going on? Um but
+[00:20:05] sometimes what it does and because it
+[00:20:07] kind of operates pretty fast is it'll
+[00:20:08] tell you exactly how it's going to go
+[00:20:10] about for example testing something like
+[00:20:12] this. Um once it's done kind of
+[00:20:14] percolating on this um so as you can see
+[00:20:16] it's going to say okay I'm you know
+[00:20:18] connecting. I'm going to be able to find
+[00:20:20] you some competitor products. Um as you
+[00:20:22] can see it messaged Sherlock already.
+[00:20:24] Um, and so it said, "Hey Sherlock, I'm
+[00:20:26] doing some competitor product testing
+[00:20:27] against Flyo. Um, quick baseline ask,
+[00:20:30] what can the current Flyo booking
+[00:20:31] codebase support today? Do they search,
+[00:20:34] you know, do they support searching,
+[00:20:35] fair selection, seats, bags, um, any
+[00:20:38] known gaps versus a typical booking flow
+[00:20:40] that I should weigh when I compare?" So
+[00:20:42] again, I didn't really give Serena any
+[00:20:44] context. All I did was um, if we go back
+[00:20:46] to Serena, all I did was give her a
+[00:20:48] description and then she immediately was
+[00:20:49] able to kind of understand what she had
+[00:20:51] to do. Um, but now she's going to give
+[00:20:53] me some options here. So I said, let's
+[00:20:56] go with let's go with Southwest and
+[00:20:58] Spirit. Let's see how those booking
+[00:21:00] experiences compare to Flyo. Um, and
+[00:21:03] then as you can see again, she will work
+[00:21:05] with Sherlock to kind of go back and
+[00:21:07] forth. So Sherlock is actually now going
+[00:21:09] to say, "All right, Serena asked me for
+[00:21:11] a Flyo booking flow baseline. I'm going
+[00:21:13] to pull what the code actually supports,
+[00:21:14] and then I'll reply back to her and let
+[00:21:16] her know like, hey, we support these
+[00:21:18] things that maybe Southwest and Spirit
+[00:21:20] Airlines don't. Um what I'll also do
+[00:21:23] while Serena is working and this is a
+[00:21:24] very cool part of Grockbot is I can
+[00:21:26] steer her in a particular direction. So
+[00:21:28] for example if I want to say um you know
+[00:21:31] I want her maybe not to test just the
+[00:21:33] booking flow. I want her to test like
+[00:21:35] what are the agent capabilities that are
+[00:21:37] there in these flight booking apps right
+[00:21:39] now. Uh, I'm going to go ahead and just
+[00:21:41] say, can you see if there are any
+[00:21:46] AI travel agent capabilities in any of
+[00:21:50] the competitor tools that we should be
+[00:21:53] aware of? And what you can also see here
+[00:21:56] at the top right is that Serena is
+[00:21:58] actually doing the Southwest booking
+[00:21:59] flow on her own. And so, as I mentioned,
+[00:22:02] a lot of times I don't get the time um
+[00:22:05] or, you know, I I don't I don't have the
+[00:22:07] time to be able to test out booking or
+[00:22:09] any sort of competitor products what
+[00:22:11] like step by step. I don't get that
+[00:22:13] developer experience. And so, what is
+[00:22:15] nice is that I I'm kind of outsourcing
+[00:22:17] that to Serena. So, she can tell me,
+[00:22:19] hey, like the the Southwest booking
+[00:22:21] experience is actually great. Um, and
+[00:22:23] it's actually a lot better than Fly Lo.
+[00:22:25] And these are the ways that Fly Low can
+[00:22:26] be better. Um, and I don't have to do
+[00:22:28] this just for Southwest. I could have
+[00:22:29] Serena do this for a million different,
+[00:22:32] you know, booking flow websites. And so
+[00:22:34] if you're ever wondering like, hey, I
+[00:22:35] don't have time to see what the
+[00:22:37] competitors are doing in my space or how
+[00:22:39] they how they fare compared to my own
+[00:22:41] product, you should really spin up a
+[00:22:43] competitive Intel product. It's very
+[00:22:44] powerful and also just really
+[00:22:46] interesting to see like how these
+[00:22:48] products do in comparison to your own
+[00:22:50] product here. Um, so we can see here
+[00:22:52] she's actually like picking on dates and
+[00:22:55] actually trying to see how booking works
+[00:22:58] in Southwest versus Flyo. Um, what's
+[00:23:01] nice about this as well is, you know,
+[00:23:02] you can also ask it to open up another
+[00:23:04] tab and do the same thing in Spirit. You
+[00:23:07] can ask it to do the same thing in
+[00:23:08] Expedia. So if there's any particular
+[00:23:10] things that you wanted to test, you can
+[00:23:12] actually explicitly say that inside of
+[00:23:14] Serena Williams um, uh, the bot. Okay,
+[00:23:18] cool. So, as I said, I kind of steered
+[00:23:21] her in a particular way. Let's say I
+[00:23:23] want to, you know, test something more
+[00:23:24] than just booking. Let's say I also want
+[00:23:26] to test like the AI travel travel agent
+[00:23:29] capabilities. This basically allowed her
+[00:23:31] to not abandon this per se, but also
+[00:23:35] just incorporate this as a part of what
+[00:23:37] she's doing. So, as I mentioned, bots
+[00:23:39] have memories and bots can learn. But
+[00:23:42] what's nice about that is that they're
+[00:23:43] also able to remember if you've asked it
+[00:23:46] multiple things at once. I think
+[00:23:48] sometimes what can be frustrating with
+[00:23:50] other tools is you ask it a question and
+[00:23:52] then you're like actually I want to do
+[00:23:53] something else but the minute you ask it
+[00:23:55] the second question it forgets exactly
+[00:23:57] what the first question was and you know
+[00:23:59] you can't really give it proper
+[00:24:01] instructions on how you want to
+[00:24:02] incorporate both of those things.
+[00:24:04] Rockbot is actually able to really
+[00:24:06] understand that. Um so as you can see
+[00:24:08] here it did some few it did some like
+[00:24:11] initial discussions into like what the
+[00:24:13] travel agent place is for Flyo. It tells
+[00:24:15] me exactly what we offer. Um, and then
+[00:24:17] it's also seeing kind of like where uh
+[00:24:20] or what I change for Fly Low here. So,
+[00:24:22] she's able to understand my question
+[00:24:24] immediately and kind of come back to me,
+[00:24:26] but at the same time, she's also still
+[00:24:28] doing the booking flow testing that I
+[00:24:30] asked her to do earlier. So, it's kind
+[00:24:32] of a mix of both, which is really great.
+[00:24:34] And what makes it a force multiplier
+[00:24:36] here is that this bot is able to
+[00:24:37] multitask and do many things at once.
+[00:24:40] Okay, I'm going to check in on Sherlock
+[00:24:42] here and see how he's doing. Looks like
+[00:24:44] he's looking again at like our booking
+[00:24:46] flow. baseline and what we're offering
+[00:24:48] as our product. You can see here that
+[00:24:51] the cloud agents are being launched in
+[00:24:53] cursor. Um so one is being launched in
+[00:24:56] uh I believe the back end, one in the
+[00:24:57] front end and I can always open them and
+[00:24:59] see exactly how they're being launched,
+[00:25:01] what they're doing. This is kind of the
+[00:25:02] integration between Grockbot and Cursor
+[00:25:05] is once you know we're able to get any
+[00:25:07] technical information from the repo
+[00:25:09] itself, we immediately can talk back to
+[00:25:11] Serena and give her information as to
+[00:25:13] how we've implemented something. Um, and
+[00:25:15] this is great again when you want to
+[00:25:17] talk to customers because a very common
+[00:25:19] question I get is, you know, competitive
+[00:25:20] differentiation. What makes one product
+[00:25:22] better than the other? How do you guys
+[00:25:24] implement something differently? And
+[00:25:25] this is where I actually work with these
+[00:25:27] bots together so that they can talk to
+[00:25:29] each other, understand what the
+[00:25:31] competitive threats are, and then see
+[00:25:33] what we do in our repo to kind of make
+[00:25:35] that or assuage those worries.
+[00:25:38] All right, so I'll let these two guys
+[00:25:40] run. Um, as you can see, still doing the
+[00:25:42] Southwest booking here. Um, which is
+[00:25:45] good. I want it to be able to get that
+[00:25:46] full experience. Um, let's check back in
+[00:25:48] with Mimi and see how she's doing. Um,
+[00:25:51] so if we go back to this account here
+[00:25:54] and I open up Mimi. Oh, let's go ahead
+[00:25:56] and just resend that. Um, and that way
+[00:25:59] she'll be able to get the information
+[00:26:02] from that blog post again. Hopefully,
+[00:26:04] she'll be able to see that.
+[00:26:08] What's nice about having bots that talk
+[00:26:11] to each other, um, I'm actually going to
+[00:26:12] switch back to Sherlock and Serena.
+[00:26:15] There we go. Um, is once they have a
+[00:26:18] conversation, you can use that
+[00:26:19] conversation as a template for how you
+[00:26:22] want them to interact in the future. Um,
+[00:26:24] so I showed this yesterday, but if folks
+[00:26:26] are curious, instead of kind of going in
+[00:26:28] between both of these bots and kind of
+[00:26:30] seeing what they're messaging each
+[00:26:31] other, sometimes what I like to do is I
+[00:26:33] put two bots in a group chat and then
+[00:26:35] get that visibility of how they message
+[00:26:37] each other in one place. So I'll
+[00:26:39] actually put Sherlock and Serena
+[00:26:42] Williams in a chat. Oh, sorry. Looks
+[00:26:46] like it put two different people. One
+[00:26:48] second. We'll do another group chat
+[00:26:50] here. Let's do Sherlock
+[00:26:53] and
+[00:26:54] ah Sherlock and Serena Williams. There
+[00:26:58] we go. Oh, looks like it's automatically
+[00:27:01] putting me and another person in the
+[00:27:03] chat. So, if I add Sherlock and Serena
+[00:27:05] Williams here, basically what you can do
+[00:27:08] now, if we go back to that, where do we
+[00:27:10] go?
+[00:27:12] Sherlock and Serena.
+[00:27:17] Go back here. There we go.
+[00:27:21] Now both of them are in this chat here
+[00:27:23] and now I can say something like um what
+[00:27:26] have you found is the key differentiator
+[00:27:30] in our competitors that would be
+[00:27:33] significantly
+[00:27:35] you know loweffort to build
+[00:27:39] in the product
+[00:27:41] and what they can do is they can
+[00:27:43] basically have a conversation with each
+[00:27:44] other both based on what they've learned
+[00:27:46] already. So Sherlock now knows kind of
+[00:27:48] that Serena cares about the booking
+[00:27:50] flow. Serena now knows that I care
+[00:27:52] about, you know, Agenta capabilities and
+[00:27:55] they're able to use the context of what
+[00:27:57] I've given it already and be able to
+[00:27:59] talk to each other about all of these
+[00:28:01] things in one place. Um, and so you'll
+[00:28:03] see here that Sherlock and Serena
+[00:28:04] Williams are going to work together now
+[00:28:06] to come back to me with an updated kind
+[00:28:08] of response or solution on what they
+[00:28:10] think would make sense. Um, and what's
+[00:28:12] nice about this is you can basically
+[00:28:14] take the context of both these agents
+[00:28:16] together and then create a PR or a
+[00:28:19] product doc that you can then send off
+[00:28:21] to your technical team. Um, and so
+[00:28:24] you'll see here in the marketplace that
+[00:28:26] we have a lot of different bots uh that
+[00:28:28] are published by, you know, our team
+[00:28:30] members, but also publicly, but then we
+[00:28:32] also have plugins or tools that you can
+[00:28:35] connect to that make it really easy to
+[00:28:37] kind of plug in whatever you found out
+[00:28:40] from your bots into some sort of like
+[00:28:41] paper trail. Um, and so maybe what I
+[00:28:44] would do here is once Sherlock and
+[00:28:45] Serena have come up with a plan of,
+[00:28:47] let's say they want to build, you know,
+[00:28:48] a travel agent, an AI travel agent,
+[00:28:50] because Southwest doesn't have one and
+[00:28:52] Expedia doesn't have one, and that would
+[00:28:53] be our biggest kind of moat. What I can
+[00:28:55] do is I can connect it immediately to
+[00:28:57] Google Docs. Um, I can connect to
+[00:28:59] Atassian or Confluence. Um, if you guys
+[00:29:01] use a tool, maybe you guys use Microsoft
+[00:29:04] OneNote or a tool that doesn't actually
+[00:29:06] have a plugin or an MCP, you can just
+[00:29:08] ask uh Sherlock or Serena to log into
+[00:29:10] that tool on their computer. Um, and so
+[00:29:12] we covered this a little bit yesterday,
+[00:29:13] but I want to hone in on how important
+[00:29:15] it is that a tool not having an MCP or
+[00:29:18] an API is not a blocker. Um, because the
+[00:29:22] the bots have access to their own
+[00:29:23] computers, they can log into whatever
+[00:29:25] tools that they want or that you want on
+[00:29:27] the computer and that makes it a lot
+[00:29:29] easier to integrate with tools that are
+[00:29:31] historically very hard to integrate
+[00:29:33] with. For example, we get a lot of users
+[00:29:35] that use PowerBI um, and have had
+[00:29:37] trouble using AI agentically with
+[00:29:39] PowerBI.
+[00:29:40] bot can log into PowerBI on it on its
+[00:29:42] computer. Um, similarly, I think the
+[00:29:44] MongoDB example is also great where I
+[00:29:47] don't believe we have a MongoDB plug-in,
+[00:29:48] but that doesn't mean that you can't use
+[00:29:50] MongoDB and Rockbot anymore. So, again,
+[00:29:53] remember that if your bot or plugin
+[00:29:56] doesn't exist inside of this
+[00:29:57] marketplace, your bot can still use it
+[00:29:59] because it has access to it on its
+[00:30:01] computer.
+[00:30:03] I want to cover one last thing while I'm
+[00:30:05] here, which is you can see that I have
+[00:30:07] some private skills set up. Um, this was
+[00:30:09] one that I created yesterday, which is
+[00:30:11] actually showing a bot how to do a slide
+[00:30:14] deck animation. Um, what's cool about
+[00:30:16] this is you can teach it multiple
+[00:30:18] different skills and it can apply those
+[00:30:20] skills at the right time depending on
+[00:30:22] when it should be used. Um, so we can
+[00:30:25] actually teach Sherlock a task or teach
+[00:30:27] Serena a task. For example, you can see
+[00:30:30] here that, you know, she's doing
+[00:30:31] something with her computer with Booking
+[00:30:33] Southwest. So, I'll let her keep doing
+[00:30:35] that. But let's say I want to teach
+[00:30:36] Sherlock something. Let's say I want to
+[00:30:38] teach it um how to
+[00:30:41] let me think maybe how to go and see for
+[00:30:44] itself if there is a technical post
+[00:30:47] released in like the GitHub change log
+[00:30:49] for a competitor. So what I can do is I
+[00:30:52] can just take over Sherlock screen. Um
+[00:30:54] and I would recommend everyone actually
+[00:30:55] doing something like this during the
+[00:30:56] build session with me. It's one of the
+[00:30:58] biggest lever ways to use Grockbot is
+[00:31:00] actually by teaching it something via
+[00:31:02] video recording. And I'm just going to
+[00:31:04] say teach a task. And I'm going to go
+[00:31:07] open up Google. You can see it's pretty
+[00:31:08] fast. And I'm going to say something
+[00:31:09] like Expedia technical blog post.
+[00:31:14] And then I'm just going to go ahead and
+[00:31:15] click this guy.
+[00:31:17] I know, ironic. Um, and then we're going
+[00:31:20] to scroll in here. And you can see,
+[00:31:22] okay, they have like a medium.
+[00:31:24] Cool. And they have a bunch of stuff.
+[00:31:27] This is about GraphQL. Maybe I want to
+[00:31:29] search and see is there anything AI
+[00:31:31] related here? And then look into that.
+[00:31:34] Looks like nothing really. Oh, maybe
+[00:31:35] this one. Reimagining platform
+[00:31:37] engineering for aentic future. Scroll
+[00:31:39] here. See exactly what they're doing and
+[00:31:42] are building.
+[00:31:44] And then that's it. I pause it and I'm
+[00:31:47] done. And now what's nice about this is
+[00:31:50] Sherlock will now have all the details
+[00:31:53] about that skill or that video. And what
+[00:31:56] I can do is I can say, okay, you know,
+[00:31:58] now use that skill and apply it to other
+[00:32:02] other competitors. So do the same thing
+[00:32:04] for uh for Southwest or for Spirit or
+[00:32:07] for a Skyscanner for Google Flights. Um
+[00:32:09] and now it's going to be able to know
+[00:32:10] how to scan technical blogs, look for AI
+[00:32:13] related things. You can see here it
+[00:32:14] says, "Okay, the recording is finished.
+[00:32:16] Learn the task from it." And then I can
+[00:32:17] even highlight particular things from
+[00:32:19] that skill or that video and tell
+[00:32:22] Grockbot to particularly pay attention
+[00:32:24] to those. So I can say something like,
+[00:32:26] and I'll use voice mode actually for
+[00:32:27] this. I'll say notice that I
+[00:32:29] specifically looked for AI related blog
+[00:32:32] posts in my competitor products. Um, and
+[00:32:35] I wanted to make sure that we are
+[00:32:37] staying on top of our AI tooling inside
+[00:32:40] of our own product. So, I'm going to try
+[00:32:42] and apply this to as many competitors as
+[00:32:44] possible.
+[00:32:46] Um, as you can see, I did this skill
+[00:32:48] inside of Sherlock. I could have done it
+[00:32:50] inside of um, Serena as well. It's kind
+[00:32:53] of up to you on where you think the
+[00:32:54] skill will be leveraged most, but as you
+[00:32:57] can see here in the marketplace, the
+[00:32:59] skills are basically being used by all
+[00:33:01] the bots at all times. So, um it doesn't
+[00:33:04] matter where you create the skill, the
+[00:33:06] skill will still be learned and used by
+[00:33:07] by the different bots here.
+[00:33:10] Cool. Okay.
+[00:33:13] So, we're going to go back and see how
+[00:33:15] Serena is doing. Um actually let's check
+[00:33:17] on our group chat where I basically
+[00:33:18] asked them to come together as a team
+[00:33:21] and figure out okay where can we
+[00:33:22] actually make a change or a difference
+[00:33:24] with this product. Um so you can see
+[00:33:26] Sherlock was saying okay from the
+[00:33:28] codebase side of things looks like uh
+[00:33:31] every competitor treats this as basic
+[00:33:33] table stakes which is for managing
+[00:33:34] booking on the back end uh for trips.
+[00:33:38] And so that's one easy way that we can
+[00:33:40] fix things. Also the second is a
+[00:33:42] flexible date calendar. Um, looks like
+[00:33:44] this is live. The front end client
+[00:33:46] already has it wired, but it never calls
+[00:33:47] it. This would be a classic
+[00:33:49] differentiator for us and very easy to
+[00:33:50] wire up. And then Serena says, "Okay,
+[00:33:53] roundtrip and bags look big, but they're
+[00:33:55] not low effort here. The bags aren't a
+[00:33:57] skew. I'm curious which of manage
+[00:33:59] booking versus calendar felt most
+[00:34:01] painful when you were on those tools."
+[00:34:02] So, they're working together here.
+[00:34:04] They're kind of figuring out um what
+[00:34:06] exactly is, you know, the biggest lift
+[00:34:08] here or what would be the easiest thing
+[00:34:10] to implement. I want to notice or I want
+[00:34:12] to point out something here which is
+[00:34:13] that Sherlock tags Serena Williams in
+[00:34:16] this and this is a cool way for bots
+[00:34:18] again to communicate with each other is
+[00:34:20] if uh Sherlock exact wanted exactly you
+[00:34:23] know something specific from a bot you
+[00:34:26] can either do that yourself so for
+[00:34:27] example I can tag Serena myself and say
+[00:34:30] hey Serena I'm specifically talking to
+[00:34:32] you but the bot can also do that on its
+[00:34:34] own as well um and that's a really cool
+[00:34:36] way for bots to communicate and
+[00:34:38] specifically get information that they
+[00:34:40] need from you a bot with memory and
+[00:34:42] context on that information.
+[00:34:45] Okay, so we have these two bots. I think
+[00:34:48] I mentioned earlier that I wanted to do
+[00:34:50] something different which is I wanted to
+[00:34:51] ask the bots what bots would be helpful
+[00:34:55] to them and I do this sometimes when you
+[00:34:58] know I'm working and I have a team but I
+[00:35:00] want to see like okay what can actually
+[00:35:01] what can I do to help this team and to
+[00:35:04] make it you know operate faster or more
+[00:35:05] efficiently or with better memory and
+[00:35:07] context. So, what I'll do here um is
+[00:35:10] I'll actually go let's go to Sherlock.
+[00:35:12] Sure. And I can say I can say based on
+[00:35:15] the work that you and Serena I'll tag
+[00:35:18] Serena here are doing,
+[00:35:21] what bots would be helpful for you to
+[00:35:26] continue doing great work um
+[00:35:29] specifically
+[00:35:32] around competitive differentiation
+[00:35:35] and sales engineering.
+[00:35:38] and I'll say go ahead and spin up those
+[00:35:40] bots
+[00:35:42] for me. So, this is a little known fact
+[00:35:45] which is bots can spin up other bots.
+[00:35:48] You can ask a bot to say, for example,
+[00:35:50] if you have a chief of staff bot, which
+[00:35:52] is I think one of our most common bots,
+[00:35:54] um you can say, "Hey, I want you to spin
+[00:35:56] up three bots that you think would be
+[00:35:57] the most helpful for my day-to-day." And
+[00:35:59] usually what the chief of staff bot will
+[00:36:01] do is it'll spin up like an inbox
+[00:36:02] manager, maybe a scheduler and maybe
+[00:36:05] like a a a calendar manager or something
+[00:36:07] like that. Um, but I'm actually very
+[00:36:09] curious here to see what the bot thinks
+[00:36:12] it would be helpful in this scenario and
+[00:36:14] how exactly it chooses those bots to
+[00:36:16] spin up. Um, and this is also great if
+[00:36:18] you're starting out with Grockbot for
+[00:36:19] the first time. Let's say you're a sales
+[00:36:21] engineer, you work at a particular
+[00:36:22] company, you guys have very particular
+[00:36:24] workflows. Um, and you know, you do
+[00:36:26] demos, you do particular things that are
+[00:36:29] very specific and are not, you know,
+[00:36:30] onetoone with what I showed. Go ahead
+[00:36:32] and ask Rockbot to spin up some bots for
+[00:36:34] you and say, "Hey, I want to be able to
+[00:36:37] create a demo for uh, you know, a PC
+[00:36:39] that I have with my AE in a couple
+[00:36:41] weeks. It's for this particular
+[00:36:42] customer. Spin up three bots for me that
+[00:36:45] you think would be useful in order for
+[00:36:46] me to accomplish this task." Um,
+[00:36:48] Grockpot is here to help you. It's not
+[00:36:50] here to add extra work or to, you know,
+[00:36:52] give you extra managerial
+[00:36:54] responsibilities. It's here to tackle
+[00:36:56] problems together on the same page. And
+[00:36:59] so that's kind of why I like having it
+[00:37:01] spin up its own bots is because it's
+[00:37:03] able to do that without me kind of
+[00:37:05] having to think exactly what I want
+[00:37:06] those bots to be doing. So good kind of
+[00:37:10] trick if you want to to work uh on
+[00:37:13] multiple things or you know whether that
+[00:37:15] be competitive differentiation, creating
+[00:37:17] demos, uh working inside of Salesforce,
+[00:37:19] you can do all those things with these
+[00:37:21] bots kind of here.
+[00:37:24] Okay, we have about eight or so minutes
+[00:37:26] left. I want to check back in with Mimi
+[00:37:28] and see how she's doing. Um I know there
+[00:37:31] was a bit of an outage earlier today.
+[00:37:33] Okay, cool. Looks like she's working.
+[00:37:35] She says, "Already on Salesforce from
+[00:37:37] your last message. I'm checking whether
+[00:37:38] the pair is in yet. I'm still building
+[00:37:40] the Salesforce pair. I'll send both
+[00:37:42] screenshots when it's in the deck." Um,
+[00:37:45] looks like she's having trouble logging
+[00:37:46] in again. Let's see if we can go back in
+[00:37:49] and log in for her. So, again, this is
+[00:37:51] an example of how you can take control
+[00:37:53] of logging into uh Oh, look. That looks
+[00:37:56] great. Um, you can take control of
+[00:37:58] logging into a uh slide or doc or
+[00:38:01] anything in Google Drive for you. Um,
+[00:38:04] looks like it actually created those two
+[00:38:06] slides perfectly for me. So, it the logo
+[00:38:08] was a little small, but at least it got
+[00:38:10] the right logo. And then what it also
+[00:38:11] did is it took that exact uh same blog
+[00:38:15] post that I gave it and created a slide
+[00:38:16] for me. So, it said here's the problem.
+[00:38:18] Legacy repos were far below the coverage
+[00:38:20] mandate. This is the solution. This is
+[00:38:22] the impact. And this is a quote from the
+[00:38:25] blog. Easy. Done within, you know, the
+[00:38:27] last 10, 15 minutes or so. And now I
+[00:38:30] have a nice kind of template of a slide
+[00:38:33] that I can give. Let's say if I'm
+[00:38:34] speaking to Service Now or any other
+[00:38:36] Salesforce competitor to be like, "Hey,
+[00:38:38] by the way, we've done cursor with
+[00:38:39] Salesforce and they had a great, you
+[00:38:41] know, uh, use case with us." So, we can
+[00:38:44] do this one more time if you guys want
+[00:38:45] to see it again. We can just keep Mimi
+[00:38:47] in the loop. Um, we have a good use case
+[00:38:51] with Grab. Grab uses cursor. Grab cursor
+[00:38:54] case study. Let's see. Here we go.
+[00:38:57] Another blog post published by Grab. I'm
+[00:38:59] going to go ahead and do this one last
+[00:39:01] one. Go back to Mimi here and say,
+[00:39:04] "Great work. Can you do one for Grab?"
+[00:39:09] And again, as I mentioned with the
+[00:39:11] steering, I could have sent all of these
+[00:39:12] to Mimi at once. I could say, "Hey, do
+[00:39:14] Salesforce, do Grab, do this other
+[00:39:16] customer story that we have." And then
+[00:39:18] she can create all of these. And then
+[00:39:20] what what I could do, which is kind of
+[00:39:21] what I showed earlier with the Echo uh
+[00:39:23] Grockbot, is when I have my customer,
+[00:39:26] you know, call or I have to present
+[00:39:28] these, I can tell Mimi, hey, hide the
+[00:39:31] slides or hide the case studies that
+[00:39:33] wouldn't be relevant for this customer.
+[00:39:34] Let's say the customer is Uber. They
+[00:39:36] don't maybe they care more about the
+[00:39:38] grab case study than they do about the
+[00:39:39] Salesforce case study, something similar
+[00:39:41] to that. Um, and so I can kind of send
+[00:39:44] all of these off. Again, I can do these
+[00:39:45] from my phone. I don't even have to have
+[00:39:46] my laptop open. Mimi can work on all of
+[00:39:49] these case studies and all of these
+[00:39:50] slides for me. She knows exactly how to
+[00:39:52] do them now given that I gave her the
+[00:39:54] exact template which is logo and then
+[00:39:56] problem solution impact and quote. Um
+[00:39:58] and then I can just you know feel free
+[00:40:00] to use these slides whenever I want. Um
+[00:40:02] and that's actually how I make a lot of
+[00:40:03] my slides with uh with Rockbot is I ask
+[00:40:07] it to follow a template because I don't
+[00:40:09] want it to, you know, come up with
+[00:40:10] anything too sloppy or too wordy. I know
+[00:40:13] exactly how I want my slide to be
+[00:40:15] organized. But then once I had the
+[00:40:17] content for it, for example, this blog
+[00:40:18] post, Mimi the Grockbot was able to be
+[00:40:21] smart enough to take the most important
+[00:40:23] parts of this blog post, organize them
+[00:40:25] into the right places, put them into a
+[00:40:27] Google slide for me, and then now I'm
+[00:40:29] able to go to my customer ready and
+[00:40:30] prepped. So it's a really beautiful
+[00:40:32] end-to-end flow. kind of bringing it
+[00:40:34] back to what I said earlier, which is
+[00:40:36] finished work is the best part of
+[00:40:38] Grockbot is you are no longer spending
+[00:40:41] time reading through this blog, figuring
+[00:40:43] out what the main points are, putting
+[00:40:44] that into a slide, designing the slide,
+[00:40:46] making sure everything looks nice,
+[00:40:48] getting the logo. Rockbot did all of
+[00:40:50] that within the last 10 to 15 minutes.
+[00:40:52] And it can do that for as many different
+[00:40:55] customers as you want. So, as you can
+[00:40:57] see, it says, "All right, grab next. I'm
+[00:40:58] going to check that the Salforce status
+[00:41:00] works." Then pull that engineering post.
+[00:41:01] I'm actually going to say Salesforce
+[00:41:03] looks great. You can go ahead and start
+[00:41:06] working on Grab.
+[00:41:09] And hopefully by the time Q&amp;A is over
+[00:41:11] today, we can see the Grab slide as well
+[00:41:13] in addition to the Salesforce slide. But
+[00:41:15] this is what I want to highlight when it
+[00:41:17] comes to you know what makes my job
+[00:41:19] easier is a lot of times I have to
+[00:41:21] create slides for you know sometimes 15
+[00:41:24] 20 different customers in a week and
+[00:41:26] having Mimi as like my slide guru but
+[00:41:28] also my customer proof point reader. Um,
+[00:41:30] actually sometimes what I'll do is I'll
+[00:41:32] ask her to to crawl the web and just see
+[00:41:35] all of these blog posts like the
+[00:41:36] Salesforce one, the Grab one. These are
+[00:41:38] not published by cursor. These are
+[00:41:39] published by these companies. And
+[00:41:40] sometimes we don't really get updates as
+[00:41:42] to when these companies publish these
+[00:41:44] posts. So sometimes I'll ask me be like,
+[00:41:46] hey, have there been any customer posts
+[00:41:48] recently about Cursor or SpaceX recently
+[00:41:51] that would be good to highlight in my
+[00:41:52] deck? And then if so, go ahead and
+[00:41:54] create a slide for it. And that can
+[00:41:56] that's something that can easily become
+[00:41:57] a routine. Um, and so really, really
+[00:42:00] great and easy. Um, and I just love
+[00:42:02] slides that look nice. You know,
+[00:42:03] everyone, I think, has seen a lot of
+[00:42:05] slides that they all look the same. They
+[00:42:07] all use that same purple color because
+[00:42:08] they're all AI generated, but not
+[00:42:10] anymore. Not when you give bot the
+[00:42:13] template, the memory, the context of how
+[00:42:14] you want things to get done, and then
+[00:42:16] it's able to work off of that.
+[00:42:20] Okay. Um, I'll let Mimi work on Grab.
+[00:42:22] I'll come back to her during the Q&amp;A. I
+[00:42:24] do want to quickly go back to Sherlock
+[00:42:26] and Serena. um and see how both of them
+[00:42:29] are doing. As I mentioned, I taught
+[00:42:32] Sherlock how to use that AI kind of blog
+[00:42:34] skill so that it's able to find out what
+[00:42:36] our competitors are doing. Um but you
+[00:42:38] can also see here that these are the
+[00:42:40] three bots that um that my uh Sherlock
+[00:42:44] bot spun up. So, if you remember
+[00:42:45] earlier, I said, "Hey, based on the work
+[00:42:47] that you and Serena are doing, what bots
+[00:42:49] would be helpful for you to continue
+[00:42:51] doing great work?" And you can see it
+[00:42:52] spun up those three bots for me. So,
+[00:42:54] let's see what these bots do. battle
+[00:42:56] card blare competitive differentiation
+[00:42:59] and sales engineering battle cards. So
+[00:43:01] this is useful. So in addition to maybe
+[00:43:03] just having customer case study slides,
+[00:43:05] maybe what I can do with battle card
+[00:43:07] player is she can work with Mimi and
+[00:43:09] create slides against my competitors. So
+[00:43:11] not only do I have case studies on what
+[00:43:13] customers like Cursor, I can do have
+[00:43:15] case studies on, you know, what
+[00:43:16] customers are different from Cursor and
+[00:43:18] what makes them different. So this looks
+[00:43:20] great. It says it combines Serena's
+[00:43:22] hands-on competitor product findings
+[00:43:24] with Sherlock's Fly low codebase.
+[00:43:26] Produce short SE ready battle cards,
+[00:43:28] competitor claims, fly low reality,
+[00:43:30] etc., etc. Looks good. I'll probably
+[00:43:32] keep her around. Demo Drake, let's see
+[00:43:34] what you're up to. Sales engineering
+[00:43:36] demo and talk track specialist. Build
+[00:43:38] confident no hallucination demo scripts
+[00:43:40] and call talk tracks that map customer
+[00:43:42] pain to the fly low live flow. Ground
+[00:43:45] every claim in Sherlock. I love this. I
+[00:43:47] think this is important is that it it
+[00:43:49] knows that Sherlock is the technical
+[00:43:50] expert and so it refers to that going
+[00:43:52] forward and then when competitive
+[00:43:54] contrast is needed you can pull from
+[00:43:56] Serena or from Battlecard Blair. So this
+[00:43:58] is what I'm saying is that you have this
+[00:44:00] team now that it's all working together
+[00:44:02] on the same outcome and the same
+[00:44:04] projects and that makes things so much
+[00:44:06] easier when you have for example so many
+[00:44:08] different things to manage or to keep
+[00:44:09] track of. You get all of that here and
+[00:44:12] then the last one is AI radar. Let's see
+[00:44:14] what this one is doing. Okay. Track
+[00:44:15] competitor AI tooling from public tech
+[00:44:17] blogs. So, this honestly is maybe a
+[00:44:19] little too similar to Serena. Maybe I
+[00:44:21] need him, maybe I don't. Um, maybe I I
+[00:44:24] don't want him because he doesn't have a
+[00:44:25] cute aliterative name like the other
+[00:44:27] ones. Um, but you can see here that this
+[00:44:29] one prefers to, you know, specifically
+[00:44:31] go through engineering posts. It opens
+[00:44:33] each blog, finds the AI related post.
+[00:44:35] So, it's actually using that skill that
+[00:44:36] I taught um I taught Sherlock earlier.
+[00:44:40] Um and then again uses Sherlock as a
+[00:44:42] source of truth always and then hands
+[00:44:44] any you know testing or user user flows
+[00:44:46] to Serena to do on her own computer. So
+[00:44:49] as I mentioned you can always spin up
+[00:44:51] your own bots just by asking them to do
+[00:44:53] it. Um a very I think common uh joke at
+[00:44:56] cursor is or at SpaceX is if someone
+[00:44:58] asks us like can we do this? I'm like
+[00:45:00] ask rockbot. Um and a lot of times
+[00:45:02] that's how we work is there are times
+[00:45:04] where Grockbot will say no. In fact, I
+[00:45:06] think that's actually a big advantage of
+[00:45:07] the rock model is it's one of the few
+[00:45:09] models I feel that actually pushes back
+[00:45:11] um and will say I cannot do something.
+[00:45:14] It won't always kind of just be sick of
+[00:45:16] fantic and tell me yes or or yeah, of
+[00:45:18] course, you're absolutely right. Um and
+[00:45:20] so sometimes what I'll do is I'll use
+[00:45:22] you know these these bots as my as my
+[00:45:25] like as my helpers basically to figure
+[00:45:28] out what else I can do next. Um and
+[00:45:30] that's that's the beauty of Grockbot.
+[00:45:32] Um, I'll bring Mimi back up, but I think
+[00:45:35] um, we are about to wrap up pretty soon.
+[00:45:37] Um, yeah, we'll do some Q&amp;A uh, for
+[00:45:40] folks in person, but thank you so much
+[00:45:42] for joining and I I hope this was useful
+[00:45:44] for everybody.

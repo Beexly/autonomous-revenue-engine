@@ -1,0 +1,473 @@
+Good afternoon and welcome to Grabot Galaxy and thank you so much for joining today's workshop on Grabbot for engineers. My name is Lingshi and I'm a
+
+uh software engineer at SpaceX AAI. Uh to give you a little background about me, I joined cursor which is now SpaceX AAI right now uh not for nine months and
+
+already shipped two products. I previously built cursor 3 Asian window and now building Grubbot. And interestingly, in the past two months, I've been only using Grubbot for my engineering tasks. And with Grubbot, I
+
+was able to build the first version of the Grubbot mobile by myself in three weeks. And I can also learn much faster now thanks to Grogbot because uh I can
+
+get to work on a lot of different aspects of the Grockbot and also apply uh different approaches that I think that we we we didn't try uh following
+
+the first principles and the more I build with Grockbot uh the more I want to share this superpower with you all and this is what today's uh workshop is
+
+all about. So our whole engineering journey started at around uh from the early 2024. At the time or before that we only have like autocomplete uh which is like syntax based and after
+
+that we starts to have tab completion which is already a big leap forward. Uh and since then we starts to have the ask and edit. Um that is the first time we
+
+have we can feel the power of the agent where it can help us glimpse through the codebase much faster much easier and also start doing some repetitive tasks
+
+but at the time they cannot do like a a big bunch of tasks and uh we just keep iterating and then the agentic coding comes. The cursor two and cursor three
+
+are all about agentic coding. And it is able to manipulate your computers, manipulate your mouse, your keyboard to test things end to end. And not only
+
+that, it can now think uh on a longer horizon to to know what needs to be done for the next step. And it can also plan
+
+things uh it can work on things like you know we have the slashgo slashloop that has been pretty useful on getting agents finish a task end to end so I don't have to nudge it but at the time we still
+
+need to nudge it we still need to write the prompt we still need to start the agent from some some sort of interface so the next step comes [clears throat] the automations uh which is running on
+
+the cursor cloud agents that is a era because uh the agent could then be started based on some triggers like you receive a slack message, you get
+
+something uh and that unlocks a lot of possibilities because it can not not only like you can not only relying on you starting the agent, the agent can
+
+start on its own that you are not with your computer. The agent can also run 24/7 uh even even when you are asleep. It can also start based on the Slack messages it triggered.
+
+And another thing uh that it unlocks is it no longer limited by how much your local computer can run. The whole idea of cursor cloud agents is that it can
+
+run whatever is possible on your computer on cloud. That means we can just give you 10 machines or even more to run things in parallel. Your agents
+
+will no longer fight for the same port. And you know at the at the time the cursor cloud agents has un unlocked everyone. Uh everyone at cursor team has
+
+almost been 10xed or even more. But we have also been thinking through what should be the next step like agent coding is already very good. We have seen promising result that a small team can ship a big product. Uh what's more
+
+what can make our life easier. So the idea is we can possibly make Grockbot uh like we can possibly make some AI agent to help us write the prompt to help us
+
+orchestrate uh because right for before that uh I was able to manage 15 cursor cloud agents and it was already a lot. I have been context switching between different cloud agents. Uh, but like I I really wish there was
+
+another agents that can help me kick off the followup, help me cue the messages, help me nudge or interrupt the cloud agents when I think it shouldn't do uh
+
+it shouldn't continue or it needs to be steered into a different direction. And I we do believe that the models nowadays have the capability to get the signals
+
+we need. Um so then we just put them together and now it becomes the team of autonomous AI agents uh that that that like can act as your colleague and you
+
+can directly tag them, you can directly work with them and they can grow with you and that is Grogbot. Um so let me introduce you to the
+
+Grockbot. Um this is a team of fully autonomous AI agents designed for all types of works including engineering. First of all it runs 247 and it is fully
+
+autonomous. It can run on its own. It is not limited to when your computer is asleep or not and uh it also does not require you to actually have a laptop.
+
+The second thing is which is the biggest uh unblock for the uh for the engineers is it can manage coding agents for you. Not only uh cursor cloud agents it can
+
+almost manage any type of coding agents for you and the the best thing is it has the first party integration with cursor cloud agents. So it has the tools to be
+
+able to read the transcripts to start a cursor cloud agents. Uh it can also start on a private worker so that if you have your Mac machines you want to learn
+
+they can start into the Mac machine. Um anything you can do in the cursor window with cloud agents grabbot can do for you with tool calls. And so you don't have
+
+to uh you know let your grabbot control some user interface to start the agents and read the transcript. It can efficiently read all these through their
+
+tool calls. And uh to me this unblocks a lot of uh workflows because it can examine what's being done by by the cloud agents uh not
+
+only being done but also what's in progress. So for example uh I have some instructions to my Grockbot that after the workflow is done it can check what's
+
+being proved in that workflow or in that in that cloud agent term and then it it can use my instructions to determine whether that is treated as completed or
+
+it's missing some important proofs for example like screenshots or the performance comparison before versus after. If it's missing, my Growbot can just directly uh create a follow-up
+
+reply to the cloud agents with what needs to be done. So the cloud agents can then continue working even if I am not with my computer.
+
+The second thing is it can connect to most of the tools you use. For example, like if you are an engineer deploying your websites or dashboards to the
+
+Verscell, it has the Versel MCP. It can connect all these deployments. So it's it's not like connect a Versail MCP with your local code uh coding uh agent tech
+
+coding tools. It's that it can just run 247 and it can check the signals when the build is failed starts to to work on that. It can also directly uh kick off a
+
+deployment based on some timing. For example, like you want to you want to get a deployment on 6:00 a.m. tomorrow but you are a night idol. You can just
+
+ask it say okay deploy 6:00 a.m. tomorrow. It will know the timing. It will uh call all the tools you use at the time. So you are no longer needs to
+
+start a a local agent or some other agent at the time you need them. Another big thing is it has the memories and routines. This is the biggest
+
+unblock. Uh this is actually a big leap forward comparing with what we had before with continuous learning. It has uh it can persist the memory based on
+
+what you tell them and over a very very long horizon and also the graph bots are uh like very uh are named so you can
+
+have different memories under different graph bots so that they are not overwhelmed by tons of memories that are possibly unrelated to to what they're currently working on. And this is very
+
+important because most of the time when you are talking with Scrockbot on something that they should be doing better uh they can just continue like
+
+they can just remember it and the next time when they start a cloud agents or doing something doing some revision works against the cloud agents they can
+
+apply what you previously uh enjoyed and then directly uh use that into uh into the prompts they they sent to the cloud agents. you don't have to repeat what
+
+you said thanks to this memory system. And um I think it's also important to understand why you need a grabbot because there are a lot of
+
+um products out there that are possibly able to do the work that you might think they're able to do. for example like I was a big user of uh the open claw and
+
+her her agent um and they were not really able to do the engineering works that good because they lack the first party integration with the with the
+
+grabbot so uh I think the f the first idea is you don't need any caffeinated laptop anymore I think that's a big unblock because I know a lot of you have
+
+maybe have a tool or some terminal commands to to make sure your laptop is awake just to get the things done. We don't think that's an elegant experience for any sort of engineering tasks. We
+
+want to get rid of it. So, Groa has their own computer 24/7. Your laptop can stay awake uh can can stay away from being awake and can just keep being a
+
+terminal for sending the commands and after you send it, you just close the laptop. You don't really have to worry about if if anything gonna stop working
+
+or stop running. The second thing is it's beautifully available on all platforms. We recently shipped the iPad and Android and it's already available on iOS, um, Windows, Linux and Mac OS.
+
+So you can literally work on anywhere. For example, you can lie on the grass on the Golden Gate Park while your body is working. And the third part is also one
+
+of the biggest onb block for the grob bots comparing with other products is that you can control the computer when needed. Unlike other products uh when
+
+they actually need a login or they actually need someone to help them click through something you cannot do it. You can only prompt them and helplessly see
+
+what's going on on the transcript. It's no longer a case for grabbot on any platform like iOS, Android or iPad. you can directly click click through the computer to get things done. Uh whether
+
+it's like log into some uh services that are very hard to navigate or require some sort of human verification or when it's uh doing some login but you don't
+
+want to hand your your password away, you can use the mobile clients or our desktop clients to click through the remote computer to get things done. You
+
+can you cannot really get this with other products. And the last part is the first party coding agent integration. This is also only exist at cursor that
+
+our cursor cloud agent integration with scrubbot is very very smooth that almost everything you can do in the user interface of the cursor it's possible
+
+with scrapbots and let me share a few interesting engineering use cases that I really enjoy. It's been empowering me since the past two months and I really love what
+
+uh we have been building around the grogbot and also build a grabbot for us. The first thing is get the things done when I'm away. So let's think about um
+
+you are you are possibly asleep or you are on a fight and your teammate needs an an unblock. You are the only engineer having the code owner of of some service. Previously they have to wait
+
+until you are get off the flight which is kind of sad uh because in the in in the uh modern startups the speed is very
+
+important. So let's think about uh you are get pinged and your bot can monitor your slack and based on the situation or the criterias you set automatically un
+
+unblock them reviewed for whatever is needed and then send an an acknowledge back in the stack. That's what's happening right now. And it's been pretty smooth because uh I don't have to
+
+be uh always next to my laptop. Even if something that's actually review uh require my review or require my supervision, I can also take a look on my phone and then once I feel it's good,
+
+I can just send this through my Grockbot saying, "Okay, this looks good. Approve it." And then the Grockbot will just send approval and also notify the sender
+
+about this thing is being approved. they can continue and also we can possibly think further about what if they can monitor just the general slack for me not only when I
+
+sent them something that says okay it's approved I can tell the grabbot that these are my review criterias I need something to be attached with a screenshot I need it to be to be attached with a test that are not fake
+
+tests and then whenever someone send me or or or tag me on the slack. They can read the message, check if it's a review case and then they can kick off my skill
+
+for uh doing a code scan and also doing code research uh based on the criterias I gave. They can also run it in a cloud agent. So they can uh execute a skill
+
+inside your your repository and then they can acknowledge it back. So, I don't have to be away uh like a side of my computer or even a side of my
+
+phone at all and only be notched when my bot actually needs me. And how about one step further? How about monitor X for me? There are a lot of bug reports about
+
+the grab bots on X and those are very valuable feedbacks. So we also have set up the bots to monitor the Slack thanks to the first-party integration with Slack MCP. Um so we also we have the
+
+bots to automatically kick off a task to start digging into whether the the the reproduce is still valid on main and then if it's still valid go fix it and
+
+send me the PR. And the same thing applies to other surfaces where we need security reviews or we need to go find the right person
+
+for them to review. Everything now is is bots contacting with spots and uh we the human only connects with human when it's absolutely needed so we can focus on the
+
+deeper work. So that you might be interesting in where is the human stands in if bots can do everything for us. That's a very good question because uh
+
+humans still have a lot of things to focus on. I still drive the product direction. There are still a lot of design details I need to dive into.
+
+There's there are also like a lot of difficult things that bot couldn't finish like performance issues like how we should architect our next uh next
+
+version of the app. So we can avoid most of the issues we have and also have a good architecture in the front uh in the
+
+front so we won't get sloppy code along uh along the horizon. I also need to give them a better instruction on how to say no. I think
+
+this is a very important aspect in a in a product because uh there are a lot of bug reports and feedbacks and some of them is not suitable with what you need
+
+in a product. Uh the bot will is very kind. they will possibly accept everything by default. So you need to set the boundary. You need to tell them
+
+why you need to do this, what kind of things you should not be doing and here's the reasoning. The bot has the memory system. They can remember what you told them and then apply to the future deter uh decisions. So they don't
+
+you don't have to repeat say I don't want this in the product. This is not simple enough. We need to simplify this. You don't have to repeat that over the time. And also I need to make sure my bot is
+
+not blocked. Uh I think it's also uh it's very important because there are a lot of authentication steps in between. So I uh the the grabbot needs to have a
+
+very good experience on uh getting getting the bot unblocked by a human. The next use case is also one of my favorite use case which is available on
+
+the marketplace as well. It's nightly code cleanup. Uh we all know that in the past year we have been possibly shipping some sloppy code. Everyone hates that
+
+and sometimes it's just hard to enforce every single agents to apply uh the same rules. So another solution is just to clean those slops out over the night.
+
+That's when the people are not shipping. So it's less likely to hit a conflict and it's also uh less less risky because most of the time they're just slops.
+
+They can just being condensed into a smaller module or remove the the the lensy comments that you just hate. Those are very low risk could be done over the night and uh you can also trust the the
+
+the cursor cloud agents to merge those PRs based on the conditions you set. for example, like you have provided a a clear end to end uh proof of what's
+
+going on. Uh if if that's provided, you can feel free to merge. And um right now my setup is every 3:00 a.m. my uh my GR uh my bot will set will
+
+start a research cloud agent to to review uh across the whole surface of our monorrele and they can identify issues like uh code quality uh not being
+
+good things should be modularized but not better but not properly modularized. uh the comments that are not properly uh condensed into what is necessary and
+
+also security audits that sometimes we just forgot that this is very important to prevent someone else to uh stole something. Uh we we we have to drop out
+
+catch all these kind of things over the night and when I wake up I just have a set of PRs available. The next thing is about the internal tooling that this was also changing how
+
+we collaborate within the organization. Previously for things like adding people to the test fly via email address rather than via a link. You might think I can
+
+build an internal dashboard, put some authentication on it, put some database against it, deploy to Versell uh behind some uh authentication wall and then distribute it to uh the the internal
+
+employees to sign up for the test flight. it works even and and with the agent decoding it should be already uh like not so you can get it done by in an
+
+hour or two. The thing is why do you have to with scrapbot one of the flexibilities is the cropot can run logics with a much simpler interface for
+
+example like a slack message. So the unblock here is that I have everyone just mention my bot inside Slack and just put put the email address next to
+
+it. My bot will have a routine or or some uh web hook signals based on a slack. So whenever someone tag it will starts to to run the routine of adding
+
+people into the test flight. So the only thing I need to do is to make sure my bot has access to the test flight in a safe way. Um and other than that I I
+
+only give it one prompt of what needs to be done and this internal tooling is available to be used. The next thing is also uh my other
+
+favorite use case which is autofix everything. You might have a lot of deployment pipelines or CIS or end to end integration tests. The the biggest
+
+thing is uh when we actually have a CI going red, we we usually ping on call rather than another bot to get it fixed. That's changed. Uh the on calls are only
+
+being involved when it's absolutely needed. And most of the time when CI is read a bot will automatically kicks in starts to examining what is being read
+
+and then starts to uh spin up a cloud agent to fix it and then also has our instructions of how to determine if you should merge it and they can just merge.
+
+So the turnaround of needing a human to take a look and that human needs to context switch between tasks are very very minimal right now.
+
+Not only for a CI being main, any deployment errors, any CI flakiness or uh any any sort of tasks that has a signal or has an alert currently in your
+
+internal pipeline could be hooked up into the Grockbot and only ping on call if uh it wasn't resolved after like uh 10 minutes. Most of the time grapa can
+
+get it done within 10 minutes. And right now, let me introduce you to how I organize my bots. So, we are kind of in between a world where you only need one bot versus you need a fleet of
+
+the bots. So, I have my chief of staff, which is called Link Shishi. Um, I have the Craig working on the UI engineering. I have Steve working on the DevX and
+
+Hogan working on Infra. You might ask this question of why we need three engineer bots rather than one because apparently they are sitting on the same
+
+model and they might be able to do the do the task 100% they will be able to do any task you gave them even if I gave a
+
+UI task to Hogan they should be able to resolve it the the issue is the context and also how they gonna manage their fleet every single bot has a different
+
+slightly different pipeline based on the work they do and also has their own context limit uh to avoid they run over their context limit when
+
+switching between too many tasks. Uh I prefer to put them separately. So whatever so whatever is told to the hogan will be persisted in the Hogan's
+
+memory. So all the instructions etc. The next time when uh when a new task come in, the hogen can just start the new task based on the context it already has
+
+rather than trying to pull the uh instructions again and then start a task in that new area. This can make your fleet runs much faster. And the key
+
+thing is you don't really have to talk with your individual engineers unless necessary. You can mostly talk with your chief of staff and the chief of staff
+
+can route the requests to every individual engineers. Uh because chief of staff has the understanding of who is working on what while chief of staff can
+
+also save uh his uh context from remembering all these engineering workflows or how things should be developed. And now let me give you a demo of how I
+
+going to set these things up. This will be a very live demo because uh I'm also the first time setting these things. So right now I just downloaded link sheets engineerbot from the marketplace uh and
+
+it's onboarded into what kind of repository it needs to be done also connect to the to the notion. Right now I'm going to download um the the nightly
+
+audit bot uh from the marketplace. So you can find it from the grogbot team right here. view all there's like a nightly nightly audit engineer I will
+
+edit so now it's very simple it's already started um doing all these uh onboarding task and the thing is this nightly audit engineer does not have the
+
+context of how my existing engineering workflows is being done so what I would do is instead of telling it all these things that I will possibly already told
+
+like you know uh follow this pip pipeline. Do this first. Do that. Then uh I will have my existing engineer bot to on board my new engineer.
+
+Hello. I have a new member in the team called Nightly. Um rename them to Steve and tell them how the engineering workflows are uh enforced.
+
+So, my engineer bots actually I should rename them to to Craig because that's my my name for them. My Craig will uh send a message to my uh
+
+nightly audit engineer which will soon be Steve and then starts to handshake all these things over. So you can see my Craig just messaged the the Steve with some message of how
+
+the everything goes. It includes all the requirements of uh the how how our notion board is made how our uh what is the definition of the clean and how to ladders through different stage of my
+
+workflows all via plain text and my Steve will acknowledge and absorb into their memory. You don't have to repeat or copy paste every single thing between bots.
+
+You just let the bot talk with each other. You can see they they also just you know confirmed between each other. So I don't really have to talk with uh
+
+Steve. I can like my my Craig will just tell me everything is confirmed. He's all good. And right now uh the the Steve is uh
+
+equipped with the nightly audit skills. So, I'm gonna kick this off right now just for demo purposes. Usually, it runs on 4:00 a.m. Um, but let Steve
+
+um let Steve know uh to start a nightly audit workflow right now. I um just let him stop right now. So in the meantime uh we will be you know waiting for the the Steve to do some
+
+research and get back to us with all the findings about the about the fly. We will take a look over um some some some other examples of how I can work with uh
+
+the Asian in parallel. So right now I already had a task to cry and I think there's one issue with the pho website uh that's being reported. It's very urgent. So, okay. Um, I think there's an
+
+issue with flyair.com that user cannot um check their previously booked flights. Can we check if it's true? So my my my bot will be able to navigate a
+
+website in their computer, click through and show me what's going on. This is one of the onblock because we know a lot of engineers has workflows that are not
+
+reachable through MCP. So if you need to click a button uh based on some instructions or at some certain timings, you can ask the bot to do it uh by using
+
+their computers. So it's checking um the flow. I can obser I can monitor it from the the computer. Yes. So it's currently navigating through the website. Try to understand
+
+whether this is a legit issue. So it's you know navigating through um you can see it can generally do anything you need on the web. So almost all of your
+
+workflows could be delegated and unblocked and I think because this issue is like being reported by the user I want it you know I want it urgently but the thing is
+
+when you talk with agent they possibly know okay the urgent means I need to get it ASAP but what they might do is ended up skipping the steps or start guessing
+
+things to actually get short result faster. We don't want that. We don't want agent to guess things. We want deterministic results. So previously uh before grabba
+
+I may tell them to uh just repeat them like I need it urgently. Um for example like I need it urgently and uh tell them what you need to do and
+
+what you should not do. Uh but how about extract them? I don't want to repeat myself every single time. That is the whole point of the Grotbot or the autonomous coding that you should not
+
+repeat yourself. And I will let my chief of staff on board a new member called Jenny. Okay. On board a new member called Jenny for doing all the uh for head of
+
+operations. and my Jenny will starts to uh play around with the playbook. Jenny needs to manage a playbook for my engineering team and needs to own the the playbook and
+
+avoid other engineers to update. So my chief of staff will starts to on board Jenny and then my Jenny will starts to on a playbook uh in notion uh
+
+and then uh they can update that playbook based on what I uh what I tell them on what what needs to be done at what time so that every other engineers
+
+can just apply the same playbook. You can see the Jenny is up in the stage and my chief of staff is also doing the uh agentto agent chat between them so
+
+that they can just handshake to each other. Um so I don't have to I don't have to actually tell Jenny what needs to be done. The only thing I need to talk is
+
+with my chief of staff. Let me actually check in with the Steve on how much it's going. Okay. So the Steve uh without uh my instructions
+
+um oh this is my built-in instructions. So without any of my chat the Steve is already doing the research on what kind of things could be improved over the works over the codebase and it has already started a bunch of the cloud
+
+agents and it seems like they are finished. So my Steve is currently working on and and conducting them into the thing into the PR that actually improves them.
+
+And then now let me get back to Craig to see what is going on. Okay, so it says it's confirmed. The issue is true. Slash trips is a stub uh
+
+while the navigation still links there. There's no check today for uh a previously booked flight. So now it needs to uh do this urgently. uh I
+
+really wanted to do urgently but let's slow down a little bit right now to think what they needs to do uh when when we say urgently
+
+there's um I think it's a widely acknowledged issue that coding agents sometimes are running very very long horizon and it's not good where you need
+
+things urgently so one of the idea to help unblock this situation is to have, you know, have you checking their thinking traces, checking their tool codes to make sure they're on the right track and nudge them or steer
+
+them at the right time when they are possibly going off track. But that requires you to be next to the desktop and sometimes you have other tasks to do. You're not next to your desktop and
+
+you don't want to look into the details, syncing traces, etc. every single seconds. So what I usually do is I have a P 0 escalation workflow with my bots
+
+that um let me define this. So uh treat as P 0 and the P 0 definition is uh they would need to monitor the Grobbox needs to
+
+monitor the cloud agents every five minutes to check the progress to check where uh the cloud agent is currently running on and you know sometimes the
+
+cloud agents are running tests that are very long. they do like a sleep 300 to just get around uh the the tests that are running async in in another shell
+
+and sometimes the tests are fast like within the within a minute then you got four minutes lost. So uh when the grabbot can check into the cloud agents
+
+they can check if they're doing a tool call that's very unnecessary time consuming and they they can or uh interrupt it immediately and start a new
+
+prompt based on what's happening. uh and like it it does not need me involved at all. I don't write any prompt at all as well. The only thing I write is this uh
+
+it's the definition of the P 0 that um you need to set up a routine that checks cloud agent um every five minutes. check if they are off the track
+
+such as uh running a sleep running a long sleep like sleeps 300 or going off our goal being too conservative. We sometimes just need things moving a little faster.
+
+And this is a very rough prompt I give it. uh it can definitely grow along uh with your uh interaction with the grub bot. For example, like you you see it possibly work better in some situation.
+
+You can then just tell it to do to do that. You don't have to write it into a skill anymore. You don't have to write a
+
+long prompt every single time. You just tell them once in a normal message as how you would tell your teammate uh for doing something urgently.
+
+going off our goal being too conservative and um and nudge in interrupt and nudge them at the time you found them going off because I need this urgently urgent
+
+urgent urgent. So uh I also tell them to fix fix the issue. I can just click reply so that it has the context of what I'm quoting on
+
+fix this issue urgently uh treat as a P 0 uh and and then it knows what is a P 0 now but only Craig knows what this P 0 is rather than copy
+
+paste into every single one of my uh engineer bots because that won't scale if you have 10 or 15 or 20 bots I will have it hand it with the Jenny so
+
+let me check if Jenny is on right now Jenny owns edit Jenny owns edits. So, you know, Jenny will nudge me whenever they need the decision and um I think
+
+that's a very good question for me and they just manage message the bot. I think everything is set up and now uh I will let the Craig to talk with Jenny
+
+about this PO workflow and bake it into the playbook. So my Craig can then talk with the Jenny to put this into the playbook and then
+
+Jenny can go announce to other engineers automatically. And I also let Jenny to announce to every engineer. Bot the good thing of this is you are just
+
+thinking what needs to be done once. So you finish the workflow, you you get the handshake on. So all your bots understand what uh what needs to be done at what time. The next time something
+
+happens, right? Next time you need to add a new workflow like you actually need to do this, you need to do some step before you actually trigger a deployment, they can just populate the
+
+playbook and all engineers would know that without you telling them individually. This is very similar to how a human organization is shaped while it's at the
+
+agent scale that Asian has a context limit. Sometimes human does. So the treatments for human teams sometimes apply to the bot. Uh some does not apply
+
+but you can always experiment what whatever workflows you have uh and see if it works. Okay. So they told the Jenny, you can see most of the conversations are directly between the bots just like I'm
+
+managing them as an engineering manager or uh I'm mentoring my uh talented intern. So they they know they kind of know uh what kind of things needs to be
+
+handshake between them. They just don't have the knowledge of what's going on at organization, what kind of workflows they should follow and what is good
+
+versus what is bad. Okay. So Jenny announced out to the other engineer bots. You can see Jenny talked with uh all of the bots and then
+
+also talk with the Mr. Craig about the playbook being updated. Uh the PO urgent is now a standing operations. Um yeah, you can see and some other ideas
+
+are I want uh my PRs to come with some proof so it's easier for me to review. That's also how I work nowadays that I
+
+don't really check my cloud agents. I check I check the results and check the proof but it will be very disappointed if the proof is just not included.
+
+Um so I have to nudge them back say oh this misses the proof that is very bad. I should just do it once so that all the
+
+things onward are just include the proof automatically. So I would tell with my Craig which is kind of like my my my head of engineering right now that um
+
+another requirement for the playbook is to make sure every single PR comes with proofs like screenshots for UI changes and Perf metrics for performance improvements.
+
+And I would they should not understand what to talk with the Jenny and let's see how it goes with the Steve. So Steve already gets something back. You can see some cleanup and the PR is ready. I can
+
+drag click click over and start the review. And uh another one is also still running. The the best thing of the grabbot is even if you are chatting with
+
+them, they can still do their existing things pretty well. Just like a human who can uh multitask a little though sometimes if you if if you notch them
+
+too hard, they will starts to lose their context because they're too much there too many tasks to handle. So that's where uh my original engineer bot comes
+
+in which is you can get from the marketplace that it comes with um a a fleet uh notion database that defines every single task plus the stage they're
+
+on. So even if one bot is managing like 20 cloud agents, they don't have to populate their their limited context with everything about all these 20 cloud
+
+agents. they can just always check back to this DB whenever they find like whenever they need to take the ne next task. So they don't really have to remember what is currently going on, what kind of client agents are are are being working on and what is done and and needs their eyes to for for the next
+
+steps. You can see this is a trust polish which is watching 33 which is going through the watching process of possible security comments and bug bots. Uh this
+
+is also a big unblock in the engineering pipeline where the bach bots can uh can can can help you identify issues made by your agent and security uh bot security
+
+common feature can also monitor potential security issues uh with respect to leaks or or like you know uh session management etc. Um so that's very helpful.
+
+So um usually in in my workflow I would just go into this PR and review it and then um get a get it merged. Let me let
+
+me actually check this PR. So uh this is that cloud agent that I pre that I previously kicked off before the stage and the it got some screenshots of what
+
+is being done. Plus you can see my agents are now writing all the prompts for my cloud agents. I no longer have to write all these prompts though I could which is what I previously used sometimes did uh I don't have to the
+
+agents would do this for me so most of my task can stay on what kind of things needs to be done what kind of things needs to be killed and you can see this
+
+task just gets back all these screenshots I can just feel confident to to merge and then what I will get okay so go back to uh the presentation I think
+
+we have you So I have been sharing a lot of my workflows today and I want to wrap up on what we can learn from today. So
+
+you can take away with some ideas on how to start this whole workflow and how you can leverage it. The first thing I think is a very uh very mind-blowing is treat
+
+them like interns. So when you feel struggling about uh like communicating with Shbas, you don't know what kind of things to say or they just doing bad,
+
+don't treat them like an agents or try to evoke skills etc. With Scrubbots, you can uh chat with them in a messaging base, which is how you would chat with a
+
+talented intern who does not know about what to do, but once you tell them, they can be extra capable of. Another thing is uh we can possibly
+
+think one level further rather than just fix this thing. This is also um could could be known as reduce repetition that sometimes I repeat a prompt to my agents
+
+uh too often that it's a waste of my time if I have to type in or copy paste the same thing and send it to the agent
+
+10 times. you can sync it one level further about what what actually what actually needs to be done and then extract it into some layer either via a
+
+playbook or via some other bots to nudge uh another bot for you at the right time. The last thing I think is also very important for using engineering with
+
+cursor cloud agents is to have a complete feedback loop. No matter what type of engineering tasks you have, it needs to have a feedback loop in order for agent to understand the signal of success versus failure. That's also very
+
+helpful for Grogbot to determine whether that they should nudge further or whether they should stop um and like you know let it merge. Uh for example like
+
+you can let your agent to control the website via computer use and uh that I think that's the easiest feedback loop for hardware for hardware engineering. There are also feedback loops on the signals of like whether something is
+
+actually good or not. And thank you. Uh that's it for my workshop. Thank you.
