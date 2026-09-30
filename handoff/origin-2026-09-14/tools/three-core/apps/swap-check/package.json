@@ -1,0 +1,16 @@
+{
+  "name": "swap-check",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interchangeability / swap-test gate. Higher score = more interchangeable (worse). Does not rewrite. Does not publish.",
+  "type": "module",
+  "bin": {
+    "swap-check": "./cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

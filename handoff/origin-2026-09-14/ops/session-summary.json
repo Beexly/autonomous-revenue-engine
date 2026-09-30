@@ -1,0 +1,25 @@
+{
+  "info": {
+    "id": "01a0261d-01f7-7f51-a866-303e0e467f16",
+    "cwd": "C:\\Users\\Garrett"
+  },
+  "session_summary": "De-vig oracle and Parlay MRI from handoff",
+  "created_at": "2026-08-21T20:57:10.404448800Z",
+  "updated_at": "2026-08-22T06:20:04.065991700Z",
+  "num_messages": 10923,
+  "num_chat_messages": 21,
+  "current_model_id": "grok-4.6",
+  "next_trace_turn": 112,
+  "chat_format_version": 1,
+  "head_branch": "master",
+  "request_id": "fe7cdd56-6655-4dee-88ed-2648ab168d24",
+  "grok_home": "C:\\Users\\Garrett\\.grok",
+  "last_active_at": "2026-08-22T06:20:04.065991700Z",
+  "generated_title": "De-vig oracle and Parlay MRI from handoff",
+  "agent_name": "grok-build-plan",
+  "sandbox_profile": "off",
+  "reasoning_effort": "xhigh",
+  "last_turn_summary": "Lane-watcher prompt ready — paste to new Grok bot",
+  "last_turn_summary_prompt_id": "b7435cbf-ab20-45f8-b1b7-7c6d72d576e5",
+  "last_recap": "You asked for a Grok-bot prompt to watch Grok, Claude, and Hermes: watcher-only, no merge or spend, catch fake `e=p−q` and rights violations, protect the new Odds API 20K quota."
+}

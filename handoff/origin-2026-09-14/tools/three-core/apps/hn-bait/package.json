@@ -1,0 +1,16 @@
+{
+  "name": "hn-bait",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Show HN / HN / launch title bait vs specific substance. Does not rewrite. Does not publish.",
+  "type": "module",
+  "bin": {
+    "hn-bait": "./cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

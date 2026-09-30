@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SO-001 First Screen Protocol — Signal Origin</title>
+<style>
+  @page { size: letter; margin: 0.6in; }
+  body { font: 13.5px/1.38 Georgia, serif; color: #111; max-width: 720px; margin: 24px auto; padding: 0 16px; }
+  h1 { font: 700 22px/1.15 system-ui, sans-serif; margin: 0 0 4px; letter-spacing: -0.03em; }
+  .sub { font: 13px system-ui, sans-serif; color: #333; margin: 0 0 18px; }
+  h2 { font: 700 13px/1.2 system-ui, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; margin: 18px 0 6px; border-top: 1px solid #111; padding-top: 8px; }
+  table { width: 100%; border-collapse: collapse; font: 12.5px/1.35 system-ui, sans-serif; }
+  th, td { border: 1px solid #111; padding: 5px 7px; vertical-align: top; text-align: left; }
+  th { background: #111; color: #fff; }
+  ol, ul { margin: 6px 0; padding-left: 1.2em; }
+  li { margin: 3px 0; }
+  .kill { font-weight: 700; }
+  .note { font: 12px/1.35 system-ui, sans-serif; color: #333; }
+  footer { font: 11px system-ui, sans-serif; margin-top: 18px; color: #444; }
+</style>
+
+<h1>SO-001 First Screen Protocol</h1>
+<p class="sub">Signal Origin kill gate. One page. Applied before anything is ranked, published, or sold. Not a writing service. Not a subscription. Not sports.</p>
+
+<h2>0. Purpose</h2>
+<p>Stop work that already looks finished. Polished interchangeability is the failure mode. If a hundred AI-operator accounts could run the line after the byline is removed, it does not ship. The gate is applied once, in this order. Do not skip a step because the prose is clean.</p>
+
+<h2>1. Order of operations</h2>
+<ol>
+  <li>Swap test. Fail = Kill. Stop.</li>
+  <li>Bait screen. Below 6 = Kill. Stop. Below 9 = no Hold.</li>
+  <li>Staccato screen. One- or two-word stacks = no Hold. Repeat stacks = Kill.</li>
+  <li>Density. Below 8 = no Hold.</li>
+  <li>Composite. Hold only at ≥ 9.2 with all floors met.</li>
+  <li>Cut list. Remove what survived by charm.</li>
+  <li>Rank only what Hold. Never rank a Kill to “see if it hits.”</li>
+</ol>
+
+<h2>2. Swap test (binary)</h2>
+<p>Cover the byline, the product name, and any house vocabulary. Read the line as if it ran under a different operator account tomorrow.</p>
+<ul>
+  <li class="kill">KILL if the claims, cadence, and moral would still work as a generic “AI writing / quality / authenticity” post.</li>
+  <li>PASS only if a specific observation, number, constraint, or refusal would break if the byline changed.</li>
+</ul>
+<p class="note">A detector rubric that can be quoted is not a swap-test pass. If the model can study the rule, the rule is already leaking. Do not publish extra scoring commentary that teaches the next rewrite.</p>
+
+<h2>3. Scoring floors</h2>
+<table>
+  <thead>
+    <tr><th>Axis</th><th>Weight</th><th>Hold floor</th><th>What you are actually scoring</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Swap / non-interchangeability</td>
+      <td>0.30</td>
+      <td>binary pass</td>
+      <td>Would this line still work under a stolen byline?</td>
+    </tr>
+    <tr>
+      <td>First-screen density</td>
+      <td>0.25</td>
+      <td>≥ 8</td>
+      <td>Facts, constraints, names, numbers, refusals per screen. No throat-clearing.</td>
+    </tr>
+    <tr>
+      <td>Bait avoidance</td>
+      <td>0.25</td>
+      <td>≥ 9</td>
+      <td>No engagement hooks, no “agree?”, no empty dares, no emoji stacks, no hashtag spam.</td>
+    </tr>
+    <tr>
+      <td>Lived particularity</td>
+      <td>0.20</td>
+      <td>contributes to composite</td>
+      <td>Something happened, was measured, or was killed. Not a stance.</td>
+    </tr>
+  </tbody>
+</table>
+<p>Composite = 10 × (0.30·S + 0.25·D/10 + 0.25·B/10 + 0.20·P/10) where S is 1 if swap passed, else 0 (and you already stopped).</p>
+<p class="kill">HOLD only if: composite ≥ 9.2 AND density ≥ 8 AND bait ≥ 9 AND no one/two-word staccato stacks.</p>
+<p>7.0–9.19: soft rewrite, same facts, tighter first screen.<br>
+Below 7.0, or bait &lt; 6: hard rewrite or kill. Do not polish a Kill until it “sounds human.”</p>
+
+<h2>4. Cut list (apply after floors, before rank)</h2>
+<p>If any item is true, cut the clause. If three items are true, kill the piece.</p>
+<ol>
+  <li>Symmetric two-clause hook (“X isn’t Y. It’s Z.”).</li>
+  <li>Cluster diction: leverage, delve, tapestry, landscape, robust, seamless, unlock, nested, “the future of.”</li>
+  <li>A rule that explains itself enough to be trained on.</li>
+  <li>A pitch in the first sentence.</li>
+  <li>A question whose only job is a reply.</li>
+  <li>A second offer, a subscription, a “we also,” a writing package.</li>
+  <li>Sports, GSE, NFL, Texans, or any borrowed audience.</li>
+  <li>Invented metrics, rounded “studies show,” unverified follower counts.</li>
+  <li>Hashtags, emoji as emphasis, “comment below.”</li>
+  <li>A line that would still rank if the proper nouns were swapped for competitors.</li>
+</ol>
+
+<h2>5. Ranking weights (only on Hold)</h2>
+<table>
+  <thead>
+    <tr><th>Rank key</th><th>Weight</th><th>Use</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Irreversible particular</td><td>0.40</td><td>A number, kill, or constraint that cannot be reverse-engineered from a prompt.</td></tr>
+    <tr><td>First-screen closure</td><td>0.25</td><td>The first screen already contains the decision. No “thread 1/12.”</td></tr>
+    <tr><td>Cost of ignoring</td><td>0.20</td><td>If they skip this, they ship interchangeable work. Not “interesting.”</td></tr>
+    <tr><td>Non-portability</td><td>0.15</td><td>This line belongs on this account this day. Not a content calendar tile.</td></tr>
+  </tbody>
+</table>
+<p>If two Holds tie, ship the one that would be more embarrassing to fake. Silence beats a tie you cannot defend.</p>
+
+<h2>6. Worked kill</h2>
+<p>Line: “In a world of AI slop, originality is the real moat. Agree?”</p>
+<ul>
+  <li>Swap: fail. Any operator account can run it.</li>
+  <li>Bait: 3 (the agree?).</li>
+  <li>Density: 2 (no fact).</li>
+  <li>Staccato: none, irrelevant.</li>
+  <li class="kill">Kill at step 1. Do not rewrite toward Hold. Write a different line from a real kill, measurement, or refusal.</li>
+</ul>
+<p>Line: “Seven of our own themes scored 6.0 to 6.5 under one critic. The spread was 0.5. That is interchangeable work that still shipped.”</p>
+<ul>
+  <li>Swap: pass (the corpus is named and would break if stolen without the measurement).</li>
+  <li>Bait: 9.5 (no hook).</li>
+  <li>Density: 9 (two numbers, one claim, one consequence).</li>
+  <li>Composite: Hold. Rank on irreversible particular.</li>
+</ul>
+
+<h2>7. Operator rules</h2>
+<ul>
+  <li>One public root per calendar day. A second root is a Kill of the day’s discipline.</li>
+  <li>The $19 link attaches at most once per thread, only if the thread is already about gates, detectors, checklists, or interchangeability. Prefer zero.</li>
+  <li>Never open with the link. Lived observation first.</li>
+  <li>Do not explain this rubric in public beyond the swap test and the Hold number. Extra commentary is training data.</li>
+</ul>
+
+<footer>SO-001 · Signal Origin · $19 · https://buy.stripe.com/6oUdRb0s153pail3pz14404 · Human-primary. No AI packages.</footer>
+</html>
