@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>impression-log — Premium / verified HT proxy</title>
+  <meta name="description" content="Local log for Premium and verified Home Timeline impression proxies. No X API. Does not post or spend.">
+  <style>
+    :root { --ink:#1a1208; --paper:#f4ecd8; --rule:#c45c26; --mute:#6e5f4a; --ok:#2d5a27; --bad:#8b1e1e; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.45 Georgia, "Iowan Old Style", serif; }
+    main { max-width:36rem; margin:2.4rem auto; padding:0 1rem 3rem; }
+    .kicker { font:700 11px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--rule); }
+    h1 { font-size:1.4rem; margin:.3rem 0 .4rem; letter-spacing:-.02em; }
+    .lede { color:var(--mute); margin:0 0 1.1rem; }
+    label { display:block; font:700 11px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; margin:0 0 .35rem; }
+    input, select, textarea { width:100%; box-sizing:border-box; padding:.55rem .5rem; border:1px solid var(--ink); background:#fffdf6; font:inherit; }
+    textarea { min-height:4.2rem; resize:vertical; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin:0 0 .7rem; }
+    .full { grid-column:1 / -1; }
+    .item { display:flex; gap:.6rem; align-items:flex-start; margin:.15rem 0 .7rem; font-size:.98rem; font-weight:400; letter-spacing:0; text-transform:none; }
+    .item input { width:auto; margin-top:.2rem; }
+    button { margin:.2rem .5rem .2rem 0; background:var(--ink); color:var(--paper); border:0; padding:.65rem 1.05rem; font:700 13px/1 system-ui,sans-serif; cursor:pointer; }
+    button.ghost { background:transparent; color:var(--ink); border:1px solid var(--ink); }
+    #out { margin-top:1.4rem; border-top:3px solid var(--ink); padding-top:1rem; }
+    table { width:100%; border-collapse:collapse; font-size:.85rem; margin:.55rem 0; }
+    th, td { padding:.28rem .2rem; border-bottom:1px dotted #d8ccb4; text-align:left; vertical-align:top; }
+    th { font:700 10px/1 ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); }
+    .note { font-size:.85rem; color:var(--mute); }
+    .warn { color:var(--bad); }
+    .ok { color:var(--ok); }
+    code { font:12px/1.3 ui-monospace,monospace; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="kicker">Signal Origin · FIFTY_LOOPS #24</p>
+  <h1>impression-log</h1>
+  <p class="lede">Local proxy log for Premium / verified Home Timeline impressions. Replies do not pay. Nothing leaves this tab. No X API, no spend, no post.</p>
+  <form id="f">
+    <div class="grid">
+      <div>
+        <label for="date">Date (CDT)</label>
+        <input id="date" type="date" required>
+      </div>
+      <div>
+        <label for="so">SO id (optional)</label>
+        <input id="so" type="text" placeholder="SO-012" autocomplete="off">
+      </div>
+      <div class="full">
+        <label for="url">Post URL</label>
+        <input id="url" type="url" placeholder="https://x.com/…" autocomplete="off">
+      </div>
+      <div>
+        <label for="unit">Unit</label>
+        <select id="unit">
+          <option value="root" selected>root (OCR unit)</option>
+          <option value="reply">reply (does not pay)</option>
+        </select>
+      </div>
+      <div>
+        <label for="hold">Hold score (optional)</label>
+        <input id="hold" type="number" min="0" max="10" step="0.1" placeholder="9.2">
+      </div>
+      <div>
+        <label for="premium">Premium HT impressions</label>
+        <input id="premium" type="number" min="0" step="1" placeholder="0">
+      </div>
+      <div>
+        <label for="verified">Verified HT impressions</label>
+        <input id="verified" type="number" min="0" step="1" placeholder="0">
+      </div>
+      <div class="full">
+        <label class="item"><input type="checkbox" id="replies"> I counted replies (do not — they are not qualified)</label>
+        <label class="item"><input type="checkbox" id="visible" checked> ≥50% of the post was visible on first screen</label>
+      </div>
+      <div class="full">
+        <label for="notes">Notes</label>
+        <textarea id="notes" placeholder="Analytics screenshot, time window, why this is a proxy not a payout."></textarea>
+      </div>
+    </div>
+    <button type="submit">Add row</button>
+    <button type="button" class="ghost" id="dl">Download CSV</button>
+    <button type="button" class="ghost" id="wipe">Clear local log</button>
+  </form>
+  <section id="out"></section>
+  <p class="note">Template also lives at <code>ops/IMPRESSION_LOG.csv</code> on main after merge. This page writes only to this browser.</p>
+</main>
+<script>
+(function () {
+  var KEY = "so-impression-log-v1";
+  var HEAD = ["date_cdt","so_id","post_url","unit","premium_ht_impressions","verified_ht_impressions","replies_counted","first_screen_50pct","hold_score","notes"];
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; }
+  }
+  function save(rows) { localStorage.setItem(KEY, JSON.stringify(rows)); }
+  function csvEscape(v) {
+    var s = v == null ? "" : String(v);
+    if (/[",\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+  function toCsv(rows) {
+    var lines = [HEAD.join(",")];
+    for (var i = 0; i < rows.length; i++) {
+      var r = rows[i];
+      lines.push(HEAD.map(function (k) { return csvEscape(r[k]); }).join(","));
+    }
+    return lines.join("\n") + "\n";
+  }
+  function todayCdt() {
+    try {
+      return new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+    } catch (e) {
+      return new Date().toISOString().slice(0, 10);
+    }
+  }
+  function render() {
+    var rows = load();
+    var out = document.getElementById("out");
+    if (!rows.length) {
+      out.innerHTML = "<p class='note'>No local rows yet. Add one, or download the empty template.</p>";
+      return;
+    }
+    var body = "";
+    for (var i = rows.length - 1; i >= 0; i--) {
+      var r = rows[i];
+      var warn = r.unit === "reply" || r.replies_counted === "Y";
+      body += "<tr>" +
+        "<td>" + r.date_cdt + "</td>" +
+        "<td>" + (r.so_id || "—") + "</td>" +
+        "<td>" + r.unit + (warn ? " <span class='warn'>not OCR</span>" : "") + "</td>" +
+        "<td>" + r.premium_ht_impressions + "</td>" +
+        "<td>" + r.verified_ht_impressions + "</td>" +
+        "<td>" + (r.first_screen_50pct === "Y" ? "<span class='ok'>≥50%</span>" : "<span class='warn'>no</span>") + "</td>" +
+        "</tr>";
+    }
+    out.innerHTML =
+      "<p class='note'>" + rows.length + " local row" + (rows.length === 1 ? "" : "s") + " (newest first). Proxies only — not payout.</p>" +
+      "<table><thead><tr><th>date</th><th>id</th><th>unit</th><th>premium HT</th><th>verified HT</th><th>visible</th></tr></thead><tbody>" +
+      body + "</tbody></table>";
+  }
+  document.getElementById("date").value = todayCdt();
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var rows = load();
+    rows.push({
+      date_cdt: document.getElementById("date").value,
+      so_id: document.getElementById("so").value.trim(),
+      post_url: document.getElementById("url").value.trim(),
+      unit: document.getElementById("unit").value,
+      premium_ht_impressions: document.getElementById("premium").value || "0",
+      verified_ht_impressions: document.getElementById("verified").value || "0",
+      replies_counted: document.getElementById("replies").checked ? "Y" : "N",
+      first_screen_50pct: document.getElementById("visible").checked ? "Y" : "N",
+      hold_score: document.getElementById("hold").value.trim(),
+      notes: document.getElementById("notes").value.trim()
+    });
+    save(rows);
+    document.getElementById("url").value = "";
+    document.getElementById("so").value = "";
+    document.getElementById("premium").value = "";
+    document.getElementById("verified").value = "";
+    document.getElementById("hold").value = "";
+    document.getElementById("notes").value = "";
+    document.getElementById("replies").checked = false;
+    render();
+  });
+  document.getElementById("dl").addEventListener("click", function () {
+    var blob = new Blob([toCsv(load())], { type: "text/csv" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "IMPRESSION_LOG.csv";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById("wipe").addEventListener("click", function () {
+    if (!load().length) return;
+    if (!confirm("Clear the local log in this browser?")) return;
+    localStorage.removeItem(KEY);
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>
