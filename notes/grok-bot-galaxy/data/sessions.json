@@ -1,0 +1,811 @@
+[
+ {
+  "id": "zCqmTSF2ctg",
+  "day": 1,
+  "site_title": "Grok Bot for Engineers",
+  "yt_title": "Grok Bot for Engineers",
+  "speakers": [
+   "Lingxi Li"
+  ],
+  "speaker_roles": "Software engineer, SpaceXAI (joined via Cursor, which is now SpaceXAI)",
+  "premise": "The deepest technical session of the three days: how an engineer runs a fleet of named bot 'colleagues' that supervise Cursor cloud agents, plus the arc of coding AI that led there.",
+  "agenda": [
+   "History of coding AI at Cursor/SpaceXAI: autocomplete to tab completion to ask/edit to agentic coding (Cursor 2/3) to automations on cloud agents to Grok Bot as the orchestration layer",
+   "Why Grok Bot exists: managing 15 cloud agents was already too much context switching; he wanted something to kick off follow-ups, queue messages and interrupt/nudge agents",
+   "What Grok Bot is: team of autonomous agents, 24/7, own computer, no laptop required",
+   "Capabilities: manages coding agents (first-party Cursor cloud-agent integration), connects to tools (Vercel MCP, Slack MCP), per-bot memory + routines, all platforms (iOS/Android/iPad/Windows/Linux/macOS), human can take over the bot's computer for logins and verification",
+   "Engineering use cases (see below)",
+   "How he organizes a fleet: chief of staff + specialist engineer bots",
+   "Live demo: marketplace install, bot-to-bot onboarding, nightly audit run",
+   "Wrap-up lessons"
+  ],
+  "use_cases": [
+   "Unblock teammates while away — bot monitors Slack, applies your review criteria (screenshots, non-fake tests), approves or replies to the requester",
+   "Monitor X for bug reports about the product, reproduce on main, fix, open a PR for review",
+   "Nightly code cleanup/audit at 3am: a research cloud agent sweeps the monorepo for code quality, modularization, comment hygiene and security issues; he wakes up to a set of PRs (published as 'Nightly Audit Engineer' on the marketplace)",
+   "Internal tooling without building a dashboard: a Slack message that mentions the bot is the interface (e.g. add people to TestFlight by email)",
+   "Autofix everything: CI red / deployment errors / flaky tests cause the bot to investigate, spin a cloud agent, and merge under your stated conditions; on-call only paged if unresolved after ~10 minutes",
+   "Teaching boundaries: instruct the bot to say no and why — memory persists so you don't repeat it"
+  ],
+  "bots": [
+   [
+    "Chief of staff (called 'Link Shishi' — caption spelling uncertain)",
+    "Single point of contact; routes requests to specialist engineers; holds engineering workflow context"
+   ],
+   [
+    "Craig",
+    "UI engineering specialist bot"
+   ],
+   [
+    "Steve",
+    "DevX specialist bot (the Nightly Audit Engineer renamed and onboarded into the fleet)"
+   ],
+   [
+    "Hogan",
+    "Infrastructure specialist bot"
+   ]
+  ],
+  "tools": [
+   "Cursor cloud agents (first-party)",
+   "Slack MCP",
+   "Vercel MCP",
+   "Notion",
+   "TestFlight",
+   "Grok Bot marketplace",
+   "routines/webhooks",
+   "private workers on Macs"
+  ],
+  "takeaways": [
+   "Treat them like interns — message-based instruction beats elaborate skill invocation",
+   "Go one level further than 'fix this': if you repeat a prompt, extract it into a playbook or another bot",
+   "Always close the loop — agents need a success/failure signal (computer-use checks are the easiest)",
+   "Multiple engineer bots beat one: separate context limits, separate pipelines, separate memories"
+  ],
+  "notes": "Splits the human/bot boundary explicitly: bots handle routing, reviews and follow-ups; humans keep product direction, architecture, performance work and design detail. Includes a live, partially unscripted demo — he installs bots from the marketplace on stage and lets his existing engineer bot onboard the new one by plain-text handshake.",
+  "video_url": "https://youtu.be/zCqmTSF2ctg",
+  "youtube_watch": "https://www.youtube.com/watch?v=zCqmTSF2ctg",
+  "duration": "00:45:10",
+  "transcript_words": 7331,
+  "transcript": "transcripts/zCqmTSF2ctg.txt",
+  "transcript_timed": "transcripts/zCqmTSF2ctg.timed.txt",
+  "transcript_verbatim": "transcripts/zCqmTSF2ctg.raw.txt",
+  "notes_file": "sessions/zCqmTSF2ctg.md",
+  "top_tools": [
+   "slack",
+   "pr",
+   "merge",
+   "mcp",
+   "ci",
+   "notion",
+   "deploy",
+   "terminal",
+   "drive",
+   "sheets",
+   "pip",
+   "shell",
+   "teams"
+  ]
+ },
+ {
+  "id": "gNysgEu-lew",
+  "day": 1,
+  "site_title": "Grok Bot for Product Managers",
+  "yt_title": "Grok for Product Managers",
+  "speakers": [
+   "Kevin Niparko",
+   "Roshan Sadanani"
+  ],
+  "speaker_roles": "SpaceXAI product team",
+  "premise": "Two PMs describe the product brief behind Grok Bot (colleague-like agents) and run a full PM workflow end to end on a fake airline, from a data question to mocks to engineering.",
+  "agenda": [
+   "Framing: DHH — 'Software is product management' — the craft is changing fast",
+   "Motivation: the chat box was limiting; internally people were treating agents as colleagues",
+   "The four-part brief for a 'colleague' agent: ties multiple tools together, long-running context and learning, independence (its own computer), messaging (interrupt, drive, rapid-fire)",
+   "Three PM use cases: the attention list, research/customer context, shipping",
+   "Why many named bots instead of one",
+   "Live demo across a bot team",
+   "Hard-learned lessons"
+  ],
+  "use_cases": [
+   "Attention list — diff what you've actually been paying attention to against your priority list",
+   "Data questions and charts on demand (no SQL spelunking), plus routines for a 6am daily pulse and hourly reports during launches",
+   "Funnel analysis to PRD to design mocks to engineering implementation, handed bot to bot",
+   "Inbox grooming and noise reduction; escalate only what matters"
+  ],
+  "bots": [
+   [
+    "Cora",
+    "Chief of staff — email, calendar, Slack; builds a model of how you work"
+   ],
+   [
+    "Emily",
+    "Engineering manager — deliberately not a coder; manages five engineering bots, deconstructs large chunks of work and runs verification loops"
+   ],
+   [
+    "Ashley",
+    "Data science / analytics — connected to the data warehouse (Databricks, Snowflake, etc.)"
+   ],
+   [
+    "PMP Pete",
+    "Product assistant — drafts PRDs, synthesizes customer insight, lower-level product work"
+   ],
+   [
+    "Pixel",
+    "Designer — loaded with an 'S-tier design' skill from best public design thinking"
+   ],
+   [
+    "Rey",
+    "Recruiter — sourcing and hiring pipeline"
+   ]
+  ],
+  "tools": [
+   "Notion",
+   "Slack",
+   "Gmail",
+   "MCPs",
+   "data warehouse (Databricks/Snowflake)",
+   "design skill"
+  ],
+  "takeaways": [
+   "Named agents with separate memory perform better than one general agent",
+   "Expect an onboarding phase — they are not great on day zero",
+   "Reduce noise in the system: tell routines to stay silent on a no-op",
+   "'Agents all the way down' — managers of agents, agents coordinating cloud agents"
+  ],
+  "notes": "Contains the single best internal statistic of the event: Grok Bot represents a double-digit percentage of merged PRs inside the company, and it lets product people ship PRs to production. Demo runs on 'Fly Low Airlines' (also called Flylo), a shared demo environment reused in the Founders and Marketing sessions.",
+  "video_url": "https://youtu.be/gNysgEu-lew",
+  "youtube_watch": "https://www.youtube.com/watch?v=gNysgEu-lew",
+  "duration": "00:35:12",
+  "transcript_words": 7182,
+  "transcript": "transcripts/gNysgEu-lew.txt",
+  "transcript_timed": "transcripts/gNysgEu-lew.timed.txt",
+  "transcript_verbatim": "transcripts/gNysgEu-lew.raw.txt",
+  "notes_file": "sessions/gNysgEu-lew.md",
+  "top_tools": [
+   "notion",
+   "slack",
+   "drive",
+   "figma",
+   "teams",
+   "linear",
+   "salesforce",
+   "docs",
+   "jira",
+   "calendar",
+   "sql",
+   "merge",
+   "mcp",
+   "gmail"
+  ]
+ },
+ {
+  "id": "hPE3A4Smkxc",
+  "day": 1,
+  "site_title": "Grok Bot for Founders",
+  "yt_title": "Grok Bot for Founders",
+  "speakers": [
+   "Shub Gaur"
+  ],
+  "speaker_roles": "Works with founders on their Grok Bot setups",
+  "premise": "The most opinionated session: four bots that run a founder's customer, product, competitive and feedback loops — ending with token-cost discipline and a shared bot.",
+  "agenda": [
+   "AI maturity curve: chatbots, ephemeral agents, bots that compound, automating a staff function",
+   "Why Grok Bot suits founders: preserve focus, maintain velocity, protect insight quality",
+   "Four founder use cases",
+   "Meet the squad and live demos",
+   "Power-user tips (including token economics)",
+   "Q&A plus a shared bot via QR code"
+  ],
+  "use_cases": [
+   "Closing customers — do things that don't scale, but scale them (activation credits example)",
+   "Product changes — a daily rundown of what shipped AND unshipped, to avoid demoing a removed feature (he tells that story about himself)",
+   "Adapting to competitors — a bot that stalks competitors for you",
+   "Shipping feedback quickly — turn user feedback into PRs"
+  ],
+  "bots": [
+   [
+    "Closebot",
+    "Owns the customer: deep pre-call research (telemetry + site walkthrough), post-call compounding from Granola transcripts, support, activation"
+   ],
+   [
+    "Prodbot",
+    "What shipped/unshipped: reads PRs and Linear issues, walks the product itself, returns screenshots and a video of the run, ties to metrics"
+   ],
+   [
+    "Stockbot",
+    "The competition stalker — signs up for competitors' newsletters/products under its own research email, records onboarding walkthroughs, watches site/pricing/changelog/jobs/X (the same idea ships on the marketplace as 'Stalk Bot')"
+   ],
+   [
+    "Protobot",
+    "Designs and turns feedback into PRs"
+   ]
+  ],
+  "tools": [
+   "Granola (call transcripts)",
+   "Linear",
+   "PRs",
+   "routines (schedule/webhook/signal)",
+   "cookies import",
+   "voice bot",
+   "marketplace"
+  ],
+  "takeaways": [
+   "Bots compound — keep them, invest in them, don't throw them away after a task",
+   "Watch token economics: a 15-minute routine is 100 runs/day; prefer webhooks and inbound signals",
+   "Make a voice bot; import your cookies; group bots by expertise",
+   "Keep a bot whose only job is optimizing your other bots"
+  ],
+  "notes": "Best session for cost discipline and for the 'compounding' mental model. Demo customer is Northwind; a note-taking product is the running example. He shares Stockbot at the end via a QR code and invites people to run it against SpaceXAI.",
+  "video_url": "https://youtu.be/hPE3A4Smkxc",
+  "youtube_watch": "https://www.youtube.com/watch?v=hPE3A4Smkxc",
+  "duration": "00:37:14",
+  "transcript_words": 7721,
+  "transcript": "transcripts/hPE3A4Smkxc.txt",
+  "transcript_timed": "transcripts/hPE3A4Smkxc.timed.txt",
+  "transcript_verbatim": "transcripts/hPE3A4Smkxc.raw.txt",
+  "notes_file": "sessions/hPE3A4Smkxc.md",
+  "top_tools": [
+   "notion",
+   "calendar",
+   "mcp",
+   "api",
+   "teams",
+   "linear",
+   "salesforce",
+   "deploy",
+   "slack",
+   "drive"
+  ]
+ },
+ {
+  "id": "tpDfoh5qPF8",
+  "day": 2,
+  "site_title": "Grok Bot for Sales Engineers",
+  "yt_title": "Grok Bot for Sales Engineers",
+  "speakers": [
+   "Amrita Venkatraman"
+  ],
+  "speaker_roles": "Field engineer, Cursor/SpaceXAI",
+  "premise": "Day 2 opener and the longest session: three sales-engineering bots, a taught skill, and a demo where Grok Bot proposes and spins up three more bots for itself.",
+  "agenda": [
+   "Welcome to Day 2; the day's slate (sales engineers, sales, SDRs, customer support)",
+   "Grok Bot overview for first-time viewers: chat-like UI, long-lived memory, own computer, take-over-the-computer, enterprise admin controls, routines, sharing bots",
+   "Why it's different: finished work rather than babysitting; distributed-team force multiplier; multiplayer bots shared across a team",
+   "Three bots, two in a sandbox demo and one used daily for customer case-study slides",
+   "Skill teaching, then letting the bot propose new teammates",
+   "Q&A and in-person build time"
+  ],
+  "use_cases": [
+   "Customer case-study slides curated for external calls (his daily bot)",
+   "Competitive product testing on the bot's own computer",
+   "Battle cards, demo talk tracks and competitive AI-tooling monitoring (all three proposed and created by the bot during the demo)",
+   "Newsletter/podcast triage into a morning Slack digest (his personal routine)"
+  ],
+  "bots": [
+   [
+    "Sherlock",
+    "The technical expert and source of truth; the other bots are instructed to ground claims in him"
+   ],
+   [
+    "Serena",
+    "Hands-on competitor product tester, works on her own computer"
+   ],
+   [
+    "Mimi",
+    "Case-study slide curator (used every day for external-facing calls)"
+   ],
+   [
+    "Battlecard Blair",
+    "Competitive differentiation and sales-engineering battle cards (bot-created)"
+   ],
+   [
+    "Demo Drake",
+    "Demo and talk-track specialist; builds no-hallucination scripts grounded in Sherlock (bot-created)"
+   ],
+   [
+    "AI Radar",
+    "Tracks competitor AI tooling from public engineering blogs (bot-created)"
+   ]
+  ],
+  "tools": [
+   "Granola",
+   "marketplace bots",
+   "skills",
+   "cloud agents",
+   "Slack",
+   "MCPs/APIs"
+  ],
+  "takeaways": [
+   "Bots are meant to be multiplayer — share them so a whole team uses the same resources",
+   "The 'ask rockbot' culture: when someone asks whether something is possible, the answer is often 'ask Grok Bot'",
+   "Grok Bot pushes back and will say no — treated as an advantage over sycophantic models"
+  ],
+  "notes": "Demonstrates the meta-pattern most clearly: he teaches one bot a skill, then asks it what teammates it needs — and the bot creates three working bots with defined interfaces to each other. Also the most explicit statement that an agent's willingness to refuse is a feature.",
+  "video_url": "https://youtu.be/tpDfoh5qPF8",
+  "youtube_watch": "https://www.youtube.com/watch?v=tpDfoh5qPF8",
+  "duration": "00:45:58",
+  "transcript_words": 9573,
+  "transcript": "transcripts/tpDfoh5qPF8.txt",
+  "transcript_timed": "transcripts/tpDfoh5qPF8.timed.txt",
+  "transcript_verbatim": "transcripts/tpDfoh5qPF8.raw.txt",
+  "notes_file": "sessions/tpDfoh5qPF8.md",
+  "top_tools": [
+   "salesforce",
+   "slack",
+   "calendar",
+   "teams",
+   "docs",
+   "api",
+   "repo",
+   "mcp",
+   "pr",
+   "confluence",
+   "github",
+   "graphql",
+   "drive"
+  ]
+ },
+ {
+  "id": "SVZe46xaVTg",
+  "day": 2,
+  "site_title": "Grok Bot for Sales",
+  "yt_title": "Grok Bot for Sales",
+  "speakers": [
+   "Krista Letz",
+   "Mark Wright"
+  ],
+  "speaker_roles": "Go-to-market team, SpaceXAI",
+  "premise": "Shortest session of the event (21 minutes): a working sales desk built from six bots, with the clearest 'how to start' checklist.",
+  "agenda": [
+   "Agenda: intro, why Grok Bot for sales, marketplace, use cases, live demo, lessons, Q&A, hands-on",
+   "AI maturity curve: chat, task-based, delegating work streams, staff function of bots",
+   "Grok Bot overview: create a bot per job, memory, automations/routines/skills, sharing bots",
+   "Sales use cases and a live walkthrough of her bot team",
+   "Three closing tips"
+  ],
+  "use_cases": [
+   "Pipeline generation (outbound prospecting bot)",
+   "Answering engineering-specific customer questions without bugging the sales engineer",
+   "Live call understanding and deck updates from discovery calls",
+   "Chief-of-staff meeting prep (usable from a phone on the commute)",
+   "Customer-expert tracking: usage before renewals, product signals, Slack threads, and matching shipped changelog entries back to the feature requests a customer made",
+   "Forecasting as a one-click or routine-driven process"
+  ],
+  "bots": [
+   [
+    "Olive",
+    "Chief of staff, named after her dog — handles day-to-day"
+   ],
+   [
+    "PG",
+    "Outbound prospecting / pipeline generation"
+   ],
+   [
+    "Echo",
+    "Turns a recorded discovery call into updated slides and next steps"
+   ],
+   [
+    "Customer-expert bot",
+    "Renewal/usage/risk tracking and feature-request to changelog matching"
+   ],
+   [
+    "Engineer bot",
+    "Answers technical questions fast enough to answer on the call"
+   ]
+  ],
+  "tools": [
+   "Granola",
+   "Slack",
+   "CRM",
+   "marketplace",
+   "routines"
+  ],
+  "takeaways": [
+   "Connect your stack first — fastest path to an aha moment",
+   "One bot, one job — treat them like team members you are onboarding",
+   "Routines are 'set it and forget it'"
+  ],
+  "notes": "Best short-form onboarding checklist of the event. Q&A mentions Grok Bots watching the webinar live and a recent Grok Bot webinar on Lenny's podcast (with 'Roman').",
+  "video_url": "https://youtu.be/SVZe46xaVTg",
+  "youtube_watch": "https://www.youtube.com/watch?v=SVZe46xaVTg",
+  "duration": "00:21:07",
+  "transcript_words": 4004,
+  "transcript": "transcripts/SVZe46xaVTg.txt",
+  "transcript_timed": "transcripts/SVZe46xaVTg.timed.txt",
+  "transcript_verbatim": "transcripts/SVZe46xaVTg.raw.txt",
+  "notes_file": "sessions/SVZe46xaVTg.md",
+  "top_tools": [
+   "slack",
+   "salesforce",
+   "notion",
+   "api",
+   "gmail",
+   "gong",
+   "amplitude",
+   "linkedin",
+   "rest"
+  ]
+ },
+ {
+  "id": "Iia8EF7niiA",
+  "day": 2,
+  "site_title": "Grok Bot for SDRs",
+  "yt_title": "Grok Bot for SDRs",
+  "speakers": [
+   "Simon Lackowski"
+  ],
+  "speaker_roles": "Go-to-market team, SDR, SpaceXAI",
+  "premise": "The most candid session about failure modes: how to build an SDR system end to end, and why too many bots makes things worse.",
+  "agenda": [
+   "What Grok Bot is, why they use it internally, SDR use cases",
+   "Demo of his actual environment, then Q&A",
+   "Maturity curve for SDRs: prompting, co-pilots (Gmail MCP/API), automating whole jobs, staff function",
+   "Training: per-bot context and memory; teaching your voice from your own sent mail",
+   "Sharing templates across the SDR team"
+  ],
+  "use_cases": [
+   "ICP discovery — analyze deals that closed or reached stage 1 to find the titles that carry deals",
+   "Prospect enrichment and scoring",
+   "Outbound that actually sends, end to end",
+   "Screen recording to teach workflows where no API exists (bot owns its own VM and browser)"
+  ],
+  "bots": [
+   [
+    "Chief of staff",
+    "The only bot he talks to; everything else happens behind it"
+   ],
+   [
+    "Email / outbound bot",
+    "Writes in his voice, learned from his Gmail history"
+   ],
+   [
+    "Various specialists",
+    "He explicitly warns he has had too many at points"
+   ]
+  ],
+  "tools": [
+   "Gmail MCP/API",
+   "Slack",
+   "browser login on the bot's own VM",
+   "screen recording",
+   "shared templates",
+   "routines"
+  ],
+  "takeaways": [
+   "Push bots to do the entire workflow, not one task — painful up front, far more valuable later",
+   "Be intentional: route work through a chief of staff instead of messaging many bots",
+   "Think systematically — every new bot costs tokens and attention; ask why an existing bot can't do it",
+   "Convert repeated prompts into routines"
+  ],
+  "notes": "The clearest statement of the anti-pattern: 'as someone who's built an army of bots, I promise you, I've had way too many at some points... it's honestly more chaotic and it does more harm than good.' Good counterweight to the more enthusiastic sessions.",
+  "video_url": "https://youtu.be/Iia8EF7niiA",
+  "youtube_watch": "https://www.youtube.com/watch?v=Iia8EF7niiA",
+  "duration": "00:34:04",
+  "transcript_words": 7174,
+  "transcript": "transcripts/Iia8EF7niiA.txt",
+  "transcript_timed": "transcripts/Iia8EF7niiA.timed.txt",
+  "transcript_verbatim": "transcripts/Iia8EF7niiA.raw.txt",
+  "notes_file": "sessions/Iia8EF7niiA.md",
+  "top_tools": [
+   "gmail",
+   "salesforce",
+   "api",
+   "slack",
+   "calendar",
+   "mcp",
+   "rest",
+   "teams",
+   "linkedin"
+  ]
+ },
+ {
+  "id": "BSB--jUnx9U",
+  "day": 2,
+  "site_title": "Grok Bot for Customer Support",
+  "yt_title": "Grok Bot for Customer Support",
+  "speakers": [
+   "David Gan"
+  ],
+  "speaker_roles": "Software engineer, user ops org, SpaceXAI",
+  "premise": "Demo-heavy support session with the only hard cost-per-ticket numbers of the event, plus a four-bot support org that improves itself.",
+  "agenda": [
+   "What Grok Bot is; always-on; routines as cron/event triggers; connectors marketplace; build what's missing with cloud agents",
+   "Support use cases",
+   "Demo of a four-bot support team",
+   "Guardrails and rollout",
+   "Q&A (including pricing)"
+  ],
+  "use_cases": [
+   "Answering tickets — crawl/walk/run: read and summarize, then draft a response as a ticket note, then auto-reply once confident",
+   "Alerting — e.g. an hourly routine that classifies churn threats from customers of 6+ months and posts to a Slack channel",
+   "Internal Q&A agent — query public docs/help center plus internal SOPs from Slack",
+   "Self-improvement — review the last week of tickets and find what could have been handled better or flagged earlier"
+  ],
+  "bots": [
+   [
+    "Build",
+    "Sets up infrastructure and configuration"
+   ],
+   [
+    "Reply",
+    "Answers users in the ticketing system and in Slack"
+   ],
+   [
+    "Alert",
+    "Pinged by Reply; posts and tags him in Slack"
+   ],
+   [
+    "Tune",
+    "Continuously improves the system"
+   ]
+  ],
+  "tools": [
+   "ticketing systems (Plane, Zendesk, Intercom)",
+   "Slack",
+   "Notion knowledge base",
+   "cloud agents",
+   "evals and traces"
+  ],
+  "takeaways": [
+   "Set guardrails confidently: read-only first, then writes, manual approvals for specific actions, per-bot permission scopes",
+   "Start simple — there is no meta playbook yet; make bots fit how you work",
+   "Experiment; have Grok Bot build whatever connector is missing"
+  ],
+  "notes": "Key economics from Q&A: usage is billed against your Grok/Cursor subscription; roughly $1–$2 per medium-to-complex ticket, down to about 20 cents for low-complexity tickets batched with a script, versus $1–$10 per resolution for commercial support agents and more for humans. He reached the 20-cent figure with about half a day of tuning.",
+  "video_url": "https://youtu.be/BSB--jUnx9U",
+  "youtube_watch": "https://www.youtube.com/watch?v=BSB--jUnx9U",
+  "duration": "00:30:47 (caption-derived, approximate)",
+  "transcript_words": 4190,
+  "transcript": "transcripts/BSB--jUnx9U.txt",
+  "transcript_timed": "transcripts/BSB--jUnx9U.timed.txt",
+  "transcript_verbatim": "transcripts/BSB--jUnx9U.raw.txt",
+  "notes_file": "sessions/BSB--jUnx9U.md",
+  "top_tools": [
+   "slack",
+   "docs",
+   "stripe",
+   "notion",
+   "script",
+   "cron",
+   "zendesk",
+   "intercom",
+   "supabase",
+   "sso",
+   "rest"
+  ]
+ },
+ {
+  "id": "EA-sxwWK0Vs",
+  "day": 3,
+  "site_title": "Grok Bot for Marketing Operations",
+  "yt_title": "Grok Bot for Marketing Operations",
+  "speakers": [
+   "Matthew Silberman",
+   "Teresa Hsu"
+  ],
+  "speaker_roles": "RevOps / MarOps team, SpaceXAI",
+  "premise": "RevOps/MarOps session with the strongest conceptual claim of the event: Grok Bot lets ops teams build tools instead of writing rules.",
+  "agenda": [
+   "Recap of the primitives (always-on agents, access, intelligence, around-the-clock output)",
+   "Why Grok Bot changes RevOps/MarOps work: build tools, not rules",
+   "Demo: the self-completing task list",
+   "Lessons and a call to action for GTM ops people"
+  ],
+  "use_cases": [
+   "Self-completing task list — bots monitor every inbox, separate real tasks from FYI, and route work",
+   "Cross-bot routing: a territory dispute handed to a territory-planning bot that knows the rules of engagement and the CRM, returning a first-draft deliverable",
+   "Internal apps for marketing/sales teams where the rules are enforced by design",
+   "Thinking through corner cases and product requirements for internal tools before building"
+  ],
+  "bots": [
+   [
+    "OP1",
+    "Synthesizer chief of staff — drives his work (named after the Teenage Engineering OP-1)"
+   ],
+   [
+    "Fiser",
+    "Receives everything from inboxes: email, calendar, text messages, Slack"
+   ],
+   [
+    "Juno",
+    "Product manager bot — corner cases and product requirements for internal tools"
+   ],
+   [
+    "Ondes (captioned 'owned')",
+    "Engineer bot — knows the CRM, data warehouse, existing codebase and how internal tools are built"
+   ],
+   [
+    "Territory-planning bot",
+    "Holds rules of engagement and CRM context; drafts territory decisions"
+   ]
+  ],
+  "tools": [
+   "CRM (Salesforce)",
+   "data warehouse",
+   "Slack",
+   "email/calendar/text",
+   "routines"
+  ],
+  "takeaways": [
+   "You can hire an unlimited set of specialists with the right context and access — 'CEO life' democratized",
+   "Trust bots with agency, but know their access and keep guardrails — they come back to you before shipping messages, CRM writes or PRs",
+   "Your product is revenue growth; you are a PM for it"
+  ],
+  "notes": "Caption track for this session starts mid-flow (opens with 'as I mentioned'), so the first minutes of the talk are not in the transcript — treat the opening as partial. Bot names are music-hardware references and are garbled in captions; 'owned' is most likely 'Ondes' (Ondes Martenot) and 'Fiser' is unresolved.",
+  "video_url": "https://youtu.be/EA-sxwWK0Vs",
+  "youtube_watch": "https://www.youtube.com/watch?v=EA-sxwWK0Vs",
+  "duration": "00:21:24 (caption-derived, approximate)",
+  "transcript_words": 3544,
+  "transcript": "transcripts/EA-sxwWK0Vs.txt",
+  "transcript_timed": "transcripts/EA-sxwWK0Vs.timed.txt",
+  "transcript_verbatim": "transcripts/EA-sxwWK0Vs.raw.txt",
+  "notes_file": "sessions/EA-sxwWK0Vs.md",
+  "top_tools": [
+   "teams",
+   "calendar",
+   "slack"
+  ]
+ },
+ {
+  "id": "EGt8FfTmTMY",
+  "day": 3,
+  "site_title": "Grok Bot for Post Sales",
+  "yt_title": "Grok Bot for Post Sales",
+  "speakers": [
+   "Blake Schuller"
+  ],
+  "speaker_roles": "AI deployment manager, SpaceXAI",
+  "premise": "The most concrete 'day in the life' session: six post-sales workflows, a single front bot that manages ten specialists, and a self-improvement routine.",
+  "agenda": [
+   "Set the stage; post-sales defined as any customer-facing work after the sale",
+   "AI maturity curve: chat, co-pilots, bots, teams of bots",
+   "Grok Bot overview: iMessage-like, bots on the left, 24/7, own virtual computer, screenshots and screen recordings back to you",
+   "Six post-sales use cases",
+   "Meet the team and demo (follow-up desk, account reset)",
+   "Recap and Q&A"
+  ],
+  "use_cases": [
+   "Morning status board — fires overnight, today's meetings, unfinished promises",
+   "Call prep 15–20 minutes before a call — attendees and titles, last conversation, what launched since, suggested talking points, anything unblocked",
+   "Follow-up desk — the moment a call ends: Granola notes and transcript to drafted replies and materials",
+   "Promise keeper — what he said he'd do",
+   "Ask watch — what he asked others to do and hasn't come back",
+   "Account reset — a full download on an account, with a space joke to open because he only asks when he's stressed"
+  ],
+  "bots": [
+   [
+    "Gus",
+    "Chief of staff and 'best friend' — the only bot he talks to; manages a team of ~10"
+   ],
+   [
+    "Frankie",
+    "Follow-up specialist"
+   ],
+   [
+    "Wally",
+    "Voice specialist, trained on his sent emails and Slacks"
+   ],
+   [
+    "+ specialists",
+    "Managed by Gus; he deliberately avoids managing ten bots himself"
+   ]
+  ],
+  "tools": [
+   "Granola",
+   "Slack",
+   "email",
+   "calendar",
+   "routines",
+   "CRM/account data"
+  ],
+  "takeaways": [
+   "Start with a voice dump — give the bot your context up front",
+   "The 'imagination gap' is the real limit: the bot is capable, you underestimate it",
+   "Put a bot in front — manage managers instead of ten bots",
+   "Make it a living system: teach personality (his example: exclamation points, space jokes)"
+  ],
+  "notes": "Best example of a self-improving setup: a weekly 'self-improvement scan' (Wednesday) audits the whole system for manual work that should be automated, and a voice-learning loop diffs every draft against what he actually sent, feeding the delta back to Wally. Routines run weekly 8:30, 09:00, 13:00 and a Friday dashboard.",
+  "video_url": "https://youtu.be/EGt8FfTmTMY",
+  "youtube_watch": "https://www.youtube.com/watch?v=EGt8FfTmTMY",
+  "duration": "00:29:59 (caption-derived, approximate)",
+  "transcript_words": 5607,
+  "transcript": "transcripts/EGt8FfTmTMY.txt",
+  "transcript_timed": "transcripts/EGt8FfTmTMY.timed.txt",
+  "transcript_verbatim": "transcripts/EGt8FfTmTMY.raw.txt",
+  "notes_file": "sessions/EGt8FfTmTMY.md",
+  "top_tools": [
+   "slack",
+   "gmail",
+   "sso",
+   "teams",
+   "calendar",
+   "rest"
+  ]
+ },
+ {
+  "id": "db38-FgdaGQ",
+  "day": 3,
+  "site_title": "Grok Bot for Marketing",
+  "yt_title": "Grok Bot for Marketing",
+  "speakers": [
+   "Josh Kim"
+  ],
+  "speaker_roles": "Marketing, SpaceXAI",
+  "premise": "Closing session: a full marketing campaign built end to end by a six-bot marketing team, from market research through ads to production.",
+  "agenda": [
+   "AI maturity: thought partner, co-pilots you babysit, bots that finish work your way, staffing functions with bot teams",
+   "Product intro: one bot per job, bots talk to each other in group chats, memory, own computer/browser, cloud-hosted 24/7, iMessage-like UI",
+   "Demo: launch a campaign from scratch for a net-new product",
+   "Lessons and marketplace plug"
+  ],
+  "use_cases": [
+   "Market research and competitive analysis",
+   "Positioning and messaging decisions",
+   "Landing page updates",
+   "Ad campaign build and monitoring",
+   "Campaign analysis",
+   "Automation of the recurring parts",
+   "Coordinating work that normally crosses research, product marketing, web and performance teams"
+  ],
+  "bots": [
+   [
+    "Market researcher",
+    "Studies the product and market; runs competitive analysis"
+   ],
+   [
+    "Product marketer",
+    "Positioning and messaging"
+   ],
+   [
+    "Website ops",
+    "Landing page changes, pushed to production"
+   ],
+   [
+    "Performance marketer",
+    "Ad campaign build and monitoring"
+   ],
+   [
+    "Marketing analyst",
+    "Draw analysis / reporting"
+   ],
+   [
+    "Project manager",
+    "Orchestrates the campaign across the other five"
+   ]
+  ],
+  "tools": [
+   "marketplace templates",
+   "Slack",
+   "email",
+   "ads platforms",
+   "web/landing pages",
+   "group chats"
+  ],
+  "takeaways": [
+   "Scope each bot tightly — treat it like writing a job description with clear swim lanes",
+   "Trust your bots: give access and ask them to study your context and propose what to take off your plate",
+   "Invest in bots — feedback and memory compound over time",
+   "The marketplace holds the team's best templates; he crowdsourced his demo bots from across the company"
+  ],
+  "notes": "Demo product is 'XAIR', a net-new airline product built to have something to campaign for; the campaign is assembled and pushed to production from inside the Grok Bot workspace. Final session of the event.",
+  "video_url": "https://youtu.be/db38-FgdaGQ",
+  "youtube_watch": "https://www.youtube.com/watch?v=db38-FgdaGQ",
+  "duration": "00:29:34 (caption-derived, approximate)",
+  "transcript_words": 5180,
+  "transcript": "transcripts/db38-FgdaGQ.txt",
+  "transcript_timed": "transcripts/db38-FgdaGQ.timed.txt",
+  "transcript_verbatim": "transcripts/db38-FgdaGQ.raw.txt",
+  "notes_file": "sessions/db38-FgdaGQ.md",
+  "top_tools": [
+   "teams",
+   "shell",
+   "pr",
+   "slack",
+   "docs",
+   "mcp",
+   "repo",
+   "api",
+   "zoom"
+  ]
+ }
+]

@@ -1,0 +1,134 @@
+[
+ {
+  "date": "2026-08-11",
+  "event": "Grok Bot launched in beta",
+  "detail": "Available to SuperGrok / SuperGrok Plus / SuperGrok Heavy, Cursor Pro / Pro+ / Ultra, Cursor Teams Standard & Premium, on desktop and iOS. Enterprise joins a waitlist. Grok Bot carries its own usage allowance, separate from Grok and Cursor plans.",
+  "source": "news/introducing-grok-bot"
+ },
+ {
+  "date": "2026-08-14",
+  "event": "Cursor becomes part of SpaceXAI",
+  "detail": "The two support organisations begin merging around a much broader product portfolio.",
+  "source": "news/grok-bot-customer-support"
+ },
+ {
+  "date": "2026-08-15",
+  "event": "Guide: Grok Bot for PMs",
+  "detail": "Kevin Niparko.",
+  "source": "bot/guides/grok-bot-for-pms"
+ },
+ {
+  "date": "2026-08-16",
+  "event": "Guide: Grok Bot for GTM",
+  "detail": "Krista Letz.",
+  "source": "bot/guides/grok-bot-for-gtm"
+ },
+ {
+  "date": "2026-08-21",
+  "event": "Grok 4.6 lands on Gemini Enterprise Agent Platform",
+  "detail": "Model distribution via Google Model Garden; 500k context, reasoning efforts low/medium/high/xhigh.",
+  "source": "news/grok-4-6-vertex-ai"
+ },
+ {
+  "date": "2026-08-24",
+  "event": "Guide: Designing Grok Bot with Grok Bot",
+  "detail": "John Bai.",
+  "source": "bot/guides/designing-grok-bot-with-grok-bot"
+ },
+ {
+  "date": "2026-08-25",
+  "event": "Guide: Grok Bot for mobile app development",
+  "detail": "Ryan Perry.",
+  "source": "bot/guides/grok-bot-for-mobile-app-development"
+ },
+ {
+  "date": "2026-08-26",
+  "event": "Grok Bot included with more plans",
+  "detail": "Expanded to all SuperGrok, Cursor Pro and Cursor Teams plans; still beta; enterprise waitlist.",
+  "source": "news/grok-bot-more-plans"
+ },
+ {
+  "date": "2026-08-27",
+  "event": "Guide: How I run multiple teams of Grok Bots",
+  "detail": "Eric Zakariasson.",
+  "source": "bot/guides/how-i-run-multiple-teams-of-grok-bots"
+ },
+ {
+  "date": "2026-08-29",
+  "event": "Grok Bot now works with X",
+  "detail": "X connector; a developer account is created if needed; paid Grok Bot users get free X API credits; X plugin for search, timelines, trends, bookmarks.",
+  "source": "news/grok-bot-and-x"
+ },
+ {
+  "date": "2026-09-03",
+  "event": "Grok Bot for Enterprise",
+  "detail": "Enterprise availability with access, network and audit governance. Grok and Cursor Enterprise customers get free usage for two weeks and can invite the whole org, including people without a seat. Named customers: Legora, Supermicro, ServiceTitan.",
+  "source": "news/grok-bot-for-enterprise"
+ },
+ {
+  "date": "2026-09-03",
+  "event": "Design essay: Designing Grok Bot for a world of persistent agents",
+  "detail": "The five primitives (Bots, Chats, Prompts, Tools, Artifacts), avatar state system, three levels of computer access, capabilities vs context boundaries.",
+  "source": "news/designing-grok-bot"
+ },
+ {
+  "date": "2026-09-04",
+  "event": "Haggle Bot procurement write-up",
+  "detail": "> $100,000 in direct savings; full system prompt published; 43 idle seats = $14,220; $85,662/yr unused SKUs; one tech order cut $14,629 to $6,143 (58%).",
+  "source": "news/grok-bot-procurement"
+ },
+ {
+  "date": "2026-09-08",
+  "event": "Guide: Templates for Grok Bot",
+  "detail": "Matt Palmer.",
+  "source": "bot/guides/templates-for-grok-bot"
+ },
+ {
+  "date": "2026-09-09",
+  "event": "Guide: Grok Bot for Support",
+  "detail": "David Gan.",
+  "source": "bot/guides/grok-bot-for-support"
+ },
+ {
+  "date": "2026-09-10",
+  "event": "Guide: Grok Bot for Engineering",
+  "detail": "Lingxi Li.",
+  "source": "bot/guides/grok-bot-for-engineering"
+ },
+ {
+  "date": "2026-09-11",
+  "event": "Guide: Grok Bot 101",
+  "detail": "Matt Palmer.",
+  "source": "bot/guides/grok-bot-101"
+ },
+ {
+  "date": "2026-09-15",
+  "event": "Grok Bot Galaxy begins",
+  "detail": "Three-day event at The Howard, 661 Howard St, San Francisco, plus livestream. 8:45am–6:00pm PT daily.",
+  "source": "x.ai/galaxy"
+ },
+ {
+  "date": "2026-09-18",
+  "event": "Guide: Grok Bot for Marketing",
+  "detail": "Josh Kim.",
+  "source": "bot/guides/grok-bot-for-marketing"
+ },
+ {
+  "date": "2026-09-17",
+  "event": "Grok Bot Galaxy ends",
+  "detail": "10 role-specific workshops delivered; the full days live on as three X broadcasts.",
+  "source": "x.ai/galaxy"
+ },
+ {
+  "date": "2026-09-21",
+  "event": "Session recordings published + follow-up email",
+  "detail": "All ten workshops go up on YouTube (unlisted-style view counts of 33–192 on 2026-09-23); customer.io follow-up email links back to the event page.",
+  "source": "YouTube metadata / utm_campaign 20260921_Grok-Bot-Galaxy-Livestream-Follow-Up"
+ },
+ {
+  "date": "2026-09-22",
+  "event": "Support case study published",
+  "detail": "175% ticket increase absorbed with no new hires; would have needed ~200 people; $0.20–$0.30 per resolution vs $1–$4 for traditional AI support tools.",
+  "source": "news/grok-bot-customer-support"
+ }
+]

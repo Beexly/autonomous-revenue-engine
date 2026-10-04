@@ -1,0 +1,227 @@
+And so, um, as I mentioned, uh, there's really that ease of use that you get with Grockbot. Um, you have these always on agents where you no longer have to worry for any of you, uh, who are out there who
+
+are maybe doing work at an inconvenient time, but you can't close your laptop because if you do, then the agent is going to stop working. You don't have that concern here.
+
+And really when you combine all these primitives together, you get to a place where in this really natural way, you talk to your bots, you know the access that they
+
+have. Um they're really intelligent. They can keep working around the clock and produce um some really high value outputs for you. So I'm really excited particularly for
+
+this audience um to share a few use cases that I have personally that the RevOps and Marops team internally at SpaceX AAI has for using Grockbot to do
+
+our work more effectively. So first a quick show of hands for people here in person. How many of you are on your RevOps or Marops team at your company?
+
+Anyone working on GTM engineering, GTM systems? Okay, workflows, processes, automations. I'm sort of speaking the same language as all you seeing some nods in the audience. Well, what's really exciting
+
+about Grockbot for RevOps and Marops is [snorts] um I can sort of go through all of these. Some of these I'm going to demo in just a second, but if I had to call
+
+out just one to really highlight about how a tool like Grockbot changes the nature of our work is we can finally build tools and not just rules. So often
+
+times when you're in these roles that are inherently about crossf functional collaboration and aligning stakeholders, uh so much of the job is just like communicating communicating information
+
+out, hoping that people follow guidelines for like the right way to set up a campaign, the right way to get something tracked. But finally, with a
+
+tool like Grockbot, we can all think of ourselves as much more technical to the point where we're not just setting out the guidelines for, hey, if someone at
+
+the company wants to get XYZ campaign done, they have to follow this checklist. And instead, we can set up the infrastructure, the like internal apps where those teams can do the work.
+
+And the apps are just set up to respect those rules in the first place. And so you can sort of think of the marketing and sales teams as playing a game that
+
+you are designing as that sort of back office ops team. But really across all of these use cases that we're highlighting here um there are there's
+
+really so much to do uh that that really fundamentally changes the nature of the work. And so uh I want to walk all of you
+
+through a demo of some specific ways that I use Grockbot. um to highlight a couple of those use cases from the prior slide. And before we do that, I just
+
+want to introduce you to my team of bots. So, there are some obscure references here with the names of my bots. Uh I don't know if by any chance
+
+there are any Radio Head fans out there in the audience. Amazing. So, maybe you would understand the reference to uh owned over there. That's a beloved instrument. Uh but all of these are sort
+
+of references to music devices. Uh in another life I might have pursued that passion a bit more but now I can um use do that with my bots. Uh and so we've
+
+got OP1 my sort of synthesizer chief of staff um who drives a lot of my work. We've got Fiser, which is sort of the like receiver of all the information
+
+from across my inboxes, email, calendar, text messages, Slack. Juno is my product manager bot um that sort of helps me think through corner cases, product requirements. When I'm
+
+going out and thinking of tools that I want to build for our marketing and sales teams, it helps me really think through all the implications and build the right thing in the first place. And then owned is my engineerbot. Um, so it
+
+has a really clear sense of our systems, how they interact with each other, things like the CRM and our data warehouse and our existing codebase and
+
+how we build internal tools at SpaceX. Um, and so, uh, what you'll see in a second here in our demo is first I want to show you, um, what I
+
+call the self-completing task list. Uh, so this to me, I'm sort of a productivity nerd. Um for over half a decade I've been building my own internal systems for getting work done more efficiently because especially in a role like revops or marops as I said
+
+earlier so much of it is just stakeholder management. You're getting so many messages from so many different places trying to make sense of it trying
+
+to understand what is truly high priority. Um, and finally, with a tool like Grockbot, what you can do is you can set up these bots to monitor all
+
+your inboxes and help you distill, okay, of all these messages you've received, things that showed up on your calendar, which of these are actual tasks versus
+
+which of these are just FYI or things that we can safely ignore. Um, and so what we'll do here is we can see my bots
+
+have already been active in the background. So Fiser, the sort of executive assistant or receiver agent that's tapped in to all my inboxes, um we can see today at 9:04 a.m. um it
+
+completed this ongoing routine that it has. You can see um over here it has this regular routine that it runs on a schedule where it checks all my inboxes
+
+and picks out whatever's new and then it proactively um actually like while I was giving this talk messaged OP1 again that's my chief of staff agent
+
+and it gave it the rundown of across email calendar work chat all the information that came my way. And so this alone is such an unlock in terms of
+
+knowing like I can even if I wanted to, I could turn notifications off on Slack, on email, and I would just know that in the background my bots are monitoring
+
+those channels for me and surfacing to me the things that are most important that should really take away my attention. Um, and that alone, um,
+
+really cuts down on the context switching for me and really helps me get into much more of a focus mode in my work and just be a lot happier, um, in
+
+my work. So, really, really cool, right? That alone changes the game. And then what you see here is Fiser is receiving this information. It's proactively telling my chief of staff, hey, here's what's new.
+
+And then my chief of staff is distilling that down into um the actual tasks and subtasks that I was able to identify from that input. So right, sometimes you
+
+get messages and you don't actually have to act on them. Sometimes you get messages and you have to act on them, but you can't really tell just by
+
+reading the message alone like what's really going on here. And so with bot, what you can do is it reads the message. It reads the entire Slack exchange and
+
+it sort of distills for you like, hey, I think here's what that person is asking for. Um, and so it just makes your life so much easier. Now, here's the really
+
+cool thing is this is where we get to the self-completing part of the of the self-completing task list is um my two bots, Fisher and OP1 are
+
+working together to identify tasks and then OP1 identifies one of those tasks. Looks like there's a territory dispute. A couple AES have some disagreements about who should work a given account.
+
+And what OP1 can do is relay that task to another bot that I have which is a territory planning bot. It can give it context on what's going on. And then
+
+that territory planner bot who has full information on our rules of engagement, um how we set out different territories, all the context from our CRM, that bot
+
+is able to complete a pretty good first draft of of that task of what u deliverable is needed to complete that task. And so, uh, I didn't even have to think
+
+about, you know, what what we should do about this territory dispute. Of course, I can always come in and validate the work and make sure that it actually makes sense. Um, but it's really amazing
+
+to think that like I I have a team. I truly have a team. A team that is monitoring my inboxes, distilling the tasks, relaying those tasks to the right
+
+other teammates who can get them done for me. and then I just come in and sort of oversee the whole process um and and finalize things.
+
+So that's demo one. Demo two is really how I was able to build um what to put it in a piffy way is a dating app for leads that we use
+
+internally at SpaceX AAI where you know often uh for those of you in the audience who know what I'm talking about marketing sales handoff is like such a
+
+classic issue in companies where marketing is producing all these leads sales people are like I don't really love these leads. I don't want to have to work them. So, they're just sitting
+
+there getting stale. You don't really have a feedback loop where marketing can refine their targeting to give sales more of the kind of leads that they want. And the whole process is just
+
+broken. And so, uh I sort of identified a better way to handle the marketing sales handoff, which is what if every AE could log into an app and they would
+
+just see the leads that they own. They can swipe left to end those leads. When they end those leads, they have to give a specific ended reason. When they hit
+
+submit, it actually writes back to the CRM in all the correct ways. When they swipe right, they can add that uh prospect, they can add that lead directly into a follow-up sequence. And
+
+so this is what I mean when earlier on I said this really transforms what we can do as someone on revops or marops where all of a sudden we're not um just
+
+talking about SLAs's and making sure that sales teams abide by the SLAs's and hey why aren't you working these leads and okay let me relay that anecdotal
+
+information about these leads back to the marketing team. Instead we just set up the game for the teams to play. They play that game and we get a lot of
+
+really valuable information on, okay, why are these leads being ended? How can we sort of programmatically feed that back into the marketing teams to improve the targeting and give sales more of the leads they like? How can we make it as
+
+easy as possible for sales people so that this is something fun that they want to get to inbox zero with their leads every day? So the way that we did
+
+this was um I basically told my product manager bot I want to build an internal app for sales reps to review their leads. Um I gave it a rough idea of the
+
+mechanics for the app, some extra things that I want and most importantly from the start we really want to get this off flow with our CRM right um because
+
+that's sort of the most critical thing. We want people sales people to be able to log in and see the leads they own and make sure that we're writing uh information back into the CRM properly.
+
+So what happens when I send this message is Juno is a really good thought partner for me. Um so I have this rough idea for
+
+an app and with prior AI tools what might have happened is the AI really wants to please me. it really wants to do a good job and so right away it jumps
+
+into okay I'm starting the coding process here it is and maybe it doesn't look like what you envisioned maybe it doesn't work like what you envisioned maybe it anchored too much on what you
+
+had in that first prompt and so in a way you're sort of scared to use the AI and overthinking like did I get that prompt
+
+right did I need to give it more detail in the first place oh no now it's running away and building the wrong thing what Grockbot does is it takes a
+
+second it asks you follow-up questions really good followup questions, things that I didn't necessarily think about when I first had the idea for this app.
+
+And so we can answer these questions. We'll see. It'll ask a few more. We can go through this process. Let's see. I want to show people only their new
+
+leads. No additional filters. We want to make sure. Okay, so this is a really good question. when a lead when a lead is accepted, what should change in
+
+the CRM? Now, what I want to tell bot is actually we shouldn't change any fields in the CRM when a lead is accepted because the real moment that the lead status
+
+changes is when the rep reaches out. We already have an automation for tracking that activity and updating the lead status. So, we're really getting in the
+
+weeds here. And AI is the the AI, the Grockbot is really prompting me to think more deeply about my idea and to say, "Hey, you know what? That's a good point. I'm not just answering questions mindlessly, but I'm really thinking through some of the implications here.
+
+Let's do reason and optional notes." And there will probably be just one or two more questions that it'll ask. Let's see. Offline actions. Great question. Let's cue and confirm
+
+before done. So then we'll see that this product manager bot will come up with a spec for our product. And not only that, but let's do let's do local only here. Not
+
+only will it come up with the spec, but what we'll see in just a second is well, I won't spoil anything. So, we can see it's drafting the product
+
+spec. And actually, it's sort of giving it away. So, what Juno is going to do for me is it's going to write the spec and
+
+then proactively hand it off to own, our engineering bot to actually get the build started. And again, I think the really magical thing here is I didn't have to prompt
+
+Juno to do that. Um, often when you're using AI tools, if you even get to this point of thought partnership and producing really good quality outputs,
+
+um, you have to take those outputs and like send them into the right new system. Um, if you even have a consistent bot that you go to that just does your engineering work. And here you
+
+can again really think of it as a team that's working on your behalf to get things done end to end. So it messaged, owned, it has this product spec ready
+
+for the engineering to begin. And now we can see that our engineer is off to work. And now sort of cooking demo style, I'll show you uh what the
+
+finished product looks like. Um since I won't bore you with all the details of own doing the build, but what we've got here, this is all fake data, so no
+
+worries here. Um, this is just a mockup of the real interface that I was able to build with Grockbot and that many of our reps now use on a daily basis to get
+
+their reviewed leads down to zero. And so we've got uh all this information available at a glance about the lead. Um, we can simply put the card to the left to end that
+
+lead. We can uh swipe to the right and we can put that lead in a sequence. We can see more information about how the lead came in in the first place.
+
+And it just works already since introducing this new app to our sales reps, which by the way went from idea to implementation in just two weeks. The
+
+live build time was really 10 hours. And then a lot of the other time was spent just introducing people to this tool. Um getting them familiar with it, gathering more feedback and pro and feature
+
+requests. Um in the two weeks since we've adopted this on the team, we've seen our leads reviewed rate shoot up. Um the AES love it, marketing teams love
+
+it because they're finally getting high quality feedback from sellers on how they can improve targeting. Um, and we can see how working with Grockbot really
+
+elevates what we can do. Like, you know, show of hands out there in the audience. How many of you feel like without AI you would be able to build a product like this?
+
+Amazing. Okay. Right. We got we got one hand. Now, I would say with AI and especially after seeing this demo, how many of you feel like you could pretty confidently go into a chat with AI and
+
+build this or any other internal tool that your team needs? Amazing. Amazing. I'm seeing a lot of hands now. Um, and that was exactly me.
+
+I I really joined this team with a lot of ideas for how we could improve processes, with a lot of specialized knowledge around specific tools where I
+
+just knew the menus and buttons to use. But I'm at a point now where what I'm using more than anything is just my brain to really think critically about
+
+what do we need as a team um and how we can be more efficient. So, um, now I really want to distill what we learned from that demo.
+
+And, uh, really some of the big lessons are if you were able to hire a full team, if someone came to you and said you have headcount to hire a full team of people reporting to you, who would be on it? Really what
+
+Grockbot does is it democratizes in a way that CEO life anyone can hire an unlimited set of specialists with the right context and access. I think this is really powerful for our day-to-day in
+
+terms of just dreaming bigger about what we can each do for the teams that we're on. The next lesson is really to trust your bots, give them agency, and at the
+
+same time give them guard rails. So, there's something really powerful about knowing really confidently all the access that your bots have, all the things that they can do for you. Um,
+
+because that helps you entrust them with bigger and bigger tasks. But at the same time, knowing that things aren't going to go too far off the rails because
+
+they'll always come back to you before they ship anything. messages, writing back to the CRM, pushing PRs. And I think Grockbot really helps you achieve that balance between pushing AI
+
+tools to the limit and then running into issues or feeling like I don't really know what access it has. I don't know how helpful it can really be, so I
+
+haven't really started using it yet. The final thing, and this is really, I think, more of a call to action than anything for those of you out in the audience whose role is similar to mine,
+
+is think of yourselves not as just the people setting rules, processes, but really you are a product manager and your product is revenue growth. I am
+
+extremely excited about where the RevOps, Marops, GTM engineering, GTM systems, whatever you want to call it, where this profession is headed. And I think that's particularly relevant with Dreamforce going on this week is all of
+
+us are thinking about the systems that our GTM efforts are built on. And I think in this new world where all of us have access to tools like Grockbot, it
+
+means we can think of ourselves as identifying any bottlenecks to growth and getting rid of them. That's our job day in and day out is just talking to
+
+teams, doing the human thing, forming relationships, building trust, distilling what needs to be built to help the teams grow more effectively, operate more effectively, and then going
+
+and building those things. So, that's it for the main presentation. Um, we're going to have some time for questions next. Um, thank you so much
+
+for joining. [applause]

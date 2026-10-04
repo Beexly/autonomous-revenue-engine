@@ -1,0 +1,586 @@
+[00:00:00] Oh, hi everyone. Thanks so much for
+[00:00:01] joining today's workshop on GrokBot for
+[00:00:04] sales. My name's Crystal Etz. I'm on the
+[00:00:07] go-to-market team here at Spacex AI.
+[00:00:10] &gt;&gt; And I'm Mark Wright, on the same
+[00:00:11] go-to-market team at Spacex AI. And
+[00:00:13] excited to share with you GrokBot for
+[00:00:15] sales, uh something near and dear to all
+[00:00:17] of our hearts here.
+[00:00:18] Uh getting into it, we'll talk about the
+[00:00:20] agenda. We're going to be introducing
+[00:00:22] GrokBot or reintroducing to some of you
+[00:00:24] uh here today. Why GrokBot uh
+[00:00:27] specifically for sales and in the
+[00:00:28] marketplace. Uh some sales use cases and
+[00:00:31] Crystal will take us through how she's
+[00:00:33] using it and demo it. Uh and then what
+[00:00:35] we learned, we'll have time for Q&amp;A, uh
+[00:00:38] and then hands-on session together as
+[00:00:40] well.
+[00:00:42] All right, a little bit about uh the AI
+[00:00:44] maturity curve and where GrokBot fits in
+[00:00:46] today. I think as you all know, uh it's
+[00:00:49] evolving very rapidly. Just a couple
+[00:00:51] years ago, we were simply using uh chat
+[00:00:54] to ask and get feedback, uh you know,
+[00:00:57] ask a question, get a response. Uh and
+[00:01:00] then quickly evolved into a task-based
+[00:01:02] where I'd say maybe clean up my my files
+[00:01:05] on my computer and then come back and uh
+[00:01:07] ask for the next direction. But now
+[00:01:10] we're really doing uh you know, bots and
+[00:01:12] agents delegating full tasks or work
+[00:01:15] streams. And so now you can simply say
+[00:01:17] things like "Build me pipeline, get me
+[00:01:20] uh a meeting with X company." And it'll
+[00:01:23] simply go do that. And we really believe
+[00:01:25] the future of where GrokBot and this is
+[00:01:27] going is having more of a staff
+[00:01:29] function. So, having a team of bots that
+[00:01:32] focus on a specific set of uh
+[00:01:35] opportunities and tasks and then having
+[00:01:37] them work together to essentially you
+[00:01:40] know, solve what you're looking for,
+[00:01:42] specifically within the sales function
+[00:01:43] as well.
+[00:01:46] Incomes GrokBot. Uh hopefully it's not
+[00:01:48] the first time you've seen this, but
+[00:01:49] excited to re-share it with you. One
+[00:01:52] thing you'll notice rather quickly,
+[00:01:54] looks very simple, looks like iMessage,
+[00:01:56] easy to message and chat with and and
+[00:01:59] figure out what to do.
+[00:02:00] Um you can create bots for different
+[00:02:02] jobs. That's highly recommended. Uh
+[00:02:04] whatever their specialty is, you should
+[00:02:05] create them and uh you know, the memory
+[00:02:08] aspect of these bots are really
+[00:02:09] incredible. So, things you've told to it
+[00:02:11] at the very beginning, you know, one
+[00:02:13] recommendation is always to tell her a
+[00:02:15] lot about yourself, your functionality,
+[00:02:18] um log in the same way you would into
+[00:02:21] different applications so that I can
+[00:02:23] then start to take over a lot of the
+[00:02:24] work, the mundane work that you have
+[00:02:26] been doing repetitively for days on end,
+[00:02:30] um and get it to to go out and start to
+[00:02:32] uh accomplish some of those.
+[00:02:33] Um one thing we'll get into as well as
+[00:02:35] setting up automations and routines and
+[00:02:38] skills, ensuring that they can simply,
+[00:02:40] you know, take this work when you're not
+[00:02:42] there,
+[00:02:43] uh and effectively, you know, work work
+[00:02:45] on your behalf as well. Uh and then
+[00:02:47] lastly, you can easily share bots and
+[00:02:50] templates across to each other. It's
+[00:02:52] actually something that we saw
+[00:02:53] internally at SpaceX AI. Krista has been
+[00:02:55] a power user for some time, and she's
+[00:02:57] actually shared out uh you know,
+[00:02:58] templates to the rest of the team so
+[00:03:00] that we can effectively get moving on
+[00:03:01] Grok Bot much faster as well.
+[00:03:06] Why Grok Bot? Uh as we know, there's uh
+[00:03:09] a lot of different things in the
+[00:03:10] marketplace, but Grok Bot is really, you
+[00:03:12] know, taking the world by storm at the
+[00:03:13] moment. And uh here's a few things why
+[00:03:16] uh that's the case. I mentioned uh we're
+[00:03:18] meeting people where they are. Everyone
+[00:03:20] knows how to type in iMessage, and so we
+[00:03:23] make Grok Bot feel much the same
+[00:03:26] functionality uh as such as well. So,
+[00:03:28] you can simply just type away and go
+[00:03:30] from there.
+[00:03:31] No longer do you need to close, you
+[00:03:32] know, keep your laptop just a little bit
+[00:03:33] open and keep it on for the bots to
+[00:03:35] work. It has its own computer, its own
+[00:03:38] VM, working 24/7 when you're not able to
+[00:03:41] work.
+[00:03:42] It uses the tools just like you do. So,
+[00:03:44] it has access to what you as user would
+[00:03:46] have access to and be able to go do that
+[00:03:48] work. Uh Uh, and and as mentioned at the
+[00:03:51] beginning, no longer do you have to, you
+[00:03:53] know, really handhold it. Uh, the future
+[00:03:55] is now, you know, sharing uh, an
+[00:03:57] objective, something that needs to be
+[00:03:59] accomplished, right? Whether it's
+[00:04:01] generate the pipeline and/or,
+[00:04:03] um, you know, going through and and
+[00:04:05] getting a meeting with a company, it's
+[00:04:07] going to go out and figure out the best
+[00:04:08] way to do that. Uh, and then you can
+[00:04:09] obviously share share the work to to
+[00:04:11] move more quickly.
+[00:04:14] All right, the exciting part. You know,
+[00:04:15] what are some real-life example use
+[00:04:17] cases that we're seeing today in Strong
+[00:04:20] Space X AI as well as with our
+[00:04:22] customers, um, around the globe. Uh,
+[00:04:24] pipeline, pipeline, pipeline. I'm sure
+[00:04:27] that's near and dear to everyone here
+[00:04:28] within sales. How do we generate that?
+[00:04:31] We'll talk through a little bit about
+[00:04:32] how we're using Grokbot to do so, rather
+[00:04:34] than, you know, spending all your time,
+[00:04:36] um, you know, looking through,
+[00:04:37] identifying the right contacts, and
+[00:04:39] sending out. Uh, we as sales folks get a
+[00:04:42] lot of questions that are really
+[00:04:44] engineering-specific, and uh, sometimes
+[00:04:46] we can't always answer those, and and,
+[00:04:49] you know, the the key here is not to
+[00:04:51] always have to bug your sales engineer
+[00:04:53] or engineering partner. Now, Grokbot can
+[00:04:55] actually have that uh, knowledge so that
+[00:04:57] you can just simply bug your Grokbot in
+[00:04:59] this instance. Um, Echo is one really
+[00:05:02] exciting one I think Crystal will take
+[00:05:03] us through, and it's, you know, how to
+[00:05:04] really live uh, understand the the call
+[00:05:07] and be able to, you know, offer in some
+[00:05:09] of those insights within it. Uh, Chief
+[00:05:12] of Staff is one you guys probably all
+[00:05:13] seen, kind of, you know, having a a
+[00:05:15] starting point and and working through
+[00:05:17] your bots from there.
+[00:05:18] Um, and then lastly, like forecasting.
+[00:05:20] We all have to do it. It's all uh, used
+[00:05:23] to be a manual process, and now with
+[00:05:25] Grokbot in your systems, you can simply,
+[00:05:27] you know, one click or have it automated
+[00:05:28] as a routine to move forward from there.
+[00:05:31] So, with that, uh, Crystal, I'll turn it
+[00:05:33] over to you to introduce us to your
+[00:05:34] team.
+[00:05:35] &gt;&gt; Yeah, so before I demo, I wanted to
+[00:05:36] introduce you to my team of bots. So,
+[00:05:40] first I have Olive. Uh, I like that you
+[00:05:41] can customize these agents. So, Olive is
+[00:05:43] my dog. She kind of handles my
+[00:05:45] day-to-day. Uh, PG is outbound
+[00:05:48] prospecting. As you mentioned, pipeline
+[00:05:50] is key.
+[00:05:51] Echo is one I created that was really
+[00:05:53] popular where I, you know, want to
+[00:05:55] ensure that I leave a discovery call
+[00:05:57] with something like around next steps,
+[00:06:00] you know, discuss the actual use cases
+[00:06:02] the customer discussed with me. So, you
+[00:06:04] can easily update a deck just by
+[00:06:06] stopping a granola recording and bot
+[00:06:08] will update those slides based on what
+[00:06:11] the customer said during the meeting.
+[00:06:13] And then just like a customer expert, I
+[00:06:15] work with a few strategic customers. So,
+[00:06:17] it helps me stay on top of usage before
+[00:06:19] renewals, any product signals if
+[00:06:21] they're, you know, trying a new product
+[00:06:23] within Space X AI. It can track Slack
+[00:06:26] threads. I'm sure everyone's Slack's are
+[00:06:28] very noisy lately. So, it can track any
+[00:06:31] key items related to the customer.
+[00:06:34] Something I really love is like I have a
+[00:06:36] lot of feature requests that customers
+[00:06:38] raise. So, when we ship our change log,
+[00:06:40] it can actually pull up feature requests
+[00:06:42] that the customer asked for maybe a
+[00:06:43] month ago. I would have forgotten about
+[00:06:46] and be like, "Hey, we just shipped this
+[00:06:47] change log. Reach out to this customer
+[00:06:49] who asked for this feature."
+[00:06:51] Kind of feels like we built the feature
+[00:06:53] request for them.
+[00:06:55] And then the engineers you mentioned, I
+[00:06:57] like to think my bots like how I would
+[00:06:58] work with colleagues. So, if I would
+[00:07:00] Slack an engineer or maybe Slack a BDR
+[00:07:04] for something, now you can have bots
+[00:07:05] that go and handle this work on
+[00:07:08] their own. So, I can share a quick demo.
+[00:07:12] Um
+[00:07:13] Let me share my screen.
+[00:07:15] So, as I mentioned, I have my team of
+[00:07:17] bots here. All of this is my chief of
+[00:07:18] staff. So, she can prep me for my
+[00:07:20] meetings in the morning. So, if you're
+[00:07:22] on the bus to the office, I feel like
+[00:07:24] for me that's like my most anxiety prone
+[00:07:27] time is like when I'm not at my laptop,
+[00:07:29] but I still need to get work done and I
+[00:07:31] have like Slack's and emails flowing in.
+[00:07:33] So, it can prep me for my day, prep me
+[00:07:35] for my 9:00 a.m. meetings, and then also
+[00:07:38] like reply to emails for me. So, you can
+[00:07:41] see it just has this email card. Um you
+[00:07:43] know, maybe I got a note from a customer
+[00:07:45] who was asking for a one-pager. It will
+[00:07:47] go ahead and draft that for me. I can
+[00:07:49] make any changes here, and then just
+[00:07:51] send the email or discard or change it.
+[00:07:54] So, that's my Chief of Staff. Um
+[00:07:56] They also have routines. So, you can run
+[00:07:59] like a morning inbox scan. You can run
+[00:08:01] this like a couple times a day. I think
+[00:08:03] a a tip for usage as well to ensure
+[00:08:05] you're using
+[00:08:07] uh using your uh
+[00:08:10] uh
+[00:08:10] tokens in a responsible manner is uh I
+[00:08:14] actually run less routines. I usually
+[00:08:16] like run a routine once or twice a day.
+[00:08:18] Otherwise, I find it really noisy. Um
+[00:08:20] but I'll set up routines for my Chief of
+[00:08:22] Staff to
+[00:08:24] um let me know anything coming through
+[00:08:25] my inbox. Um I had Echo that we talked
+[00:08:28] about earlier. So, you can see I had a
+[00:08:31] couple calls today. Um these are demo
+[00:08:34] notes, but uh it can it can actually
+[00:08:37] update these slides based on what calls
+[00:08:39] I have. I can even ask it like, "Hey,
+[00:08:42] can you translate this
+[00:08:45] slide
+[00:08:47] to Japanese?" I work with a lot of
+[00:08:49] international customers, so it's nice to
+[00:08:51] be able to translate slides on the fly.
+[00:08:54] So, it'll go off and work on this.
+[00:08:56] Um next I have PG, which I think is top
+[00:08:59] of mind for anyone in sales. Uh
+[00:09:02] so, you can have uh your PG agent. What
+[00:09:06] I have do is it will, based on my PG
+[00:09:09] skill, which is available in the
+[00:09:12] marketplace, you can uh run a agent to
+[00:09:17] go and pick five accounts in your book.
+[00:09:19] It'll pull that from Salesforce. It
+[00:09:21] might look at like intent data, like
+[00:09:22] what are the best fits, or you can
+[00:09:23] actually give it those accounts to run.
+[00:09:25] So, you can do five accounts, you can do
+[00:09:27] 100 accounts. I do five, and then I have
+[00:09:29] it pick five contacts. And instead of
+[00:09:32] just like basic company data, like,
+[00:09:34] "Hey, oh, your company raised funding."
+[00:09:36] Like, they're probably getting the same
+[00:09:38] uh outreach from 1,000 companies right
+[00:09:40] now. I like that it will pull like uh
+[00:09:43] like personal hooks. So, say the CTO
+[00:09:46] posted on X about
+[00:09:49] uh you know, building a software factory
+[00:09:51] with his team, or the CEO posted about
+[00:09:54] like a new product they're launching. Uh
+[00:09:56] you can have it actually pull those
+[00:09:58] personal hooks, and then shape messaging
+[00:10:00] not only the company, but the person.
+[00:10:03] What I found with other AI tools is it
+[00:10:05] would pull like out-of-date data, or
+[00:10:07] just like things that
+[00:10:10] uh weren't like personally appealing. I
+[00:10:11] think everyone has AI now, everyone can
+[00:10:13] see like basic company events, but
+[00:10:15] pulling actual social data, I think is
+[00:10:17] really important. So, I would highly
+[00:10:19] recommend connecting to the X API. Uh I
+[00:10:22] always talk about this, but I think um X
+[00:10:24] is like where a lot of leaders and
+[00:10:25] companies post. You probably saw the
+[00:10:27] Apple CEO just joined X, so it's a great
+[00:10:30] way to like stay on top of recent
+[00:10:32] company news, and uh just connect with
+[00:10:35] all of your executives at the account.
+[00:10:37] So, it'll create the sheet uh filled
+[00:10:39] with uh personal hooks, um intent data,
+[00:10:42] like company growth, maybe job openings,
+[00:10:46] uh
+[00:10:46] anything that you would like it to pull,
+[00:10:48] essentially. Uh it can rank contacts by
+[00:10:50] like who they recommend that you reach
+[00:10:52] out to. It pulled like some podcasts and
+[00:10:55] webinars, and your agent can actually
+[00:10:58] watch these podcasts and webinars. So, I
+[00:11:00] think before I had GrokBot, I would like
+[00:11:02] try to listen to a few webinars or
+[00:11:05] podcasts on my way to the office, but it
+[00:11:07] just wasn't scalable to listen to a
+[00:11:09] 45-minute webinar, and then try to find
+[00:11:12] a you know, hook or blurb where the CTO
+[00:11:15] or CEO, whoever you're working with,
+[00:11:18] mentioned something that would be
+[00:11:19] relevant for what you're trying to uh
+[00:11:21] partner with them on. So, it can watch
+[00:11:24] these webinars and pull out actual
+[00:11:26] quotes,
+[00:11:27] uh or things that relate to how your
+[00:11:29] business would help them, and then put
+[00:11:31] together messaging. And then you can uh
+[00:11:34] draft it in your Gmail, you can have it
+[00:11:36] like create like a
+[00:11:38] card like this and edit them. And
+[00:11:42] something I do before I send all of this
+[00:11:44] is I have GrowthBot scan your Gmail,
+[00:11:48] your Slack, or even your ex. Like give
+[00:11:49] it writing that you're proud of, and it
+[00:11:53] will know your writing style and know
+[00:11:54] your voice. I'm very picky that things
+[00:11:57] sound like me when I write. I don't like
+[00:12:00] the generic, you know, LM
+[00:12:03] type style writing. So I think to like
+[00:12:05] deslop that a little bit is to make sure
+[00:12:08] that it understands your writing style.
+[00:12:10] So that's my PG bot. I booked a lot more
+[00:12:13] meetings with executive buyers just
+[00:12:15] because I really understand
+[00:12:17] things that are important to them based
+[00:12:19] on what they posted about.
+[00:12:21] I don't know does anyone enjoy
+[00:12:24] updating Salesforce next steps or
+[00:12:27] pipeline? Probably not.
+[00:12:29] &gt;&gt; [laughter]
+[00:12:29] &gt;&gt; Oh, you do? Okay, I have one person who
+[00:12:31] enjoys updating Salesforce.
+[00:12:34] Oh, no, no, no. Okay, perfect. So this
+[00:12:37] is like one of my favorite things
+[00:12:39] because it'll actually listen to my
+[00:12:41] Granola and Gong calls, and it'll pull
+[00:12:44] out relevant contacts people to update
+[00:12:46] next steps. I even gave it like the
+[00:12:48] format I wanted, like my initials, the
+[00:12:51] date, a customer outcomes, what are next
+[00:12:54] steps, and you can give it the format,
+[00:12:56] and then it'll pull those details from
+[00:12:58] your emails, from your Slack, from your
+[00:13:00] Granola, from your Gong, and update
+[00:13:03] those for you, and then you can like
+[00:13:04] review it and then push to Salesforce,
+[00:13:07] which is really powerful powerful.
+[00:13:09] I talked about this a little bit
+[00:13:10] earlier, but I have a few strategic
+[00:13:12] customers, so my job is to really know
+[00:13:15] these customers in and out. A lot of
+[00:13:17] times I work across different
+[00:13:18] departments. I have multiple Slack
+[00:13:19] channels, maybe internal channels,
+[00:13:21] external channels. Maybe they're
+[00:13:23] emailing me or other members of my team.
+[00:13:27] So I work with Notion as my database for
+[00:13:29] my customer expert. So, after every
+[00:13:31] call, it will update Notion uh on the
+[00:13:35] account plan, any signals, maybe I have
+[00:13:37] a renewal coming up, who are the
+[00:13:39] stakeholders I need to reach out to,
+[00:13:41] what were the calls we've had, what
+[00:13:42] projects are we working on. So, it'll
+[00:13:45] automatically update this account plan
+[00:13:47] in Notion. Uh
+[00:13:48] it will kind of detail the next steps. I
+[00:13:50] can pull in a usage data here. For this
+[00:13:53] example, I asked like what the top 20
+[00:13:55] power users are, so my team and I can
+[00:13:58] reach out, get their feedback prior to
+[00:13:59] the renewal, or maybe we're shipping
+[00:14:01] like a, you know, new feature that
+[00:14:03] they'd like to try out. Uh you can see
+[00:14:06] that there was like a, um you know, a,
+[00:14:09] um
+[00:14:10] a customer question in a Slack channel,
+[00:14:12] so it'll, you know, kind of ping me when
+[00:14:14] things are top of mind or I need to
+[00:14:15] action on things. So, I found that
+[00:14:17] really valuable to spending more time
+[00:14:19] with customers, not spending time like
+[00:14:21] searching through Notion, asking an
+[00:14:23] engineer a question. Um and on that
+[00:14:26] note, uh I have an engineer, it's
+[00:14:28] connected to the code the code base. So,
+[00:14:30] when I'm live on a call, instead of, you
+[00:14:32] know, needing to get back to somebody, I
+[00:14:34] can just ask a question live on a call.
+[00:14:36] Like one example is uh we work with
+[00:14:38] customers to set up cloud agents a lot,
+[00:14:40] so I could ask like, "Hey, can you send
+[00:14:43] me a customer-facing
+[00:14:45] answer on how to set up cloud agents?
+[00:14:52] Also, send me a few outcomes that
+[00:14:57] Amplitude
+[00:14:59] and Fair achieved."
+[00:15:02] So, like maybe for this question, I
+[00:15:03] would have had to like talk to uh an
+[00:15:05] engineer, or bring an engineer on the
+[00:15:08] call to help walk the customer uh
+[00:15:10] through setting up cloud agents. And
+[00:15:12] then maybe I would have had to like talk
+[00:15:14] to the Amplitude and Fair uh account
+[00:15:16] managers and understand like how they're
+[00:15:18] leveraging cloud agents, or talk to
+[00:15:19] those customers myself. But, it'll pull
+[00:15:22] that customer or that uh response
+[00:15:25] from a code base.
+[00:15:27] A lot of times I paste this in Slack, so
+[00:15:29] it kind of already knows how I work and
+[00:15:31] like shares with me like a paste ready
+[00:15:33] version I can share.
+[00:15:35] But it gives me all the steps to set up
+[00:15:36] cloud agents and then it also shows
+[00:15:38] customer outcomes. Like how have we
+[00:15:40] worked with other customers to set up
+[00:15:41] cloud agents and what are the outcomes
+[00:15:44] achieved? So I use this a lot
+[00:15:47] and
+[00:15:48] and then just like pulling content. I
+[00:15:49] think that's the most powerful thing for
+[00:15:52] me is just like actually watching
+[00:15:54] content and doing things. I like to
+[00:15:56] think of GrokBot like not just like as
+[00:15:58] like a thinking partner or like a
+[00:16:00] research partner, actually like a doing
+[00:16:02] partner. So I could have it, you know,
+[00:16:05] watch a customer webinar with a CEO and
+[00:16:09] like, "Okay, based on this webinar,
+[00:16:11] draft me an outreach messaging or put
+[00:16:14] together messaging for my CEO to reach
+[00:16:16] out to the CEO and set up a meeting to
+[00:16:17] talk about their three key objectives
+[00:16:19] and how it relates to what we can do for
+[00:16:22] their business. So
+[00:16:24] when I first started working with
+[00:16:25] GrokBot, I think I mistakenly started
+[00:16:28] using it as I would like a chat
+[00:16:29] interface. So I was like, "Hey, go and
+[00:16:30] do this research." And then it actually
+[00:16:32] gave me the links to go and watch these
+[00:16:34] webinars myself.
+[00:16:37] But I kind of pushed back. I was like,
+[00:16:38] "Hey, no, go watch those webinars for me
+[00:16:40] and draft an email for me." So I think
+[00:16:42] you have to change your mindset with how
+[00:16:44] you work with these. Like think of them
+[00:16:46] like colleagues who have their own
+[00:16:47] computers. They can work overnight and
+[00:16:49] they can do these things for you. So a
+[00:16:51] lot of times when I'm prospecting, I
+[00:16:53] will just have my prospecting bot work
+[00:16:56] overnight on like a very long list and
+[00:16:59] then just have all the emails ready to
+[00:17:01] go for me in the morning. And then I
+[00:17:03] think every day I like to add like, you
+[00:17:05] know, 20% more. I'll be like, "Okay,
+[00:17:07] well,
+[00:17:08] you drafted these email responses.
+[00:17:10] That's great. Well, go and draft like
+[00:17:12] LinkedIn responses or go find 10 and
+[00:17:15] people to reach out to." So you're going
+[00:17:16] to build upon your bots as you continue
+[00:17:20] to use them.
+[00:17:22] I also use Grokbot a lot for travel and
+[00:17:24] expense. I'm sure we all do.
+[00:17:26] Also, expenses are not fun. So, you can
+[00:17:29] find like Starlink flights, which is
+[00:17:30] helpful. Um and then I use Xbot a ton.
+[00:17:33] So, this is connected to the X API.
+[00:17:38] As I mentioned, like I found just like
+[00:17:40] LinkedIn is a pretty out of date with
+[00:17:42] company information and you can kind of
+[00:17:44] dig and find like who you you can reach
+[00:17:47] out to.
+[00:17:48] And then I also just like learn it like
+[00:17:50] use Grokbot for learning.
+[00:17:52] So, if you're like researching like a
+[00:17:53] new topic,
+[00:17:55] um like one that I like to like think
+[00:17:56] about is like um
+[00:17:59] SpaceX
+[00:18:00] um or maybe it's like
+[00:18:02] uh
+[00:18:04] learning about
+[00:18:06] um
+[00:18:07] or like a topic like I want to research
+[00:18:10] new restaurants or something. But, you
+[00:18:12] can just like pull up a new chat and
+[00:18:14] research our restaurants to reach out
+[00:18:15] to.
+[00:18:17] Um
+[00:18:18] but yeah, these are all my favorite
+[00:18:20] things. You can ask it to be like, "Hey,
+[00:18:22] can you
+[00:18:24] watch the most recent
+[00:18:27] webinar with Roman
+[00:18:30] uh around Grokbot
+[00:18:33] on Lenny's podcast?"
+[00:18:35] &gt;&gt; Yeah, and I think we have a lot of
+[00:18:36] Grokbots actually watching this as well.
+[00:18:39] &gt;&gt; Yes. Yeah, there's probably Grokbots
+[00:18:40] live.
+[00:18:42] Um so, it'll go off and watch uh any
+[00:18:46] live Grokbot webinars.
+[00:18:48] &gt;&gt; Yeah, and Chris, I want to hit on one
+[00:18:50] thing on these engineer piece um the
+[00:18:52] engineer one. This has been impactful
+[00:18:54] for me as well in terms of like speeding
+[00:18:55] up my deals.
+[00:18:57] How many times we all been there where
+[00:18:58] it's like, "Oh, yeah, let me find the
+[00:18:59] answer and get back to you."
+[00:19:01] But, now with the engineer bot, we've
+[00:19:03] been able to like quickly get those
+[00:19:04] answers, answer them on the call, and
+[00:19:07] then really speed up the next steps in
+[00:19:08] an opportunity. And Um, one I highly
+[00:19:10] recommend is really impactful for for us
+[00:19:12] in the organization as well.
+[00:19:15] &gt;&gt; Perfect. Um, I think that's all I had
+[00:19:17] planned for today. Happy to go through
+[00:19:19] any questions. Happy to go through any
+[00:19:22] demo items. Um, but we'd love to, you
+[00:19:25] know, chat more. Uh, we'll kind of
+[00:19:27] finish up with what we learned today and
+[00:19:29] then we'll open up for questions at the
+[00:19:30] end.
+[00:19:31] &gt;&gt; Sure. If you want to switch back there.
+[00:19:33] &gt;&gt; Perfect.
+[00:19:36] &gt;&gt; Great. So, um, a few tips and tricks,
+[00:19:39] kind of what we learned today looking at
+[00:19:40] that as well as overall. Um, the biggest
+[00:19:43] thing we talk about with our customers
+[00:19:44] is really connect your stack. Like, look
+[00:19:47] at, uh, what you use in your day-to-day
+[00:19:50] operations and get those connected
+[00:19:52] directly in Grokbot. Um, that's really
+[00:19:55] going to help you speed up, uh, the time
+[00:19:57] to value here and, uh, it's really
+[00:19:59] impactful in terms of, you know, getting
+[00:20:01] those aha moments early and starting to
+[00:20:03] really, uh, you know, work within
+[00:20:05] Grokbot. Um, one thing we've talked
+[00:20:07] about, too, whether you use like a chief
+[00:20:08] of staff to delegate down or Grokbot by
+[00:20:12] Grokbots, um, you know, have one bot
+[00:20:14] with one job. Like, this is your focus
+[00:20:16] and Chris has showed a great example.
+[00:20:18] Like, we have engineer, we have pipeline
+[00:20:20] generation, travel and expense. Have
+[00:20:23] them be an expert in that field. These
+[00:20:25] are your team members that you're
+[00:20:26] onboarding. Have them be an expert uh,
+[00:20:28] and give them all the relevant
+[00:20:29] information materials to be great at
+[00:20:31] that at that job. Um, and then another
+[00:20:34] one is, uh, work on the routine. Some
+[00:20:36] people use them more regularly and some
+[00:20:38] people don't. I frankly like the
+[00:20:40] automations and routines. Kind of like
+[00:20:42] Ron Popeil, like, set it and forget it.
+[00:20:44] Have it do the work and, uh, you know,
+[00:20:47] come back to me with anything necessary
+[00:20:48] and that's a good way to make sure that
+[00:20:51] it's always working and doing the the
+[00:20:53] tasks, uh, needed. So, three tips to to
+[00:20:57] take you, uh, forward on your Grokbot
+[00:20:58] journey after this.
+[00:21:01] But, it would be great to open up, uh,
+[00:21:03] the floor to any questions you may have,
+[00:21:05] uh, for Chris and myself.

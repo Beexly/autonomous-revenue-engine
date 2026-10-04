@@ -1,0 +1,27 @@
+[
+ {
+  "name": "Legora",
+  "type": "named customer",
+  "source": "news/grok-bot-for-enterprise"
+ },
+ {
+  "name": "Supermicro",
+  "type": "named customer",
+  "source": "news/grok-bot-for-enterprise"
+ },
+ {
+  "name": "ServiceTitan",
+  "type": "named customer",
+  "source": "news/grok-bot-for-enterprise"
+ },
+ {
+  "name": "SpaceXAI + Cursor (internal)",
+  "type": "internal dogfood, most detailed case study",
+  "source": "news/grok-bot-customer-support, news/grok-bot-procurement"
+ },
+ {
+  "name": "Rank'em (Ryan Perry)",
+  "type": "third-party developer case study, mobile game studio",
+  "source": "bot/guides/grok-bot-for-mobile-app-development"
+ }
+]

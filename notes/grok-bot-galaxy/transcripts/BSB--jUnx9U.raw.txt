@@ -1,0 +1,739 @@
+[00:00:00] Hey everyone. Uh thank you for joining
+[00:00:03] today's workshop on Grokbot for customer
+[00:00:05] support. My name is David and I am a
+[00:00:08] software engineer here at SpaceX AI in
+[00:00:11] the user ops org.
+[00:00:12] I'm really excited to share what we've
+[00:00:14] been working on and how we're using
+[00:00:15] Grokbot for customer support.
+[00:00:19] So, here's the agenda for today. I'm
+[00:00:21] going to quickly give some context on
+[00:00:24] Grokbot in case you have haven't been
+[00:00:26] watching the live stream or been to one
+[00:00:29] of the other sessions.
+[00:00:30] Then I'll share a few
+[00:00:33] specific use cases for it around
+[00:00:35] customer support.
+[00:00:37] Then I'll demo a lot of these.
+[00:00:39] My goal is that the session is a little
+[00:00:41] bit bit more demo heavy
+[00:00:43] uh so you can really see it in action.
+[00:00:46] And finally, we'll finish with some Q&amp;A.
+[00:00:49] So, let's get started.
+[00:00:52] So, first, what is Grokbot? Grokbot is a
+[00:00:55] new product that lets you hand off real
+[00:00:57] work
+[00:00:58] to an AI coworker.
+[00:01:00] The interface looks very familiar, just
+[00:01:03] like a messenger app on your phone or
+[00:01:06] computer.
+[00:01:07] But under the hood, it's built to keep
+[00:01:09] working after you've sent your original
+[00:01:12] message.
+[00:01:13] So, you aren't just chatting back and
+[00:01:14] forth with quick, simple
+[00:01:16] uh one-offs here and there. You're
+[00:01:18] really able to delegate a real project
+[00:01:20] to Grokbot
+[00:01:22] and
+[00:01:23] it can go off and take it from there.
+[00:01:27] One of my favorite things about Grokbot
+[00:01:28] is how flexible it is to the way you
+[00:01:30] work.
+[00:01:31] So, you can start with a single general
+[00:01:33] bot to help you get set up quickly and
+[00:01:35] easily
+[00:01:36] or create a team of specialists that
+[00:01:38] coordinate around the task and work in
+[00:01:40] parallel on certain
+[00:01:42] uh subtasks.
+[00:01:44] And however your team operates, Grokbot
+[00:01:46] can fit in and be very useful very
+[00:01:49] quickly.
+[00:01:51] So, why Grokbot? Why does it feel like
+[00:01:55] interacting with a capable coworker uh
+[00:01:58] rather than just another AI tool.
+[00:02:01] For me, there are three big reasons.
+[00:02:04] First, Grokbot is always on.
+[00:02:06] So, by now you may have heard that
+[00:02:08] Grokbots have their own computer.
+[00:02:11] What that
+[00:02:12] All that really means is that uh
+[00:02:14] they can work without using yours, which
+[00:02:16] is
+[00:02:17] uh a little bit uh more powerful than
+[00:02:19] you would think.
+[00:02:20] So, if you close your laptop or you are
+[00:02:22] working on something else, your Grokbots
+[00:02:24] can still finish the task you assigned
+[00:02:26] them without you having to check in
+[00:02:29] constantly and steer them too much or
+[00:02:31] slowing down your local machine.
+[00:02:34] There are also routines, which are
+[00:02:36] cron jobs or event-based triggers that
+[00:02:39] you can launch your Grokbots with and
+[00:02:41] make them
+[00:02:42] super reactive.
+[00:02:44] Uh this way you don't have to be online
+[00:02:46] at the exact moment you want them to run
+[00:02:49] uh or start working on the task.
+[00:02:52] And these are simple or these are super
+[00:02:54] simple to set up. All you have to do is
+[00:02:56] tell it, create a routine at this time
+[00:02:58] or on this event.
+[00:03:00] Just like a normal conversation.
+[00:03:02] Um and it will set it up for you.
+[00:03:05] Second, uh it is really easy to use.
+[00:03:08] The interface is familiar for a reason.
+[00:03:12] You don't have to be an engineer that is
+[00:03:13] familiar with the ins and outs of an IDE
+[00:03:16] to use bots effectively.
+[00:03:18] You can just talk with it normally like
+[00:03:20] you would a friend or teammate on Slack.
+[00:03:24] And finally, it fits how you actually
+[00:03:25] work. There are already connectors for
+[00:03:28] most tools you use. You just have to go
+[00:03:30] in the marketplace and search for them.
+[00:03:32] And
+[00:03:33] uh there is likely one for you. So, you
+[00:03:36] can plug Grokbot immediately into your
+[00:03:39] ticketing system,
+[00:03:40] whether that's uh Plane, Zendesk,
+[00:03:43] Intercom,
+[00:03:45] uh
+[00:03:46] where are your team chats like Slack, uh
+[00:03:48] where your Notion base or where your uh
+[00:03:51] knowledge base is like Notion.
+[00:03:53] And then from there, you can use the
+[00:03:54] bots and routines like building blocks
+[00:03:57] uh that fit the way your team actually
+[00:03:59] works.
+[00:04:00] And
+[00:04:01] one really uh powerful thing about
+[00:04:03] Grokbot is if there is a missing piece,
+[00:04:06] you can likely have Grokbot build it.
+[00:04:09] Um Grokbot has access to cloud agents.
+[00:04:12] So, if there's something that you're
+[00:04:14] missing, you can just have it tell it to
+[00:04:16] spin up a cloud agent to build a certain
+[00:04:18] connector or certain thing um and it can
+[00:04:21] go off and do it for you.
+[00:04:23] So, you can get creative and build
+[00:04:24] around and you're not stuck waiting on
+[00:04:27] Eng's roadmap or a third-party vendor to
+[00:04:29] um add support for the thing you need.
+[00:04:34] Cool. Now, we'll get into some customer
+[00:04:36] support use cases.
+[00:04:38] So, the big one is always can it answer
+[00:04:41] support tickets?
+[00:04:42] Uh the answer is yes, and I'll show this
+[00:04:45] later in the demo.
+[00:04:46] I know this can be scary at first to let
+[00:04:49] an agent uh sort of reply to your
+[00:04:51] customers.
+[00:04:52] So, you can definitely build up to it.
+[00:04:54] So, you can crawl, then walk, then run.
+[00:04:57] At first, you can have it just read
+[00:04:59] tickets, maybe give you a summary, and
+[00:05:02] uh the root issue of what the user is
+[00:05:05] asking about.
+[00:05:06] And maybe it can draft a response.
+[00:05:09] Then, you can have it add the draft to a
+[00:05:12] note in your ticketing system on the
+[00:05:14] ticket, so you can sort of see it before
+[00:05:18] you press send.
+[00:05:20] And finally, when you're confident, then
+[00:05:22] you can have it answer and actually
+[00:05:24] uh respond to the ticket and the user.
+[00:05:28] There's also things you can do around
+[00:05:29] the guardrails and environment you give
+[00:05:31] Grokbot.
+[00:05:32] So, you can set up evals and traces
+[00:05:34] fairly easily, so you know what it's
+[00:05:35] thinking and what actions it will take
+[00:05:38] uh
+[00:05:38] before it publishes. So, when you can
+[00:05:42] add traces to those draft steps, and
+[00:05:45] then sort of make sure it's
+[00:05:48] behaving the way you want it to before
+[00:05:50] going on.
+[00:05:52] Um
+[00:05:53] Cool. The second one.
+[00:05:55] Um so, at scale, you may have a lot of
+[00:05:57] support tickets with a ton of different
+[00:06:00] customer states. And it can be really
+[00:06:03] challenging to find the things you
+[00:06:05] should care about in that exact moment
+[00:06:07] that need your attention.
+[00:06:09] Um Grok Bot can make this a lot easier
+[00:06:12] uh through alerting.
+[00:06:14] So, you can spin up a bot that looks for
+[00:06:16] certain things. For example, maybe your
+[00:06:19] team is hyper-focused on churn this
+[00:06:22] quarter, and you want to know when
+[00:06:24] someone writes in
+[00:06:26] that is threatening to churn that has
+[00:06:28] been a customer for 6 months.
+[00:06:30] Um or more.
+[00:06:32] Anyone on your team can spin up a Grok
+[00:06:34] Bot that you have connected to your
+[00:06:36] ticketing system.
+[00:06:38] You can just at tell it to create a
+[00:06:40] routine that looks through your uh your
+[00:06:43] tickets.
+[00:06:44] Uh every hour
+[00:06:46] try classifies if a user is um
+[00:06:50] threatening to churn and has
+[00:06:52] uh been a customer for a certain period
+[00:06:54] of time, and then send you an alert in
+[00:06:56] the Slack channel, uh so everyone has
+[00:06:58] visibility.
+[00:07:01] Um Yeah, and another one that maybe is
+[00:07:06] more uh
+[00:07:07] powerful than you think or is harder to
+[00:07:10] get to than you think is an internal
+[00:07:13] like question and and answer agent. So,
+[00:07:17] if you've used other support agents,
+[00:07:19] they are primarily focused on customer
+[00:07:21] replies.
+[00:07:22] Uh it's surprisingly cumbersome to
+[00:07:24] leverage the knowledge knowledge base
+[00:07:26] you've already sort of created or
+[00:07:28] accumulated um to answer your own
+[00:07:31] teammates' questions. You may have
+[00:07:33] someone in GTM that is trying to get up
+[00:07:35] to speed on today's release about cloud
+[00:07:38] agents,
+[00:07:39] so they They come prepared to a customer
+[00:07:42] call or a TSE manager looking for
+[00:07:45] changes to the internal refund policy
+[00:07:47] over time.
+[00:07:48] And if that has impacted
+[00:07:51] certain customers.
+[00:07:53] You have already done the hard work of
+[00:07:56] creating this knowledge base of both
+[00:07:58] public info, so think your docs and help
+[00:08:00] center.
+[00:08:01] As well as likely some internal info, so
+[00:08:03] you might have suggested operating
+[00:08:05] procedures around how your teammates
+[00:08:08] handle refunds that does not public
+[00:08:10] information.
+[00:08:12] You should be able to query this
+[00:08:13] intelligently within Slack and Grokbot
+[00:08:15] makes this really easy.
+[00:08:18] And
+[00:08:19] maybe the last one and
+[00:08:21] one of the cooler ones is it can improve
+[00:08:23] itself. So finally, you can give Grokbot
+[00:08:27] your traces or have it look back on the
+[00:08:29] last week of tickets and sort of
+[00:08:31] ask it to look and try to find
+[00:08:33] improvements for tickets that maybe
+[00:08:36] could have been handled better, could
+[00:08:37] have been flagged earlier
+[00:08:39] and it can go and do those things for
+[00:08:41] you.
+[00:08:45] Cool.
+[00:08:46] Um so next we're going to get into the
+[00:08:48] demo.
+[00:08:49] Um
+[00:08:50] I have created this demo. I have a team
+[00:08:53] of four bots.
+[00:08:54] They are build, so it sort of runs the
+[00:08:57] setup
+[00:08:58] and the infrastructure. Reply, so this
+[00:09:00] actually answers users in both
+[00:09:03] our ticketing system and then Slack.
+[00:09:05] There's an alert, so it this one
+[00:09:08] usually gets pinged by reply and posts
+[00:09:11] an alert in Slack.
+[00:09:13] And tags me and then tune which tries to
+[00:09:16] improve the system as we go.
+[00:09:19] I want to call out that you definitely
+[00:09:20] do not have to have these in mind or set
+[00:09:23] them up before getting started.
+[00:09:25] In fact, I don't recommend that.
+[00:09:27] Instead, you can start with one bot,
+[00:09:29] name it a generic name and try to teach
+[00:09:31] it one workflow.
+[00:09:33] Then when the scope grows or you need
+[00:09:35] the need more than one running at a
+[00:09:37] time. Uh
+[00:09:39] I recommend breaking them up naturally
+[00:09:40] then and reorganizing them
+[00:09:42] uh in a way that makes sense to you.
+[00:09:47] Cool. So, now I'll get into the demo.
+[00:09:52] I have
+[00:09:54] Rockbot set up with the bots we
+[00:09:56] mentioned.
+[00:09:58] And then I have a few things that might
+[00:10:00] look familiar if you are uh
+[00:10:03] inside of a support work. So,
+[00:10:06] first we have a knowledge base.
+[00:10:08] Right now I just set this up in Notion
+[00:10:12] as an example. So, we have
+[00:10:15] public docs. So, think of this is like
+[00:10:17] this could be your documentation or your
+[00:10:20] help center that has a few things on
+[00:10:23] product and common issues like off and
+[00:10:26] billing and FAQ.
+[00:10:28] Oh, I should uh should have mentioned
+[00:10:29] that I'm going to use the FlyLo example
+[00:10:32] that you may have seen in other ones uh
+[00:10:34] other presentations. So,
+[00:10:36] this is
+[00:10:37] uh basically like an air a pretend
+[00:10:39] airline and I'm going to simplify it so
+[00:10:42] the only uh
+[00:10:44] like
+[00:10:46] skew we have is a monthly internet
+[00:10:48] subscription that is built it monthly
+[00:10:50] and is $20 a month.
+[00:10:52] Cool. So, we have this public
+[00:10:54] information
+[00:10:55] that a user could find if they searched
+[00:10:59] Google.
+[00:11:00] We have some internal policies. So,
+[00:11:02] right now
+[00:11:03] uh this is stuff that we want maybe uh a
+[00:11:07] billing support member to know if you
+[00:11:09] have a human answering
+[00:11:10] uh but you don't want to share
+[00:11:12] broadly with the public. So, this is
+[00:11:15] just a very simple example of if a user
+[00:11:18] asked for a refund, you can approve it
+[00:11:20] within 14 days and cancel and refund if
+[00:11:23] they've been
+[00:11:25] subscribed for more than 14 days, deny
+[00:11:26] the refund.
+[00:11:28] And then finally, I just have a a bit of
+[00:11:31] process for the GrokBot agent reply to
+[00:11:35] use when replying to some of these
+[00:11:38] tickets.
+[00:11:39] So, we just have this loop of what it
+[00:11:41] should do.
+[00:11:43] Read the Read the ticket. Look for
+[00:11:45] the knowledge and then decide to reply
+[00:11:48] or hand off and then
+[00:11:49] act, leave a note, and
+[00:11:52] yeah.
+[00:11:55] Cool. This is Plane. This is our
+[00:11:56] ticketing system. So, I've already
+[00:11:58] pre-filled
+[00:12:00] a few example tickets and we'll walk
+[00:12:02] through those.
+[00:12:04] I have Stripe pulled up as well. So, I
+[00:12:06] mentioned there's a subscription that
+[00:12:08] users may pay for that is the
+[00:12:12] basically like the Wi-Fi pass on a
+[00:12:14] plane.
+[00:12:15] And then I have Slack that I'll pull up
+[00:12:17] for later.
+[00:12:19] Cool. So,
+[00:12:21] first let's start with
+[00:12:23] um
+[00:12:24] maybe this first ticket. So, I'm going
+[00:12:26] to go through alphabetical.
+[00:12:28] So, this is just a very basic question.
+[00:12:32] I forgot my password. How can I sign in?
+[00:12:34] Or how do I reset it?
+[00:12:36] So, let me ask GrokBot to try to reply
+[00:12:39] to this.
+[00:12:40] So, like I mentioned, um
+[00:12:43] I have the GrokBots I mentioned. There
+[00:12:46] is build. So, I've already set up the
+[00:12:48] some of the connectors to make this a
+[00:12:50] little quicker. So, I've added Plane.
+[00:12:52] I've added Notion, Supabase, and Slack.
+[00:12:54] Um if you aren't familiar, you can just
+[00:12:56] click the marketplace and search and
+[00:12:59] click and install.
+[00:13:02] Cool. So, let's tell Reply,
+[00:13:06] "Hi, can you reply to Alex in Plane?"
+[00:13:12] And it is going to go off and try to
+[00:13:15] reply.
+[00:13:16] So, let's see. It's going to look it up.
+[00:13:19] Uh
+[00:13:21] I pulled up So, basically what it's
+[00:13:23] while I wait for it to reply, it's going
+[00:13:25] to go through this process. So, I have
+[00:13:29] sort of uh
+[00:13:30] made this loop pretty simple of just
+[00:13:33] what I wanted to do, how I wanted to
+[00:13:35] behave, and sort of show some thinking.
+[00:13:38] And we'll see that it replied. Okay,
+[00:13:42] cool. It replied.
+[00:13:43] It said it replied.
+[00:13:45] If I go back into the ticket,
+[00:13:47] you see that it followed the sort of
+[00:13:50] tracing
+[00:13:51] or it followed the process that I gave
+[00:13:53] it. So,
+[00:13:54] it showed some of its thinking where uh
+[00:13:57] it says it can reply with high
+[00:13:58] confidence, the root issue, and the
+[00:14:01] source uh that it referenced to answer
+[00:14:04] the question.
+[00:14:07] Um
+[00:14:08] cool. And then it gave the right
+[00:14:09] information. So, these are the exact
+[00:14:11] steps on
+[00:14:13] this public off forgot your password.
+[00:14:16] So, if we go to public off forgot your
+[00:14:19] password,
+[00:14:20] these are the exact steps.
+[00:14:22] Cool. So, that's obviously a pretty
+[00:14:25] basic example.
+[00:14:27] But, let's go on to a harder one.
+[00:14:30] So, this is an example of something that
+[00:14:32] is not covered in the toy knowledge base
+[00:14:36] we created. So, some SSO octa stuff.
+[00:14:40] Let's see.
+[00:14:43] I'm going to try this
+[00:14:45] prompt it so it will try to reply, but
+[00:14:47] it uh in the instructions, I told it to
+[00:14:51] not reply unless it's pretty confident.
+[00:14:54] Try
+[00:14:55] replying to Ben.
+[00:14:58] And playing.
+[00:15:04] And once again, it's going to go through
+[00:15:06] the exact same process. If I were to
+[00:15:09] change something in
+[00:15:12] this
+[00:15:13] sort of uh loop, it would
+[00:15:16] uh I've already told it to like make
+[00:15:17] sure to read this every single time. So,
+[00:15:19] if I were to add maybe seven and some
+[00:15:21] other step, it would know to do that
+[00:15:23] after every time.
+[00:15:26] So, let's wait on that for
+[00:15:29] a few more seconds.
+[00:15:34] And let's make sure I have
+[00:15:36] Slack pulled up for later.
+[00:15:41] Cool. Okay, nice. So, it says it tried
+[00:15:46] to do that, but there's no public docs
+[00:15:48] or internal policies, so low confidence
+[00:15:50] and handoff.
+[00:15:51] Which is
+[00:15:52] exactly what we wanted it to do.
+[00:15:54] And then, you'll notice that this is
+[00:15:56] new, so it messaged alert.
+[00:15:58] So, I've
+[00:15:59] set up that if something
+[00:16:02] uh if it looks like maybe an enterprise
+[00:16:04] customer that's locked out, to
+[00:16:07] uh make sure to alert me, so I can know
+[00:16:09] in real time. So, it messaged alert,
+[00:16:12] alert activated, and posted to Slack in
+[00:16:15] our alerts DG channel.
+[00:16:19] It is this one. So, yeah. So, now I'm
+[00:16:23] without too much work, I can already see
+[00:16:26] like in real time that uh important
+[00:16:28] tickets that I need to maybe action on
+[00:16:30] right now.
+[00:16:32] Cool.
+[00:16:33] Uh let's go on for now. So, I'm going to
+[00:16:36] mark this
+[00:16:37] done for now and go on to the next one.
+[00:16:42] So, the next one are going The next one
+[00:16:44] is going to be two uh refund-related
+[00:16:46] tickets. I mentioned at the beginning
+[00:16:48] that we have an SOP specifically around
+[00:16:51] that.
+[00:16:53] So, we have
+[00:16:54] two users, Carter and Damon.
+[00:16:59] If I go into Stripe and click into them,
+[00:17:02] I've set it up where uh
+[00:17:04] Carter just subscribed
+[00:17:06] and is requesting a refund. So, you
+[00:17:07] Today is September 16th, so his renews
+[00:17:10] in exactly a month. So, we should get
+[00:17:12] grant him this refund.
+[00:17:15] And then, Damon uh
+[00:17:17] you'll see that uh
+[00:17:19] it renews in about 10 days. So, it's
+[00:17:21] already been, call it 20 days, which is
+[00:17:25] and our policy is only 14 days within.
+[00:17:28] So, it should deny Damon and
+[00:17:33] grant the refund to Carter and it will
+[00:17:35] We've already set up Stripe, so it can
+[00:17:37] take these actions
+[00:17:39] uh
+[00:17:40] for you. You can set up
+[00:17:43] set it up to have
+[00:17:46] you approve the actions or you can tell
+[00:17:49] it let it like run loose. Okay.
+[00:17:52] So, let's say, okay, now try to answer
+[00:17:57] Carter and Damon.
+[00:18:01] And this one may take a second cuz it's
+[00:18:03] going to run through the loop, sort of
+[00:18:06] make
+[00:18:07] the call and then
+[00:18:09] if it needs to, it will have to run the
+[00:18:11] actions through Stripe.
+[00:18:15] So, let me have those pulled up.
+[00:18:18] And we'll see this
+[00:18:20] state get changed here shortly.
+[00:18:26] Uh
+[00:18:28] let me pass in the customer IDs, maybe
+[00:18:30] it'll make it quicker.
+[00:18:54] &gt;&gt; [snorts]
+[00:19:05] &gt;&gt; Cool. Let's
+[00:19:07] It should be on its way now.
+[00:19:14] &gt;&gt; Um,
+[00:19:15] let's see.
+[00:19:21] Cool. So, it's thinking it found them
+[00:19:23] now, and it says both replies are ready
+[00:19:25] up. So, let's go look at them.
+[00:19:28] Cool. So, it just answered.
+[00:19:29] Uh for Carter, like I mentioned, it
+[00:19:31] should have canceled and issued a
+[00:19:33] refund.
+[00:19:34] It's saying that it did that. If we go
+[00:19:35] to Carter in Stripe and refresh,
+[00:19:39] the status should have just changed.
+[00:19:42] So, nice. Uh it went from active to
+[00:19:44] canceled, and this payment has been
+[00:19:46] refunded.
+[00:19:48] And then,
+[00:19:50] that is what we
+[00:19:51] That's what it said it did. And then,
+[00:19:54] for Damon, it says, "We have denied your
+[00:19:56] refund."
+[00:19:57] It didn't give like the full SOP, so it
+[00:19:59] didn't leak the internal information.
+[00:20:01] It was just vague, and then it says, uh
+[00:20:04] "I can cancel I can schedule a
+[00:20:05] cancellation for you at the end of your
+[00:20:07] period, so you don't get billed for the
+[00:20:08] next month."
+[00:20:10] And then, if we go to Damon and refresh,
+[00:20:12] this should all stay the same.
+[00:20:16] And it does. Cool.
+[00:20:21] Great.
+[00:20:28] Great. Okay, so now we'll go on to the
+[00:20:30] next one.
+[00:20:33] So, Elena
+[00:20:34] is asking if we can if she can
+[00:20:39] share her Wi-Fi password with another
+[00:20:41] person.
+[00:20:43] This is something that's not actively in
+[00:20:44] the knowledge base.
+[00:20:46] So, let's see how it handles it.
+[00:20:49] Uh
+[00:20:51] home.
+[00:20:52] It would be under public docs.
+[00:20:54] Let me
+[00:20:55] move that. And it would likely go here.
+[00:20:58] Cool. So, let's tell
+[00:21:00] reply.
+[00:21:01] Let's clear that out.
+[00:21:04] Great.
+[00:21:06] Can you reply to Elena now?
+[00:21:15] And it should
+[00:21:18] go from there.
+[00:21:21] So, it's already come come back with
+[00:21:23] some thinking. It's found the ticket and
+[00:21:25] it's checking it's
+[00:21:27] uh sort of already classified that pass
+[00:21:29] sharing is
+[00:21:31] uh the root issue and looking if it's in
+[00:21:34] public docs.
+[00:21:36] And now it's saying that it couldn't
+[00:21:37] reply yet because public docs and the
+[00:21:39] FAQ
+[00:21:40] uh doesn't have pass sharing.
+[00:21:45] And it's recommending to tell Tune,
+[00:21:47] which is the self-improver, to add it to
+[00:21:51] uh the knowledge base.
+[00:21:54] So, yes, we'll say
+[00:21:57] add pass
+[00:22:00] sharing
+[00:22:01] to the FAQ.
+[00:22:05] Say this is not allowed.
+[00:22:11] So, this is an example of it asking
+[00:22:13] before it doing something um
+[00:22:15] by itself. So, for your knowledge base,
+[00:22:17] this is probably something you want uh
+[00:22:19] just to make sure you have the final say
+[00:22:21] over what happens because if this were
+[00:22:23] to go out um
+[00:22:25] without you looking and you didn't check
+[00:22:26] it and it wasn't correct and 100 people
+[00:22:29] asked about the same thing, then
+[00:22:31] uh yeah, that'd be an issue.
+[00:22:45] Okay, so it says it added it to the
+[00:22:47] knowledge base. I told it to
+[00:22:49] do it in green so we can delineate it.
+[00:22:52] So, and it just did. So, pass sharing,
+[00:22:54] no, you cannot share your Wi-Fi pass
+[00:22:56] with another person for simultaneous
+[00:22:59] use.
+[00:23:01] Um great. Let's see. I actually had one
+[00:23:05] more thing pulled up.
+[00:23:11] Um.
+[00:23:14] Okay, actually
+[00:23:16] let's skip that then.
+[00:23:18] Um.
+[00:23:20] Cool. So, back to GrokBot then.
+[00:23:23] Um.
+[00:23:25] It's
+[00:23:26] we've added the knowledge, so now let's
+[00:23:28] try to respond. So, in the ticket, uh it
+[00:23:31] left a note saying to hand off that the
+[00:23:33] information was missing and um it still
+[00:23:37] needs a response. So, let's tell reply.
+[00:23:40] Okay, can you try again now?
+[00:23:44] That the information's added.
+[00:23:51] And it says it's answering.
+[00:24:04] And it says it's replied now. So, now we
+[00:24:07] have a new sort of thinking note. Now it
+[00:24:10] can reply with high confidence. There's
+[00:24:12] a root issue and it links to the new
+[00:24:14] section in docs that covers it.
+[00:24:17] So, you cannot share your
+[00:24:19] Wi-Fi pass with another person. Great,
+[00:24:22] that's exactly what we wanted.
+[00:24:25] Um.
+[00:24:27] Let's mark this one as done.
+[00:24:32] Cool. Um, that covers a lot of it. Now
+[00:24:35] let's go to the other one of the other
+[00:24:39] use cases I mentioned. So, if we go into
+[00:24:41] Slack,
+[00:24:42] we've already seen that it can send us
+[00:24:44] alerts.
+[00:24:45] Um, but
+[00:24:47] we have another use case where um
+[00:24:51] you can have your teammates ask the bot
+[00:24:54] you've already set up to answer
+[00:24:55] customers and the knowledge base
+[00:24:57] uh with
+[00:24:58] to answer like your own teammates.
+[00:25:00] So, let's say I am
+[00:25:03] someone on your billing team and
+[00:25:06] I want to know what is the
+[00:25:10] uh refund SOP. So, this is I'm an
+[00:25:13] internal user.
+[00:25:16] I'm asking a question
+[00:25:17] um
+[00:25:18] and it should give me
+[00:25:20] the internal knowledge for it. Uh so,
+[00:25:23] that's the most helpful.
+[00:25:26] So, we sent it. This may take
+[00:25:30] about a minute, but uh
+[00:25:32] yeah, we should see
+[00:25:35] us getting a response here
+[00:25:37] pretty soon.
+[00:25:44] Cool. So,
+[00:25:46] it's asking for permission to post in
+[00:25:48] Slack. Let's say always allow
+[00:25:51] for this.
+[00:25:59] And it should reply here in a second.
+[00:26:39] Uh okay.
+[00:26:41] Let's try that again.
+[00:27:00] &gt;&gt; Make sure it's running.
+[00:27:05] Do you see the message?
+[00:27:21] Um
+[00:27:24] Okay, it's going. Um
+[00:27:26] Uh I ran this right before, so you can
+[00:27:27] see that this is what would happen.
+[00:27:30] Um it would reply
+[00:27:32] and go from there.
+[00:27:37] Let's give it maybe 10 more seconds. If
+[00:27:38] not, we can go on.
+[00:27:48] Okay. Now it says it's replied.
+[00:27:50] Great. So, it added the emoji and it
+[00:27:52] replied.
+[00:27:54] Awesome. So, that's the one of the other
+[00:27:55] use cases.
+[00:27:58] Cool.
+[00:27:59] Um
+[00:28:00] So,
+[00:28:02] that wraps
+[00:28:03] and cut the demo there. Um
+[00:28:07] So, what we learned. First, you can and
+[00:28:11] should feel comfortable setting
+[00:28:12] guardrails for your bots. You see So,
+[00:28:14] maybe at the end there it got it was
+[00:28:15] even more protective than I wanted it to
+[00:28:17] be, but that's probably better for
+[00:28:19] writes.
+[00:28:20] Uh you can have them be read-only to
+[00:28:22] start and then work up to writes and
+[00:28:24] have manual approvals for certain
+[00:28:26] actions. You can also scope permissions
+[00:28:29] to different your different bots. So,
+[00:28:31] one bot might have permission to post
+[00:28:33] automatically to Slack, one might not.
+[00:28:35] And make them approve those actions
+[00:28:37] before they do them.
+[00:28:39] Second, uh start simple. So, the whole
+[00:28:41] product is still so new, I don't think
+[00:28:43] there's one meta or one clear playbook
+[00:28:46] and the product is meant to be very
+[00:28:48] flexible.
+[00:28:49] So, try to make the bots fit into how
+[00:28:51] you work and not five and not vice
+[00:28:54] versa.
+[00:28:56] Third, try to get a little creative and
+[00:28:57] experiment. You can really have it build
+[00:29:00] what is missing.
+[00:29:03] Cool. Thank you so much.
+[00:29:05] Um
+[00:29:06] that is the rest of the presentation and
+[00:29:09] we can go into Q&amp;A.
+[00:29:15] Oh, yeah.
+[00:29:16] So, any questions?
+[00:29:20] Yes.
+[00:29:23] &gt;&gt; What's the pricing like for this?
+[00:29:26] &gt;&gt; Uh so, it uses your usage that you would
+[00:29:30] have through any of your Grok
+[00:29:31] subscriptions or currently cursor
+[00:29:33] subscriptions.
+[00:29:35] Uh so, it just tracks usage.
+[00:29:37] I'll say
+[00:29:38] it can really depend on how involved
+[00:29:42] your loops are. So, if you have
+[00:29:44] classifiers that run
+[00:29:46] uh before every ticket, if you have um
+[00:29:50] if you have it write traces
+[00:29:52] and evals before doing that, that can
+[00:29:55] also change.
+[00:29:57] Right now,
+[00:29:58] the way I use it, it's around
+[00:30:00] $1 to $2
+[00:30:02] uh to answer more in medium to uh
+[00:30:06] complex tickets and
+[00:30:08] there are ways I've already tried to
+[00:30:11] like experiment and found ways to get
+[00:30:12] that down a lot. So,
+[00:30:14] there are
+[00:30:16] um a lot of maybe
+[00:30:18] low complexity billing tickets of like a
+[00:30:21] user just asking for a refund or
+[00:30:24] a user asking about a certain new uh
+[00:30:26] email they received, you can
+[00:30:29] sort of
+[00:30:30] bucket those, you can like run a script,
+[00:30:32] have it run a script to find those first
+[00:30:34] or run that uh manually, so it has
+[00:30:39] um more of a contained sort of set and
+[00:30:42] then have it reply all at once with the
+[00:30:44] script to those tickets and I found that
+[00:30:47] I could get that down to about 20 cents
+[00:30:49] a ticket for those like low complexity
+[00:30:50] tickets, which is a huge sort of change.
+[00:30:55] Um, if you've used any of the other sort
+[00:30:57] of support agents, you know that like
+[00:30:59] the cost per they usually charge per
+[00:31:01] resolution and that's easily
+[00:31:04] at minimum a dollar if not between one
+[00:31:06] to ten dollars like order of magnitude
+[00:31:08] and if you're having humans respond to
+[00:31:10] those tickets, that can be even higher.
+[00:31:13] Uh, noticeably higher. So, and that's
+[00:31:15] just like with half a day of trying to
+[00:31:17] improve it. Um, I think there's a lot of
+[00:31:19] gains and unlocks there especially.
+[00:31:24] Yeah.

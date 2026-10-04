@@ -1,0 +1,1007 @@
+[00:00:00] Hello everybody.
+[00:00:02] Welcome to Grobbot for product managers
+[00:00:06] or PMs. Uh very excited to see you all.
+[00:00:09] We got many on the live stream as well.
+[00:00:11] I'm Kevin Dearco from the SpaceX AI
+[00:00:14] product team joined by and I'm Roshan
+[00:00:16] Sani also on the SpaceX AI product team.
+[00:00:19] Really excited to be chatting with you
+[00:00:21] all today.
+[00:00:22] &gt;&gt; Cool. We are going to be going through
+[00:00:23] how we have been building with Rockbot.
+[00:00:27] Some of the tips, the tools, uh the bots
+[00:00:30] that we have found very useful uh across
+[00:00:33] our product org. And so uh I wanted to
+[00:00:36] start sort of with the backdrop which I
+[00:00:37] think everybody in this room on the
+[00:00:39] stream knows. If you have been building
+[00:00:41] software, if you're a PM, obviously the
+[00:00:43] craft is changing very rapidly. Uh it
+[00:00:47] becomes now very easy to code, to build
+[00:00:50] things, to prototype. uh way more
+[00:00:52] accessible than it ever has been before.
+[00:00:55] And I like this quote from DHH uh the
+[00:00:57] developers developer, one of the
+[00:01:00] creators of Ruby on Rails, uh who says,
+[00:01:02] "Software is product management. What
+[00:01:05] should it do? Who should it do it for?
+[00:01:07] How should it do it? Uh how should it
+[00:01:09] look? What are the priorities?" These
+[00:01:11] are questions that now every product
+[00:01:13] builder, whether you're formerly
+[00:01:15] engineer or designer or founder or
+[00:01:18] product manager, really has to grapple
+[00:01:20] with as you start to build software for
+[00:01:24] your customers, for your users. Yeah.
+[00:01:27] So, with that, we thought we'd spend
+[00:01:28] just a second talking about the
+[00:01:30] motivation behind Grockbot because in
+[00:01:32] some ways, Grockbot is it's a product
+[00:01:34] we've also made. And so there's a story
+[00:01:36] to it having been built just the same
+[00:01:38] way there's a story to every product
+[00:01:40] having been built. And um I think if you
+[00:01:42] think back to sort of what motivated
+[00:01:44] Grockbot in the early early days it was
+[00:01:47] realizing that you know at least
+[00:01:48] internally within SpaceX there are so
+[00:01:50] many folks who were starting to evolve
+[00:01:53] beyond a chat box. And I think there's
+[00:01:55] been a lot of discourse about this maybe
+[00:01:56] some of you all have felt this or read
+[00:01:58] about it as well. Um, but really it
+[00:02:00] started to feel increasingly that agents
+[00:02:03] weren't quite as home in a chat box as
+[00:02:06] you you might have wanted them to be. I
+[00:02:07] think a lot of this was just a natural
+[00:02:09] evolution of how we started interacting
+[00:02:11] with these large language models and
+[00:02:12] sort of, you know, going from asking for
+[00:02:15] a response and maybe waiting for some
+[00:02:17] text to asking agents to drive outcomes.
+[00:02:20] And so obviously we saw a lot of this
+[00:02:22] outcomebased agentic development happen
+[00:02:24] when it comes to things like coding
+[00:02:26] agents. But you know, as more and more
+[00:02:27] of us internally started thinking about
+[00:02:29] that beyond coding, it felt like the
+[00:02:31] chat box was a little bit limiting. And
+[00:02:33] so we started exploring, you know, all
+[00:02:36] kinds of ways that we might want to chat
+[00:02:38] and work with agents and have them
+[00:02:39] complete tasks and have access to
+[00:02:41] systems that really go beyond the chat
+[00:02:43] box. And, you know, the most common
+[00:02:45] thing that kept coming up in all of
+[00:02:47] these conversations was that we kept
+[00:02:50] sort of treating our agents as if they
+[00:02:52] were colleagues. We wanted to be able to
+[00:02:53] interact with them as if they were sort
+[00:02:55] of these smart colleagues that sat next
+[00:02:57] to us at our desks or were messagable in
+[00:03:00] Slack or had access to linear to look at
+[00:03:02] tickets or you know wrote PRDS with us
+[00:03:05] in notion or whatever it is. And so a
+[00:03:08] lot of the motivation behind how Rockbot
+[00:03:10] was evolved and kind of why it is the
+[00:03:12] way it is today uh is grounded in this
+[00:03:14] idea that you know we should really have
+[00:03:15] these agentic colleagues that we can
+[00:03:18] work with on all the right things we do
+[00:03:19] when we build products. And so that was
+[00:03:21] really the motivation. So really I think
+[00:03:23] there's four things that we kind of took
+[00:03:25] as the brief based on that colleague
+[00:03:27] definition. Uh the first one is that
+[00:03:30] colleagues when you work with them often
+[00:03:32] together often tie multiple tools
+[00:03:34] together. They don't live in one system.
+[00:03:36] Uh they work across many systems and
+[00:03:38] those systems do different things right.
+[00:03:40] So you might have a ticketing system
+[00:03:41] like I mentioned linear or jira or
+[00:03:42] something like it. You might be using a
+[00:03:44] you know CRM or a CRM plus you know
+[00:03:47] something like Salesforce or more. You
+[00:03:48] might be keeping documents in notion,
+[00:03:50] designs in Figma and all these tools are
+[00:03:53] really really great at what they do but
+[00:03:55] oftentimes your colleagues or you know
+[00:03:57] yourselves are tying things together
+[00:03:59] across them. Um the other things here
+[00:04:02] are that these colleagues often have
+[00:04:04] longunning context. They learn and they
+[00:04:07] don't just you know you know work on a
+[00:04:09] task, eject the task and then move on.
+[00:04:11] The best colleagues you work with, the
+[00:04:13] best teammates you work with, they learn
+[00:04:15] as they learn on the job, right? Maybe
+[00:04:17] they start out with very little company
+[00:04:18] context. You teach them some tasks or
+[00:04:20] teach them how to get some work done.
+[00:04:22] They kind of do some work. You give them
+[00:04:24] some feedback, right? That wasn't that
+[00:04:25] great. They hopefully take the feedback
+[00:04:27] and then get better at their jobs. We
+[00:04:29] think that model generalizes to agents
+[00:04:31] too where agents can really, you know,
+[00:04:33] the way that the models have evolved,
+[00:04:34] get good at learning, at sort of
+[00:04:36] building memory for themselves, at
+[00:04:38] realizing what's important and at taking
+[00:04:40] and incorporating that kind of feedback.
+[00:04:43] The third thing, and I think this is a
+[00:04:44] really big one, is independence. And I
+[00:04:47] think for a lot of wh we lost the
+[00:04:48] slides. Let's go fix that. There we go.
+[00:04:51] Um, for a lot of, you know, people we
+[00:04:53] work with, they go execute things
+[00:04:54] independently, right? Once in a while,
+[00:04:56] maybe you'll get asked for, hey, I need
+[00:04:58] some help on blocking a task or, you
+[00:05:00] know, maybe you someone gets stuck on,
+[00:05:02] you know, stuck with access to a system
+[00:05:03] or something like this. Um, but really
+[00:05:06] the the defining property of a colleague
+[00:05:08] that you work with, one of the defining
+[00:05:09] properties is that they can work on
+[00:05:11] their own. that they can complete tasks
+[00:05:12] on their own and they have their own
+[00:05:14] access. And so this is really what
+[00:05:15] motivated the need for Grockbot to have
+[00:05:18] its own computer. And so we decided
+[00:05:19] Grockbot, you know, should have its own
+[00:05:21] computer that I can do things in. And
+[00:05:23] this is true and this is how the product
+[00:05:24] works today. So if you, you know, go in
+[00:05:26] and use Grockbot, Grockbot has its own
+[00:05:28] computer. You can kind of help it when
+[00:05:29] it gets stuck on that computer, but it
+[00:05:31] has its own surface where it can create
+[00:05:33] the output that you need to to get
+[00:05:35] assisted in your work. And then the last
+[00:05:37] and final thing I'll call out here is
+[00:05:39] messaging. So earlier I mentioned that,
+[00:05:41] you know, it felt like we hadn't, you
+[00:05:43] know, we wanted to move beyond the the
+[00:05:45] chat box a little bit, but but I meant
+[00:05:46] that a little bit tongue-in-cheek. You
+[00:05:48] know, the the sort of chat box that
+[00:05:50] defines how you interact with a large
+[00:05:51] language of model. We think that that
+[00:05:52] core premise makes still a lot a lot of
+[00:05:54] sense. But where it started to feel a
+[00:05:56] little bit constrained is that usually
+[00:05:58] when you're chatting with a colleague,
+[00:05:59] you're like rapid fire messaging. If
+[00:06:00] you're like me in Slack or maybe like us
+[00:06:02] in Slack, you're constantly streaming
+[00:06:03] out messages, you're switching between
+[00:06:05] threads, you're multitasking. And we
+[00:06:07] found that it, you know, rather than
+[00:06:09] having to wait your turn for the next
+[00:06:10] response, that it's a lot more engaging
+[00:06:13] if you can just really jump in,
+[00:06:15] interrupt, drive, and interact with
+[00:06:17] agents in this way. And you'll see a
+[00:06:18] little bit of this in a minute, but
+[00:06:19] really, I think those are the four
+[00:06:21] things that we found as we kind of built
+[00:06:22] this product and played with it
+[00:06:23] internally that, you know, define how
+[00:06:25] colleagues work.
+[00:06:26] &gt;&gt; I love those four things. And it's not
+[00:06:27] just like any colleague. It's like
+[00:06:29] really trying to encode the best
+[00:06:30] colleagues that you have worked with.
+[00:06:32] Yeah.
+[00:06:33] &gt;&gt; Uh they have a ton of context about the
+[00:06:35] organization.
+[00:06:37] uh they understand and can learn on the
+[00:06:38] job. They can move independently, make
+[00:06:41] their own decisions. They're not
+[00:06:42] constantly waiting for you. Uh and so
+[00:06:45] yeah, I think this is like the high
+[00:06:46] level of of how we think about what
+[00:06:48] Grockbot is. It's an agent with a
+[00:06:50] computer at the end of the day and it
+[00:06:52] feels like texting a colleague.
+[00:06:55] Exactly. Yeah. Uh and I think there's
+[00:06:57] two things here that if you want to sort
+[00:06:59] of take away uh with you as to what
+[00:07:01] Rockbot can do is it's it's these two
+[00:07:02] things on the slide here. is that we
+[00:07:04] want these Grock bots to be AI teammates
+[00:07:05] that you can give real work to and that
+[00:07:07] come back with results. They don't come
+[00:07:09] back with text or they don't come back
+[00:07:10] with sort of questions. They come back
+[00:07:11] with results. And then I think the last
+[00:07:13] thing here is that they really finish
+[00:07:14] jobs. We we think that really uh you
+[00:07:16] know being able to get the job done is a
+[00:07:18] much more productive way to interact
+[00:07:19] with agents uh and come back when they
+[00:07:21] need approval. So yeah, I'm curious how
+[00:07:23] do we use these with products?
+[00:07:24] &gt;&gt; Absolutely. So we are actually going to
+[00:07:26] see uh Grockbot in the wild a real demo
+[00:07:29] of uh some of the agents that we have
+[00:07:32] built the colleagues that we work with
+[00:07:34] in Grockbot. I think there are really
+[00:07:36] sort of three use cases that we're going
+[00:07:38] to see here. The first is what we call
+[00:07:40] the attention list. And so as PMs we are
+[00:07:43] constantly pulled in a bunch of
+[00:07:44] different directions. Maybe you're
+[00:07:46] working across a bunch of different
+[00:07:47] projects or there's a bunch of context
+[00:07:50] everywhere. And it is very helpful to
+[00:07:52] think about what are you currently
+[00:07:54] paying attention to? What have you been
+[00:07:56] paying attention to this morning, this
+[00:07:58] week, this month? And then really diff
+[00:08:01] that against your priority list and help
+[00:08:02] you understand how the ways in which
+[00:08:04] you're spending your time and where your
+[00:08:06] focus is relative to what needs to get
+[00:08:09] done across the team. And we're going to
+[00:08:11] talk about how Rockbot can help you do
+[00:08:13] that as this helpful assistant, this
+[00:08:16] colleague that's always on your
+[00:08:17] shoulder. uh being able to learn about
+[00:08:20] the ways in which you're working. The
+[00:08:22] next is uh research and building up
+[00:08:24] customer context. Obviously, this is
+[00:08:26] where a lot of product work goes into
+[00:08:29] doing the research, figuring out what
+[00:08:30] users and customers actually need and
+[00:08:33] want and love. Uh what the biggest
+[00:08:36] bottlenecks are, what issues are they
+[00:08:38] running into, how can you better serve
+[00:08:40] them? And so being able to gather up all
+[00:08:43] that context, learn from your users, be
+[00:08:45] able to synthesize data in new ways, uh,
+[00:08:48] Grockbot is actually really phenomenal
+[00:08:50] for, and we're going to talk about some
+[00:08:51] of the data science and analytics, uh,
+[00:08:53] and product use cases, uh, that we turn
+[00:08:56] to Grockbot for. And then, of course,
+[00:08:58] shipping. Uh, you cannot be a product
+[00:09:01] manager in 2026 if you are not focused
+[00:09:03] on delivering software products to your
+[00:09:07] customers. And so really thinking about
+[00:09:09] how Grockbot can not only accelerate you
+[00:09:12] as a PM but also the entire team.
+[00:09:15] &gt;&gt; Yeah, there's a stat on the slide here.
+[00:09:17] Rockbot represents for us internally a
+[00:09:19] double-digit percentage of merged PRs.
+[00:09:21] And I think that's a pretty wild stat.
+[00:09:23] It also within the product organization
+[00:09:25] empowers all of us as product people to
+[00:09:27] be able to ship PRs into production as
+[00:09:29] well. And so I think you just really get
+[00:09:31] a bunch of superpowers when you can set
+[00:09:32] up the this in the right way. So
+[00:09:34] &gt;&gt; very cool. So let us with that meet the
+[00:09:37] Grockbot team that we will be working
+[00:09:39] with today. Uh some familiar faces and
+[00:09:42] names uh that we can all all learn. So
+[00:09:45] first is Kora uh chief of staff. Uh you
+[00:09:48] can think of this as sort of the person
+[00:09:50] that you turn to have access to your
+[00:09:53] email, has access to your calendar, uh
+[00:09:56] maybe uh listens on Slack for some of
+[00:09:58] the messages that you're sending and
+[00:10:00] really builds up a a model of how you as
+[00:10:04] a PM actually work.
+[00:10:08] Next is Emily. Emily is an engineering
+[00:10:11] manager. uh you know Emily has been
+[00:10:15] coached not to actually do the coding
+[00:10:17] but just to manage a team of engineers
+[00:10:20] that we have given Emily and so Emily
+[00:10:23] has five different engineering
+[00:10:25] colleagues uh in Grockbot that she
+[00:10:28] manages uh it's very helpful to have
+[00:10:31] Emily as sort of this one uh contact
+[00:10:33] across the engineering team uh to be
+[00:10:36] able to uh give larger chunks of work
+[00:10:38] have Emily then deconstruct that and
+[00:10:41] delegate that work, actually run the
+[00:10:43] verification loops for the outputs of
+[00:10:46] some of the engineering agents. We'll
+[00:10:48] have Ashley, the go-to for data science,
+[00:10:51] for analytics, uh, for being able to ask
+[00:10:54] and answer data questions. I think as a
+[00:10:56] PM, oftentimes throughout the day, there
+[00:10:58] is like a random conversation that
+[00:11:00] sparks an idea that would have
+[00:11:02] previously required you to go write a
+[00:11:04] bunch of SQL and figure out where the
+[00:11:06] trusted data sources are. and very
+[00:11:09] helpful to have somebody that you can
+[00:11:10] just quickly message and get an answer,
+[00:11:12] a chart, a synthesis of uh the
+[00:11:15] underlying data set uh that will help
+[00:11:18] inform some of your decisions throughout
+[00:11:19] the day. We also have PMP Pete. PMP Pete
+[00:11:23] is a uh trusted sidekick for the product
+[00:11:26] team. uh being able to draft up some
+[00:11:29] product requirement docs, synthesize
+[00:11:31] some of the customer and user insights
+[00:11:34] and uh be able to run some of the lower
+[00:11:37] level product work day-to-day. You want
+[00:11:40] to talk about Pixel?
+[00:11:41] &gt;&gt; Yeah, Pixel is one of my favorites.
+[00:11:43] Pixel is a uh designer and so has been
+[00:11:46] trained on some of the best advice for
+[00:11:49] how to be a world-class AI designer. It
+[00:11:52] turns out that there are ways to make AI
+[00:11:54] design look really good if you instruct
+[00:11:56] your agents and bots in the right way.
+[00:11:58] And so Pixel's been loaded with a ton of
+[00:12:00] context on how to be an S tier designer
+[00:12:02] from some of the best and latest
+[00:12:03] thinking on the internet.
+[00:12:05] &gt;&gt; Amazing. And finally, we have uh Rey,
+[00:12:07] who is a recruiter. So anybody who's in
+[00:12:10] uh product leadership or building out
+[00:12:12] the product function or building out
+[00:12:14] your company uh be very helpful to have
+[00:12:17] a uh colleague that you can turn to on
+[00:12:19] the people and recruiting side of the
+[00:12:21] house uh to help with some of the
+[00:12:22] sourcing and uh managing some of the
+[00:12:25] hiring pipeline. And so these are some
+[00:12:27] of the very helpful uh Grockbot
+[00:12:30] colleagues that we have defined. But it
+[00:12:33] is totally up to you exactly what your
+[00:12:36] team is going to look like. And so
+[00:12:37] throughout the course of this demo, use
+[00:12:39] this as inspiration, use this uh for
+[00:12:41] ideas, but at the end of the day, you
+[00:12:43] can construct your team, figure out who
+[00:12:45] is most helpful, what are the sets of
+[00:12:47] roles that will be most accelerative for
+[00:12:50] you and your product team.
+[00:12:51] &gt;&gt; Yeah, definitely. And I think to that
+[00:12:53] point, you know, uh what we've seen a
+[00:12:55] lot of folks do is they create many
+[00:12:56] agents. And so wanted to spend a minute
+[00:12:58] just talking about why we think that's
+[00:12:59] effective. Um, one is that I think, you
+[00:13:02] know, while agents might have massive
+[00:13:03] context windows that can store entire
+[00:13:05] novels, our brains, or at least my brain
+[00:13:07] can't. And so oftentimes we just want to
+[00:13:09] know who to reference. And it feels like
+[00:13:11] a really natural pattern to assign roles
+[00:13:13] to these agents that correspond to how
+[00:13:15] you'd interact with colleagues, uh, as
+[00:13:17] we've talked about. So having a person
+[00:13:19] who's in charge of data, maybe they do
+[00:13:20] the job of five data people or assist
+[00:13:22] with five data types of tasks in your
+[00:13:24] organization um can be really helpful
+[00:13:26] for you invoking and working with those
+[00:13:29] agents to know their role. And so I find
+[00:13:31] this really helpful just to know you
+[00:13:33] know which bot I want to talk to for a
+[00:13:35] given task and then sometimes their
+[00:13:36] roles merge and that's okay. Um we'll
+[00:13:38] show you this but bots can also talk to
+[00:13:39] each other which is really cool and that
+[00:13:41] can kind of coordinate in channels and
+[00:13:42] stuff. So we'll show that as an example
+[00:13:44] too. Um but the other reasons for having
+[00:13:47] more than just one agent is that um the
+[00:13:50] bots do perform better because when they
+[00:13:52] can scope their memory down a little bit
+[00:13:53] more. Just going back to that idea of
+[00:13:55] continuous learning and evolution kind
+[00:13:57] of that learning loop we found functions
+[00:13:59] a lot better when a bot is sort of typed
+[00:14:01] or passed into a specific role. And then
+[00:14:04] the final thing is I think it's a little
+[00:14:06] more fun and a little easier to
+[00:14:08] parallelize your work when you can kind
+[00:14:09] of hand stuff off to a bunch of bots.
+[00:14:11] And so one pattern that we see a ton
+[00:14:13] internally is folks who will like fire
+[00:14:15] off messages to six different bots.
+[00:14:16] You'll see them all spinning and working
+[00:14:18] and they kind of all go and do some work
+[00:14:20] for you and you kind of come back and
+[00:14:21] synthesize some results. So again, sort
+[00:14:23] of mirroring how you might work, you
+[00:14:25] know, with colleagues. Let's say we're
+[00:14:26] in a meeting together. We assign a bunch
+[00:14:27] of action items. We go all go off and do
+[00:14:29] that work and then come back together
+[00:14:31] and synthesize say a plan. Um the bots
+[00:14:33] can really mimic that behavior. And I
+[00:14:35] think it's also easier for us as humans
+[00:14:37] to kind of know how we're steering them
+[00:14:38] when they do that.
+[00:14:40] &gt;&gt; All right. Should we hop into the demo?
+[00:14:42] &gt;&gt; Let's do it. Okay. Uh I quick show of
+[00:14:45] hands for those in the room. I know
+[00:14:46] those in the stream won't see this. How
+[00:14:48] many of you all have used or have
+[00:14:49] Crockpot installed?
+[00:14:52] Okay. 80% of the room. So for the 20%
+[00:14:54] who have who have not seen it, I'm going
+[00:14:55] to do like a very very very quick tour
+[00:14:57] showing you what we just walked through.
+[00:14:59] Um so this is Grockbot. This is the
+[00:15:01] interface. It's a bunch of bots on the
+[00:15:02] left. And you can see we can pin some
+[00:15:04] bots up top bots up at the top. We can
+[00:15:06] group our bots into sections. And so we
+[00:15:08] have a section here for leadership. We
+[00:15:10] have a couple of pin bots and then we
+[00:15:11] have our engineering team that we just
+[00:15:13] talked about down here. Einstein, Eigor,
+[00:15:15] Nova, Larry, and Eileen. You can also
+[00:15:17] hide bots or unassign them if you'd
+[00:15:19] like. And then there's an entire
+[00:15:20] marketplace uh where you can connect the
+[00:15:23] tools that you use to these bots to give
+[00:15:25] them those superpowers that we talked
+[00:15:27] about earlier. So really the bots we
+[00:15:28] found are incredibly effective when they
+[00:15:30] have access to all the tools that
+[00:15:31] they're working on. So in this case,
+[00:15:33] we've set up a bunch of tools. We have
+[00:15:34] notion,ion, slack, um, you know, big my
+[00:15:36] MCP, Gmail, and a few other things that
+[00:15:39] are that are installed. And that S tier
+[00:15:40] design skill that I talked about earlier
+[00:15:42] is also stored here. So, we have that as
+[00:15:44] part of our setup, too. Um, these bots
+[00:15:47] all function and work as a team. And so
+[00:15:50] earlier I mentioned we had the ways to
+[00:15:52] group bots together. You can see some
+[00:15:54] examples of that here. We have our in
+[00:15:56] our pod here. So, like you could imagine
+[00:15:58] our engineering team doing a standup.
+[00:16:00] actually really fun if you get the bots
+[00:16:01] into a room and have them tell them to
+[00:16:03] do a standup on a project. We have our
+[00:16:04] EPD teams or engineering product and
+[00:16:06] design team for those of you who are in
+[00:16:08] product organizations. Obviously, this
+[00:16:09] is how a lot of them function is with
+[00:16:11] these three roles kind of acting as a as
+[00:16:13] a triumpvirate. And then, you know,
+[00:16:14] maybe we have a war room for example
+[00:16:16] with a bunch of bots to triage an issue
+[00:16:18] or handle an incident. And you really
+[00:16:19] the sky's is the limit here. These are
+[00:16:21] just some some representative examples.
+[00:16:23] Um so yeah, that's our overall setup.
+[00:16:25] And just to remind you, we have Cora,
+[00:16:26] who's our chief of staff up here, PM
+[00:16:28] Pete who's our product assistant, and
+[00:16:30] then Ashley who's our data science
+[00:16:31] assistant. You can see we have some
+[00:16:33] queries we were running the other day
+[00:16:35] kind of looking at some of the funnels
+[00:16:37] uh and you know uh data funnels for our
+[00:16:39] product and maybe a good chance to
+[00:16:41] explain what the product is. So
+[00:16:42] everything you're seeing here is tied to
+[00:16:44] a demo environment we have set up for a
+[00:16:46] business called Fly Low Airlines. It's
+[00:16:48] an airline just like you know any other
+[00:16:49] airline might be. And so yeah, we'll be
+[00:16:51] talking about the airline business
+[00:16:52] today.
+[00:16:53] &gt;&gt; Very good. So everybody in this room on
+[00:16:55] the live stream, you are all now PMs at
+[00:16:58] Fly Low, this amazing airline. And uh
+[00:17:01] why don't we jump into uh maybe a few
+[00:17:04] questions that we might have about the
+[00:17:06] business. Uh, and so we can turn to
+[00:17:09] Ashley who is our uh, data science
+[00:17:12] colleague here and we can ask uh, how
+[00:17:15] many people purchased
+[00:17:18] tickets yesterday
+[00:17:22] uh, on mobile verse web.
+[00:17:25] &gt;&gt; Oh, I like that. Yeah, I feel like
+[00:17:26] product funnels are such an important
+[00:17:28] part of development, right? Like where
+[00:17:29] are sales coming from? Yeah. And so
+[00:17:32] under the hood, Ashley is connected to
+[00:17:35] our uh data layer and data warehouse.
+[00:17:38] This could be data bricks, snowflake,
+[00:17:40] pick your favorite data warehouse. And
+[00:17:43] uh what Ashley is going to go off and do
+[00:17:45] is actually go generate these queries,
+[00:17:47] run these queries against that external
+[00:17:49] data store and come back to us with
+[00:17:53] looks like 1,400 tickets were purchased
+[00:17:56] yesterday. So it sounds like we are a
+[00:17:57] small boutique airline here. Uh which is
+[00:18:00] very good. And looks like uh about 58%
+[00:18:04] were on web and uh 42% on mobile. Uh and
+[00:18:09] we can see uh how many families were
+[00:18:12] flying.
+[00:18:15] Uh typos are okay. Uh help us visualize
+[00:18:20] these with charts. And while that's
+[00:18:22] running, I actually find this as a
+[00:18:24] product product person to be one of my
+[00:18:26] favorite uses of Grockbot every day is I
+[00:18:29] now get data queries and charts on
+[00:18:31] demand. Um we we didn't we haven't shown
+[00:18:34] this yet and we can but you can also set
+[00:18:35] up routines with bots. So if you haven't
+[00:18:37] uh seen that that's a really really
+[00:18:39] helpful thing. I wake up every morning
+[00:18:40] and you know for those of you who like
+[00:18:42] to monitor your favorite dashboards each
+[00:18:44] morning uh usually you know you're used
+[00:18:46] to opening up a web browser navigating
+[00:18:47] your dashboards maybe you have a bunch
+[00:18:49] of bookmarks you load um this can all be
+[00:18:51] pushed to you and so I have many many
+[00:18:53] daily queries perhaps you're in charge
+[00:18:55] of this pipeline at your business you
+[00:18:57] can get these insights pushed to you
+[00:18:58] every morning or on demand and so one
+[00:19:00] thing that we've done for really major
+[00:19:02] product launches is actually ask for
+[00:19:05] hourly reports on how things are going
+[00:19:06] live from our data store so you can
+[00:19:08] truly track the progress of a launch,
+[00:19:10] truly track where people are getting
+[00:19:11] stuck, and sort of build these really
+[00:19:13] great experiences out the gate. So, it
+[00:19:14] looks like we got some data back.
+[00:19:17] &gt;&gt; Cool. So, this Ashley has actually
+[00:19:19] generated the charts for us, helping us
+[00:19:22] understand uh the uh distribution of
+[00:19:25] who's going solo, who's a couple, who's
+[00:19:27] a family, who's flying in groups, and
+[00:19:30] then uh also helping us understand what
+[00:19:32] is this family share of ticket
+[00:19:34] purchases. Looks like 25% of flyers are
+[00:19:38] family. Uh and so yeah, as Roshan
+[00:19:41] mentioned, we can make this a routine.
+[00:19:42] Uh send me this as an update every
+[00:19:45] morning at 6 a.m. This can be the first
+[00:19:47] thing in uh Grockbot that I check and I
+[00:19:51] can get an updated pulse of uh these
+[00:19:54] purchase behavior and uh how many
+[00:19:57] families are flying, which is kind of
+[00:19:58] cool.
+[00:19:58] &gt;&gt; Yeah, I like that. Now I I wonder if
+[00:20:00] there's something we could do to make
+[00:20:02] that experience better. I don't know.
+[00:20:03] Are there any issues with the product we
+[00:20:05] could try to find or
+[00:20:06] &gt;&gt; Yeah,
+[00:20:06] &gt;&gt; you think we should look into the uh
+[00:20:08] &gt;&gt; Let's scroll up. Let's look at that
+[00:20:10] funnel.
+[00:20:11] &gt;&gt; Yeah, I did this I did this earlier
+[00:20:12] today kind of just exploring how ticket
+[00:20:15] purchases might be look look like and so
+[00:20:17] asked Ashley to pull for us kind of what
+[00:20:20] happens for folks who are buying tickets
+[00:20:22] on mobile. So this looks like a pretty
+[00:20:23] classic product conversion funnel I
+[00:20:25] think right?
+[00:20:26] &gt;&gt; Yeah, very good. And looks like there is
+[00:20:29] quite a bit of fall-off in this funnel.
+[00:20:31] Yes, but we interestingly it looks like
+[00:20:33] the fall-off is happening when people
+[00:20:34] pick their seats. Maybe they don't like
+[00:20:36] our seat selections. Uh but this might
+[00:20:38] be an opportunity for us to improve the
+[00:20:40] product. And so, you know, as you're
+[00:20:41] working on your own products, one thing
+[00:20:43] that often happens is you see an insight
+[00:20:45] in the data and then you say, well, wait
+[00:20:47] a minute, like what's actually happening
+[00:20:48] in the product here? What can we do to
+[00:20:49] fix that experience? And so, maybe we
+[00:20:51] should write a spec.
+[00:20:52] &gt;&gt; Let's do it. So, uh you can thread in
+[00:20:55] chats. Uh here we are going to reply to
+[00:20:58] this message that we got yesterday. Uh,
+[00:21:00] and we're going to say, "Looks like a
+[00:21:03] big fall off when people are choosing
+[00:21:07] seats on mobile.
+[00:21:10] Work with PMP to generate a product spec
+[00:21:16] to optimize our mobile funnel." And as
+[00:21:19] you notice, Kevin here is tagging PMP.
+[00:21:21] So, this is where the bots will be able
+[00:21:23] to chat with each other. Uh, and you'll
+[00:21:25] see Ashley should fire off a message to
+[00:21:27] Pete. Pete has a lot of product context
+[00:21:29] on our business, understands our
+[00:21:31] customers, understands the previous
+[00:21:33] product decisions that have been made,
+[00:21:34] and so might have some insight as to
+[00:21:36] kind of why this is a spot in the
+[00:21:37] funnel. And between the two of them,
+[00:21:39] just like any great product and data
+[00:21:41] science combo, it'll be a hopefully
+[00:21:43] they'll be able to come up with some
+[00:21:44] good ideas here. And it looks like yeah,
+[00:21:45] we can maybe should we click into that
+[00:21:47] message and see?
+[00:21:47] &gt;&gt; Yeah. Yeah. Before we go there, I do
+[00:21:49] love Ashley corrected us. Uh we were
+[00:21:51] actually wrong in our interpretation of
+[00:21:53] the data. Uh, and so it says on mobile
+[00:21:56] purchase funnel. The big leak is
+[00:21:57] actually search to fair selection, not
+[00:22:00] seat selection. So, uh, we had
+[00:22:02] misinterpreted the chart. Luckily,
+[00:22:04] Ashley caught our our mistake here. And,
+[00:22:07] uh, you can see Ashley is sending a
+[00:22:09] message off to PM Pete with some of the
+[00:22:12] insights that she has generated through
+[00:22:14] this investigation and then the specific
+[00:22:17] asks that they're going to start to
+[00:22:18] coordinate on.
+[00:22:18] &gt;&gt; Yeah. And I see Pete spinning over
+[00:22:20] there. So I think doing something
+[00:22:24] cool.
+[00:22:26] Okay, it looks like Pete has a notion
+[00:22:29] PRD
+[00:22:31] with some P zeros and P1s. Let's see
+[00:22:33] what came up with.
+[00:22:36] Okay,
+[00:22:38] &gt;&gt; very cool. And uh talk about the skill
+[00:22:40] that PMP is using to generate this PRD.
+[00:22:44] Yeah. So, PMP has learned that the best
+[00:22:47] PRDS, the best specs are really crisp in
+[00:22:50] their requirements and that increasingly
+[00:22:52] they focus less on longevity of the
+[00:22:54] document and more on what helps us get
+[00:22:56] to code and prototype really quickly.
+[00:22:58] Right? We all maybe we've we've heard a
+[00:23:00] lot about how code is getting cheaper
+[00:23:02] and cheaper each days each day. Uh, and
+[00:23:04] so Pete has a bunch of skills that are
+[00:23:06] trained into Pete's context that allow
+[00:23:08] him to uh, in this case really
+[00:23:10] understand the business and then when
+[00:23:12] we're asking Pete for a PRD, uh, specify
+[00:23:15] a really crisp set of P 0, P1, and P2
+[00:23:17] requirements. So it looks like we got a
+[00:23:19] list. What do we think?
+[00:23:22] &gt;&gt; Amazing. Looks like mobile fair results
+[00:23:25] needs a redesign here.
+[00:23:27] &gt;&gt; Faster compare section are some of the
+[00:23:29] ideas. Uh, honest fair proof on the
+[00:23:32] card. I think one of the important
+[00:23:34] takeaways here is that uh you know we
+[00:23:36] are equipping uh our colleagues with a
+[00:23:39] bunch of context but they may not know
+[00:23:41] everything and it is often very helpful
+[00:23:43] to do a level of human review layer on
+[00:23:46] your own ideas and insights and iterate
+[00:23:49] with Rockbot as it builds out product.
+[00:23:52] And so uh this is awesome. we're going
+[00:23:54] to oneshot this from here for demo
+[00:23:56] purposes, but there's often a lot of lot
+[00:23:58] more iteration that goes into working
+[00:24:00] with our agents, working with each other
+[00:24:02] uh to figure out what is the sort of
+[00:24:04] right product shape that we should ship.
+[00:24:06] &gt;&gt; And obviously there's a number of
+[00:24:07] different ways you can do that. So one
+[00:24:09] thing I like to do with notion is just
+[00:24:10] leave comments in notion and crocbots
+[00:24:12] can read notion comments and so it kind
+[00:24:14] of really does feel like you're
+[00:24:15] interacting with a colleague. You leave
+[00:24:16] some notes here. You say actually this
+[00:24:17] feels wrong. That number feels off like
+[00:24:19] tag in the person. Um I that works
+[00:24:21] really well with Google Docs and other
+[00:24:22] connectors too. And so um yeah, I think
+[00:24:25] the iteration process has also gotten a
+[00:24:26] lot more fun. But I guess next
+[00:24:28] conventionally we'd probably start
+[00:24:30] prototyping some of those ideas out,
+[00:24:31] right? So
+[00:24:32] &gt;&gt; yeah, how do you want to do it?
+[00:24:33] &gt;&gt; Well, maybe we ask Emily. So Emily is
+[00:24:35] our engineering manager and has contacts
+[00:24:38] on our entire engineering team. So maybe
+[00:24:40] one thing we could do is ask Pete to
+[00:24:43] hand the PRD to Emily and you know maybe
+[00:24:46] she can ask our engineering team to
+[00:24:48] prototype some of these ideas and see
+[00:24:51] how they do.
+[00:24:52] &gt;&gt; Cool. Should we also get Pixel in the
+[00:24:55] mix?
+[00:24:55] &gt;&gt; Oh yeah, great plan.
+[00:24:56] &gt;&gt; And do a little design?
+[00:24:58] &gt;&gt; That's a good idea. Yeah. Yeah. So we
+[00:24:59] should probably get some design for each
+[00:25:01] of our each of our P zeros.
+[00:25:06] &gt;&gt; Cool.
+[00:25:06] &gt;&gt; All right. So, let's send that off.
+[00:25:09] And while that cooks, we'll pull up uh
+[00:25:12] the virtual machine which all of our
+[00:25:15] which Grockbot has access to. And uh as
+[00:25:18] we talked about, these are colleagues
+[00:25:20] with a computer. And so it is very
+[00:25:22] helpful to uh give these agents, these
+[00:25:24] colleagues, give Grockbot its own
+[00:25:27] virtual machine, its own computer in the
+[00:25:29] cloud where it can actually do work. It
+[00:25:32] can navigate the web. uh you can log in
+[00:25:34] and it can use your credentials across
+[00:25:37] various services to actually get work
+[00:25:39] done.
+[00:25:41] And you can see up here top right uh you
+[00:25:45] can see teach it a task and so you can
+[00:25:47] actually record your workflows uh
+[00:25:50] directly on this machine and agent can
+[00:25:53] watch and learn and be able to replicate
+[00:25:56] and reproduce the work that you are
+[00:25:57] doing. And so, uh, we often hear our
+[00:26:00] sales team, our go-to market team have
+[00:26:02] these very complex Salesforce workflows,
+[00:26:05] uh, these complex processes that need to
+[00:26:07] be replicated again and again. And it's
+[00:26:09] very helpful to be able to teach an
+[00:26:11] agent with more than just words or more
+[00:26:13] than just spoken word to actually be
+[00:26:15] able to record the work that you are
+[00:26:16] doing.
+[00:26:17] &gt;&gt; Yeah. And these the agent actually every
+[00:26:19] so every time it uses one of those tasks
+[00:26:21] or or goes through one of those tasks
+[00:26:23] also has the ability to refine that
+[00:26:25] skill and again follow that feedback
+[00:26:26] mechanism that we talked about earlier.
+[00:26:28] So really if you're working in bespoke
+[00:26:29] systems or custom systems I think that's
+[00:26:31] really invaluable.
+[00:26:33] &gt;&gt; Okay. Very cool. So it looks like we
+[00:26:35] have uh two separate handoffs. one to uh
+[00:26:38] engineering manager Emily uh to actually
+[00:26:41] start going on some prototypes for this
+[00:26:44] spec and then the other is uh over to
+[00:26:47] Pixel to actually start working on some
+[00:26:50] designs and some mocks.
+[00:26:52] &gt;&gt; Yeah. And I think what's cool about the
+[00:26:54] design workflow here is Pixel I
+[00:26:56] mentioned earlier is trained on just how
+[00:26:58] to be a great AI designer but also it
+[00:27:01] has context on our business's design
+[00:27:03] system. And so in this case, we use
+[00:27:05] Figma. And so the design system lives in
+[00:27:07] Figma, but Pixels also sort of has
+[00:27:09] reference files in its context that sort
+[00:27:12] of teach it how to design for our
+[00:27:13] airline. And so what this does is it
+[00:27:15] makes it so that, you know, we're not
+[00:27:17] starting from scratch every time. The
+[00:27:18] agent has a ton of embedded context on,
+[00:27:21] you know, our preferred fonts and
+[00:27:22] colors, UI patterns. Uh, you know, some,
+[00:27:24] you know, nos we've taught it over time.
+[00:27:26] For example, like never make X buttons
+[00:27:28] on the left corner and things like this.
+[00:27:30] Uh, and that really kind of gives this
+[00:27:32] designer the ability to iterate really,
+[00:27:34] really quickly and then, you know, get
+[00:27:35] things mostly right on the first try
+[00:27:37] versus having to start from scratch
+[00:27:38] every time. And it looks like we got
+[00:27:40] some designs. What do we think?
+[00:27:44] Those are some expensive tickets.
+[00:27:46] [laughter]
+[00:27:47] It looks like we have two different
+[00:27:49] options. Option A and option B, which
+[00:27:52] Pixel has designed. What does the crowd
+[00:27:54] think? Option A, clap. [laughter]
+[00:27:59] Option B, clap.
+[00:28:03] Okay,
+[00:28:03] &gt;&gt; I'm team A.
+[00:28:04] &gt;&gt; Sounds like team A.
+[00:28:07] &gt;&gt; All right, so let's hand the first mock
+[00:28:11] over to Emily to update the prototype.
+[00:28:16] &gt;&gt; Cool. And what you're also noticing here
+[00:28:18] is that these bots can really act um you
+[00:28:21] know, sort of interchangeably, right?
+[00:28:22] Like earlier it looked like Pixel had
+[00:28:25] handed something to Emily and then we
+[00:28:26] made a decision and then we can say hey
+[00:28:28] like go and update Emily and you'll
+[00:28:30] notice that these these bots sort of
+[00:28:31] like interact more asynchronously or
+[00:28:33] more out of band than you might expect
+[00:28:35] if you're just used to working with a
+[00:28:36] you know more of a chat style interface.
+[00:28:38] Um and honestly I think these make them
+[00:28:40] a lot more fun to work with where
+[00:28:41] basically you can continue to steer and
+[00:28:43] drive what the agents are working on. uh
+[00:28:45] you know particularly in some cases
+[00:28:46] where they're working on something for a
+[00:28:47] few minutes at a time kind of getting
+[00:28:49] that input from you as you go uh you
+[00:28:51] know kind of helps you feel like you're
+[00:28:52] you're being a part of the process and
+[00:28:54] also verifying the output too. So
+[00:28:56] &gt;&gt; cool. So let's check in on the
+[00:28:58] engineering team. Uh you can see Emily
+[00:29:01] here as the engineering manager uh
+[00:29:04] deconstructed the uh different
+[00:29:06] priorities into uh scoped work for each
+[00:29:10] one of the uh engineers and actually
+[00:29:13] then went and had direct conversations
+[00:29:16] with each one explaining the work that
+[00:29:18] uh they were to do and uh also included
+[00:29:22] a bunch of additional context. Uh, one
+[00:29:24] of the things that I think we have all
+[00:29:26] learned the hard way is that agents are
+[00:29:28] really good at prompting uh, oftentimes
+[00:29:31] better than we are at figuring out what
+[00:29:33] context uh, to give to an agent. And so
+[00:29:36] uh, oftentimes just giving the uh,
+[00:29:39] giving your team in Grockbot the context
+[00:29:41] of what you are trying to achieve and
+[00:29:43] letting them work together and sus out
+[00:29:45] what context would be most helpful, how
+[00:29:47] to deconstruct work in different ways
+[00:29:49] uh, can be very accelerative.
+[00:29:51] One thing we um will hopefully see in
+[00:29:54] action a second here, uh these uh Grock
+[00:29:58] bots also have the ability, there we go,
+[00:29:59] to kick off cloud agents. And so when it
+[00:30:01] comes to the actual engineering work,
+[00:30:03] what each of these IC engineers are
+[00:30:05] doing is they're creating agents in the
+[00:30:07] cloud that sort of run with a local copy
+[00:30:09] of your code repository. So when it
+[00:30:11] comes time to make changes to a to the
+[00:30:13] codebase or maybe they they need to
+[00:30:15] install some, you know, setup scripts to
+[00:30:18] be able to ensure that the repo is
+[00:30:19] testable and runnable. Um, these agents
+[00:30:21] come with all of those batteries
+[00:30:22] included, too. So, in this case, it
+[00:30:24] looks like you just said yes when the uh
+[00:30:27] when Nova asked about creating a PR. Is
+[00:30:29] that right?
+[00:30:30] &gt;&gt; That's right. Yeah.
+[00:30:30] &gt;&gt; Yeah.
+[00:30:31] &gt;&gt; Uh, and so Nova has gone off launched
+[00:30:33] this cloud agent. We'll continue to
+[00:30:36] monitor its work. Uh, when that
+[00:30:38] completes, uh, you can also have an
+[00:30:40] additional verification loop. uh the
+[00:30:42] engineer can review the work of the
+[00:30:44] cloud agent can hand it back to either a
+[00:30:46] QA team or your engineering manager who
+[00:30:49] can actually uh run an additional layer
+[00:30:52] of checks and verification to ensure
+[00:30:54] that the outputs align with the intended
+[00:30:57] goals that you gave your your team to
+[00:30:59] start. Yeah, I think what this is what's
+[00:31:02] really cool about this too is you can
+[00:31:03] sort of choose how much human you want
+[00:31:05] to bring into the loop, right? So maybe
+[00:31:06] for some of these cases, if it's a
+[00:31:08] really easy change to say a
+[00:31:09] documentation website or maybe it's
+[00:31:11] resizing something uh in our mobile app,
+[00:31:14] it feels like a pretty low stakes change
+[00:31:15] and sometimes we can just let our agents
+[00:31:17] run with it. But perhaps there's a more
+[00:31:19] meaningful change like we want to make
+[00:31:20] sure that this design was implemented
+[00:31:22] the way that we spec it out or the way
+[00:31:23] that Pixel helped us spec it out. We
+[00:31:25] might want to jump in and ask for a demo
+[00:31:27] or prototype. So one thing we found
+[00:31:29] that's just generally true when working
+[00:31:31] with agents is that giving them an
+[00:31:33] environment to verify their own output
+[00:31:34] in makes a huge difference but also
+[00:31:36] giving them the tools to help you as the
+[00:31:39] human verify the output also makes a
+[00:31:40] huge difference in outcomes and you can
+[00:31:42] kind of work with those things together
+[00:31:44] and you know get get better results. So
+[00:31:48] &gt;&gt; amazing. So I think our engineering team
+[00:31:50] is going to cook on this in the
+[00:31:51] background. Uh and so what have we seen
+[00:31:54] so far? We started with this uh open
+[00:31:57] question about the business. Uh we
+[00:31:59] started talking to a data science uh
+[00:32:02] colleague Ashley uh to help us better
+[00:32:05] understand some of the funnel dynamics
+[00:32:06] where the biggest fall-off was. Uh
+[00:32:08] handed all of that context over to uh a
+[00:32:12] PMP agent uh who could actually help
+[00:32:15] write the product requirements doc. Uh
+[00:32:18] that was the first pass. We then handed
+[00:32:20] it off to our designer who created a
+[00:32:23] first version of the mocks to actually
+[00:32:25] go and implement and then Emily and our
+[00:32:27] engineering team are off now cooking it
+[00:32:30] with our cloud agents.
+[00:32:32] &gt;&gt; Um really cool system and again you can
+[00:32:34] really adapt this to whatever workflow
+[00:32:35] makes the most sense to your business.
+[00:32:37] And so we've seen a lot of folks who you
+[00:32:38] know want to go really deep on the
+[00:32:40] requirements phase and maybe work on
+[00:32:42] really complex systems where you know
+[00:32:43] there's lots of knock-on implications
+[00:32:45] for you know every small requirement.
+[00:32:47] You could imagine having a team of folks
+[00:32:49] whose job it is to make sure there's a
+[00:32:51] knowledge base that's kept up to date
+[00:32:52] and that those requirements are fed into
+[00:32:54] the product. Uh or maybe you have a
+[00:32:56] really convoluted codebase with a bunch
+[00:32:58] of different repos that need to stay in
+[00:32:59] sync. That's another workflow that you
+[00:33:01] could build in with Grockbot. And so my
+[00:33:02] point with that is just saying that, you
+[00:33:03] know, this is one example of how you
+[00:33:05] might set up your team. Um but really
+[00:33:07] the tool is meant to be flexible for you
+[00:33:08] to kind of adapt to whatever workflow
+[00:33:10] works for for your own organization.
+[00:33:14] Cool.
+[00:33:21] &gt;&gt; Okay. Now, a few of the uh hard learned
+[00:33:24] lessons working with Grockbot. A few
+[00:33:26] things to keep in mind as you start to
+[00:33:27] build out your own teams in Grockbot. Uh
+[00:33:31] first is this idea of named agents,
+[00:33:34] having separate memory, being able to
+[00:33:35] learn on the job, and uh really thinking
+[00:33:38] about these as colleagues. They're not
+[00:33:40] going to be great on day zero. there is
+[00:33:43] an onboarding phase where you can give
+[00:33:45] them skills, you can give them context,
+[00:33:47] you can teach them things. Uh and so
+[00:33:49] over time they actually build up that
+[00:33:51] context and intuition and can take on
+[00:33:53] more and more work which is cool to see.
+[00:33:55] Uh the other is uh really thinking about
+[00:33:58] sort of reducing noise in the system as
+[00:34:00] PMs like there is often a lot of pings,
+[00:34:03] a lot of emails, a lot of slacks. Uh,
+[00:34:05] one of the pro tips that we've learned
+[00:34:07] is, uh, when you set up a routine to ask
+[00:34:09] your agent, if this is essentially a no
+[00:34:11] operation, if there's nothing important
+[00:34:12] or urgent for me to see, uh, you can
+[00:34:15] actually just take the work on yourself
+[00:34:17] or you don't need to update me. Uh, and
+[00:34:19] so there is a bit of noise reduction in
+[00:34:21] the system. Uh, agents are and Grockbot
+[00:34:24] is currently uh, grooming my inbox and
+[00:34:28] will only tell me about the most
+[00:34:30] important emails there uh, and can
+[00:34:32] escalate things. But generally I'm
+[00:34:34] trying to reduce the uh noise in the
+[00:34:37] system so I can keep focused on what is
+[00:34:39] most important for the team. And then uh
+[00:34:42] agents all the way down this idea that
+[00:34:44] you know you can have managers of agents
+[00:34:47] uh agents are coordinating with cloud
+[00:34:49] agents uh and Grockbot is a very helpful
+[00:34:52] agent system for helping you take on
+[00:34:54] some of the most ambitious work and
+[00:34:56] accelerate your product teams.
+[00:34:57] &gt;&gt; Yeah.
+[00:35:01] &gt;&gt; Very cool. So that was a very fun demo.
+[00:35:04] Uh that was uh great uh being able to
+[00:35:06] actually make some impact at Fly Low
+[00:35:08] Airlines.

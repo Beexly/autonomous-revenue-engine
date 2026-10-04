@@ -1,0 +1,146 @@
+[
+ {
+  "metric": "Grok Bot share of internal merged PRs",
+  "value": "double-digit %",
+  "context": "stated on stage and in the PM guide",
+  "source": "transcript gNysgEu-lew 00:08:58; guides/grok-bot-for-pms"
+ },
+ {
+  "metric": "Support ticket volume increase absorbed",
+  "value": "175%",
+  "context": "no new hires; 'might have hired 200 additional people'",
+  "source": "news/grok-bot-customer-support"
+ },
+ {
+  "metric": "Cost per support resolution (Grok Bot)",
+  "value": "$0.20–$0.30",
+  "context": "after minor optimisation; includes plan allowance",
+  "source": "news/grok-bot-customer-support"
+ },
+ {
+  "metric": "Cost per support resolution (traditional AI tools)",
+  "value": "$1–$4 flat",
+  "context": "competitor benchmark",
+  "source": "news/grok-bot-customer-support"
+ },
+ {
+  "metric": "Cost per ticket (live session figures)",
+  "value": "$1–$2 medium/complex; ~$0.20 low-complexity batched",
+  "context": "speaker's own measurements, half a day of tuning",
+  "source": "transcript BSB--jUnx9U 00:29:23, 00:30:47"
+ },
+ {
+  "metric": "Haggle Bot direct savings found",
+  "value": "> $100,000",
+  "context": "SaaS + recurring purchases",
+  "source": "news/grok-bot-procurement"
+ },
+ {
+  "metric": "Unused seats found in one SaaS audit",
+  "value": "43 seats idle 90 days = $14,220",
+  "context": "single vendor",
+  "source": "news/grok-bot-procurement"
+ },
+ {
+  "metric": "Unused SKUs found in one SaaS product",
+  "value": "$85,662 / year",
+  "context": "month-to-month, immediate reduction",
+  "source": "news/grok-bot-procurement"
+ },
+ {
+  "metric": "Weekly office-supply order reduction",
+  "value": "$14,629 → $6,143 (58%)",
+  "context": "one run, tech order",
+  "source": "news/grok-bot-procurement"
+ },
+ {
+  "metric": "Refund requests resolved without a human",
+  "value": "99%",
+  "context": "clear refund instructions supplied",
+  "source": "news/grok-bot-customer-support"
+ },
+ {
+  "metric": "Customer interactions used to train tone/voice",
+  "value": "over 1,000,000",
+  "context": "learned from human responses",
+  "source": "news/grok-bot-customer-support"
+ },
+ {
+  "metric": "Product feedback synthesised daily",
+  "value": "20,000+ points",
+  "context": "from support tickets into themes for engineering",
+  "source": "news/grok-bot-customer-support"
+ },
+ {
+  "metric": "Cloud agents managed before Grok Bot",
+  "value": "15 at a time",
+  "context": "manual ceiling",
+  "source": "transcript zCqmTSF2ctg 00:04:07"
+ },
+ {
+  "metric": "Cloud agents managed with a bot fleet",
+  "value": "200+ simultaneously",
+  "context": "engineer's own fleet",
+  "source": "guides/grok-bot-for-engineering"
+ },
+ {
+  "metric": "PRs shipped by one engineer in a month",
+  "value": "2,000+ (Lauren)",
+  "context": "internal claim",
+  "source": "guides/grok-bot-for-engineering"
+ },
+ {
+  "metric": "Grok Bot foundation built in",
+  "value": "4 weeks (Balta, Shaoru)",
+  "context": "using Grok Bot",
+  "source": "guides/grok-bot-for-engineering"
+ },
+ {
+  "metric": "Grok Bot iOS v0 built in",
+  "value": "3 weeks (Lingxi Li)",
+  "context": "using only Grok Bot",
+  "source": "guides/grok-bot-for-engineering; transcript zCqmTSF2ctg"
+ },
+ {
+  "metric": "Cost per install improvement (Rank'em)",
+  "value": "15x ($15 → $1)",
+  "context": "partner-cut ad after data analysis",
+  "source": "guides/grok-bot-for-mobile-app-development"
+ },
+ {
+  "metric": "D7 retention improvement (Rank'em)",
+  "value": "~4x",
+  "context": "hint feature derived from score/retention correlation",
+  "source": "guides/grok-bot-for-mobile-app-development"
+ },
+ {
+  "metric": "Marketplace scale",
+  "value": "81 templates, 45 creators, 393 skills, 127 routines, 304 integrations",
+  "context": "as captured 2026-09-23",
+  "source": "data/marketplace-agents.json"
+ },
+ {
+  "metric": "Use-case catalogue",
+  "value": "56 use cases in 9 categories",
+  "context": "as captured 2026-09-23",
+  "source": "data/use_cases.json"
+ },
+ {
+  "metric": "Bots created (company claim)",
+  "value": "'millions of bots created in the past few weeks'",
+  "context": "marketing copy, unverifiable",
+  "source": "news/grok-bot-for-enterprise"
+ },
+ {
+  "metric": "Routine cost warning",
+  "value": "a 15-minute routine = 100 runs/day",
+  "context": "token cost caution",
+  "source": "transcript hPE3A4Smkxc"
+ },
+ {
+  "metric": "Event runtime captured on YouTube",
+  "value": "~5h30m of a ~27.75h programme (~20%)",
+  "context": "3 days x 9h15m of programming; the rest lives only in the X broadcasts",
+  "source": "computed from x.ai/galaxy + video metadata"
+ }
+]
