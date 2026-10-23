@@ -37,8 +37,7 @@ the cheapest source of both new bookings and local search rank.
   her messaging app (SMS) or copies the text. No fake "message sent" state.
 - Every page has a call button; on mobile the number is tappable in the header,
   the hero, the contact block and the footer.
-- The grazing table — the $2,000–$3,500 product — is the first CTA, because it
-  is the highest-value order and currently has no enquiry route at all.
+- The grazing table is the first CTA. ~~The $2,000–$3,500 product~~ is the wrong price note. Holy Grail is 75 guests only ($2,630.22). Graze at 50 is $1,686.22. It is the highest-value order and currently has no enquiry route at all.
 
 ## 3. Content workflow (so the site stays alive)
 

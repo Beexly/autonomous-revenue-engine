@@ -15,7 +15,7 @@ product has no way to enquire.
 | 06 | Her real photos are unused on the homepage gallery | image files `Shrimp_Food_Prawns`, `Link_5` … `Link_10` served on `/`; nine real event photos on `/pages/gallery` | Free credibility, thrown away |
 | 07 | Footer "Faqs" link → **404** | `GET /pages/faqs` → HTTP 404 | Broken link in every page footer |
 | 08 | Blog pager renders a template error | `/blogs/news` → `NaN` / `of-Infinity`; 3 posts, all dated Aug 30 2025, each listed twice | Visible bug to any visitor who scrolls |
-| 09 | The **$2,000–$3,500** grazing table has no enquiry form | `/pages/grazing-table` — only "Call for order" | Biggest ticket, zero lead capture |
+| 09 | The grazing table has no enquiry form. ~~**$2,000–$3,500**~~ is a wrong price note (Holy Grail is 75 guests only, $2,630.22) | `/pages/grazing-table` — only "Call for order" | Biggest ticket, zero lead capture |
 | 10 | Phone number renders with no space: `Call For Order832-458-8180` | homepage header | Small, but it reads as unpolished |
 | 11 | Page titles carry stray whitespace/line breaks | `<title>` on `/` | Weakens the search snippet |
 | 12 | Footer links to a "Menu Fastfood" collection | homepage footer | Off-brand for a caterer |

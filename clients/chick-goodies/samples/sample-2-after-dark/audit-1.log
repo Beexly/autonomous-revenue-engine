@@ -1,0 +1,19 @@
+PASS desktop console clean
+PASS no horizontal overflow
+PASS phone link
+PASS canonical https://charcuterie-chick-sample-2.vercel.app/table.html
+PASS schema present
+PASS visible copy clean
+PASS pinch zoom not blocked
+PASS graze 50 is $1,686.22
+PASS holy 75 is $2,630.22
+PASS holy 150 refused
+PASS tax keeps cents
+POSE 0 {"x":0.07302215172538126,"y":1.6316359313925195,"z":5.2,"progress":0}
+POSE 0.28 {"x":0.002061131177182686,"y":1.4954504748358313,"z":-3.1685092634172642,"progress":0.27999218444704965}
+POSE 0.55 {"x":0.056066623182660286,"y":1.4070392914759915,"z":-11.240607444278085,"progress":0.550019538882376}
+POSE 0.95 {"x":0.10500388215264513,"y":2.6792244122426276,"z":-23.05041469996967,"progress":0.949980461117624}
+PASS camera moved at four progress marks
+PASS quote sheet shows both fixtures
+PASS mobile console clean
+PASS mobile no horizontal overflow

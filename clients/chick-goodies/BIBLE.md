@@ -10,7 +10,7 @@ Director lock before pixels. DNA is `FACTS.md`. Shots are `ASSETS.md`. If it is 
 - IG public: @charcuteriechickhtx (not ssminnow1970)
 - Tagline: Where flavor takes the lead. Elegance without the cost.
 - 35 years. One party at a time. Woman-owned. English and Spanish. Travel 100 miles.
-- Tables $24–$38 pp (50 min) · Holy Grail $2,000/75 · $3,500/150 · 90 min · 18% tax · $229 setup
+- Tables from $24 a person (50 minimum) · Holy Grail is 75 guests only, quote total $2,630.22 · ~~$3,500 / 150~~ struck, that tier is wrong · 90 min · extra half hour $3 a person · tax `Math.round(taxableCents * 18 / 100)` · $229 setup
 - Knot 5.0 / 13 · Best of Weddings 2026 · WW 5.0 / 11
 - Reviews on page: Nicole M. and Jake S. (The Knot, verbatim). Shopify “1 Reviews” names stay off.
 

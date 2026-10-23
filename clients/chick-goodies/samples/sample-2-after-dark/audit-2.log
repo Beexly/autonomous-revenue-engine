@@ -1,0 +1,26 @@
+PASS desktop console clean
+PASS no horizontal overflow
+PASS phone link
+PASS canonical https://charcuterie-chick-sample-2.vercel.app/table.html
+PASS schema present
+PASS visible copy clean
+PASS pinch zoom not blocked
+PASS graze 50 is $1,686.22
+PASS holy 75 is $2,630.22
+PASS holy 150 refused
+PASS tax keeps cents
+POSE 0 {"x":-0.011745027275745026,"y":1.55,"z":4.2,"progress":0}
+POSE 0.28 {"x":0.6687834702171509,"y":0.45829486800015345,"z":1.2296146490493904,"progress":0.28}
+POSE 0.55 {"x":0.15205569636292393,"y":0.28317302533078703,"z":-0.27094508671861783,"progress":0.55}
+POSE 0.95 {"x":0.11785602594560456,"y":2.241602383038935,"z":3.847176813215989,"progress":0.95}
+PASS camera moved at four progress marks
+PASS quote sheet shows both fixtures
+PASS mobile console clean
+PASS mobile no horizontal overflow
+PASS fast scroll stays on Lenis {"scrollP":0.8,"poseP":0.8,"z":0.5598679729506456}
+PASS fast scroll moved the camera
+PASS reduced motion keeps still and quote
+PASS reduced motion camera frozen
+PASS reduced motion keeps phone and price
+PASS no WebGL shows the still
+PASS no WebGL first screen has the service line, price, minimum, date, and phone

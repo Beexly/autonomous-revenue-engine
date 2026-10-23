@@ -35,7 +35,7 @@ fee** apply to every table.
 | "Grazing Standard" | $26 | Above + second hummus, 2 dips, pasta salad, potato/sweet-potato/tortilla chips |
 | "Super Graze" | $30 | 3 sliders (25 each), 3 salads, 3 dips, 2 hummus, nuts, chips, full vegetable spread |
 | "Grand Graze" | $38 | 5 sliders, 4 salads, 3 dips, 2 hummus, 2 nuts, chips, mini pudding cups (Oreo / butterscotch / banana) |
-| "Holy Grail of Grazing" | $2,000 / 75 guests · $3,500 / 150 guests | 2 sliders (50 each), 5 cheeses, 5 meats, 2 salads, 3 dips, 2 hummus, 2 nuts, guacamole, pico de gallo, seasonal fruit, chips |
+| "Holy Grail of Grazing" | ~~$2,000 / 75 guests · $3,500 / 150 guests~~ WRONG. 75 guests only. Quote total $2,630.22 (food + $229 setup + tax `Math.round(taxableCents * 18 / 100)`). Do not print $3,500 or a 150-guest tier. | 2 sliders (50 each), 5 cheeses, 5 meats, 2 salads, 3 dips, 2 hummus, 2 nuts, guacamole, pico de gallo, seasonal fruit, chips |
 
 ## Menu prices (as published)
 

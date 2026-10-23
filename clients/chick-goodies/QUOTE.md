@@ -31,7 +31,7 @@ Everything in Option A, plus:
 - The live Shopify problems fixed: four $0.00 prices, fifteen gallery
   placeholders, template stat block, 404 FAQ link, blog pager bug, duplicate
   product blocks, "Menu Fastfood" footer link
-- Enquiry form on the grazing table so the $2,000–$3,500 order starts online
+- Enquiry form on the grazing table so the quote starts online. ~~$2,000–$3,500~~ is a wrong range. Holy Grail is 75 guests only at $2,630.22. Graze at 50 guests is $1,686.22.
 - Photo clean-up plus a shot list for new high-resolution photos; Garrett works
   the shot list during one event
 - Simple workflow so enquiries get answered and reviews get asked for
