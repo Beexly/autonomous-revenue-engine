@@ -23,7 +23,7 @@ A complete rebuild of charcuteriechick.ai as a cinematic scroll-film site: six f
 
 ## Open items before publish (Tricia's decisions)
 1. **Reviews (the one must-confirm):** the five reviews currently shown (Nicole M., Jake S., Lucas Willis, Jacob Hernandez, Amina Khalid) can't be verified against her public listings — her WeddingWire page (The Chick Goodies, 5.0, 12 reviews, 100% recommend) shows Abigail, Yvonne, Crystal, Lauren, Tiffni, Jason instead. Either Tricia confirms the five are real (e.g. from her Knot page), or we swap in the verified WeddingWire set. Don't publish with unconfirmed names.
-2. **Availability calendar:** Tricia creates a Google Calendar named "Charcuterie Chick Bookings", sets it public (free/busy), and sends the iCal address. Until then the date checker shows her "one event per day" promise without live dates.
+2. ~~Availability calendar~~ DONE 2026-10-24: "Charcuterie Chick Bookings" calendar created, public free/busy, live on the site's date checker (verified end-to-end with a test booking). Tricia gets a Google Calendar share invite (writer) at charcuteriechick@outlook.com — she accepts it, then adds each booked date as an all-day event; the site marks it Booked within 5 minutes. Privacy: the feed exposes dates only, never event details.
 3. Deposit amount, Shopify Payments vs Square, tax on gratuity, 5% Zelle discount (pricing decisions that change quote/checkout copy).
 
 ## How publish works when she says go
