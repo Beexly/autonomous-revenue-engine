@@ -30,8 +30,10 @@ was available (she's post-surgery, asked for a rest day).
 1. +$2 applies to cash-bar lines too, not just the three headline rates. Her stated reason
    is a resale markup ("that's not my company"); it covers everything she resells. Reverting
    = one edit in MOBILE_BAR.
-2. Zola "85 point of view views" is garbled. No Zola number on the site until she confirms
-   the wording. Blank beats invented.
+2. Zola "85 point of view views" was a dictation mangle, resolved 2026-11-12 per Garrett:
+   the line is "85 profile views" (profile -> point of view, views kept). Published as
+   "Zola · 85 profile views" in the reviews ledger and "Zola: 85 profile views" in the
+   weddings points, live on both Vercel and the Shopify store. audit:live guards it.
 3. Bar-only bookings carry no minimum claim in copy ("text Tricia and she will size the
    package"). Whether the 40-guest/$2,500 minimum applies to bar-only events is her call.
 4. No menu-book leaf this cycle (two-book DOM is fragile; she asked for a rest day) and no
