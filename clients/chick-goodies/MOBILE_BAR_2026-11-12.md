@@ -14,8 +14,10 @@ was available (she's post-surgery, asked for a rest day).
   "$16 per person · 4 hours" per Tricia's dictate, pours list, cash-bar line, reserve-by-text.
   Static crawl-first twin updated to match (descriptions, JSON-LD ItemList of the 3 tiers,
   body table).
-- Home gateway (OryzoShell Lineup) — fifth card "Mobile bar → Open bar packages".
-  Grid CSS: repeat(5) at >=1440, repeat(3) at 1100-1439 (no orphan row).
+- Home `Services` section — new "03 · Mobile bar" block after full service: three tiers with
+  the bold "$16/$19/$22 per person · 4 hours" rate line, cash bars, and a /menus/#bar CTA.
+  Side index gains "Mobile bar". (The first attempt went into `Lineup`, which App.tsx never
+  renders — dead code. Reverted; verify home copy by grepping the built `main-*.js`.)
 - `answers/` — new FAQ "Do you have a mobile bar?" (JSON-LD + visible).
 - `public/llms.txt` — Mobile bar section; "Catering Chick" flipped from unapproved working
   name to owner-approved (Nov 11); owners line now "Tricia and Stacey".
@@ -46,8 +48,13 @@ was available (she's post-surgery, asked for a rest day).
 - Custom board pricing (stays "on request" — her Nov 11 answer), pie/dessert prices (her
   Nov 11 "All pie and dessert options are here" confirms the existing transcription).
 
-## Gates run
+## Gates run (final)
 
-typecheck clean; catering+holidays 36/36; build clean; playwright full suite (print/a11y/
-smoke/viewport/door/security) — see commit message for final counts; audit:live after
-deploy; print page count re-verified (bar block added length).
+typecheck clean; catering+holidays 36/36; build clean; playwright full suite 47 passed +
+2 load flakes (green on solo rerun) + 1 skipped; deploy READY; audit:live 44/44;
+live DOM verified on / and /menus/ (both render the bold per-person/4-hour rate);
+print spec green (flat menu stays 2 white pages).
+
+Pre-existing repairs made along the way: the two-book merge (Nov 11) had left 16 red
+browser specs — a duplicate `<main>` landmark and three h1s per page. Fixed in MenuBook
+(`standalone` prop) rather than by relaxing the tests.
