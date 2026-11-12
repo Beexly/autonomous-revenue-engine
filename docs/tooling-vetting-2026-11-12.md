@@ -35,6 +35,22 @@ Revisit when: a Windows CLI ships, or a clone/rebuild job justifies building fro
 source. The integration point is `craft-anything-cli mcp` as a Hermes MCP server,
 which would feed the clone-website and prospect-site-rebuild workflows.
 
+Checked the cheap path so it is not a guess: the 2 MB web build
+(`craft-anything-web-0.6.1.zip`, 8.7 MB unpacked, 6.1 MB wasm) is a file viewer
+only. Its own HOSTING.md: "a dropped or picked file is read in the browser and never
+uploaded. It uses the built-in, pure-Rust analyzers only (formats, disassembly,
+JavaScript bundles); running programs, external engines and AI backends need the
+desktop app." So it cannot study a live website, which is the whole point here.
+
+The three real paths on this machine, with their costs:
+- Windows portable GUI, 66 MB: can inspect websites, but GUI-only, so Hermes cannot
+  drive it headlessly, and it holds RAM while open.
+- CLI/MCP: `apps/craft-anything-cli`, workspace `rust-version = "1.97"`, edition
+  2024. No cargo on this box, so it needs a rustup install plus a from-source build
+  of a 320-tool engine. That is the only agent-driven path.
+- Skip: the existing stack (clone-website skill, Firecrawl, browser harness) already
+  covers site study and rebuild.
+
 ## meta/astryx
 
 Fresh metadata: 26,264 stars, 2,035 forks, created 2026-01-09, pushed 2026-11-12,
