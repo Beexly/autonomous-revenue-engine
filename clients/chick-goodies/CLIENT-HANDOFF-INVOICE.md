@@ -7,8 +7,9 @@
 **Target Domain:** `charcuteriechick.ai` (`www.charcuteriechick.ai`)  
 **Production Live Preview:** [https://charcuterie-chick-sample-2.vercel.app](https://charcuterie-chick-sample-2.vercel.app)  
 **Total Project Investment:** $1,500.00 USD  
-**Initial Deposit Due Now (Milestone 1):** $600.00 USD  
-**Final Balance at Launch (Milestone 2):** $900.00 USD  
+**Payment Received (Zelle, 2026-11-16 · Ref `WFCT22WPYM6X`):** $300.00 USD  
+**Primary Balance Due:** **$1,200.00 USD**  
+*(Alternative settlement option: if settling at $600.00 total, remaining balance due is **$300.00 USD**.)*  
 
 ---
 
@@ -136,31 +137,38 @@ On desktop and mobile headers, however, having the phone number and tagline prin
 
 ---
 
-### Milestone Payment Structure & 90-Day Peace of Mind
+### Deliverables Included in Your Launch Package
+
+1. **Live-Ready `chick-shopify-theme` (Shopify OS 2.0):** Zero-app custom catering storefront with full grazing table catalog, cart & station builders, real-price calculator ($229 setup + 18% TX tax), and 1-tap SMS/Email quote routing.
+2. **The 3D Moving Table Experience (`/table.html`):** Immersive Three.js WebGL room with 5-station camera choreography, Chef Tricia's dwell tasting notes, opt-in kitchen acoustics, and mobile photographic fallback.
+3. **12-Piece Business Kit:** Complete brand & operational asset suite (Stacey's high-DPI logo integration, print-ready menus, kraft-wrap & box graphics, social templates, QR table cards, local SEO schema graph, and DNS/SSL cutover).
+4. **90-Day Personal Care Commitment (Included at No Charge):** Dedicated post-launch support for menu/price updates, weekend photo swaps, and mobile display tweaks.
+5. **Optional Ongoing Retainer ($49/mo):** After the 90-day care window, optional $49/month maintenance covers seasonal menu updates, gallery refreshes, and priority support—cancel anytime, zero lock-in.
+
+---
+
+### Payment Summary & 90-Day Peace of Mind
 
 Because I wanted to make sure you and Stacey could test-drive the real, functioning platform rather than just looking at sketches, I went ahead and built out the complete live platform first!
 
-Per our agreed friend rate for the custom build ($1,500 total), here is how the milestones work:
+Here is where the balance stands on the **$1,500.00** custom build:
 
-1. **Milestone 1 — $750 Build Deposit (Due Now):**  
-   Validates and covers the full custom design, interactive 3D table experience, digitized menu catalog, and live staging you can explore today.  
-   💳 **[Submit $750 Build Deposit Securely via Stripe](https://buy.stripe.com/8x23cxb6FanJail8JT14405)**
+- **Total Project Investment:** $1,500.00 USD
+- **Zelle Received (2026-11-16 · Confirmation `WFCT22WPYM6X`):** -$300.00 USD
+- **Primary Balance Due:** **$1,200.00 USD** *(Payable via [Stripe Checkout](https://buy.stripe.com/8x23cxb6FanJail8JT14405), Zelle to `281-660-7639`, or check)*
+- **Alternative Settlement Option:** If settling at the $600.00 baseline tier, remaining balance due is **$300.00 USD**.
 
-2. **Milestone 2 — $750 Final Balance (Due at DNS Go-Live):**  
-   Payable only once we connect your official domain (`charcuteriechick.ai`), verify email/SMS routing, and launch the platform publicly to your clients.
-
-3. **My 90-Day Personal Care Commitment (Included at No Charge):**  
-   Because this is a flagship portfolio project for me and you are family friends, I am including **90 days of dedicated post-launch support and adjustments**:
-   - Need any prices, menu items, or wording adjusted? I'll update it right away.
-   - Want new weekend photos swapped into the gallery or hero? Send them over.
-   - Any quirks, mobile display questions, or small adjustments? Covered 100% with zero extra invoices.
+### Quick Favor — TIPS / NCISD Reference
+If you love how the platform turned out, I'd be grateful for a quick 2–3 sentence reference we can share with **TIPS** and **New Caney ISD (NCISD)** procurement contacts.  
+Even a short note on responsiveness, turnaround, and how the live site/3D table looks on mobile helps open those local district doors.  
+Just reply here or text me whenever you have a spare minute—no rush at all.
 
 Take a look around the site on your phone and computer and let me know what you think!
 
 Warmly,  
 **Garrett Baxley**  
 Galaxy Sports Network LLC  
-Call or Text: 832-458-8180
+Call or Text: 281-660-7639
 
 ***
 
@@ -172,7 +180,7 @@ Call or Text: 832-458-8180
 
 **Invoice Number:** INV-2026-CC02  
 **Invoice Date:** September 24, 2026  
-**Due Date:** $750.00 Deposit Due Upon Approval · $750.00 Balance Due at Launch  
+**Due Date:** $1,200.00 Balance Due Upon Approval / DNS Go-Live *(or $300.00 if settling at $600.00)*  
 **Billed To:**  
 Tricia Holfelder  
 Charcuterie Chick (*The Chick Goodies*)  
@@ -183,23 +191,22 @@ Phone: 832-458-8180
 
 **Payable To:**  
 Galaxy Sports Network LLC  
-Attn: Garrett Baxley  
+Attn: Garrett Baxley · 281-660-7639  
 
 ---
 
-### Itemized Services & Deliverables (Option C — The Immersive Site)
+### Itemized Services & Deliverables (Option C — Live-Ready Platform)
 
 | Item | Description | Total Amount |
 |:---|:---|---:|
-| **1. Custom Website Platform Design & Build** | Full 5-page responsive platform in Midnight Supper art direction (Home, Menus & Prices, Photo Gallery, About Tricia, Quote Builder). Coded with semantic HTML5/CSS3/ES6 for sub-second speeds. | \$500.00 |
-| **2. The Table — Immersive 3D WebGL Moving Room** | Custom persistent 3D camera-driven WebGL experience with procedural shaders, dynamic lighting, 5-station choreography, and responsive mobile still fallback. | \$450.00 |
-| **3. Interactive Catering Quote Engine** | Client-side pricing calculator for guest count tiers (50 to 150+ guests), automated calculation of 18% tax and \$229 setup fee, and pre-formatted one-tap SMS/Email drafting directly to client's phone. | \$200.00 |
-| **4. Menu Catalog Remediation & Stacey's Logo Integration** | Full digitization of all 5 grazing tables, carts, sliders, and dips (zero \$0.00 bugs). High-DPI integration of Stacey's revised brand mark. | \$150.00 |
-| **5. Local SEO, Schema Graph & Search Visibility** | Schema.org JSON-LD data (`FoodEstablishment`, `CateringService`, `FAQPage`), XML sitemaps, and robots configuration targeted for Tomball, The Woodlands, Spring, and Conroe. | \$100.00 |
-| **6. Domain Deployment, Edge Hosting & 90-Day Care** | DNS cutover configuration for `charcuteriechick.ai`, automated SSL certificate provisioning, high-availability edge hosting setup, and **90 days of post-launch maintenance, photo updates, and text tweaks**. | \$100.00 |
+| **1. Live-Ready `chick-shopify-theme` (Shopify OS 2.0)** | Zero-app custom catering storefront in Midnight Supper art direction: grazing tables, carts, stations, quote builder, and 1-tap SMS/Email routing. | \$500.00 |
+| **2. The 3D Moving Table Experience (`/table.html`)** | Persistent 3D camera-driven WebGL room with dynamic lighting, 5-station choreography, Chef Tricia's dwell tasting notes, and mobile still fallback. | \$450.00 |
+| **3. 12-Piece Business Kit & Brand Integration** | Stacey's high-DPI logo integration, print-ready menus, kraft-wrap & box graphics, QR table cards, social templates, and local SEO Schema.org graph. | \$350.00 |
+| **4. Domain Deployment, Edge Hosting & 90-Day Care** | DNS cutover for `charcuteriechick.ai`, automated SSL, edge hosting setup, and **90 days of post-launch maintenance** *(optional \$49/mo retainer thereafter)*. | \$200.00 |
 | | **TOTAL PROJECT INVESTMENT:** | **$1,500.00 USD** |
-| | **PHASE 1: INITIAL DEPOSIT DUE NOW:** | **$600.00 USD** |
-| | **PHASE 2: FINAL BALANCE AT LAUNCH:** | **$900.00 USD** |
+| | **LESS: ZELLE RECEIVED (2026-11-16 · `WFCT22WPYM6X`):** | **-$300.00 USD** |
+| | **PRIMARY BALANCE DUE:** | **$1,200.00 USD** |
+| | *Alternative Settlement ($600.00 tier minus $300.00 Zelle):* | ***$300.00 USD*** |
 
 ---
 
@@ -207,8 +214,8 @@ Attn: Garrett Baxley
 
 - **Credit / Debit Card (Instant Online Checkout):**  
   [https://buy.stripe.com/8x23cxb6FanJail8JT14405](https://buy.stripe.com/8x23cxb6FanJail8JT14405)
-- **Zelle / Bank Transfer (ACH):**  
-  Available upon request (details provided on invoice confirmation).
+- **Zelle:**  
+  Send to `281-660-7639` (Garrett Baxley / Galaxy Sports Network LLC)
 - **Check by Mail:**  
   Payable to **Galaxy Sports Network LLC** (Attn: Garrett Baxley).
 

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nacho Padres — 3D Catering Menu Clone ($950 Turnkey / $299 Pilot)</title>
+  <meta name="description" content="Interactive teardown & 3D Catering Menu estimator for Nacho Padres: $299 pilot or $950 turnkey immersive catering platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#0a0908;--ink-2:#141210;--paper:#f4ede4;--copper:#c17a4a;--muted:#a89f94;--line:rgba(244,237,228,.14);--display:"Instrument Serif",Georgia,serif;--sans:"Outfit",system-ui,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.6}
+    .wrap{width:min(1080px,calc(100% - 40px));margin:0 auto}
+    header{padding:22px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .brand{font-family:var(--display);font-size:24px;font-style:italic;text-decoration:none;color:var(--paper)}
+    .kicker{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--copper)}
+    h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.03em;margin:0}
+    h1{font-size:clamp(2.5rem,1.4rem + 4vw,4.6rem);line-height:.98;margin-top:12px}
+    h1 em{font-style:italic;color:var(--copper)}
+    h2{font-size:clamp(1.8rem,1.2rem + 2vw,2.7rem);margin-bottom:14px}
+    .hero{padding:64px 0 48px;border-bottom:1px solid var(--line)}
+    .lede{max-width:650px;color:var(--muted);font-size:18px;margin:18px 0 28px}
+    .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:6px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;border:0;cursor:pointer}
+    .btn-copper{background:var(--copper);color:var(--ink)}
+    .btn-ghost{background:transparent;color:var(--paper);border:1px solid var(--line)}
+    section{padding:48px 0;border-bottom:1px solid var(--line)}
+    .calc{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:26px}
+    .grid-2{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:6px}
+    select,input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#0a0908;color:var(--paper);font-family:inherit;font-size:15px}
+    .total-box{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
+    .price{font-family:var(--display);font-size:46px;color:var(--copper);line-height:1}
+    .card{background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:26px}
+    footer{padding:36px 0 56px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="../kit/">Teardown · Nacho Padres</a>
+      <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=Nacho%20Padres%203D%20Catering%20Pilot%20(%24299)" data-checkout-key="nacho_padres_pilot" data-checkout-subject="Nacho Padres — $299 3D Catering Menu Pilot">Start $299 Pilot</a>
+    </header>
+
+    <div class="hero">
+      <div class="kicker">Track 1C · 3D Catering Menu Clone</div>
+      <h1>Turn catering PDFs into an interactive <em>3D Fiesta Table</em> &amp; instant quote.</h1>
+      <p class="lede">
+        Event planners don't want to download a PDF and wait 48 hours for a callback. Our proven 3D Catering Menu engine lets hosts configure guest count, taco/nacho bar tiers, and queso stations in 30 seconds—and sends the pre-priced order straight to your phone.
+      </p>
+      <div class="row">
+        <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=Nacho%20Padres%20%24950%20Turnkey%20Catering%20Site" data-checkout-key="nacho_padres" data-checkout-subject="Nacho Padres — $950 Turnkey 3D Catering Menu">Book $950 Turnkey Build</a>
+        <a class="btn btn-ghost" href="mailto:hq@galaxysportsedge.com?subject=Nacho%20Padres%20%24299%20Pilot" data-checkout-key="nacho_padres_pilot" data-checkout-subject="Nacho Padres — $299 3D Catering Menu Pilot">Or Start $299 Pilot Menu</a>
+      </div>
+    </div>
+
+    <section id="preview">
+      <div class="kicker">Interactive Live Preview</div>
+      <h2>Test the Nacho &amp; Taco Bar Instant Quote Engine.</h2>
+      <div class="calc">
+        <div class="grid-2">
+          <div>
+            <label for="barTier">Catering Bar Tier</label>
+            <select id="barTier">
+              <option value="22">Nacho Fiesta Bar ($22 / guest)</option>
+              <option value="27" selected>Street Taco &amp; Queso Spread ($27 / guest)</option>
+              <option value="34">Grand Cantina Full Service ($34 / guest)</option>
+            </select>
+          </div>
+          <div>
+            <label for="guests">Guest Count (<span id="guestLabel">75</span> guests)</label>
+            <input type="range" id="guests" min="25" max="250" step="5" value="75" />
+          </div>
+        </div>
+        <div class="total-box">
+          <div>
+            <div class="kicker">Estimated Event Total (incl. $175 setup + 8.25% TX tax)</div>
+            <div class="price" id="quoteTotal">$2,381.50</div>
+          </div>
+          <div style="color:var(--muted)" id="quoteBreak">75 guests × $27 + $175 setup + $181.50 tax</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="kicker">Two Ways to Launch</div>
+      <h2>Pick your starting tier.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="kicker">Pilot</div>
+          <div class="price" style="margin:8px 0">$299</div>
+          <p style="color:var(--muted)">Embeddable 3D-styled Catering Menu + real-price quote calculator wired to your SMS/email. Live in 72 hours.</p>
+          <a class="btn btn-ghost" style="margin-top:12px" href="mailto:hq@galaxysportsedge.com?subject=Nacho%20Padres%20%24299%20Pilot" data-checkout-key="nacho_padres_pilot" data-checkout-subject="Nacho Padres — $299 3D Catering Menu Pilot">Book $299 Pilot</a>
+        </div>
+        <div class="card" style="border-color:rgba(193,122,74,.5)">
+          <div class="kicker">Turnkey Platform</div>
+          <div class="price" style="margin:8px 0">$950</div>
+          <p style="color:var(--muted)">Complete 5-page catering website + interactive 3D table room + instant quote builder + local SEO schema + 90-day care.</p>
+          <a class="btn btn-copper" style="margin-top:12px" href="mailto:hq@galaxysportsedge.com?subject=Nacho%20Padres%20%24950%20Turnkey" data-checkout-key="nacho_padres" data-checkout-subject="Nacho Padres — $950 Turnkey 3D Catering Menu">Book $950 Turnkey</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Prepared for Nacho Padres · Beexly Revenue Engineering · Zelle <strong>281-660-7639</strong> · <a href="mailto:hq@galaxysportsedge.com">hq@galaxysportsedge.com</a></p>
+    </footer>
+  </div>
+  <script src="../js/checkout-links.js"></script>
+  <script>
+    (function(){
+      var tier = document.getElementById('barTier');
+      var guests = document.getElementById('guests');
+      function update(){
+        var g = parseInt(guests.value, 10);
+        var p = parseFloat(tier.value);
+        var sub = g * p + 175;
+        var tax = sub * 0.0825;
+        var tot = sub + tax;
+        document.getElementById('guestLabel').textContent = g;
+        document.getElementById('quoteTotal').textContent = '$' + tot.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+        document.getElementById('quoteBreak').textContent = g + ' guests × $' + p + ' + $175 setup + $' + tax.toFixed(2) + ' tax';
+      }
+      tier.addEventListener('change', update);
+      guests.addEventListener('input', update);
+      update();
+    })();
+  </script>
+</body>
+</html>

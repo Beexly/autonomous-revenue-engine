@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BFF Bikes — Content &amp; Hours Mismatch $299 Sprint Preview</title>
+  <meta name="description" content="Interactive teardown for BFF Bikes: reconciling mismatched shop hours, service copy, and mobile tap-to-call in a $299 sprint." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#0a0908;--ink-2:#141210;--paper:#f4ede4;--copper:#c17a4a;--muted:#a89f94;--line:rgba(244,237,228,.14);--ok:#4ade80;--bad:#f87171;--display:"Instrument Serif",Georgia,serif;--sans:"Outfit",system-ui,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.6}
+    .wrap{width:min(1080px,calc(100% - 40px));margin:0 auto}
+    header{padding:22px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .brand{font-family:var(--display);font-size:24px;font-style:italic;text-decoration:none;color:var(--paper)}
+    .kicker{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--copper)}
+    h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.03em;margin:0}
+    h1{font-size:clamp(2.5rem,1.4rem + 4vw,4.6rem);line-height:.98;margin-top:12px}
+    h1 em{font-style:italic;color:var(--copper)}
+    h2{font-size:clamp(1.8rem,1.2rem + 2vw,2.7rem);margin-bottom:14px}
+    .hero{padding:64px 0 48px;border-bottom:1px solid var(--line)}
+    .lede{max-width:650px;color:var(--muted);font-size:18px;margin:18px 0 28px}
+    .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:6px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;border:0;cursor:pointer}
+    .btn-copper{background:var(--copper);color:var(--ink)}
+    .btn-ghost{background:transparent;color:var(--paper);border:1px solid var(--line)}
+    section{padding:48px 0;border-bottom:1px solid var(--line)}
+    .grid-2{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+    .card{background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:24px}
+    .status-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+    .offer{background:linear-gradient(135deg,#191512,#110e0c);border:1px solid rgba(193,122,74,.45);border-radius:16px;padding:30px}
+    .price{font-family:var(--display);font-size:52px;color:var(--copper);line-height:1}
+    footer{padding:36px 0 56px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="../kit/">Teardown · BFF Bikes</a>
+      <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=BFF%20Bikes%20%24299%20Sprint" data-checkout-key="bff_bikes" data-checkout-subject="BFF Bikes — $299 Content & Hours Sprint">Claim $299 Sprint</a>
+    </header>
+
+    <div class="hero">
+      <div class="kicker">Track 1C · Local Trust &amp; Hours Audit</div>
+      <h1>Mismatched hours &amp; stale service copy cost <em>walk-in</em> riders.</h1>
+      <p class="lede">
+        When your homepage, footer, and Google Business Profile show conflicting open hours—and tune-up pricing is buried—riders assume you're closed and ride to the next shop. We unify every surface in one $299 sprint.
+      </p>
+      <div class="row">
+        <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=BFF%20Bikes%20%24299%20Sprint" data-checkout-key="bff_bikes" data-checkout-subject="BFF Bikes — $299 Content & Hours Sprint">Book $299 Sprint</a>
+        <a class="btn btn-ghost" href="#preview">Inspect Hours Sync Preview</a>
+      </div>
+    </div>
+
+    <section id="preview">
+      <div class="kicker">Interactive Live Preview</div>
+      <h2>Single Source of Truth: Hours &amp; Tune-Up Menu.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Before (Conflicting Surfaces)</h3>
+          <div class="status-row"><span>Header Banner</span><span style="color:var(--bad)">Mon–Sat 10–6</span></div>
+          <div class="status-row"><span>Footer / Contact</span><span style="color:var(--bad)">Tue–Sun 11–5</span></div>
+          <div class="status-row"><span>Schema.org JSON-LD</span><span style="color:var(--bad)">Missing</span></div>
+          <div class="status-row" style="border:0"><span>Service Pricing</span><span style="color:var(--bad)">"Call for quote"</span></div>
+        </div>
+        <div class="card">
+          <h3>After ($299 Sprint)</h3>
+          <div class="status-row"><span>Header + Footer + GBP</span><span style="color:var(--ok)" id="syncState">100% Unified</span></div>
+          <div class="status-row"><span>Live "Open Now" Badge</span><span style="color:var(--ok)" id="openBadge">Checking…</span></div>
+          <div class="status-row"><span>LocalBusiness JSON-LD</span><span style="color:var(--ok)">Injected</span></div>
+          <div class="status-row" style="border:0"><span>Tune-Up Tiers</span><span style="color:var(--ok)">Clear Flat Rates</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="offer">
+        <div class="kicker">Flat-Rate Offer</div>
+        <div class="price">$299 <span style="font-size:16px;font-family:var(--sans);color:var(--muted)">flat · 48h sprint</span></div>
+        <p style="color:var(--muted);max-width:640px">Includes full copy &amp; hours reconciliation across every page, <code>LocalBusiness</code> Schema.org JSON-LD, live open-status indicator, and clear tune-up menu formatting.</p>
+        <div class="row" style="margin-top:20px">
+          <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=BFF%20Bikes%20%24299%20Sprint" data-checkout-key="bff_bikes" data-checkout-subject="BFF Bikes — $299 Content & Hours Sprint">Book $299 Sprint (Stripe / Email)</a>
+          <span style="font-size:13px;color:var(--muted)">Or Zelle <strong>281-660-7639</strong> · <a href="mailto:hq@galaxysportsedge.com" style="color:var(--paper)">hq@galaxysportsedge.com</a></span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Prepared for BFF Bikes · Beexly Revenue Engineering · <a href="mailto:hq@galaxysportsedge.com">hq@galaxysportsedge.com</a></p>
+    </footer>
+  </div>
+  <script src="../js/checkout-links.js"></script>
+  <script>
+    (function(){
+      var h = new Date().getHours();
+      var badge = document.getElementById('openBadge');
+      badge.textContent = (h >= 10 && h < 18) ? 'Open Now · Closes 6:00 PM' : 'Opens 10:00 AM · Leave Repair Note';
+    })();
+  </script>
+</body>
+</html>
