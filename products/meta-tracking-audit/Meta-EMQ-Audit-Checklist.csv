@@ -1,0 +1,19 @@
+Check_ID,Category,Check_Item,Target_Standard,Platform_Scope,Before_Status,Before_Value,After_Status,After_Value,Owner,Notes
+MTA-01,Inventory,List all conversion events (Purchase/Lead/InitiateCheckout/AddToCart),Both Browser + Server active,All,,PENDING,,PENDING,,Verify in Events Manager > Overview
+MTA-02,Inventory,Remove duplicate hardcoded fbq() scripts in theme/header,Single Pixel init only,Shopify / Framer / GHL,,PENDING,,PENDING,,Check with Meta Pixel Helper
+MTA-03,Deduplication,Verify shared event_id generated once per action,100% parity Browser vs Server,All,,PENDING,,PENDING,,Use order_id or uuid passed to both
+MTA-04,Deduplication,Confirm exact event_name casing parity,Exact string match (e.g. Purchase),All,,PENDING,,PENDING,,Case-sensitive in Meta CAPI
+MTA-05,Deduplication,Verify server event arrives within 48h dedup window,< 5 minutes preferred,All,,PENDING,,PENDING,,Avoid nightly batching of Pixel events
+MTA-06,Deduplication,Live Test Events check shows Deduplicated badge,1 Browser + 1 Server -> 1 Processed,All,,PENDING,,PENDING,,Use test_event_code in Events Manager
+MTA-07,EMQ,Record baseline EMQ score for Purchase and Lead,EMQ >= 8.0,All,,PENDING,,PENDING,,Events Manager > Event Match Quality
+MTA-08,EMQ,Normalize & SHA-256 hash email (em),trim().toLowerCase() before SHA-256 >= 95%,All,,PENDING,,PENDING,,Never hash mixed-case emails
+MTA-09,EMQ,Normalize & SHA-256 hash phone (ph),E.164 digits only before SHA-256 >= 85%,All,,PENDING,,PENDING,,Strip + spaces dashes parens
+MTA-10,EMQ,Include external_id and fn/ln/ct/st/zp/country,Hashed per Meta spec >= 80%,All,,PENDING,,PENDING,,Use stable customer ID
+MTA-11,EMQ,Send raw client_ip_address & client_user_agent,Un-hashed on website events 100%,All,,PENDING,,PENDING,,Do NOT SHA-256 hash IP or UA
+MTA-12,Attribution,Preserve _fbp cookie on landing and server payload,Un-hashed fb.1.ts.rand >= 90%,All,,PENDING,,PENDING,,First-party cookie via sGTM/Stape if ITP
+MTA-13,Attribution,Preserve _fbc cookie / fbclid across redirects & checkout,Un-hashed fb.1.ts.fbclid 100% when present,Shopify / GHL / Framer,,PENDING,,PENDING,,Pass in hidden fields or checkout metadata
+MTA-14,Platform,Verify action_source accuracy (website vs system_generated),Matches true origin,All,,PENDING,,PENDING,,Include event_source_url for website
+MTA-15,Platform,Shopify: Maximum Data Sharing or single Web Pixel only,No legacy checkout.liquid scripts,Shopify,,PENDING,,PENDING,,Check Customer Events settings
+MTA-16,Platform,GHL: Hidden _fbp/_fbc fields + matching event_id in workflow,100% form/calendar parity,GHL,,PENDING,,PENDING,,Fire Lead on thank-you + CAPI action
+MTA-17,Platform,Stape: Custom Loader + Cookie Keeper enabled on sGTM subdomain,First-party CNAME active,Stape,,PENDING,,PENDING,,Mitigates Safari ITP 7-day cap
+MTA-18,Reconciliation,7-day Meta vs Backend order/lead count reconciliation,Within +/- 5-15% variance,All,,PENDING,,PENDING,,>30% high indicates double-counting

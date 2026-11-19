@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCC Houston — $1,450 3D Reception Configurator + $599/mo Intake Agent</title>
+  <meta name="description" content="Interactive teardown & 3D reception room configurator for CCC Houston: $1,450 custom build + optional $599/mo AI intake agent." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#0a0908;--ink-2:#141210;--paper:#f4ede4;--copper:#c17a4a;--muted:#a89f94;--line:rgba(244,237,228,.14);--display:"Instrument Serif",Georgia,serif;--sans:"Outfit",system-ui,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.6}
+    .wrap{width:min(1080px,calc(100% - 40px));margin:0 auto}
+    header{padding:22px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .brand{font-family:var(--display);font-size:24px;font-style:italic;text-decoration:none;color:var(--paper)}
+    .kicker{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--copper)}
+    h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.03em;margin:0}
+    h1{font-size:clamp(2.5rem,1.4rem + 4vw,4.6rem);line-height:.98;margin-top:12px}
+    h1 em{font-style:italic;color:var(--copper)}
+    h2{font-size:clamp(1.8rem,1.2rem + 2vw,2.7rem);margin-bottom:14px}
+    .hero{padding:64px 0 48px;border-bottom:1px solid var(--line)}
+    .lede{max-width:650px;color:var(--muted);font-size:18px;margin:18px 0 28px}
+    .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:6px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;border:0;cursor:pointer}
+    .btn-copper{background:var(--copper);color:var(--ink)}
+    .btn-ghost{background:transparent;color:var(--paper);border:1px solid var(--line)}
+    section{padding:48px 0;border-bottom:1px solid var(--line)}
+    .config-box{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:26px}
+    .grid-2{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:6px}
+    select,input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#0a0908;color:var(--paper);font-family:inherit;font-size:15px}
+    .stage{background:#0a0908;border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .price{font-family:var(--display);font-size:48px;color:var(--copper);line-height:1}
+    .offer{background:linear-gradient(135deg,#191512,#110e0c);border:1px solid rgba(193,122,74,.45);border-radius:16px;padding:30px}
+    footer{padding:36px 0 56px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="../kit/">Teardown · CCC Houston</a>
+      <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=CCC%20Houston%20%241%2C450%203D%20Configurator" data-checkout-key="ccc_houston" data-checkout-subject="CCC Houston — $1,450 3D Reception Configurator">Book $1,450 Build</a>
+    </header>
+
+    <div class="hero">
+      <div class="kicker">Track 1C · 3D Reception Configurator + Intake Agent</div>
+      <h1>Let Houston event hosts walk the <em>3D room</em> &amp; book 24/7.</h1>
+      <p class="lede">
+        Venue and corporate event inquiries stall when prospects can't picture capacity, layout, or AV packages—and nobody answers after 6 PM. We pair a custom <strong>$1,450 3D Reception Configurator</strong> with an optional <strong>$599/mo 24/7 Intake Agent</strong>.
+      </p>
+      <div class="row">
+        <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=CCC%20Houston%20%241%2C450%203D%20Configurator" data-checkout-key="ccc_houston" data-checkout-subject="CCC Houston — $1,450 3D Reception Configurator">Book $1,450 Configurator Build</a>
+        <a class="btn btn-ghost" href="#preview">Try Layout Configurator</a>
+      </div>
+    </div>
+
+    <section id="preview">
+      <div class="kicker">Interactive Live Preview</div>
+      <h2>Configure Reception Layout &amp; Intake Routing.</h2>
+      <div class="config-box">
+        <div class="grid-2">
+          <div>
+            <label for="layoutStyle">Room Layout</label>
+            <select id="layoutStyle">
+              <option value="Banquet Rounds (up to 240)">Banquet Rounds (up to 240 guests)</option>
+              <option value="Cocktail Reception (up to 350)">Cocktail Reception (up to 350 guests)</option>
+              <option value="Executive Theater (up to 300)">Executive Theater (up to 300 guests)</option>
+            </select>
+          </div>
+          <div>
+            <label for="avTier">AV &amp; Lighting Package</label>
+            <select id="avTier">
+              <option value="1200">Standard Wireless Mic + Uplighting (+$1,200)</option>
+              <option value="2400" selected>Full Stage, LED Wall &amp; DJ Patch (+$2,400)</option>
+              <option value="4000">Broadcast Hybrid Livestream Suite (+$4,000)</option>
+            </select>
+          </div>
+        </div>
+        <div class="stage">
+          <div>
+            <div class="kicker">Live 3D Room Spec</div>
+            <div id="roomSpec" style="font-size:18px;font-weight:600;margin-top:4px">Banquet Rounds (up to 240) · Full Stage, LED Wall &amp; DJ Patch</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:4px">24/7 Intake Agent qualifies date, headcount, and books tour automatically.</div>
+          </div>
+          <div class="price" id="pkgEst">$6,900</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="offer">
+        <div class="kicker">Investment Breakdown</div>
+        <div class="price">$1,450 <span style="font-size:16px;font-family:var(--sans);color:var(--muted)">one-time build · + optional $599/mo 24/7 Intake Agent</span></div>
+        <p style="color:var(--muted);max-width:640px">Includes WebGL 3D reception room configurator, mobile fallback, instant tour &amp; deposit routing, and optional AI SMS/web intake agent ($599/mo) that qualifies &amp; books leads while your team is on-site.</p>
+        <div class="row" style="margin-top:20px">
+          <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=CCC%20Houston%20%241%2C450%203D%20Configurator" data-checkout-key="ccc_houston" data-checkout-subject="CCC Houston — $1,450 3D Reception Configurator">Book $1,450 Build (Stripe / Email)</a>
+          <span style="font-size:13px;color:var(--muted)">Or Zelle <strong>281-660-7639</strong> · <a href="mailto:hq@galaxysportsedge.com" style="color:var(--paper)">hq@galaxysportsedge.com</a></span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Prepared for CCC Houston · Beexly Revenue Engineering · <a href="mailto:hq@galaxysportsedge.com">hq@galaxysportsedge.com</a></p>
+    </footer>
+  </div>
+  <script src="../js/checkout-links.js"></script>
+  <script>
+    (function(){
+      var layout = document.getElementById('layoutStyle');
+      var av = document.getElementById('avTier');
+      function update(){
+        var avCost = parseInt(av.value, 10);
+        var base = 4500 + avCost;
+        document.getElementById('roomSpec').textContent = layout.value + ' · ' + av.options[av.selectedIndex].text.split(' (+')[0];
+        document.getElementById('pkgEst').textContent = '$' + base.toLocaleString();
+      }
+      layout.addEventListener('change', update);
+      av.addEventListener('change', update);
+      update();
+    })();
+  </script>
+</body>
+</html>

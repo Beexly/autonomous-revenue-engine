@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JD Precision Plumbing — Website Teardown &amp; $199 Fix Preview</title>
+  <meta name="description" content="Interactive teardown for JD Precision Plumbing: fixing the broken @www. mailto link and restoring instant mobile lead capture for $199 flat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#0a0908;--ink-2:#141210;--paper:#f4ede4;--copper:#c17a4a;--muted:#a89f94;--line:rgba(244,237,228,.14);--ok:#4ade80;--bad:#f87171;--display:"Instrument Serif",Georgia,serif;--sans:"Outfit",system-ui,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.6}
+    .grain{pointer-events:none;position:fixed;inset:0;z-index:40;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.8'/></svg>")}
+    .wrap{width:min(1080px,calc(100% - 40px));margin:0 auto;position:relative;z-index:2}
+    header{padding:22px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .brand{font-family:var(--display);font-size:24px;font-style:italic;text-decoration:none;color:var(--paper)}
+    .kicker{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--copper)}
+    h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.03em;margin:0}
+    h1{font-size:clamp(2.5rem,1.4rem + 4vw,4.6rem);line-height:.98;margin-top:12px}
+    h1 em,h2 em{font-style:italic;color:var(--copper)}
+    h2{font-size:clamp(1.8rem,1.2rem + 2vw,2.7rem);margin-bottom:14px}
+    .hero{padding:64px 0 48px;border-bottom:1px solid var(--line)}
+    .lede{max-width:650px;color:var(--muted);font-size:18px;margin:18px 0 28px}
+    .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:6px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;border:0;cursor:pointer}
+    .btn-copper{background:var(--copper);color:var(--ink)}
+    .btn-ghost{background:transparent;color:var(--paper);border:1px solid var(--line)}
+    section{padding:48px 0;border-bottom:1px solid var(--line)}
+    .grid-2{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+    .card{background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:24px}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+    .badge-bad{background:rgba(248,113,113,.15);color:var(--bad);border:1px solid rgba(248,113,113,.3)}
+    .badge-ok{background:rgba(74,222,128,.14);color:var(--ok);border:1px solid rgba(74,222,128,.3)}
+    code{background:#1d1916;padding:3px 7px;border-radius:5px;font-size:13px;color:#f3c8a4;word-break:break-all}
+    .sim{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:26px}
+    .toggle{display:inline-flex;background:#0a0908;border:1px solid var(--line);border-radius:8px;padding:4px;gap:4px;margin-bottom:18px}
+    .toggle button{background:transparent;color:var(--muted);border:0;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:600;font-size:13px}
+    .toggle button.on{background:var(--copper);color:var(--ink)}
+    .sim-box{background:#0a0908;border:1px solid var(--line);border-radius:12px;padding:20px}
+    .offer{background:linear-gradient(135deg,#191512,#110e0c);border:1px solid rgba(193,122,74,.45);border-radius:16px;padding:30px}
+    .price{font-family:var(--display);font-size:52px;color:var(--copper);line-height:1}
+    footer{padding:36px 0 56px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="../kit/">Teardown · JD Precision Plumbing</a>
+      <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=JD%20Precision%20%24199%20Mailto%20Fix" data-checkout-key="jd_precision" data-checkout-subject="JD Precision Plumbing — $199 Broken Mailto Fix">Claim $199 Fix</a>
+    </header>
+
+    <div class="hero">
+      <div class="kicker">Track 1C · Live Conversion Teardown</div>
+      <h1>Your email button is bouncing every lead to <em>@www.</em></h1>
+      <p class="lede">
+        Every time a homeowner taps your contact email link on mobile or desktop, it opens a draft addressed to a malformed <code>@www.</code> domain—causing silent delivery bounces. We isolated the exact defect and built a 1-day, zero-downtime fix.
+      </p>
+      <div class="row">
+        <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=JD%20Precision%20%24199%20Mailto%20Fix" data-checkout-key="jd_precision" data-checkout-subject="JD Precision Plumbing — $199 Broken Mailto Fix">Fix This Today — $199 Flat</a>
+        <a class="btn btn-ghost" href="#preview">Test Interactive Preview</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="kicker">Teardown Audit</div>
+      <h2>What we found vs. what ships.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <span class="badge badge-bad">Broken in Production</span>
+          <h3>Malformed <code>mailto:</code> URI</h3>
+          <p style="color:var(--muted)">The contact CTA prepends <code>www.</code> after the <code>@</code> sign (e.g. <code>info@www.jdprecision...</code>). Mail clients reject or bounce the message, and mobile visitors never retry.</p>
+        </div>
+        <div class="card">
+          <span class="badge badge-ok">Fixed &amp; Verified</span>
+          <h3>Clean Routing + Tap-to-Call Backup</h3>
+          <p style="color:var(--muted)">Strips <code>www.</code> from every <code>mailto:</code> href, pre-fills a structured dispatch subject line, and pairs it with a sticky 1-tap phone &amp; SMS fallback.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="preview">
+      <div class="kicker">Interactive Live Preview</div>
+      <h2>Test the broken vs. fixed lead flow.</h2>
+      <div class="sim">
+        <div class="toggle" id="modeToggle">
+          <button class="on" data-mode="fixed">After Fix (Working)</button>
+          <button data-mode="broken">Before (Current @www. Bug)</button>
+        </div>
+        <div class="sim-box">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Generated Dispatch Target:</div>
+          <div id="simTarget" style="font-size:18px;font-weight:700;color:var(--ok);margin-bottom:12px">mailto:dispatch@jdprecisionplumbing.com?subject=Service%20Request</div>
+          <div id="simStatus" style="font-size:14px;color:var(--muted)">MX record valid · Opens clean pre-filled dispatch email + offers 1-tap SMS/call fallback.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="offer">
+        <div class="kicker">Flat-Rate Offer</div>
+        <div class="price">$199 <span style="font-size:16px;font-family:var(--sans);color:var(--muted)">flat · 24h turnaround</span></div>
+        <p style="color:var(--muted);max-width:640px">Includes full site-wide <code>mailto:</code> &amp; <code>tel:</code> audit, clean dispatch routing fix, mobile tap-to-call verification, and before/after test proof.</p>
+        <div class="row" style="margin-top:20px">
+          <a class="btn btn-copper" href="mailto:hq@galaxysportsedge.com?subject=JD%20Precision%20%24199%20Mailto%20Fix" data-checkout-key="jd_precision" data-checkout-subject="JD Precision Plumbing — $199 Broken Mailto Fix">Book $199 Fix (Stripe / Email)</a>
+          <span style="font-size:13px;color:var(--muted)">Or Zelle <strong>281-660-7639</strong> · <a href="mailto:hq@galaxysportsedge.com" style="color:var(--paper)">hq@galaxysportsedge.com</a></span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Prepared for JD Precision Plumbing · Beexly Revenue Engineering · <a href="mailto:hq@galaxysportsedge.com">hq@galaxysportsedge.com</a></p>
+    </footer>
+  </div>
+  <script src="../js/checkout-links.js"></script>
+  <script>
+    (function(){
+      var btns = document.querySelectorAll('#modeToggle button');
+      var target = document.getElementById('simTarget');
+      var status = document.getElementById('simStatus');
+      btns.forEach(function(b){
+        b.addEventListener('click', function(){
+          btns.forEach(function(x){x.classList.remove('on')});
+          b.classList.add('on');
+          if (b.dataset.mode === 'broken') {
+            target.textContent = 'mailto:info@www.jdprecisionplumbing.com';
+            target.style.color = '#f87171';
+            status.textContent = '550 Host Unknown — @www. subdomain has no MX record. Every email lead silently bounces.';
+          } else {
+            target.textContent = 'mailto:dispatch@jdprecisionplumbing.com?subject=Service%20Request';
+            target.style.color = '#4ade80';
+            status.textContent = 'MX record valid · Opens clean pre-filled dispatch email + offers 1-tap SMS/call fallback.';
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

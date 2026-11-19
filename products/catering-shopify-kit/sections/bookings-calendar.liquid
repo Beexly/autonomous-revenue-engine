@@ -1,0 +1,101 @@
+{% comment %}
+  Bookings calendar — native Shopify, no app install, no paid connector.
+  Client rule (Oct 28 meeting notes): minimum 40 guests or $2,500; the 7th and
+  28th of next month are pre-blocked; button-click order for catering menus.
+  Admin controls (Theme editor, no code): Blackout dates (extra dates, comma
+  separated YYYY-MM-DD) + Availability API URL + enquiry email. If the API is
+  unreachable, only manual + next-month defaults apply. Our team confirms every
+  final quote by phone/email — this section never invents a total.
+{% endcomment %}
+<div class="cc-bookings" id="cc-bookings" data-availability-url="{{ section.settings.availability_url }}" data-order-url="{{ section.settings.order_url | default: '/pages/menu' }}">
+  <h2 class="cc-bookings__title">{{ section.settings.title }}</h2>
+  {% if section.settings.subtext != blank %}
+    <p class="cc-bookings__sub">{{ section.settings.subtext }}</p>
+  {% endif %}
+  <p class="cc-bookings__min"><strong>Minimum 40 guests or $2,500.</strong> Carts and boards for fewer guests: ask our team.</p>
+  <div class="cc-bookings__row">
+    <label>
+      Your event date
+      <input type="date" class="cc-bookings__date" id="cc-bookings-date">
+    </label>
+    <button type="button" class="cc-bookings__check" id="cc-bookings-check">Check availability</button>
+  </div>
+  <p class="cc-bookings__status" id="cc-bookings-status" role="status" aria-live="polite"></p>
+  <div class="cc-bookings__actions" hidden id="cc-bookings-actions">
+    <a class="cc-bookings__order" id="cc-bookings-order" href="{{ section.settings.order_url | default: '/pages/menu' }}">Order catering menus</a>
+    <a class="cc-bookings__call" href="tel:+15550100">Call Our Team</a>
+  </div>
+</div>
+
+<script type="module" src="{{ 'cc-bookings.js' | asset_url }}"></script>
+
+<style>
+  .cc-bookings { max-width: 640px; margin: 2rem auto; padding: 1.5rem; border: 1px solid #d9c9a8; border-radius: 4px; font-family: inherit; }
+  .cc-bookings__title { font-size: 1.6rem; margin: 0 0 0.5rem; }
+  .cc-bookings__row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: end; margin-top: 1rem; }
+  .cc-bookings__row input, .cc-bookings__row button { min-height: 48px; font-size: 1rem; padding: 0.5rem 0.75rem; }
+  .cc-bookings__check { cursor: pointer; }
+  .cc-bookings__status { min-height: 1.4em; margin: 0.75rem 0 0; }
+  .cc-bookings__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .cc-bookings__actions a { display: inline-flex; align-items: center; min-height: 48px; padding: 0.5rem 1rem; }
+</style>
+
+{% schema %}
+{
+  "name": "Bookings calendar",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Check your date" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "One party per day. Our team confirms every quote by phone — this check never books you." },
+    { "type": "text", "id": "manual_blocks", "label": "Extra blackout dates (YYYY-MM-DD, comma separated)", "info": "The 7th and 28th of next month are blocked automatically. Add any other taken dates here." },
+    { "type": "text", "id": "availability_url", "label": "Availability API URL", "info": "Leave blank to use manual + next-month dates only." },
+    { "type": "url", "id": "order_url", "label": "Order / enquiry page", "info": "Defaults to /pages/menu." }
+  ],
+  "presets": [{ "name": "Bookings calendar" }]
+}
+{% endschema %}
+
+<script>
+(function () {
+  var root = document.getElementById('cc-bookings');
+  if (!root) return;
+  var dateEl = document.getElementById('cc-bookings-date');
+  var statusEl = document.getElementById('cc-bookings-status');
+  var actionsEl = document.getElementById('cc-bookings-actions');
+  var orderEl = document.getElementById('cc-bookings-order');
+  var manual = {{ section.settings.manual_blocks | json }};
+  var busy = [];
+
+  function wire(ccb) {
+    function check() {
+      var ymd = dateEl.value;
+      if (!ymd) { statusEl.textContent = 'Pick a date first.'; return; }
+      var blocked = ccb.isBlocked(ymd, busy, ccb.parseManual(manual));
+      statusEl.textContent = blocked
+        ? 'Booked — please try another date or call Our team.'
+        : 'Open — your date is available. Tap "Order catering menus" to send your enquiry.';
+      actionsEl.hidden = blocked;
+      if (!blocked && orderEl) {
+        var base = root.getAttribute('data-order-url') || '/pages/menu';
+        orderEl.href = base + '?date=' + encodeURIComponent(ymd);
+      }
+    }
+    document.getElementById('cc-bookings-check').addEventListener('click', check);
+    dateEl.addEventListener('change', check);
+    // Confirmed dates are always blocked, whatever the network does.
+    busy = ccb.BOOKED_CONFIRMED.slice();
+    var url = root.getAttribute('data-availability-url');
+    if (url) {
+      fetch(url, { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : Promise.reject(r); })
+        .then(function (j) { if (Array.isArray(j.busy)) busy = busy.concat(j.busy); })
+        .catch(function () { /* manual + confirmed fallback */ });
+    }
+    // And the sheet, so a BOOKED row added from a phone lands without any deploy.
+    fetch(ccb.SHEET_CSV_URL, { cache: 'no-store' }).then(function (r) { return r.ok ? r.text() : Promise.reject(r); })
+      .then(function (t) { busy = busy.concat(ccb.parseSheetBookedCsv(t)); })
+      .catch(function () { /* the other two sources still hold */ });
+  }
+
+  import('{{ 'cc-bookings.js' | asset_url }}').then(function (ccb) { wire(ccb); })
+    .catch(function () { statusEl.textContent = 'The date checker is unavailable. Call our team and we will check it personally.'; });
+})();
+</script>

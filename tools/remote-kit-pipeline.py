@@ -37,7 +37,10 @@ grade = _mod.grade
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = REPO_ROOT / "docs" / "kit" / "live-previews"
 OPS_DIR = REPO_ROOT / "ops"
-STRIPE_PAYMENT_URL_PLACEHOLDER = "https://buy.stripe.com/test_placeholder_kit_199"
+STRIPE_PAYMENT_URL = os.environ.get(
+    "BEEXLY_STRIPE_KIT_199_URL",
+    "mailto:hq@galaxysportsedge.com?subject=Claim%20My%20%24199%20Site&body=Hi%20Garrett%2C%20please%20send%20my%20%24199%20site%20invoice%20or%20confirm%20Zelle%20(281-660-7639).",
+)
 VERCEL_BASE_URL = "https://autonomous-revenue-engine-eight.vercel.app/kit/live-previews"
 
 PHONE_CLEAN_RE = re.compile(r"[^\d+]")
@@ -276,7 +279,7 @@ def generate_preview_html(
       Prepared for <strong>{esc(business_name)}</strong> · Mobile Conversion Upgrade
     </div>
     <div style="display:flex; align-items:center; gap:12px;">
-      <a class="claim-btn" href="{STRIPE_PAYMENT_URL_PLACEHOLDER}" target="_blank" rel="noopener">Claim This Site ($199)</a>
+      <a class="claim-btn" href="{STRIPE_PAYMENT_URL}" target="_blank" rel="noopener">Claim This Site ($199)</a>
     </div>
   </aside>
 

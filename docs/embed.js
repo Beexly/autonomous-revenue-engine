@@ -179,7 +179,7 @@
   function openMailto(name, email, biz) {
     var subject = 'Sign request: ' + biz;
     var body = 'Name: ' + name + '\nEmail: ' + email + '\nBusiness: ' + biz + '\n\nPlease send me a mockup for my business sign.';
-    window.open('mailto:?' + encodeURIComponent('subject=' + subject + '&body=' + body), '_blank');
+    window.open('mailto:hq@galaxysportsedge.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body), '_blank');
   }
 
   function showConfirm() {
